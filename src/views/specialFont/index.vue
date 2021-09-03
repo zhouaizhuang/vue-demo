@@ -31,6 +31,6 @@ export default {
   }
   .lcdd{
     font-family: 'mFont';
-    font-size: 80px;;
+    font-size: 80px;
   }
 </style>

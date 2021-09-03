@@ -1,7 +1,7 @@
 
 <template>
   <div>
-    <div style="width:500px;height:150px;border:1px solid #ccc;overflow:hidden;margin:100px auto;text-align:center;">
+    <div style="width:300px;height:150px;border:1px solid #ccc;overflow:hidden;margin:100px auto;text-align:center;">
       <div :style="styleObj">
         <div v-for="(item, index) in showList" :key="index" style="height:50px;">
           {{item}}

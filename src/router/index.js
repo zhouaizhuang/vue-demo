@@ -22,6 +22,11 @@ const routes = [
     path: '/carousel',
     name: 'carousel',
     component: () => import(/* webpackChunkName: "keyFrame" */ '../views/carousel/index.vue')
+  },
+  {
+    path: '/specialFont',
+    name: 'specialFont',
+    component: () => import(/* webpackChunkName: "other" */ '../views/specialFont/index.vue')
   }
 ]
 

@@ -16,23 +16,21 @@ export default {
   name: 'Home',
   data(){
     return {
-      list: [], // 至少得重复一遍，才能实现无缝
+      list: [], // 重复的部分必须覆盖显示的框高度
       styleObj: { animation: `moveY 10s linear 0s  infinite normal` }
     }
   },
-  methods:{
+  methods: {
     // 获取数据
     getList(){
-      this.list = ['张一', '张二', '张三'] // 真实项目，此处从ajax获取数据
+      this.list = ['张一', '张二', '张三'] // 真实项目的话，此处从ajax获取数据。demo直接写死了
       this.showList = [...this.list, ...this.list] // 如果盒子高度和list一样，那么就需要重复一次。高度越高， list需要重复的越多。用于占位置
       // 平移必须是固定高度
       addCss(`@keyframes moveY {
         0%{ transform: translateY(0%); }
         100%{ transform: translateY(-${50 * this.list.length}px); }
       }`, 'z-moveY')
-      this.styleObj =  { 
-        animation: `moveY ${this.list.length}s linear 0s  infinite normal`, // 每个条目占用时间为1s
-      }
+      this.styleObj =  { animation: `moveY ${this.list.length}s linear 0s  infinite normal` } // 每个条目占用时间为1s
     }
   },
   created(){

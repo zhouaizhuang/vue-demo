@@ -31,6 +31,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "keyFrame" */ '../views/breath/index.vue')
   },
   {
+    path: '/lottie',
+    name: 'lottie',
+    component: () => import(/* webpackChunkName: "keyFrame" */ '../views/lottie/index.vue')
+  },
+  {
     path: '/specialFont',
     name: 'specialFont',
     component: () => import(/* webpackChunkName: "other" */ '../views/specialFont/index.vue')

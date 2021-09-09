@@ -5,7 +5,6 @@
   </div>
 </template>
 <script>
-import { random } from "../../common.js"
 export default {
   name: 'breath',
   data(){

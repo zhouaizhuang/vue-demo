@@ -5,16 +5,30 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
+    redirect: { name: 'index' },
+  },
+  {
+    path: '/index',
     name: 'index',
     component: index
   },
   {
-    path: '/carousel',
+    path: '/carousel', // 轮播组件
     name: 'carousel',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "keyFrame" */ '../views/carousel/index.vue')
+  },
+  {
+    path: '/numGrow',
+    name: 'numGrow',
+    component: () => import(/* webpackChunkName: "keyFrame" */ '../views/numGrow/index.vue')
+  },
+  {
+    path: '/breath',
+    name: 'breath',
+    component: () => import(/* webpackChunkName: "keyFrame" */ '../views/breath/index.vue')
   },
   {
     path: '/specialFont',

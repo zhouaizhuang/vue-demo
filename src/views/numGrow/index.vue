@@ -18,7 +18,7 @@ export default {
   name: 'numGrow',
   data(){
     return {
-      playerArr: [1,2,4,3,2,3,2,8,3,7,4,6]
+      playerArr: [1,2,4,3,2,3,0,8,3,7,4,6]
     }
   },
   methods: {
@@ -26,7 +26,9 @@ export default {
    
   },
   created(){
-    this.playerArr = String(Math.floor(random(10000000, 99999999))).split('')
+    setTimeout(() => {
+      this.playerArr = String(Math.floor(random(10000000, 99999999))).split('')
+    }, 100)
     this.timeId = setInterval(() => {
       this.playerArr = String(Math.floor(random(10000000, 99999999))).split('')
     }, 3000)

@@ -1,7 +1,7 @@
 
 <template>
-  <div style="margin: 200px auto;width:300px;">
-    <img src="./free_contract.png" class="breath-btn" style="width:600px;height:88px;" />
+  <div class="f xc ac h100vh">
+    <img src="./free_contract.png" class="breath-btn" style="width:400px;height:58px;" />
   </div>
 </template>
 <script>
@@ -26,10 +26,10 @@ export default {
 }
 @keyframes breathing {
   0%{
-    transform: translateX(-50%) scale(0.93);
+    transform: scale(0.93);
   }
   100%{
-    transform: translateX(-50%)  scale(1);
+    transform: scale(1);
   }
 }
 </style>

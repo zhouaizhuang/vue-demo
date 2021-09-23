@@ -1,8 +1,10 @@
 <!--
-备注：  1、安装 npm install --save vue-lottie
+备注:    1、安装 npm install --save vue-lottie
+        2、注意lottie.json文件可以在犸良动效平台找，或者在上面找元素制作。  再或者让UI设计通过AE制作并导出这个json文件
+        参考链接： https://www.jianshu.com/p/205bf97a71e5?utm_source=oschina-app
 -->
 <template>
-  <!-- https://www.jianshu.com/p/205bf97a71e5?utm_source=oschina-app -->
+
   <div class="f rw xc ac h100vh">
     <lottie :options="defaultOptions" style="width:200px;height:200px;" v-on:animCreated="handleAnimation" />
   </div>

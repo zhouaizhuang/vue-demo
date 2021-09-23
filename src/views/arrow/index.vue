@@ -27,7 +27,7 @@ export default {
 </script>
 <style>
 .dash-box{
-  transform-origin:left top;
+  transform-origin:left top; /**基准旋转位置默认是中心的， 这里改为左上角 */
   height: 90px;
   left:100px;
   top:18%;

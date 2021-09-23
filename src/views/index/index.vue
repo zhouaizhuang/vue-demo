@@ -7,8 +7,13 @@
       <router-link class="db w20 g42b983 pb30 min230px" to="/numGrow">数字滚动效果</router-link>
       <router-link class="db w20 g42b983 pb30 min230px" to="/breath">呼吸效果</router-link>
       <router-link class="db w20 g42b983 pb30 min230px" to="/lottie">犸良动效</router-link>
+      <router-link class="db w20 g42b983 pb30 min230px" to="/arrow">箭头指向动画</router-link>
       <!-- <router-link class="db w20 g42b983 pb30" to="/">呼吸效果</router-link>
       <router-link class="db w20 g42b983 pb30" to="/">呼吸效果</router-link> -->
+    </div>
+    <div class="fs30 b mt30 mb20 tc">常用组件</div>
+    <div class="f xs ac rw">
+      <router-link class="db w20 g42b983 pb30 min230px" to="/">组件一</router-link>
     </div>
     <div class="fs30 b mt30 mb20 tc">其他demo</div>
     <div class="f xs ac rw">

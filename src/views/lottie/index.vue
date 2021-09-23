@@ -1,3 +1,6 @@
+<!--
+备注：  1、安装 npm install --save vue-lottie
+-->
 <template>
   <!-- https://www.jianshu.com/p/205bf97a71e5?utm_source=oschina-app -->
   <div class="f rw xc ac h100vh">

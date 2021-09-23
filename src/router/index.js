@@ -36,10 +36,15 @@ const routes = [
     component: () => import(/* webpackChunkName: "keyFrame" */ '../views/lottie/index.vue')
   },
   {
+    path: '/arrow',
+    name: 'arrow',
+    component: () => import(/* webpackChunkName: "keyFrame" */ '../views/arrow/index.vue')
+  },
+  {
     path: '/specialFont',
     name: 'specialFont',
     component: () => import(/* webpackChunkName: "other" */ '../views/specialFont/index.vue')
-  }
+  },
 ]
 
 const router = new VueRouter({

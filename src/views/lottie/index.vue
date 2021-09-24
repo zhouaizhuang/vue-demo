@@ -4,7 +4,6 @@
         参考链接： https://www.jianshu.com/p/205bf97a71e5?utm_source=oschina-app
 -->
 <template>
-
   <div class="f rw xc ac h100vh">
     <lottie :options="defaultOptions" style="width:200px;height:200px;" v-on:animCreated="handleAnimation" />
   </div>

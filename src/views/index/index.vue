@@ -1,19 +1,30 @@
 
 <template>
   <div class="p30">
-    <div class="fs30 b mb20 tc">动画效果</div>
+    <div class="fs30 b mb20 tc">CSS3动画</div>
     <div class="f xs ac rw">
       <router-link class="db w20 g42b983 pb30 min230px" to="/carousel">可视化大屏无缝滚动</router-link>
       <router-link class="db w20 g42b983 pb30 min230px" to="/numGrow">数字滚动效果</router-link>
       <router-link class="db w20 g42b983 pb30 min230px" to="/breath">呼吸效果</router-link>
-      <router-link class="db w20 g42b983 pb30 min230px" to="/lottie">犸良动效</router-link>
       <router-link class="db w20 g42b983 pb30 min230px" to="/arrow">箭头指向动画</router-link>
       <!-- <router-link class="db w20 g42b983 pb30" to="/">呼吸效果</router-link>
       <router-link class="db w20 g42b983 pb30" to="/">呼吸效果</router-link> -->
     </div>
-    <div class="fs30 b mt30 mb20 tc">常用组件</div>
+    <div class="fs30 b mt30 mb20 tc">AE(lottie)动画</div>
     <div class="f xs ac rw">
-      <router-link class="db w20 g42b983 pb30 min230px" to="/">组件一</router-link>
+      <router-link class="db w20 g42b983 pb30 min230px" to="/lottie">犸良动效</router-link>
+    </div>
+    <div class="fs30 b mt30 mb20 tc">图片帧动画</div>
+    <div class="f xs ac rw">
+      <router-link class="db w20 g42b983 pb30 min230px" to="/walk">人物行走动画</router-link>
+    </div>
+    <div class="fs30 b mt30 mb20 tc">svg动画</div>
+    <div class="f xs ac rw">
+      <!-- <router-link class="db w20 g42b983 pb30 min230px" to="/walk">人物行走动画</router-link> -->
+    </div>
+    <div class="fs30 b mt30 mb20 tc">通用组件</div>
+    <div class="f xs ac rw">
+      <!-- <router-link class="db w20 g42b983 pb30 min230px" to="/">组件一</router-link> -->
     </div>
     <div class="fs30 b mt30 mb20 tc">其他demo</div>
     <div class="f xs ac rw">

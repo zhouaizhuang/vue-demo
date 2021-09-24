@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import index from '../views/index/index.vue'
+import { css3Ani } from "./module/css3Ani.js"
+import { aeAni } from "./module/aeAni.js"
+import { otherAni } from "./module/otherAni.js"
+import { pictureaAni } from "./module/pictureAni.js"
 Vue.use(VueRouter)
 const routes = [
   {
@@ -12,39 +16,10 @@ const routes = [
     name: 'index',
     component: index
   },
-  {
-    path: '/carousel', // 轮播组件
-    name: 'carousel',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "keyFrame" */ '../views/carousel/index.vue')
-  },
-  {
-    path: '/numGrow',
-    name: 'numGrow',
-    component: () => import(/* webpackChunkName: "keyFrame" */ '../views/numGrow/index.vue')
-  },
-  {
-    path: '/breath',
-    name: 'breath',
-    component: () => import(/* webpackChunkName: "keyFrame" */ '../views/breath/index.vue')
-  },
-  {
-    path: '/lottie',
-    name: 'lottie',
-    component: () => import(/* webpackChunkName: "keyFrame" */ '../views/lottie/index.vue')
-  },
-  {
-    path: '/arrow',
-    name: 'arrow',
-    component: () => import(/* webpackChunkName: "keyFrame" */ '../views/arrow/index.vue')
-  },
-  {
-    path: '/specialFont',
-    name: 'specialFont',
-    component: () => import(/* webpackChunkName: "other" */ '../views/specialFont/index.vue')
-  },
+  ...css3Ani,
+  ...aeAni,
+  ...otherAni,
+  ...pictureaAni
 ]
 
 const router = new VueRouter({

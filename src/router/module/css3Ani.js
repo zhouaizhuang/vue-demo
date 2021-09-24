@@ -22,4 +22,9 @@ export const css3Ani = [
     name: 'arrow',
     component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/arrow/index.vue')
   },
+  {
+    path: '/buttery',
+    name: 'buttery',
+    component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/buttery/index.vue')
+  },
 ]

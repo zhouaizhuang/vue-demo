@@ -11,7 +11,7 @@
   </div>
 </template>
 <script>
-import { addCss } from "../../common.js"
+import { addCss } from "../../../common.js"
 export default {
   name: 'Home',
   data(){

@@ -17,6 +17,7 @@ export default {
   data(){
     return {
       list: [], // 重复的部分必须覆盖显示的框高度
+      showList: [], // 用于实际展示的列表
       styleObj: { animation: `moveY 10s linear 0s  infinite normal` }
     }
   },

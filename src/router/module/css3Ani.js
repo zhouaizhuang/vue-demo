@@ -27,4 +27,9 @@ export const css3Ani = [
     name: 'buttery',
     component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/buttery/index.vue')
   },
+  {
+    path: '/slide',
+    name: 'slide',
+    component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/slide/index.vue')
+  },
 ]

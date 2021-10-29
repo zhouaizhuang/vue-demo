@@ -2,7 +2,9 @@
 <!--参考链接地址： https://www.zhangxinxu.com/wordpress/2014/08/so-powerful-svg-smil-animation/-->
 <!--【公众号SVG路径跟随动画案例之码语奇遇记-哔哩哔哩】https://b23.tv/AUXhT4-->
 <template>
-  <div class="f xc ac h100vh">
+  <div class="h100vh">
+    <div class="mb30">参考链接：<a href="https://www.zhangxinxu.com/wordpress/2014/08/so-powerful-svg-smil-animation/">张鑫旭的博客</a></div>
+    <div class="mb30">参考链接：<a href="https://b23.tv/AUXhT4">【公众号SVG路径跟随动画案例之码语奇遇记-哔哩哔哩】</a></div>
     <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
       <text font-family="microsoft yahei" font-size="40" x="0" y="0" fill="#cd0000">马
         <animateMotion
@@ -18,6 +20,7 @@
       <!-- <path d="M10,80 q100,120 120,20 q140,-50 160,0" stroke="#cd0000" stroke-width="2" fill="none" /> -->
     </svg>
   </div>
+  
 </template>
 <script>
 export default {

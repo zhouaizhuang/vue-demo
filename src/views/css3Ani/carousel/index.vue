@@ -1,4 +1,5 @@
 
+<!--参考： 无缝滚动https://blog.csdn.net/qq_38882860/article/details/114983463-->
 <template>
   <div>
     <div style="width:300px;height:150px;border:1px solid #ccc;overflow:hidden;margin:100px auto;text-align:center;">

@@ -5,6 +5,7 @@ import { css3Ani } from "./module/css3Ani.js"
 import { aeAni } from "./module/aeAni.js"
 import { other } from "./module/other.js"
 import { pictureaAni } from "./module/pictureAni.js"
+import { svgAni } from "./module/svgAni.js"
 Vue.use(VueRouter)
 const routes = [
   {
@@ -19,7 +20,8 @@ const routes = [
   ...css3Ani,
   ...aeAni,
   ...other,
-  ...pictureaAni
+  ...pictureaAni,
+  ...svgAni
 ]
 
 const router = new VueRouter({

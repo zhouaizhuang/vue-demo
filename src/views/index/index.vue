@@ -20,7 +20,7 @@
     </div>
     <div class="fs30 b mt30 mb20 tc">svg动画</div>
     <div class="f xs ac rw">
-      <!-- <router-link class="db w20 g42b983 pb30 min230px" to="/walk">人物行走动画</router-link> -->
+      <router-link class="db w20 g42b983 pb30 min230px" to="/moveText">移动的马</router-link>
     </div>
     <div class="fs30 b mt30 mb20 tc">通用组件</div>
     <div class="f xs ac rw">

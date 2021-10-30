@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>{{timeStr}}</div>
+    <div class="fs30" style="margin:200px auto;width:500px;">{{timeStr}}</div>
   </div>
 </template>
 <script>
@@ -32,7 +32,10 @@ export default {
       if(dates <= 0) {
         clearInterval(this.timeId)
       }
-    },50) 
+    },80) 
+  },
+  beforeDestroy(){
+    clearInterval(this.timeId)
   }
 }
 </script>

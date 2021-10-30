@@ -9,6 +9,7 @@
       <router-link class="db w20 g42b983 pb30 min230px" to="/arrow">箭头指向动画</router-link>
       <router-link class="db w20 g42b983 pb30 min230px" to="/buttery">水波</router-link>
       <router-link class="db w20 g42b983 pb30 min230px" to="/slide">滑动名片</router-link>
+      <router-link class="db w20 g42b983 pb30 min230px" to="/countDown">倒计时</router-link>
     </div>
     <div class="fs30 b mt30 mb20 tc">AE(lottie)动画</div>
     <div class="f xs ac rw">

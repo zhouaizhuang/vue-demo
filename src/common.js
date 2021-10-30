@@ -362,7 +362,7 @@ export const sliceStr = function (str, num) {
   return newStr
 }
 // 字符串前置补0。举例: addZero('1', 2) ==> '01'
-export const addZero = function (str, num) {
+export const addZero = function (str = '', num = 2) {
   return (Array(num+1).join('0') + str).slice(-num)
 }
 // 完美的统计字符串长度，能正确统计占四个字节的Unicode字符。举例：length('x\uD83D\uDE80y') ----> 3
@@ -665,7 +665,19 @@ export const afterNsecond = function (after = 60) {
   const dt = new Date()
   return new Date(dt.getTime() + after * 1000)
 }
-
+/**
+ * 将毫秒数转换成天、时、分、秒、毫秒
+ * @param {*} sec 秒数
+ * @举例 afterNsecond(60) 
+ */
+export const sec2Dhs = function (leftMs){
+  const d = Math.floor(leftMs / 1000 / 60 / 60 / 24)
+  const h = addZero(Math.floor(leftMs / 1000 / 60 / 60 % 24), 2)
+  const m = addZero(Math.floor(leftMs / 1000 / 60 % 60), 2)
+  const s = addZero(Math.floor(leftMs / 1000 % 60), 2)
+  const ms = addZero(Math.floor(leftMs % 1000), 2)
+  return { d, h, m, s, ms }
+}
 /*
 **********************************************************************************************
 ******************************************业务函数*********************************************

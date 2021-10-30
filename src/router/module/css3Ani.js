@@ -32,4 +32,9 @@ export const css3Ani = [
     name: 'slide',
     component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/slide/index.vue')
   },
+  {
+    path: '/countDown',
+    name: 'countDown',
+    component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/countDown/index.vue')
+  },
 ]

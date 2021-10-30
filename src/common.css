@@ -46,6 +46,8 @@ button { all: unset; }
 .wrap{max-width:100%;word-break:break-all;word-wrap:break-word;}
 /* 对齐方式*/
 .tl{text-align: left;} .tc{text-align: center;} .tr{text-align: right;}
+/* 文本修饰 */
+.tdo{text-decoration: overline;} .tdl{text-decoration: line-through;} .tdu{text-decoration: underline;} .tdb{text-decoration: blink;}
 /* 文字间距 */
 .lt5{letter-spacing: 5px;}
 /* 字体大小 */

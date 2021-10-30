@@ -1,9 +1,10 @@
 
 <template>
   <div>
-    <div class="fs30 text" style="margin:200px auto;width:300px;">
-      {{text}}
+    <div class="fs50 mt100 tc auto text">
+      我是渐变文字, 请看类名.text
     </div>
+    <div class="mt50 fs50 auto stroke tc">我是描边文字,请看类名.stroke</div>
   </div>
 </template>
 <script>
@@ -27,6 +28,9 @@ export default {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  font-size: 50px;
+}
+.stroke{
+  color: #fff;
+  -webkit-text-stroke: 2px red;
 }
 </style>

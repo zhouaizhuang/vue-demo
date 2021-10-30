@@ -31,6 +31,7 @@
     <div class="f xs ac rw">
       <router-link class="db w20 g42b983 pb30 min230px" to="/specialFont">自定义字体</router-link>
       <router-link class="db w20 g42b983 pb30 min230px" to="/linearText">渐变、描边文字</router-link>
+      <router-link class="db w20 g42b983 pb30 min230px" to="/autoBreak">自适应换行、溢出隐藏</router-link>
     </div>
   </div>
 </template>

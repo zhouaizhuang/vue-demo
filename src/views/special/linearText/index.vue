@@ -12,7 +12,6 @@ export default {
   name: 'specialFont',
   data(){
     return {
-      text: '我是渐变文字'
     }
   },
   methods:{

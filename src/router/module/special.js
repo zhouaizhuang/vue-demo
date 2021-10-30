@@ -9,4 +9,9 @@ export const special = [
     name: 'linearText',
     component: () => import(/* webpackChunkName: "other" */ '../../views/special/linearText/index.vue')
   },
+  {
+    path: '/autoBreak',
+    name: 'autoBreak',
+    component: () => import(/* webpackChunkName: "other" */ '../../views/special/autoBreak/index.vue')
+  },
 ]

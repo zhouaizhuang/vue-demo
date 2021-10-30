@@ -814,7 +814,7 @@ export const setTitle = function  (title) {
   document.title = title
 }
 /**
- * 轻提示
+ * 跳转url链接
  * @param href 链接地址
  * @举例 goUrl('https://www.baidu.com')  // 跳转到百度
  */

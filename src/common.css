@@ -42,12 +42,16 @@ button { all: unset; }
 /* 溢出隐藏 */
 .nowrap{min-width: 0;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
 .nowrap2{min-width:0;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
-/* 文字过多自动换行 */
-.wrap{max-width:100%;word-break:break-all;word-wrap:break-word;}
 /* 对齐方式*/
 .tl{text-align: left;} .tc{text-align: center;} .tr{text-align: right;}
+/* 包裹性 */
+.wfc{width:-webkit-fit-content;width:-moz-fit-content;width: fit-content;} .hfc{height:-webkit-fit-content;height: fit-content;}
+.wmc{width:-webkit-min-content;width:-moz-min-content;width: min-content;}
+/* 文字过多自动换行 */
+.wrap{max-width:100%;word-break:break-all;word-wrap:break-word;}
+.lba{line-break: anywhere;} /*文字因为能断开的全部断开*/
 /* 文本修饰 */
-.tdo{text-decoration: overline;} .tdl{text-decoration: line-through;} .tdu{text-decoration: underline;} .tdb{text-decoration: blink;}
+.tdn{text-decoration: none;} .tdo{text-decoration: overline;} .tdl{text-decoration: line-through;} .tdu{text-decoration: underline;} .tdb{text-decoration: blink;}
 /* 文字间距 */
 .lt5{letter-spacing: 5px;}
 /* 字体大小 */
@@ -71,8 +75,6 @@ button { all: unset; }
 .f1{flex:1;}       .f2{flex:2;}         .f3{flex:3;}         .f4{flex:4;}         .f5{flex:5;}        .f6{flex:6;}       .f7{flex:7;}        .f8{flex:8;}         .f9{flex:9;}
 /* 透明度 */
 .op0{opacity: 0;}  .op1{opacity: 0.1;}  .op2{opacity: 0.2;}  .op3{opacity: 0.3;}  .op4{opacity: 0.4;} .op5{opacity: 0.5;}.op6{opacity: 0.6;} .op7{opacity: 0.7;}  .op8{opacity: 0.8;}  .op9{opacity: 0.9;}  .op10{opacity: 1;} 
-/* 包裹性 */
-.wfc{width:-webkit-fit-content;width:-moz-fit-content;width: fit-content;} .hfc{height:-webkit-fit-content;height: fit-content;}
 /* 定位 */
 .fixed{position: fixed;} .rel{position:relative;} .abs{position:absolute;}
 .zx-1{z-index:-1;} .zx0{z-index:0;} .zx1{z-index:1;} .zx2{z-index:2;} .zx3{z-index:3;} .zx4{z-index:4;} .zx5{z-index:5;} .zx6{z-index:6;} .zx7{z-index:7;} .zx8{z-index:8;} .zx9{z-index:9;}
@@ -88,14 +90,11 @@ button { all: unset; }
 /* 左右居中 */
 .auto{margin-left: auto;margin-right:auto;} .mauto{margin: auto;}
 /* 动画 */
-.trans3{-webkit-transition:all 0.3s; transition:all 0.3s;}
+.trans3{-webkit-transition:all 0.3s; transition:all 0.3s;} .trans5{-webkit-transition:all 0.5s; transition:all 0.5s;}
 .ts0-5{transform:scale(0.5);} .ts0-6{transform:scale(0.6);} .ts0-7{transform:scale(0.7);} .ts0-8{transform:scale(0.8);} .ts0-9{transform:scale(0.9);} .ts1-1{transform:scale(1.1);} .ts1-2{transform:scale(1.2);} .ts1-3{transform:scale(1.3);} .ts1-4{transform:scale(1.4);} .ts1-5{transform:scale(1.5);} .ts1-6{transform:scale(1.6);} .ts1-7{transform:scale(1.7);} .ts1-8{transform:scale(1.8);} .ts1-9{transform:scale(1.9);} .ts2-0{transform:scale(2);}
-.tx-50{transform:translateX(-50%);}
-.ty-50{transform: translateY(-50%);}
-.txy-50{transform: translate(-50%, -50%);}
+.tx-50{transform:translateX(-50%);} .ty-50{transform: translateY(-50%);} .txy-50{transform: translate(-50%, -50%);}
 /* 按钮禁用 */
-.disable{opacity:0.5; pointer-events:none;}
-.disable:hover{cursor:no-drop;}
+.disable{opacity:0.5; pointer-events:none;} .disable:hover{cursor:no-drop;}
 /* 边框圆角 */
 .rds1{border-radius:1px;}   .rds2{border-radius:2px;}  .rds5{border-radius:5px;}    .rds10{border-radius:10px;}  .rds15{border-radius:15px;}  .rds20{border-radius:20px;}  .rds30{border-radius:30px;} .rds40{border-radius:40px;}  .rds50{border-radius:50%;}
 /* 表单必填*号 */

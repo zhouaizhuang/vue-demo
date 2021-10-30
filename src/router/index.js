@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import index from '../views/index/index.vue'
 import { css3Ani } from "./module/css3Ani.js"
 import { aeAni } from "./module/aeAni.js"
-import { other } from "./module/other.js"
+import { special } from "./module/special.js"
 import { pictureaAni } from "./module/pictureAni.js"
 import { svgAni } from "./module/svgAni.js"
 Vue.use(VueRouter)
@@ -19,7 +19,7 @@ const routes = [
   },
   ...css3Ani,
   ...aeAni,
-  ...other,
+  ...special,
   ...pictureaAni,
   ...svgAni
 ]

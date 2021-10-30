@@ -36,7 +36,7 @@ button { all: unset; }
 .mask6{position:fixed;top:0;right:0;bottom:0;left:0;z-index:100;background-color: rgba(0, 0, 0, .6);overflow:hidden;}
 /* 字体颜色 */
 .g6{color: #666;} .g9{color:#999;} .g3e{color:#3e3e3e;} .gd9{color: #d9d9d9;} .gf{color: #fff;}
-.g42b983{color:#42b983;} .gf10000{color:#f10000;}
+.g42b983{color:#42b983;} .g1890ff{color:#1890ff;} .gf10000{color:#f10000;}
 /* BFC */
 .ovh{overflow:hidden;} .ova{overflow: auto;} .ovxa{overflow-x:auto;} .ovya{overflow-y: auto;}
 /* 溢出隐藏 */

@@ -57,7 +57,7 @@ button { all: unset; }
 /* 字体大小 */
 .fs0{font-size:0;} .fs12{font-size:12px;} .fs14{font-size:14px;} .fs16{font-size:16px;} .fs18{font-size:18px;}
 .fs20{font-size:20px;} .fs22{font-size:22px;} .fs24{font-size:24px;} .fs26{font-size:26px;} .fs28{font-size:28px;}
-.fs30{font-size:30px;} .fs32{font-size:32px;} .fs34{font-size:34px;} .fs36{font-size:36px;} .fs38{font-size:38px;} .fs40{font-size:40px;} .fs50{font-size:50px;}
+.fs30{font-size:30px;} .fs32{font-size:32px;} .fs34{font-size:34px;} .fs36{font-size:36px;} .fs38{font-size:38px;} .fs40{font-size:40px;} .fs50{font-size:50px;} .fs60{font-size:60px;}
 /*字体粗细 浏览器支持不了全部*/
 .fw1{font-weight:100;} .fw2{font-weight:200;}  .fw3{font-weight:300;}  .fw4{font-weight:400;} .fw5{font-weight:500;} .fw6{font-weight:600;}  .fw7{font-weight:700;}  .fw8{font-weight:800;}  .fw9{font-weight:900;}
 /* 加粗、倾斜 */
@@ -65,7 +65,7 @@ button { all: unset; }
 /*flex弹性布局*/
 .f{display:flex;}
 /* 显示方向和是否换行 */
-.rn{flex-flow: row nowrap;} .rw{flex-flow: row wrap;}
+.rn{flex-flow: row nowrap;} .rw{flex-flow: row wrap;} .cn{flex-flow: column nowrap;} .cw{flex-flow: column wrap;}
 /* 水平对齐方式 */
 .xs{justify-content:flex-start;} .xc{justify-content:center;}.xe{justify-content:flex-end;}.xb{justify-content:space-between;}.xa{justify-content:space-around;}
 /* 垂直对齐方式 */

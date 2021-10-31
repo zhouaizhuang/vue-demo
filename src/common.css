@@ -32,6 +32,7 @@ button { all: unset; }
 .bdbe{border-bottom: 1px solid #eee;}
 /* 背景色 */
 .bgf{background-color: #fff;} .bgf5{background-color: #f5f5f5;} .bgecf2ff{background-color: #ecf2ff;} .bgff5650{background-color: #ff5650;}
+.bg1890ff{background-color: #1890ff;}
 /*遮罩层*/
 .mask6{position:fixed;top:0;right:0;bottom:0;left:0;z-index:100;background-color: rgba(0, 0, 0, .6);overflow:hidden;}
 /* 字体颜色 */
@@ -81,6 +82,8 @@ button { all: unset; }
 .zx10{z-index:10;} .zx20{z-index:20;} .zx30{z-index:30;} .zx40{z-index:40;} .zx50{z-index:50;} .zx60{z-index:60;} .zx70{z-index:70;}  .zx80{z-index:80;} .zx90{z-index:90;} .zx100{z-index:100;} .zx1000{z-index:1000;} 
 /*百分比定位*/
 .trbl0{top:0;right:0;bottom:0;left:0;}
+.t0{top:0;}
+.l0{left:0;}
 .t10{top:10%;} .t15{top:15%;} .t20{top:20%;} .t25{top:25%;} .t30{top:30%;} .t35{top:35%;} .t40{top:40%;} .t45{top:45%;} .t50{top:50%;}
 .r10{right:10%;} .r15{right:15%;} .r20{right:20%;} .r25{right:25%;} .r30{right:30%;} .r35{right:35%;} .r40{right:40%;} .r45{right:45%;} .r50{right:50%;}
 .b10{bottom:10%;} .b15{bottom:15%;} .b20{bottom:20%;} .b25{bottom:25%;} .b30{bottom:30%;} .b35{bottom:35%;} .b40{bottom:40%;} .b45{bottom:45%;} .b50{bottom:50%;}
@@ -89,8 +92,8 @@ button { all: unset; }
 .poi{cursor:pointer;}    .def{cursor:default;}
 /* 左右居中 */
 .auto{margin-left: auto;margin-right:auto;} .mauto{margin: auto;}
-/* 动画 */
-.trans3{-webkit-transition:all 0.3s; transition:all 0.3s;} .trans5{-webkit-transition:all 0.5s; transition:all 0.5s;}
+/* 动画 */  
+.trans3{-webkit-transition:all 0.3s; transition:all 0.3s;} .trans5{-webkit-transition:all .5s; transition:all .5s;}
 .ts0-5{transform:scale(0.5);} .ts0-6{transform:scale(0.6);} .ts0-7{transform:scale(0.7);} .ts0-8{transform:scale(0.8);} .ts0-9{transform:scale(0.9);} .ts1-1{transform:scale(1.1);} .ts1-2{transform:scale(1.2);} .ts1-3{transform:scale(1.3);} .ts1-4{transform:scale(1.4);} .ts1-5{transform:scale(1.5);} .ts1-6{transform:scale(1.6);} .ts1-7{transform:scale(1.7);} .ts1-8{transform:scale(1.8);} .ts1-9{transform:scale(1.9);} .ts2-0{transform:scale(2);}
 .tx-50{transform:translateX(-50%);} .ty-50{transform: translateY(-50%);} .txy-50{transform: translate(-50%, -50%);}
 /* 按钮禁用 */

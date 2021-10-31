@@ -30,7 +30,9 @@ export default {
       this.playerArr = String(Math.floor(random(10000000, 99999999))).split('')
     }, 100)
     this.timeId = setInterval(() => {
-      this.playerArr = String(Math.floor(random(10000000, 99999999))).split('')
+      let tmp = Number(this.playerArr.join(''))
+      tmp += Math.floor(random(1, 100000))
+      this.playerArr = String(tmp).split('')
     }, 3000)
   },
   beforeDestroy(){

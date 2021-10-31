@@ -8,7 +8,7 @@
       <div class="abs dash-box">
         <div class="aniLen ">
           <div class="bdLight"></div>
-          <img src="./arraw_light.png" alt="" class="abs l50 t0 arrow" :style="{'transform': 'translate(-50%, -53%) rotate(-4deg)'}">
+          <img src="./arraw_light.png" alt="" class="abs l50 t0 arrow" :style="{'transform': 'translate(-50%, -48%) rotate(-4deg)'}">
         </div>
       </div>
     </div>

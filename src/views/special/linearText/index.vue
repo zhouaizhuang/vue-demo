@@ -31,14 +31,13 @@ export default {
 <style>
 .text{
   background: linear-gradient(to right,deepskyblue, deeppink);
-  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 .text-fill-gradient{
-  -webkit-text-fill-color:transparent;
   background: linear-gradient(to right, skyblue, deeppink, deepskyblue);
-  -webkit-background-clip: text;
+  -webkit-text-fill-color:transparent;
+  background-clip: text;
 }
 .stroke{
   color: #fff;

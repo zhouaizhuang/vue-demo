@@ -14,4 +14,9 @@ export const special = [
     name: 'autoBreak',
     component: () => import(/* webpackChunkName: "other" */ '../../views/special/autoBreak/index.vue')
   },
+  {
+    path: '/filter',
+    name: 'filter',
+    component: () => import(/* webpackChunkName: "other" */ '../../views/special/filter/index.vue')
+  },
 ]

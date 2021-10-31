@@ -28,10 +28,11 @@
       <!-- <router-link class="db w20 g42b983 pb30 min230px" to="/">组件一</router-link> -->
     </div>
     <div class="fs30 b mt30 mb20 tc">特殊效果</div>
-    <div class="f xs ac rw">
+    <div class="f xs ac rw mb30">
       <router-link class="db w20 g42b983 pb30 min230px" to="/specialFont">自定义字体</router-link>
       <router-link class="db w20 g42b983 pb30 min230px" to="/linearText">渐变、描边、阴影文字</router-link>
       <router-link class="db w20 g42b983 pb30 min230px" to="/autoBreak">自适应换行、溢出隐藏、竖排文本</router-link>
+      <router-link class="db w20 g42b983 pb30 min230px" to="/filter">滤镜相关</router-link>
     </div>
   </div>
 </template>

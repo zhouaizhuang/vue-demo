@@ -24,4 +24,9 @@ export const special = [
     name: 'clipImg',
     component: () => import(/* webpackChunkName: "special" */ '../../views/special/clipImg/index.vue')
   },
+  {
+    path: '/reflectImg',
+    name: 'reflectImg',
+    component: () => import(/* webpackChunkName: "special" */ '../../views/special/reflectImg/index.vue')
+  },
 ]

@@ -6,7 +6,7 @@
       <div style="width: 80px;height:80px;" class="rds50 bdc f ac xc">位置1</div>
       <div style="width: 80px;height:80px;bottom:0px;right:0px;" class="abs rds50 bdc f ac xc">位置2</div>
       <div class="abs dash-box">
-        <div class="aniLen ">
+        <div class="aniLen">
           <div class="bdLight"></div>
           <img src="./arraw_light.png" alt="" class="abs l50 t0 arrow" :style="{'transform': 'translate(-50%, -48%) rotate(-4deg)'}">
         </div>

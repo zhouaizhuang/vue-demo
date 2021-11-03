@@ -68,6 +68,23 @@
       <div class="f1 f ac">
       </div>
     </div>
+    <div class="f ac mt50">
+      <div class="f1 f ac">
+        <div @click="isShowBg = true" class="bg1890ff rds10 pt15 pb15 fs26 gf b pl10 pr10">点我显示毛玻璃背景</div>
+      </div>
+      <div class="f1 f ac">
+      </div>
+    </div>
+    <!--背景滤镜-->
+    <div v-if="isShowBg" @click.stop="isShowBg = false" class="fixed trbl0" style="background-color:rgba(0,0,0,.7);backdrop-filter:blur(5px);">
+      <div class="abs bgf rds10 pt40 pb50" style="top:30%;left:60px;right:60px;">
+        <div class="pb30 fs34 b">温馨提示</div>
+        <div class="fs28 mb30">这是背景毛玻璃效果！还可以吧。</div>
+        <div class="f xc">
+          <div @click="isShowBg = false" class="w40 bg1890ff rds10 pt15 pb15 fs26 gf b mr30">确实</div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -75,6 +92,7 @@ export default {
   name: 'filterImg',
   data(){
     return {
+      isShowBg:false, // 是否显示背景毛玻璃
     }
   },
   methods:{

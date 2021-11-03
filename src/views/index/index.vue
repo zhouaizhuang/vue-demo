@@ -34,6 +34,7 @@
       <router-link class="db w20 g42b983 pb30 min230px" to="/linearText">渐变、描边、阴影文字</router-link>
       <router-link class="db w20 g42b983 pb30 min230px" to="/autoBreak">自适应换行、溢出隐藏、竖排文本</router-link>
       <router-link class="db w20 g42b983 pb30 min230px" to="/filter">滤镜相关</router-link>
+      <router-link class="db w20 g42b983 pb30 min230px" to="/clipImg">图形裁剪</router-link>
     </div>
   </div>
 </template>

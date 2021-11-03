@@ -19,4 +19,9 @@ export const special = [
     name: 'filter',
     component: () => import(/* webpackChunkName: "special" */ '../../views/special/filter/index.vue')
   },
+  {
+    path: '/clipImg',
+    name: 'clipImg',
+    component: () => import(/* webpackChunkName: "special" */ '../../views/special/clipImg/index.vue')
+  },
 ]

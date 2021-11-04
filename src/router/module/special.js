@@ -29,4 +29,9 @@ export const special = [
     name: 'reflectImg',
     component: () => import(/* webpackChunkName: "special" */ '../../views/special/reflectImg/index.vue')
   },
+  {
+    path: '/scrollStrong',
+    name: 'scrollStrong',
+    component: () => import(/* webpackChunkName: "special" */ '../../views/special/scrollStrong/index.vue')
+  },
 ]

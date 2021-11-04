@@ -1,0 +1,53 @@
+
+<template>
+  <div style="padding-bottom:500px;">
+    <div class="fs30 f xc mb20 mt50">1、平滑滚动</div>
+    <div class="smooth ovya mb30 auto" style="height:400px;width:800px;">
+      <div class="fs50 auto f ac xc bg1890ff rel" style="width:100%;height:400px;"><input id="one" class="clip t0 h100" />1</div>
+      <div class="fs50 auto f ac xc bgff5650 rel" style="width:100%;height:400px;"><input id="two" class="clip t0 h100" />2</div>
+      <div class="fs50 auto f ac xc bgc7a35d rel" style="width:100%;height:400px;"><input id="three" class="clip t0 h100" />3</div>
+      <div class="fs50 auto f ac xc bg1890ff rel" style="width:100%;height:400px;"><input id="four" class="clip t0 h100" />4</div>
+    </div>
+    <div class="f xc pl30 pr30">
+      <label for="one" class="bg1890ff gf f ac xc rds10 mr30" style="width:80px;height:50px;">1</label>
+      <label for="two" class="bgff5650 gf f ac xc rds10 mr30" style="width:80px;height:50px;">2</label>
+      <label for="three" class="bgc7a35d gf f ac xc rds10 mr30" style="width:80px;height:50px;">3</label>
+      <label for="four" class="bg1890ff gf f ac xc rds10" style="width:80px;height:50px;">4</label>
+    </div>
+
+    <div class="fs30 f xc mb20 mt100">2、滚动到底部，不会再滚动外边容器<b>（很重要）</b></div>
+    <div class="ovsb-contain ovya mb30 auto" style="height:400px;width:800px;">
+      <div class="fs50 auto f ac xc bg1890ff" style="width:100%;height:400px;">1</div>
+      <div class="fs50 auto f ac xc bgff5650" style="width:100%;height:400px;">2</div>
+      <div class="fs50 auto f ac xc bgc7a35d" style="width:100%;height:400px;">3</div>
+      <div class="fs50 auto f ac xc bg1890ff" style="width:100%;height:400px;">4</div>
+    </div>
+
+    <div class="fs30 f xc mb20 mt100">3、容器停止滚动的时候，自动平滑定位到指定元素指定位置<b>（很重要）</b></div>
+    <div class="ovxa mb30 sstxm ovyh auto" style="white-space:nowrap;height:300px;width:800px;">
+      <img class="w60 h100 ssac" src="https://yiluyouni.hlxapps.com/assets/images/2021-10-27/6178b0f188cab.jpg" alt="">
+      <img class="w60 h100 ssac" src="https://yiluyouni.hlxapps.com/assets/images/2021-10-27/6178b0f18c6df.jpg" alt="">
+      <img class="w60 h100 ssac" src="https://yiluyouni.hlxapps.com/assets/images/2021-10-27/6178b0f18c6df.jpg" alt="">
+      <img class="w60 h100 ssac" src="https://yiluyouni.hlxapps.com/assets/images/2021-10-27/6178b0f18c6df.jpg" alt="">
+    </div>
+  </div>
+</template>
+<script>
+export default {
+  name: 'scrollStrong',
+  data(){
+    return {
+    }
+  },
+  methods:{
+  },
+  created(){
+   
+  }
+}
+</script>
+<style scoped>
+.smooth{
+  scroll-behavior: smooth;
+}
+</style>

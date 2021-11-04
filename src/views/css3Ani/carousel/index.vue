@@ -26,7 +26,7 @@ export default {
     // 获取数据
     getList(){
       this.list = ['张一', '张二', '张三'] // 真实项目的话，此处从ajax获取数据。demo直接写死了
-      this.showList = [...this.list, ...this.list] // 需要展示的最大高度就是150px。而每个条目占用50px高度，那么也就是说，需要最少3个条目来占用150px。从而实现看起来无缝轮播
+      this.showList = [...this.list, ...this.list.slice(0, 3)] // 需要展示的最大高度就是150px。而每个条目占用50px高度，那么也就是说，需要最少3个条目来占用150px。从而实现看起来无缝轮播
       // 平移必须是固定高度
       addCss(`@keyframes moveY {
         0%{ transform: translateY(0%); }

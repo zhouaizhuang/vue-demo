@@ -30,6 +30,7 @@
       <img class="w60 h100 ssac" src="https://yiluyouni.hlxapps.com/assets/images/2021-10-27/6178b0f18c6df.jpg" alt="">
       <img class="w60 h100 ssac" src="https://yiluyouni.hlxapps.com/assets/images/2021-10-27/6178b0f18c6df.jpg" alt="">
     </div>
+    <div class="bdc bg1890ff f ac xc fs30 gf" style="width:300px;height:200px;resize:both;overflow:hidden;">右下角可以拉伸</div>
   </div>
 </template>
 <script>

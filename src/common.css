@@ -1,8 +1,19 @@
 /** PC端，通用css样式库
 * 以下所有样式根据需要可自行扩展，只允许编写常用样式在此文件中。样式名必须简洁，否则class容易出现代码膨胀
 */
-/* 重置button所有默认属性 */
+/* 重置样式 */
 button { all: unset; }
+html { background-color: #EDEDED; touch-action: manipulation;} 
+body { /* IOS禁止微信调整字体大小 */
+  -webkit-text-size-adjust: 100% !important;
+  text-size-adjust: 100% !important;
+  -moz-text-size-adjust: 100% !important;
+  height:100vh;
+  overflow-x: hidden;
+}
+img {border:0; display:inline-block;} 
+input{-webkit-appearance:none;appearance:none;} /*解决ios输入框默认内阴影*/
+input, textarea, img, video, object { width:100%; box-sizing: border-box;}
 /* 显示与隐藏 */
 .dn{display:none;}  .di{display:inline;}.db{display:block;} .dib{display:inline-block;}
 .hidden{position: absolute; visibility: hidden;} .show{position: static; visibility:visible;}
@@ -55,6 +66,8 @@ button { all: unset; }
 .tdn{text-decoration: none;} .tdo{text-decoration: overline;} .tdl{text-decoration: line-through;} .tdu{text-decoration: underline;} .tdb{text-decoration: blink;}
 /* 文字间距 */
 .lt5{letter-spacing: 5px;}
+/*文本大小写全大写字母、全小写字母、首字母大写*/
+.uppercase{text-transform: uppercase;} .lowercase{text-transform: lowercase;} .capitalize{text-transform: capitalize;}
 /* 字体大小 */
 .fs0{font-size:0;} .fs12{font-size:12px;} .fs14{font-size:14px;} .fs16{font-size:16px;} .fs18{font-size:18px;}
 .fs20{font-size:20px;} .fs22{font-size:22px;} .fs24{font-size:24px;} .fs26{font-size:26px;} .fs28{font-size:28px;}

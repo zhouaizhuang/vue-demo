@@ -34,4 +34,9 @@ export const special = [
     name: 'scrollStrong',
     component: () => import(/* webpackChunkName: "special" */ '../../views/special/scrollStrong/index.vue')
   },
+  {
+    path: '/svgStudy',
+    name: 'svgStudy',
+    component: () => import(/* webpackChunkName: "special" */ '../../views/special/svgStudy/index.vue')
+  },
 ]

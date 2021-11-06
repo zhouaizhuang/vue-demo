@@ -38,6 +38,7 @@
       <router-link class="db w20 g42b983 pb30 min230px" to="/clipImg">图形裁剪</router-link>
       <router-link class="db w20 g42b983 pb30 min230px" to="/reflectImg">倒影效果</router-link>
       <router-link class="db w20 g42b983 pb30 min230px" to="/scrollStrong">滚动增强</router-link>
+      <router-link class="db w20 g42b983 pb30 min230px" to="/svgStudy">svg学习</router-link>
     </div>
   </div>
 </template>

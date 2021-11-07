@@ -181,7 +181,7 @@ export const toObject = function (arr) {
 // 检测是否大致相等
 // looseEqual(1,'1') ===> true
 // looseEqual({name:'zaz'},{'name':'zaz'}) ===> true
-function looseEqual (a, b) {
+export const looseEqual = function (a, b) {
   if (a === b) { return true }
   var isObjectA = isObject(a)
   var isObjectB = isObject(b)
@@ -332,7 +332,7 @@ export const chunk = function (arr, size = 0) {
   return targetArr
 }
 // 数组（a 相对于 b 的）交集
-// 举例子: difference([1,2,3], [1,2]) ====> [1, 2]
+// 举例子: intersect([1,2,3], [1,2]) ====> [1, 2]
 export const intersect = function (arr1, arr2){
   if(!isArray(arr1) || !isArray(arr2)) {throw new Error('参数必须是数组类型')}
   const tmp = new Set(arr2)
@@ -416,7 +416,8 @@ export const JSON2url = function (url = '', params = {}){
  * @举例 url2JSON('http://www.baidu.com?name=asd&age=12') ----> {name: "asd", age: "12"}
  */
 export const url2JSON = function (url = '') {
-  const paramsStr = url.includes('?') ? (url.split('?')[1] || '') : url
+  let paramsStr = url.includes('?') ? (url.split('?')[1] || '') : url
+  paramsStr = paramsStr.split('#')[0] || '' // 防止一些url中混入#号放在?号之后，此处做一个适配
   return paramsStr.split('&').reduce((prev, item) => {
     const [key, val] = item.split('=')
     return { ...prev, [key]: decodeURIComponent(val) } // 此处需要转码，否则中文和一些特殊字符就无法支持了
@@ -609,22 +610,35 @@ export const range = function (num, min = null, max = null) {
 /*
 **************日期时间操作********************
 */
-// 获取日期字符串。
-// 举例：获取今天日期:getDateStr(0)--->20200904
-// 明天日期用-分割：getDateStr(1, '-')--->2020-09-05
+/**
+ * 获取日期字符串。
+ * @param AddDayCount 传0代表今天，传1代表明天
+ * @param split 日期分割符
+ * @举例 getDateStr(0) ---> 20200904    getDateStr(1) ---> 20200905
+ * @举例 分割：getDateStr(1, '-')--->2020-09-05
+ */
 export const getDateStr = function (AddDayCount = 0, split = '') {
   const dt = new Date()
   dt.setDate(dt.getDate() + AddDayCount) // 获取AddDayCount天后的日期
   return `0000${dt.getFullYear()}`.slice(-4) + split + `00${(dt.getMonth() + 1)}`.slice(-2) + split + `00${dt.getDate()}`.slice(-2)
 }
-// 获取传入日期是星期几, 不传默认是今天
-export const getDay = function (date) {
-  let day = date ? new Date(date).getDay() : new Date().getDay()
+/**
+ * 获取星期几， 不传默认是今天
+ * @param t 时间格式字符串比如： '2021-10-01'   当然，也同时支持传入new date('2021-10-01')生成的对象
+ * @举例 getDay('2020-03-05') ---> 返回的就是这个日期对应的星期几
+ * @举例 getDay() // 默认返回当天星期几
+ */
+export const getDay = function (t = new Date()) {
+  if(!isDate(t)) { t = t.replace(/[-]/g, "/") } // 为了兼容ios
+  let day = t ? new Date(t).getDay() : new Date().getDay()
   return '星期' + "日一二三四五六"[day]
 }
-// 获取实时   年-月-周-日-时-分-秒
-// 举例： socketTime('2020-03-05') ---> 返回的就是2020年3月5日的年月日数据
-// socketTime() // 默认返回当天数据
+/**
+ * 获取时间
+ * @param t 时间格式字符串比如： '2021-10-01'   当然，也同时支持传入new date('2021-10-01')生成的对象
+ * @举例 socketTime('2020-03-05') ---> 返回的就是2020年3月5日的年月日数据
+ * @举例 socketTime() // 默认返回当天数据
+ */
 export const socketTime = function (t = new Date()) {
   if(!isDate(t)) { t = t.replace(/[-]/g, "/") }
   const dt = new Date(t)
@@ -667,10 +681,10 @@ export const afterNsecond = function (after = 60) {
 }
 /**
  * 将毫秒数转换成天、时、分、秒、毫秒
- * @param {*} sec 秒数
- * @举例 afterNsecond(60) 
+ * @param {*} leftMs 毫秒数
+ * @举例 afterNsecond(60)
  */
-export const sec2Dhs = function (leftMs){
+ export const sec2Dhs = function (leftMs){
   const d = Math.floor(leftMs / 1000 / 60 / 60 / 24)
   const h = addZero(Math.floor(leftMs / 1000 / 60 / 60 % 24), 2)
   const m = addZero(Math.floor(leftMs / 1000 / 60 % 60), 2)
@@ -690,9 +704,13 @@ export const sec2Dhs = function (leftMs){
  * @param innerHTML 采用传入的html，不使用默认的样式
  * @举例 showToast('请输入手机号码')  // 弹出“请输入手机号码”这个提示，并且1500ms后自动消失
  */
-export const showToast = function (str, time = 1500, innerHTML = '') {
+ export const showToast = function (str, time = 1500, innerHTML = '') {
   var pObj = document.createElement("div") // 创建，写内容
-  pObj.innerHTML = innerHTML || `<div style="position:fixed;top:45%;left:50%;transform: translateX(-50%);font-size:0.30rem;padding:0.2rem 0.5rem;background:#555;color:#fff;border-radius:0.15rem;">${str}</div>`       //添加内容
+  pObj.innerHTML = innerHTML || `
+  <div class="abs trbl0" style="z-index:99999;background-color: rgba(0, 0, 0, .7);">
+    <div style="position:fixed;top:45%;left:50%;transform: translateX(-50%);font-size:0.30rem;padding:0.2rem 0.5rem;background:#fff;color:#000;border-radius:0.15rem;">${str}</div>
+  </div>
+  ` //添加内容
   document.body.appendChild(pObj)
   setTimeout(() => document.body.removeChild(pObj), time);
 }
@@ -700,7 +718,7 @@ export const showToast = function (str, time = 1500, innerHTML = '') {
  * 往网页头部动态追加css
  * @param css 可以手动传入需要载入的样式
  * @param id 这个css的id，方便以后进行删除操作
- * @举例 addCss('@keyframes moveY {0%{transform: translateY(0%);}100%{transform: translateY(-100%);}}')  // 载入移动动画样式
+ * @举例 addCss('@keyframes moveY {0%{transform: translateY(0%);}100%{transform: translateY(-100%);}}', 'z-loading-style')  // 载入移动动画样式
  */
 export const addCss = function (css = '', id = ""){
   const selectDom = document.getElementById(id)
@@ -709,6 +727,7 @@ export const addCss = function (css = '', id = ""){
   styleObj.id = id
   styleObj.innerHTML= css
   document.getElementsByTagName('head').item(0).appendChild(styleObj) // 添加样式到头部
+  // document.head.append(styleObj)
 }
 /**
  * 删除css结点
@@ -723,7 +742,7 @@ export const addCss = function (css = '', id = ""){
  * 往网页头部动态追加Dom
  * @param dom 可以手动传入需要载入的Dom
  * @param id 这个css的id，方便以后进行删除操作
- * @举例 addDom('<div>234324</div>')  // 载入的dom
+ * @举例 addDom('<div>234324</div>', 'z-loading')  // 载入的dom
  */
  export const addDom = function (dom = '', id = ""){
   const selectDom = document.getElementById(id)
@@ -753,7 +772,7 @@ export const show = function (id =''){
 }
 /**
  * 删除DOM结点
- * @param id 需要删除的结点的id
+ * @param id 需要隐藏的结点的id
  * @举例 hide('z-loading')  // 隐藏id为z-loading的dom结点
  */
 export const hide = function (id =''){
@@ -814,10 +833,48 @@ export const setTitle = function  (title) {
   document.title = title
 }
 /**
- * 跳转url链接
+ * 跳转
  * @param href 链接地址
  * @举例 goUrl('https://www.baidu.com')  // 跳转到百度
  */
 export const goUrl = function(href) {
   window.location.href = href
 }
+
+/**
+ * 数据结构
+ */
+/**
+ * Map
+ * @属性方法 .size()   .set(key, value)   .get(key)   .has(key)   .delete(key)   .clear()
+ * @遍历方法 .keys()   .values()   .entries()   .forEach((val, key, map) => {console.log(val, key, map)})
+ * @举例 const map = new Map([[1, 'one'], [2, 'two']]) 转数组后可以使用数组方法
+ * [...map.keys()] ===> [1, 2]
+ * [...map.values()] ===> ['one', 'two']
+ * [...map.entires()] ===> [[1, 'one'], [2, 'two']]
+ * [...map] ===> [[1, 'one'], [2, 'two']]
+ */
+/**
+ * Map转对象
+ * @param map map对象
+ * @举例 map2Obj(new Map([[1, 'one'], [2, 'two']]))  // {1: 'one', 2: 'two'}
+ */
+export const map2Obj = function (map){
+  let obj = Object.create(null)
+  for(let [k, v] of map) { obj[k] = v }
+  return obj
+}
+/**
+ * Map转对象
+ * @param map map对象
+ * @举例 obj2Map({1: 'one', 2: 'two'}) // [[1, 'one'], [2, 'two']]
+ */
+export const obj2Map = function (obj){
+  let map = new Map()
+  for(let k of Object.keys(obj)) { map.set(k, obj[k]) }
+  return map
+}
+
+/**
+ * 链表
+ */

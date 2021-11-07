@@ -39,4 +39,9 @@ export const special = [
     name: 'svgStudy',
     component: () => import(/* webpackChunkName: "special" */ '../../views/special/svgStudy/index.vue')
   },
+  {
+    path: '/irregularAvatar',
+    name: 'irregularAvatar',
+    component: () => import(/* webpackChunkName: "special" */ '../../views/special/irregularAvatar/index.vue')
+  },
 ]

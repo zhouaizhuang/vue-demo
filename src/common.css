@@ -48,9 +48,9 @@ button { all: unset; } html,body{margin:0;padding:0;}
 .smooth{scroll-behavior: smooth;}
 /*阻止滚动传递《CSS新世界P510》*/
 .ovsb-contain{overscroll-behavior:contain;} .ovsb-none{overscroll-behavior:none;}
-/*滚动停止后x轴强制定位、y轴强制定位《CSS新世界P513》*/
+/*父元素使用：滚动停止后x轴强制定位、y轴强制定位《CSS新世界P513》*/
 .sstxm{scroll-snap-type:x mandatory;} .sstym{scroll-snap-type:y mandatory;}
-/*滚动停止后定位基准《CSS新世界P513》*/
+/*子元素使用：滚动停止后定位基准《CSS新世界P513》*/
 .ssas{scroll-snap-align:start;} .ssac{scroll-snap-align:center;} .ssae{scroll-snap-align:end;}
 /* 溢出隐藏 */
 .nowrap{min-width: 0;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}

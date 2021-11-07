@@ -132,6 +132,65 @@
         </div>
       </div>  
     </div>
+    <div class="f rw pb30">
+      <div class="w50 f ac">
+        <div class="fs24" style="width:150px;">折线转折点</div>
+        <div class="f1">
+          <svg width="0" height="0" style="position: absolute;">
+            <defs>
+              <marker id="markerCircle" markerWidth="8" markerHeight="8" refX="4" refY="4">
+                <circle cx="4" cy="4" r="2.5" fill="#000" />
+              </marker>
+              <marker id="markerArrow" markerWidth="12" markerHeight="12" refX="2" refY="6" orient="auto">
+                <path d="M2,3 L2,10 L8,6 L2,3" fill="#000" />
+              </marker>
+            </defs>
+          </svg>
+          <svg>
+            <polyline fill="none" stroke="red" stroke-width="2px" marker-mid="url(#markerCircle)" points="20,100 50,60 80,80 110,20 140,60 170,40 200,90" />
+          </svg>
+        </div>
+      </div>
+      <div class="w50 f ac">
+        <div class="fs24" style="width:150px;"></div>
+        <div class="f1">
+          <svg style="background-color: deepskyblue;fill: crimson;stroke: white;stroke-width: 6px;font-size: 36px; ">
+            <text x="5" y="50">感谢您的正版支持</text>
+            <text x="5" y="120" style="paint-order: stroke;">感谢您的正版支持</text>
+          </svg>
+        </div>
+      </div>  
+    </div>
+
+    <div class="f rw pb30">
+      <div class="w50 f ac">
+        <div class="fs24" style="width:150px;">描边不会缩放</div> <!--《CSS新世界》P559-->
+        <div class="f1">
+          <svg style="display:none;">
+            <symbol id="icon-plus" viewBox="0 0 50 50">
+              <circle cx="25" cy="25" r="20" style="vector-effect: non-scaling-stroke;" /> <!--vector-effect: non-scaling-stroke;关键属性-->
+              <path d="M25 15 L 25 35" style="vector-effect: non-scaling-stroke;"/>
+              <path d="M15 25 L 35 25" style="vector-effect: non-scaling-stroke;"/>
+            </symbol>
+          </svg>              
+          <h4 class="fill">原始图标</h4>
+          <p><svg style="width: 50px; height: 50px;fill: none;stroke-width: 2px;stroke: #2486ff;stroke-linecap: round;"><use xlink:href="#icon-plus"></use></svg></p>
+          <h4 class="fill">不设置vector-effect同时2倍放大</h4>
+          <p><svg style="width:50px; height:50px;fill:none;stroke-width:2px;stroke:#2486ff;stroke-linecap:round;zoom:2;"><use xlink:href="#icon-plus"></use></svg></p>
+          <h4 class="fill">设置vector-effect同时2倍放大</h4>
+          <p><svg style="width: 100px; height: 100px;fill:none;stroke-width:2px;stroke:#2486ff;stroke-linecap:round;"><use xlink:href="#icon-plus"></use></svg></p>
+        </div>
+      </div>
+      <div class="w50 f ac">
+        <div class="fs24" style="width:150px;">长弧</div>
+        <div class="f1">
+          <svg>
+            <path d="M50,30A40,80,30,1,1,60,140" stroke="black" stroke-width="5" fill="none"></path>
+          </svg>
+        </div>
+      </div>  
+    </div>
+
     
   </div>
 </template>
@@ -150,5 +209,12 @@ export default {
 }
 </script>
 <style>
-
+/** 兼容firefox */
+@supports not (zoom: 2) {
+  .scale2 {
+      transform-origin: 0 0;
+      transform: scale(2);
+      margin-bottom: 50px;
+  }
+}
 </style>

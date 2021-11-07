@@ -6,7 +6,7 @@
         <div class="fs24" style="width:150px;">绘制圆形</div>
         <div class="f1">
           <svg>
-            <circle cx="65" cy="75" r="60" stroke="black" stroke-width="2" fill="red"></circle>
+            <circle cx="65" cy="75" r="30" stroke="black" stroke-width="2" fill="red"></circle>
           </svg>
         </div>
       </div>

@@ -19,4 +19,9 @@ export const svgAni = [
     name: 'svgStroke',
     component: () => import(/* webpackChunkName: "svgAni" */ '../../views/svgAni/svgStroke/index.vue')
   },
+  {
+    path: '/svgProgress',
+    name: 'svgProgress',
+    component: () => import(/* webpackChunkName: "svgAni" */ '../../views/svgAni/svgProgress/index.vue')
+  },
 ]

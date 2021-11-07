@@ -14,4 +14,9 @@ export const svgAni = [
     name: 'stickPop',
     component: () => import(/* webpackChunkName: "svgAni" */ '../../views/svgAni/stickPop/index.vue')
   },
+  {
+    path: '/svgStroke',
+    name: 'svgStroke',
+    component: () => import(/* webpackChunkName: "svgAni" */ '../../views/svgAni/svgStroke/index.vue')
+  },
 ]

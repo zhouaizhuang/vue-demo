@@ -87,17 +87,13 @@ export const throttling = function  (fn, wait=3e3) {
   }
 }
 // 获取当前滚动距离顶部的距离
-export const getScrollTop = function() {
-  return (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop
-}
+export const getScrollTop = () => (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop
 // 滚动的盒子到某个位置
 // 注意，如果想让这个盒子能滚动到某个位置。首先这个盒子必须是可滚动的，也就是高度得固定的
 // 不限制高度的盒子，根本不存在滚动，你去设置这个盒子的滚动位置就是耍流氓
 // 比如设置个动态的height:100vh;，然后垂直滚动overflow-y: auto;这样才行的
 // 使用事例：scrollPos('taskBox', 0) // 将id为taskBox的盒子滚动到这个盒子的顶部
-export const scrollPos = function (id = '', pos = 0){
-  document.getElementById(id).scrollTop = pos
-}
+export const scrollPos = (id = '', pos = 0) => document.getElementById(id).scrollTop = pos
 // 获取cookie 示例：var og_third_app_token = og_getOgCookie('third_app_token')
 export const getCookie = function (name) {
   var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)")

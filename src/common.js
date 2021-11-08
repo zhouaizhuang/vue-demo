@@ -582,14 +582,13 @@ export const safeGet = function (run, defaultVal = '') {
  * 四舍五入返回N位有效数字（常用于金额计算）
  * @param num 要格式化的数字
  * @param type float->小数形式。  intFloat->当整数的时候不需要带两个小数0，带小数时，保留几位小数
- * @param prev 前置金额符号等等
  * @param prec 保留几位小数
  * @param sep 千分位符号
- * @举例 formatMoney(12322.1223, 'float') ====> "￥12,322.12" // 保留0位小数四舍五入得到 12
- * @举例 formatMoney(12322.1223, 'float', '', 1) ------> "12,322.1"  固定显示1位小数
+ * @举例 formatMoney(12322.1223, 'float') ====> "12,322.12" // 保留0位小数四舍五入得到 12
+ * @举例 formatMoney(12322.1223, 'float', 1) ------> "12,322.1"  固定显示1位小数
  * @举例 formatMoney(12322, 'intFloat') ------> "12322"  当没有小数点就显示整数，否则显示整数
  */
-export const formatMoney = function (num = 0, type = 'float', prev = '￥', prec = 2, dec = '.', sep = ',') {
+ export const formatMoney = function (num = 0, type = 'float', prec = 2, dec = '.', sep = ',') {
   num = String(num).replace(/[^0-9+-Ee.]/g, '') || '0'
   prec = Number(prec)
   if((type === 'intFloat' && !num.includes('.')) || num === '0') { return num }
@@ -599,7 +598,7 @@ export const formatMoney = function (num = 0, type = 'float', prev = '￥', prec
     intStr = intStr.replace(re, "$1" + sep + "$2") // 整数部分三位数添加分隔符如','
   }
   floatStr += new Array(prec + 1).join('0')
-  return `${prev}${intStr}${dec}${floatStr.slice(0, prec)}`
+  return `${intStr}${dec}${floatStr.slice(0, prec)}`
 }
 /**
  * 四舍五入返回N位有效数字（常用于金额计算）

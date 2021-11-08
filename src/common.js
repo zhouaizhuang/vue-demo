@@ -446,6 +446,19 @@ export const groupBy = function (arr, callback){
     return prev
   }, {})
 }
+/**
+ * 将后台数据同步过来
+ * 场景举例：比如表单编辑的时候，用户之前有一些是选中状态的，但是查到的列表没这个状态，你只知道哪些id是选中的。那么就需要做同步。将列表数据中特定id的条目进行字段更新
+ * @param {Array} arr 列表数据
+ * @param {String || Array} ids 需要更新的id集合
+ * @param {String} key 更新的键值
+ * @param {*} val 目标id更新之后的值
+ * @param {*} defVal 非目标id更新之后的值
+ * @returns {Array}
+ * 举例 syncBgData([{id:'a', name: 'asd', score: 100}, {id:'b', name: '3dd', score: 60}, {id:'c', name: '3dd', score: 60}], 'b,c')
+ * [{id:'a', name: 'asd', score: 100, isChecked:false}, {id:'b', name: '3dd', score: 60, isChecked:true}, {id:'c', name: '3dd', score: 60, isChecked:true}]
+ */
+export const syncBgData = (arr, ids, key = 'isChecked', val = true, defVal = false) => arr.map(v => (v[key] = ids.includes(v.id) ? val : defVal, v))
 //base64数据导出文件，文件下载
 /**
  * @举例 downloadFile('活动表格', 'http://xxxxxxx')

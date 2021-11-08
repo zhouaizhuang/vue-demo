@@ -423,6 +423,29 @@ export const url2JSON = function (url = '') {
     return { ...prev, [key]: decodeURIComponent(val) } // 此处需要转码，否则中文和一些特殊字符就无法支持了
   }, {})
 }
+/**
+ * 将数组中的数据进行分类，分类成JSON。键名为类别名称，键值为数组，存放数据集合
+ * @param {Array} arr 需要分类的数组
+ * @param {Function} callback 分类函数
+ * @举例子 
+ * const arr = [{name: 'asd', score: 100}, {name: '3dd', score: 60}, {name: 'dfg', score: 80}, {name: 'zrr', score: 90}]
+ * groupBy(arr, item => {
+ *   const { score } = item
+ *   return score < 65 ? 'E' :
+ *          score < 70 ? 'D' :
+ *          score < 80 ? 'C' :  
+ *          score < 90 ? 'B' : 'A';
+ *   })
+ * }
+ * @result 根据分类函数分类好的结果：{A: [{...},{...}], B: [{...}], C: [{...}], D: [{...}]}
+ */
+export const groupBy = function (arr, callback){
+  return arr.reduce((prev, item) => {
+    const key = callback(item)
+    ;(prev[key] || (prev[key] = [])).push(item)
+    return prev
+  }, {})
+}
 //base64数据导出文件，文件下载
 /**
  * @举例 downloadFile('活动表格', 'http://xxxxxxx')
@@ -692,6 +715,19 @@ export const afterNsecond = function (after = 60) {
   const ms = addZero(Math.floor(leftMs % 1000), 2)
   return { d, h, m, s, ms }
 }
+/*
+**********************************************************************************************
+******************************************正则校验*********************************************
+**********************************************************************************************
+*/
+/**
+ * 正则校验返回true || false
+ * @param {*} val 需要正则校验的值
+ * @param {reg} reg 正则表达式
+ * @returns {Boolean}
+ */
+ export const regTest = (val, reg) => new RegExp(reg).test(val)
+
 /*
 **********************************************************************************************
 ******************************************业务函数*********************************************

@@ -397,12 +397,7 @@ export const checkJSON = function (obj) {
 // JSON转url
 // 举例子： JSON2url('../advise/index', { from: 'index', id_str:'1243' }) -----> '../advise/index?from=index&id_str=1243'
 export const JSON2url = function (url = '', params = {}){
-  params = formatJSON(params)
-  return Object.keys(params).reduce((prev, item) => {
-    prev += prev.includes('?') ? '&' : '?'
-    prev += `${item}=${encodeURIComponent(params[item])}`
-    return prev
-  }, url) || ''
+  return Object.keys(formatJSON(params)).reduce((prev, item) => prev + (prev.includes('?') ? '&' : '?') + `${item}=${encodeURIComponent(params[item])}`, url) || ''
 }
 /**
  * url转JSON

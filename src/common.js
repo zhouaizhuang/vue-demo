@@ -897,7 +897,7 @@ export const goUrl = function(href) {
  * [...map] ===> [[1, 'one'], [2, 'two']]
  */
 /**
- * Map转对象
+ * 键值数组转对象
  * @param map map对象
  * @举例 map2Obj(new Map([[1, 'one'], [2, 'two']]))  // {1: 'one', 2: 'two'}
  */
@@ -907,7 +907,7 @@ export const map2Obj = function (map){
   return obj
 }
 /**
- * Map转对象
+ * JSON转键值数组
  * @param map map对象
  * @举例 obj2Map({1: 'one', 2: 'two'}) // [[1, 'one'], [2, 'two']]
  */

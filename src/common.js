@@ -131,7 +131,41 @@ export const getPosition = function (e) {
   }
   return { Left: offsetx, Top: offsety }
 }
-
+/*
+**********************************************************************************************
+******************************************字符串操作*********************************************
+**********************************************************************************************
+*/
+/** 返回是否以某个字符串开头
+ * @param {String} str 目标字符串
+ * @param {String} keywords 需要搜索的开头的字符串
+ * @returns {Boolean}
+ */
+export const startWith = (str, startWords) => str.slice(0, startWords.length) === startWords
+// 去除字符串的首尾空格
+export const trim =  (str = '') => String(str).replace(/(^\s*)|(\s*$)/g, '')
+// 固定裁剪几个字符之后显示省略号。举例：sliceStr('张三李四王五', 2) ----> "张三..."
+export const sliceStr = function (str, num) {
+  str = String(str)
+  let newStr = str.substr(0, num)
+  str.length > num && (newStr += '...')
+  return newStr
+}
+// 字符串前置补0。举例: addZero('1', 2) ==> '01'
+export const addZero = (str = '', num = 2) => (Array(num+1).join('0') + str).slice(-num)
+// 完美的统计字符串长度，能正确统计占四个字节的Unicode字符。举例：length('x\uD83D\uDE80y') ----> 3
+export const length = str => [...str].length
+// 字符串复制
+export const copyLink = function (e){
+  // if(!e) { return this.$Message.error('链接地址为空') }
+  var input = document.createElement("input")   // js创建一个input输入框
+  input.value = e  // 将需要复制的文本赋值到创建的input输入框中
+  document.body.appendChild(input)    // 将输入框暂时创建到实例里面
+  input.select()   // 选中输入框中的内容
+  document.execCommand("Copy")   // 执行复制操作
+  document.body.removeChild(input) // 最后删除实例中临时创建的input输入框，完成复制操作
+  // return this.$Message.success('复制成功')
+}
 /*
 **********************************************************************************************
 ******************************************数组方法*********************************************
@@ -344,43 +378,6 @@ export const difference = function (arr1, arr2){
   if(!isArray(arr1) || !isArray(arr2)) {throw new Error('参数必须是数组类型')}
   const b = new Set(arr2)
   return arr1.filter(x => !b.has(x))
-}
-/*
-**********************************************************************************************
-******************************************字符串操作*********************************************
-**********************************************************************************************
-*/
-// 去除字符串的首尾空格
-export const trim = function (str = '') {
-  return String(str).replace(/(^\s*)|(\s*$)/g, '')
-}
-// 固定裁剪几个字符之后显示省略号。举例：sliceStr('张三李四王五', 2) ----> "张三..."
-export const sliceStr = function (str, num) {
-  str = String(str)
-  let newStr = str.substr(0, num)
-  str.length > num && (newStr += '...')
-  return newStr
-}
-// 字符串前置补0。举例: addZero('1', 2) ==> '01'
-export const addZero = function (str = '', num = 2) {
-  return (Array(num+1).join('0') + str).slice(-num)
-}
-// 完美的统计字符串长度，能正确统计占四个字节的Unicode字符。举例：length('x\uD83D\uDE80y') ----> 3
-export const length = function (str) {
-  return [...str].length
-}
-// 字符串复制
-export const copyLink = function (e){
-  // if(!e) {
-  //   return this.$Message.error('链接地址为空')
-  // }
-  var input = document.createElement("input")   // js创建一个input输入框
-  input.value = e  // 将需要复制的文本赋值到创建的input输入框中
-  document.body.appendChild(input)    // 将输入框暂时创建到实例里面
-  input.select()   // 选中输入框中的内容
-  document.execCommand("Copy")   // 执行复制操作
-  document.body.removeChild(input) // 最后删除实例中临时创建的input输入框，完成复制操作
-  // return this.$Message.success('复制成功')
 }
 /*
 **********************************************************************************************

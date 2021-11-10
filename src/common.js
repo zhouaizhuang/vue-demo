@@ -443,8 +443,8 @@ export const groupBy = function (arr, callback){
  * @param {*} val 目标id更新之后的值
  * @param {*} defVal 非目标id更新之后的值
  * @returns {Array}
- * 举例 syncBgData([{id:'a', name: 'asd', score: 100}, {id:'b', name: '3dd', score: 60}, {id:'c', name: '3dd', score: 60}], 'b,c')
- * [{id:'a', name: 'asd', score: 100, isChecked:false}, {id:'b', name: '3dd', score: 60, isChecked:true}, {id:'c', name: '3dd', score: 60, isChecked:true}]
+ * 举例 syncBgData([{id:'1'}, {id:'2'}, {id:'3'}], '2,3')
+ * [{id:'1', isChecked:false}, {id:'2', isChecked:true}, {id:'3', isChecked:true}]
  */
 export const syncBgData = (arr, ids, key = 'isChecked', val = true, defVal = false) => arr.map(v => (v[key] = ids.includes(v.id) ? val : defVal, v))
 //base64数据导出文件，文件下载
@@ -868,18 +868,13 @@ export const hideLoading = function(){
  * @param title 网页标题
  * @举例 setTitle('订餐管理系统')  // 设置首页标题为“订餐管理系统”
  */
-export const setTitle = function  (title) {
-  document.title = title
-}
+export const setTitle = title => document.title = title
 /**
  * 跳转
  * @param href 链接地址
  * @举例 goUrl('https://www.baidu.com')  // 跳转到百度
  */
-export const goUrl = function(href) {
-  window.location.href = href
-}
-
+export const goUrl = href => window.location.href = href
 /**
  * 数据结构
  */
@@ -913,7 +908,20 @@ export const obj2Map = function (obj){
   for(let k of Object.keys(obj)) { map.set(k, obj[k]) }
   return map
 }
-
+/**
+ * 逆转对象。
+ * @举例子 invert({ 'a': 1, 'b': 2, 'c': 1 }) -----> {1: 'c', 2: 'b'}
+ * @param {*} obj 需要逆转的对象
+ * @returns 
+ */
+export const invert = obj => Object.keys(obj).reduce((prev, item) => ((prev[obj[item]] = item), prev), {})
+/**
+ * 逆转对象。并且重复的键，将对应的值存在一起
+ * @举例子 invertBy({ 'a': 1, 'b': 2, 'c': 1 }) -----> {1: ['a', 'c'], 2: ['b']}
+ * @param {*} obj 需要逆转并且分类的对象
+ * @returns 
+ */
+export const invertBy = obj => Object.keys(obj).reduce((prev, item) => ((prev[obj[item]] || (prev[obj[item]] = [])).push(item), prev), {})
 /**
  * 链表
  */

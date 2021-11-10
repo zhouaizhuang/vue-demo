@@ -49,7 +49,12 @@ export const loadJs = async function(url) {
 export const wait = async function(t) {
   return new Promise(resolve => setTimeout(() => resolve(), t))
 }
-// 深拷贝
+/**
+ * 深拷贝
+ * @param {*} obj 传入任意类型都可以做深拷贝 
+ * @returns 返回深拷贝的数据
+ * @举例子 const obj = {name:'a', age:'18'};  deepCopy(obj) ----> {name:'a', age:'18'}
+ */
 export const deepCopy = function (obj) {
   if(!(isArray(obj) || isObject(obj))) { return obj }  // 数字、日期、正则、函数、字符串、undefined、null、Symbol直接返回
   let res = isArray(obj) ? [] : {}
@@ -58,10 +63,12 @@ export const deepCopy = function (obj) {
     return prev
   }, res)
 }
-// 获取唯一ID
-export const guID = function () {
-  return Number(Math.random().toString().substr(3, 8) + Date.now()).toString(36)
-}
+/**
+ * 获取唯一ID。用于模板渲染的唯一key值
+ * @returns 
+ * @举例子 [{name:'a'}, {name:'b'}].map(v => ({...v, _id:guID()})) ---->  [{name:'a', _id: '1vc49wwugp3400'}, {name:'b', _id:'4vvfl6wivx4000'}]
+ */
+export const guID = () => Number(Math.random().toString().substr(3, 8) + Date.now()).toString(36)
 // 函数防抖
 export const debounce = function (fn, wait=3e3) {
   if(!isFunction(fn)){throw new Error('传入的参数必须是个函数')}

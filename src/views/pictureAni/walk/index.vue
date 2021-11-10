@@ -25,7 +25,7 @@ export default {
       } else {
         this.pos = 0
       }
-    }, 60)
+    }, 100)
   }
 }
 </script>

@@ -509,6 +509,7 @@ export const exitFullscreen = function (){
  * 返回一个lower - upper之间的随机数
  * @param lower 下限
  * @param upper 上限
+ * @param type 数据类型  float：浮点型    int：整型
  * @举例 random(0, 0.5) ==> 0.3567039135734613
  * @举例 random(1, 2) ===> 1.6718418553475423
  * @举例 random(-2, -1) ==> -1.4474325452361945
@@ -516,10 +517,12 @@ export const exitFullscreen = function (){
  * a = new Date % 1000; // 三位整数随机数
  * a = new Date % 10000; // 四位整数随机数...依次类推
  */
-export const random = function (lower, upper) {
-    lower = +lower || 0
-    upper = +upper || 0
-    return Math.random() * (upper - lower) + lower
+export const random = function (lower, upper, type = 'float') {
+  lower = +lower || 0
+  upper = +upper || 0
+  let res = Math.random() * (upper - lower) + lower
+  if(type !== 'float') { res = round(res) }
+  return res
 }
 // 禁止复制
 /*

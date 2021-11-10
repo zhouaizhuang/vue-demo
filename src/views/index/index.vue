@@ -1,7 +1,7 @@
 
 <template>
   <div class="p30">
-    <div class="fs30 b mb20 tc">CSS3动画</div>
+    <div class="fs30 b mb20 mt20 tc">CSS3动画</div>
     <div class="f xs ac rw">
       <router-link class="db w20 g42b983 pb30 min230px" to="/carousel">可视化大屏无缝滚动</router-link>
       <router-link class="db w20 g42b983 pb30 min230px" to="/numGrow">数字滚动效果</router-link>

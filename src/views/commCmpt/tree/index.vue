@@ -1,8 +1,8 @@
 <!--参考链接：https://juejin.cn/post/6844903938894872589-->
 <!--参考链接：https://juejin.cn/post/6844904009568878600-->
 <template>
-  <div style="padding:40px 0px;width:420px;margin:0 auto;">
-    <div class="fs26 g1890ff mb20">短时间内渲染约10000个结点</div>
+  <div style="padding:40px 0px;width:350px;margin:0 auto;">
+    <div class="fs26 g1890ff mb10">短时间内渲染约10000个结点</div>
     <div class="fs22 g1890ff mb10">1、时间分片技术</div>
     <div class="fs22 g1890ff mb20">2、requestAnimationFrame技术</div>
     <div v-for="item in treeData" :key="item._id">

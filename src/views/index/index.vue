@@ -29,7 +29,7 @@
     </div>
     <div class="fs30 b mt30 mb20 tc">通用组件</div>
     <div class="f xs ac rw">
-      <!-- <router-link class="db w20 g42b983 pb30 min230px" to="/">组件一</router-link> -->
+      <router-link class="db w20 g42b983 pb30 min230px" to="/tree">树形控件</router-link>
     </div>
     <div class="fs30 b mt30 mb20 tc">特殊效果</div>
     <div class="f xs ac rw mb30">

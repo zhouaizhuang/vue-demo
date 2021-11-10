@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import index from '../views/index/index.vue'
+import { commCmpt } from "./module/commCmpt.js"
 import { css3Ani } from "./module/css3Ani.js"
 import { aeAni } from "./module/aeAni.js"
 import { special } from "./module/special.js"
@@ -19,9 +20,10 @@ const routes = [
   },
   ...css3Ani,
   ...aeAni,
-  ...special,
   ...pictureaAni,
-  ...svgAni
+  ...svgAni,
+  ...commCmpt,
+  ...special,
 ]
 
 const router = new VueRouter({

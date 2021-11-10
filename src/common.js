@@ -134,6 +134,23 @@ export const getPosition = function (e) {
   }
   return { Left: offsetx, Top: offsety }
 }
+/**
+ * 获取距离视口的数据
+ * 距离视窗的距离。一般现在通过 IntersectionObserver API实现了，请看https://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html
+ * @param {*} e 
+ * @returns 
+ */
+export const getViewPos = function (e) {
+  var rect = e.getBoundingClientRect()
+  var top = document.documentElement.clientTop ? document.documentElement.clientTop : 0 // html元素对象的上边框的高度
+  var left = document.documentElement.clientLeft ? document.documentElement.clientLeft : 0
+  return {
+    top: rect.top - top,  // 元素距离视口顶部的距离
+    bottom: rect.bottom - top,  // 元素距离视口底部的距离
+    left: rect.left - left,  // 元素距离视口左边的距离
+    right: rect.right - left  // 元素距离视口右边的距离
+  }
+}
 /*
 **********************************************************************************************
 ******************************************字符串操作*********************************************
@@ -724,6 +741,28 @@ export const afterNsecond = function (after = 60) {
   const s = addZero(Math.floor(leftMs / 1000 % 60), 2)
   const ms = addZero(Math.floor(leftMs % 1000), 2)
   return { d, h, m, s, ms }
+}
+/**
+ * 根据年和月，得出该年月有多少天。（原理：计算出他的下个月， 用它的下个月生成毫秒数-当前月毫秒数再除以一天的毫秒数===天数）
+ * @param {String} whichYear 
+ * @param {String} whichMonth 
+ * @returns 
+ * @举例子 getDays(2021, 11) ---> 30
+ */
+export const getDays = function(whichYear, whichMonth) {
+  let nextMoth = Number(whichMonth) + 1
+  let nextYear = Number(whichYear)
+  if (nextMoth === 13) {
+    nextMoth = 1
+    nextYear++
+  }
+  let theCurrentDate = whichYear + '-' + whichMonth + '-1'
+  let theNextDate = nextYear + '-' + nextMoth + '-1'
+  let yearObjOne = new Date(theCurrentDate)
+  let yearObjTwo = new Date(theNextDate)
+  let milliseconds = yearObjTwo.getTime() - yearObjOne.getTime()
+  let daymilliseconds = 3600 * 24 * 1000
+  return (milliseconds / daymilliseconds)
 }
 /*
 **********************************************************************************************

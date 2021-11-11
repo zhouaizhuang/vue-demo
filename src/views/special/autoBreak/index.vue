@@ -2,11 +2,11 @@
 <template>
   <div>
     <!--自适应换行-->
-    <div class="f">
-      <div class="fs30 mt50 bdc auto g42b983 f ac" style="width:400px;">
+    <div class="f rw">
+      <div class="fs30 mt50 bdc auto g42b983 f ac" style="width:350px;">
         <div class="wfc mauto">不足一行自动居中</div>
       </div>
-      <div class="fs30 mt50 bdc auto g42b983 f ac" style="width:400px;">
+      <div class="fs30 mt50 bdc auto g42b983 f ac" style="width:350px;">
         <div class="wfc mauto">文字非常多的时超过了一行，那么就左对齐了</div>
       </div>
     </div>
@@ -15,11 +15,11 @@
       <div class="dib bdc pl15 pr15 wmc lba">竖排文字</div>
     </div>
     <!--溢出隐藏-->
-    <div class="f">
-      <div class="fs30 mt50 bdc auto g1890ff f ac" style="width:400px;">
+    <div class="f rw">
+      <div class="fs30 mt50 bdc auto g1890ff f ac" style="width:350px;">
         <div class="nowrap">这是一行文字溢出隐藏效果，后面的文字即将被隐藏</div>
       </div>
-      <div class="fs30 mt50 bdc auto g1890ff f ac" style="width:400px;">
+      <div class="fs30 mt50 bdc auto g1890ff f ac" style="width:350px;">
         <div class="nowrap2">这是超出两行，溢出隐藏效果，后面的文字即将被隐藏为省略号</div>
       </div>
     </div>

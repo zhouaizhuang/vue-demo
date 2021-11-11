@@ -1,15 +1,15 @@
 
 <template>
   <div>
-    <div class="f ac fs50 mt50 tc">
+    <div class="f ac fs40 mt50 tc">
       <div class="f1 text">渐变方式1</div>
       <div class="f1 text-fill-gradient">渐变方式2</div>
     </div>
-    <div class="f ac mt50 fs50 tc">
+    <div class="f ac mt50 fs40 tc">
       <div class="f1 stroke">描边方式1</div>
       <div class="f1 text-stroke-out">描边方式2</div>
     </div>
-    <div class="f ac mt50 fs50 tc">
+    <div class="f ac mt50 fs40 tc">
       <div class="text-shadow-3d">阴影实现立体投影</div>
     </div>
   </div>

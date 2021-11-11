@@ -110,6 +110,15 @@ export const getCookie = function (name) {
     return null
   }
 }
+/**
+ * 选择器查询
+ * @param {String} selector 
+ * @returns 
+ * 举例子： query('.lazyLoadClass') ---->  查出所有类名为.lazyLoadClass的集合并转成数组
+ */
+export const query = function (selector) {
+  return Array.from(document.querySelectorAll(selector))
+}
 // 本地存储
 export const getLocalStorage = name => JSON.parse(localStorage.getItem(name))
 export const setLocalStorage = (name, val) => localStorage.setItem(name, JSON.stringify(val))
@@ -547,6 +556,14 @@ export const random = function (lower, upper, type = 'float') {
   let res = Math.random() * (upper - lower) + lower
   if(type !== 'float') { res = round(res) }
   return res
+}
+/**
+ * 获取随机颜色
+ * @returns 
+ */
+export const randomColor = function () {
+  const [r, g, b, a] = [random(0, 255,'int'), random(0, 255,'int'), random(0, 255,'int'), 1]
+  return `rgba(${r}, ${g}, ${b}, ${a})`
 }
 // 禁止复制
 /*

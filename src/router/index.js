@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import index from '../views/index/index.vue'
 import { commCmpt } from "./module/commCmpt.js"
+import { highPerformance } from "./module/highPerformance.js" 
 import { css3Ani } from "./module/css3Ani.js"
 import { aeAni } from "./module/aeAni.js"
 import { special } from "./module/special.js"
@@ -23,6 +24,7 @@ const routes = [
   ...pictureaAni,
   ...svgAni,
   ...commCmpt,
+  ...highPerformance,
   ...special,
 ]
 

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="fs22 mt50 tc">备注：h5限时答题，限时活动场景中非常常见的倒计时功能</div>
-    <div class="fs22 tc">如果不想为了一个倒计时而在项目中引入UI库，那么这个改造一下就很适合使用</div>
-    <div class="fs30" style="margin:100px auto;width:500px;">{{timeStr}}</div>
+    <div class="fs22 mt50 tc">备注：h5限时活动常见功能</div>
+    <div class="fs22 tc">定位：轻量级，高度自定义</div>
+    <div class="fs28 tc g1890ff" style="margin:100px auto;width:350px;">{{timeStr}}</div>
   </div>
 </template>
 <script>

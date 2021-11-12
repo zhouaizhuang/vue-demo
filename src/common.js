@@ -330,12 +330,10 @@ export const repeat = function(obj = '', times = 1) {
         res = [...res, ...tmp]
       }
     } else {
-      res = [...obj, ...obj]
+      for(let i =0; i < range(times, 1); i++) { res = [...res, ...obj] }
     }
   } else {
-    for(let j = 0; j < range(times, 1); j++){
-      res += obj
-    }
+    for(let j = 0; j < range(times, 1); j++){ res += obj }
   }
   return res
 }

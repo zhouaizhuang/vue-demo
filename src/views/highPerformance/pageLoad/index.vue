@@ -1,13 +1,14 @@
+<!--参考链接：https://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html-->
 <template>
   <div class="bdc auto" style="width:350px;" >
     <div
-      v-for="(item) in list"
+      v-for="(item, index) in list"
       :key="item.id" 
       class="f ac xc"
       :id="item.id"
-      :style="{backgroundColor: item.bgColor, color: item.color, height:'100px'}"
+      style="height:100px"
     >
-      {{item.num}}
+      {{index}}
     </div>
     <!--底部的加载更多提示、全部加载完的提示-->
     <div v-if="isShowLoadMore" id="" class="loadMore f ac xc tc">
@@ -22,9 +23,9 @@
   </div>
 </template>
 <script>
-import { randomColor, repeat, query, chunk } from "../../../common"
+import { repeat, query, chunk } from "../../../common"
 export default {
-  name: 'tree',
+  name: 'pageLoad',
   data(){
     return {
       allList:[],
@@ -67,8 +68,9 @@ export default {
     }
   },
   created(){
-    const allData = repeat(new Array(10).fill('').map((item, index) => ({ bgColor: randomColor(), color: randomColor(), num: index })), 5)
-    this.allList = chunk(allData, 10)
+    const allData = repeat([1,2,3,4,5,6,7,8,9,10], 5)
+    // console.log(allData) // 构造出全部数据
+    this.allList = chunk(allData, 10) // 数组分块
     this.getData()
   },
   mounted(){

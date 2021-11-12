@@ -8,6 +8,7 @@ import { aeAni } from "./module/aeAni.js"
 import { special } from "./module/special.js"
 import { pictureaAni } from "./module/pictureAni.js"
 import { svgAni } from "./module/svgAni.js"
+import { bugFix } from "./module/bugFix.js"
 Vue.use(VueRouter)
 const routes = [
   {
@@ -26,6 +27,7 @@ const routes = [
   ...commCmpt,
   ...highPerformance,
   ...special,
+  ...bugFix,
 ]
 const router = new VueRouter({
   routes,

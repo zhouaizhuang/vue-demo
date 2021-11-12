@@ -37,6 +37,7 @@
     <div class="f xs ac rw">
       <router-link class="db w20 g42b983 pb30 min230px" to="/tree">树形控件(1万个结点)</router-link>
       <router-link class="db w20 g42b983 pb30 min230px" to="/infiniteScroll">大量数据滚动渲染</router-link>
+      <router-link class="db w20 g42b983 pb30 min230px" to="/pageLoad">分页加载</router-link>
       <router-link class="db w20 g42b983 pb30 min230px" to="/lazyLoadImg">图片懒加载</router-link>
     </div>
     <div class="fs30 b mt30 mb20 tc">特殊效果</div>

@@ -14,4 +14,9 @@ export const highPerformance = [
     name: 'lazyLoadImg',
     component: () => import(/* webpackChunkName: "highPerformance" */ '../../views/highPerformance/lazyLoadImg/index.vue')
   },
+  {
+    path: '/pageLoad',
+    name: 'pageLoad',
+    component: () => import(/* webpackChunkName: "highPerformance" */ '../../views/highPerformance/pageLoad/index.vue')
+  },
 ]

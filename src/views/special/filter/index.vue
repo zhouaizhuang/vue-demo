@@ -74,12 +74,13 @@
       </div>
     </div>
     <!--背景滤镜-->
-    <div v-if="isShowBg" @click.stop="isShowBg = false" class="prevent_touch_move_box" style="background-color:rgba(0,0,0,.7);backdrop-filter:blur(5px);">
+    <!--@touchmove.prevent禁止滚动穿透。但是缺点是，弹窗也无法滚动-->
+    <div v-show="isShowBg" @touchmove.prevent id="bgModal" @click.stop="isShowBg = false" class="fixed trbl0" style="background-color:rgba(0,0,0,.7);backdrop-filter:blur(5px);">
       <div class="abs bgf rds10 pt40 pb30" style="top:30%;left:10%;right:10%;">
-        <div class="pb30 fs34 b">温馨提示</div>
-        <div class="fs24 mb30">这是背景毛玻璃效果！</div>
+        <div class="pb30 fs32 b">温馨提示</div>
+        <div class="fs20 mb30">这是背景毛玻璃效果！</div>
         <div class="f xc">
-          <div @click="isShowBg = false" class="w40 bg1890ff rds10 pt15 pb15 fs26 gf b mr30">确实</div>
+          <div @click="isShowBg = false" class="w40 bg1890ff rds10 pt10 pb10 fs20 gf b">确实</div>
         </div>
       </div>
     </div>
@@ -97,6 +98,13 @@ export default {
   },
   created(){
    
+  },
+  mounted(){
+    // 上层的盒子没有滚动。可以用这种方法，禁止滚动穿透
+    // var modal = document.getElementById('bgModal');
+    // modal.addEventListener('touchmove', function(e) {
+    //   e.preventDefault();
+    // }, false);
   }
 }
 </script>

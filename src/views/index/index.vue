@@ -35,8 +35,8 @@
     </div>
     <div class="fs30 b mt30 mb20 tc">性能瓶颈突破</div>
     <div class="f xs ac rw">
-      <router-link class="db w20 g42b983 pb30 min230px" to="/tree">树形控件(1万个结点)</router-link>
-      <router-link class="db w20 g42b983 pb30 min230px" to="/infiniteScroll">大量数据滚动渲染</router-link>
+      <router-link class="db w20 g42b983 pb30 min230px" to="/tree">时间分片(树形控件1万个结点)</router-link>
+      <router-link class="db w20 g42b983 pb30 min230px" to="/virtualList">虚拟列表(高性能渲染十万条数据)</router-link>
       <router-link class="db w20 g42b983 pb30 min230px" to="/pageLoad">分页加载</router-link>
       <router-link class="db w20 g42b983 pb30 min230px" to="/lazyLoadImg">图片懒加载</router-link>
     </div>

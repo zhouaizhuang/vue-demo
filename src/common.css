@@ -42,7 +42,7 @@ button { all: unset; } html,body{margin:0;padding:0;}
 /*光标颜色*/
 .caret-g1890ff{caret-color:#1890ff;}
 /* BFC */
-.ovh{overflow:hidden;} .ovyh{overflow-y:hidden;}  .ova{overflow: auto;} .ovxa{overflow-x:auto;} .ovya{overflow-y: auto;}
+.ovh{overflow:hidden;} .ovxh{overflow-x:hidden;} .ovyh{overflow-y:hidden;}  .ova{overflow: auto;} .ovxa{overflow-x:auto;} .ovya{overflow-y: auto;}
 /* 取消滚动锚定(当滚动区域内增加内容时，默认行为是定位到用户看到的文字位置。这里可以优先显示增加的内容) */
 .ovan{overflow-anchor:none;}
 /* 平滑滚动《CSS新世界P509》*/
@@ -99,12 +99,10 @@ button { all: unset; } html,body{margin:0;padding:0;}
 .zx10{z-index:10;} .zx20{z-index:20;} .zx30{z-index:30;} .zx40{z-index:40;} .zx50{z-index:50;} .zx60{z-index:60;} .zx70{z-index:70;}  .zx80{z-index:80;} .zx90{z-index:90;} .zx100{z-index:100;} .zx1000{z-index:1000;} 
 /*百分比定位*/
 .trbl0{top:0;right:0;bottom:0;left:0;}
-.t0{top:0;}
-.l0{left:0;}
-.t10{top:10%;} .t15{top:15%;} .t20{top:20%;} .t25{top:25%;} .t30{top:30%;} .t35{top:35%;} .t40{top:40%;} .t45{top:45%;} .t50{top:50%;}
-.r10{right:10%;} .r15{right:15%;} .r20{right:20%;} .r25{right:25%;} .r30{right:30%;} .r35{right:35%;} .r40{right:40%;} .r45{right:45%;} .r50{right:50%;}
-.b10{bottom:10%;} .b15{bottom:15%;} .b20{bottom:20%;} .b25{bottom:25%;} .b30{bottom:30%;} .b35{bottom:35%;} .b40{bottom:40%;} .b45{bottom:45%;} .b50{bottom:50%;}
-.l10{left:10%;} .l15{left:15%;} .l20{left:20%;} .l25{left:25%;} .l30{left:30%;} .l35{left:35%;} .l40{left:40%;} .l45{left:45%;} .l50{left:50%;}
+.t0{top:0;} .t10{top:10%;} .t15{top:15%;} .t20{top:20%;} .t25{top:25%;} .t30{top:30%;} .t35{top:35%;} .t40{top:40%;} .t45{top:45%;} .t50{top:50%;}
+.r0{right:0;} .r10{right:10%;} .r15{right:15%;} .r20{right:20%;} .r25{right:25%;} .r30{right:30%;} .r35{right:35%;} .r40{right:40%;} .r45{right:45%;} .r50{right:50%;}
+.b0{bottom:0;} .b10{bottom:10%;} .b15{bottom:15%;} .b20{bottom:20%;} .b25{bottom:25%;} .b30{bottom:30%;} .b35{bottom:35%;} .b40{bottom:40%;} .b45{bottom:45%;} .b50{bottom:50%;}
+.l0{left:0;} .l10{left:10%;} .l15{left:15%;} .l20{left:20%;} .l25{left:25%;} .l30{left:30%;} .l35{left:35%;} .l40{left:40%;} .l45{left:45%;} .l50{left:50%;}
 /* cursor鼠标显示 */
 .poi{cursor:pointer;}    .def{cursor:default;}
 /* 左右居中 */

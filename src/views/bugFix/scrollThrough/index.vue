@@ -33,7 +33,7 @@
 </template>
 <script>
 export default {
-  name: 'specialFont',
+  name: 'scrollThrough',
   data(){
     return {
       isShowModal: false,

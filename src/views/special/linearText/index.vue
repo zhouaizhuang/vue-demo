@@ -28,7 +28,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 .text{
   background: linear-gradient(to right,deepskyblue, deeppink);
   background-clip: text;

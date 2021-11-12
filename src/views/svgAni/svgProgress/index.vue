@@ -37,7 +37,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 circle {
   stroke-width: 50px;
   fill: none;

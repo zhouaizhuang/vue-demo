@@ -208,7 +208,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 /** 兼容firefox */
 @supports not (zoom: 2) {
   .scale2 {

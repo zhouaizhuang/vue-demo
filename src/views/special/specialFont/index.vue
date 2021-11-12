@@ -24,7 +24,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
   @font-face {
     font-family: 'mFont';
     src: url('./quartzRegular.ttf') format('truetype');

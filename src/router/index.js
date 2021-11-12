@@ -27,9 +27,21 @@ const routes = [
   ...highPerformance,
   ...special,
 ]
-
 const router = new VueRouter({
-  routes
+  routes,
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) { // 页面回退至上次访问的位置
+      return savedPosition
+    } else { // 页面刷新，滚动条置顶
+      return { 
+        top: 0,
+        behavior:'smooth'
+      }
+    }
+  }
 })
-
+router.afterEach((to,from,next) => {
+  // window.scrollTo({ top:0, behavior:'smooth' }) // 页面切换时，滚动条平滑切换至顶部
+  window.scrollTo(0, 0)
+})
 export default router

@@ -17,7 +17,16 @@
       <div class="pt30 pb30 f ac xc">10</div>
       <div class="pt30 pb30 f ac xc">11</div>
       <div v-if="isShowModal" @click="closeModal" class="fixed trbl0 zx100 rgba6">
-        <div class="abs t30 l50 tx-50 fs24 bgf pl30 pr30 pt30 pb30 rds10">asd</div>
+        <div class="abs t30 l50 tx-50 fs22 bgf pl30 pr30 pt30 pb30 rds10 tc ovya" style="height:160px;width:260px;">
+          <div class="pb20">内容很多的时候</div>
+          <div class="pb20">这里数据依然可以滚动</div>
+          <div class="pb20">依然是可以滚动的</div>
+          <div class="pb20">可以滚动的</div>
+          <div class="pb20">滚动的</div>
+          <div class="pb20">的</div>
+          <div class="pb20">...</div>
+          <div>滚到底部也不影响外层</div>
+        </div>
       </div>
     </div>
   </div>

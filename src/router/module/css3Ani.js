@@ -37,4 +37,9 @@ export const css3Ani = [
     name: 'countDown',
     component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/countDown/index.vue')
   },
+  {
+    path: '/guidePoint',
+    name: 'guidePoint',
+    component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/guidePoint/index.vue')
+  },
 ]

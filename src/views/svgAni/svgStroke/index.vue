@@ -32,7 +32,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
   path{
     stroke-dasharray:1500;
     stroke-dashoffset: 1500;

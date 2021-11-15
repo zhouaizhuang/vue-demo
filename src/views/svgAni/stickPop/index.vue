@@ -37,7 +37,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 .target{
   filter: url('#goo'); /* 使用这个，那么当前元素变为粘滞的。*/
 }

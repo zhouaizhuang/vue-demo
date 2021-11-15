@@ -1,7 +1,7 @@
 
 <template>
   <div class="p30">
-    <div class="f ac xc g1890ff pt20 pb10 op8">C端产品demo，不同项目样式千差万别，所以此处demo只侧重效果，具体样式根据不同项目自行实现</div>
+    <div class="f ac xc g1890ff pt20 pb10 op8 title">C端产品demo，不同项目样式千差万别，所以此处demo只侧重效果，具体样式根据不同项目自行实现</div>
     <div class="fs30 b mb20 mt20 tc">CSS3动画</div>
     <div class="f xs ac rw">
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/carousel">可视化大屏无缝滚动</router-link></div>
@@ -74,6 +74,11 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 .min230px{min-width:230px;}
+/* .title {animation: textIn 1s both;}
+@keyframes textIn {
+  0% {letter-spacing: -100px;transform:translateY(-100px);}
+  100% {letter-spacing: 0;transform:translateY(0);}
+} */
 </style>

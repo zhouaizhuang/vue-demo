@@ -42,4 +42,9 @@ export const css3Ani = [
     name: 'guidePoint',
     component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/guidePoint/index.vue')
   },
+  {
+    path: '/typeWord',
+    name: 'typeWord',
+    component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/typeWord/index.vue')
+  },
 ]

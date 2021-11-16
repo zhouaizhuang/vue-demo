@@ -4,6 +4,7 @@
     <div class="f ac xc g1890ff pt20 pb10 op8 title">C端产品demo，不同项目样式千差万别，所以此处demo只侧重效果，具体样式根据不同项目自行实现</div>
     <div class="fs30 b mb20 mt20 tc">CSS3动画</div>
     <div class="f xs ac rw">
+      <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/typeWord">打字动画</router-link></div>
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/carousel">可视化大屏无缝滚动</router-link></div>
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/numGrow">数字滚动效果</router-link></div>
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/breath">呼吸效果</router-link></div>

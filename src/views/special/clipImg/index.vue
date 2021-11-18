@@ -8,49 +8,49 @@
       </div>
       <div class="f1 f ac"></div>
     </div>
-    <div class="f ac mt50">
+    <div class="f ac rw mt50">
       <div class="f1 f ac">
-        <div style="width:120px;">方形裁剪</div>
+        <div style="width:140px;">方形裁剪</div>
         <img style="clip-path:inset(30px 10px 10px 20px);" src="https://upload.qianfanyun.com/yjyn/ylyn_life_bg.png" />
       </div>
       <div class="f1 f ac">
-        <div style="width:120px;">圆角裁剪</div>
+        <div style="width:140px;">圆角裁剪</div>
         <img style="clip-path:inset(15% round 10% 50% 10% 50%);" src="https://upload.qianfanyun.com/yjyn/ylyn_life_bg.png" />
       </div>
     </div>
-    <div class="f ac mt50">
+    <div class="f ac rw mt50">
       <div class="f1 f ac">
-        <div style="width:120px;">圆形裁剪</div>
+        <div style="width:140px;">圆形裁剪</div>
         <img style="clip-path:circle();" src="https://upload.qianfanyun.com/yjyn/ylyn_life_bg.png" />
       </div>
       <div class="f1 f ac">
-        <div style="width:120px;">指定半径和圆心</div>
+        <div style="width:140px;">指定半径和圆心</div>
         <img style="clip-path:circle(100px at right bottom);" src="https://upload.qianfanyun.com/yjyn/ylyn_life_bg.png" />
       </div>
     </div>
-    <div class="f ac mt50">
+    <div class="f ac rw mt50">
       <div class="f1 f ac">
-        <div style="width:120px;">椭圆裁剪</div>
+        <div style="width:140px;">椭圆裁剪</div>
         <img style="clip-path:ellipse();" src="https://upload.qianfanyun.com/yjyn/ylyn_life_bg.png" />
       </div>
       <div class="f1 f ac">
-        <div style="width:120px;">指定长轴短轴+圆心</div>
+        <div style="width:140px;">指定长轴短轴+圆心</div>
         <img style="clip-path:ellipse(15% 50% at 75% 50%);" src="https://upload.qianfanyun.com/yjyn/ylyn_life_bg.png" />
       </div>
     </div>
-    <div class="f ac mt50">
+    <div class="f ac rw mt50">
       <div class="f1 f ac">
-        <div style="width:120px;">多边形裁剪(polygon)</div>
+        <div style="width:140px;">多边形裁剪(polygon)</div>
         <img style="clip-path:polygon(10px 10px, 100px 10px,110px 100px, 80px 180px);" src="https://upload.qianfanyun.com/yjyn/ylyn_life_bg.png" />
       </div>
       <div class="f1 f ac">
-        <div style="width:120px;">底部多描绘几个点近似实现圆角</div>
+        <div style="width:140px;">底部多描绘几个点近似实现圆角</div>
         <div class="tips">感谢大家购买我的书</div>
       </div>
     </div>
-    <div class="f ac mt50">
+    <div class="f ac rw mt50">
       <div class="f1 f ac">
-        <div style="width:120px;">曲线路径裁剪(path)</div>
+        <div style="width:140px;">曲线路径裁剪(path)</div>
         <div class="icon-arrow"></div>
       </div>
       <div class="f1 f ac">

@@ -11,7 +11,7 @@
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/breath">呼吸效果</router-link></div>
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/arrow">箭头指向动画</router-link></div>
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/buttery">水波</router-link></div>
-      <!-- <router-link class="db w20 g42b983 pb30 min230px" to="/slide">滑动名片</router-link> -->
+      <!-- <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/slide">滑动名片</router-link></div> -->
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/countDown">倒计时</router-link></div>
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/guidePoint">引导用户点击</router-link></div>
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/useAnimate">animate动画库</router-link></div>

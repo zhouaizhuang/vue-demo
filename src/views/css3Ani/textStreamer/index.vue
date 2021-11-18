@@ -2,7 +2,7 @@
 <template>
   <div style="margin: 50px auto;">
     <div class="indexBg f">
-      <p data-text="Lorem ipsum dolor">Lorem ipsum dolor</p>
+      <p data-text="streamer">streamer</p>
     </div>
   </div>
 </template>

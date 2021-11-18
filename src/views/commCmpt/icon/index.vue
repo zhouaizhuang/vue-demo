@@ -51,7 +51,7 @@ export default {
 .errorIcon{
   position: absolute;
   border-radius: 50%;
-  left:20%;
+  left:40%;
   top:10%;
   width: 80px;
   height:80px;
@@ -87,7 +87,7 @@ export default {
 .closeIcon{
   position: absolute;
   border-radius: 50%;
-  left:30%;
+  left:70%;
   top:10%;
   width: 80px;
   height:80px;

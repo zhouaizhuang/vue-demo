@@ -33,12 +33,10 @@
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/svgStroke">写字动画</router-link></div>
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/svgProgress">环形进度条效果</router-link></div>
     </div>
-    <!--
     <div class="fs30 b mt30 mb20 tc">通用组件</div>
     <div class="f xs ac rw">
-      <router-link class="db w20 g42b983 pb30 min230px" to="/tree">树形控件</router-link>
+      <router-link class="db w20 g42b983 pb30 min230px" to="/icon">icon</router-link>
     </div>
-    -->
     <div class="fs30 b mt30 mb20 tc">性能瓶颈突破</div>
     <div class="f xs ac rw">
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/tree">时间分片(树形控件1万个结点)</router-link></div>

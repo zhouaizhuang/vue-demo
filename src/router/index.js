@@ -9,6 +9,7 @@ import { special } from "./module/special.js"
 import { pictureaAni } from "./module/pictureAni.js"
 import { svgAni } from "./module/svgAni.js"
 import { bugFix } from "./module/bugFix.js"
+import { charts } from "./module/charts.js"
 Vue.use(VueRouter)
 const routes = [
   {
@@ -28,6 +29,7 @@ const routes = [
   ...highPerformance,
   ...special,
   ...bugFix,
+  ...charts,
 ]
 const router = new VueRouter({
   routes,

@@ -47,4 +47,9 @@ export const css3Ani = [
     name: 'typeWord',
     component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/typeWord/index.vue')
   },
+  {
+    path: '/useAnimate',
+    name: 'useAnimate',
+    component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/useAnimate/index.vue')
+  },
 ]

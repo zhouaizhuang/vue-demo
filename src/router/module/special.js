@@ -9,4 +9,5 @@ export const special = [
   { path: '/svgStudy', name: 'svgStudy', component: () => import(/* webpackChunkName: "special" */ '../../views/special/svgStudy/index.vue') },
   { path: '/irregularAvatar', name: 'irregularAvatar', component: () => import(/* webpackChunkName: "special" */ '../../views/special/irregularAvatar/index.vue') },
   { path: '/transparentBorder', name: 'transparentBorder', component: () => import(/* webpackChunkName: "special" */ '../../views/special/transparentBorder/index.vue') },
+  { path: '/circleText', name: 'circleText', component: () => import(/* webpackChunkName: "special" */ '../../views/special/circleText/index.vue') },
 ]

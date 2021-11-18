@@ -6,7 +6,7 @@
     <div @click="startAni" class="bg1890ff rds30 pl10 pr10 pt10 pb10 fs24 gf b">开启动画</div>
     <h1 @click="showAni" :class="[showAni ? 'animated backInDown' : '']">bounceInDown</h1>
     <h1 @click="showAni" :class="[showAni ? 'animated shakeX' : '']">shakeX</h1>
-    <h1 @click="showAni" :class="[showAni ? 'animated bounceIn' : '']">bounceIn</h1>
+    <h1 class="animated bounceIn infinite">无限播放</h1>
     <h1 @click="showAni" :class="[showAni ? 'animated heartBeat' : '']">heartBeat</h1>
     <h1 @click="showAni" :class="[showAni ? 'animated bounce' : '']">bounce</h1>
     <h1 @click="showAni" :class="[showAni ? 'animated fadeInDown' : '']">fadeInDown</h1>

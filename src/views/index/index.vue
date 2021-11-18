@@ -59,6 +59,7 @@
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/scrollStrong">滚动增强</router-link></div>
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/svgStudy">svg学习</router-link></div>
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/irregularAvatar">不规则头像</router-link></div>
+      <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/transparentBorder">半透明边框、内圆角边框</router-link></div>
     </div>
     <div class="fs30 b mt30 mb20 tc">数据可视化</div>
     <div class="f xs ac rw">

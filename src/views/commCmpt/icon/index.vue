@@ -1,8 +1,8 @@
 <template>
   <div class="fixed trbl0" style="background: rgba(0,0,0,.8);">
-    <div class="successIcon abs rds50"></div>
-    <div class="errorIcon abs rds50"></div>
-    <div class="closeIcon abs rds50"></div>
+    <div class="successIcon" />
+    <div class="errorIcon" />
+    <div class="closeIcon" />
   </div>
 </template>
 <script>
@@ -23,6 +23,8 @@ export default {
 <style>
 /**正确 ***/
 .successIcon{
+  position: absolute;
+  border-radius: 50%;
   left:10%;
   top:10%;
   width: 80px;
@@ -47,6 +49,8 @@ export default {
 }
 /*错误答案图标*/
 .errorIcon{
+  position: absolute;
+  border-radius: 50%;
   left:20%;
   top:10%;
   width: 80px;
@@ -81,6 +85,8 @@ export default {
 }
 /**关闭 */
 .closeIcon{
+  position: absolute;
+  border-radius: 50%;
   left:30%;
   top:10%;
   width: 80px;

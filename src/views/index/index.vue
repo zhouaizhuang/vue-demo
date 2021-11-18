@@ -35,7 +35,7 @@
     </div>
     <div class="fs30 b mt30 mb20 tc">通用组件</div>
     <div class="f xs ac rw">
-      <router-link class="db w20 g42b983 pb30 min230px" to="/icon">icon</router-link>
+      <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/icon">icon</router-link></div>
     </div>
     <div class="fs30 b mt30 mb20 tc">性能瓶颈突破</div>
     <div class="f xs ac rw">

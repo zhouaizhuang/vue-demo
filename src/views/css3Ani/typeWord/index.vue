@@ -1,10 +1,10 @@
 <template>
   <div class="rel h100vh auto" style="width:375px;">
-    <!--简单实现-->
-    <div class="mr10 fs24 b mb20 mt100 g1890ff">简单实现：</div>
+    <!--css动画实现-->
+    <div class="mr10 fs24 b mb20 mt100 g1890ff">css动画实现</div>
     <h1 class="fs50">hello world!</h1>
-    <!--高级实现-->
-    <div class="mr10 fs24 b mb20 mt50 g1890ff">高级实现：</div>
+    <!--js动画实现-->
+    <div class="mr10 fs24 b mb20 mt50 g1890ff">js动画实现</div>
     <div class="fs30"><span>{{msg}}</span><span class="mark"></span></div>
   </div>
 </template>

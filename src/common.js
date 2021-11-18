@@ -722,7 +722,7 @@ export const socketTime = function (t = new Date()) {
 /**
  * 生成格式化时间字符串
  * @举例 dateFormater('YYYY-MM-DD HH:mm') ==> 2019-06-26 18:30
- * @举例 dateFormater('YYYYMMDD-hh:mm:ss', '2020-08-12 09:13:54') ==> 20200812-09:13:54
+ * @举例 dateFormater('YYYY-MM-DD hh:mm:ss', '2020-08-12 09:13:54') ==> 2020-08-12 09:13:54
 */
 export const dateFormater = function (formater, t = new Date()){
   if(!isDate(t)) { t = t.replace(/[-]/g, "/") }

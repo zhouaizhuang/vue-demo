@@ -13,7 +13,7 @@
       <!-- <router-link class="db w20 g42b983 pb30 min230px" to="/slide">滑动名片</router-link> -->
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/countDown">倒计时</router-link></div>
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/guidePoint">引导用户点击</router-link></div>
-      <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/useAnimate">使用animate.css</router-link></div>
+      <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/useAnimate">animate动画库</router-link></div>
     </div>
     <div class="fs30 b mt30 mb20 tc">AE(lottie)动画</div>
     <div class="f xs ac rw">

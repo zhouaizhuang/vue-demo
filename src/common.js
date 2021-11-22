@@ -256,17 +256,13 @@ export const toObject = function (arr) {
     "children": [ { "id": 2, "name": "部门2", "pid": 1, "children": [] }, { "id": 3, "name": "部门3", "pid": 1, "children": [{...},{...}] } ]
    }]
  */
-export const arrayToTree = function (arr) {
+export const array2Tree = function (arr) {
   const itemMap = arr.reduce((prev, item) => (prev[item.id] = { ...item, children: [] }, prev), {})
   return arr.reduce((prev, item) => {
     const { id, pid } = item
-    const treeItem = itemMap[id]
-    if(pid === 0) {
-      prev.push(treeItem);
-    } else {
-      itemMap[pid] = itemMap[pid] || { children: [] }
-      itemMap[pid].children.push(treeItem)
-    }
+    const curItem = itemMap[id]
+    itemMap[pid] = itemMap[pid] || { children: [] } // 防止有的pid不存在
+    pid === 0 ? prev.push(curItem) : itemMap[pid].children.push(curItem)
     return prev
   }, [])
 }

@@ -241,6 +241,35 @@ export const toObject = function (arr) {
   }
   return res
 }
+/**
+ * 扁平数组转对象tree树形结构
+ * https://juejin.cn/post/6983904373508145189#heading-8
+ * @param {Array} arr 需要转换的数组
+ * @returns {Array} 转换之后的数组
+ * @举例 
+ * let arr = [{id: 1, name: '部门1', pid: 0},{id: 2, name: '部门2', pid: 1},{id: 3, name: '部门3', pid: 1},{id: 4, name: '部门4', pid: 3},{id: 5, name: '部门5', pid: 4}]
+ * arrayToTree(arr) ==> 
+ * [{
+    "id": 1,
+    "name": "部门1",
+    "pid": 0,
+    "children": [ { "id": 2, "name": "部门2", "pid": 1, "children": [] }, { "id": 3, "name": "部门3", "pid": 1, "children": [{...},{...}] } ]
+   }]
+ */
+export const arrayToTree = function (arr) {
+  const itemMap = arr.reduce((prev, item) => (prev[item.id] = { ...item, children: [] }, prev), {})
+  return arr.reduce((prev, item) => {
+    const { id, pid } = item
+    const treeItem = itemMap[id]
+    if(pid === 0) {
+      prev.push(treeItem);
+    } else {
+      itemMap[pid] = itemMap[pid] || { children: [] }
+      itemMap[pid].children.push(treeItem)
+    }
+    return prev
+  }, [])
+}
 // 检测是否大致相等
 // looseEqual(1,'1') ===> true
 // looseEqual({name:'zaz'},{'name':'zaz'}) ===> true

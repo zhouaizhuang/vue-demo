@@ -14,4 +14,5 @@ export const css3Ani = [
   { path: '/textSweat', name: 'textSweat', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/textSweat/index.vue')},
   { path: '/carouselX', name: 'carouselX', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/carouselX/index.vue')},
   { path: '/aniDelay', name: 'aniDelay', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/aniDelay/index.vue')},
+  { path: '/textStaggered', name: 'textStaggered', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/textStaggered/index.vue')},
 ]

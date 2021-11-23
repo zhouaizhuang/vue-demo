@@ -6,6 +6,7 @@
     <!--https://chokcoco.github.io/CSS-Inspiration/#/./background/bg-clip-text-shine-->
     <div class="f xs ac rw">
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/typeWord">打字动画</router-link></div>
+      <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/textStaggered">文字交错显示</router-link></div>
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/carousel">可视化大屏无缝Y轴滚动</router-link></div>
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/carouselX">文字横幅横向X轴滚动</router-link></div>
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/wordsCarousel">文字步进轮播动画</router-link></div>

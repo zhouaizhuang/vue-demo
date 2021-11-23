@@ -266,49 +266,6 @@ export const array2Tree = function (arr) {
     return prev
   }, [])
 }
-// 检测是否大致相等
-// looseEqual(1,'1') ===> true
-// looseEqual({name:'zaz'},{'name':'zaz'}) ===> true
-export const looseEqual = function (a, b) {
-  if (a === b) { return true }
-  var isObjectA = isObject(a)
-  var isObjectB = isObject(b)
-  if (isObjectA && isObjectB) {
-    try {
-      var isArrayA = isArray(a)
-      var isArrayB = isArray(b)
-      if (isArrayA && isArrayB) {
-        return a.length === b.length && a.every(function (e, i) {
-          return looseEqual(e, b[i])
-        })
-      } else if (a instanceof Date && b instanceof Date) {
-        return a.getTime() === b.getTime()
-      } else if (!isArrayA && !isArrayB) {
-        var keysA = Object.keys(a)
-        var keysB = Object.keys(b)
-        return keysA.length === keysB.length && keysA.every(function (key) {
-          return looseEqual(a[key], b[key])
-        })
-      } else {
-        return false
-      }
-    } catch (e) {
-      return false
-    }
-  } else if (!isObjectA && !isObjectB) {
-    return String(a) === String(b)
-  } else {
-    return false
-  }
-}
-// 获取进近似相等的val值，在数组arr中的位置。没找到相似的返回-1
-// looseIndexOf([{name:'zaz'}], {name:'zaz'})  ===> 0
-export const looseIndexOf = function (arr, val) {
-  for (var i = 0; i < arr.length; i++) {
-    if (looseEqual(arr[i], val)) { return i }
-  }
-  return -1
-}
 // 一次性函数。只执行一次。后面再调用,没有任何函数内代码执行
 // 示例：const aa = once(function (a, b){console.log(a + b)})
 // aa(1,2) ===> 3   ------>  aa(3, 4) ===> undefined

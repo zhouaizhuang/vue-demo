@@ -11,4 +11,5 @@ export const css3Ani = [
   { path: '/useAnimate', name: 'useAnimate', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/useAnimate/index.vue') },
   { path: '/textStreamer', name: 'textStreamer', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/textStreamer/index.vue')},
   { path: '/wordsCarousel', name: 'wordsCarousel', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/wordsCarousel/index.vue')},
+  { path: '/textSweat', name: 'textSweat', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/textSweat/index.vue')},
 ]

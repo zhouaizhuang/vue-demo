@@ -12,8 +12,8 @@
         <div>天气真热啊</div>
         <div class="auto rel" style="filter: blur(0.5px) contrast(10);width:220px;height:50px;background:#000;">
           <div class="abs l0 t0 auto zx10 bgf" style="filter:blur(1px);width:210px;height:4px;" />
-          <div class="water1 abs t0 bgf rds50" style="left:2px;filter:blur(2px);" />
-          <div class="water2 abs t0 bgf rds50" style="left:2px;filter:blur(2px);" />
+          <div class="water1 abs bgf rds50" style="left:2px;filter:blur(2px);" />
+          <div class="water2 abs bgf rds50" style="left:2px;filter:blur(2px);" />
         </div>
       </div>
     </div>
@@ -66,14 +66,14 @@ export default {
 .water1{
   width:10px;
   height:12px;
-  bottom:-3px;
+  top:-1px;
   background-color: #fff;
   animation: move 7.5s ease-in-out 0s infinite;
 }
 .water2{
   width:10px;
   height:12px;
-  bottom:-3px;
+  top:-1px;
   background-color: #fff;
   animation: move 7.5s ease-in-out 2s infinite;
 }

@@ -8,7 +8,7 @@
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/typeWord">打字动画</router-link></div>
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/carousel">可视化大屏无缝Y轴滚动</router-link></div>
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/carouselX">文字横幅横向X轴滚动</router-link></div>
-      <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/wordsCarousel">文字轮播动画</router-link></div>
+      <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/wordsCarousel">文字步进轮播动画</router-link></div>
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/numGrow">数字滚动效果</router-link></div>
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/breath">呼吸效果</router-link></div>
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/arrow">箭头指向动画</router-link></div>

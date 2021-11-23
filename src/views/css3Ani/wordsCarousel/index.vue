@@ -31,7 +31,7 @@ export default {
         this.distance = 70
       }, 20)
      }
-   }, 1500);
+   }, 1000);
   }
 }
 </script>

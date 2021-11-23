@@ -38,7 +38,7 @@ button { all: unset; } html,body{margin:0;padding:0;}
 .rgba6{background-color: rgba(0, 0, 0, .6);}
 /* 字体颜色 */
 .g6{color: #666;} .g9{color:#999;} .g3e{color:#3e3e3e;} .gd9{color: #d9d9d9;} .gf{color: #fff;}
-.g42b983{color:#42b983;} .g1890ff{color:#1890ff;} .gf10000{color:#f10000;}
+.g42b983{color:#42b983;} .g1890ff{color:#1890ff;} .gf10000{color:#f10000;} .g6ee1f5{color:#6ee1f5;}
 /*光标颜色*/
 .caret-g1890ff{caret-color:#1890ff;}
 /* BFC */
@@ -69,7 +69,7 @@ button { all: unset; } html,body{margin:0;padding:0;}
 /* 文本修饰 */
 .tdn{text-decoration: none;} .tdo{text-decoration: overline;} .tdl{text-decoration: line-through;} .tdu{text-decoration: underline;} .tdb{text-decoration: blink;}
 /* 文字间距 */
-.lt5{letter-spacing: 5px;}
+.lt3{letter-spacing: 3px;} .lt5{letter-spacing: 5px;}
 /*文本大小写全大写字母、全小写字母、首字母大写*/
 .uppercase{text-transform: uppercase;} .lowercase{text-transform: lowercase;} .capitalize{text-transform: capitalize;}
 /* 字体大小 */

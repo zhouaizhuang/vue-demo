@@ -14,7 +14,7 @@
 <script>
 import { addCss } from "../../../common.js"
 export default {
-  name: 'Home',
+  name: 'carousel',
   data(){
     return {
       list: [], // 重复的部分必须覆盖显示的框高度

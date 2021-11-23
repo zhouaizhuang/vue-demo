@@ -16,6 +16,7 @@
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/guidePoint">引导用户点击</router-link></div>
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/useAnimate">animate动画库</router-link></div>
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/textStreamer">文字流光效果</router-link></div>
+      <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/wordsCarousel">文字轮播动画</router-link></div>
     </div>
     <div class="fs30 b mt30 mb20 tc">AE(lottie)动画</div>
     <div class="f xs ac rw">

@@ -24,14 +24,14 @@ export default {
   },
   created(){
    setInterval(() => {
-     this.distance += 70
-     if((Number(round(this.distance / 70) -1))== this.textArr.length) { // 即将滚出最后一个元素的时候，将位置重置为第一个元素位置
-      this.distance = 0
-      setTimeout(() => {
-        this.distance = 70
-      }, 20)
-     }
-   }, 1000);
+      this.distance += 70
+      if((Number(round(this.distance / 70) -1))== this.textArr.length) { // 即将滚出最后一个元素的时候，将位置重置为第一个元素位置
+        this.distance = 0
+        setTimeout(() => {
+          this.distance = 70
+        }, 20)
+      }
+    }, 1000);
   }
 }
 </script>

@@ -69,6 +69,4 @@ h1 {
   border-right: 2px solid white;
   animation: blink 1s step-end infinite;
 }
-
-
 </style>

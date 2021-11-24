@@ -32,7 +32,7 @@ button { all: unset; } html,body{margin:0;padding:0;}
 .bdbe{border-bottom: 1px solid #eee;}
 /* 背景色 */
 .bgf{background-color: #fff;} .bg2{background-color: #222;} .bgf5{background-color: #f5f5f5;} .bgecf2ff{background-color: #ecf2ff;} .bgff5650{background-color: #ff5650;}
-.bg1890ff{background-color: #1890ff;} .bgc7a35d{background-color: #c7a35d;}
+.bg1890ff{background-color: #1890ff;} .bgc7a35d{background-color: #c7a35d;} .bg1a1e23{background-color:#1a1e23;}
 /*遮罩层*/
 .mask6{position:fixed;top:0;right:0;bottom:0;left:0;z-index:100;background-color: rgba(0, 0, 0, .6);overflow:hidden;}
 .rgba6{background-color: rgba(0, 0, 0, .6);}
@@ -66,6 +66,7 @@ button { all: unset; } html,body{margin:0;padding:0;}
 /* 文字过多自动换行 */
 .wrap{max-width:100%;word-break:break-all;word-wrap:break-word;}
 .lba{line-break: anywhere;} /*文字因为能断开的全部断开*/
+.lh1-5{line-height:1.5;}
 /* 文本修饰 */
 .tdn{text-decoration: none;} .tdo{text-decoration: overline;} .tdl{text-decoration: line-through;} .tdu{text-decoration: underline;} .tdb{text-decoration: blink;}
 /* 文字间距 */

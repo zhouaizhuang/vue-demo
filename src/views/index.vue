@@ -58,7 +58,7 @@
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/specialFont">自定义字体</router-link></div>
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/linearText">渐变、描边、阴影文字</router-link></div>
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/autoBreak">自适应换行、溢出隐藏、竖排文本</router-link></div>
-      <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/filter">滤镜相关</router-link></div>
+      <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/filter">滤镜、毛玻璃效果</router-link></div>
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/clipImg">图形裁剪</router-link></div>
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/reflectImg">倒影效果</router-link></div>
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/scrollStrong">滚动增强</router-link></div>

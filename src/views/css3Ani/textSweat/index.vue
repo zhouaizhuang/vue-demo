@@ -59,7 +59,7 @@ export default {
 
 /******文字流汗**** */
 @keyframes move{
-  0% {transform: translate(0, 0);}
+  0% {transform: translate(5px, 0);}
   93% {transform: translate(200px, 4px);opacity: 1;}
   100% {transform: translate(200px, 100px);opacity: 0;}
 }

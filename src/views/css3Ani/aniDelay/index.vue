@@ -33,9 +33,9 @@ export default {
 </script>
 <style scoped>
 .wave{
-  animation: wave 2s ease-out infinite;
+  animation: wave1 2s ease-out infinite;
 }
-@keyframes wave {
+@keyframes wave1 {
   50%,
   75% { transform: scale(2.5); }
   80%,

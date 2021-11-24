@@ -448,6 +448,20 @@ export const groupBy = function (arr, callback){
   }, {})
 }
 /**
+ * JSON数据键值转换（逆转对象键值）
+ * @举例子 invert({ 'a': 1, 'b': 2, 'c': 1 }) -----> {1: 'c', 2: 'b'}
+ * @param {*} obj 需要逆转的对象
+ * @returns 
+ */
+export const invert = obj => Object.keys(obj).reduce((prev, item) => ((prev[obj[item]] = item), prev), {})
+/**
+* 逆转对象。并且重复的键，将对应的值存在一起
+* @举例子 invertBy({ 'a': 1, 'b': 2, 'c': 1 }) -----> {1: ['a', 'c'], 2: ['b']}
+* @param {*} obj 需要逆转并且分类的对象
+* @returns 
+*/
+export const invertBy = obj => Object.keys(obj).reduce((prev, item) => ((prev[obj[item]] || (prev[obj[item]] = [])).push(item), prev), {})
+/**
  * 将后台数据同步过来
  * 场景举例：比如表单编辑的时候，用户之前有一些是选中状态的，但是查到的列表没这个状态，你只知道哪些id是选中的。那么就需要做同步。将列表数据中特定id的条目进行字段更新
  * @param {Array} arr 列表数据
@@ -951,20 +965,6 @@ export const obj2Map = function (obj){
   for(let k of Object.keys(obj)) { map.set(k, obj[k]) }
   return map
 }
-/**
- * 逆转对象。
- * @举例子 invert({ 'a': 1, 'b': 2, 'c': 1 }) -----> {1: 'c', 2: 'b'}
- * @param {*} obj 需要逆转的对象
- * @returns 
- */
-export const invert = obj => Object.keys(obj).reduce((prev, item) => ((prev[obj[item]] = item), prev), {})
-/**
- * 逆转对象。并且重复的键，将对应的值存在一起
- * @举例子 invertBy({ 'a': 1, 'b': 2, 'c': 1 }) -----> {1: ['a', 'c'], 2: ['b']}
- * @param {*} obj 需要逆转并且分类的对象
- * @returns 
- */
-export const invertBy = obj => Object.keys(obj).reduce((prev, item) => ((prev[obj[item]] || (prev[obj[item]] = [])).push(item), prev), {})
 /**
  * 链表
  */

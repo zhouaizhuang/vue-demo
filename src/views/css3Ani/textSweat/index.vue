@@ -12,8 +12,8 @@
         <div>天气真热啊</div>
         <div class="auto rel" style="filter: blur(0.5px) contrast(10);width:220px;height:50px;background:#000;">
           <div class="abs l0 t0 auto zx10 bgf" style="filter:blur(1px);width:210px;height:4px;" />
-          <div class="water1 abs bgf rds50" style="left:2px;filter:blur(2px);" />
-          <div class="water2 abs bgf rds50" style="left:2px;filter:blur(2px);" />
+          <div class="water1 abs bgf rds50" style="left:5px;filter:blur(2px);" />
+          <div class="water2 abs bgf rds50" style="left:5px;filter:blur(2px);" />
         </div>
       </div>
     </div>
@@ -59,7 +59,7 @@ export default {
 
 /******文字流汗**** */
 @keyframes move{
-  0% {transform: translate(5px, 0);}
+  0% {transform: translate(0px, 0);}
   93% {transform: translate(200px, 4px);opacity: 1;}
   100% {transform: translate(200px, 100px);opacity: 0;}
 }

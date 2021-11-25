@@ -31,6 +31,7 @@
       <img class="w60 h100 ssac" src="https://yiluyouni.hlxapps.com/assets/images/2021-10-27/6178b0f18c6df.jpg" alt="">
     </div>
     <div class="bdc bg1890ff f ac xc fs30 gf" style="width:300px;height:200px;resize:both;overflow:hidden;">右下角可以拉伸</div>
+    <div @click="goTop" class="fixed gf fs20 pl10 pt10 pr10 pb10 bg2 rds5" style="right:15px;bottom:50px;">回到顶部</div>
   </div>
 </template>
 <script>
@@ -41,6 +42,9 @@ export default {
     }
   },
   methods:{
+    goTop(){
+      document.body.scrollIntoView({ behavior: "smooth" })
+    }
   },
   created(){
    

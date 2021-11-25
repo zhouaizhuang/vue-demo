@@ -22,6 +22,7 @@
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/textSweat">文字流汗动画</router-link></div>
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/aniDelay">动画播放延时</router-link></div>
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/specialBorder">特殊边框</router-link></div>
+      <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/pieChart">简易饼图（锥形渐变）</router-link></div>
     </div>
     <div class="fs30 b mt30 mb20 tc">AE(lottie)动画</div>
     <div class="f xs ac rw">

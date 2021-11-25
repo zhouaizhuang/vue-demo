@@ -2,7 +2,7 @@
   <div class="rel h100vh auto ovh" style="width:375px;">
     <!--饼图-->
     <div class="fs30 mb30 tc mt100">CSS实现简易饼图</div>
-    <div class="pie rds50 auto" :style="{ background: `conic-gradient(#1890ff 0 ${percent}%, green ${percent}% 100%)` }"></div>
+    <div class="rds50 auto" :style="{ background: `conic-gradient(#1890ff 0 ${percent}%, green ${percent}% 100%)`, width:'200px', height:'200px' }"></div>
   </div>
 </template>
 <script>
@@ -28,8 +28,4 @@ export default {
 }
 </script>
 <style scoped>
-.pie{
-  width:200px;
-  height:200px;
-}
 </style>

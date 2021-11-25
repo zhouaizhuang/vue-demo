@@ -21,7 +21,7 @@ export default {
   },
 }
 </script>
-<style>
+<style scoped>
 .wave{
   width: 200px;
   height: 200px;

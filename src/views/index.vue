@@ -11,7 +11,7 @@
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/carouselX">文字横幅横向X轴滚动</router-link></div>
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/wordsCarousel">文字步进轮播动画</router-link></div>
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/numGrow">数字滚动效果</router-link></div>
-      <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/breath">按钮引导点击</router-link></div>
+      <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/specialBotton">特殊按钮</router-link></div>
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/arrow">箭头指向动画</router-link></div>
       <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/buttery">水波</router-link></div>
       <!-- <div class="db w20 pb30 min230px"><router-link class="g42b983" to="/slide">滑动名片</router-link></div> -->

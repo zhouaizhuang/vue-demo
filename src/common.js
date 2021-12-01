@@ -29,7 +29,7 @@ export const isChrome = UA && /chrome\/\d+/.test(UA) && !isEdge
 export const isPhantomJS = UA && /phantomjs/.test(UA)
 export const isFF = UA && UA.match(/firefox\/(\d+)/)
 export const isPhoneNum = val => /^1[3456789]\d{9}$/.test(val) // 检测是否是手机号码
-
+export const isWeChat = UA && /MicroMessenger/i.test(UA)
 // 异步加载js
 // 举例子：await loadJs("//res.wx.qq.com/open/js/jweixin-1.6.0.js");
 export const loadJs = async function(url) {

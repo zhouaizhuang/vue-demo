@@ -1,8 +1,55 @@
 <template>
-  <div id="app">
+  <div id="app" :style="{animation:isWeChat ? animation : ''}"> <!--转场动画-->
     <router-view/>
   </div>
 </template>
-
-<style lang="less">
+<script>
+import { getField, isWeChat } from './common'
+export default {
+  data(){
+    return  {
+      isWeChat: false, // 是否在微信环境。微信H5下开启转场动画
+      animation:'',
+    }
+  },
+  watch: {
+    $route(to, from) {
+      const r = require.context('./router/module', true, /\.js/)
+      const pathStr = r.keys().reduce((prev, item) => {
+        if(item === './index.js') { return prev } // index.js是当前的根路由文件
+        const routeItem = r(item).default
+        prev += getField(routeItem, 'path') + ','
+        return prev
+      }, [])
+      // console.log(pathStr)
+      const routeDeep = ['/', '/index', pathStr] // 这里按照深度写路径
+      const toDepth = routeDeep.reduce((prev, item, index) => item.includes(to.path) ? index : prev, 0)
+      const fromDepth = routeDeep.reduce((prev, item, index) => item.includes(from.path) ? index : prev, 0)
+      this.animation = toDepth > fromDepth ? 'pageTransGo 0.5s ease -0.2s 1 forwards' : 'pageTransBack 0.3s ease -0.2s 1 forwards'
+      setTimeout(() => {this.animation=''}, 800)
+    }
+  },
+  created(){
+    this.isWeChat = isWeChat
+  }
+}
+</script>
+<style>
+html{ touch-action: manipulation; }
+body { /* IOS禁止微信调整字体大小 */
+  -webkit-text-size-adjust: 100% !important;
+  text-size-adjust: 100% !important;
+  -moz-text-size-adjust: 100% !important;
+  margin:0;
+  padding:0;
+  overflow-x: hidden;
+}
+@keyframes pageTransGo {
+  0%{ transform: translateX(100%);opacity:0 }
+  100%{ transform: translateX(0%);opacity: 1; }
+}
+@keyframes pageTransBack {
+  0%{ transform: translateX(-100%);opacity:0 }
+  100%{ transform: translateX(0%);opacity: 1; }
+}
 </style>

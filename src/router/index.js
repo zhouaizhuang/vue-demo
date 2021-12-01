@@ -1,36 +1,21 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import index from '../views/index.vue'
-import { commCmpt } from "./module/commCmpt.js"
-import { highPerformance } from "./module/highPerformance.js" 
-import { css3Ani } from "./module/css3Ani.js"
-import { aeAni } from "./module/aeAni.js"
-import { special } from "./module/special.js"
-import { pictureaAni } from "./module/pictureAni.js"
-import { svgAni } from "./module/svgAni.js"
-import { bugFix } from "./module/bugFix.js"
-import { charts } from "./module/charts.js"
 Vue.use(VueRouter)
+// 批量读取路由
+const r = require.context('.', true, /\.js/)
+const routerList = r.keys().reduce((prev, item) => {
+  if(item === './index.js') { return prev } // index.js是当前的根路由文件
+  const routeItem = r(item).default
+  return Array.isArray(routeItem) ? [...prev, ...routeItem] : [...prev, routeItem]
+}, [])
+// 将读取到的路由写入
 const routes = [
-  {
-    path: '/',
-    redirect: { name: 'index' },
-  },
-  {
-    path: '/index',
-    name: 'index',
-    component: index
-  },
-  ...css3Ani,
-  ...aeAni,
-  ...pictureaAni,
-  ...svgAni,
-  ...commCmpt,
-  ...highPerformance,
-  ...special,
-  ...bugFix,
-  ...charts,
+  { path: '/', redirect: { name: 'index' } },
+  { path: '/index', name: 'index', component: index },
+  ...routerList
 ]
+// 默认回到顶部
 const router = new VueRouter({
   routes,
   scrollBehavior (to, from, savedPosition) {

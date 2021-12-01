@@ -1,4 +1,4 @@
-export const charts = [
+export default [
   {
     path: '/barChart',
     name: 'barChart',

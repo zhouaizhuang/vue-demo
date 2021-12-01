@@ -1,4 +1,4 @@
-export const aeAni = [
+export default [
   {
     path: '/lottie',
     name: 'lottie',

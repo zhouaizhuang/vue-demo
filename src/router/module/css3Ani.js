@@ -1,4 +1,4 @@
-export const css3Ani = [
+export default [
   { path: '/carousel', name: 'carousel', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/carousel/index.vue') },
   { path: '/numGrow', name: 'numGrow', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/numGrow/index.vue') },
   { path: '/specialBotton', name: 'specialBotton', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/specialBotton/index.vue') },

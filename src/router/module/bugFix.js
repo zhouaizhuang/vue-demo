@@ -1,4 +1,4 @@
-export const bugFix = [
+export default [
   {
     path: '/scrollThrough',
     name: 'scrollThrough',

@@ -1,4 +1,4 @@
-export const pictureaAni = [
+export default [
   {
     path: '/walk',
     name: 'walk',

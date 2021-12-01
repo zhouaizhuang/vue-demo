@@ -1,4 +1,4 @@
-export const highPerformance = [
+export default [
   {
     path: '/tree',
     name: 'tree',

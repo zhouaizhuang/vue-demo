@@ -22,7 +22,7 @@ export default {
         return prev
       }, [])
       // console.log(pathStr)
-      const routeDeep = ['/', '/index', pathStr] // 这里按照深度写路径
+      const routeDeep = ['/', '/index', pathStr] // 这里按照深度写路径。由于当前项目就index是第一层，后面都是同级目录
       const toDepth = routeDeep.reduce((prev, item, index) => item.includes(to.path) ? index : prev, 0)
       const fromDepth = routeDeep.reduce((prev, item, index) => item.includes(from.path) ? index : prev, 0)
       this.animation = toDepth > fromDepth ? 'pageTransGo 0.5s ease -0.2s 1 forwards' : 'pageTransBack 0.3s ease -0.2s 1 forwards'

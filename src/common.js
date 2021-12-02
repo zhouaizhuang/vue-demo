@@ -143,6 +143,10 @@ export const getPosition = function (e) {
   }
   return { Left: offsetx, Top: offsety }
 }
+/**获取视口高度
+ * @returns 
+ */
+ export const getViewHeight = () => document.body.clientHeight + 'px'
 /**
  * 获取距离视口的数据
  * 距离视窗的距离。一般现在通过 IntersectionObserver API实现了，请看https://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html

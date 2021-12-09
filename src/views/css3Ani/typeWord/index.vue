@@ -1,11 +1,11 @@
 <template>
   <div class="rel h100vh auto" style="width:375px;">
     <!--css动画实现-->
-    <div class="mr10 fs24 b mb20 mt100 g1890ff">css动画实现</div>
-    <h1 class="fs50">hello world!</h1>
+    <div class="fs40r b mb20r pt100r g1890ff">css动画实现</div>
+    <h1 class="fs50r">hello world!</h1>
     <!--js动画实现-->
-    <div class="mr10 fs24 b mb20 mt50 g1890ff">js动画实现</div>
-    <div class="fs30"><span>{{msg}}</span><span class="mark"></span></div>
+    <div class="fs40r b mb20r mt100r g1890ff">js动画实现</div>
+    <div class="fs40r"><span>{{msg}}</span><span class="mark"></span></div>
   </div>
 </template>
 <script>
@@ -15,7 +15,6 @@ export default {
   },
   data(){
     return {
-      // text: ["你好", "欢迎来到一个前端的内心世界", "期待与你共同成长"],
       text: '欢迎来到有趣的前端世界！让我们一起学习CSS吧！',
       msg: '',
       timeId: null,
@@ -51,7 +50,7 @@ h1 {
   width: 12ch;
   overflow: hidden;
   white-space: nowrap;
-  border-right: 2px solid;
+  border-right: 0.02rem solid;
   animation: typing 2s steps(12), caret 1s steps(2) infinite;
 }
 
@@ -66,7 +65,7 @@ h1 {
   }
 }
 .mark {
-  border-right: 2px solid white;
+  border-right: 0.02rem solid white;
   animation: blink 1s step-end infinite;
 }
 </style>

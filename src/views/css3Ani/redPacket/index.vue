@@ -11,7 +11,7 @@
     <!--奖励记录-->
     <div :class="['abs trbl0 trans2', isShowRecord? 'zx100 op10' : 'zx-1 op0']" style="background-color: rgba(0, 0, 0, .7);">
       <img src="./images/net_myreward_top.png" alt="" :class="['abs l50 tx-50 zx10 trans3', isShowRecord ? '' : 'tx120']" style="top:22%;width:5.4rem;height:0.64rem;" />
-      <div @click.stop :class="['abs bgf rds15r r70r l70r trans3 zx20', isShowRecord ? '' : 'tx120']" style="top:25%;padding: 0.4rem 0.6rem;min-height:4.6rem;">
+      <div @click.stop :class="['abs bgf rds15r l50 tx-50 trans3 zx20', isShowRecord ? '' : 'tx120']" style="top:25%;width:5rem;padding: 0.4rem 0.6rem;min-height:4.6rem;">
         <img @click="closeRecord" src="./images/net_finish_close.png" alt="" class="abs" style="top:-1rem;right:-0.4rem;width:0.63rem;height:0.63rem;">
         <img src="./images/net_myreward.png" alt="" class="rel zx20 db" style="margin:0 auto 0.3rem;width:1.88rem;height:0.38rem;">
         <img src="./images/net_myreward_bg.png" alt="" class="abs zx10 l50 tx-50" style="top: 0.6rem;width:2.58rem;height:0.25rem;">

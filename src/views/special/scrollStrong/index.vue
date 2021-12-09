@@ -3,10 +3,10 @@
   <div style="padding-bottom:500px;">
     <div class="fs30 f xc mb20 mt50">1、平滑滚动</div>
     <div class="smooth ovya mb30 auto" style="height:200px;width:350px;">
-      <div class="fs50 auto f ac xc bg1890ff rel" style="width:100%;height:200px;"><input id="one" class="clip t0 h100" readonly />1</div>
-      <div class="fs50 auto f ac xc bgff5650 rel" style="width:100%;height:200px;"><input id="two" class="clip t0 h100" readonly />2</div>
-      <div class="fs50 auto f ac xc bgc7a35d rel" style="width:100%;height:200px;"><input id="three" class="clip t0 h100" readonly />3</div>
-      <div class="fs50 auto f ac xc bg1890ff rel" style="width:100%;height:200px;"><input id="four" class="clip t0 h100" readonly />4</div>
+      <div class="fs50 auto f ac xc bg1890ff rel" style="width:100%;height:200px;"><input id="one" class="clip0 t0 h100" readonly />1</div>
+      <div class="fs50 auto f ac xc bgff5650 rel" style="width:100%;height:200px;"><input id="two" class="clip0 t0 h100" readonly />2</div>
+      <div class="fs50 auto f ac xc bgc7a35d rel" style="width:100%;height:200px;"><input id="three" class="clip0 t0 h100" readonly />3</div>
+      <div class="fs50 auto f ac xc bg1890ff rel" style="width:100%;height:200px;"><input id="four" class="clip0 t0 h100" readonly />4</div>
     </div>
     <div class="f xc pl30 pr30">
       <label for="one" class="bg1890ff gf f ac xc rds10 mr20" style="width:80px;height:50px;">1</label>

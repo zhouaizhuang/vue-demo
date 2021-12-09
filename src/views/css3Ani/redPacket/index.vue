@@ -1,5 +1,5 @@
 <template>
-  <div style="width:7.5rem;" class="auto h100vh">
+  <div style="width:7.5rem;" class="auto h100vh rel">
     <div class="fs30r tc pt30r rel zx100 gf">在移动端看效果</div>
     <!--红包-->
     <div :class="['abs trbl0 trans2 zx10 op10']" style="background-color: rgba(0, 0, 0, .7);">

@@ -5,9 +5,9 @@
       <div v-for="(item, index) in textArr" :key="index" class="landIn fs30 lt5 b" :style="{animationDelay: `${index * 0.05}s`}">{{item}}</div>
     </div>
     <!--文字错落显示效果二-->
-    <div class="mt100 f xc">
-      <div class="bdlrf rel f g6ee1f5 fs30 lt3 uppercase di pl10 pr10">
-        <div v-for="(item, index) in text2Arr" :key="index" class="innText fs30 lt5 b" :style="{animationDelay: `${Math.abs(middle - index) * 0.05}s`  }">
+    <div class="mt100r f xc">
+      <div class="bdlrf rel f g6ee1f5 fs30r lt5r b uppercase di pl10r pr10r">
+        <div v-for="(item, index) in text2Arr" :key="index" class="innText" :style="{animationDelay: `${Math.abs(middle - index) * 0.05}s`  }">
           {{item}}
         </div>
       </div>
@@ -55,12 +55,6 @@ export default {
   line-height: 1.5;
 }
 /*****效果二 */
-.bdlf{
-  border-left:2px solid #fff;
-}
-.bdrf{
-  border-right:2px solid #fff;
-}
 .bdlrf::before{
   position: absolute;
   content: "";
@@ -90,7 +84,7 @@ export default {
 .innText{
   opacity: 0;
   transform: scale(0);
-  animation: fadeIn 2.4s forwards;
+  animation: fadeIn 2s forwards;
 }
 @keyframes fadeIn {
   to {

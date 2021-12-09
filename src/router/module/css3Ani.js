@@ -17,4 +17,5 @@ export default [
   { path: '/textStaggered', name: 'textStaggered', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/textStaggered/index.vue')},
   { path: '/specialBorder', name: 'specialBorder', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/specialBorder/index.vue')},
   { path: '/pieChart', name: 'pieChart', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/pieChart/index.vue')},
+  { path: '/redPacket', name: 'redPacket', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/redPacket/index.vue')},
 ]

@@ -24,6 +24,7 @@
   </div>
 </template>
 <script>
+import { wait } from "../../../common"
 export default {
   name: 'redPacket',
   data(){
@@ -33,11 +34,10 @@ export default {
     }
   },
   methods: {
-    openRed(){
+    async openRed(){
       this.isOpenRed = true
-      setTimeout(() => {
-        this.isShowRecord = true
-      }, 2e3)
+      await wait(2e3)
+      this.isShowRecord = true
     },
     closeRecord(){
       this.isShowRecord = false

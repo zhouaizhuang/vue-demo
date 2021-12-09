@@ -6,6 +6,7 @@
 export const isType = type => val => type === Object.prototype.toString.call(val).slice(8, -1)
 export const isArray = isType('Array')
 export const isObject = isType('Object')
+export const isReference = val => isArray(val) || isObject(val)
 export const isNull = isType('Null')
 export const isUndefined = isType('Undefined')
 export const isFunction = isType('Function')
@@ -28,27 +29,10 @@ export const isIOS = (UA && /iphone|ipad|ipod|ios/.test(UA)) || (weexPlatform ==
 export const isChrome = UA && /chrome\/\d+/.test(UA) && !isEdge
 export const isPhantomJS = UA && /phantomjs/.test(UA)
 export const isFF = UA && UA.match(/firefox\/(\d+)/)
-export const isPhoneNum = val => /^1[3456789]\d{9}$/.test(val) // 检测是否是手机号码
-export const isWeChat = UA && /MicroMessenger/i.test(UA)
-// 异步加载js
-// 举例子：await loadJs("//res.wx.qq.com/open/js/jweixin-1.6.0.js");
-export const loadJs = async function(url) {
-  let loadedJs = []
-  return new Promise((resolve, reject) => {
-    if (loadedJs.includes(url)) { resolve() }
-    let script = document.createElement("script")
-    script.type = "text/javascript"
-    script.src = url
-    script.onload = function () { loadedJs.push(url); resolve() }
-    script.onerror = function () { reject() }
-    document.head.appendChild(script)
-  })
-}
-// 执行此函数，或导致函数执行阻塞在此处t毫秒
+export const isPhone = val => /^1[3456789]\d{9}$/.test(val) // 检测是否是手机号码
+// 执行此函数，可以做一个延时功能。在需要延时执行一段逻辑的时候可以使用
 // 举例子: await wait(500);   那么程序会在此处阻塞等待500ms
-export const wait = async function(t) {
-  return new Promise(resolve => setTimeout(() => resolve(), t))
-}
+export const wait = t => new Promise(resolve => setTimeout(() => resolve(), t))
 /**
  * 深拷贝
  * @param {*} obj 传入任意类型都可以做深拷贝 
@@ -56,12 +40,9 @@ export const wait = async function(t) {
  * @举例子 const obj = {name:'a', age:'18'};  deepCopy(obj) ----> {name:'a', age:'18'}
  */
 export const deepCopy = function (obj) {
-  if(!(isArray(obj) || isObject(obj))) { return obj }  // 数字、日期、正则、函数、字符串、undefined、null、Symbol直接返回
+  if(!isReference(obj)) { return obj }  // 数字、日期、正则、函数、字符串、undefined、null、Symbol直接返回
   let res = isArray(obj) ? [] : {}
-  return Object.keys(obj).reduce((prev, item) => {
-    prev[item] = (isArray(obj[item]) || isObject(obj[item])) ? deepCopy(obj[item]) : obj[item]
-    return prev
-  }, res)
+  return Object.keys(obj).reduce((prev, item) => (prev[item] = isReference(obj[item]) ? deepCopy(obj[item]) : obj[item], prev), res)
 }
 /**
  * 获取唯一ID。用于模板渲染的唯一key值
@@ -79,7 +60,7 @@ export const debounce = function (fn, wait=3e3) {
   }
 }
 // 函数节流
-export const throttling = function  (fn, wait=3e3) {
+export const throttling = function(fn, wait=3e3) {
   let timeout = null // 使用闭包，让每次调用时点击定时器状态不丢失
   let start = +new Date() // 记录第一次点击时的时间戳
   return function () {
@@ -104,21 +85,17 @@ export const scrollPos = (id = '', pos = 0) => document.getElementById(id).scrol
 // 获取cookie 示例：var og_third_app_token = og_getOgCookie('third_app_token')
 export const getCookie = function (name) {
   var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)")
-  if (arr = document.cookie.match(reg)) {
-    return unescape(arr[2])
-  } else {
-    return null
-  }
+  return arr = document.cookie.match(reg) ? unescape(arr[2]) : null
 }
 /**
  * 选择器查询
  * @param {String} selector 
- * @returns 
- * 举例子： query('.lazyLoadClass') ---->  查出所有类名为.lazyLoadClass的集合并转成数组
+ * @returns 返回全部/单个dom
+ * 举例子: queryAll('.lazyLoadClass') ---->  查出所有类名为.lazyLoadClass的dom集合并转成数组
+ * 举例子: query('.lazyLoadClass') ---->  查出第一个类名为.lazyLoadClass的dom
  */
-export const query = function (selector) {
-  return Array.from(document.querySelectorAll(selector))
-}
+export const queryAll = selector => Array.from(document.querySelectorAll(selector))
+export const query = selector => document.querySelector(selector)
 // 本地存储
 export const getLocalStorage = name => JSON.parse(localStorage.getItem(name))
 export const setLocalStorage = (name, val) => localStorage.setItem(name, JSON.stringify(val))
@@ -153,7 +130,7 @@ export const getPosition = function (e) {
  * @param {*} e 
  * @returns 
  */
-export const getViewPos = function (e) {
+ export const getViewPos = function (e) {
   var rect = e.getBoundingClientRect()
   var top = document.documentElement.clientTop ? document.documentElement.clientTop : 0 // html元素对象的上边框的高度
   var left = document.documentElement.clientLeft ? document.documentElement.clientLeft : 0
@@ -174,15 +151,13 @@ export const getViewPos = function (e) {
  * @param {String} keywords 需要搜索的开头的字符串
  * @returns {Boolean}
  */
-export const startWith = (str, startWords) => str.slice(0, startWords.length) === startWords
+ export const startWith = (str, startWords) => str.slice(0, startWords.length) === startWords
 // 去除字符串的首尾空格
 export const trim =  (str = '') => String(str).replace(/(^\s*)|(\s*$)/g, '')
 // 固定裁剪几个字符之后显示省略号。举例：sliceStr('张三李四王五', 2) ----> "张三..."
 export const sliceStr = function (str, num) {
   str = String(str)
-  let newStr = str.substr(0, num)
-  str.length > num && (newStr += '...')
-  return newStr
+  return str.length > num ? str.substr(0, num) + '...' : str.substr(0, num)
 }
 // 字符串前置补0。举例: addZero('1', 2) ==> '01'
 export const addZero = (str = '', num = 2) => (Array(num+1).join('0') + str).slice(-num)
@@ -319,7 +294,7 @@ export const repeat = function(obj = '', times = 1) {
       for(let i =0; i < range(times, 1); i++) { res = [...res, ...obj] }
     }
   } else {
-    for(let j = 0; j < range(times, 1); j++){ res += obj }
+    for(let j = 0; j < range(times, 1); j++) { res += obj }
   }
   return res
 }
@@ -411,13 +386,21 @@ export const formatJSON = function (obj) {
 export const checkJSON = function (obj) {
   return Object.keys(obj).find(item => !Boolean(obj[item])) || ''
 }
-// JSON转url
-// 举例子： JSON2url('../advise/index', { from: 'index', id_str:'1243' }) -----> '../advise/index?from=index&id_str=1243'
+/**
+ * JSON转url（这个函数将数据进行了编码。将来再解码使用。可以规避一些特殊字符产生的bug）
+ * 函数还兼容传入 {info: {name:'zz', age:18}, school: 'qinghua'} 这种复杂的数据。之后通过url2JSON可以完美解析
+ * @param {String} url 跳转地址的域名。在小程序中那就是路径
+ * @param {Object} params 跳转地址中药传递的参数的json格式
+ * @returns {String} 返回拼接好的带有参数的链接地址
+ * @举例子 JSON2url('../advise/index', { from: 'index', id_str:'1243' }) -----> '../advise/index?from=index&id_str=1243'
+ */
 export const JSON2url = function (url = '', params = {}){
-  return Object.keys(formatJSON(params)).reduce((prev, item) => prev + (prev.includes('?') ? '&' : '?') + `${item}=${encodeURIComponent(params[item])}`, url) || ''
+  return Object.keys(formatJSON(params)).reduce((prev, item) => prev + (prev.includes('?') ? '&' : '?') + `${item}=${encodeURIComponent(JSON.stringify(params[item]))}`, url) || ''
 }
 /**
- * url转JSON
+ * url转JSON(函数内与解码操作，与JSON2url相对应)
+ * @param {String} url 传入带有参数的url链接地址
+ * @returns {Object} 返回参数拼接的json对象
  * @举例 url2JSON('http://www.baidu.com?name=asd&age=12') ----> {name: "asd", age: "12"}
  */
 export const url2JSON = function (url = '') {
@@ -425,7 +408,7 @@ export const url2JSON = function (url = '') {
   paramsStr = paramsStr.split('#')[0] || '' // 防止一些url中混入#号放在?号之后，此处做一个适配
   return paramsStr.split('&').reduce((prev, item) => {
     const [key, val] = item.split('=')
-    return { ...prev, [key]: decodeURIComponent(val) } // 此处需要转码，否则中文和一些特殊字符就无法支持了
+    return { ...prev, [key]: JSON.parse(decodeURIComponent(val)) } // 此处需要转码，否则中文和一些特殊字符就无法支持了
   }, {})
 }
 /**
@@ -444,27 +427,13 @@ export const url2JSON = function (url = '') {
  * }
  * @result 根据分类函数分类好的结果：{A: [{...},{...}], B: [{...}], C: [{...}], D: [{...}]}
  */
-export const groupBy = function (arr, callback){
+ export const groupBy = function (arr, callback){
   return arr.reduce((prev, item) => {
     const key = callback(item)
     ;(prev[key] || (prev[key] = [])).push(item)
     return prev
   }, {})
 }
-/**
- * JSON数据键值转换（逆转对象键值）
- * @举例子 invert({ 'a': 1, 'b': 2, 'c': 1 }) -----> {1: 'c', 2: 'b'}
- * @param {*} obj 需要逆转的对象
- * @returns 
- */
-export const invert = obj => Object.keys(obj).reduce((prev, item) => ((prev[obj[item]] = item), prev), {})
-/**
-* 逆转对象。并且重复的键，将对应的值存在一起
-* @举例子 invertBy({ 'a': 1, 'b': 2, 'c': 1 }) -----> {1: ['a', 'c'], 2: ['b']}
-* @param {*} obj 需要逆转并且分类的对象
-* @returns 
-*/
-export const invertBy = obj => Object.keys(obj).reduce((prev, item) => ((prev[obj[item]] || (prev[obj[item]] = [])).push(item), prev), {})
 /**
  * 将后台数据同步过来
  * 场景举例：比如表单编辑的时候，用户之前有一些是选中状态的，但是查到的列表没这个状态，你只知道哪些id是选中的。那么就需要做同步。将列表数据中特定id的条目进行字段更新
@@ -477,7 +446,7 @@ export const invertBy = obj => Object.keys(obj).reduce((prev, item) => ((prev[ob
  * 举例 syncBgData([{id:'1'}, {id:'2'}, {id:'3'}], '2,3')
  * [{id:'1', isChecked:false}, {id:'2', isChecked:true}, {id:'3', isChecked:true}]
  */
-export const syncBgData = (arr, ids, key = 'isChecked', val = true, defVal = false) => arr.map(v => (v[key] = ids.includes(v.id) ? val : defVal, v))
+ export const syncBgData = (arr, ids, key = 'isChecked', val = true, defVal = false) => arr.map(v => (v[key] = ids.includes(v.id) ? val : defVal, v))
 //base64数据导出文件，文件下载
 /**
  * @举例 downloadFile('活动表格', 'http://xxxxxxx')
@@ -559,7 +528,7 @@ export const random = function (lower, upper, type = 'float') {
  * 获取随机颜色
  * @returns 
  */
-export const randomColor = function () {
+ export const randomColor = function () {
   const [r, g, b, a] = [random(0, 255,'int'), random(0, 255,'int'), random(0, 255,'int'), 1]
   return `rgba(${r}, ${g}, ${b}, ${a})`
 }
@@ -630,7 +599,7 @@ export const safeGet = function (run, defaultVal = '') {
  * @举例 formatMoney(12322.1223, 'float', 1) ------> "12,322.1"  固定显示1位小数
  * @举例 formatMoney(12322, 'intFloat') ------> "12322"  当没有小数点就显示整数，否则显示整数
  */
- export const formatMoney = function (num = 0, type = 'float', prec = 2, dec = '.', sep = ',') {
+export const formatMoney = function (num = 0, type = 'float', prec = 2, dec = '.', sep = ',') {
   num = String(num).replace(/[^0-9+-Ee.]/g, '') || '0'
   prec = Number(prec)
   if((type === 'intFloat' && !num.includes('.')) || num === '0') { return num }
@@ -722,7 +691,7 @@ export const socketTime = function (t = new Date()) {
 /**
  * 生成格式化时间字符串
  * @举例 dateFormater('YYYY-MM-DD HH:mm') ==> 2019-06-26 18:30
- * @举例 dateFormater('YYYY-MM-DD hh:mm:ss', '2020-08-12 09:13:54') ==> 2020-08-12 09:13:54
+ * @举例 dateFormater('YYYYMMDD-hh:mm:ss', '2020-08-12 09:13:54') ==> 20200812-09:13:54
 */
 export const dateFormater = function (formater, t = new Date()){
   if(!isDate(t)) { t = t.replace(/[-]/g, "/") }
@@ -784,13 +753,12 @@ export const getDays = function(whichYear, whichMonth) {
 ******************************************正则校验*********************************************
 **********************************************************************************************
 */
-/**
- * 正则校验返回true || false
+/**正则校验返回true || false
  * @param {*} val 需要正则校验的值
  * @param {reg} reg 正则表达式
  * @returns {Boolean}
  */
- export const regTest = (val, reg) => new RegExp(reg).test(val)
+export const regTest = (val, reg) => new RegExp(reg).test(val)
 
 /*
 **********************************************************************************************
@@ -804,15 +772,24 @@ export const getDays = function(whichYear, whichMonth) {
  * @param innerHTML 采用传入的html，不使用默认的样式
  * @举例 showToast('请输入手机号码')  // 弹出“请输入手机号码”这个提示，并且1500ms后自动消失
  */
- export const showToast = function (str, time = 1500, innerHTML = '') {
+ export const showToast = function (str, time = 1500, type = 0) {
   var pObj = document.createElement("div") // 创建，写内容
-  pObj.innerHTML = innerHTML || `
-  <div class="abs trbl0" style="z-index:99999;background-color: rgba(0, 0, 0, .7);">
-    <div style="position:fixed;top:45%;left:50%;transform: translateX(-50%);font-size:0.30rem;padding:0.2rem 0.5rem;background:#fff;color:#000;border-radius:0.15rem;">${str}</div>
-  </div>
-  ` //添加内容
+  const innerHTML = {
+    0: `<div class="nowrap" style="position:fixed;z-index:9999;top:45%;left:50%;transform: translateX(-50%);font-size:0.30rem;padding:0.2rem 0.5rem;background:#4A4A4A;color:#fff;border-radius:0.15rem;min-width:3.8rem;text-align:center;">${str}</div>`,
+    1: `<div class="nowrap" style="position:fixed;z-index:9999;top:45%;left:50%;transform: translateX(-50%);font-size:0.30rem;padding:0.2rem 0.5rem;background:#fff;color:#000;border-radius:0.15rem;min-width:3.8rem;text-align:center;">${str}</div>`,
+  }
+  pObj.innerHTML = innerHTML[type] //添加内容
   document.body.appendChild(pObj)
   setTimeout(() => document.body.removeChild(pObj), time);
+}
+/**
+ * 删除css结点
+ * @param id 需要删除的结点的id
+ * @举例 removeCss('z-loading-style')  // 删除id为z-loading-style的css结点
+ */
+export const removeCss = function (id = '') {
+  const selectDom = document.getElementById(id)
+  if(selectDom){ document.getElementsByTagName('head').item(0).removeChild(selectDom) } // 清除样式
 }
 /**
  * 往网页头部动态追加css
@@ -821,8 +798,7 @@ export const getDays = function(whichYear, whichMonth) {
  * @举例 addCss('@keyframes moveY {0%{transform: translateY(0%);}100%{transform: translateY(-100%);}}', 'z-loading-style')  // 载入移动动画样式
  */
 export const addCss = function (css = '', id = ""){
-  const selectDom = document.getElementById(id)
-  if(selectDom){ document.getElementsByTagName('head').item(0).removeChild(selectDom) } // 清除样式
+  removeCss(id) // 删除上次添加的这个id的CSS
   var styleObj = document.createElement('style')
   styleObj.id = id
   styleObj.innerHTML= css
@@ -830,13 +806,13 @@ export const addCss = function (css = '', id = ""){
   // document.head.append(styleObj)
 }
 /**
- * 删除css结点
+ * 删除DOM结点
  * @param id 需要删除的结点的id
- * @举例 removeCss('z-loading-style')  // 删除id为z-loading-style的css结点
+ * @举例 removeDom('z-loading')  // 删除id为z-loading的dom
  */
- export const removeCss = function (id = '') {
+export const removeDom = function (id = '') {
   const selectDom = document.getElementById(id)
-  if(selectDom){ document.getElementsByTagName('head').item(0).removeChild(selectDom) } // 清除样式
+  if(selectDom){ document.body.removeChild(selectDom) } // 清除DOM
 }
 /**
  * 往网页头部动态追加Dom
@@ -845,21 +821,11 @@ export const addCss = function (css = '', id = ""){
  * @举例 addDom('<div>234324</div>', 'z-loading')  // 载入的dom
  */
  export const addDom = function (dom = '', id = ""){
-  const selectDom = document.getElementById(id)
-  if(selectDom){ document.body.removeChild(selectDom) } // 清除DOM
+  removeDom(id) // 删除上次添加的这个id的DOM
   var divObj = document.createElement("div")
   divObj.id = id
   divObj.innerHTML = dom
   document.body.appendChild(divObj) // 添加Dom节点到body中
-}
-/**
- * 删除DOM结点
- * @param id 需要删除的结点的id
- * @举例 removeDom('z-loading')  // 删除id为z-loading的dom
- */
-export const removeDom = function (id = ''){
-  const selectDom = document.getElementById(id)
-  if(selectDom){ document.body.removeChild(selectDom) } // 清除DOM
 }
 /**
  * 显示DOM
@@ -930,12 +896,13 @@ export const hideLoading = function(){
  * @举例 setTitle('订餐管理系统')  // 设置首页标题为“订餐管理系统”
  */
 export const setTitle = title => document.title = title
-/**
- * 跳转
- * @param href 链接地址
- * @举例 goUrl('https://www.baidu.com')  // 跳转到百度
- */
+ /**
+  * 跳转
+  * @param href 链接地址
+  * @举例 goUrl('https://www.baidu.com')  // 跳转到百度
+  */
 export const goUrl = href => window.location.href = href
+
 /**
  * 数据结构
  */
@@ -969,6 +936,20 @@ export const obj2Map = function (obj){
   for(let k of Object.keys(obj)) { map.set(k, obj[k]) }
   return map
 }
+/**
+ * 逆转对象。
+ * @举例子 invert({ 'a': 1, 'b': 2, 'c': 1 }) -----> {1: 'c', 2: 'b'}
+ * @param {*} obj 需要逆转的对象
+ * @returns 
+ */
+ export const invert = obj => Object.keys(obj).reduce((prev, item) => ((prev[obj[item]] = item), prev), {})
+ /**
+  * 逆转对象。并且重复的键，将对应的值存在一起
+  * @举例子 invertBy({ 'a': 1, 'b': 2, 'c': 1 }) -----> {1: ['a', 'c'], 2: ['b']}
+  * @param {*} obj 需要逆转并且分类的对象
+  * @returns 
+  */
+ export const invertBy = obj => Object.keys(obj).reduce((prev, item) => ((prev[obj[item]] || (prev[obj[item]] = [])).push(item), prev), {})
 /**
  * 链表
  */

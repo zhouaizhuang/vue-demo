@@ -8,7 +8,7 @@
         </linearGradient>
       </defs>
       <circle cx="220" cy="220" r="170" class="circle-track"></circle>
-      <circle cx="220" cy="220" r="170" transform="rotate(-90 220 220)" class="circle-bar" :style="{strokeDashoffset: `${offsetVal}px`}"></circle>
+      <circle cx="220" cy="220" r="170"  stroke-linecap="round" transform="rotate(-90 220 220)" class="circle-bar" :style="{strokeDashoffset: `${offsetVal}px`}"></circle>
       <text class="text" x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">{{percent}}%</text>
     </svg>
   </div>
@@ -39,7 +39,7 @@ export default {
 </script>
 <style scoped>
 circle {
-  stroke-width: 50px;
+  stroke-width: 20px;
   fill: none;
   stroke-dasharray: 1069px;
 }

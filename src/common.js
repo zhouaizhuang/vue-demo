@@ -6,6 +6,7 @@
 export const isType = type => val => type === Object.prototype.toString.call(val).slice(8, -1)
 export const isArray = isType('Array')
 export const isObject = isType('Object')
+export const isEmptyObj = val => isObject(val) && Object.keys(val).length // 是否是空对象
 export const isReference = val => isArray(val) || isObject(val)
 export const isNull = isType('Null')
 export const isUndefined = isType('Undefined')

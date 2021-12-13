@@ -1,5 +1,5 @@
 <template>
-  <div style="width:7.5rem;" class="auto h100vh rel">
+  <div style="width:7.5rem;min-height:500px;" class="auto h100vh rel">
     <div class="fs30r tc pt30r rel zx100 gf">在移动端看效果</div>
     <!--红包-->
     <div :class="['abs trbl0 trans2 zx10 op10']" style="background-color: rgba(0, 0, 0, .7);">
@@ -15,7 +15,7 @@
         <img @click="closeRecord" src="./images/net_finish_close.png" alt="" class="abs" style="top:-1rem;right:-0.4rem;width:0.63rem;height:0.63rem;">
         <img src="./images/net_myreward.png" alt="" class="rel zx20 db" style="margin:0 auto 0.3rem;width:1.88rem;height:0.38rem;">
         <img src="./images/net_myreward_bg.png" alt="" class="abs zx10 l50 tx-50" style="top: 0.6rem;width:2.58rem;height:0.25rem;">
-        <div class="f ac xc fs34r b mb10r" style="color: #CC3421;">现金红包：100.05元</div>
+        <div class="f ac xc fs34r b mb10r" style="color: #CC3421;">现金红包: 100.05元</div>
         <div class="f ac xc fs24r g3" >请至“xxx”微信公众号，点击领奖通知，领取红包</div>
         <img src="./images/net_gift.png" alt="" class="abs b30r l50 tx-50" style="width:5.41rem;height:2.64rem;">
         <img src="./images/net_share_btn.png" alt="" class="abs l50 tx-50" style="bottom:-1.3rem;width:2.8rem;height:0.84rem;">

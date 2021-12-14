@@ -1,6 +1,6 @@
 
 <template>
-  <div>
+  <div class="h100vh ovh">
     <div class="lcdd" style="margin:200px auto;width:300px;">
       {{price}}
     </div>

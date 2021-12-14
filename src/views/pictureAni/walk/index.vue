@@ -1,7 +1,7 @@
 <!--图片帧动画-->
 <!--在线将图片制作为精灵图网址：https://www.toptal.com/developers/css/sprite-generator/-->
 <template>
-  <div>
+  <div class="h100vh ovh">
     <div class="wrapper" :style="styleObj"></div>
   </div>
 </template>

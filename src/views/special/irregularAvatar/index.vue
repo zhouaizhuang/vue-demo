@@ -1,6 +1,6 @@
 
 <template>
-  <div>
+  <div class="h100vh">
     <div class="f xc">
       <img style="width:150px;height:150px;border-radius:70% 30% 30% 70% / 60% 40% 60% 40%;object-fit:cover;object-position:right;" src="https://upload.qianfanyun.com/yjyn/ylyn_life_bg.png" />
     </div>

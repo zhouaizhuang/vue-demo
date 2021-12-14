@@ -1,7 +1,7 @@
 
 <template>
   <div class="auto pb100">
-    <div class="f ac mt50">
+    <div class="f ac pt50">
       <div class="f1 f ac">
         <div style="width:120px;">原图</div>
         <img src="https://upload.qianfanyun.com/yjyn/ylyn_life_bg.png" />

@@ -3,7 +3,7 @@
 <!--【公众号SVG路径跟随动画案例之码语奇遇记-哔哩哔哩】https://b23.tv/AUXhT4-->
 <!--更加高级的文字移动动画https://juejin.cn/post/6844903458177286151-->
 <template>
-  <div class="auto mt30" style="width:350px;">
+  <div class="auto h100vh ovh pt100" style="">
     <div class="mb30">参考链接：<a href="https://www.zhangxinxu.com/wordpress/2014/08/so-powerful-svg-smil-animation/">张鑫旭的博客</a></div>
     <div class="mb30">参考链接：<a href="https://b23.tv/AUXhT4">【公众号SVG路径跟随动画案例之码语奇遇记-哔哩哔哩】</a></div>
     <svg width="350" height="300" xmlns="http://www.w3.org/2000/svg">

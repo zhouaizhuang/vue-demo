@@ -1,5 +1,5 @@
 <template>
-  <div class="f xc ac">
+  <div class="h100vh f xc as">
     <svg width="440" height="440" viewBox="0 0 440 440">
       <defs>
         <linearGradient x1="1" y1="0" x2="0" y2="0" id="gradient">

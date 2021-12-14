@@ -1,6 +1,6 @@
 
 <template>
-  <div>
+  <div class="h100vh ovh">
     <div class="f ac fs40 mt50 tc">
       <div class="f1 text">渐变方式1</div>
       <div class="f1 text-fill-gradient">渐变方式2</div>

@@ -1,6 +1,6 @@
 <!--参考链接：https://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html-->
 <template>
-  <div class="bdc auto" style="width:350px;" >
+  <div>
     <div
       v-for="(item, index) in list"
       :key="item.id" 

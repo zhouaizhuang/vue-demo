@@ -1,5 +1,5 @@
 <template>
-  <div class="rel h100vh auto" style="width:375px;">
+  <div class="rel h100vh auto">
     <img src="./net_share_bg1.jpg" alt="" class="abs t0 l0 w100 h100vh" >
     <img src="./net_point.png" alt="" class="abs l50 tx-50 ani-tap" style="bottom:130px;width: 50.4px;height:60.2px;" />
     <div class="fs24r gf b abs w100 f ac xc aniscan" style="bottom:110px;">长按保存海报</div>

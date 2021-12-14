@@ -1,12 +1,12 @@
 <template>
-  <div style="max-width:400px;" class="w100 auto bg2 h100vh pt100">
+  <div class="auto bg2 h100vh pt100">
     <!--文字错落显示效果一-->
     <div class="f rw gf">
       <div v-for="(item, index) in textArr" :key="index" class="landIn fs30 lt5 b" :style="{animationDelay: `${index * 0.05}s`}">{{item}}</div>
     </div>
     <!--文字错落显示效果二-->
     <div class="mt100r f xc">
-      <div class="bdlrf rel f g6ee1f5 fs30r lt5r b uppercase di pl10r pr10r">
+      <div class="bdlrf rel f g6ee1f5 fs50r lt5r b uppercase di pl10r pr10r">
         <div v-for="(item, index) in text2Arr" :key="index" class="innText" :style="{animationDelay: `${Math.abs(middle - index) * 0.05}s`  }">
           {{item}}
         </div>

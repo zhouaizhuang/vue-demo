@@ -1,5 +1,5 @@
 <template>
-  <div style="width:350px;" class="auto">
+  <div class="h100vh ovh auto">
     <div class="g1890ff pt50 tc fs24">svg实现书写效果。svg可以找UI设计</div>
     <!--周-->
     <svg width="350" height="200" viewBox="0 0 700 350">

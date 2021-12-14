@@ -4,9 +4,9 @@
 /* 重置button所有默认属性 */
 button { all: unset; }
 /*取消300ms点击延时*/
-html { background-color: #fff; touch-action: manipulation;-webkit-touch-callout:none;} 
+html { background-color: #fff; touch-action: manipulation;-webkit-touch-callout:none;font-size:16px;} 
 /* IOS禁止微信调整字体大小 */
-body { -webkit-text-size-adjust: 100% !important;text-size-adjust: 100% !important;-moz-text-size-adjust: 100% !important;height:100vh;overflow-x: hidden;}
+body { -webkit-text-size-adjust: 100% !important;text-size-adjust: 100% !important;-moz-text-size-adjust: 100% !important;height:100vh;overflow-x: hidden;margin:0;}
 img {border:0; display:inline-block;} 
 input{-webkit-appearance:none;appearance:none;} /*解决ios输入框默认内阴影*/
 input, textarea, img, video, object { width:100%; box-sizing: border-box;}

@@ -1,5 +1,5 @@
 <template>
-  <div class="rel h100vh auto" style="width:375px;">
+  <div class="rel h100vh auto">
     <!--css动画实现-->
     <div class="fs40r b mb20r pt100r g1890ff">css动画实现</div>
     <h1 class="fs50r">hello world!</h1>

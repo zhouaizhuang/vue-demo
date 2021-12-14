@@ -1,6 +1,11 @@
 <template>
   <div id="app" :style="{animation:isWeChat ? animation : ''}"> <!--转场动画-->
-    <router-view/>
+    <div v-if="$route.path === '/index'">
+      <router-view/>
+    </div>
+    <div v-else style="max-width:8rem;" class="bgf5 auto">
+      <router-view />
+    </div>
   </div>
 </template>
 <script>
@@ -35,15 +40,6 @@ export default {
 }
 </script>
 <style>
-html{ touch-action: manipulation; }
-body { /* IOS禁止微信调整字体大小 */
-  -webkit-text-size-adjust: 100% !important;
-  text-size-adjust: 100% !important;
-  -moz-text-size-adjust: 100% !important;
-  margin:0;
-  padding:0;
-  overflow-x: hidden;
-}
 @keyframes pageTransGo {
   0%{ transform: translateX(100%);opacity:0 }
   100%{ transform: translateX(0%);opacity: 1; }

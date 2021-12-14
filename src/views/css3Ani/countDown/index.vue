@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="h100vh ovh">
     <div class="fs22 mt50 tc">备注：h5限时活动常见功能</div>
     <div class="fs22 tc">定位：轻量级，高度自定义</div>
     <div class="fs28 tc g1890ff" style="margin:100px auto;width:350px;">{{timeStr}}</div>

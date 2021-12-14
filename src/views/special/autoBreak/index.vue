@@ -1,6 +1,6 @@
 
 <template>
-  <div>
+  <div class="h100vh ovh">
     <!--自适应换行-->
     <div class="f rw">
       <div class="fs30 mt50 bdc auto g42b983 f ac" style="width:350px;">

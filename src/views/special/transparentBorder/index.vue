@@ -1,7 +1,7 @@
 
 <template>
-  <div style="width:350px;" class="auto">
-    <div class="box">半透明边框</div>
+  <div style="width:350px;" class="auto h100vh">
+    <div class="box auto">半透明边框</div>
     <div class="innerRadius">边框内圆角</div>
   </div>
 </template>
@@ -23,7 +23,6 @@ export default {
 .box{
   width:200px;
   padding: 12px;
-  margin: 20px auto;
   background: white;
   border: 10px solid rgba(255,0,0,0.3);
   background-clip: padding-box; /*这一行很重要* 改变背景的默认行为。默认情况下，背景的颜色会延伸至边框下层，这意味着我们设置的透明边框效果会被覆盖掉 */

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="h100vh ovh">
     <svg width="0" height="0" style="position:absolute;">
       <defs>
         <filter id="goo">

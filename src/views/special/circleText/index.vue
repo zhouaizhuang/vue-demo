@@ -1,6 +1,6 @@
 
 <template>
-  <div style="width:350px;" class="auto fs14 pt100">
+  <div class="auto fs20r h100vh ovh pt100">
     <svg viewBox="0 0 100 100">
       <path d="M 0,50 a 50,50 0 1,1 0,1 z" id="circle" />
       <text>

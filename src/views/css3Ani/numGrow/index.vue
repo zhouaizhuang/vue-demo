@@ -1,11 +1,11 @@
 
 <template>
-  <div class="ovh" style="margin: 100px auto;width:300px;">
-    <div class="mb30">每隔3秒滚动一次。可以自定义滚动数据</div>
+  <div class="ovh h100vh" style="width:300px;">
+    <div class="mb30 mt100">每隔3秒滚动一次。可以自定义滚动数据</div>
     <div class="mb30">移动端和PC端均可使用</div>
     <!--1、块级模式-->
     <div class="mt30 g1890ff">块级模式:</div>
-    <div class="fs24 f as rel bdc ovh" style="height:40px">
+    <div class="fs24 f as rel ovh bgf" style="height:40px">
       <div class="f xc rw" v-for="(item, index) in playerArr" :key="index" style="width:20px;">
         <div class="w100" :style="{transition: 'all ease 1.5s', transform: `translateY(${item * -40}px)`}">
           <div class="f ac xc" style="height:40px;" v-for="item in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]" :key="item">{{item}}</div>
@@ -15,7 +15,7 @@
     <!--2、内联模式-->
     <div class="mt30 g1890ff">内联模式:</div>
     <div class="f ac">
-      <div class="fs24 f rel ovh" style="height:40px;">
+      <div class="fs24 f rel ovh bgf" style="height:40px;">
         <div class="f rw" v-for="(item, index) in playerArr" :key="index" style="width:20px;">
           <div class="w100" :style="{transition: 'all ease 1.5s', transform: `translateY(${item * -40}px)`}">
             <div class="f ac xc" style="height:40px;" v-for="item in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]" :key="item">{{item}}</div>

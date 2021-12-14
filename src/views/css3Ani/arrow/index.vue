@@ -1,5 +1,5 @@
 <template>
-  <div style="width:350px;" class="auto">
+  <div class="h100vh ovh">
     <div class="fs16 tc mt50">备注：<span class="gf10000">动画开始时间</span>可以设置<span class="gf10000">为负数</span>。这样能保证一进入页面动画已经在播放中</div>
     <div class="fs16 tc">在一些场景需要有时间差的开始动画，但是一进入页面又希望他们都在动起来了，就非常有用</div>
     <div class="rel" style="height:300px;width:350px;margin:100px auto;">

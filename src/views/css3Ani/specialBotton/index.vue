@@ -1,6 +1,6 @@
 
 <template>
-  <div class="h100vh">
+  <div class="h100vh ovh">
     <!--呼吸按钮-->
     <img src="./free_contract.png" class="breath-btn auto db mt50" style="width:370px;height:58px;" />
     <!-- <HelloWorld :msg="'123'" @sayName="sayName"></HelloWorld> -->

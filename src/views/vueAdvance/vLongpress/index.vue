@@ -1,7 +1,7 @@
 
 <template>
-  <div class="auto fs20r h100vh ovh pt30 rel">
-    <div class="fs30r gf bg1890ff rds50r f ac xc pt20r pb20r w40 auto" v-longpress="longpress1">长按1s</div>
+  <div class="auto fs20r h100vh ovh rel">
+    <div class="fs30r gf bg1890ff rds50r f ac xc pt20r pb20r w40 auto mt30r" v-longpress="longpress1">长按1s</div>
   </div>
 </template>
 <script>

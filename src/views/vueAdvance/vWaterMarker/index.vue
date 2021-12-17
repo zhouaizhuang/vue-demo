@@ -1,7 +1,7 @@
 
 <template>
-  <div class="auto fs20r h100vh ovh pt30 bgf">
-     <div v-waterMarker="{text:'xx公司版权所有',textColor:'rgba(180, 180, 180, 0.4)'}" style="height:500px">123123121</div>
+  <div class="auto fs20r h100vh ovh bgf">
+     <div v-waterMarker="{text:'xx公司版权所有',textColor:'rgba(180, 180, 180, 0.4)'}" class="h100vh">123123121</div>
   </div>
 </template>
 <script>

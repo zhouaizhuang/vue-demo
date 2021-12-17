@@ -1,8 +1,8 @@
 
 <template>
-  <div class="auto fs20r h100vh ovh pt30">
+  <div class="auto fs20r h100vh ovh">
     <!--v-permission权限控制-->
-    <div class="fs40r tc mb20r">v-permission权限控制</div>
+    <div class="fs40r tc mb20r pt30">v-permission权限控制</div>
     <div class="f ac pl50r mb30r">
       <div class="fs30r mr20r b">首页权限:</div>
       <div class="f1 f ac xs">

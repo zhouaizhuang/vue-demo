@@ -5,4 +5,5 @@ export default [
   { path: '/vThrottie', name: 'vThrottie', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vThrottie/index.vue') },
   { path: '/vWaterMarker', name: 'vWaterMarker', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vWaterMarker/index.vue') },
   { path: '/vDraggable', name: 'vDraggable', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vDraggable/index.vue') },
+  { path: '/vLongpress', name: 'vLongpress', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vLongpress/index.vue') },
 ]

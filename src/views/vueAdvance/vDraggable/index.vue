@@ -9,17 +9,9 @@ export default {
   name: 'vDraggable',
   data(){
     return {
-      debounceTimes: 0,
-      throttieTimes: 0
     }
   },
   methods:{
-    debounceRefresh(){
-      this.debounceTimes++
-    },
-    throttieRefresh(){
-      this.throttieTimes++
-    }
   },
   created(){
    

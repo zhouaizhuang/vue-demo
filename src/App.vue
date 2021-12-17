@@ -19,9 +19,8 @@ export default {
   },
   watch: {
     $route(to, from) {
-      const r = require.context('./router/module', true, /\.js/)
+      const r = require.context('./router/modules', true, /\.js/)
       const pathStr = r.keys().reduce((prev, item) => {
-        if(item === './index.js') { return prev } // index.js是当前的根路由文件
         const routeItem = r(item).default
         prev += getField(routeItem, 'path') + ','
         return prev

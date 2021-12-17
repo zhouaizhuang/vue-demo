@@ -76,6 +76,14 @@
     <div class="f xs ac rw">
       <div class="db w20 pb30 min180px"><router-link class="g42b983" to="/barChart">柱状图</router-link></div>
     </div>
+    <div class="fs50r b mt30 mb20 tc">Vue进阶</div>
+    <div class="f xs ac rw">
+      <div class="db w20 pb30 min180px"><router-link class="g42b983" to="/vPermission">v-permission</router-link></div>
+      <div class="db w20 pb30 min180px"><router-link class="g42b983" to="/vCopy">v-copy</router-link></div>
+      <div class="db w20 pb30 min180px"><router-link class="g42b983" to="/vDebounce">v-debounce</router-link></div>
+      <div class="db w20 pb30 min180px"><router-link class="g42b983" to="/vThrottie">v-throttie</router-link></div>
+      <div class="db w20 pb30 min180px"><router-link class="g42b983" to="/vWaterMarker">v-waterMarker</router-link></div>
+    </div>
   </div>
 </template>
 <script>
@@ -96,5 +104,5 @@ export default {
 .min180px{min-width:180px;}
 /**PC端和移动端做适配 */
 @media screen and (min-width: 320px) {.indexFontSize{font-size: 0.3rem !important;}}
-@media screen and (min-width: 640px) {.indexFontSize{font-size: 0.2rem !important;}} 
+/* @media screen and (min-width: 640px) {.indexFontSize{font-size: 0.28rem !important;}}  */
 </style>

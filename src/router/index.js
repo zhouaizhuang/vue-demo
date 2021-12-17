@@ -3,9 +3,8 @@ import VueRouter from 'vue-router'
 import index from '../views/index.vue'
 Vue.use(VueRouter)
 // 批量读取路由
-const r = require.context('.', true, /\.js/)
+const r = require.context('./modules', true, /\.js/)
 const routerList = r.keys().reduce((prev, item) => {
-  if(item === './index.js') { return prev } // index.js是当前的根路由文件
   const routeItem = r(item).default
   return Array.isArray(routeItem) ? [...prev, ...routeItem] : [...prev, routeItem]
 }, [])

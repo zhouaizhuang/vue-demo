@@ -12,7 +12,6 @@ export const longpress = {
       }
       if (pressTimer === null) {
         pressTimer = setTimeout(() => {
-          console.log('start')
           handler()
         }, 1000)
       }

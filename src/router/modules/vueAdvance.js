@@ -4,5 +4,5 @@ export default [
   { path: '/vDebounce', name: 'vDebounce', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vDebounce/index.vue') },
   { path: '/vThrottie', name: 'vThrottie', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vThrottie/index.vue') },
   { path: '/vWaterMarker', name: 'vWaterMarker', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vWaterMarker/index.vue') },
-  { path: '/cusDirectives', name: 'cusDirectives', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/cusDirectives/index.vue') },
+  { path: '/vDraggable', name: 'vDraggable', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vDraggable/index.vue') },
 ]

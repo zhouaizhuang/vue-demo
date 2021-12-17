@@ -11,6 +11,7 @@ export const permission = {
     const { value } = binding
     // 在前置路由拦截获取权限按钮列表后存储在 store 中
     // const actionList = store.state.user.permission
+    /**暂时没有后端，暂且前端写死权限 */
     setLocalStorage('permission', ['/index', '/detail', '/detailEdit', '/customer/index', '/customer/detail', '/customer/detailEdit'])
     const permissionList = getLocalStorage('permission') // 备注：这里权限获取方式，到底是从vuex中获取还是localstorage中获取。要看项目
     if (value) {

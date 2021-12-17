@@ -83,6 +83,7 @@
       <div class="db w20 pb30 min180px"><router-link class="g42b983" to="/vDebounce">v-debounce</router-link></div>
       <div class="db w20 pb30 min180px"><router-link class="g42b983" to="/vThrottie">v-throttie</router-link></div>
       <div class="db w20 pb30 min180px"><router-link class="g42b983" to="/vWaterMarker">v-waterMarker</router-link></div>
+      <!-- <div class="db w20 pb30 min180px"><router-link class="g42b983" to="/vDraggable">v-draggable</router-link></div> -->
     </div>
   </div>
 </template>

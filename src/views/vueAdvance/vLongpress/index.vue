@@ -5,6 +5,7 @@
   </div>
 </template>
 <script>
+import { noCopy } from '../../../common'
 export default {
   name: 'vDraggable',
   data(){
@@ -17,12 +18,7 @@ export default {
     }
   },
   created(){
-    // 禁止复制
-    ['contextmenu', 'selectstart', 'copy'].forEach(function(ev){
-      document.addEventListener(ev, function(event){
-        return event.returnValue = false
-      })
-    })
+    // noCopy()
   }
 }
 </script>

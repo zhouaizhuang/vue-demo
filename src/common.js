@@ -535,13 +535,13 @@ export const random = function (lower, upper, type = 'float') {
   return `rgba(${r}, ${g}, ${b}, ${a})`
 }
 // 禁止复制
-/*
-['contextmenu', 'selectstart', 'copy'].forEach(function(ev){
+export const noCopy = function () {
+  ['contextmenu', 'selectstart', 'copy'].forEach(function(ev){
     document.addEventListener(ev, function(event){
       return event.returnValue = false
     })
-})
-*/
+  })
+}
 /**
  * 获取部分字段。举例：
  * @param obj 需要读取的对象

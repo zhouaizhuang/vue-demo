@@ -35,12 +35,6 @@ export default {
   },
   created(){
     this.isWeChat = isWeChat;
-    // 禁止复制
-    ['contextmenu', 'selectstart', 'copy'].forEach(function(ev){
-      document.addEventListener(ev, function(event){
-        return event.returnValue = false
-      })
-    })
   }
 }
 </script>

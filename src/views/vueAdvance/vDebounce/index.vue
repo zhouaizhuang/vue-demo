@@ -8,6 +8,7 @@
   </div>
 </template>
 <script>
+import { noCopy } from '../../../common'
 export default {
   name: 'vDebounce',
   data(){
@@ -21,7 +22,7 @@ export default {
     },
   },
   created(){
-   
+    // noCopy()
   }
 }
 </script>

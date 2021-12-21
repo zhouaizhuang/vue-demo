@@ -78,7 +78,7 @@
     </div>
     <div class="fs50r b mt30 mb20 tc">Vue进阶</div>
     <div class="f">
-      <div class="pr20r b">vue指令：</div>
+      <div class="pr20r b" style="width:2.2rem;">vue指令：</div>
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min180px"><router-link class="g42b983" to="/vPermission">v-permission</router-link></div>
         <div class="db w20 pb30 min180px"><router-link class="g42b983" to="/vCopy">v-copy</router-link></div>
@@ -90,10 +90,11 @@
       </div>
     </div>
     <div class="f">
-      <div class="pr20r b">vue组件传值：</div>
+      <div class="pr20r b" style="width:2.2rem;">vue组件传值：</div>
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min180px"><router-link class="g42b983" to="/propsEmit">props、$emit</router-link></div>
         <div class="db w20 pb30 min180px"><router-link class="g42b983" to="/parentChild">$parent、$children</router-link></div>
+        <div class="db w20 pb30 min180px"><router-link class="g42b983" to="/eventBus">eventBus</router-link></div>
       </div>
     </div>
   </div>

@@ -11,4 +11,5 @@ export default [
   { path: '/eventBus', name: 'eventBus', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/eventBus/index.vue') },
   { path: '/attrsListeners', name: 'attrsListeners', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/attrsListeners/father.vue') },
   { path: '/provideInject', name: 'provideInject', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/provideInject/father.vue') },
+  { path: '/refs', name: 'refs', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/refs/father.vue') },
 ]

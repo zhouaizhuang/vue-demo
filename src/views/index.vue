@@ -95,6 +95,7 @@
         <div class="db w20 pb30 min180px"><router-link class="g42b983" to="/propsEmit">props、$emit</router-link></div>
         <div class="db w20 pb30 min180px"><router-link class="g42b983" to="/parentChild">$parent、$children</router-link></div>
         <div class="db w20 pb30 min180px"><router-link class="g42b983" to="/eventBus">eventBus</router-link></div>
+        <div class="db w20 pb30 min180px"><router-link class="g42b983" to="/attrsListeners">attrsListeners</router-link></div>
       </div>
     </div>
   </div>

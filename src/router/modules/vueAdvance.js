@@ -6,4 +6,5 @@ export default [
   { path: '/vWaterMarker', name: 'vWaterMarker', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vWaterMarker/index.vue') },
   { path: '/vDraggable', name: 'vDraggable', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vDraggable/index.vue') },
   { path: '/vLongpress', name: 'vLongpress', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vLongpress/index.vue') },
+  { path: '/propsEmit', name: 'propsEmit', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/propsEmit/father.vue') },
 ]

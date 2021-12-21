@@ -93,6 +93,7 @@
       <div class="pr20r b">vue组件传值：</div>
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min180px"><router-link class="g42b983" to="/propsEmit">props、$emit</router-link></div>
+        <div class="db w20 pb30 min180px"><router-link class="g42b983" to="/parentChild">$parent、$children</router-link></div>
       </div>
     </div>
   </div>

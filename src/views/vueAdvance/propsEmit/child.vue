@@ -1,6 +1,7 @@
 
 <template>
-  <div class="auto fs20r h100vh mt30r">
+  <div class="ml30r mr30r pt30r pb30r pl30r pr30r bdc fs20r mt30r">
+    <div class="fs30r b mb20r">子组件</div>
     <div class="mb20r">{{msg}}</div>
     <div class="mb20r">姓名: {{info.name}}</div>
     <div class="mb20r">学校: {{info.school}}</div>

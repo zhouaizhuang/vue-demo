@@ -12,4 +12,5 @@ export default [
   { path: '/attrsListeners', name: 'attrsListeners', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/attrsListeners/father.vue') },
   { path: '/provideInject', name: 'provideInject', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/provideInject/father.vue') },
   { path: '/refs', name: 'refs', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/refs/father.vue') },
+  { path: '/useVuex', name: 'useVuex', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/useVuex/index.vue') },
 ]

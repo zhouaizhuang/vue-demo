@@ -98,6 +98,7 @@
         <div class="db w20 pb30 min180px"><router-link class="g42b983" to="/attrsListeners">$attrs、$listeners</router-link></div>
         <div class="db w20 pb30 min180px"><router-link class="g42b983" to="/provideInject">$provide、$inject</router-link></div>
         <div class="db w20 pb30 min180px"><router-link class="g42b983" to="/refs">refs</router-link></div>
+        <div class="db w20 pb30 min180px"><router-link class="g42b983" to="/useVuex">vuex</router-link></div>
       </div>
     </div>
   </div>

@@ -1,3 +1,4 @@
+import router from './router'
 /*
 **********************************************************************************************
 ******************************************公共方法*********************************************
@@ -32,6 +33,18 @@ export const isChrome = UA && /chrome\/\d+/.test(UA) && !isEdge
 export const isPhantomJS = UA && /phantomjs/.test(UA)
 export const isFF = UA && UA.match(/firefox\/(\d+)/)
 export const isPhone = val => /^1[3456789]\d{9}$/.test(val) // 检测是否是手机号码
+// 去某个页面
+export const go = function(options = {}) {
+  router.push({
+    path: '', // 路由路径
+    name: '', // 路由名称
+    query: {}, // 通过this.$route.query.id获取。刷新没问题。因为数据是在url上的
+    params: {}, // 通过this.$route.params.id。刷新，传入当前页面的数据会丢失
+    ...options
+  }) 
+}
+// 返回几层
+export const goBack = (times = -1) => router.go(times) // 返回times页面
 // 执行此函数，可以做一个延时功能。在需要延时执行一段逻辑的时候可以使用
 // 举例子: await wait(500);   那么程序会在此处阻塞等待500ms
 export const wait = t => new Promise(resolve => setTimeout(() => resolve(), t))

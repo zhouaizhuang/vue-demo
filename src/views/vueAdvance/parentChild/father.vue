@@ -2,7 +2,8 @@
 <template>
   <div class="auto fs20r h100vh fs50r">
     我是父组件:
-    <child :msg="'我是来自父组件的数据'" :age="20" />
+    <div @click="doClick" class="pl20r pb20r pt20r pl30r pr30r bg1890ff gf w40 rds20r f ac xc fs28r">执行子组件方法</div>
+    <child />
   </div>
 </template>
 <script>
@@ -14,12 +15,16 @@ export default {
   },
   data(){
     return {
-      name: '父组件名称'
+      name: '张三',
+      age: 20
     }
   },
   methods:{
     doParent(){
-      console.log('doParent')
+      alert('执行了父组件方法')
+    },
+    doClick(){
+      this.$children[0].doChild() // 2、父组件调用子组件的方法
     }
   },
   created(){
@@ -28,7 +33,6 @@ export default {
     const children = this.$children[0]
     console.log('=====父组件开始操作======')
     console.log(children.name) // 1、父组件访问子组件的数据
-    children.doChild() // 2、父组件调用子组件的方法
   },
 }
 </script>

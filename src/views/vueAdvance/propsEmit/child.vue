@@ -7,6 +7,7 @@
     <div class="mb20r">学校: {{info.school}}</div>
     <div class="mb20r">年龄: {{info.age}}</div>
     <div class="mb20r">状态: {{state}}</div>
+    <div @click="doClick" class="pl20r pb20r pt20r pl30r pr30r bg1890ff gf w40 rds20r f ac xc fs28r">执行父组件事件</div>
   </div>
 </template>
 <script>
@@ -35,7 +36,9 @@ export default {
     }
   },
   methods:{
-    
+    doClick(){
+      this.$emit('sayHello')
+    }
   },
   created(){
   }

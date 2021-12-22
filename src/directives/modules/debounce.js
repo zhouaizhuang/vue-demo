@@ -12,7 +12,7 @@ export const debounce = {
   bind: function (el, binding) {
     try {
       let fn, event = "click", time = 500;
-      if (typeof binding.value == 'function') {
+      if (typeof binding.value == 'function') { // 值传入函数的话。那么监听事件就是默认值click，延迟事件就是默认的500ms
         fn = binding.value
       } else {
         [fn, event = "click", time = 500] = binding.value

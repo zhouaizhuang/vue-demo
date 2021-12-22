@@ -10,10 +10,10 @@
   </div>
 </template>
 <script>
-import common from "./common.vue"
+import myMixIn from "./myMixIn.js"
 export default {
   name: 'mixIn',
-  mixins: [common],
+  mixins: [myMixIn],
   data(){
     return {
       age: 18 // 当前组件可以覆盖mixIn中的数据

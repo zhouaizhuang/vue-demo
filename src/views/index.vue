@@ -104,8 +104,14 @@
     <div class="f">
       <div class="pr20r b" style="width:2.2rem;">vue逻辑复用:</div>
       <div class="f1 f xs ac rw">
-        <div class="db w20 pb30 min180px"><router-link class="g42b983" to="/mixIn">mixIn</router-link></div>
-        <div class="db w20 pb30 min180px"><router-link class="g42b983" to="/vSlot">vSlot</router-link></div>
+        <div class="db w20 pb30 min180px"><router-link class="g42b983" to="/mixIn">混入:mixIn</router-link></div>
+        <div class="db w20 pb30 min180px"><router-link class="g42b983" to="/vSlot">高阶组件:vSlot</router-link></div>
+      </div>
+    </div>
+    <div class="f">
+      <div class="pr20r b" style="width:2.2rem;">vue动画:</div>
+      <div class="f1 f xs ac rw">
+        <div class="db w20 pb30 min180px"><router-link class="g42b983" to="/vueAni">vue动画</router-link></div>
       </div>
     </div>
   </div>

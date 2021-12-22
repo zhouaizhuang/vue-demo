@@ -26,7 +26,7 @@ export const copy = {
       textarea.select()
       const result = document.execCommand('Copy')
       if (result) {
-        console.log('复制成功') // 可根据项目UI仔细设计
+        alert('复制成功') // 可根据项目UI仔细设计
       }
       document.body.removeChild(textarea)
     }

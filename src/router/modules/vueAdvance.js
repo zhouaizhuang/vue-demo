@@ -14,4 +14,5 @@ export default [
   { path: '/refs', name: 'refs', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/refs/father.vue') },
   { path: '/useVuex', name: 'useVuex', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/useVuex/index.vue') },
   { path: '/mixIn', name: 'mixIn', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/mixIn/index.vue') },
+  { path: '/vSlot', name: 'vSlot', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vSlot/index.vue') },
 ]

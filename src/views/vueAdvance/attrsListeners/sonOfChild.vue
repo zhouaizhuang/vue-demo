@@ -4,6 +4,7 @@
     <div class="fs28r b">孙子组件</div>
     <div>{{name}}</div>
     <div>{{age}}</div>
+    <div @click="doClick" class="pl20r pb20r pt20r pl30r pr30r bg1890ff gf w40 rds20r f ac xc fs28r">执行父组件事件</div>
   </div>
 </template>
 <script>
@@ -25,6 +26,9 @@ export default {
     }
   },
   methods:{
+    doClick(){
+      this.$listeners.sayHello('我是孙子组件数据')
+    }
   },
   created(){
   },

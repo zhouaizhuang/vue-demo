@@ -18,7 +18,8 @@ export default {
   },
   methods:{
     sayHello(val){
-      console.log('hello', val)
+      console.log(val)
+      alert('hello，我是父组件的方法')
     }
   },
   created(){

@@ -8,10 +8,10 @@ export default {
   },
   methods:{
     sayHello(){
-      console.log('hello...')
+      alert('hello...')
     },
     sayHi(){
-      console.log('hi...')
+      alert('hi...')
     }
   },
   created() {

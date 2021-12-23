@@ -21,7 +21,7 @@ export default {
   },
   methods:{
     sayHi() { // 这里是相当于覆盖了mixIn中的sayHi方法
-      console.log('hi!!!!')
+      alert('hi!!!!')
     }
   },
   created() {

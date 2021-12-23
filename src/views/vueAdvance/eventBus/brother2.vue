@@ -1,7 +1,10 @@
 
 <template>
-  <div class="auto fs20r fs30r">
-    兄弟组件二
+  <div class="auto fs20r fs30r mt30r">
+    <div class="f ac">
+      <div>兄弟组件二：</div>
+      <div @click="doClick" class="pl20r pb20r pt20r pl30r pr30r bg1890ff gf w40 rds20r f ac xc fs28r">执行父组件事件</div>
+    </div>
   </div>
 </template>
 <script>
@@ -16,10 +19,13 @@ export default {
   methods:{
     brother2(){
       console.log('brother2')
+    },
+    doClick(){
+      eventBus.$emit('busClick', '执行了兄弟组件一的函数')
     }
   },
   created() {
-    eventBus.$emit('busClick', '我是来自A页面的信息')
+    
   },
   mounted() {
     // const children = this.$children[0]

@@ -1,7 +1,7 @@
 
 <template>
   <div class="auto fs20r fs30r">
-    兄弟组件一
+    兄弟组件一：注册事件到事件中心
   </div>
 </template>
 <script>
@@ -18,7 +18,7 @@ export default {
   },
   created() {
     eventBus.$on('busClick', res => {
-      console.log(res, '监听到了')
+      alert(res)
     })
   },
   mounted() {

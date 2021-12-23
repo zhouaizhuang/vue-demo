@@ -13,7 +13,7 @@ export default {
   },
   methods:{
     doClick(){
-      console.log('这是子组件方法调用')
+      alert('调用了子组件的方法')
     }
   },
   created(){

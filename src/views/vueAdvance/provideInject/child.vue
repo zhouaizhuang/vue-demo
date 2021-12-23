@@ -4,7 +4,8 @@
     <div class="fs30r b">子组件</div>
     <div class="mb20r">{{name}}</div>
     <div class="mb20r">{{age}}</div>
-    <sonOfChild />
+    <div @click="doClick" class="pl20r pb20r pt20r pl30r pr30r bg1890ff gf w40 rds20r f ac xc fs28r">执行父组件事件</div>
+    <sonOfChild v-on="$listeners"/>
   </div>
 </template>
 <script>
@@ -21,7 +22,6 @@ export default {
   },
   methods:{
     doClick(){
-      // this.$emit('sayHello', '我是子组件数据') // 
       this.$listeners.sayHello('我是子组件数据')
     }
   },

@@ -2,7 +2,7 @@
 <template>
   <div class="auto fs20r h100vh fs50r">
     我是父组件:
-    <child />
+    <child @sayHello="sayHello" />
   </div>
 </template>
 <script>
@@ -24,7 +24,8 @@ export default {
   },
   methods:{
     sayHello(val){
-      console.log('hello', val)
+      console.log(val);
+      alert('hello, 父组件的函数被执行')
     }
   },
   created(){

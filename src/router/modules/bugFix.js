@@ -1,3 +1,3 @@
 export default [
-  { path: '/scrollThrough', name: 'scrollThrough', component: () => import(/* webpackChunkName: "aeAni" */ '../../views/bugFix/scrollThrough/index.vue') },
+  { path: '/scrollThrough', name: 'scrollThrough', component: () => import(/* webpackChunkName: "bugFix" */ '../../views/bugFix/scrollThrough/index.vue') },
 ]

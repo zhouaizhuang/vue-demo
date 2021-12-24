@@ -23,7 +23,7 @@ const isCanShow = (item) =>{
   return false
 }
 const addListener = (ele,binding) =>{
-  let [src, defaultImg] = ['', 'https://gw.alicdn.com/tps/i1/TB147JCLFXXXXc1XVXXxGsw1VXX-112-168.png']
+  let [src, defaultImg] = ['', 'https://gw.alicdn.com/tps/i1/TB147JCLFXXXXc1XVXXxGsw1VXX-112-168.png'] // 这里是默认显示的图片
   const bindVal = binding.value
   if (typeof bindVal == 'string') { // 值传入函数的话。那么监听事件就是默认值click，延迟事件就是默认的500ms
     src = bindVal

@@ -13,7 +13,7 @@ const isCanShow = (item) =>{
     var image = new Image()
     image.src = src
     image.onload = function() {
-      console.log('开始渲染图片')
+      // console.log('开始渲染图片')
       ele.src = src;
       imageCatcheList.push(src)
       remove(listenList, item)

@@ -17,9 +17,7 @@
       </svg>
       <div class="fs16 g3">下拉加载更多...</div>
     </div>
-    <div v-else class="fs16 g3 tc pt10 pb10">
-      沒有更多了
-    </div>
+    <div v-else class="fs16 g3 tc pt10 pb10">沒有更多了</div>
   </div>
 </template>
 <script>
@@ -54,9 +52,7 @@ export default {
           if(intersectionRatio > 0) {
             this.page += 1
             console.log(`下拉加载更多进入了可视区。开始加载第${this.page + 1}页数据`)
-            setTimeout(() => {
-              this.getData()
-            }, 200) // 通过演示模拟接口请求耗时
+            setTimeout(() => this.getData(), 200) // 通过演示模拟接口请求耗时
           }
         })
       }, {
@@ -68,8 +64,8 @@ export default {
     }
   },
   created(){
-    const allData = repeat([1,2,3,4,5,6,7,8,9,10], 5)
-    // console.log(allData) // 构造出全部数据
+    const allData = repeat([1,2,3,4,5,6,7,8,9,10], 5) // 构造出全部数据
+    // console.log(allData)
     this.allList = chunk(allData, 10) // 数组分块
     this.getData()
   },

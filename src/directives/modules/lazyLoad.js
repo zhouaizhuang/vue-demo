@@ -45,10 +45,9 @@ const addListener = (ele,binding) =>{
 }
 /**
  * 图片懒加载指令
- * @param {Function} fn - 执行事件
- * @param {?String|"click"} event - 事件类型 例："click"
- * @param {?Number|500} time - 间隔时间
- * @param {Array} binding.value - [fn,event,time]
+ * @ {item} fn - 执行事件
+ * @param {String} item - 图片链接  例："https://upload.qianfanyun.com/jj_design_bnt.png"
+ * @param {Array} binding.value - [item, defaultImg]  第一个参数是图片，第二个参数是默认图片
  * 使用默认图片<img v-for="(item, index) in imgArr" :key="index" v-lazyLoad="item" style="width:300px;height:50px;" class="db auto mb50r">
  * 主动传入设置的默认图片： <img v-for="(item, index) in imgArr" :key="index" v-lazyLoad="[item, 'https://upload.qianfanyun.com/jj_design_check.png']" style="width:300px;height:50px;" class="db auto mb50r">
  */

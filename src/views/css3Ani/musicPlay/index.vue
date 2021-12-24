@@ -16,10 +16,20 @@ export default {
 
   },
   mounted(){
+    // 对于微信浏览器这样内置的浏览器还需要监听其应用的SDK加载完成才能触发上述代码，以保障WebView正常渲染
+    document.addEventListener("wexinJSBridgeReady", () => {
+      let audioRef = this.$refs.audio  // 获取DOM！采用原生也可。html上定义一个id="audio" ----> js直接获取：document.querySelector('#audio');
+      audioRef.play()
+    })
+    // 苹果系统明确规定用户交互操作开始后才能播放媒体。未得到用户的响应会被Safari自动拦截
+    document.body.addEventListener("touchStart", () => {
+      let audioRef = this.$refs.audio
+      audioRef.play()
+    }, {once: true})
   },
   methods: {
     onOff(){
-      let audioRef = this.$refs.audio // 获取DOM！采用原生也可。html上定义一个id="audio" ----> js直接获取：document.querySelector('#audio');
+      let audioRef = this.$refs.audio
       this.isOn = !this.isOn
       this.isOn ? audioRef.play() : audioRef.pause()
     },

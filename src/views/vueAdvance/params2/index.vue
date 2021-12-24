@@ -8,17 +8,14 @@
 </template>
 <script>
 export default {
-  name: 'params1',
+  name: 'params2',
   data(){
     return {
-      name: '张三',
-      age: 20
     }
   },
   methods:{
   },
   created(){
-    console.log(this.$route.params.id)
   },
   mounted(){
   },

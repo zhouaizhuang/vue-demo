@@ -114,6 +114,7 @@
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min180px"><router-link class="g42b983" to="/params1/123">params动态路由传参</router-link></div>
         <div class="db w20 pb30 min180px g42b983 tdu poi" @click="$router.push({ name: 'params2', params: {id: 123}})">params路由传参</div>
+        <div class="db w20 pb30 min180px g42b983 tdu poi" @click="$router.push({ name: 'query1', query: {id: 123}})">params路由传参</div>
       </div>
     </div>
     <div class="f">

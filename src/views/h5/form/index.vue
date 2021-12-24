@@ -34,12 +34,16 @@
           <label v-if="!letterObj.value " class="g5C6579 abs t50 ty-50 fs28r ga0aac0" for="letter" style="left: 0.15rem;">请输入文字</label>
         </div>
       </div>
+      <!--文本框-->
       <div class="f f ac mb40r">
         <div class="f fs28r lt5r require" style="width:3rem;">文本框:</div>
         <div class="f1 rel fs28r rds10r">
             <textarea name="" id="" cols="50" rows="10" class="db w100" v-model="textAreaObj.value" placeholder="请输入文字" />
         </div>
       </div>
+      <input type="file" acccect="image/*" /> <!--选择照片、拍摄照片-->
+      <input type="file" accept="video/" /> <!--选择视频或拍摄视频-->
+      <input type="file" multiple /> <!--多选文件-->
     </div>
   </div>
 </template>

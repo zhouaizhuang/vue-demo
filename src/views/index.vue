@@ -97,6 +97,7 @@
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vWaterMarker">v-waterMarker</router-link></div>
         <!-- <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vDraggable">v-draggable</router-link></div> -->
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vLongpress">v-longpress</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vLazyLoad">v-lazyLoad</router-link></div>
       </div>
     </div>
     <div class="f">

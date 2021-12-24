@@ -7,6 +7,7 @@ export default [
   { path: '/vDraggable', name: 'vDraggable', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vDraggable/index.vue') },
   { path: '/vLongpress', name: 'vLongpress', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vLongpress/index.vue') },
   { path: '/vLazyLoad', name: 'vLazyLoad', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vLazyLoad/index.vue') },
+  { path: '/vReachBottom', name: 'vReachBottom', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vReachBottom/index.vue') },
   { path: '/propsEmit', name: 'propsEmit', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/propsEmit/father.vue') },
   { path: '/parentChild', name: 'parentChild', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/parentChild/father.vue') },
   { path: '/eventBus', name: 'eventBus', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/eventBus/index.vue') },

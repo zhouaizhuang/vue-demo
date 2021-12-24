@@ -19,6 +19,11 @@
       <div class="fs30r f ac xc w30 bg1890ff rds40r gf pt20r pb20r" @click="remove">-2</div>
       <div class="fs30r f ac xc w30 bg1890ff rds40r gf pt20r pb20r" @click="removeAsync">异步-2</div>
     </div>
+    <!--解决vuex刷新数据丢失问题-->
+    <div class="fs40r b mt100r">解决vuex刷新数据丢失问题</div>
+    <div class="fs30r f ac xc w40 bg1890ff rds40r gf pt20r pb20r" @click="getUserInfo">点击获取用户信息</div>
+    <div class="fs30r pt30r pl30r mb20r">用户名--->{{$store.state.userInfo.name }}</div>
+    <div class="fs30r pt30r pl30r mb20r">年龄--->{{$store.state.userInfo.age }}</div>
   </div>
 </template>
 <script>
@@ -44,6 +49,11 @@ export default {
     },
     removeAsync(){
       this.$store.dispatch('substractAsync')
+    },
+    getUserInfo(){
+      setTimeout(() => {
+        this.$store.commit('setUserInfo', {name: '张三', age: 18})
+      }, 600)
     }
   },
   created(){

@@ -114,6 +114,9 @@ export const query = selector => document.querySelector(selector)
 // 本地存储
 export const getLocalStorage = name => JSON.parse(localStorage.getItem(name))
 export const setLocalStorage = (name, val) => localStorage.setItem(name, JSON.stringify(val))
+// 会话存储
+export const getSessionStorage = name => JSON.parse(sessionStorage.getItem(name))
+export const setSessionStorage = (name, val) => sessionStorage.setItem(name, JSON.stringify(val))
 // 获取操作系统类型
 export const getOS = function() {
   const userAgent = 'navigator' in window && 'userAgent' in navigator && navigator.userAgent.toLowerCase() || ''

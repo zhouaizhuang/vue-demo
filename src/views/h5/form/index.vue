@@ -28,8 +28,8 @@
       </div>
       <!--禁止大写-->
       <div class="f f ac mb40r">
-        <div class="f fs28r lt5r require" style="width:3rem;">禁止首字母大写:</div>
-        <div class="f1 rel fs28r rds10r bdc" style="height: 0.7rem;">
+        <div class="f fs28r lt5r require" style="width:3rem;">取消首字母大写:</div>
+        <div class="f1 rel fs28r bde5" style="height: 0.7rem;">
           <input  type="text" autocapitalize="none" autocorrect="off" @input="inputLetter" v-model="letterObj.value" id='letter' :class="['h90 bd0 abs borderBox w98 pl5r db b fs28r', letterObj.state ? 'g5e667a' : 'gred']" style="top:0.03rem;left:0.03rem;" />
           <label v-if="!letterObj.value " class="g5C6579 abs t50 ty-50 fs28r ga0aac0" for="letter" style="left: 0.15rem;">请输入文字</label>
         </div>

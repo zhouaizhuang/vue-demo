@@ -16,4 +16,5 @@ export default [
   { path: '/mixIn', name: 'mixIn', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/mixIn/index.vue') },
   { path: '/vSlot', name: 'vSlot', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vSlot/index.vue') },
   { path: '/vueAni', name: 'vueAni', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vueAni/index.vue') },
+  { path: '/params1/:id', name: 'params1', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/params1/index.vue') },
 ]

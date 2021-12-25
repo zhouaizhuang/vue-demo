@@ -416,7 +416,7 @@ export const checkJSON = function (obj) {
  * @举例子 JSON2url('../advise/index', { from: 'index', id_str:'1243' }) -----> '../advise/index?from=index&id_str=1243'
  */
 export const JSON2url = function (url = '', params = {}){
-  return Object.keys(formatJSON(params)).reduce((prev, item) => prev + (prev.includes('?') ? '&' : '?') + `${item}=${encodeURIComponent(JSON.stringify(params[item]))}`, url) || ''
+  return Object.keys(formatJSON(params)).reduce((prev, item) => `${prev}${prev.includes('?') ? '&' : '?'}${item}=${encodeURIComponent(JSON.stringify(params[item]))}`, url) || ''
 }
 /**
  * url转JSON(函数内与解码操作，与JSON2url相对应)

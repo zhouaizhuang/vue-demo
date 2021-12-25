@@ -362,9 +362,9 @@ export const getChecked = function (arr, field, checkStr = 'isChecked', split = 
 // 数组分块
 // 举例子： chunk([1,2,3,4,5], 2) ====>   [[1,2], [3, 4], [5]]
 export const chunk = function (arr, size = 0) {
-  if(!isArray(arr)) {throw new Error('arr必须是数组类型')}
+  if(!isArray(arr)) { throw new Error('arr必须是数组类型') }
   size = Number(size)
-  if(!isGt0(size)) {throw new Error('size必须为大于0的整数')}
+  if(!isGt0(size)) { throw new Error('size必须为大于0的整数') }
   var targetArr = []
   for(var i = 0; i < arr.length; i += size) {
     targetArr.push(arr.slice(i, i + size));
@@ -374,14 +374,14 @@ export const chunk = function (arr, size = 0) {
 // 数组（a 相对于 b 的）交集
 // 举例子: intersect([1,2,3], [1,2]) ====> [1, 2]
 export const intersect = function (arr1, arr2){
-  if(!isArray(arr1) || !isArray(arr2)) {throw new Error('参数必须是数组类型')}
+  if(!isArray(arr1) || !isArray(arr2)) { throw new Error('参数必须是数组类型') }
   const tmp = new Set(arr2)
   return arr1.filter(x => tmp.has(x))
 }
 // 数组（a 相对于 b 的）差集
 // 举例子: difference([1,2,3], [1,2]) ====> [3]
 export const difference = function (arr1, arr2){
-  if(!isArray(arr1) || !isArray(arr2)) {throw new Error('参数必须是数组类型')}
+  if(!isArray(arr1) || !isArray(arr2)) { throw new Error('参数必须是数组类型') }
   const b = new Set(arr2)
   return arr1.filter(x => !b.has(x))
 }
@@ -393,11 +393,14 @@ export const difference = function (arr1, arr2){
 // 格式化JSON, 将null, undefined,转换为''，否则后端会认为undefined和null为字符串导致bug
 // 举例子：formatJSON({name:null, age:undefined, school: '清华大学'}) ---> {name:'', age:'', school: '清华大学'}
 export const formatJSON = function (obj) {
-  if(!isObject(obj)) { return {} }
-  return Object.keys(obj).reduce((prev, item) => {
-    prev[item] = isNull(obj[item]) || isUndefined(obj[item]) || ['undefined', 'null'].includes(obj[item]) ? '' : obj[item]
-    return prev
-  }, {})
+  if(!isReference) { return obj }
+  return isObject(obj) ? Object.keys(obj).reduce((prev, item) => ((prev[item] = isNull(obj[item]) || isUndefined(obj[item])  ? '' : obj[item]), prev), {}) : {}
+}
+// 格式化后端返回数据，将null转为undefined，后续写代码需要解构赋值的时候，赋默认值{}或者[]
+export const formatRes = function (obj) {
+  if(!isReference) { return obj }
+  const filterNull = tmpObj =>  Object.keys(tmpObj).reduce((prev, item) => ((prev[item] = isNull(tmpObj[item]) ? undefined : tmpObj[item]), prev), {})
+  return isArray(obj) ? obj.map(item => filterNull(item)) : filterNull(obj)
 }
 // 检查表单必填项是否为空，空则返回第一个为空的字段名。
 // 举例：checkParams({name:'张三', age:'', school:''}) ----> 'age'
@@ -569,23 +572,12 @@ export const noCopy = function () {
  */
 export const getProps = function (obj, props) {
   if(!isObject(props)) { throw new Error('参数有误，参数必须为object') }
-  if(isArray(obj)) {
-    return obj.map(item => {
-      return Object.keys(props).reduce((prev, v) => {
-        prev[v] = isObject(props[v]) ? getProps(item[v], props[v]) : item[v] || ''
-        return prev
-      }, {})
-    })
-  }else if(isObject(obj)) {
-    return Object.keys(props).reduce((prev, item) => {
-      prev[item] = isObject(props[item]) ? getProps(obj[item], props[item]) : obj[item] || ''
-      return prev
-    }, {})
-  } else {
-    return obj
-  }
+  const filterProps = tmpObj => Object.keys(props).reduce((prev, v) => {
+    return (prev[v] = isObject(props[v]) ? getProps(tmpObj[v], props[v]) : tmpObj[v] || ''), prev
+  }, {})
+  if(!isReference) { return obj }
+  return isArray(obj) ? obj.map(item => filterProps(item)) : filterProps(obj)
 }
-
 /**
  * 保证json格式数据的可靠获取
  * @param run 需要执行的函数

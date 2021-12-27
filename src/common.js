@@ -275,10 +275,14 @@ export const once = function(fn) {
     }
   }
 }
-// 生成一个映射函数，生成一个判断函数，用于判断
-// const isMyStudent = makeMap('小明,小王') // 柯里化生成不同的判断函数
-// isMyStudent('张三')   ===>  false
-export const makeMap = function(str,expectsLowerCase = false) {
+/**
+ * 校验某个字符串是否存在
+ * @param {String} str 字符串
+ * @param {Boolean} expectsLowerCase 期望小写
+ * @returns 一个判断函数
+ * @举例 const isabc = makeMap('abc,sdk', true); isabc('abc')
+ */
+export const makeMap = function(str, expectsLowerCase = false) {
   var map = Object.create(null)
   var list = isString(str) ? str.split(',') : str
   for (var i = 0; i < list.length; i++) {
@@ -295,11 +299,16 @@ export const remove = function(arr, item) {
     if (index > -1) { return arr.splice(index, 1) }
   }
 }
-// 数组、字符串元素复制N次 
-// 举例(重复生成数组元素)： repeat([{age:1}], 2) ====>[{age:1, _id: 'asdasd2j2'}, {age:1, _id: '123123c'}]  // 备注增加_id是为了for循环的key值不重复
-// 举例（重复生成字符串）： repeat('abc', 2) ====>  'abcabc'
-// 字符串复制实现： Array(3).join(0) ====> '00'    "0".repeat(2) ===> '00'
-// 引用类型复制实现： Array(2).fill([{name: '张三'}]) ====> [[{name: '张三'}], [{name: '张三'}]]
+/**
+ * 数组、字符串元素复制N次 
+ * @param {Object|Array} obj 
+ * @param {Number} times 
+ * @returns 复制之后的数据
+ * @举例 重复生成数组元素：repeat([{age:1}], 2) ====>[{age:1, _id: 'asdasd2j2'}, {age:1, _id: '123123c'}]  // 备注增加_id是为了for循环的key值不重复
+ * @举例 重复生成字符串：repeat('abc', 2) ====>  'abcabc'
+ * @举例 字符串复制实现：Array(3).join(0) ====> '00'    "0".repeat(2) ===> '00'
+ * @举例 引用类型复制实现：Array(2).fill([{name: '张三'}]) ====> [[{name: '张三'}], [{name: '张三'}]]
+ */
 export const repeat = function(obj = '', times = 1) {
   let res = isArray(obj) ? [] : ''
   if(isArray(obj)) {

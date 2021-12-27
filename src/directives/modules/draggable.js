@@ -20,7 +20,8 @@ export const draggable = {
         } else if (y > maxY) {
           y = maxY
         }
-
+        // console.log(x)
+        // console.log(y)
         el.style.left = x + 'px'
         el.style.top = y + 'px'
       }

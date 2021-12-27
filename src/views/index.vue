@@ -1,6 +1,6 @@
 
 <template>
-  <div class="w90 db auto indexFontSize">
+  <div class="w95 db auto indexFontSize">
     <div class="f ac xc g1890ff pt20 pb10 op8 title">C端产品demo，不同项目样式千差万别，所以此处demo只侧重效果，具体样式根据不同项目自行实现</div>
     <div class="fs50r b mb20 mt20 tc">动画</div>
     <!--https://chokcoco.github.io/CSS-Inspiration/#/./background/bg-clip-text-shine-->
@@ -59,8 +59,8 @@
     </div>
     <div class="fs50r b mt30 mb20 tc">性能瓶颈突破</div>
     <div class="f xs ac rw">
-      <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/tree">时间分片(树形控件1万个结点)</router-link></div>
-      <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/virtualList">虚拟列表(高性能渲染十万条数据)</router-link></div>
+      <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/tree">时间分片(1万个结点)</router-link></div>
+      <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/virtualList">虚拟列表(渲染十万条数据)</router-link></div>
       <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/pageLoad">分页加载</router-link></div>
       <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/lazyLoadImg">图片懒加载</router-link></div>
     </div>
@@ -164,5 +164,5 @@ export default {
 .min190px{min-width:190px;}
 /**PC端和移动端做适配 */
 @media screen and (min-width: 320px) {.indexFontSize{font-size: 0.3rem !important;}}
-/* @media screen and (min-width: 640px) {.indexFontSize{font-size: 0.28rem !important;}}  */
+@media screen and (min-width: 640px) {.indexFontSize{font-size: 0.24rem !important;}} 
 </style>

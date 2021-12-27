@@ -288,7 +288,7 @@ export const makeMap = function(str, expectsLowerCase = false) {
   for (var i = 0; i < list.length; i++) {
     map[list[i]] = true
   }
-  return expectsLowerCase ? function (val) { return map[val.toLowerCase()]; } : function (val) { return map[val]; }
+  return expectsLowerCase ? val => map[val.toLowerCase()] : val => map[val]
 }
 // 删除数组中某个元素
 // const arr = ['a', 'b', 'c']

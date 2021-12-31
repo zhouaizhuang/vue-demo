@@ -169,7 +169,7 @@ export const getPosition = function (e) {
  * @param {String} keywords 需要搜索的开头的字符串
  * @returns {Boolean}
  */
- export const startWith = (str, startWords) => str.slice(0, startWords.length) === startWords
+export const startWith = (str, startWords) => str.slice(0, startWords.length) === startWords
 // 去除字符串的首尾空格
 export const trim =  (str = '') => String(str).replace(/(^\s*)|(\s*$)/g, '')
 // 固定裁剪几个字符之后显示省略号。举例：sliceStr('张三李四王五', 2) ----> "张三..."
@@ -197,8 +197,12 @@ export const copyLink = function (e){
 ******************************************数组方法*********************************************
 **********************************************************************************************
 */
-/**洗牌算法**/
-// [1,2,3,4,5,6].sort(() => .5 - Math.random()) // 基础版本
+/**
+ * 洗牌算法
+ * @param {Array} arr 需要乱序的数组
+ * @returns {Array} 打乱顺序后的数组
+ * @举例 shuffle([1,2,3,4])  ---> 可能的结果：[2,4,1,3]
+ */
 export const shuffle = function (arr){
   if(!isArray(arr)) { arr = [arr] }
   let n = arr.length, random
@@ -209,7 +213,7 @@ export const shuffle = function (arr){
   return arr
 }
 /**
- *  缓存函数计算结果
+ * 缓存函数计算结果
  * @举例 const cachedComputed = cached(function(val){ return val + 'ZZZ' })
  * @测试 cachedComputed('abc') ---> 'absZZZ' 第二次调用就不需要计算了直接取值 cachedComputed('abc') ---> 'absZZZ'
  * */ 
@@ -219,16 +223,25 @@ export const cached = function (fn) {
     return !cache[str] && (cache[str] = fn(str)), cache[str]
   }
 }
-// 扩展对象
-// extend({}, {name:1}) ====> {name: 1}
+/**
+ * 扩展对象
+ * @param {Object} to 需要扩展的目标对象
+ * @param {Object} _from 从这个对象扩展
+ * @returns 扩展之后的对象
+ * @举例 extend({}, {name:1}) ----> {name: 1}
+ */
 export const extend = function(to, _from) {
   for (var key in _from) {
     to[key] = _from[key]
   }
   return to
 }
-// 对象数组转对象
-// toObject([{name: 1}, {age:2}]) ====> {name:1, age:2}
+/**
+ * 对象数组转对象
+ * @param {Array} arr 需要转换的数组
+ * @returns {Object} 转换之后的对象
+ * @举例 toObject([{name: 1}, {age:2}]) ----> { name:1, age:2 }
+ */
 export const toObject = function (arr) {
   var res = {}
   for (var i = 0; i < arr.length; i++) {
@@ -270,8 +283,8 @@ export const once = function(fn) {
   var called = false
   return function () {
     if (!called) {
-      called = true;
-      fn.apply(this, arguments);
+      called = true
+      fn.apply(this, arguments)
     }
   }
 }
@@ -457,7 +470,7 @@ export const url2JSON = function (url = '') {
  * }
  * @result 根据分类函数分类好的结果：{A: [{...},{...}], B: [{...}], C: [{...}], D: [{...}]}
  */
- export const groupBy = function (arr, callback){
+export const groupBy = function (arr, callback){
   return arr.reduce((prev, item) => {
     const key = callback(item)
     ;(prev[key] || (prev[key] = [])).push(item)

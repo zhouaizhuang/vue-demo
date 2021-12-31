@@ -97,7 +97,8 @@
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vWaterMarker">v-waterMarker</router-link></div>
         <!-- <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vDraggable">v-draggable</router-link></div> -->
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vLongpress">v-longpress</router-link></div>
-        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vLazyLoad">v-lazyLoad</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vLazyImg">v-lazyImg</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vDefaultImg">v-defaultImg</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vReachBottom">v-reachBottom</router-link></div>
       </div>
     </div>
@@ -164,5 +165,5 @@ export default {
 .min190px{min-width:190px;}
 /**PC端和移动端做适配 */
 @media screen and (min-width: 320px) {.indexFontSize{font-size: 0.3rem !important;}}
-@media screen and (min-width: 640px) {.indexFontSize{font-size: 0.24rem !important;}} 
+/* @media screen and (min-width: 640px) {.indexFontSize{font-size: 0.28rem !important;}}  */
 </style>

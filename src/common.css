@@ -107,7 +107,11 @@ input, textarea, img, video, object { width:100%; box-sizing: border-box;} .bord
 /* 文本修饰 */
 .tdn{text-decoration: none;} .tdo{text-decoration: overline;} .tdl{text-decoration: line-through;} .tdu{text-decoration: underline;} .tdb{text-decoration: blink;}
 /* 文字间距 */
-.lt3{letter-spacing: 3px;} .lt5{letter-spacing: 5px;} .lt5r{letter-spacing: 0.05rem;}
+.lt3{letter-spacing: 3px;} .lt5{letter-spacing: 5px;} 
+.lt3r{letter-spacing: 0.03rem;} .lt5r{letter-spacing: 0.05rem;}
+/* 字（单词间距）*/
+.ws3{word-spacing: 3px;} .ws5{word-spacing: 5px;}
+.ws3r{word-spacing: 0.03rem;} .ws5r{word-spacing: 0.05rem;}
 /*文本大小写全大写字母、全小写字母、首字母大写*/
 .uppercase{text-transform: uppercase;} .lowercase{text-transform: lowercase;} .capitalize{text-transform: capitalize;}
 /* 字体大小 */

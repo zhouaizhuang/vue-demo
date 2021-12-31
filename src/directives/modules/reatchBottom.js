@@ -8,11 +8,7 @@ export const reachBottom = {
   inserted: (ele,binding) =>{
     const fn = binding.value
     const observer = new IntersectionObserver(entries => {
-      entries.forEach(item => {
-        const { intersectionRatio, target } = item
-        // console.log(item) // 这里观察数据的状态
-        if(intersectionRatio > 0) { fn() }
-      })
+      if(entries[0].intersectionRatio > 0) { fn() }
     }, {
       root: null, // 相对的视口元素，传入 null 则为顶级文档视口
       rootMargin: '0px 0px 0px 0px', // 触发交叉回调时被观察元素相对于视口的偏移量

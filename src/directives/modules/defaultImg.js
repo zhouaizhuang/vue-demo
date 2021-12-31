@@ -16,7 +16,7 @@ export const defaultImg = {
       el.style.backgroundColor = `#${color}`
     } else {
       [src, defaultImg = ''] = bindVal
-      console.log(defaultImg)
+      // console.log(defaultImg)
       if(defaultImg) { el.src = defaultImg }
     }
     let img = new Image()

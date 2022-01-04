@@ -689,6 +689,50 @@ export const formatMoney = function (num = 0, type = 'float', prec = 2, dec = '.
   return `${intStr}${dec}${floatStr.slice(0, prec)}`
 }
 /**
+ * 金额转中文
+ * @param {Number | String} num 金额，支持浮点数据
+ * @returns {String}
+ * @举例 numberToChinese(123123.1267) ---->  一十二萬三仟一百二十三点一二六七
+ */
+export const numberToChinese = (num) => {
+  var AA = new Array("零", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十")
+  var BB = new Array("", "十", "百", "仟", "萬", "億", "点", "");
+  var a = ("" + num).replace(/(^0*)/g, "").split("."), k = 0, re = ""
+  for (var i = a[0].length - 1; i >= 0; i--) { 
+    if(k === 0) {
+      re = BB[7] + re
+    } else if(k === 4) {
+      if (!new RegExp("0{4}//d{" + (a[0].length - i - 1) + "}$").test(a[0])) {
+        re = BB[4] + re
+      }
+    } else if(k === 8) {
+      re = BB[5] + re
+      BB[7] = BB[5]
+      k = 0
+    }
+    if (k % 4 == 2 && a[0].charAt(i + 2) != 0 && a[0].charAt(i + 1) == 0) {
+      re = AA[0] + re
+    }
+    if (a[0].charAt(i) != 0) {
+      re = AA[a[0].charAt(i)] + BB[k % 4] + re
+      k++
+    }
+  }
+  if (a.length > 1) {
+    re += BB[6];
+    for (var i = 0; i < a[1].length; i++) {
+      re += AA[a[1].charAt(i)]
+    }
+  }
+  if (re == '一十') {
+    re = "十"
+  }
+  if (re.match(/^一/) && re.length == 3) {
+    Pre = re.replace("一", "")
+  }
+  return re
+}
+/**
  * 四舍五入返回N位有效数字（常用于金额计算）
  * @param num 需要处理的的数字、支持传入字符串
  * @param prec 保留的小数位数

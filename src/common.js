@@ -1018,6 +1018,21 @@ export const setTitle = title => document.title = title
   * @举例 goUrl('https://www.baidu.com')  // 跳转到百度
   */
 export const goUrl = href => window.location.href = href
+/**
+ * 密码强度检测。备注：这个函数要依据不同的项目的密码强度规则，做对应的改造
+ * @param {String} str 密码
+ * @returns {Number} 密码强度
+ * @举例 checkPwd('ss142152')
+ */
+export const checkPwd = (str) => {
+  var Lv = 0
+  if (str.length < 6) { return Lv } 
+  if (/[0-9]/.test(str)) { Lv++ } // 数字+1
+  if (/[a-z]/.test(str)) { Lv++ } // 小写字母+1
+  if (/[A-Z]/.test(str)) { Lv++ }  // 大写字母+1
+  if (/[\.|-|_!@#$%^&*()`]/.test(str)) { Lv++ } // 特殊字符+1
+  return Lv
+}
 /*
 **********************************************************************************************
 ******************************************数据结构*********************************************

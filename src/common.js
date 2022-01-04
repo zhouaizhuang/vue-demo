@@ -259,7 +259,7 @@ export const toObject = function (arr) {
  */
 export const sum = arr => arr.reduce((prev, item) => prev + item, 0)
 /**
- * 数组均值
+ * 数组平均值
  * @param {Array} arr 需要求均值的数组
  * @returns {Number}
  * @举例 mean([1,2,3,4,5]) ----->  3
@@ -420,6 +420,24 @@ export const chunk = function (arr, size = 0) {
   }
   return targetArr
 }
+/**
+ * 数组分割
+ * @param {Array} arr 需要进行分割的数组
+ * @param {Array} num 分割的位置
+ * @returns {Array} 
+ * @举例  splitAt([1,2,3,4,5], 2) ---> [[1,2], [3,4,5]]
+ */
+export const splitAt = (arr, num) => [arr.slice(0, num), arr.slice(num)]
+/**
+ * 数组条件分割
+ * @param {Array} arr 需要进行分割的数组
+ * @param {Array} num 分割的位置
+ * @returns {Array} 
+ * @举例  splitWhen([1,2,3,4,5], item => item === 3) ---> [[1,2], [3,4,5]]
+ */
+export const splitWhen = (arr, fn) => {
+  return splitAt(arr, arr.findIndex(item => fn(item)))
+} 
 // 数组（a 相对于 b 的）交集
 // 举例子: intersect([1,2,3], [1,2]) ====> [1, 2]
 export const intersect = function (arr1, arr2){
@@ -813,12 +831,28 @@ export const getDays = function(whichYear, whichMonth) {
 **********************************************************************************************
 */
 /**正则校验返回true || false
- * @param {*} val 需要正则校验的值
+ * @param {String} val 需要正则校验的值
  * @param {reg} reg 正则表达式
  * @returns {Boolean}
  */
 export const regTest = (val, reg) => new RegExp(reg).test(val)
-
+/*
+**********************************************************************************************
+******************************************温度转换*********************************************
+**********************************************************************************************
+*/
+/**
+ * 温度转换  摄氏度  ---> 华氏度
+ * @param {Number} 摄氏度
+ * @returns 华氏度
+ */
+export const c2f = celsius => celsius * 9 / 5 + 32
+/**
+ * 温度转换 华氏度 ----> 摄氏度
+ * @param {Number} 华氏度
+ * @returns 摄氏度
+ */
+export const f2s = fahrenheit => (fahrenheit - 32) * 5 / 9
 /*
 **********************************************************************************************
 ******************************************业务函数*********************************************
@@ -961,10 +995,11 @@ export const setTitle = title => document.title = title
   * @举例 goUrl('https://www.baidu.com')  // 跳转到百度
   */
 export const goUrl = href => window.location.href = href
-
-/**
- * 数据结构
- */
+/*
+**********************************************************************************************
+******************************************数据结构*********************************************
+**********************************************************************************************
+*/
 /**
  * Map
  * @属性方法 .size()   .set(key, value)   .get(key)   .has(key)   .delete(key)   .clear()
@@ -977,7 +1012,7 @@ export const goUrl = href => window.location.href = href
  */
 /**
  * 键值数组转对象
- * @param map map对象
+ * @param {Map} Map对象
  * @举例 map2Obj(new Map([[1, 'one'], [2, 'two']]))  // {1: 'one', 2: 'two'}
  */
 export const map2Obj = function (map){
@@ -987,7 +1022,7 @@ export const map2Obj = function (map){
 }
 /**
  * JSON转键值数组
- * @param map map对象
+ * @param {Map} Map对象
  * @举例 obj2Map({1: 'one', 2: 'two'}) // [[1, 'one'], [2, 'two']]
  */
 export const obj2Map = function (obj){

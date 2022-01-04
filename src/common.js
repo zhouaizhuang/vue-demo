@@ -170,8 +170,26 @@ export const getPosition = function (e) {
  * @returns {Boolean}
  */
 export const startWith = (str, startWords) => str.slice(0, startWords.length) === startWords
-// 去除字符串的首尾空格
-export const trim =  (str = '') => String(str).replace(/(^\s*)|(\s*$)/g, '')
+/**
+ * 去除字符串中的空格
+ * @param {String} str 需要去除空格的字符串
+ * @param {Number} type 去除空格的类型 ----> 1: 去除首尾空格   2：去除全部空格  3：去除头部空格  4：去除尾部空格
+ * @returns {String}
+ * @举例 trim(' ab c  ')  ---> 'ab c'
+ * @举例 trim(' ab c  ', 1)  ---> 'abc'
+ * @举例 trim(' ab c  ', 2)  ---> 'ab c  '
+ * @举例 trim(' ab c  ', 3)  ---> ' ab c'
+ */
+export const trim =  (str = '', type = 1) => {
+  str = String(str)
+  switch(type) {
+    case 1: return str.replace(/(^\s*)|(\s*$)/g, "")
+    case 2: return str.replace(/\s+/g, "")
+    case 3: return str.replace(/(^\s*)/g, "")
+    case 4:  return str.replace(/(\s*$)/g, "")
+    default: return str
+  }
+}
 // 固定裁剪几个字符之后显示省略号。举例：sliceStr('张三李四王五', 2) ----> "张三..."
 export const sliceStr = function (str, num) {
   str = String(str)
@@ -365,11 +383,16 @@ export const repeat = function(obj = '', times = 1) {
   }
   return res
 }
-// 按照某个字段进行排序。
-// 举例：sortByProp([{name:'ss', age:30}, {name:'dd', age:14}], 'age') ----> [{name:'dd', age:14}, {name:'ss', age:30}]
-// increase不传默认升序， 传false降序
-export const sortByProp = function (arr, str, increase = true) {
-  return arr.sort((a, b) => increase ? a[str] - b[str] : b[str] - a[str])
+/**
+ * 对象数组按照某个字段进行排序
+ * @param {*} arr 需要排序的对象数组
+ * @param {*} str 根据这个字段的值进行排序
+ * @param {*} type 排序方式、递增还是递减
+ * @returns {Array} 排序后的数组
+ * @举例 举例：sortByProp([{name:'ss', age:30}, {name:'dd', age:14}], 'age') ----> [{name:'dd', age:14}, {name:'ss', age:30}]
+ */
+export const sortByProp = function (arr, str, type = 1) {
+  return arr.sort((a, b) => type === 1 ? a[str] - b[str] : b[str] - a[str])
 }
 /**
 * 数组去重
@@ -687,50 +710,6 @@ export const formatMoney = function (num = 0, type = 'float', prec = 2, dec = '.
   }
   floatStr += new Array(prec + 1).join('0')
   return `${intStr}${dec}${floatStr.slice(0, prec)}`
-}
-/**
- * 金额转中文
- * @param {Number | String} num 金额，支持浮点数据
- * @returns {String}
- * @举例 numberToChinese(123123.1267) ---->  一十二萬三仟一百二十三点一二六七
- */
-export const numberToChinese = (num) => {
-  var AA = new Array("零", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十")
-  var BB = new Array("", "十", "百", "仟", "萬", "億", "点", "");
-  var a = ("" + num).replace(/(^0*)/g, "").split("."), k = 0, re = ""
-  for (var i = a[0].length - 1; i >= 0; i--) { 
-    if(k === 0) {
-      re = BB[7] + re
-    } else if(k === 4) {
-      if (!new RegExp("0{4}//d{" + (a[0].length - i - 1) + "}$").test(a[0])) {
-        re = BB[4] + re
-      }
-    } else if(k === 8) {
-      re = BB[5] + re
-      BB[7] = BB[5]
-      k = 0
-    }
-    if (k % 4 == 2 && a[0].charAt(i + 2) != 0 && a[0].charAt(i + 1) == 0) {
-      re = AA[0] + re
-    }
-    if (a[0].charAt(i) != 0) {
-      re = AA[a[0].charAt(i)] + BB[k % 4] + re
-      k++
-    }
-  }
-  if (a.length > 1) {
-    re += BB[6];
-    for (var i = 0; i < a[1].length; i++) {
-      re += AA[a[1].charAt(i)]
-    }
-  }
-  if (re == '一十') {
-    re = "十"
-  }
-  if (re.match(/^一/) && re.length == 3) {
-    Pre = re.replace("一", "")
-  }
-  return re
 }
 /**
  * 四舍五入返回N位有效数字（常用于金额计算）

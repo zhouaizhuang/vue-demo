@@ -6,14 +6,14 @@
       :key="item.id" 
       class="f ac xc"
       :id="item.id"
-      style="height:100px"
+      style="height:70px"
     >
       {{index}}
     </div>
     <!--底部的加载更多提示、全部加载完的提示-->
     <div v-reachBottom="getMoreData" v-if="isShowLoadMore" id="" class="loadMore f ac xc tc">
       <svg class="rotateSvg">
-        <circle cx="30" cy="30" r="15" fill="none" class="circleDash"></circle>
+        <circle cx="20" cy="20" r="10" fill="none" class="circleDash"></circle>
       </svg>
       <div class="fs16 g3">下拉加载更多...</div>
     </div>
@@ -61,17 +61,17 @@ export default {
 </script>
 <style scoped>
 .rotateSvg{
-  width:60px;
-  height:60px;
+  width:40px;
+  height:40px;
   animation: rotate360 2s linear infinite;
 }
 .circleDash{
-  color:#1989FA;
+  color:#ccc;
   animation: loading-dash 1.5s ease-in-out infinite;
   stroke-dasharray: 90 120;
   stroke-dashoffset: 0;
   stroke-width: 2;
-  stroke:#1989FA;
+  stroke:#ccc;
   stroke-linecap: round;
 }
 @keyframes rotate360 {

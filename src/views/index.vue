@@ -61,7 +61,7 @@
     <div class="f xs ac rw">
       <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/tree">时间分片(1万个结点)</router-link></div>
       <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/virtualList">虚拟列表(渲染十万条数据)</router-link></div>
-      <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/pageLoad">分页加载</router-link></div>
+      <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/pageLoad">触底加载更多</router-link></div>
       <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/lazyLoadImg">图片懒加载</router-link></div>
     </div>
     <div class="fs50r b mt30 mb20 tc">BUG解决</div>

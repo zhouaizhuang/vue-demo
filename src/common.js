@@ -102,6 +102,8 @@ export const getCookie = function (name) {
   var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)")
   return arr = document.cookie.match(reg) ? unescape(arr[2]) : null
 }
+//  清除cookie
+export const clearCookies = () => document.cookie.split(';').forEach(cookie => document.cookie = cookie.replace(/^ +/, '').replace(/=.*/, `=;expires=${new Date(0).toUTCString()};path=/`))
 /**
  * 选择器查询
  * @param {String} selector 
@@ -210,6 +212,12 @@ export const copyLink = function (e){
   document.body.removeChild(input) // 最后删除实例中临时创建的input输入框，完成复制操作
   // return this.$Message.success('复制成功')
 }
+/**
+ * 字符串首字母大写
+ * @param {*} str 
+ * @returns 经过转换后的首字母为大写的字符串
+ */
+export const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1)
 /*
 **********************************************************************************************
 ******************************************数组方法*********************************************

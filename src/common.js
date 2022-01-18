@@ -184,15 +184,21 @@ export const startWith = (str, startWords) => str.slice(0, startWords.length) ==
  */
 export const trim =  (str = '', type = 1) => {
   str = String(str)
-  switch(type) {
-    case 1: return str.replace(/(^\s*)|(\s*$)/g, "")
-    case 2: return str.replace(/\s+/g, "")
-    case 3: return str.replace(/(^\s*)/g, "")
-    case 4:  return str.replace(/(\s*$)/g, "")
-    default: return str
+  const mapStr = {
+    1: () => str.replace(/(^\s*)|(\s*$)/g, ""),
+    2: () => str.replace(/\s+/g, ""),
+    3: () => str.replace(/(^\s*)/g, ""),
+    4: () => str.replace(/(\s*$)/g, "")
   }
+  return (mapStr[type] && mapStr[type]()) || str
 }
-// 固定裁剪几个字符之后显示省略号。举例：sliceStr('张三李四王五', 2) ----> "张三..."
+/**
+ * 固定裁剪几个字符之后显示省略号
+ * @param {String} str 需要进行裁剪的字符串
+ * @param {Number} num 要裁剪几位数字
+ * @returns 
+ * @举例 sliceStr('张三李四王五', 2) ----> "张三..."
+ */
 export const sliceStr = function (str, num) {
   str = String(str)
   return str.length > num ? str.substr(0, num) + '...' : str.substr(0, num)

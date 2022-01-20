@@ -862,6 +862,21 @@ export const getDays = function(whichYear, whichMonth) {
   let daymilliseconds = 3600 * 24 * 1000
   return (milliseconds / daymilliseconds)
 }
+/**
+ * 日期一和日期二之间的间隔的天数
+ * @param {*} date1 日期一
+ * @param {*} date2 日期二
+ * @returns 
+ * @举例 dayDif("2021-11-3", "2022-2-1") ----> 90
+ */
+export const dayDif = (date1, date2) => Math.ceil(Math.abs(new Date(date1.replace(/[-]/g, "/")).getTime() - new Date(date2.replace(/[-]/g, "/")).getTime()) / 86400000) // 86400 === 24 * 60 * 60 秒
+/**
+ * 查出日期位于一年中的第多少天
+ * @param {Date || String || Number} date 传入日期
+ * @returns 传入的日期是一年中的第多少天
+ * @举例 dayOfYear(new Date()) ----> 307
+ */
+export const dayOfYear = date => Math.floor((date - new Date(date.slice(0, 4), 0, 0)) / 1000 / 60 / 60 / 24)
 /*
 **********************************************************************************************
 ******************************************正则校验*********************************************

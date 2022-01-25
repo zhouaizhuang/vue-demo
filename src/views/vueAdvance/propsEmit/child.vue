@@ -37,7 +37,7 @@ export default {
   },
   methods:{
     doClick(){
-      this.$emit('sayHello')
+      this.$emit('sayHello', '入学')
     }
   },
   created(){

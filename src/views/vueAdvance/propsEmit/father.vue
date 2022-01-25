@@ -18,8 +18,8 @@ export default {
     }
   },
   methods:{
-    sayHello(){
-      this.state = '入学'
+    sayHello(msg){
+      this.state = msg
       alert('hello，执行了父组件传入的函数')
     }
   },

@@ -529,6 +529,7 @@ export const JSON2url = function (url = '', params = {}){
  * @举例 url2JSON('http://www.baidu.com?name=asd&age=12') ----> {name: "asd", age: "12"}
  */
 export const url2JSON = function (url = '') {
+  // url = url || window.location.href // 如果没传参，就使用浏览器当前url。暂时注释，因为这个不兼容小程序
   let paramsStr = url.includes('?') ? (url.split('?')[1] || '') : url
   paramsStr = paramsStr.split('#')[0] || '' // 防止一些url中混入#号放在?号之后，此处做一个适配
   return paramsStr.split('&').reduce((prev, item) => {

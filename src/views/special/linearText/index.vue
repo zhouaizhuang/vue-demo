@@ -7,7 +7,7 @@
     </div>
     <div class="f ac mt50 fs40 tc">
       <div class="f1 stroke">文字描边1</div>
-      <div class="f1 text-stroke-out">文字描边方式2</div>
+      <div class="f1 text-stroke-out">文字描边2</div>
     </div>
     <div class="f ac mt50 fs40 tc">
       <div class="text-shadow-3d">阴影实现立体投影</div>

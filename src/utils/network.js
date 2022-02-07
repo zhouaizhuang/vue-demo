@@ -74,7 +74,7 @@ export const get = function (url, params){
     } else {
       return data
     }
-  })
+  }).catch(console.log)
 }
 // 封装一个post请求
 export const post = function (url, params) {
@@ -86,5 +86,5 @@ export const post = function (url, params) {
     } else {
       return data
     }
-  })
+  }).catch(console.log)
 }

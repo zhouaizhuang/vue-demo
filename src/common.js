@@ -352,7 +352,7 @@ export const once = function(fn) {
  * @param {String} str 字符串
  * @param {Boolean} expectsLowerCase 期望小写
  * @returns 一个判断函数
- * @举例 const isabc = makeMap('abc,sdk', true); isabc('abc')
+ * @举例 const isTag = makeMap('div,span', true); isTag('div')
  */
 export const makeMap = function(str, expectsLowerCase = false) {
   var map = Object.create(null)

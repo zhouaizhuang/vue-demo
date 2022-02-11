@@ -178,9 +178,9 @@ export const startWith = (str, startWords) => str.slice(0, startWords.length) ==
  * @param {Number} type 去除空格的类型 ----> 1: 去除首尾空格   2：去除全部空格  3：去除头部空格  4：去除尾部空格
  * @returns {String}
  * @举例 trim(' ab c  ')  ---> 'ab c'
- * @举例 trim(' ab c  ', 1)  ---> 'abc'
- * @举例 trim(' ab c  ', 2)  ---> 'ab c  '
- * @举例 trim(' ab c  ', 3)  ---> ' ab c'
+ * @举例 trim(' ab c  ', 2)  ---> 'abc'
+ * @举例 trim(' ab c  ', 3)  ---> 'ab c  '
+ * @举例 trim(' ab c  ', 4)  ---> ' ab c'
  */
 export const trim =  (str = '', type = 1) => {
   str = String(str)

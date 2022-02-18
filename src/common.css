@@ -181,7 +181,7 @@ input, textarea, img, video, object { width:100%; box-sizing: border-box;} .bord
 /*移动端*/
 .rds1r{border-radius:0.01rem;}   .rds2r{border-radius:0.02rem;}  .rds5r{border-radius:0.05rem;}    .rds10r{border-radius:0.1rem;}  .rds15r{border-radius:0.15rem;}  .rds20r{border-radius:0.2rem;}  .rds30r{border-radius:0.3rem;}  .rds40r{border-radius:0.4rem;} .rds50r{border-radius:0.5rem;} .rds50{border-radius:50%;}
 /* 表单必填*号 */
-.require::before{ content: '*';display: inline-block;margin-right: 0.04rem;line-height: 1;font-family: SimSun;font-size: 0.35rem;transform:translateY(0.1rem);color: #ed4014}
+.need::before{ content: '*';display: inline-block;margin-right: 0.04rem;line-height: 1;font-family: SimSun;font-size: 0.35rem;transform:translateY(0.1rem);color: #ed4014}
 /* 1px单条线 */
 .setOnePx{ position: relative; }
 .setOnePx::after{ position: absolute;content: '';background-color: #e5e5e5;display: block;width: 100%;height: 1px;transform: scale(1, 0.5);top: 0;left: 0;}

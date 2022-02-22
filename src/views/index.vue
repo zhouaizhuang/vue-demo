@@ -146,6 +146,7 @@
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/phone">打电话</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/message">发短信</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/form">表单</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/cusForm">自定义表单</router-link></div>
       </div>
     </div>
   </div>

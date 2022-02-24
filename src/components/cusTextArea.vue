@@ -1,5 +1,5 @@
 <template>
-  <div class="pt25r pb25r fs32r">
+  <div class="pt25r pb25r fs32r text-area-box">
     <div :class="['mb20r', formInfo.required == 1 ? 'need' : '']">{{formInfo.name}}</div>
     <textarea class="rds20r bde5 w93 db fs26r" style="min-height:4.5rem;padding:0.2rem;" :value="formInfo.defaultValue" :placeholder="'请输入' + formInfo.name" placeholder-style=""
       placeholder-class="textarea-placeholder" :disabled="type == 'detail'" maxlength="300" :auto-focus="false" :focus="false"
@@ -36,6 +36,20 @@ export default {
   }
 }
 </script>
-<style scoped lang="less">
-
+<style scoped>
+  textarea{
+    width: 300px;
+    height: 30px;
+    border: none;
+    outline: none;
+    display: block;
+    border: solid 1px #dee0e9;
+    background:transparent;
+    padding: 0 15px;
+    border-radius: 10px;
+  }
+  textarea::-webkit-input-placeholder{ 
+    color: #babbc1;
+    font-size:12px;
+  }
 </style>

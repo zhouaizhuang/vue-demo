@@ -466,6 +466,13 @@ export const chunk = function (arr, size = 0) {
  */
 export const splitAt = (arr, num) => [arr.slice(0, num), arr.slice(num)]
 /**
+ * 二维数组行列互换
+ * @param {Array<Array>} arr 需要行列互换的二维数组
+ * @returns {Array<Array>} 
+ * @举例  transformArr([['a','b','c'], [0, 1, 2]]) ---> [['a', 0], ['b', 1], ['c', 2]]
+ */
+export const transformArr = arr => arr[0].map((col, i) => arr.map(row => row[i]))
+/**
  * 数组条件分割
  * @param {Array} arr 需要进行分割的数组
  * @param {Array} num 分割的位置

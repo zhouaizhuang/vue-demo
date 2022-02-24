@@ -34,6 +34,21 @@ export default {
   }
 }
 </script>
-<style scoped lang="less">
-
+<style scoped>
+input{
+  width: 300px;
+  height: 30px;
+  border: none;
+  outline: none;
+  display: block;
+  /* margin: 15px; */
+  /* border-bottom: solid 1px #dee0e9; */
+  background:transparent;
+  padding: 0 15px;
+  /* border-radius: 15px; */
+}
+.placehoder-custom::-webkit-input-placeholder{
+  color: #babbc1;
+  font-size: 12px;
+}
 </style>

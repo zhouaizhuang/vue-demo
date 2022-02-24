@@ -4,9 +4,9 @@
 /* 重置button所有默认属性 */
 button { all: unset; }
 /*取消300ms点击延时*/
-html { background-color: #fff; touch-action: manipulation;-webkit-touch-callout:none;font-size:16px;} 
+html { background-color: #fff; touch-action: manipulation;-webkit-touch-callout:none;font-size:16px;min-height:100vh;} 
 /* IOS禁止微信调整字体大小 */
-body { -webkit-text-size-adjust: 100% !important;text-size-adjust: 100% !important;-moz-text-size-adjust: 100% !important;height:100vh;overflow-x: hidden;margin:0;padding-right:calc(100vw - 100%);}
+body { -webkit-text-size-adjust: 100% !important;text-size-adjust: 100% !important;-moz-text-size-adjust: 100% !important;min-height:100vh;overflow-x: hidden;margin:0;padding-right:calc(100vw - 100%);}
 img {border:0; display:inline-block;} 
 button,input,select,textarea{-webkit-appearance:none;appearance:none;} /*解决ios输入框默认内阴影*/
 input, textarea, img, video, object { width:100%; box-sizing: border-box;} .borderBox{box-sizing: border-box;}
@@ -61,7 +61,7 @@ input, textarea, img, video, object { width:100%; box-sizing: border-box;} .bord
 /* 边框、外线为0 */
 .bd0{border:0; outline:none;}
 /*PC端*/
-.bdc{border: 1px solid #ccc;} .bdbe{border-bottom: 1px solid #eee;} .bde5{border-bottom: 1px solid #e5e5e5;}
+.bdc{border: 1px solid #ccc;} .bdbe{border-bottom: 1px solid #eee;} .bdbe5{border-bottom: 1px solid #e5e5e5;}
 /*移动端*/
 .bdc-r{border: 0.01rem solid #ccc;} .bdbe-r{border-bottom: 0.01rem solid #eee;}
 /* 背景色 */

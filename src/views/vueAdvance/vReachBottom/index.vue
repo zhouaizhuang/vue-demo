@@ -15,7 +15,7 @@
       <svg class="rotateSvg">
         <circle cx="20" cy="20" r="10" fill="none" class="circleDash"></circle>
       </svg>
-      <div class="fs16 g3">下拉加载更多...</div>
+      <div class="fs16 g3">上拉加载更多...</div>
     </div>
     <div v-else class="fs16 g3 tc pt10 pb10">沒有更多了</div>
   </div>

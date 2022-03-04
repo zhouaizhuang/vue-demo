@@ -22,4 +22,5 @@ export default [
   { path: '/params1/:id', name: 'params1', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/params1/index.vue') },
   { path: '/params2', name: 'params2', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/params2/index.vue') },
   { path: '/query1', name: 'query1', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/query1/index.vue') },
+  { path: '/myVmodel', name: 'myVmodel', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/myVmodel/index.vue') },
 ]

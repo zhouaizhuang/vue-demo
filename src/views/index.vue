@@ -115,6 +115,12 @@
       </div>
     </div>
     <div class="f">
+      <div class="pr20r b" style="width:2.2rem;">vue高级组件</div>
+      <div class="f1 f xs ac rw">
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/myVmodel">自定义组件v-model</router-link></div>
+      </div>
+    </div>
+    <div class="f">
       <div class="pr20r b" style="width:2.2rem;">vue逻辑复用</div>
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/mixIn">混入:mixIn</router-link></div>

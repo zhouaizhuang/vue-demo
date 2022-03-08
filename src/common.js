@@ -33,6 +33,8 @@ export const isChrome = UA && /chrome\/\d+/.test(UA) && !isEdge
 export const isPhantomJS = UA && /phantomjs/.test(UA)
 export const isFF = UA && UA.match(/firefox\/(\d+)/)
 export const isPhone = val => /^1[3456789]\d{9}$/.test(val) // 检测是否是手机号码
+export const isIdentity = val => /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/.test(val) // 身份证 321281155121152489
+export const isEmail = val => /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/.test(val)
 // 去某个页面
 export const go = function(options = {}) {
   router.push({
@@ -816,7 +818,7 @@ export const socketTime = function (t = new Date()) {
  * @举例 dateFormater('YYYYMMDD-hh:mm:ss', '2020-08-12 09:13:54') ==> 20200812-09:13:54
 */
 export const dateFormater = function (formater, t = new Date()){
-  if(!isDate(t)) { t = t.replace(/[-]/g, "/") }
+  if(!isDate(t) && isString(t)) { t = t.replace(/[-]/g, "/") }
   const dt = new Date(t)
   const [Y, M, D, h, m, s] = [dt.getFullYear() + '', dt.getMonth() + 1, dt.getDate(), dt.getHours(), dt.getMinutes(), dt.getSeconds()]
   return formater.replace(/YYYY|yyyy/g, Y)

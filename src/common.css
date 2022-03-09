@@ -134,8 +134,6 @@ input, textarea, img, video, object { width:100%; box-sizing: border-box;} .bord
 /* 单个item的垂直对齐方式 */
 .as{align-items:flex-start;} .ae{align-items:flex-end;}.ac{align-items:center;}.ab{align-items:baseline;}.ah{align-items:stretch;}
 .f1{flex:1;}       .f2{flex:2;}         .f3{flex:3;}         .f4{flex:4;}         .f5{flex:5;}        .f6{flex:6;}       .f7{flex:7;}        .f8{flex:8;}         .f9{flex:9;}
-/* 包裹性 */
-.wfc{width:-webkit-fit-content;width:-moz-fit-content;width: fit-content;} .hfc{height:-webkit-fit-content;height: fit-content;}
 /* 透明度 */
 .op0{opacity: 0;}  .op1{opacity: 0.1;}  .op2{opacity: 0.2;}  .op3{opacity: 0.3;}  .op4{opacity: 0.4;} .op5{opacity: 0.5;}.op6{opacity: 0.6;} .op7{opacity: 0.7;}  .op8{opacity: 0.8;}  .op9{opacity: 0.9;}  .op10{opacity: 1;} 
 /* 定位 */

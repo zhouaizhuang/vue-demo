@@ -525,25 +525,32 @@ export const checkJSON = function (obj) {
  * 函数还兼容传入 {info: {name:'zz', age:18}, school: 'qinghua'} 这种复杂的数据。之后通过url2JSON可以完美解析
  * @param {String} url 跳转地址的域名。在小程序中那就是路径
  * @param {Object} params 跳转地址中药传递的参数的json格式
+ * @param {String || Number} type  0不需要编码 1: 需要编码(默认值)
  * @returns {String} 返回拼接好的带有参数的链接地址
  * @举例子 JSON2url('../advise/index', { from: 'index', id_str:'1243' }) -----> '../advise/index?from=index&id_str=1243'
  */
-export const JSON2url = function (url = '', params = {}){
-  return Object.keys(formatJSON(params)).reduce((prev, item) => `${prev}${prev.includes('?') ? '&' : '?'}${item}=${encodeURIComponent(JSON.stringify(params[item]))}`, url) || ''
+ export const JSON2url = function (url = '', params = {}, type = 1){
+  return Object.keys(formatJSON(params)).reduce((prev, item) => {
+    let val = JSON.stringify(params[item])
+    val = type == 1 ? encodeURIComponent(val) : val // 为了适配更多的场景，开发了自定义是否编码
+    return prev + (prev.includes('?') ? '&' : '?') + `${item}=${val}`
+  }, url) || ''
 }
 /**
  * url转JSON(函数内与解码操作，与JSON2url相对应)
  * @param {String} url 传入带有参数的url链接地址
+ * @param {String || Number} type 0: 不需要解码  1需要解码(默认值)
  * @returns {Object} 返回参数拼接的json对象
  * @举例 url2JSON('http://www.baidu.com?name=asd&age=12') ----> {name: "asd", age: "12"}
  */
-export const url2JSON = function (url = '') {
+export const url2JSON = function (url = '', type = 1) {
   // url = url || window.location.href // 如果没传参，就使用浏览器当前url。暂时注释，因为这个不兼容小程序
   let paramsStr = url.includes('?') ? (url.split('?')[1] || '') : url
   paramsStr = paramsStr.split('#')[0] || '' // 防止一些url中混入#号放在?号之后，此处做一个适配
   return paramsStr.split('&').reduce((prev, item) => {
-    const [key, val] = item.split('=')
-    return { ...prev, [key]: JSON.parse(decodeURIComponent(val)) } // 此处需要转码，否则中文和一些特殊字符就无法支持了
+    let [key, val] = item.split('=')
+    val = type == 1 ? decodeURIComponent(val) : val // 为了适配更多的场景，开发了自定义是否解码（如果传入的url是编码过的，那么必须解码，否则报错）
+    return { ...prev, [key]: JSON.parse(val) } // 此处需要转码，否则中文和一些特殊字符就无法支持了
   }, {})
 }
 /**
@@ -822,7 +829,7 @@ export const dateFormater = function (formater, t = new Date()){
   const dt = new Date(t)
   const [Y, M, D, h, m, s] = [dt.getFullYear() + '', dt.getMonth() + 1, dt.getDate(), dt.getHours(), dt.getMinutes(), dt.getSeconds()]
   return formater.replace(/YYYY|yyyy/g, Y)
-    .replace(/YY/g, Y.substr(2,2))
+    .replace(/YY/g, Y.slice(2, 4))
     .replace(/MM/g, (M < 10 ? '0' : '') + M)
     .replace(/DD/g, (D < 10 ? '0' : '') + D)
     .replace(/hh/g, (h < 10 ? '0' : '') + h)

@@ -805,7 +805,7 @@ export const getDay = function (t = new Date()) {
  * @举例 socketTime() // 默认返回当天数据
  */
 export const socketTime = function (t = new Date()) {
-  if(!isDate(t)) { t = t.replace(/[-]/g, "/") }
+  if(!isDate(t) && isString(t)) { t = t.replace(/[-]/g, "/") }
   const dt = new Date(t)
   const year = String(dt.getFullYear())
   const _month = String(dt.getMonth() + 1)

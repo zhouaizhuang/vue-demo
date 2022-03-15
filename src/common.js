@@ -591,27 +591,17 @@ export const groupBy = function (arr, callback){
  export const syncBgData = (arr, ids, key = 'isChecked', val = true, defVal = false) => arr.map(v => (v[key] = ids.includes(v.id) ? val : defVal, v))
 //base64数据导出文件，文件下载
 /**
- * @举例 downloadFile('活动表格', 'http://xxxxxxx')
+ * @举例 downloadFile('test.zip', 'https://yiluyouni.hlxapps.com/assets/zip/2940911562140942420.zip')
  */
-export const downloadFile = function (filename, data){
-  let DownloadLink = document.createElement('a')
-  if (DownloadLink) {
-    document.body.appendChild(DownloadLink)
-    DownloadLink.style = 'display: none'
-    DownloadLink.download = filename
-    DownloadLink.href = data
-    if (document.createEvent){
-      let DownloadEvt = document.createEvent('MouseEvents')
-      DownloadEvt.initEvent('click', true, false)
-      DownloadLink.dispatchEvent(DownloadEvt)
-    }
-    else if ( document.createEventObject ){
-      DownloadLink.fireEvent('onclick')
-    } else if (typeof DownloadLink.onclick == 'function' ) {
-      DownloadLink.onclick()
-    }
-    document.body.removeChild(DownloadLink)
-  }
+export const downloadFile = function (fileName, data){
+  // const url = window.URL.createObjectURL(new Blob([response]))
+  const link = window.document.createElement('a')
+  link.style.display = 'none'
+  link.href = response
+  // link.setAttribute('download', fileName)
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
 }
 // 打开全屏
 export const toFullScreen = function (){

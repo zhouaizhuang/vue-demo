@@ -498,6 +498,21 @@ export const difference = function (arr1, arr2){
   const b = new Set(arr2)
   return arr1.filter(x => !b.has(x))
 }
+/**
+ * 找到数组中目标对象进行数据变更
+ * @param {*} arr 需要操作的数据
+ * @param {*} serchObj 需要查询的字段
+ * @param {*} setObj 需要设置的新的字段值
+ * @returns
+ * @举例 searchCover([{id:1, name:'a'}, {id:2, name: 'b'}], {id:1}, {name:'c'})
+ */
+export const searchCover = function (arr, serchObj = {}, setObj = {}) {
+  return arr.map(item => {
+    const isTargetItem = Object.keys(serchObj).reduce((prev, v) => (prev = prev && serchObj[v] == item[v], prev), true)
+    if(isTargetItem) { item = { ...item, ...setObj } }
+    return item
+  })
+}
 /*
 **********************************************************************************************
 ******************************************JSON操作*********************************************

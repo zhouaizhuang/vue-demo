@@ -47,9 +47,24 @@ export const go = function(options = {}) {
 }
 // 返回几层
 export const goBack = (times = -1) => router.go(times) // 返回times页面
-// 执行此函数，可以做一个延时功能。在需要延时执行一段逻辑的时候可以使用
-// 举例子: await wait(500);   那么程序会在此处阻塞等待500ms
-export const wait = t => new Promise(resolve => setTimeout(() => resolve(), t))
+/**
+ * 执行此函数，可以做一个延时功能。在需要延时执行一段逻辑的时候可以使用
+ * @param {String|Number} t
+ * @returns 返回一个promise对象，等待t时间后resolve
+ * 举例子: await wait(500);   那么程序会在此处阻塞等待500ms
+ * 举例子: await wait('500ms');   那么程序会在此处阻塞等待500ms
+ * 举例子: await wait('0.5s');   那么程序会在此处阻塞等待500ms
+ */
+export const wait = function(t) {
+  if(isString(t)) {
+    if(t.includes('ms')) {
+      t = t.replace('ms', '')
+    } else if(t.includes('s')) {
+      t = t.replace('s', '') * 1000
+    }
+  }
+  return new Promise(resolve => setTimeout(() => resolve(), Number(t)))
+}
 /**
  * 深拷贝
  * @param {*} obj 传入任意类型都可以做深拷贝 

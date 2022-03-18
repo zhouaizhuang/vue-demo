@@ -203,7 +203,7 @@ export const trim =  (str = '', type = 1) => {
  */
 export const sliceStr = function (str, num) {
   str = String(str)
-  return str.length > num ? str.substr(0, num) + '...' : str.substr(0, num)
+  return str.length > num ? str.slice(0, num) + '...' : str.slice(0, num)
 }
 // 字符串前置补0。举例: addZero('1', 2) ==> '01'
 export const addZero = (str = '', num = 2) => (Array(num+1).join('0') + str).slice(-num)
@@ -500,16 +500,16 @@ export const difference = function (arr1, arr2){
 }
 /**
  * 找到数组中目标对象进行数据变更
- * @param {*} arr 需要操作的数据
- * @param {*} serchObj 需要查询的字段
- * @param {*} setObj 需要设置的新的字段值
- * @returns
- * @举例 searchCover([{id:1, name:'a'}, {id:2, name: 'b'}], {id:1}, {name:'c'})
+ * @param {Array} arr 需要操作的数据
+ * @param {Object} serchObj 需要查询的字段
+ * @param {Function} callback 接受一个item，返回一个新的item
+ * @returns {Array} 返回一个处理后的数组
+ * @举例 searchCover([{id:1, age:1}, {id:2, age:2}], {id:2}, item => ({...item, age: item.age + 5})) ---> [{id: 1, age: 1}, {id: 2, age: 7}]
  */
-export const searchCover = function (arr, serchObj = {}, setObj = {}) {
+export const searchCover = function (arr, serchObj = {}, callback) {
   return arr.map(item => {
     const isTargetItem = Object.keys(serchObj).reduce((prev, v) => (prev = prev && serchObj[v] == item[v], prev), true)
-    if(isTargetItem) { item = { ...item, ...setObj } }
+    if(isTargetItem) { item = callback(item) }
     return item
   })
 }

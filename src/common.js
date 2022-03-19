@@ -379,14 +379,25 @@ export const makeMap = function(str, expectsLowerCase = false) {
   }
   return expectsLowerCase ? val => map[val.toLowerCase()] : val => map[val]
 }
-// 删除数组中某个元素
-// const arr = ['a', 'b', 'c']
-// remove(arr, 'b') ====> arr变更为['a', 'c']
-export const remove = function(arr, item) {
-  if (arr.length) {
-    var index = arr.indexOf(item);
-    if (index > -1) { return arr.splice(index, 1) }
+/**
+ * 删除数组中某一个元素
+ * @param {*} arr 需要操作的数组
+ * @param {*} item 要删除的条目
+ * @param {*} type 删除类型  0: 代表只删除查到的第一个, 1代表删除查到的全部， -1代表删除查到的最后一个
+ * @returns 删除后的新数组
+ * @举例 remove([1,2,3,4,5,4], 4, 1) ----> [1,2,3,5]
+ * @举例 remove([1,2,3,4,5,4], 4, 0) ----> [1,2,3,5,4]
+ * @举例 remove([1,2,3,4,5,4], 4, -1) ----> [1,2,3,4,5]
+ */
+export const remove = function(arr, item, type = 1) {
+  if(type == 0) {
+    arr.splice(arr.indexOf(item), 1)
+  } else if(type == -1) {
+    arr.splice(arr.lastIndexOf(item), 1)
+  } else {
+    while(arr.indexOf(item) >= 0) { arr.splice(arr.indexOf(item), 1) }
   }
+  return arr
 }
 /**
  * 数组、字符串元素复制N次 

@@ -395,7 +395,7 @@ export const remove = function(arr, item, type = 1) {
   } else if(type == -1) {
     arr.splice(arr.lastIndexOf(item), 1)
   } else {
-    while(arr.indexOf(item) >= 0) { arr.splice(arr.indexOf(item), 1) }
+    arr = arr.filter(v => v !== item)
   }
   return arr
 }

@@ -35,7 +35,11 @@ export const isFF = UA && UA.match(/firefox\/(\d+)/)
 export const isPhone = val => /^1[3456789]\d{9}$/.test(val) // 检测是否是手机号码
 export const isIdentity = val => /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/.test(val) // 身份证 321281155121152489
 export const isEmail = val => /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/.test(val)
-// 去某个页面
+/**
+ * 去某个页面
+ * @param {*} options
+ * @举例 go({name: 'lottie', query:{name:'tom'}}) // 这样就实现了跳转到/lottie页面并且页面传参为name=tom
+ */
 export const go = function(options = {}) {
   router.push({
     path: '', // 路由路径
@@ -81,8 +85,14 @@ export const deepCopy = function (obj) {
  * @returns 
  * @举例子 [{name:'a'}, {name:'b'}].map(v => ({...v, _id:guID()})) ---->  [{name:'a', _id: '1vc49wwugp3400'}, {name:'b', _id:'4vvfl6wivx4000'}]
  */
-export const guID = () => Number(Math.random().toString().substr(3, 8) + Date.now()).toString(36)
-// 函数防抖
+export const guID = () => Number(Math.random().toString().slice(3, 9) + Date.now()).toString(36)
+/**
+ * 函数防抖
+ * @param {*} fn 需要防抖的函数
+ * @param {*} wait 防抖时间
+ * @returns 
+ * const newFunc = debounce(fn, 2e3) ----> 这样的话执行newFunc()就会有防抖效果
+ */
 export const debounce = function (fn, wait=3e3) {
   if(!isFunction(fn)){throw new Error('传入的参数必须是个函数')}
   let timeout = null  // 使用闭包，让每次调用时点击定时器状态不丢失

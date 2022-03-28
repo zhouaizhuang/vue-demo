@@ -889,14 +889,13 @@ export const dateFormater = function (formater = 'YYYY-MM-DD hh:mm:ss', t = new 
   if(!isDate(t) && isString(t)) { t = t.replace(/[-]/g, "/") }
   const dt = new Date(t)
   const [Y, M, D, h, m, s] = [dt.getFullYear() + '', dt.getMonth() + 1, dt.getDate(), dt.getHours(), dt.getMinutes(), dt.getSeconds()]
-  const dateStr = formater.replace(/YYYY|yyyy/g, Y)
+  return formater.replace(/YYYY|yyyy/g, Y)
     .replace(/YY/g, Y.slice(2, 4))
     .replace(/MM/g, addZero(M, 2))
     .replace(/DD/g, addZero(D, 2))
     .replace(/hh/g, addZero(h, 2))
     .replace(/mm/g, addZero(m, 2))
     .replace(/ss/g, addZero(s, 2))
-  return { dateStr, Y, M, D, h, m, s }
 }
 /**得到当前时间之后N秒的时间
  * @param {*} after 多少秒之后的时间
@@ -932,12 +931,11 @@ export const afterNsecond = function (after = 60) {
     formater = formater.slice(formater.indexOf(regStr))
   }
   ;[h, m, s, ms] = [addZero(h, 2), addZero(m, 2), addZero(s, 2), addZero(ms, 3)]
-  const timeStr = formater.replace(/dd/g, d)
+  return formater.replace(/dd/g, d)
     .replace(/hh/g, h)
     .replace(/mm/g, m)
     .replace(/ss/g, s)
     .replace(/ms/g, ms)
-  return { timeStr, d: String(d), h, m, s, ms }
 }
 /**
  * 根据年和月，得出该年月有多少天。（原理：计算出他的下个月， 用它的下个月生成毫秒数-当前月毫秒数再除以一天的毫秒数===天数）
@@ -959,7 +957,7 @@ export const getDays = function(year, month) {
   let yearObjTwo = new Date(nextDate)
   let milliseconds = yearObjTwo.getTime() - yearObjOne.getTime()
   let daymilliseconds = 3600 * 24 * 1000
-  return (milliseconds / daymilliseconds)
+  return milliseconds / daymilliseconds
 }
 /**
  * 日期一和日期二之间的间隔的天数

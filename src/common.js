@@ -442,7 +442,7 @@ export const repeat = function(obj = '', times = 1) {
  * 对象数组按照某个字段进行排序
  * @param {*} arr 需要排序的对象数组
  * @param {*} str 根据这个字段的值进行排序
- * @param {*} type 排序方式、递增还是递减
+ * @param {*} type 排序方式、递增还是递减 1: 递增   -1递减
  * @returns {Array} 排序后的数组
  * @举例 举例：sortByProp([{name:'ss', age:30}, {name:'dd', age:14}], 'age') ----> [{name:'dd', age:14}, {name:'ss', age:30}]
  */
@@ -530,8 +530,13 @@ export const intersect = function (arr1, arr2){
   const tmp = new Set(arr2)
   return arr1.filter(x => tmp.has(x))
 }
-// 数组（a 相对于 b 的）差集
-// 举例子: difference([1,2,3], [1,2]) ====> [3]
+/**
+ * 数组（a 相对于 b 的）差集
+ * @param {*} arr1 数组1
+ * @param {*} arr2 数组2
+ * @returns 
+ * @举例子 difference([1,2,3], [1,2,7]) ====> [3]
+ */
 export const difference = function (arr1, arr2){
   if(!isArray(arr1) || !isArray(arr2)) { throw new Error('参数必须是数组类型') }
   const b = new Set(arr2)
@@ -557,8 +562,12 @@ export const searchCover = function (arr, serchObj = {}, callback) {
 ******************************************JSON操作*********************************************
 **********************************************************************************************
 */
-// 格式化JSON, 将null, undefined,转换为''，否则后端会认为undefined和null为字符串导致bug
-// 举例子：formatJSON({name:null, age:undefined, school: '清华大学'}) ---> {name:'', age:'', school: '清华大学'}
+/**
+ * 格式化JSON, 将null, undefined,转换为''，否则后端会认为undefined和null为字符串导致bug
+ * @param {*} obj
+ * @returns 
+ * @举例子 formatJSON({name:null, age:undefined, school: '清华大学'}) ---> {name:'', age:'', school: '清华大学'}
+ */
 export const formatJSON = function (obj) {
   if(!isReference) { return obj }
   return isObject(obj) ? Object.keys(obj).reduce((prev, item) => ((prev[item] = isNull(obj[item]) || isUndefined(obj[item])  ? '' : obj[item]), prev), {}) : {}
@@ -569,8 +578,12 @@ export const formatRes = function (obj) {
   const filterNull = tmpObj =>  Object.keys(tmpObj).reduce((prev, item) => ((prev[item] = isNull(tmpObj[item]) ? undefined : tmpObj[item]), prev), {})
   return isArray(obj) ? obj.map(item => filterNull(item)) : filterNull(obj)
 }
-// 检查表单必填项是否为空，空则返回第一个为空的字段名。
-// 举例：checkParams({name:'张三', age:'', school:''}) ----> 'age'
+/**
+ * 检查表单必填项是否为空，空则返回第一个为空的字段名。用于做一些必填校验检查
+ * @param {*} obj 
+ * @returns 
+ * @举例 checkParams({name:'张三', age:'', school:''}) ----> 'age'
+ */
 export const checkJSON = function (obj) {
   return Object.keys(obj).find(item => !Boolean(obj[item])) || ''
 }

@@ -712,13 +712,14 @@ export const exitFullscreen = function (){
  * @举例 random(0, 0.5) ==> 0.3567039135734613
  * @举例 random(1, 2) ===> 1.6718418553475423
  * @举例 random(-2, -1) ==> -1.4474325452361945
+ * @举例 random(1, 8) ==> 6
  * 原生参考代码:  a = new Date % 100; // 两位整数随机数
  * a = new Date % 1000; // 三位整数随机数
  * a = new Date % 10000; // 四位整数随机数...依次类推
  */
 export const random = function (lower, upper, type = 'float') {
-  lower = +lower || 0
-  upper = +upper || 0
+  lower = Number(lower) || 0
+  upper = Number(upper) || 0
   let res = Math.random() * (upper - lower) + lower
   if(type !== 'float') { res = round(res) }
   return res
@@ -810,7 +811,7 @@ export const round = function (num, prec = 0) {
   prec = Number(prec)
   prec < 0 && (prec = 0)
   const k = Math.pow(10, prec)
-  return String(Math.round(Number(num) * k) / k)
+  return Math.round(Number(num) * k) / k
 }
 /**
  * 数据范围
@@ -878,20 +879,24 @@ export const socketTime = function (t = new Date()) {
 }
 /**
  * 生成格式化时间字符串
- * @举例 dateFormater('YYYY-MM-DD HH:mm') ==> 2019-06-26 18:30
+ * @param {*} formater 时间格式
+ * @param {*} t 传入的时间
+ * @returns 处理之后的时间数据
+ * @举例 dateFormater('YYYY-MM-DD hh:mm') ==> 2019-06-26 18:30
  * @举例 dateFormater('YYYYMMDD-hh:mm:ss', '2020-08-12 09:13:54') ==> 20200812-09:13:54
-*/
-export const dateFormater = function (formater, t = new Date()){
+ */
+export const dateFormater = function (formater = 'YYYY-MM-DD hh:mm:ss', t = new Date()){
   if(!isDate(t) && isString(t)) { t = t.replace(/[-]/g, "/") }
   const dt = new Date(t)
   const [Y, M, D, h, m, s] = [dt.getFullYear() + '', dt.getMonth() + 1, dt.getDate(), dt.getHours(), dt.getMinutes(), dt.getSeconds()]
-  return formater.replace(/YYYY|yyyy/g, Y)
+  const dateStr = formater.replace(/YYYY|yyyy/g, Y)
     .replace(/YY/g, Y.slice(2, 4))
-    .replace(/MM/g, (M < 10 ? '0' : '') + M)
-    .replace(/DD/g, (D < 10 ? '0' : '') + D)
-    .replace(/hh/g, (h < 10 ? '0' : '') + h)
-    .replace(/mm/g, (m < 10 ? '0' : '') + m)
-    .replace(/ss/g, (s < 10 ? '0' : '') + s)
+    .replace(/MM/g, addZero(M, 2))
+    .replace(/DD/g, addZero(D, 2))
+    .replace(/hh/g, addZero(h, 2))
+    .replace(/mm/g, addZero(m, 2))
+    .replace(/ss/g, addZero(s, 2))
+  return { dateStr, Y, M, D, h, m, s }
 }
 /**得到当前时间之后N秒的时间
  * @param {*} after 多少秒之后的时间
@@ -903,35 +908,55 @@ export const afterNsecond = function (after = 60) {
 }
 /**
  * 将毫秒数转换成天、时、分、秒、毫秒
- * @param {*} leftMs 毫秒数
- * @举例 afterNsecond(60)
+ * @param {Number} leftMs 剩余的时间，毫秒数
+ * @param {String} formater 时间格式
+ * @param {Number} strType 字符串的格式是否隐藏0。  0：隐藏0
+ * @param {Number} timeType 时间类型是否补0。  1：补0     0：不需要补0
+ * @returns 
+ * @举例 ms2Dhs(62e3) ---> {formateStr: '01分钟02秒', d: 0, h: '00', m: '01', s: '02', ms: '500'}
  */
- export const sec2Dhs = function (leftMs){
-  const d = Math.floor(leftMs / 1000 / 60 / 60 / 24)
-  const h = addZero(Math.floor(leftMs / 1000 / 60 / 60 % 24), 2)
-  const m = addZero(Math.floor(leftMs / 1000 / 60 % 60), 2)
-  const s = addZero(Math.floor(leftMs / 1000 % 60), 2)
-  const ms = addZero(Math.floor(leftMs % 1000), 2)
-  return { d, h, m, s, ms }
+ export const ms2Dhs = function (formater = 'dd天hh小时mm分钟ss秒', leftMs, strType = 0) {
+  let d = Math.floor(leftMs / 1000 / 60 / 60 / 24)
+  let h = Math.floor(leftMs / 1000 / 60 / 60 % 24)
+  let m = Math.floor(leftMs / 1000 / 60 % 60)
+  let s = Math.floor(leftMs / 1000 % 60)
+  let ms = Math.floor(leftMs % 1000)
+  if(strType == 0) { // 字符串类型，如果0则不显示
+    let regStr = ''
+    if(d > 0) { regStr = 'dd' }
+    else if(h > 0) { regStr = 'hh' }
+    else if(m > 0) { regStr = 'mm' }
+    else if(s > 0) { regStr = 'ss' }
+    else if(ms > 0) { regStr = 'ms' }
+    else { formater = '' }
+    formater = formater.slice(formater.indexOf(regStr))
+  }
+  ;[h, m, s, ms] = [addZero(h, 2), addZero(m, 2), addZero(s, 2), addZero(ms, 3)]
+  const timeStr = formater.replace(/dd/g, d)
+    .replace(/hh/g, h)
+    .replace(/mm/g, m)
+    .replace(/ss/g, s)
+    .replace(/ms/g, ms)
+  return { timeStr, d: String(d), h, m, s, ms }
 }
 /**
  * 根据年和月，得出该年月有多少天。（原理：计算出他的下个月， 用它的下个月生成毫秒数-当前月毫秒数再除以一天的毫秒数===天数）
- * @param {String} whichYear 
- * @param {String} whichMonth 
+ * @param {String} year 
+ * @param {String} month 
  * @returns 
  * @举例子 getDays(2021, 11) ---> 30
  */
-export const getDays = function(whichYear, whichMonth) {
-  let nextMoth = Number(whichMonth) + 1
-  let nextYear = Number(whichYear)
+export const getDays = function(year, month) {
+  let nextMoth = Number(month) + 1
+  let nextYear = Number(year)
   if (nextMoth === 13) {
     nextMoth = 1
     nextYear++
   }
-  let theCurrentDate = whichYear + '-' + whichMonth + '-1'
-  let theNextDate = nextYear + '-' + nextMoth + '-1'
-  let yearObjOne = new Date(theCurrentDate)
-  let yearObjTwo = new Date(theNextDate)
+  let currentDate = year + '-' + month + '-1'
+  let nextDate = nextYear + '-' + nextMoth + '-1'
+  let yearObjOne = new Date(currentDate)
+  let yearObjTwo = new Date(nextDate)
   let milliseconds = yearObjTwo.getTime() - yearObjOne.getTime()
   let daymilliseconds = 3600 * 24 * 1000
   return (milliseconds / daymilliseconds)
@@ -943,7 +968,7 @@ export const getDays = function(whichYear, whichMonth) {
  * @returns 
  * @举例 dayDif("2021-11-3", "2022-2-1") ----> 90
  */
-export const dayDif = (date1, date2) => Math.ceil(Math.abs(new Date(date1.replace(/[-]/g, "/")).getTime() - new Date(date2.replace(/[-]/g, "/")).getTime()) / 86400000) // 86400 === 24 * 60 * 60 秒
+export const dayDiff = (date1, date2) => Math.ceil(Math.abs(new Date(date1.replace(/[-]/g, "/")).getTime() - new Date(date2.replace(/[-]/g, "/")).getTime()) / 86400000) // 86400 === 24 * 60 * 60 秒
 /**
  * 查出日期位于一年中的第多少天
  * @param {Date || String || Number} date 传入日期

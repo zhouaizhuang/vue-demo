@@ -27,6 +27,7 @@
           <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/pieChart">简易饼图（锥形渐变）</router-link></div>
           <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/redPacket">红包动画</router-link></div>
           <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/musicPlay">音乐播放</router-link></div>
+          <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/musicPlay1">音乐播放(触屏即播)</router-link></div>
       </div>
     </div>
     <div class="f">

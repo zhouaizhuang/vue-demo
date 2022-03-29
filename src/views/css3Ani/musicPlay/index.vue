@@ -1,5 +1,5 @@
 <template>
-  <div class="h100vh rel">
+  <div class="mh100vh rel">
     <div @click="onOff" :class="['abs zx100', isOn ? 'isOn' : 'isOff']" style="width:.6rem;height:.6rem;top:.4rem;left:.4rem;background-size: 100% 100%;"></div>
     <audio ref="audio" src="https://hangjiayun.oss-cn-shanghai.aliyuncs.com/CRM/video/bg.mp3" loop="loop" autoplay="autoplay"></audio>
   </div>

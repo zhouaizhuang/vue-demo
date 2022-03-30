@@ -1,4 +1,4 @@
-import { debounce, remove} from "../../common.js"
+import { debounce, remove} from "../../common/index.js"
 let [listenList, imageCatcheList] = [[], []]
 const debounceScroll = debounce(() => {
   for(let i = 0, len = listenList.length; i < len; i++ ) {

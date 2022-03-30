@@ -6,7 +6,7 @@
   </div>
 </template>
 <script>
-import { sec2Dhs } from "../../../common"
+import { ms2Dhs } from "../../../common/index.js"
 export default {
   name: 'countDown',
   data(){
@@ -20,8 +20,9 @@ export default {
       const [now, end] = [new Date().getTime(), new Date(time).getTime()]
       const leftMs = end - now //时间差
       if(leftMs > 0) {
-        const { d, h, m, s, ms } = sec2Dhs(leftMs) // 获取剩余的 天  时  分 秒 毫秒
-        this.timeStr = `${d}天${h}时${m}分${s}秒${ms}毫秒`
+        // const { d, h, m, s, ms } = ms2Dhs(leftMs) // 获取剩余的 天  时  分 秒 毫秒
+        // this.timeStr = `${d}天${h}时${m}分${s}秒${ms}毫秒`
+        this.timeStr = ms2Dhs('dd天hh时mm分ss秒ms毫秒', leftMs)
       } else {
         this.timeStr = '已截止'
       }

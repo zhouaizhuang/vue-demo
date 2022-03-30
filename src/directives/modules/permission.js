@@ -1,5 +1,5 @@
 // https://www.jianshu.com/p/7dbf597c1c90
-import { setLocalStorage, getLocalStorage } from "../../common.js"
+import { setLocalStorage, getLocalStorage } from "../../common/index.js"
 
 /**
  * 权限指令 

@@ -26,7 +26,7 @@
   </div>
 </template>
 <script>
-import { random } from "../../../common.js"
+import { random } from "../../../common/index.js"
 export default {
   name: 'numGrow',
   data(){

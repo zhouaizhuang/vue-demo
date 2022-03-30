@@ -12,7 +12,7 @@
   </div>
 </template>
 <script>
-import { addCss } from "../../../common.js"
+import { addCss } from "../../../common/index.js"
 export default {
   name: 'carouselX',
   data(){

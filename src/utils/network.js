@@ -1,6 +1,6 @@
 import axios from "axios"
 import qs from 'qs'
-import {JSON2url, formatJSON, showToast} from "@/common.js"
+import {JSON2url, formatJSON, showToast} from "@/common/index.js"
 /***********获取token*****/
 // function getToken(){
 //   return window.localStorage.getItem('token')

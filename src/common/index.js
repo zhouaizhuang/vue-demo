@@ -25,7 +25,6 @@ import {
 import {
   regTest
 } from "./modules/reg.js"
-// import {} from "./modules/security.js" // 网络安全相关
 import {
   startWith, trim, sliceStr, addZero, length, copyLink, capitalize,
 } from "./modules/string.js"

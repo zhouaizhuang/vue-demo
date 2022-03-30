@@ -1,7 +1,7 @@
 <template>
   <div class="mh100vh rel" @click="handleClick">
     <div @click.stop="onOff" :class="['abs zx100', isOn ? 'isOn' : 'isOff']" style="width:.6rem;height:.6rem;top:.4rem;left:.4rem;background-size: 100% 100%;"></div>
-    <video ref="audio" :muted="isMuted" src="https://hangjiayun.oss-cn-shanghai.aliyuncs.com/CRM/video/bg.mp3" autoplay loop />
+    <audio ref="audio" src="https://hangjiayun.oss-cn-shanghai.aliyuncs.com/CRM/video/bg.mp3" autoplay loop />
   </div>
 </template>
 <script>
@@ -24,10 +24,12 @@ export default {
     handleClick(){
       if(this.isMuted) {
         this.isMuted = false
-        this.timeId = setInterval(() => {
+        this.timeId = setInterval(() =>{
           let audioRef = this.$refs.audio
-          audioRef.play()
-          clearTimeout(this.timeId)
+          if(audioRef) {
+            audioRef.play()
+            clearInterval(this.timeId)
+          }
         }, 200)
       }
     },

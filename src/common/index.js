@@ -13,27 +13,13 @@ import {
   isError, isGt0, isGtEq0, inBrowser, inWeex, weexPlatform, UA, isIE, isIE9, isEdge, isAndroid, isIOS, isWeChat, isChrome, isPhantomJS,
   isFF, isPhone, isIdentity, isEmail, getOS
 } from "./modules/check"
-import {
-  compose, curry
-} from "./modules/func.js"
-import {
-  formatMoney, round, range
-} from "./modules/number.js"
-import {
-  extend, formatJSON, formatRes, checkJSON, JSON2url, invert, invertBy
-} from "./modules/object.js"
-import {
-  regTest
-} from "./modules/reg.js"
-import {
-  startWith, trim, sliceStr, addZero, length, copyLink, capitalize,
-} from "./modules/string.js"
-import {
-  map2Obj, obj2Map
-} from "./modules/structure.js"
-import {
-  getDateStr, getDay, socketTime, dateFormater, afterNsecond, ms2Dhs, getDays, dayDiff, dayOfYear
-} from "./modules/timeDate.js"
+import { compose, curry } from "./modules/func.js"
+import { formatMoney, round, range } from "./modules/number.js"
+import { extend, formatJSON, formatRes, checkJSON, JSON2url, invert, invertBy } from "./modules/object.js"
+import { regTest } from "./modules/reg.js"
+import { startWith, trim, sliceStr, addZero, length, copyLink, capitalize } from "./modules/string.js"
+import { map2Obj, obj2Map } from "./modules/structure.js"
+import { getDateStr, getDay, socketTime, dateFormater, afterNsecond, ms2Dhs, getDays, dayDiff, dayOfYear } from "./modules/timeDate.js"
 
 export {
   // 数组

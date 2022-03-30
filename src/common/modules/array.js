@@ -1,5 +1,6 @@
-import { isArray } from "./check"
-import { extend } from "./object"
+import { isArray, isObject } from "./check.js"
+import { extend } from "./object.js"
+import { guID, deepCopy } from "./business.js"
 /**
  * 洗牌算法
  * @param {Array} arr 需要乱序的数组

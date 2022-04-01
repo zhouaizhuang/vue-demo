@@ -329,7 +329,7 @@ export const sum = arr => arr.reduce((prev, item) => prev + item, 0)
 export const mean = arr => arr.reduce((prev, item) => prev + item, 0) / arr.length
 /**
  * 指定索引变换
- * @param {Array} arr 需要求均值的数组
+ * @param {Array} arr 需要变换的数组
  * @returns {Number}
  * @举例 adjust([1,2,3,4,5], 2, item => 'zzz') ---> [1,2,'zzz',4,5]
  * @举例 adjust([1,2,3,4,5], -1, item => item + 'zzz') ---> [1,2,3,4,'5zzz']

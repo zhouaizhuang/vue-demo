@@ -1,4 +1,4 @@
-import { isObject, isNull, isUndefined, isReference }  from "./check"
+import { isObject, isArray, isNull, isUndefined, isReference }  from "./check"
 /**
  * 扩展对象
  * @param {Object} to 需要扩展的目标对象

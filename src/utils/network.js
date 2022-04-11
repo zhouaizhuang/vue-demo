@@ -69,7 +69,7 @@ export const get = function (url, params){
   return request({ method:'GET', url:JSON2url(url, params) }).then(res => {
     const {code, data, msg} = res || {}
     if(code) {
-      showToast(msg || `${url}报错，msg为空`)
+      showToast(JSON.stringify(msg) || `${url}报错，msg为空`)
       return false
     } else {
       return data
@@ -81,7 +81,7 @@ export const post = function (url, params) {
   return request({ method:'POST', url, data: params }).then(res => {
     const {code, data, msg} = res || {}
     if(code) {
-      showToast(msg || `${url}报错，msg为空`)
+      showToast(JSON.stringify(msg) || `${url}报错，msg为空`)
       return false
     } else {
       return data

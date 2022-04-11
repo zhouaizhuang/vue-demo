@@ -89,6 +89,7 @@ input, textarea, img, video, object { width:100%; box-sizing: border-box;} .bord
 .nowrap2{min-width:0;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
 /* 文字过多自动换行 */
 .wrap{max-width:100%;word-break:break-all;word-wrap:break-word;}
+.lba{line-break: anywhere;} /*文字因为能断开的全部断开*/
 /* 对齐方式*/
 .tl{text-align: left;} .tc{text-align: center;} .tr{text-align: right;}
 /* 首行缩进 */
@@ -96,9 +97,6 @@ input, textarea, img, video, object { width:100%; box-sizing: border-box;} .bord
 /* 包裹性 */
 .wfc{width:-webkit-fit-content;width:-moz-fit-content;width: fit-content;} .hfc{height:-webkit-fit-content;height: fit-content;}
 .wmc{width:-webkit-min-content;width:-moz-min-content;width: min-content;}
-/* 文字过多自动换行 */
-.wrap{max-width:100%;word-break:break-all;word-wrap:break-word;}
-.lba{line-break: anywhere;} /*文字因为能断开的全部断开*/
 /* 行高 */
 .lh1-5{line-height:1.5;}
 /* 文本修饰 */

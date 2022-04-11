@@ -71,6 +71,21 @@ export const adjust = function (arr, num, fn) {
   })
 }
 /**
+ * 找到数组中目标对象进行数据变更
+ * @param {Array} arr 需要操作的数据
+ * @param {Object} serchObj 需要查询的字段
+ * @param {Function} callback 接受一个item，返回一个新的item
+ * @returns {Array} 返回一个处理后的数组
+ * @举例 searchCover([{id:1, age:1}, {id:2, age:2}], {id:2}, item => ({...item, age: item.age + 5})) ---> [{id: 1, age: 1}, {id: 2, age: 7}]
+ */
+ export const searchCover = function (arr, serchObj = {}, callback) {
+  return arr.map(item => {
+    const isTargetItem = Object.keys(serchObj).reduce((prev, v) => (prev = prev && serchObj[v] == item[v], prev), true)
+    if(isTargetItem) { item = callback(item) }
+    return item
+  })
+}
+/**
  * 扁平数组转对象tree树形结构
  * https://juejin.cn/post/6983904373508145189#heading-8
  * @param {Array} arr 需要转换的数组
@@ -271,21 +286,6 @@ export const intersect = function (arr1, arr2){
   if(!isArray(arr1) || !isArray(arr2)) { throw new Error('参数必须是数组类型') }
   const b = new Set(arr2)
   return arr1.filter(x => !b.has(x))
-}
-/**
- * 找到数组中目标对象进行数据变更
- * @param {Array} arr 需要操作的数据
- * @param {Object} serchObj 需要查询的字段
- * @param {Function} callback 接受一个item，返回一个新的item
- * @returns {Array} 返回一个处理后的数组
- * @举例 searchCover([{id:1, age:1}, {id:2, age:2}], {id:2}, item => ({...item, age: item.age + 5})) ---> [{id: 1, age: 1}, {id: 2, age: 7}]
- */
-export const searchCover = function (arr, serchObj = {}, callback) {
-  return arr.map(item => {
-    const isTargetItem = Object.keys(serchObj).reduce((prev, v) => (prev = prev && serchObj[v] == item[v], prev), true)
-    if(isTargetItem) { item = callback(item) }
-    return item
-  })
 }
 /**
  * 将数组中的数据进行分类，分类成JSON。键名为类别名称，键值为数组，存放数据集合

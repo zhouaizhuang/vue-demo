@@ -7,9 +7,10 @@ button { all: unset; }
 html { background-color: #fff; touch-action: manipulation;-webkit-touch-callout:none;font-size:16px;min-height:100vh;} 
 /* IOS禁止微信调整字体大小 */
 body { -webkit-text-size-adjust: 100% !important;text-size-adjust: 100% !important;-moz-text-size-adjust: 100% !important;min-height:100vh;overflow-x: hidden;margin:0;padding-right:calc(100vw - 100%);}
-img {border:0; display:inline-block;} 
-button,input,select,textarea{-webkit-appearance:none;appearance:none;} /*解决ios输入框默认内阴影*/
-input, textarea, img, video, object { width:100%; box-sizing: border-box;} .borderBox{box-sizing: border-box;}
+/* img {border:0; display:inline-block;}  */
+/* button,input,select,textarea{-webkit-appearance:none;appearance:none;} 解决ios输入框默认内阴影 */
+/* input, textarea, img, video, object { width:100%; box-sizing: border-box;} */
+.borderBox{box-sizing: border-box;}
 .smoothScroll{overflow: auto;-webkit-overflow-scrolling: touch;} /*解决ios滑动不流畅问题*/
 /*安全边界 上右下左内边距*/
 .safePt{padding-top: env(safe-area-inset-top);} .safepr{padding-right: env(safe-area-inset-right);} .safePb{padding-bottom: env(safe-area-inset-bottom);} .safePl{padding-left: env(safe-area-inset-left);}

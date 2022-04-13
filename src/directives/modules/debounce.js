@@ -6,7 +6,7 @@
  * @param {Array} binding.value - [fn,event,time]
  * 直接使用： <XXX v-debounce="reset]">刷新</XXX>
  * 配置事件，间隔时间： <button v-debounce="[reset,'click',500]">刷新</button>
- * 事件传递参数则： <button v-debounce="[()=>reset(param),`click`,500]">刷新</button>
+ * 事件传递参数则： <button v-debounce="[()=>reset(param),'click',500]">刷新</button>
  */
 export const debounce = {
   bind: function (el, binding) {

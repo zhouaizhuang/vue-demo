@@ -13,7 +13,7 @@
 <script>
 import Zupload from "../../../components/Zupload/index.vue"
 export default {
-  name: 'phone',
+  name: 'uploadImg',
   components:{
     Zupload
   },

@@ -160,6 +160,7 @@
       <div class="pr20r b" style="width:2.2rem;">PC组件封装</div>
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/uploadImg">上传图片</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/Zmap">腾讯经纬度选择</router-link></div>
       </div>
     </div>
   </div>

@@ -39,7 +39,7 @@ export const round = function (num, prec = 0) {
  * @param min 限制最小值
  * @param max 限制最大值
  * @举例 range(12.23, 7, 10)  ===> 10 // 上限为10 因此返回10
- * @举例 range(12.23, 14, 20)  ===> 14 // 下限为14 因此返回10
+ * @举例 range(12.23, 14, 20)  ===> 14 // 下限为14 因此返回14
  */
  export const range = function (num, min = null, max = null) {
   ;[num, min, max] = [Number(num), Number(min), Number(max)]

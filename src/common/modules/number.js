@@ -52,6 +52,7 @@ export const round = function (num, prec = 0) {
  * @param {String | Number} num1 
  * @param {String | Number} num2 
  * @returns 相加后的大数
+ * @举例 largeNumAdd('123000000000000000000000000010', '123000000000000000000000000009') ----> '246000000000000000000000000019'
  */
  export const largeNumAdd = function (num1, num2){
   let maxLen = Math.max(num1.length, num2.length)

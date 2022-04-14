@@ -50,3 +50,18 @@ export const range = function (num, min = null, max = null) {
   }
   return num
 }
+/**
+ * 大数相加
+ * @param {String | Number} num1 
+ * @param {String | Number} num2 
+ * @returns 相加后的大数
+ */
+ export const largeNumAdd = function (num1, num2){
+  let maxLen = Math.max(num1.length, num2.length)
+  ;[num1, num2] = [addZero(String(num1), maxLen).split('').map(v => parseInt(v)), addZero(String(num2), maxLen).split('').map(v => parseInt(v))]
+  const res = num1.reduceRight((prev, item, index) => {
+    const figure = item + num2[index] + prev.carry
+    return { sum: String(figure % 10) + prev.sum, carry: Math.floor(figure / 10) }
+  }, {sum:'', carry: 0})
+  return res.sum
+}

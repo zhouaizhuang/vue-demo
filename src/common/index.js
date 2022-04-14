@@ -14,7 +14,7 @@ import {
   isFF, isPhone, isIdentity, isEmail, getOS
 } from "./modules/check"
 import { compose, curry } from "./modules/func.js"
-import { formatMoney, round, range } from "./modules/number.js"
+import { formatMoney, round, range, largeNumAdd } from "./modules/number.js"
 import { extend, formatJSON, formatRes, checkJSON, JSON2url, invert, invertBy } from "./modules/object.js"
 import { regTest } from "./modules/reg.js"
 import { startWith, trim, sliceStr, addZero, length, copyLink, capitalize } from "./modules/string.js"
@@ -37,7 +37,7 @@ export {
   // 高阶函数
   compose, curry,
   // 数字
-  formatMoney, round, range,
+  formatMoney, round, range, largeNumAdd,
   // 对象
   extend, formatJSON, formatRes, checkJSON, JSON2url, invert, invertBy,
   // 正则

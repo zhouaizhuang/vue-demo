@@ -250,7 +250,8 @@ export const copyLink = function (e){
 }
 /**
  * 字符串首字母大写
- * @param {*} str 
+ * @param {String} str 
+ * @举例 capitalize('abcd')  ---->  'Abcd'
  * @returns 经过转换后的首字母为大写的字符串
  */
 export const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1)

@@ -41,13 +41,10 @@ export const round = function (num, prec = 0) {
  * @举例 range(12.23, 7, 10)  ===> 10 // 上限为10 因此返回10
  * @举例 range(12.23, 14, 20)  ===> 14 // 下限为14 因此返回10
  */
-export const range = function (num, min = null, max = null) {
-  if(min !== null) {
-    num = Number(num) < Number(min) ? min : num
-  }
-  if(max !== null) {
-    num = Number(num) > Number(max) ? max : num
-  }
+ export const range = function (num, min = null, max = null) {
+  ;[num, min, max] = [Number(num), Number(min), Number(max)]
+  if(min !== null) { num = Math.max(num, min) }
+  if(max !== null) { num = Math.min(num, max) }
   return num
 }
 /**

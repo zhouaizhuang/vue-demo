@@ -1,3 +1,4 @@
+import { addZero } from "./string" 
 /**
  * 四舍五入返回N位有效数字（常用于金额计算）
  * @param num 要格式化的数字

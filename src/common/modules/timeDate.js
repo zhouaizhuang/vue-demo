@@ -2,14 +2,14 @@ import { isDate, isString } from "./check"
 import { addZero } from "./string"
 /**
  * 获取日期字符串。
- * @param AddDayCount 传0代表今天，传1代表明天
+ * @param num 传0代表今天，传1代表明天
  * @param split 日期分割符
  * @举例 getDateStr(0) ---> 20200904    getDateStr(1) ---> 20200905
  * @举例 分割：getDateStr(1, '-')--->2020-09-05
  */
-export const getDateStr = function (AddDayCount = 0, split = '') {
+ export const getDateStr = function (num = 0, split = '') {
   const dt = new Date()
-  dt.setDate(dt.getDate() + AddDayCount) // 获取AddDayCount天后的日期
+  dt.setDate(dt.getDate() + num) // 获取num天后的日期
   return `0000${dt.getFullYear()}`.slice(-4) + split + `00${(dt.getMonth() + 1)}`.slice(-2) + split + `00${dt.getDate()}`.slice(-2)
 }
 /**

@@ -1,19 +1,19 @@
 import {
   shuffle, cached, toObject, sum, mean, adjust, array2Tree, once, makeMap, remove, repeat, sortByProp, noSame, getAreaFlat,
   getField, getChecked, chunk, splitAt, transformArr, splitWhen, intersect, difference, searchCover, groupBy
-} from "./modules/array"
+} from "./modules/array.js"
 import {
   syncBgData, downloadFile, toFullScreen, exitFullscreen, random, randomColor, noCopy, getProps, safeGet, wait, deepCopy,
-  guID, debounce, throttling, getScrollTop, scrollPos, getCookie, clearCookies,queryAll, query, getLocalStorage, setLocalStorage,
+  guID, getScrollTop, scrollPos, getCookie, clearCookies,queryAll, query, getLocalStorage, setLocalStorage,
   getSessionStorage, setSessionStorage, getPosition, getViewHeight, getViewPos, showToast, removeCss, addCss, removeDom, addDom,
   show, hide, showLoading, hideLoading, setTitle, goUrl, checkPwd, c2f, f2s
-} from "./modules/business"
+} from "./modules/business.js"
 import {
   isType,isArray,isObject, isEmptyObj, isReference, isNull, isUndefined, isFunction, isRegExp, isString, isNumber, isDate,
   isError, isGt0, isGtEq0, inBrowser, inWeex, weexPlatform, UA, isIE, isIE9, isEdge, isAndroid, isIOS, isWeChat, isChrome, isPhantomJS,
   isFF, isPhone, isIdentity, isEmail, getOS
-} from "./modules/check"
-import { compose, curry } from "./modules/func.js"
+} from "./modules/check.js"
+import { compose, curry, debounce, throttling } from "./modules/func.js"
 import { formatMoney, round, range, largeNumAdd } from "./modules/number.js"
 import { extend, formatJSON, formatRes, checkJSON, JSON2url, invert, invertBy } from "./modules/object.js"
 import { regTest } from "./modules/reg.js"

@@ -91,7 +91,8 @@ export const guID = () => Number(Math.random().toString().slice(3, 9) + Date.now
  * @param {*} fn 需要防抖的函数
  * @param {*} wait 防抖时间
  * @returns 
- * const newFunc = debounce(fn, 2e3) ----> 这样的话执行newFunc()就会有防抖效果
+ * @举例 const fn = () => {console.log(1)}
+ * @举例 const newFn = debounce(fn, 2e3) ----> 这样的话执行newFunc()就会有防抖效果
  */
 export const debounce = function (fn, wait=3e3) {
   if(!isFunction(fn)){throw new Error('传入的参数必须是个函数')}
@@ -101,7 +102,14 @@ export const debounce = function (fn, wait=3e3) {
     timeout = setTimeout(()=> fn(...arguments), wait)
   }
 }
-// 函数节流
+/**
+ * 函数节流
+ * @param {*} fn  需要做节流的函数
+ * @param {*} wait 节流时间
+ * @returns 
+ * @举例 const fn = () => {console.log(1)}
+ * @举例 const newFn = throttling(fn, 2e3) ----> 生成了节流函数
+ */
 export const throttling = function(fn, wait=3e3) {
   let timeout = null // 使用闭包，让每次调用时点击定时器状态不丢失
   let start = +new Date() // 记录第一次点击时的时间戳

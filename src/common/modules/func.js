@@ -1,3 +1,4 @@
+import { isFunction } from "./check.js"
 /**
  * 组合函数
  * @param  {...Function} funcs

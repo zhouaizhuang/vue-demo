@@ -7,13 +7,19 @@ import "./utils/px2rem.js"
 Vue.config.productionTip = false
 // 使用自定义指令
 import Directives from "./directives/index.js"
+Vue.use(Directives)
+// 引入iview
 import ViewUI from 'view-design'
 import 'view-design/dist/styles/iview.css'
-import globalCommponent from "./globalComponents/index.js"
-Vue.use(Directives)
 Vue.use(ViewUI)
+// 批量注册全局组件
+import globalCommponent from "./globalComponents/index.js"
 Vue.use(globalCommponent)
-
+// axios全局挂载vue实例
+import {request, get, post} from "./utils/network.js"
+Vue.prototype.$request = request
+Vue.prototype.$get = get
+Vue.prototype.$post = post
 
 import {largeNumAdd, ms2Dhs, url2JSON, JSON2url} from "./common"
 console.log('num1: 123000000000000000000000000010')

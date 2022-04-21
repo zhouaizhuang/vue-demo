@@ -465,7 +465,7 @@ export const repeat = function(obj = '', times = 1) {
         res = [...res, ...tmp]
       }
     } else {
-      for(let i =0; i < range(times, 1); i++) { res = [...res, ...obj] }
+      for(let i = 0; i < range(times, 1); i++) { res = [...res, ...obj] }
     }
   } else {
     for(let j = 0; j < range(times, 1); j++) { res += obj }
@@ -794,7 +794,7 @@ export const safeGet = function (run, defaultVal = '') {
 
 /*
 **********************************************************************************************
-******************************************金额操作*********************************************
+******************************************金额、数字操作*********************************************
 **********************************************************************************************
 */
 /**
@@ -820,6 +820,14 @@ export const formatMoney = function (num = 0, type = 'float', prec = 2, dec = '.
   return `${intStr}${dec}${floatStr.slice(0, prec)}`
 }
 /**
+ * 0、1转换
+ * @param {*} val 
+ * @returns 
+ * @举例子 toogle01(0) ---> 1
+ * @举例子 toogle01(1) ---> 0
+ */
+export const toogle01 = val => Number(val) ^ 1
+/**
  * 四舍五入返回N位有效数字（常用于金额计算）
  * @param num 需要处理的的数字、支持传入字符串
  * @param prec 保留的小数位数
@@ -841,9 +849,9 @@ export const round = function (num, prec = 0) {
  * @举例 range(12.23, 14, 20)  ===> 14 // 下限为14 因此返回14
  */
 export const range = function (num, min = null, max = null) {
-  ;[num, min, max] = [Number(num), Number(min), Number(max)]
-  if(min !== null) { num = Math.max(num, min) }
-  if(max !== null) { num = Math.min(num, max) }
+  num = Number(num)
+  if(min !== null) { num = Math.max(num, Number(min)) }
+  if(max !== null) { num = Math.min(num, Number(max)) }
   return num
 }
 /**

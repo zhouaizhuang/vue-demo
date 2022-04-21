@@ -42,10 +42,10 @@ export const round = function (num, prec = 0) {
  * @举例 range(12.23, 7, 10)  ===> 10 // 上限为10 因此返回10
  * @举例 range(12.23, 14, 20)  ===> 14 // 下限为14 因此返回14
  */
- export const range = function (num, min = null, max = null) {
-  ;[num, min, max] = [Number(num), Number(min), Number(max)]
-  if(min !== null) { num = Math.max(num, min) }
-  if(max !== null) { num = Math.min(num, max) }
+export const range = function (num, min = null, max = null) {
+  num = Number(num)
+  if(min !== null) { num = Math.max(num, Number(min)) }
+  if(max !== null) { num = Math.min(num, Number(max)) }
   return num
 }
 /**
@@ -64,3 +64,11 @@ export const round = function (num, prec = 0) {
   }, {sum:'', carry: 0})
   return res.sum
 }
+/**
+ * 0、1转换
+ * @param {*} val 
+ * @returns 
+ * @举例子 toogle01(0) ---> 1
+ * @举例子 toogle01(1) ---> 0
+ */
+ export const toogle01 = val => Number(val) ^ 1

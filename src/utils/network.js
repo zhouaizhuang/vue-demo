@@ -1,10 +1,8 @@
 import axios from "axios"
 import qs from 'qs'
 import {JSON2url, formatJSON, showToast} from "@/common/index.js"
-/***********获取token*****/
-// function getToken(){
-//   return window.localStorage.getItem('token')
-// }
+import { getLocalStorage } from "../common.js"
+
 // console.log(process.env.VUE_APP_BASE_URL)
 /************配置axios****** */
 let service = axios.create({
@@ -17,11 +15,12 @@ let service = axios.create({
 */
 service.interceptors.request.use(
   config => {
-    // if(getToken()) {
-    //   // config.headers.Authorization = getToken()
-    //   config.headers['token'] = getToken()
+    // const token = getLocalStorage('token')
+    // if(token) {
+    //   // config.headers.Authorization = token
+    //   config.headers['token'] = token
     // }
-    config.data = qs.stringify(config.data)
+    config.data = qs.stringify(formatJSON(config.data))
     return config
   },
   err => {
@@ -51,6 +50,18 @@ service.interceptors.request.use(
 //       return Promise.reject(err)
 //     }
 //   }
+// )
+
+// 响应拦截demo2
+// service.interceptors.response.use(
+//   res => {
+//     const {code, data, msg} = res
+//     if(code == '401') {
+//       location.href = '/login'
+//     }
+//     return Promise.resolve(res)
+//   },
+//   err => Promise.reject(err)
 // )
 // 封装一个request请求
 export const request = function (options) {

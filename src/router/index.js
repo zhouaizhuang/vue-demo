@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import index from '../views/index.vue'
+import { getLocalStorage } from "../common.js"
 Vue.use(VueRouter)
 // 批量读取路由
 const r = require.context('./modules', true, /\.js/)
@@ -32,4 +33,9 @@ router.afterEach((to,from,next) => {
   // window.scrollTo({ top:0, behavior:'smooth' }) // 页面切换时，滚动条平滑切换至顶部
   window.scrollTo(0, 0)
 })
+// 路由（页面级别权限控制）（只要meta标签中needLogin设置为true。同时token不存在则会回到登录页面）
+// router.beforeEach((to, from, next) => {
+//   if(getLocalStorage('token')) { next() }
+//   to.meta.needLogin ? next({path: '/login'}) : next()
+// })
 export default router

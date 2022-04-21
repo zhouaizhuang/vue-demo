@@ -17,6 +17,7 @@ import { compose, curry, debounce, throttling } from "./modules/func.js"
 import { formatMoney, round, range, largeNumAdd } from "./modules/number.js"
 import { extend, formatJSON, formatRes, checkJSON, JSON2url, invert, invertBy } from "./modules/object.js"
 import { regTest } from "./modules/reg.js"
+import { go, goBack, compareRoute } from "./modules/route.js"
 import { startWith, trim, sliceStr, addZero, length, copyLink, capitalize } from "./modules/string.js"
 import { map2Obj, obj2Map } from "./modules/structure.js"
 import { getDateStr, getDay, socketTime, dateFormater, afterNsecond, ms2Dhs, getDays, dayDiff, dayOfYear } from "./modules/timeDate.js"
@@ -42,6 +43,8 @@ export {
   extend, formatJSON, formatRes, checkJSON, JSON2url, invert, invertBy,
   // 正则
   regTest,
+  // 路由
+  go, goBack, compareRoute,
   // 字符串
   startWith, trim, sliceStr, addZero, length, copyLink, capitalize,
   // 数据结构

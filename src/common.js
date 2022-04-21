@@ -52,6 +52,15 @@ export const go = function(options = {}) {
 // 返回几层
 export const goBack = (times = -1) => router.go(times) // 返回times页面
 /**
+ * 后台权限控制比对代码
+ * @param {*} allRouter 前端的全部路由
+ * @param {*} userRouter 后台返回的路由
+ * @returns 返回真正的路由
+ */
+export const compareRoute = function (allRouter = [], userRouter = []) {
+  return allRouter.reduce((prev, item) => userRouter.forEach(v => (isArray(item.children) && (item.children = compareRoute(v.children, item.children)), [...prev, item])), [])
+}
+/**
  * 执行此函数，可以做一个延时功能。在需要延时执行一段逻辑的时候可以使用
  * @param {String|Number} t
  * @returns 返回一个promise对象，等待t时间后resolve

@@ -36,6 +36,6 @@ router.afterEach((to,from,next) => {
 // 路由（页面级别权限控制）（只要meta标签中needLogin设置为true。同时token不存在则会回到登录页面）
 // router.beforeEach((to, from, next) => {
 //   if(getLocalStorage('token')) { next() }
-//   to.meta.needLogin ? next({path: '/login'}) : next()
+//   to.meta.token ? next({path: '/login'}) : next()
 // })
 export default router

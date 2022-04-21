@@ -2,7 +2,9 @@
 <template>
   <div class="w95 db auto indexFontSize">
     <div class="f ac xc g1890ff pt20 pb10 op8 title">C端产品demo，不同项目样式千差万别，所以此处demo只侧重效果，具体样式根据不同项目自行实现</div>
-    <div class="fs50r b mb20 mt20 tc">动画</div>
+    <!-- <div class="fs50r b mb20 mt20 tc">动画</div> -->
+    <!--采用全局组件实现-->
+    <z-text class="fs50r b mb20 mt20 tc" text="动画"></z-text>
     <!--https://chokcoco.github.io/CSS-Inspiration/#/./background/bg-clip-text-shine-->
     <div class="f">
       <div class="pr20r b" style="width:2.2rem;">CSS3动画</div>

@@ -54,7 +54,7 @@ export const wxInit = (function() {
  * @returns 没有返回值
  * @举例子 setWxShare({title:'0元享4套户型设计，摆脱装修套路！', desc:'专业设计师1对1服务，不谈钱，先看方案！', imgUrl: 'https://upload.qianfanyun.com/jj_share_design_01.png'})
  */
-export async function setWxShare (obj = {}) {
+export const setWxShare = async function(obj = {}) {
   if (!isWeChat) return
   const { title, desc, imgUrl } = obj // 分享标题、分享描述、分享图标
   const link = window.location.href // 分享链接链接域名或路径必须与当前页面对应的公众号JS安全域名一致

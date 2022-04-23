@@ -20,12 +20,14 @@ import {request, get, post} from "./utils/network.js"
 Vue.prototype.$request = request
 Vue.prototype.$get = get
 Vue.prototype.$post = post
+// 全局挂载自定义函数库
+import * as Z from './common.js'
+Vue.prototype.$Z = Z
 
 import {largeNumAdd, ms2Dhs, url2JSON, JSON2url} from "./common"
 console.log('num1: 123000000000000000000000000010')
 console.log('num2: 123000000000000000000000000009')
 console.log('和为：' + largeNumAdd('123000000000000000000000000010', '123000000000000000000000000009'))
-
 
 new Vue({
   router,

@@ -2,7 +2,7 @@
 <template>
   <div class="auto fs20r mh100vh">
     <Zupload :max_size="500*1024" :width="750" :height="560" :limit="5" :imgArr="addAddrObj.images" @change="e => addAddrObj.images = e" />
-    
+    <!--switch最佳实践-->
     <div class="mt50 fs30r">switch实战技巧</div>
     <i-switch :value="!!addAddrObj.able_reserve" @on-change="changeAbleReserve">
       <span slot="open">是</span>

@@ -11,17 +11,17 @@
       {{index}}
     </div>
     <!--底部的加载更多提示、全部加载完的提示-->
-    <div v-if="isShowLoadMore" id="" class="loadMore f ac xc tc">
+    <div v-show="isShowLoadMore" id="" class="loadMore f ac xc tc">
       <svg class="rotateSvg">
         <circle cx="20" cy="20" r="10" fill="none" class="circleDash"></circle>
       </svg>
       <div class="fs16 g3">下拉加载更多...</div>
     </div>
-    <div v-else class="fs16 g3 tc pt10 pb10">沒有更多了</div>
+    <div v-show="!isShowLoadMore" class="fs16 g3 tc pt10 pb10">沒有更多了</div>
   </div>
 </template>
 <script>
-import { repeat, query, chunk } from "../../../common"
+import { repeat, query, chunk } from "../../../common.js"
 export default {
   name: 'pageLoad',
   data(){

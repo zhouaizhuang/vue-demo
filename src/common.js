@@ -1,4 +1,34 @@
+/*
+**********************************************************************************************
+******************************************vue路由相关*********************************************
+**********************************************************************************************
+*/
 import router from './router'
+/**
+ * 去某个页面
+ * @param {*} options
+ * @举例 go({name: 'lottie', query:{name:'tom'}}) // 这样就实现了跳转到/lottie页面并且页面传参为name=tom
+ */
+export const go = function(options = {}) {
+  router.push({
+    path: '', // 路由路径
+    name: '', // 路由名称
+    query: {}, // 通过this.$route.query.id获取。刷新没问题。因为数据是在url上的
+    params: {}, // 通过this.$route.params.id。刷新，传入当前页面的数据会丢失
+    ...options
+  }) 
+}
+// 返回几层
+export const goBack = (times = -1) => router.go(times) // 返回times页面
+/**
+ * 后台权限控制比对代码
+ * @param {*} allRouter 前端的全部路由
+ * @param {*} userRouter 后台返回的路由
+ * @returns 返回真正的路由
+ */
+export const compareRoute = function (allRouter = [], userRouter = []) {
+  return allRouter.reduce((prev, item) => userRouter.forEach(v => (isArray(item.children) && (item.children = compareRoute(v.children, item.children)), [...prev, item])), [])
+}
 /*
 **********************************************************************************************
 ******************************************公共方法*********************************************
@@ -35,31 +65,55 @@ export const isFF = UA && UA.match(/firefox\/(\d+)/)
 export const isPhone = val => /^1[3456789]\d{9}$/.test(val) // 检测是否是手机号码
 export const isIdentity = val => /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/.test(val) // 身份证 321281155121152489
 export const isEmail = val => /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/.test(val)
+/*
+**********************************************************************************************
+******************************************业务函数*********************************************
+**********************************************************************************************
+*/
 /**
- * 去某个页面
- * @param {*} options
- * @举例 go({name: 'lottie', query:{name:'tom'}}) // 这样就实现了跳转到/lottie页面并且页面传参为name=tom
+ * 异步加载js
+ * @param {String} url 需要加载的js
+ * @举例子 在async函数中调用 await loadJs("//res.wx.qq.com/open/js/jweixin-1.6.0.js") 
  */
-export const go = function(options = {}) {
-  router.push({
-    path: '', // 路由路径
-    name: '', // 路由名称
-    query: {}, // 通过this.$route.query.id获取。刷新没问题。因为数据是在url上的
-    params: {}, // 通过this.$route.params.id。刷新，传入当前页面的数据会丢失
-    ...options
-  }) 
-}
-// 返回几层
-export const goBack = (times = -1) => router.go(times) // 返回times页面
+export const loadJs = (function(url) {
+  let loadedJs = []
+  return function (){
+    return new Promise((resolve, reject) => {
+      if(loadedJs.includes(url)) { return resolve() }
+      let script = document.createElement("script")
+      script.type = "text/javascript"
+      script.src = url
+      document.head.appendChild(script)
+      script.onload = () => {
+        loadedJs.push(url)
+        resolve()
+      }
+      script.onerror = () => reject()
+    })
+  }
+})()
 /**
- * 后台权限控制比对代码
- * @param {*} allRouter 前端的全部路由
- * @param {*} userRouter 后台返回的路由
- * @returns 返回真正的路由
+ * 异步加载css
+ * @param {String} href 需要加载的css
+ * @举例子 在async函数中调用 await loadCss("") 
  */
-export const compareRoute = function (allRouter = [], userRouter = []) {
-  return allRouter.reduce((prev, item) => userRouter.forEach(v => (isArray(item.children) && (item.children = compareRoute(v.children, item.children)), [...prev, item])), [])
-}
+export const loadCss = (function(href) {
+  let loadedCss = []
+  return function (){
+    return new Promise((resolve, reject) => {
+      if(loadedCss.includes(href)) { return resolve() }
+      let link = document.createElement('link');
+      link.setAttribute('rel', 'stylesheet');
+      link.href = href;
+      document.head.appendChild(link);
+      link.onload = () => {
+        loadedCss.push(href)
+        resolve()
+      }
+      link.onerror = () => reject()
+    })
+  }
+})()
 /**
  * 执行此函数，可以做一个延时功能。在需要延时执行一段逻辑的时候可以使用
  * @param {String|Number} t

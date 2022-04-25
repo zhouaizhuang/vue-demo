@@ -391,3 +391,47 @@ export const checkPwd = (str) => {
   * @returns 摄氏度
   */
 export const f2s = fahrenheit => (fahrenheit - 32) * 5 / 9
+/**
+ * 异步加载js
+ * @param {String} url 需要加载的js
+ * @举例子 在async函数中调用 await loadJs("//res.wx.qq.com/open/js/jweixin-1.6.0.js") 
+ */
+ export const loadJs = (function(url) {
+  let loadedJs = []
+  return function (){
+    return new Promise((resolve, reject) => {
+      if(loadedJs.includes(url)) { return resolve() }
+      let script = document.createElement("script")
+      script.type = "text/javascript"
+      script.src = url
+      document.head.appendChild(script)
+      script.onload = () => {
+        loadedJs.push(url)
+        resolve()
+      }
+      script.onerror = () => reject()
+    })
+  }
+})()
+/**
+ * 异步加载css
+ * @param {String} href 需要加载的css
+ * @举例子 在async函数中调用 await loadCss("") 
+ */
+export const loadCss = (function(href) {
+  let loadedCss = []
+  return function (){
+    return new Promise((resolve, reject) => {
+      if(loadedCss.includes(href)) { return resolve() }
+      let link = document.createElement('link');
+      link.setAttribute('rel', 'stylesheet');
+      link.href = href;
+      document.head.appendChild(link);
+      link.onload = () => {
+        loadedCss.push(href)
+        resolve()
+      }
+      link.onerror = () => reject()
+    })
+  }
+})()

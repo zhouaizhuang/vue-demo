@@ -9,7 +9,7 @@
   </div>
 </template>
 <script>
-import { getField, isWeChat } from './common'
+import { getField, isWeChat } from './common.js'
 export default {
   data(){
     return  {

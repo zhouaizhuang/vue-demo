@@ -6,7 +6,7 @@ import {
   syncBgData, downloadFile, toFullScreen, exitFullscreen, random, randomColor, noCopy, getProps, safeGet, wait, deepCopy,
   guID, getScrollTop, scrollPos, getCookie, clearCookies,queryAll, query, getLocalStorage, setLocalStorage,
   getSessionStorage, setSessionStorage, getPosition, getViewHeight, getViewPos, showToast, removeCss, addCss, removeDom, addDom,
-  show, hide, showLoading, hideLoading, setTitle, goUrl, checkPwd, c2f, f2s
+  show, hide, showLoading, hideLoading, setTitle, goUrl, checkPwd, c2f, f2s, loadJs, loadCss
 } from "./modules/business.js"
 import {
   isType,isArray,isObject, isEmptyObj, isReference, isNull, isUndefined, isFunction, isRegExp, isString, isNumber, isDate,
@@ -30,7 +30,7 @@ export {
   syncBgData, downloadFile, toFullScreen, exitFullscreen, random, randomColor, noCopy, getProps, safeGet, wait, deepCopy,
   guID, debounce, throttling, getScrollTop, scrollPos, getCookie, clearCookies,queryAll, query, getLocalStorage, setLocalStorage,
   getSessionStorage, setSessionStorage, getPosition, getViewHeight, getViewPos, showToast, removeCss, addCss, removeDom, addDom,
-  show, hide, showLoading, hideLoading, setTitle, goUrl, checkPwd, c2f, f2s,
+  show, hide, showLoading, hideLoading, setTitle, goUrl, checkPwd, c2f, f2s, loadJs, loadCss,
   // 校验
   isType, isArray, isObject, isEmptyObj, isReference, isNull, isUndefined, isFunction, isRegExp, isString, isNumber, isDate,
   isError, isGt0, isGtEq0, inBrowser, inWeex, weexPlatform, UA, isIE, isIE9, isEdge, isAndroid, isIOS, isWeChat, isChrome, isPhantomJS,

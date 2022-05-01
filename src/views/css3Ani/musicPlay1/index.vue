@@ -5,6 +5,7 @@
   </div>
 </template>
 <script>
+import { isWeChat } from "../../../common.js"
 export default {
   data(){
     return {
@@ -14,18 +15,13 @@ export default {
     }
   },
   components:{},
-  created(){
-
-  },
-  mounted(){
-  },
   methods: {
     // 触屏即播
     handleClick(){
       if(this.isMuted) {
         this.isMuted = false
+        let audioRef = this.$refs.audio
         this.timeId = setInterval(() =>{
-          let audioRef = this.$refs.audio
           if(audioRef) {
             audioRef.play()
             clearInterval(this.timeId)
@@ -43,7 +39,28 @@ export default {
         this.isOn ? audioRef.play() : audioRef.pause()
       }
     },
-  }
+    // 解决ios无法自动播放问题
+    audioPlayer(id){
+      let audioRef = this.$refs.audio
+      if (isWeChat) {
+        document.addEventListener('WeixinJSBridgeReady', () => {
+          audio.play()
+        }, false)
+        // 添加 getNetworkType 的判断原因, 请看问题分析2
+        // 解决ios自动播放问题
+        if(typeof window.WeixinJSBridge == "object" && typeof window.WeixinJSBridge.invoke == "function") {
+          window.WeixinJSBridge.invoke('getNetworkType', {}, () => {
+            audioRef.play()
+          })
+        }
+      }
+    }
+  },
+  created(){
+  },
+  mounted(){
+    this.audioPlayer()
+  },
 }
 </script>
 <style scoped>

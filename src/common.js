@@ -75,15 +75,15 @@ export const isEmail = val => /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za
  * @param {String} url 需要加载的js
  * @举例子 在async函数中调用 await loadJs("//res.wx.qq.com/open/js/jweixin-1.6.0.js") 
  */
-export const loadJs = (function(url) {
+export const loadJs = (function() {
   let loadedJs = []
-  return function (){
+  return function (url){
     return new Promise((resolve, reject) => {
       if(loadedJs.includes(url)) { return resolve() }
       let script = document.createElement("script")
       script.type = "text/javascript"
       script.src = url
-      document.head.appendChild(script)
+      document.body.appendChild(script)
       script.onload = () => {
         loadedJs.push(url)
         resolve()

@@ -25,6 +25,9 @@
     <div class="f ac mt50 fs40 tc">
       <div class="shine">文字荧光</div>
     </div>
+    <div class="f ac mt50 fs40 tc">
+      <div class="rotate-text">旋转文字</div>
+    </div>
   </div>
 </template>
 <script>
@@ -96,6 +99,23 @@ export default {
   }
   50%{
     text-shadow: 0 0 10px #0000ff, 0 0 40px #0000ff;
+  }
+}
+.rotate-text{
+  color: #0000ff;
+  font-size: 50x;
+  transform-style: preserve-3d;
+  animation: rotateText 5s ease-in-out infinite;
+}
+@keyframes rotateText {
+  0%{
+    transform: rotateX(-5deg) rotateY(0);
+  }
+  50%{
+    transform: rotateX(0) rotateY(180deg);
+  }
+  100%{
+    transform: rotateX(5deg) rotateY(360deg);
   }
 }
 </style>

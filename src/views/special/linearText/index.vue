@@ -15,6 +15,13 @@
     <div class="f ac mt50 fs40 tc">
       <div class="milky">文字阴影</div>
     </div>
+    <div class="f ac mt50 fs40 tc">
+      <div class="vague">文字模糊</div>
+    </div>
+    <div class="f mt50 fs40 tc gred rel">
+      <div class="two-color">不同颜色</div>
+      不同颜色
+    </div>
   </div>
 </template>
 <script>
@@ -60,5 +67,17 @@ export default {
   text-shadow: 0 8px 10px #6699ff;
   font-weight: bold;
   text-align: center;
+}
+.vague{
+  font-size: 50px;
+  color: transparent;
+  text-shadow: 0 0 4px #66ff99;
+}
+.two-color{
+  height:35px;
+  position: absolute;
+  overflow: hidden;
+  color: orange;
+  top:0;
 }
 </style>

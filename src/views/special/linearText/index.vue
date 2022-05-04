@@ -12,6 +12,9 @@
     <div class="f ac mt50 fs40 tc">
       <div class="text-shadow-3d">阴影实现立体投影</div>
     </div>
+    <div class="f ac mt50 fs40 tc">
+      <div class="milky">文字阴影</div>
+    </div>
   </div>
 </template>
 <script>
@@ -50,5 +53,12 @@ export default {
 .text-stroke-out{
   color:#fff;
   text-shadow: 0 2px deeppink, 2px 0 deeppink, 0 -2px deeppink, -2px 0 deeppink, 2px 2px deeppink, -2px -2px deeppink, -2px 2px deeppink, 2px -2px deeppink; 
+}
+.milky{
+  font-size:50px;
+  color: #3366ff;
+  text-shadow: 0 8px 10px #6699ff;
+  font-weight: bold;
+  text-align: center;
 }
 </style>

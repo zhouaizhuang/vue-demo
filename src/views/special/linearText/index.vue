@@ -22,6 +22,9 @@
       <div class="two-color">不同颜色</div>
       不同颜色
     </div>
+    <div class="f ac mt50 fs40 tc">
+      <div class="shine">文字荧光</div>
+    </div>
   </div>
 </template>
 <script>
@@ -74,10 +77,25 @@ export default {
   text-shadow: 0 0 4px #66ff99;
 }
 .two-color{
-  height:35px;
+  height:38px;
   position: absolute;
   overflow: hidden;
   color: orange;
   top:0;
+}
+.shine{
+  color: #0000ff;
+  text-decoration: none;
+  font-size: 50px;;
+  animation: aniShine 2.4s infinite ;
+}
+@keyframes aniShine {
+  0%, 100%{
+    color:#fff;
+    text-shadow:0 0 10px #0000ff, 0 0 10px #0000ff;
+  }
+  50%{
+    text-shadow: 0 0 10px #0000ff, 0 0 40px #0000ff;
+  }
 }
 </style>

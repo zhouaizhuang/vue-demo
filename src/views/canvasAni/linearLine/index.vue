@@ -25,6 +25,14 @@ export default {
   },
   methods: {
     // 封装一个画线函数
+    /**
+     * @ctx canvas对象
+     * @param {Array} begin 开始位置
+     * @param {Array | Array<Array>} end 结束位置
+     * @param {String} color 开始位置
+     * @param {String} width 线条宽度
+     * @举例 this.drawLine(ctx, [100, 20], [200 + 100, 20], 'orange', 4)
+     */
     drawLine(ctx, begin, end, color, width = 2){
       ctx.beginPath()
       const [x0, y0] = begin
@@ -34,7 +42,6 @@ export default {
       ctx.lineJoin = 'miter' // 相交线的观点方式：round圆的
       ctx.strokeStyle = color // 线条颜色
       if(isArray(end[0])) {
-        console.log('123')
         end.forEach(([x1, y1]) => ctx.lineTo(x1, y1))
       } else {
         ctx.lineTo(...end)

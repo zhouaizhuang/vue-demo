@@ -1,7 +1,7 @@
-
+<!--blog.csdn.net/xw1680/article/details/118065460-->
 <template>
-  <div class="h100vh ovh">
-    <div class="f ac fs40 mt50 tc">
+  <div class="mh100vh">
+    <div class="f ac fs40 pt50 tc">
       <div class="f1 text">渐变文字1</div>
       <div class="f1 text-fill-gradient">渐变文字2</div>
     </div>
@@ -27,6 +27,22 @@
     </div>
     <div class="f ac mt50 fs40 tc">
       <div class="rotate-text">旋转文字</div>
+    </div>
+    <div class="f ac mt50 fs20 tc">
+      <svg width="1000" height="1000" >
+        <dfs>
+          <path id="textPath" d="M30,140 C130,240 330,240 330,140 S510,60 510,140"></path>
+          <linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#ff0000"></stop>
+            <stop offset="50%" stop-color="#00ff00"></stop>
+            <stop offset="100%" stop-color="#0000ff"></stop>
+          </linearGradient>
+        </dfs>
+        <text dy="10">
+          <textPath xlink:href="#textPath">曲线文字,请注意这是曲线文字，这是曲线文字
+          </textPath>
+        </text>
+      </svg>
     </div>
   </div>
 </template>
@@ -117,5 +133,8 @@ export default {
   100%{
     transform: rotateX(5deg) rotateY(360deg);
   }
+}
+.path-text{
+
 }
 </style>

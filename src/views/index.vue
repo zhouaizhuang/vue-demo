@@ -57,7 +57,7 @@
     <div class="f">
       <div class="pr20r b" style="width:2.2rem;">canvas动画</div>
       <div class="f1 f xs ac rw">
-        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/linearLine">线条</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/linearLine">线条动画</router-link></div>
       </div>
     </div>
     <div class="fs50r b mt30 mb20 tc">通用组件</div>

@@ -4,7 +4,7 @@
   <div class="h100vh ovh">
     <div class="bgf" style="width:300px;height:50px;border:1px solid #ccc;overflow:hidden;margin:100px auto;text-align:center;">
       <div class="f ac nowrap" :style="styleObj">
-        <div v-for="(item, index) in showList" :key="index" class="f ac" style="height:50px;width:150px;">
+        <div v-for="(item, index) in showList" :key="index" class="f ac" style="height:50px;width:150px;color:#0ecffe;">
           {{item}}
         </div>
       </div>

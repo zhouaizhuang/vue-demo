@@ -2,25 +2,27 @@
   <div class="mh100vh pt30r">
     <div @click="openLine" class="auto fs30r gf w50 f ac xc bgc7a35d rds30 pt20r pb20r">开启线条动画</div>
     <div style="width:400px;height:!00px;" class="rel bgf">
-      <canvas width="400px" height="100px" ref="canvasRef1">您的浏览器笨笨过低，请升级浏览器或者使用chrome打开</canvas>
+      <canvas width="400px" height="100px" ref="canvasRef1">您的浏览器版本过低，请升级浏览器或者使用chrome打开</canvas>
       <div class="abs t0 l0" style="width:200px;height:80px;">配合定位</div>
     </div>
     <!--连实线-->
-    <div class="auto fs32r  w50 f ac xc rds30 pt20r pb20r b">连实线</div>
-    <canvas width="400px" height="100px" ref="canvasRef2" class="bgf">您的浏览器笨笨过低，请升级浏览器或者使用chrome打开</canvas>
+    <div @click="pathLine" class="auto fs30r gf w50 f ac xc bgc7a35d rds30 pt20r pb20r">开启连实线</div>
+    <div class="auto fs32r  w50 f ac xc rds30 pt20r pb20r b"></div>
+    <canvas width="400px" height="100px" ref="canvasRef2" class="bgf">您的浏览器版本过低，请升级浏览器或者使用chrome打开</canvas>
     <!--虚线-->
     <div @click="drawDashLine" class="auto fs30r gf w50 f ac xc bgc7a35d rds30 pt20r pb20r">开启虚线动画</div>
     <canvas width="400px" height="100px" ref="canvasRef3" class="bgf">您的浏览器笨笨过低，请升级浏览器或者使用chrome打开</canvas>
   </div>
 </template>
 <script>
-import { isArray } from "../../../common.js"
+import { isArray, round } from "../../../common.js"
 export default {
   name: 'linearLine',
   data(){
     return {
       timeId1: null,
       timeId2: null,
+      timeId3: null,
     }
   },
   methods: {
@@ -62,11 +64,39 @@ export default {
         x0 += 5
       }, 20)
     },
+    // 连实线动画版本
     continueLine(){
       const ref = this.$refs.canvasRef2
       const ctx = ref.getContext('2d')
-      this.drawLine(ctx, [50, 20], [[100, 50], [100, 80], [50, 80], [50, 50]], 'orange', 4)
+      this.drawLine(ctx, [50, 20], [[100, 50], [100, 80], [50, 80], [50, 50], [30, 80]], 'orange', 4)
     },
+    // 连实线
+    pathLine(){
+      const ref = this.$refs.canvasRef2
+      const ctx = ref.getContext('2d')
+      let [x0, y0] = [150, 20] // 初始位置
+      let arr = [[200, 50], [200, 80], [150, 80], [150, 50], [130, 80]] // 经过的点的位置
+      let [x1, y1] = arr.shift()
+      setInterval(() => {
+        if(y0 == y1) { // 画横线
+          this.drawLine(ctx, [x0, y0], [x1-x0 > 0 ? x0 + 1 : x0 - 1, y0], 'orange', 4)
+          x0 = x1 - x0 > 0 ? x0 + 1 : x0 - 1
+          if(x0 == x1) { [x1, y1] = arr.shift() || [] }
+        } else if(x0 == x1){ // 画竖线
+          this.drawLine(ctx, [x0, y0], [x0, y1-y0 > 0 ? y0 + 1 : y0 - 1], 'orange', 4)
+          y0 = y1 - y0 > 0 ? y0 + 1 : y0 - 1
+          if(y0 == y1) { [x1, y1] = arr.shift() || [] }
+        } else { // 画斜线
+          this.drawLine(ctx, [x0, y0], [x1-x0 > 0 ? x0 + 1 : x0 - 1, y1 - y0 > 0 ? y0 + Math.abs((y1 - y0) / (x1 - x0)) : y0 - Math.abs((y1 - y0) / (x1 - x0))], 'orange', 4)
+          x0 = x1 - x0 > 0 ? x0 + 1 : x0 - 1
+          y0 += y1 - y0 > 0 ? Math.abs((y1 - y0) / (x1 - x0)) : Math.abs((y1 - y0) / (x1 - x0)) * -1
+          if(x0 == x1) { [x1, y1] = arr.shift() || [] }
+        }
+        if(!x1) { return clearInterval(this.timeId3) }
+        // console.log(x0, y0)
+      }, 15)
+    },
+    // 画虚线
     drawDashLine(){
       const ref = this.$refs.canvasRef3
       const ctx = ref.getContext('2d')

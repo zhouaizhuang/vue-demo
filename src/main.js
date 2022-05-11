@@ -24,10 +24,7 @@ Vue.prototype.$post = post
 import * as Z from './common.js'
 Vue.prototype.$Z = Z
 
-import {largeNumAdd, ms2Dhs, url2JSON, JSON2url} from "./common"
-console.log('num1: 123000000000000000000000000010')
-console.log('num2: 123000000000000000000000000009')
-console.log('和为：' + largeNumAdd('123000000000000000000000000010', '123000000000000000000000000009'))
+import {ms2Dhs, url2JSON, JSON2url} from "./common"
 
 new Vue({
   router,

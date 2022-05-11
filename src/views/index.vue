@@ -61,6 +61,7 @@
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/randomRect">随机统计图</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/circleAni">画圆</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/arcStroke">圆弧</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/bezierLine">贝塞尔曲线</router-link></div>
       </div>
     </div>
     <div class="fs50r b mt30 mb20 tc">通用组件</div>

@@ -1,7 +1,8 @@
 <template>
   <div class="mh100vh pt30r">
+    <!--直线-->
     <div @click="openLine" class="auto fs30r gf w50 f ac xc bgc7a35d rds30 pt20r pb20r">开启线条动画</div>
-    <div style="width:400px;height:!00px;" class="rel bgf">
+    <div style="width:400px;height:100px;" class="rel bgf">
       <canvas width="400px" height="100px" ref="canvasRef1">您的浏览器版本过低，请升级浏览器或者使用chrome打开</canvas>
       <div class="abs t0 l0" style="width:200px;height:80px;">配合定位</div>
     </div>

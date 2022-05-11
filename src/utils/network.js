@@ -68,7 +68,7 @@ export const request = function (options) {
   return service.request({
     method: "GET",
     headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
+      "Content-Type": "application/x-www-form-urlencoded", // multipart/form-data
     },
     url: '',
     data: {},

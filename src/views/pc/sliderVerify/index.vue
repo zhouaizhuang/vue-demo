@@ -1,3 +1,4 @@
+<!--https://gitee.com/monoplasty/vue-monoplasty-slide-verify-->
 <template>
   <div class="h100vh bg161e3d rel">
     <div class="bgf rel abs borderBox" style="top:20%;right:15%;padding:40px 30px 40px;width:400px;">

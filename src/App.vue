@@ -1,6 +1,6 @@
 <template>
   <div id="app" :style="{animation:isWeChat ? animation : ''}"> <!--转场动画-->
-    <div v-if="$route.path === '/index'">
+    <div v-if="$route.path === '/index' || $route.path.includes('_pc')">
       <router-view/>
     </div>
     <div v-else style="max-width:8rem;" class="bgf5 auto">

@@ -23,6 +23,9 @@ Vue.prototype.$post = post
 // 全局挂载自定义函数库
 import * as Z from './common.js'
 Vue.prototype.$Z = Z
+// 极验验证
+import SlideVerify from 'vue-monoplasty-slide-verify'
+Vue.use(SlideVerify)
 
 import {ms2Dhs, url2JSON, JSON2url} from "./common"
 

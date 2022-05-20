@@ -182,6 +182,7 @@
       <div class="pr20r b" style="width:2.2rem;">PC插件使用</div>
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/sliderVerify_pc">极验验证</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/useQrcode_pc">极验验证</router-link></div>
       </div>
     </div>
   </div>

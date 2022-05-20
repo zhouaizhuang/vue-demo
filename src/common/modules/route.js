@@ -22,6 +22,3 @@ export const goBack = (times = -1) => router.go(times) // 返回times页面
  * @param {*} userRouter 后台返回的路由
  * @returns 返回真正的路由
  */
-export const compareRoute = function (allRouter = [], userRouter = []) {
-  return allRouter.reduce((prev, item) => userRouter.forEach(v => (isArray(item.children) && (item.children = compareRoute(v.children, item.children)), [...prev, item])), [])
-}

@@ -5,4 +5,5 @@ export default [
   { path: '/arcStroke', name: 'arcStroke', component: () => import(/* webpackChunkName: "canvasAni" */ '../../views/canvasAni/arcStroke/index.vue') },
   { path: '/bezierLine', name: 'bezierLine', component: () => import(/* webpackChunkName: "canvasAni" */ '../../views/canvasAni/bezierLine/index.vue') },
   { path: '/drawText', name: 'drawText', component: () => import(/* webpackChunkName: "canvasAni" */ '../../views/canvasAni/drawText/index.vue') },
+  { path: '/drawPieChart', name: 'drawPieChart', component: () => import(/* webpackChunkName: "canvasAni" */ '../../views/canvasAni/drawPieChart/index.vue') },
 ]

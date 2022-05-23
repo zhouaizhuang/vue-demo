@@ -215,8 +215,8 @@ export const clearCookies = () => document.cookie.split(';').forEach(cookie => d
 export const queryAll = selector => Array.from(document.querySelectorAll(selector))
 export const query = selector => document.querySelector(selector)
 // 本地存储
-export const getLocalStorage = name => JSON.parse(localStorage.getItem(name))
-export const setLocalStorage = (name, val) => localStorage.setItem(name, JSON.stringify(val))
+export const getLocalStorage = name => JSON.parse(window.localStorage.getItem(name))
+export const setLocalStorage = (name, val) => window.localStorage.setItem(name, JSON.stringify(val))
 export const removeLocalStorage = name => window.localStorage.removeItem(name)
 // 会话存储
 export const getSessionStorage = name => JSON.parse(sessionStorage.getItem(name))

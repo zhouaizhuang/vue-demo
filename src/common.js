@@ -981,7 +981,7 @@ export const socketTime = function (t = new Date()) {
  * @举例 dateFormater('YYYYMMDD-hh:mm:ss', '2020-08-12 09:13:54') ==> 20200812-09:13:54
  */
 export const dateFormater = function (formater = 'YYYY-MM-DD hh:mm:ss', t = new Date()){
-  if(!isDate(t) && isString(t)) { t = t.replace(/[-]/g, "/") }
+  if(!isDate(t) && isString(t) && !t.includes('T')) { t = t.replace(/[-]/g, "/") }
   const dt = new Date(t)
   const [Y, M, D, h, m, s] = [dt.getFullYear() + '', dt.getMonth() + 1, dt.getDate(), dt.getHours(), dt.getMinutes(), dt.getSeconds()]
   return formater.replace(/YYYY|yyyy/g, Y)

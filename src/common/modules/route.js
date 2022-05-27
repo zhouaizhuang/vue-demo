@@ -17,8 +17,25 @@ export const go = function(options = {}) {
 // 返回几层
 export const goBack = (times = -1) => router.go(times) // 返回times页面
 /**
- * 后台权限控制比对代码
- * @param {*} allRouter 前端的全部路由
- * @param {*} userRouter 后台返回的路由
- * @returns 返回真正的路由
+ * 路由比对函数
+ * @param {*} allRouter 全部路由
+ * @param {*} userRouter 真实路由
+ * @returns 
  */
+ export const compareRoute = function (allRouter = [], userRouter = []) {
+  // console.log(allRouter)
+  // console.log(userRouter)
+  return allRouter.reduce((prev, item) => {
+    userRouter.forEach(v => {
+      if(item.path == v.path) {
+        if(isArray(item.children)) {
+          item.children = compareRoute(item.children, v.authorityList)
+        }
+        if(v.hasAuthority == 1) {
+          prev = [...prev, item]
+        }
+      }
+    })
+    return prev
+  }, [])
+}

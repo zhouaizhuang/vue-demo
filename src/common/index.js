@@ -1,6 +1,6 @@
 import {
   shuffle, cached, toObject, sum, mean, adjust, array2Tree, once, makeMap, remove, repeat, sortByProp, noSame, getAreaFlat,
-  getField, getChecked, chunk, splitAt, transformArr, splitWhen, intersect, difference, searchCover, groupBy
+  getField, getChecked, chunk, splitAt, transformArr, splitWhen, intersect, difference, searchCover, groupBy, uniqueObj
 } from "./modules/array.js"
 import {
   syncBgData, downloadFile, toFullScreen, exitFullscreen, random, randomColor, noCopy, getProps, safeGet, wait, deepCopy,
@@ -25,7 +25,7 @@ import { getDateStr, getDay, socketTime, dateFormater, afterNsecond, ms2Dhs, get
 export {
   // 数组
   shuffle, cached, toObject, sum, mean, adjust, array2Tree, once, makeMap, remove, repeat, sortByProp, noSame, getAreaFlat,
-  getField, getChecked, chunk, splitAt, transformArr, splitWhen, intersect, difference, searchCover, groupBy,
+  getField, getChecked, chunk, splitAt, transformArr, splitWhen, intersect, difference, searchCover, groupBy, uniqueObj,
   // 业务代码
   syncBgData, downloadFile, toFullScreen, exitFullscreen, random, randomColor, noCopy, getProps, safeGet, wait, deepCopy,
   guID, debounce, throttling, getScrollTop, scrollPos, getCookie, clearCookies,queryAll, query, getLocalStorage, setLocalStorage,

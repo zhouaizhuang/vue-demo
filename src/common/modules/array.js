@@ -310,3 +310,26 @@ export const groupBy = function (arr, callback){
     return prev
   }, {})
 }
+/**
+ * 对象数组去重(根据对象中某个字段)
+ * @param {Object<Array>} arr 需要去重的对象数组
+ * @param {*} field 字段名称
+ * @param {*} type  1：有重复的对象则去遍历到的第一个    -1有重复的则取遍历到的最后一个
+ * @returns 去重后的对象数组
+ * @举例 根据对象中id字段进行去重操作
+ * @举例 uniqueObj([{id:1, age:1}, {id:2, age:12}, {id:1, age: 23}], 'id', 1)  ---->  [{id: 1, age: 1, _sort: 0}, {id: 2, age: 12, _sort: 1}]
+ * @举例 uniqueObj([{id:1, age:1}, {id:2, age:12}, {id:1, age: 23}], 'id', -1) ---->  [{id: 1, age: 23, _sort: 0}, {id: 2, age: 12, _sort: 1}]
+ */
+ export const uniqueObj = function (arr, field, type) {
+  const obj = arr.reduce((prev, item, index) => {
+    const existItem = prev[item[field]]
+    const curItem = { ...item, _sort: index}
+    if(type == 1) {
+      prev[item[field]] = existItem || curItem
+    } else {
+      prev[item[field]] = existItem ? { ...item, _sort: existItem._sort } : curItem
+    }
+    return prev
+  }, {})
+  return Object.values(obj).sort((a, b) => a._sort - b._sort)
+}

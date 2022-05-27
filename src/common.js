@@ -21,13 +21,27 @@ export const go = function(options = {}) {
 // 返回几层
 export const goBack = (times = -1) => router.go(times) // 返回times页面
 /**
- * 后台权限控制比对代码
- * @param {*} allRouter 前端的全部路由
- * @param {*} userRouter 后台返回的路由
- * @returns 返回真正的路由
+ * 路由比对函数
+ * @param {*} allRouter 全部路由
+ * @param {*} userRouter 真实路由
+ * @returns 
  */
-export const compareRoute = function (allRouter = [], userRouter = []) {
-  return allRouter.reduce((prev, item) => userRouter.forEach(v => (isArray(item.children) && (item.children = compareRoute(v.children, item.children)), [...prev, item])), [])
+ export const compareRoute = function (allRouter = [], userRouter = []) {
+  // console.log(allRouter)
+  // console.log(userRouter)
+  return allRouter.reduce((prev, item) => {
+    userRouter.forEach(v => {
+      if(item.path == v.path) {
+        if(isArray(item.children)) {
+          item.children = compareRoute(item.children, v.authorityList)
+        }
+        if(v.hasAuthority == 1) {
+          prev = [...prev, item]
+        }
+      }
+    })
+    return prev
+  }, [])
 }
 /*
 **********************************************************************************************
@@ -416,16 +430,50 @@ export const adjust = function (arr, num, fn) {
 /**
  * 找到数组中目标对象进行数据变更
  * @param {Array} arr 需要操作的数据
- * @param {Object} serchObj 需要查询的字段
- * @param {Function} callback 接受一个item，返回一个新的item
- * @returns {Array} 返回一个处理后的数组
- * @举例 searchCover([{id:1, age:1}, {id:2, age:2}], {id:2}, item => ({...item, age: item.age + 5})) ---> [{id: 1, age: 1}, {id: 2, age: 7}]
+ * @param {Object|Function} search 需要查询的json对象 | 也可以传入校验函数
+ * @param {Function} sucFunc 成功匹配的处理函数--->接受一个item，返回一个新的item
+ * @param {Function} failFunc 失败匹配的处理函数---->接受一个item，返回一个新的item
+ * @举例 
+ * searchCover([
+ *    {id:1, name: 'aa', age:19},
+ *    {id:2, name: 'bb', age:20},
+ *    {id:3, name: 'cc', age:21}
+ *  ],
+ *  v => v.age < 21,
+ *  v => ({ ...v, name: 'ssss' })
+ *  v => ({ ...v, name: 'gggg' })
+ * )
+ * -------> 得到如下结果
+ * [{id: 1, name: 'ssss', age: 19}, {id: 2, name: 'ssss', age: 20}, {id: 3, name: 'gggg', age: 21}]
+ * @实战 处理单选逻辑
+ * searchCover([
+ *    {id:1, name: 'aa', age:19},
+ *    {id:2, name: 'bb', age:20},
+ *    {id:3, name: 'cc', age:21}
+ *  ],
+ *  {id: 20},
+ *  v => ({...v, isChecked: true}),
+ *  v => ({...v, isChecked: false})
+ * )
+ * @实战 处理多选逻辑
+ * searchCover([
+ *    {id:1, name: 'aa', age:19},
+ *    {id:2, name: 'bb', age:20},
+ *    {id:3, name: 'cc', age:21}
+ *  ],
+ *  v => v.age == 20,
+ *  v => ({...v, isChecked: !v.isChecked}),
+ * )
  */
- export const searchCover = function (arr, serchObj = {}, callback) {
+export const searchCover = function (arr, search, sucFunc = v => v, failFunc = v => v) {
   return arr.map(item => {
-    const isTargetItem = Object.keys(serchObj).reduce((prev, v) => (prev = prev && serchObj[v] == item[v], prev), true)
-    if(isTargetItem) { item = callback(item) }
-    return item
+    let isCurItem = false
+    if(isObject(search)) {
+      isCurItem = Object.keys(search).reduce((prev, v) => (prev = prev && search[v] == item[v], prev), true)
+    } else if(isFunction(search)) {
+      isCurItem = search(item)
+    }
+    return isCurItem ? sucFunc(item) : failFunc(item)
   })
 }
 /**
@@ -585,17 +633,20 @@ export const getAreaFlat = function (arr, props) {
     return arr
   }
 }
-// 获取某个数组中某个字段的值，拼接成字符串。
-// 举例： const arr = [{name:'a'}, {name:'b'}]
-// getField(arr, 'name')----> 'a,b'
-export const getField = function (arr, field, split = ',') {
-  return arr.reduce((prev, item) => [...prev, item[field]], []).join(split)
-}
-// 获取某个数组中字段isChecked为true的条目。并取出其中特定字段。
-// 举例：const arr = [{id:1, isChecked: true}, {id:2, isChecked:false}, {id:2, isChecked:true}]
-// getChecked(arr, 'id')  ---> 1,2
-export const getChecked = function (arr, field, checkStr = 'isChecked', split = ',') {
-  return arr.reduce((prev, item) => (item[checkStr] && prev.push(item[field]), prev), []).join(split)
+/**
+ * 获取特定条件的对象数组中，满足条件的对象的字段值，并拼接好
+ * @param {*} arr 需要处理的数组
+ * @param {*} field 需要获得的字段
+ * @param {Function} searchFunc 过滤函数，如果不传则返回全部数组中的字段值     如果传了函数，则先按照函数过滤一遍 
+ * @param {*} split 分隔符---默认值是逗号
+ * @returns 得到的字段值拼接的字符串
+ * @举例 getField([{id:1, age: 15}, {id: 2, age: 18}, {id:3, age: 20}], 'id', item => item.age > 16)
+ */
+export const getField = function (arr, field, searchFunc, split = ',') {
+  return arr.reduce((prev, item) => {
+    const isCurItem = isFunction(searchFunc) ? searchFunc(item) : true
+    return isCurItem ? [...prev, item[field]] : prev
+  }, []).join(split)
 }
 // 数组分块
 // 举例子： chunk([1,2,3,4,5], 2) ====>   [[1,2], [3, 4], [5]]

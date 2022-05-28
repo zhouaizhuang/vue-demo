@@ -637,17 +637,22 @@ export const getAreaFlat = function (arr, props) {
  * 获取特定条件的对象数组中，满足条件的对象的字段值，并拼接好
  * @param {*} arr 需要处理的数组
  * @param {*} field 需要获得的字段
- * @param {Function} searchFunc 过滤函数，如果不传则返回全部数组中的字段值     如果传了函数，则先按照函数过滤一遍 
+ * @param {Function|Object} search 过滤函数|过滤对象，如果不传则返回全部数组中的字段值     如果传了函数，则先按照函数过滤一遍 
  * @param {*} split 分隔符---默认值是逗号
  * @returns 得到的字段值拼接的字符串
- * @举例 getField([{id:1, age: 15}, {id: 2, age: 18}, {id:3, age: 20}], 'id', item => item.age > 16)
+ * @举例 getField([{id:1, age: 15}, {id: 2, age: 18}, {id:3, age: 20}], 'id', v => v.age > 16) --->  '2,3'
+ * @举例 getField([{id:1, age: 15}, {id: 2, age: 18}, {id:3, age: 20}], 'id', {age:18}) --->  '2'
  */
-export const getField = function (arr, field, searchFunc, split = ',') {
+ export const getField = function (arr, field, search, split = ',') {
   return arr.reduce((prev, item) => {
-    const isCurItem = isFunction(searchFunc) ? searchFunc(item) : true
+    let isCurItem = true
+    if(isObject(search)) {
+      isCurItem = Object.keys(search).reduce((prev, v) => (prev = prev && search[v] == item[v], prev), true)
+    } else if(isFunction(search)) {
+      isCurItem = search(item)
+    }
     return isCurItem ? [...prev, item[field]] : prev
   }, []).join(split)
-}
 // 数组分块
 // 举例子： chunk([1,2,3,4,5], 2) ====>   [[1,2], [3, 4], [5]]
 export const chunk = function (arr, size = 0) {

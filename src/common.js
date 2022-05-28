@@ -653,6 +653,7 @@ export const getAreaFlat = function (arr, props) {
     }
     return isCurItem ? [...prev, item[field]] : prev
   }, []).join(split)
+}
 // 数组分块
 // 举例子： chunk([1,2,3,4,5], 2) ====>   [[1,2], [3, 4], [5]]
 export const chunk = function (arr, size = 0) {

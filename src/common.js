@@ -599,25 +599,30 @@ export const repeat = function(obj = '', times = 1) {
 }
 /**
  * 对象数组按照某个字段进行排序
- * @param {*} arr 需要排序的对象数组
- * @param {*} str 根据这个字段的值进行排序
- * @param {*} type 排序方式、递增还是递减 1: 递增   -1递减
+ * @param {Array} arr 需要排序的对象数组
+ * @param {String} prop 根据这个字段的值进行排序
+ * @param {Number | String} type 排序方式、递增还是递减 1: 递增   -1递减
  * @returns {Array} 排序后的数组
  * @举例 举例：sortByProp([{name:'ss', age:30}, {name:'dd', age:14}], 'age') ----> [{name:'dd', age:14}, {name:'ss', age:30}]
  */
-export const sortByProp = function (arr, str, type = 1) {
-  return arr.sort((a, b) => type === 1 ? a[str] - b[str] : b[str] - a[str])
+ export const sortByProp = function (arr, prop, type = 1) {
+  return arr.sort(({[prop]: left},  {[prop]: right}) => {
+    if(!isNumber(left) || !isNumber(right)) { throw new Error('您输入的参数有误') }
+    return type == 1 ? left - right : right - left
+  })
 }
 /**
-* 数组去重
-* 举例： noSame([1,2,3,4,'1'])
-*/
+ * 数组去重
+ * @param {Array} arr 
+ * @returns 
+ * 举例： noSame([1,2,3,4,'1'])
+ */
 export const noSame = function(arr) {
   const newData = arr.reduce((prev, item) => (prev.set(item, item), prev), new Map())
   return [...newData.keys()]
 }
 //递归解析数组中某个字段最深层该字段数组平铺。举例子：获取数组中每个对象的最深层的child属性
-// const arr = [{ 
+// const arr = [{
 //   name: 'a',
 //   child:[{
 //       name:'b',

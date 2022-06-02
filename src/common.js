@@ -422,6 +422,7 @@ export const mean = arr => arr.reduce((prev, item) => prev + item, 0) / arr.leng
  * @举例 adjust([1,2,3,4,5], -1, item => item + 'zzz') ---> [1,2,3,4,'5zzz']
  */
 export const adjust = function (arr, num, fn) {
+  if(num > arr.length) { return arr }
   return arr.map((item, index) => {
     if(num >= 0) { return index === num ? fn(item) : item } // 如果是正数，那么就正常的进行映射
     return num + arr.length === index ? fn(item) : item // 如果是负数，比如-1，则对应修改最后一个元素

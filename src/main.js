@@ -27,7 +27,6 @@ Vue.prototype.$Z = Z
 import SlideVerify from 'vue-monoplasty-slide-verify'
 Vue.use(SlideVerify)
 
-import {ms2Dhs, url2JSON, JSON2url} from "./common"
 
 new Vue({
   router,

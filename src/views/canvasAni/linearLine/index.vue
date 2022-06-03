@@ -101,12 +101,19 @@ export default {
     drawDashLine(){
       const ref = this.$refs.canvasRef3
       const ctx = ref.getContext('2d')
-      // 无动画版本
+      // 无动画版本1
       for(let i = 0; i < 30; i = i+3) {
         this.drawLine(ctx, [50 + 8 * i, 30], [60 + 8 * i, 30], 'orange', 4)
       }
       this.drawLine(ctx, [280, 30], [270, 20], 'orange', 4)
       this.drawLine(ctx, [280, 30], [270, 40], 'orange', 4)
+      // 无动画版本2
+      // ctx.beginPath()
+      // ctx.setLineDash([5, 15])
+      // ctx.moveTo(50, 30)
+      // ctx.lineTo(290, 30)
+      // ctx.stroke()
+      // ctx.closePath()
       // 动画版本
       let j = 0
       this.timeId2 = setInterval(() => {

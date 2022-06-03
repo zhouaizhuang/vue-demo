@@ -64,6 +64,7 @@
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/bezierLine">贝塞尔曲线</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/drawText">绘制文本（打字效果）</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/drawPieChart">饼图</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/drawImg">绘制图片</router-link></div>
       </div>
     </div>
     <div class="fs50r b mt30 mb20 tc">通用组件</div>

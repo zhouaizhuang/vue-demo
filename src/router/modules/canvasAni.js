@@ -6,4 +6,5 @@ export default [
   { path: '/bezierLine', name: 'bezierLine', component: () => import(/* webpackChunkName: "canvasAni" */ '../../views/canvasAni/bezierLine/index.vue') },
   { path: '/drawText', name: 'drawText', component: () => import(/* webpackChunkName: "canvasAni" */ '../../views/canvasAni/drawText/index.vue') },
   { path: '/drawPieChart', name: 'drawPieChart', component: () => import(/* webpackChunkName: "canvasAni" */ '../../views/canvasAni/drawPieChart/index.vue') },
+  { path: '/drawImg', name: 'drawImg', component: () => import(/* webpackChunkName: "canvasAni" */ '../../views/canvasAni/drawImg/index.vue') },
 ]

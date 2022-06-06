@@ -7,7 +7,7 @@
     <z-text class="fs50r b mb20 mt20 tc" text="动画"></z-text>
     <!--https://chokcoco.github.io/CSS-Inspiration/#/./background/bg-clip-text-shine-->
     <div class="f">
-      <div class="pr20r b" style="width:2.2rem;">CSS3动画</div>
+      <div class="pr20r b" style="width:3rem;">CSS3动画</div>
         <div class="f1 f xs ac rw">
           <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/typeWord">打字动画</router-link></div>
           <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/textStaggered">文字交错显示</router-link></div>
@@ -33,19 +33,19 @@
       </div>
     </div>
     <div class="f">
-      <div class="pr20r b" style="width:2.2rem;">AE(lottie)动画</div>
+      <div class="pr20r b" style="width:3rem;">AE(lottie)动画</div>
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/lottie">犸良动效</router-link></div>
       </div>
     </div>
     <div class="f">
-      <div class="pr20r b" style="width:2.2rem;">图片帧动画</div>
+      <div class="pr20r b" style="width:3rem;">图片帧动画</div>
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/walk">人物行走动画</router-link></div>
       </div>
     </div>
     <div class="f">
-      <div class="pr20r b" style="width:2.2rem;">svg动画</div>
+      <div class="pr20r b" style="width:3rem;">svg动画</div>
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/moveText">移动的马</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/moveSvg">不规则运动(css+svg路径)</router-link></div>
@@ -55,7 +55,7 @@
       </div>
     </div>
     <div class="f">
-      <div class="pr20r b" style="width:2.2rem;">canvas动画</div>
+      <div class="pr20r b" style="width:3rem;">canvas动画</div>
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/linearLine">线条动画</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/randomRect">随机统计图</router-link></div>
@@ -104,7 +104,7 @@
     </div>
     <div class="fs50r b mt30 mb20 tc">Vue进阶</div>
     <div class="f">
-      <div class="pr20r b" style="width:2.2rem;">vue指令</div>
+      <div class="pr20r b" style="width:3rem;">vue指令</div>
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vPermission">v-permission----权限控制</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vCopy">v-copy----复制文本</router-link></div>
@@ -119,7 +119,7 @@
       </div>
     </div>
     <div class="f">
-      <div class="pr20r b" style="width:2.2rem;">vue组件传值</div>
+      <div class="pr20r b" style="width:3rem;">vue组件传值</div>
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/propsEmit">props、$emit</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/parentChild">$parent、$children</router-link></div>
@@ -131,20 +131,26 @@
       </div>
     </div>
     <div class="f">
-      <div class="pr20r b" style="width:2.2rem;">vue高级组件</div>
+      <div class="pr20r b" style="width:3rem;">vue监听（watch）</div>
+      <div class="f1 f xs ac rw">
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/useWatch">watch监听</router-link></div>
+      </div>
+    </div>
+    <div class="f">
+      <div class="pr20r b" style="width:3rem;">vue高级组件</div>
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/myVmodel">自定义组件v-model</router-link></div>
       </div>
     </div>
     <div class="f">
-      <div class="pr20r b" style="width:2.2rem;">vue逻辑复用</div>
+      <div class="pr20r b" style="width:3rem;">vue逻辑复用</div>
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/mixIn">混入:mixIn</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vSlot">高阶组件:vSlot</router-link></div>
       </div>
     </div>
     <div class="f">
-      <div class="pr20r b" style="width:2.2rem;">vue路由</div>
+      <div class="pr20r b" style="width:3rem;">vue路由</div>
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/params1/123">params动态路由传参</router-link></div>
         <div class="db w20 pb30 min190px g42b983 tdu poi" @click="$router.push({ name: 'params2', params: {id: 123}})">params路由传参</div>
@@ -152,7 +158,7 @@
       </div>
     </div>
     <div class="f">
-      <div class="pr20r b" style="width:2.2rem;">vue动画</div>
+      <div class="pr20r b" style="width:3rem;">vue动画</div>
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vueAni">使用过渡类名</router-link></div>
       </div>
@@ -163,7 +169,7 @@
     </div>
     <div class="fs50r b mt30 mb20 tc">H5开发</div>
     <div class="f">
-      <div class="pr20r b" style="width:2.2rem;">H5原生功能</div>
+      <div class="pr20r b" style="width:3rem;">H5原生功能</div>
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/phone">打电话</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/message">发短信</router-link></div>
@@ -173,7 +179,7 @@
     </div>
     <div class="fs50r b mt30 mb20 tc">PC开发</div>
     <div class="f">
-      <div class="pr20r b" style="width:2.2rem;">PC组件封装</div>
+      <div class="pr20r b" style="width:3rem;">PC组件封装</div>
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/uploadImg">上传图片</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/Zmap">腾讯经纬度选择</router-link></div>
@@ -181,7 +187,7 @@
       </div>
     </div>
     <div class="f">
-      <div class="pr20r b" style="width:2.2rem;">PC插件使用</div>
+      <div class="pr20r b" style="width:3rem;">PC插件使用</div>
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/sliderVerify_pc">极验验证</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/useQrcode_pc">Qrcode前端生成二维码</router-link></div>

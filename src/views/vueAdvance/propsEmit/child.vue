@@ -15,6 +15,11 @@
 export default {
   name: 'child',
   props: {
+    // text: String,
+    text: { // 字符串类型
+      type: String,
+      required: true
+    },
     msg: {
       type: [Number, String], // 数据类型
       require: true, // 必填

@@ -13,7 +13,7 @@
   </div>
 </template>
 <script>
-import { showToast } from '../../../common/index.js'
+import { showToast } from '../../../common.js'
 import { request } from "../../../utils/network.js"
 export default {
   name: 'zInput',

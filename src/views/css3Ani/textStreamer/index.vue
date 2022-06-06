@@ -7,7 +7,6 @@
   </div>
 </template>
 <script>
-// import { random } from "../../../common/index.js"
 export default {
   name: 'useAnimate',
   data(){

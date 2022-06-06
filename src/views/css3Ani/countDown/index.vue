@@ -6,7 +6,7 @@
   </div>
 </template>
 <script>
-import { ms2Dhs } from "../../../common/index.js"
+import { ms2Dhs } from "../../../common.js"
 export default {
   name: 'countDown',
   data(){

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { setSessionStorage, getSessionStorage } from "../common/index.js"
+import { getSessionStorage } from "../common.js"
 Vue.use(Vuex)
 
 export default new Vuex.Store({

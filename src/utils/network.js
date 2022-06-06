@@ -1,7 +1,6 @@
 import axios from "axios"
 import qs from 'qs'
-import {JSON2url, formatJSON, showToast} from "@/common/index.js"
-import { getLocalStorage } from "../common.js"
+import { JSON2url, formatJSON, showToast, getLocalStorage } from "../common.js"
 
 // console.log(process.env.VUE_APP_BASE_URL)
 /************配置axios****** */

@@ -1021,8 +1021,10 @@ export const largeNumAdd = function (num1, num2){
  * @举例 getDateStr(0) ---> 20200904    getDateStr(1) ---> 20200905
  * @举例 分割：getDateStr(1, '-')--->2020-09-05
  */
-export const getDateStr = function (num = 0, split = '') {
-  const dt = new Date()
+export const getDateStr = function (num = 0, split = '', t = new Date()) {
+  if(!isDate(t) && isString(t) && t.length > 0) { t = t.replace(/[-]/g, "/") }
+  if(!t) { t = new Date() }
+  const dt = new Date(t)
   dt.setDate(dt.getDate() + num) // 获取num天后的日期
   return `0000${dt.getFullYear()}`.slice(-4) + split + `00${(dt.getMonth() + 1)}`.slice(-2) + split + `00${dt.getDate()}`.slice(-2)
 }
@@ -1044,7 +1046,8 @@ export const getDay = function (t = new Date()) {
  * @举例 socketTime() // 默认返回当天数据
  */
 export const socketTime = function (t = new Date()) {
-  if(!isDate(t) && isString(t)) { t = t.replace(/[-]/g, "/") }
+  if(!isDate(t) && isString(t) && t.length > 0) { t = t.replace(/[-]/g, "/") }
+  if(!t) { t = new Date() }
   const dt = new Date(t)
   const year = String(dt.getFullYear())
   const _month = String(dt.getMonth() + 1)
@@ -1067,7 +1070,8 @@ export const socketTime = function (t = new Date()) {
  * @举例 dateFormater('YYYYMMDD-hh:mm:ss', '2020-08-12 09:13:54') ==> 20200812-09:13:54
  */
 export const dateFormater = function (formater = 'YYYY-MM-DD hh:mm:ss', t = new Date()){
-  if(!isDate(t) && isString(t) && !t.includes('T')) { t = t.replace(/[-]/g, "/") }
+  if(!isDate(t) && isString(t) && !t.includes('T') && t.length > 0) { t = t.replace(/[-]/g, "/") }
+  if(!t) { t = new Date() }
   const dt = new Date(t)
   const [Y, M, D, h, m, s] = [dt.getFullYear() + '', dt.getMonth() + 1, dt.getDate(), dt.getHours(), dt.getMinutes(), dt.getSeconds()]
   return formater.replace(/YYYY|yyyy/g, Y)

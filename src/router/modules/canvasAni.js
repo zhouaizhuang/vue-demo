@@ -7,4 +7,5 @@ export default [
   { path: '/drawText', name: 'drawText', component: () => import(/* webpackChunkName: "canvasAni" */ '../../views/canvasAni/drawText/index.vue') },
   { path: '/drawPieChart', name: 'drawPieChart', component: () => import(/* webpackChunkName: "canvasAni" */ '../../views/canvasAni/drawPieChart/index.vue') },
   { path: '/drawImg', name: 'drawImg', component: () => import(/* webpackChunkName: "canvasAni" */ '../../views/canvasAni/drawImg/index.vue') },
+  { path: '/studyCanvas', name: 'studyCanvas', component: () => import(/* webpackChunkName: "canvasAni" */ '../../views/canvasAni/studyCanvas/index.vue') },
 ]

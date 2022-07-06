@@ -951,7 +951,7 @@ export const formatMoney = function (num = 0, type = 'float', prec = 2, dec = '.
   num = String(num).replace(/[^0-9+-Ee.]/g, '') || '0'
   prec = Number(prec)
   if((type === 'intFloat' && !num.includes('.')) || num === '0') { return num }
-  let [intStr = '', floatStr = ''] = round(num, prec).split(dec) // 分割出整数和小数部分
+  let [intStr = '', floatStr = ''] = String(round(num, prec)).split(dec) // 分割出整数和小数部分
   let re = /(-?\d+)(\d{3})/ // 匹配整数部分每个三位数
   while (re.test(intStr)) {
     intStr = intStr.replace(re, "$1" + sep + "$2") // 整数部分三位数添加分隔符如','

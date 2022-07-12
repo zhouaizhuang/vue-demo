@@ -12,7 +12,7 @@ body { -webkit-text-size-adjust: 100% !important;text-size-adjust: 100% !importa
 /* input, textarea, img, video, object { width:100%; box-sizing: border-box;} */
 .borderBox{box-sizing: border-box;}
 .smoothScroll{overflow: auto;-webkit-overflow-scrolling: touch;} /*解决ios滑动不流畅问题*/
-/*安全边界 上右下左内边距*/
+/*全面屏的安全边界 上右下左内边距*/
 .safePt{padding-top: env(safe-area-inset-top);} .safepr{padding-right: env(safe-area-inset-right);} .safePb{padding-bottom: env(safe-area-inset-bottom);} .safePl{padding-left: env(safe-area-inset-left);}
 /* 禁止复制 */
 .noCopy{-webkit-touch-callout:none; -webkit-user-select:none; -khtml-user-select:none; -moz-user-select:none;-ms-user-select:none;user-select:none;}

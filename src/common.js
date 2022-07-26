@@ -978,7 +978,7 @@ export const round = function (num, prec = 0) {
   prec = Number(prec)
   prec < 0 && (prec = 0)
   const k = Math.pow(10, prec)
-  return Math.round(Number(num) * k) / k
+  return String(Math.round(Number(num) * k) / k)
 }
 /**
  * 数据范围

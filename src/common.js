@@ -320,7 +320,7 @@ export const sliceStr = function (str, num) {
   return str.length > num ? str.slice(0, num) + '...' : str.slice(0, num)
 }
 // 字符串前置补0。举例: addZero('1', 2) ==> '01'
-export const addZero = (str = '', num = 2) => (Array(num+1).join('0') + str).slice(-num)
+export const addZero = (str = '', num = 2) => (Array(num+1).join('0') + String(str)).slice(-num)
 // 完美的统计字符串长度，能正确统计占四个字节的Unicode字符。举例：length('x\uD83D\uDE80y') ----> 3
 export const length = str => [...str].length
 // 字符串复制
@@ -622,19 +622,47 @@ export const noSame = function(arr) {
   const newData = arr.reduce((prev, item) => (prev.set(item, item), prev), new Map())
   return [...newData.keys()]
 }
-//递归解析数组中某个字段最深层该字段数组平铺。举例子：获取数组中每个对象的最深层的child属性
-// const arr = [{
-//   name: 'a',
-//   child:[{
-//       name:'b',
-//       child: [ { name:'c' }]
-//   }]
-// }]
-//getAreaFlat(arr, 'child')------> [{name:'c'}]
-export const getAreaFlat = function (arr, props) {
-  if(arr.some(item => isArray(item[props]) && item[props].length)) {
-    arr = arr.reduce((prev, item) => isArray(item[props]) && item[props].length ? [...prev, ...item[props]] : [...prev, item], [])
-    return getAreaFlat(arr, props)
+/**
+ * 递归解析数组中某个字段最深层该字段数组平铺。举例子：获取数组中每个对象的最深层的child属性
+ * @param {*} arr 
+ * @param {*} props 
+ * @returns
+ * const arr = [{name: 'a', children: [{name: 'b', children:[{ name:'c'}]}]}, {name: 'd', children: [{name: 'e', children:[{ name:'f'}]}]}]
+ * getDeepItem(arr, 'children') ------> [{name:'c'}, {name:'f'}]
+ */
+export const getDeepItem = function (arr, field) {
+  if(arr.some(item => isArray(item[field]) && item[field].length)) {
+    arr = arr.reduce((prev, item) => isArray(item[field]) && item[field].length ? [...prev, ...item[field]] : [...prev, item], [])
+    return getAreaFlat(arr, field)
+  } else {
+    return arr
+  }
+}
+/**
+ * 对象数组，按照某个字段，进行递归平铺
+ * @param {*} arr 需要平铺的数组
+ * @param {*} props 
+ * @returns
+ * @举例
+ * const arr = [
+ *  { name: 'a', children: [ { name: 'b', children: [{ name: 'c', children: [] }]}] },
+ *  { name: 'd', children: [ { name: 'e', children: [{ name: 'f', children: [] }]}] }
+ * ]
+ * flatArr(arr, 'children')
+ * ---->
+ * [
+ *  {name: 'a', children: []}, {name: 'b', children: []}, {name: 'c', children: []},
+ *  {name: 'd', children: []}, {name: 'e', children: []}, {name: 'f', children: []}
+ * ]
+ */
+export const flatArr = function (arr, field) {
+  if(arr.some(item => isArray(item[field]) && item[field].length)) {
+    arr = arr.reduce((prev, item) => {
+      const curItem = deepCopy(item)
+      curItem[field] = []
+      return isArray(item[field]) && item[field].length ? [...prev, curItem, ...item[field]] : [...prev, item]
+    }, [])
+    return flatArr(arr, field)
   } else {
     return arr
   }
@@ -649,7 +677,7 @@ export const getAreaFlat = function (arr, props) {
  * @举例 getField([{id:1, age: 15}, {id: 2, age: 18}, {id:3, age: 20}], 'id', v => v.age > 16) --->  '2,3'
  * @举例 getField([{id:1, age: 15}, {id: 2, age: 18}, {id:3, age: 20}], 'id', {age:18}) --->  '2'
  */
- export const getField = function (arr, field, search, split = ',') {
+ export const getField = function(arr, field, search, split = ',') {
   return arr.reduce((prev, item) => {
     let isCurItem = true
     if(isObject(search)) {

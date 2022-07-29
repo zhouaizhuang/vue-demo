@@ -33,12 +33,8 @@ export const compareRoute = function (allRouter = [], userRouter = []) {
   return allRouter.reduce((prev, item) => {
     userRouter.forEach(v => {
       if(item.path == v.path) {
-        if(isArray(item.children)) {
-          item.children = compareRoute(item.children, v.authorityList)
-        }
-        if(v.hasAuthority == 1) {
-          prev = [...prev, item]
-        }
+        if(isArray(item.children)) { item.children = compareRoute(item.children, v.authorityList) }
+        if(v.hasAuthority == 1) { prev = [...prev, item] }
       }
     })
     return prev
@@ -99,10 +95,7 @@ export const loadJs = (function() {
       script.type = "text/javascript"
       script.src = url
       document.body.appendChild(script)
-      script.onload = () => {
-        loadedJs.push(url)
-        resolve()
-      }
+      script.onload = () => { loadedJs.push(url);resolve(); }
       script.onerror = () => reject()
     })
   }
@@ -121,10 +114,7 @@ export const loadCss = (function(href) {
       link.setAttribute('rel', 'stylesheet')
       link.href = href
       document.head.appendChild(link)
-      link.onload = () => {
-        loadedCss.push(href)
-        resolve()
-      }
+      link.onload = () => { loadedCss.push(href);resolve(); }
       link.onerror = () => reject()
     })
   }
@@ -138,13 +128,7 @@ export const loadCss = (function(href) {
  * 举例子: await wait('0.5s') // 那么程序会在此处阻塞等待500ms
  */
 export const wait = function(t) {
-  if(isString(t)) {
-    if(t.includes('ms')) {
-      t = t.replace('ms', '')
-    } else if(t.includes('s')) {
-      t = t.replace('s', '') * 1000
-    }
-  }
+  if(isString(t)) { t = eval(t.replace('ms', '').replace('s', '*1000')) }
   return new Promise(resolve => setTimeout(() => resolve(), Number(t)))
 }
 /**
@@ -157,8 +141,7 @@ export const wait = function(t) {
  */
 export const deepCopy = function (obj) {
   if(!isReference(obj)) { return obj }  // 数字、日期、正则、函数、字符串、undefined、null、Symbol直接返回
-  let res = isArray(obj) ? [] : {}
-  return Object.keys(obj).reduce((prev, item) => (prev[item] = isReference(obj[item]) ? deepCopy(obj[item]) : obj[item], prev), res)
+  return Object.keys(obj).reduce((prev, item) => (prev[item] = isReference(obj[item]) ? deepCopy(obj[item]) : obj[item], prev), isArray(obj) ? [] : {})
 }
 /**
  * 获取唯一ID。用于模板渲染的唯一key值
@@ -257,9 +240,7 @@ export const getOS = function() {
 export const getPosition = function (e) {
   const offsety = Number(e.offsetTop)
   const offsetx = Number(e.offsetLeft)
-  if (e.offsetParent !== null) {
-    getPosition(e.offsetParent)
-  }
+  if (e.offsetParent !== null) { getPosition(e.offsetParent) }
   return { Left: offsetx, Top: offsety }
 }
 /**获取视口高度
@@ -273,15 +254,11 @@ export const getViewHeight = () => document.body.clientHeight + 'px'
  * @returns 
  */
 export const getViewPos = function (e) {
-  var rect = e.getBoundingClientRect()
-  var top = document.documentElement.clientTop ? document.documentElement.clientTop : 0 // html元素对象的上边框的高度
-  var left = document.documentElement.clientLeft ? document.documentElement.clientLeft : 0
-  return {
-    top: rect.top - top,  // 元素距离视口顶部的距离
-    bottom: rect.bottom - top,  // 元素距离视口底部的距离
-    left: rect.left - left,  // 元素距离视口左边的距离
-    right: rect.right - left  // 元素距离视口右边的距离
-  }
+  var {top, bottom, left, right} = e.getBoundingClientRect()
+  var htmlTop = document.documentElement.clientTop ? document.documentElement.clientTop : 0 // html元素对象的上边框的高度
+  var htmlLeft = document.documentElement.clientLeft ? document.documentElement.clientLeft : 0
+  // 元素距离视口顶部的距离、元素距离视口底部的距离、元素距离视口左边的距离、元素距离视口右边的距离
+  return { top: top - htmlTop, bottom: bottom - htmlTop, left: left - htmlLeft, right: right - htmlLeft }
 }
 /*
 **********************************************************************************************
@@ -361,9 +338,9 @@ export const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1)
 export const shuffle = function (arr){
   if(!isArray(arr)) { arr = [arr] }
   let n = arr.length, random
-  while(0!=n){
-    random =  (Math.random() * n--) >>> 0; // 无符号右移位运算符向下取整
-    [arr[n], arr[random]] = [arr[random], arr[n]] // ES6的结构赋值实现变量互换
+  while(n != 0){
+    random =  (Math.random() * n--) >>> 0 // 无符号右移位运算符向下取整
+    ;[arr[n], arr[random]] = [arr[random], arr[n]] // ES6的结构赋值实现变量互换
   }
   return arr
 }
@@ -565,14 +542,12 @@ export const makeMap = function(str, expectsLowerCase = false) {
  * @举例 remove([1,2,3,4,5,4], 4, -1) ----> [1,2,3,4,5]
  */
 export const remove = function(arr, item, type = 1) {
-  if(type == 0) {
-    arr.splice(arr.indexOf(item), 1)
-  } else if(type == -1) {
-    arr.splice(arr.lastIndexOf(item), 1)
-  } else {
-    arr = arr.filter(v => v !== item)
+  const mapType = {
+    '-1': () => arr.splice(arr.lastIndexOf(item), 1),
+    '0': () => arr.splice(arr.indexOf(item), 1),
+    '1': () => arr = arr.filter(v => v !== item),
   }
-  return arr
+  return (mapType[type] && mapType[type]()) || arr
 }
 /**
  * 数组、字符串元素复制N次 
@@ -865,9 +840,9 @@ export const downloadFile = function (fileName, data){
 export const toFullScreen = function (){
   let el = document.documentElement
   let rfs = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullScreen
-  if (rfs) {
+  if(rfs) {
     rfs.call(el)
-  }else if (typeof window.ActiveXObject !== "undefined") {
+  } else if (typeof window.ActiveXObject !== "undefined") {
     //for IE，这里其实就是模拟了按下键盘的F11，使浏览器全屏
     let wscript = new ActiveXObject("WScript.Shell")
     if (wscript != null) { wscript.SendKeys("{F11}") }

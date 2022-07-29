@@ -1104,17 +1104,9 @@ export const ms2Dhs = function (formater = 'dd天hh小时mm分钟ss秒', leftMs,
  * @举例子 getDays(2021, 11) ---> 30
  */
 export const getDays = function(year, month) {
-  let nextMoth = Number(month) + 1
-  let nextYear = Number(year)
-  if (nextMoth === 13) {
-    nextMoth = 1
-    nextYear++
-  }
-  let currentDate = year + '-' + month + '-1'
-  let nextDate = nextYear + '-' + nextMoth + '-1'
-  let yearObjOne = new Date(currentDate)
-  let yearObjTwo = new Date(nextDate)
-  let milliseconds = yearObjTwo.getTime() - yearObjOne.getTime()
+  let nextMoth = Number(month) + 1 == 13 ? 1 : Number(month) + 1
+  let nextYear = Number(month) + 1 == 13 ? Number(year) + 1 : Number(year)
+  let milliseconds = new Date(`${nextYear}-${nextMoth}-1`).getTime() - new Date(`${year}-${month}-1`).getTime()
   let daymilliseconds = 3600 * 24 * 1000
   return milliseconds / daymilliseconds
 }

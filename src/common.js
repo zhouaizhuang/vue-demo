@@ -1014,6 +1014,21 @@ export const largeNumAdd = function (num1, num2){
  * 获取时间段，业务
  * @returns 
  * 昨天起止时间、今天的起止时间、上周的起止时间、当前周的起止时间、当前是星期几 ---->  带有时分秒的截止时间
+ * @举例
+ * socketTime()
+ * ----->
+ * {
+ *   curWeek: (2) ['2022-07-25', '2022-07-31'], // 本周
+ *   lastWeek: (2) ['2022-07-18', '2022-07-24'], // 上周
+ *   today: "2022-07-30", // 今天
+ *   week: 6, // 周几
+ *   weekDay: "星期六", // 周几中文
+ *   yesterday: "2022-07-30", // 昨天
+ *   _curWeek: (2) ['2022-07-25 00:00:00', '2022-07-31 23:59:59'], // 本周
+ *   _lastWeek: (2) ['2022-07-18 00:00:00', '2022-07-24 23:59:59'], // 上周
+ *   _today: (2) ['2022-07-30 00:00:00', '2022-07-30 23:59:59'], // 今天
+ *   _yesterday: (2) ['2022-07-30 00:00:00', '2022-07-30 23:59:59'], // 昨天
+ * }
  */
 export const socketTime = function (t = new Date()) {
   if(!isDate(t) && isString(t) && !t.includes('T') && t.length > 0) { t = t.replace(/[-]/g, "/") }
@@ -1021,18 +1036,22 @@ export const socketTime = function (t = new Date()) {
   const dt = new Date(t)
   const [week, daySeconds] = [dt.getDay(), 1000 * 60 * 60 * 24] 
   const minusDay = week !== 0 ? week - 1 : 6
-  // 日期
-  const [dateStr, startStr, endStr] = ['YYYY-MM-DD', 'YYYY-MM-DD 00:00:00', 'YYYY-MM-DD 23:59:59']
-  const yesterday = dateFormater(dateStr, dt.getTime() - daySeconds) // 昨天
-  const today = dateFormater(dateStr, dt) // 今天
-  const lastWeek = [dateFormater(dateStr, dt.getTime() - (minusDay + 7) * daySeconds), dateFormater(dateStr, dt.getTime() - (minusDay + 1) * daySeconds)] // 上周
-  const curWeek = [dateFormater(dateStr, dt.getTime() - minusDay * daySeconds), dateFormater(dateStr, dt.getTime() + (6 - minusDay) * daySeconds)] // 本周
+  const [dateStr, startStr, endStr, curSecond, yesterDayStart] = ['YYYY-MM-DD', 'YYYY-MM-DD 00:00:00', 'YYYY-MM-DD 23:59:59', dt.getTime(), curSecond - daySeconds]
   const weekDay = '星期' + "日一二三四五六"[week]
-  // 下面的时间段，带有时分秒
-  const _yesterday = [dateFormater(startStr, dt.getTime() - daySeconds), dateFormater(endStr, dt.getTime() - daySeconds)] // 昨天
-  const _today = [dateFormater(startStr, dt), dateFormater(endStr, dt)] // 今天
-  const _lastWeek = [dateFormater(startStr, dt.getTime() - (minusDay + 7) * daySeconds), dateFormater(endStr, dt.getTime() - (minusDay + 1) * daySeconds)] // 上周
-  const _curWeek = [dateFormater(startStr, dt.getTime() - minusDay * daySeconds), dateFormater(endStr, dt.getTime() + (6 - minusDay) * daySeconds)] // 本周
+  // 昨天
+  const yesterday = dateFormater(dateStr, yesterDayStart)
+  const _yesterday = [dateFormater(startStr, yesterDayStart), dateFormater(endStr, yesterDayStart)]
+  // 今天
+  const today = dateFormater(dateStr, dt)
+  const _today = [dateFormater(startStr, dt), dateFormater(endStr, dt)]
+  // 上周
+  const [lastWeekStart, lastWeekEnd] = [curSecond - (minusDay + 7) * daySeconds, curSecond - (minusDay + 1) * daySeconds]
+  const lastWeek = [dateFormater(dateStr, lastWeekStart), dateFormater(dateStr, lastWeekEnd)]
+  const _lastWeek = [dateFormater(startStr, lastWeekStart), dateFormater(endStr, lastWeekEnd)]
+  // 本周
+  const [curWeekStart, curWeekEnd] = [curSecond - minusDay * daySeconds, curSecond + (6 - minusDay) * daySeconds]
+  const curWeek = [dateFormater(dateStr, curWeekStart), dateFormater(dateStr, curWeekEnd)]
+  const _curWeek = [dateFormater(startStr, curWeekStart), dateFormater(endStr, curWeekEnd)]
   return { yesterday, _yesterday, today, _today, lastWeek, _lastWeek, curWeek, _curWeek, week, weekDay }
 }
 /**
@@ -1047,14 +1066,9 @@ export const dateFormater = function (formater = 'YYYY-MM-DD hh:mm:ss', t = new 
   if(!isDate(t) && isString(t) && !t.includes('T') && t.length > 0) { t = t.replace(/[-]/g, "/") }
   if(!t) { t = new Date() }
   const dt = new Date(t)
-  const [Y, M, D, h, m, s] = [dt.getFullYear() + '', dt.getMonth() + 1, dt.getDate(), dt.getHours(), dt.getMinutes(), dt.getSeconds()]
-  return formater.replace(/YYYY|yyyy/g, Y)
-    .replace(/YY/g, Y.slice(2, 4))
-    .replace(/MM/g, addZero(M, 2))
-    .replace(/DD/g, addZero(D, 2))
-    .replace(/hh/g, addZero(h, 2))
-    .replace(/mm/g, addZero(m, 2))
-    .replace(/ss/g, addZero(s, 2))
+  let [Y, y, M, D, h, m, s] = [dt.getFullYear() + '', String(dt.getFullYear()).slice(2, 4), dt.getMonth() + 1, dt.getDate(), dt.getHours(), dt.getMinutes(), dt.getSeconds()]
+  ;[M, D, h, m, s] = [addZero(M, 2), addZero(D, 2), addZero(h, 2), addZero(m, 2), addZero(s, 2)]
+  return formater.replace(/YYYY|yyyy/g, Y).replace(/YY/g, y).replace(/MM/g, M).replace(/DD/g, D).replace(/hh/g, h).replace(/mm/g, m).replace(/ss/g, s)
 }
 /**得到当前时间之后N秒的时间
  * @param {*} after 多少秒之后的时间

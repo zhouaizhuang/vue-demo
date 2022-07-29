@@ -1011,51 +1011,29 @@ export const largeNumAdd = function (num1, num2){
 **************日期时间操作********************
 */
 /**
- * 获取日期字符串。
- * @param num 传0代表今天，传1代表明天
- * @param split 日期分割符
- * @举例 getDateStr(0) ---> 20200904    getDateStr(1) ---> 20200905
- * @举例 分割：getDateStr(1, '-')--->2020-09-05
- */
-export const getDateStr = function (num = 0, split = '', t = new Date()) {
-  if(!isDate(t) && isString(t) && t.length > 0) { t = t.replace(/[-]/g, "/") }
-  if(!t) { t = new Date() }
-  const dt = new Date(t)
-  dt.setDate(dt.getDate() + num) // 获取num天后的日期
-  return `0000${dt.getFullYear()}`.slice(-4) + split + `00${(dt.getMonth() + 1)}`.slice(-2) + split + `00${dt.getDate()}`.slice(-2)
-}
-/**
- * 获取星期几， 不传默认是今天
- * @param t 时间格式字符串比如： '2021-10-01'   当然，也同时支持传入new date('2021-10-01')生成的对象
- * @举例 getDay('2020-03-05') ---> 返回的就是这个日期对应的星期几
- * @举例 getDay() // 默认返回当天星期几
- */
-export const getDay = function (t = new Date()) {
-  if(!isDate(t)) { t = t.replace(/[-]/g, "/") } // 为了兼容ios
-  let day = t ? new Date(t).getDay() : new Date().getDay()
-  return '星期' + "日一二三四五六"[day]
-}
-/**
- * 获取时间
- * @param t 时间格式字符串比如： '2021-10-01'   当然，也同时支持传入new date('2021-10-01')生成的对象
- * @举例 socketTime('2020-03-05') ---> 返回的就是2020年3月5日的年月日数据
- * @举例 socketTime() // 默认返回当天数据
+ * 获取时间段，业务
+ * @returns 
+ * 昨天起止时间、今天的起止时间、上周的起止时间、当前周的起止时间、当前是星期几 ---->  带有时分秒的截止时间
  */
 export const socketTime = function (t = new Date()) {
-  if(!isDate(t) && isString(t) && t.length > 0) { t = t.replace(/[-]/g, "/") }
+  if(!isDate(t) && isString(t) && !t.includes('T') && t.length > 0) { t = t.replace(/[-]/g, "/") }
   if(!t) { t = new Date() }
   const dt = new Date(t)
-  const year = String(dt.getFullYear())
-  const _month = String(dt.getMonth() + 1)
-  const month = addZero(_month, 2)
-  const day = addZero(dt.getDate(), 2)
-  const _day = String(dt.getDate())
-  const weekDay = String(dt.getDay())
-  const _weekDay = '星期' + "日一二三四五六"[weekDay]
-  const hour = addZero(dt.getHours(), 2)
-  const minutes = addZero(dt.getMinutes(), 2)
-  const seconds = addZero(dt.getSeconds(), 2)
-  return { year, month, _month, day, _day, weekDay, _weekDay, hour, minutes, seconds }
+  const [week, daySeconds] = [dt.getDay(), 1000 * 60 * 60 * 24] 
+  const minusDay = week !== 0 ? week - 1 : 6
+  // 日期
+  const [dateStr, startStr, endStr] = ['YYYY-MM-DD', 'YYYY-MM-DD 00:00:00', 'YYYY-MM-DD 23:59:59']
+  const yesterday = dateFormater(dateStr, dt.getTime() - daySeconds) // 昨天
+  const today = dateFormater(dateStr, dt) // 今天
+  const lastWeek = [dateFormater(dateStr, dt.getTime() - (minusDay + 7) * daySeconds), dateFormater(dateStr, dt.getTime() - (minusDay + 1) * daySeconds)] // 上周
+  const curWeek = [dateFormater(dateStr, dt.getTime() - minusDay * daySeconds), dateFormater(dateStr, dt.getTime() + (6 - minusDay) * daySeconds)] // 本周
+  const weekDay = '星期' + "日一二三四五六"[week]
+  // 下面的时间段，带有时分秒
+  const _yesterday = [dateFormater(startStr, dt.getTime() - daySeconds), dateFormater(endStr, dt.getTime() - daySeconds)] // 昨天
+  const _today = [dateFormater(startStr, dt), dateFormater(endStr, dt)] // 今天
+  const _lastWeek = [dateFormater(startStr, dt.getTime() - (minusDay + 7) * daySeconds), dateFormater(endStr, dt.getTime() - (minusDay + 1) * daySeconds)] // 上周
+  const _curWeek = [dateFormater(startStr, dt.getTime() - minusDay * daySeconds), dateFormater(endStr, dt.getTime() + (6 - minusDay) * daySeconds)] // 本周
+  return { yesterday, _yesterday, today, _today, lastWeek, _lastWeek, curWeek, _curWeek, week, weekDay }
 }
 /**
  * 生成格式化时间字符串

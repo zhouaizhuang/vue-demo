@@ -29,8 +29,9 @@ export default {
       const routeDeep = ['/', '/index', pathStr] // 这里按照深度写路径。由于当前项目就index是第一层，后面都是同级目录
       const toDepth = routeDeep.reduce((prev, item, index) => item.includes(to.path) ? index : prev, 0)
       const fromDepth = routeDeep.reduce((prev, item, index) => item.includes(from.path) ? index : prev, 0)
-      this.animation = toDepth > fromDepth ? 'pageTransGo 0.5s ease -0.2s 1 forwards' : 'pageTransBack 0.3s ease -0.2s 1 forwards'
-      setTimeout(() => {this.animation=''}, 800)
+      const isGo = toDepth > fromDepth
+      this.animation = isGo ? 'pageTransGo .4s both' : 'pageTransBack 0.3s ease -0.2s both'
+      setTimeout(() => { this.animation='' }, isGo ? 500 : 300)
     }
   },
   created(){
@@ -40,11 +41,27 @@ export default {
 </script>
 <style>
 @keyframes pageTransGo {
-  0%{ transform: translateX(100%);opacity:0 }
-  100%{ transform: translateX(0%);opacity: 1; }
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(80%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
 }
 @keyframes pageTransBack {
-  0%{ transform: translateX(-100%);opacity:0 }
-  100%{ transform: translateX(0%);opacity: 1; }
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
 }
 </style>

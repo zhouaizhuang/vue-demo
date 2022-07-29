@@ -1061,40 +1061,29 @@ export const dateFormater = function (formater = 'YYYY-MM-DD hh:mm:ss', t = new 
  * @举例 afterNsecond(20)  // 20s之后的时间
  */
 export const afterNsecond = function (after = 60) {
-  const dt = new Date()
-  return new Date(dt.getTime() + after * 1000)
+  const dt = new Date().getTime() + after * 1000
+  return new Date(dt)
 }
 /**
  * 将毫秒数转换成天、时、分、秒、毫秒
- * @param {Number} leftMs 剩余的时间，毫秒数
  * @param {String} formater 时间格式
- * @param {Number} strType 字符串的格式是否隐藏0。  0：隐藏0
- * @param {Number} timeType 时间类型是否补0。  1：补0     0：不需要补0
+ * @param {Number} leftMs 剩余的时间，毫秒数
+ * @param {Number} strType 0: 当出现 “0天1小时” 显示为 “1小时”
  * @returns 
- * @举例 ms2Dhs(62e3) ---> {formateStr: '01分钟02秒', d: 0, h: '00', m: '01', s: '02', ms: '500'}
+ * @举例
+ * ms2Dhs('dd天hh小时mm分钟ss秒', 62e3)
+ * --->
+ * {formateStr: '01分钟02秒', d: 0, h: '00', m: '01', s: '02', ms: '500'}
  */
 export const ms2Dhs = function (formater = 'dd天hh小时mm分钟ss秒', leftMs, strType = 0) {
-  let d = Math.floor(leftMs / 1000 / 60 / 60 / 24)
-  let h = Math.floor(leftMs / 1000 / 60 / 60 % 24)
-  let m = Math.floor(leftMs / 1000 / 60 % 60)
-  let s = Math.floor(leftMs / 1000 % 60)
-  let ms = Math.floor(leftMs % 1000)
-  if(strType == 0) { // 字符串类型，如果0则不显示
-    let regStr = ''
-    if(d > 0) { regStr = 'dd' }
-    else if(h > 0) { regStr = 'hh' }
-    else if(m > 0) { regStr = 'mm' }
-    else if(s > 0) { regStr = 'ss' }
-    else if(ms > 0) { regStr = 'ms' }
-    else { formater = '' }
+  const minute = leftMs / 1000 / 60
+  let [d, h, m, s, ms] = [Math.floor(minute / 60 / 24), Math.floor(minute / 60 % 24), Math.floor(minute % 60), Math.floor(leftMs / 1000 % 60), Math.floor(leftMs % 1000)]
+  if(strType == 0) {
+    let regStr = d > 0 ? 'dd' : h > 0 ? 'hh' : m > 0 ? 'mm' : s > 0 ? 'ss' : ms > 0 ? 'ms' : ''
     formater = formater.slice(formater.indexOf(regStr))
   }
   ;[h, m, s, ms] = [addZero(h, 2), addZero(m, 2), addZero(s, 2), addZero(ms, 3)]
-  return formater.replace(/dd/g, d)
-    .replace(/hh/g, h)
-    .replace(/mm/g, m)
-    .replace(/ss/g, s)
-    .replace(/ms/g, ms)
+  return formater.replace(/dd/g, d).replace(/hh/g, h).replace(/mm/g, m).replace(/ss/g, s).replace(/ms/g, ms)
 }
 /**
  * 根据年和月，得出该年月有多少天。（原理：计算出他的下个月， 用它的下个月生成毫秒数-当前月毫秒数再除以一天的毫秒数===天数）

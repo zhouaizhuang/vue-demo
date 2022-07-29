@@ -265,14 +265,14 @@ export const getPosition = function (e) {
 /**获取视口高度
  * @returns 
  */
- export const getViewHeight = () => document.body.clientHeight + 'px'
+export const getViewHeight = () => document.body.clientHeight + 'px'
 /**
  * 获取距离视口的数据
  * 距离视窗的距离。一般现在通过 IntersectionObserver API实现了，请看https://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html
  * @param {*} e 
  * @returns 
  */
- export const getViewPos = function (e) {
+export const getViewPos = function (e) {
   var rect = e.getBoundingClientRect()
   var top = document.documentElement.clientTop ? document.documentElement.clientTop : 0 // html元素对象的上边框的高度
   var left = document.documentElement.clientLeft ? document.documentElement.clientLeft : 0
@@ -386,9 +386,7 @@ export const cached = function (fn) {
  * @举例 extend({}, {name:1}) ----> {name: 1}
  */
 export const extend = function(to, _from) {
-  for(var key in _from) {
-    to[key] = _from[key]
-  }
+  for(var key in _from) { to[key] = _from[key] }
   return to
 }
 /**
@@ -399,10 +397,8 @@ export const extend = function(to, _from) {
  */
 export const toObject = function (arr) {
   var res = {}
-  for (var i = 0; i < arr.length; i++) {
-    if (arr[i]) {
-      extend(res, arr[i])
-    }
+  for(var i = 0; i < arr.length; i++) {
+    if (arr[i]) { extend(res, arr[i]) }
   }
   return res
 }
@@ -497,11 +493,8 @@ export const uniqueObj = function (arr, field, type) {
   const obj = arr.reduce((prev, item, index) => {
     const existItem = prev[item[field]]
     const curItem = { ...item, _sort: index}
-    if(type == 1) {
-      prev[item[field]] = existItem || curItem
-    } else {
-      prev[item[field]] = existItem ? { ...item, _sort: existItem._sort } : curItem
-    }
+    prev[item[field]] = type == 1 ? (existItem || curItem) :
+                        existItem ? { ...item, _sort: existItem._sort } : curItem
     return prev
   }, {})
   return Object.values(obj).sort((a, b) => a._sort - b._sort)
@@ -513,13 +506,16 @@ export const uniqueObj = function (arr, field, type) {
  * @returns {Array} 转换之后的数组
  * @举例 
  * let arr = [{id: 1, name: '部门1', pid: 0},{id: 2, name: '部门2', pid: 1},{id: 3, name: '部门3', pid: 1},{id: 4, name: '部门4', pid: 3},{id: 5, name: '部门5', pid: 4}]
- * arrayToTree(arr) ==> 
- * [{
-    "id": 1,
-    "name": "部门1",
-    "pid": 0,
-    "children": [ { "id": 2, "name": "部门2", "pid": 1, "children": [] }, { "id": 3, "name": "部门3", "pid": 1, "children": [{...},{...}] } ]
-   }]
+ * arrayToTree(arr) 
+ * -----> 
+ * [
+ *   {
+ *     "id": 1,
+ *     "name": "部门1",
+ *     "pid": 0,
+ *     "children": [ { "id": 2, "name": "部门2", "pid": 1, "children": [] }, { "id": 3, "name": "部门3", "pid": 1, "children": [{...},{...}] } ]
+ *   }
+ * ]
  */
 export const array2Tree = function (arr) {
   const itemMap = arr.reduce((prev, item) => (prev[item.id] = { ...item, children: [] }, prev), {})
@@ -537,7 +533,7 @@ export const array2Tree = function (arr) {
 export const once = function(fn) {
   var called = false
   return function () {
-    if (!called) {
+    if(!called) {
       called = true
       fn.apply(this, arguments)
     }
@@ -553,7 +549,7 @@ export const once = function(fn) {
 export const makeMap = function(str, expectsLowerCase = false) {
   var map = Object.create(null)
   var list = isString(str) ? str.split(',') : str
-  for (var i = 0; i < list.length; i++) {
+  for(var i = 0; i < list.length; i++) {
     map[list[i]] = true
   }
   return expectsLowerCase ? val => map[val.toLowerCase()] : val => map[val]
@@ -612,7 +608,7 @@ export const repeat = function(obj = '', times = 1) {
  * @returns {Array} 排序后的数组
  * @举例 举例：sortByProp([{name:'ss', age:30}, {name:'dd', age:14}], 'age') ----> [{name:'dd', age:14}, {name:'ss', age:30}]
  */
- export const sortByProp = function (arr, prop, type = 1) {
+export const sortByProp = function (arr, prop, type = 1) {
   return arr.sort(({[prop]: left},  {[prop]: right}) => {
     if(!isNumber(left) || !isNumber(right)) { throw new Error('您输入的参数有误') }
     return type == 1 ? left - right : right - left
@@ -683,7 +679,7 @@ export const flatArr = function (arr, field) {
  * @举例 getField([{id:1, age: 15}, {id: 2, age: 18}, {id:3, age: 20}], 'id', v => v.age > 16) --->  '2,3'
  * @举例 getField([{id:1, age: 15}, {id: 2, age: 18}, {id:3, age: 20}], 'id', {age:18}) --->  '2'
  */
- export const getField = function(arr, field, search, split = ',') {
+export const getField = function(arr, field, search, split = ',') {
   return arr.reduce((prev, item) => {
     let isCurItem = true
     if(isObject(search)) {
@@ -851,8 +847,8 @@ export const groupBy = function (arr, callback){
  * [{id:'1', isChecked:false}, {id:'2', isChecked:true}, {id:'3', isChecked:true}]
  */
 export const syncBgData = (arr, ids, key = 'isChecked', val = true, defVal = false) => arr.map(v => (v[key] = ids.includes(v.id) ? val : defVal, v))
-//base64数据导出文件，文件下载
 /**
+ * base64数据导出文件，文件下载
  * @举例 downloadFile('test.zip', 'https://yiluyouni.hlxapps.com/assets/zip/2940911562140942420.zip')
  */
 export const downloadFile = function (fileName, data){
@@ -918,7 +914,7 @@ export const random = function (lower, upper, type = 'float') {
  * 获取随机颜色
  * @returns 
  */
- export const randomColor = function () {
+export const randomColor = function () {
   const [r, g, b, a] = [random(0, 255,'int'), random(0, 255,'int'), random(0, 255,'int'), 1]
   return `rgba(${r}, ${g}, ${b}, ${a})`
 }
@@ -1124,7 +1120,7 @@ export const afterNsecond = function (after = 60) {
  * @returns 
  * @举例 ms2Dhs(62e3) ---> {formateStr: '01分钟02秒', d: 0, h: '00', m: '01', s: '02', ms: '500'}
  */
- export const ms2Dhs = function (formater = 'dd天hh小时mm分钟ss秒', leftMs, strType = 0) {
+export const ms2Dhs = function (formater = 'dd天hh小时mm分钟ss秒', leftMs, strType = 0) {
   let d = Math.floor(leftMs / 1000 / 60 / 60 / 24)
   let h = Math.floor(leftMs / 1000 / 60 / 60 % 24)
   let m = Math.floor(leftMs / 1000 / 60 % 60)
@@ -1224,7 +1220,7 @@ export const f2s = fahrenheit => (fahrenheit - 32) * 5 / 9
  * @param innerHTML 采用传入的html，不使用默认的样式
  * @举例 showToast('请输入手机号码')  // 弹出“请输入手机号码”这个提示，并且1500ms后自动消失
  */
- export const showToast = function (str, time = 1500, type = 0) {
+export const showToast = function (str, time = 1500, type = 0) {
   var pObj = document.createElement("div") // 创建，写内容
   const innerHTML = {
     0: `<div class="nowrap" style="position:fixed;z-index:9999;top:45%;left:50%;transform: translateX(-50%);font-size:0.30rem;padding:0.2rem 0.5rem;background:#4A4A4A;color:#fff;border-radius:0.15rem;min-width:3.8rem;text-align:center;">${str}</div>`,
@@ -1272,7 +1268,7 @@ export const removeDom = function (id = '') {
  * @param id 这个css的id，方便以后进行删除操作
  * @举例 addDom('<div>234324</div>', 'z-loading')  // 载入的dom
  */
- export const addDom = function (dom = '', id = ""){
+export const addDom = function (dom = '', id = ""){
   removeDom(id) // 删除上次添加的这个id的DOM
   var divObj = document.createElement("div")
   divObj.id = id
@@ -1306,7 +1302,7 @@ export const hide = function (id =''){
  * @举例 showLoading()  // 显示出loading转圈圈动画
  * 备注：次函数可以扩展，未来可以支持多种不同的loading，只要传入不同的type值就可以
  */
- export const showLoading = function({str='加载中...', type = 0, dom ='', css = ''} = {}) {
+export const showLoading = function({str='加载中...', type = 0, dom ='', css = ''} = {}) {
   const domObj = {
     0: `<div style="position:fixed;top:0;right:0;bottom:0;left:0;z-index:1000;background:rgba(255,255,255)">
       <div style="position:fixed;top:30%;left:50%;transform:transLateX(-50%);width:150px;text-align:center;">
@@ -1452,14 +1448,14 @@ export const obj2Map = function (obj){
  * @param {*} obj 需要逆转的对象
  * @returns 
  */
- export const invert = obj => Object.keys(obj).reduce((prev, item) => ((prev[obj[item]] = item), prev), {})
+export const invert = obj => Object.keys(obj).reduce((prev, item) => ((prev[obj[item]] = item), prev), {})
  /**
   * 逆转对象。并且重复的键，将对应的值存在一起
   * @举例子 invertBy({ 'a': 1, 'b': 2, 'c': 1 }) -----> {1: ['a', 'c'], 2: ['b']}
   * @param {*} obj 需要逆转并且分类的对象
   * @returns 
   */
- export const invertBy = obj => Object.keys(obj).reduce((prev, item) => ((prev[obj[item]] || (prev[obj[item]] = [])).push(item), prev), {})
+export const invertBy = obj => Object.keys(obj).reduce((prev, item) => ((prev[obj[item]] || (prev[obj[item]] = [])).push(item), prev), {})
 /**
  * 链表
  */

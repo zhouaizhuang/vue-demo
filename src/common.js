@@ -16,7 +16,7 @@ export const go = function(options = {}) {
     query: {}, // 通过this.$route.query.id获取。刷新没问题。因为数据是在url上的
     params: {}, // 通过this.$route.params.id。刷新，传入当前页面的数据会丢失
     ...options
-  }) 
+  })
 }
 // 返回几层
 export const goBack = (times = -1) => router.go(times) // 返回times页面
@@ -25,8 +25,9 @@ export const goBack = (times = -1) => router.go(times) // 返回times页面
  * @param {*} allRouter 全部路由
  * @param {*} userRouter 真实路由
  * @returns 
+ * @举例： 
  */
- export const compareRoute = function (allRouter = [], userRouter = []) {
+export const compareRoute = function (allRouter = [], userRouter = []) {
   // console.log(allRouter)
   // console.log(userRouter)
   return allRouter.reduce((prev, item) => {
@@ -116,10 +117,10 @@ export const loadCss = (function(href) {
   return function (){
     return new Promise((resolve, reject) => {
       if(loadedCss.includes(href)) { return resolve() }
-      let link = document.createElement('link');
-      link.setAttribute('rel', 'stylesheet');
-      link.href = href;
-      document.head.appendChild(link);
+      let link = document.createElement('link')
+      link.setAttribute('rel', 'stylesheet')
+      link.href = href
+      document.head.appendChild(link)
       link.onload = () => {
         loadedCss.push(href)
         resolve()
@@ -132,9 +133,9 @@ export const loadCss = (function(href) {
  * 执行此函数，可以做一个延时功能。在需要延时执行一段逻辑的时候可以使用
  * @param {String|Number} t
  * @returns 返回一个promise对象，等待t时间后resolve
- * 举例子: await wait(500);   那么程序会在此处阻塞等待500ms
- * 举例子: await wait('500ms');   那么程序会在此处阻塞等待500ms
- * 举例子: await wait('0.5s');   那么程序会在此处阻塞等待500ms
+ * 举例子: await wait(500)   // 那么程序会在此处阻塞等待500ms
+ * 举例子: await wait('500ms') // 那么程序会在此处阻塞等待500ms
+ * 举例子: await wait('0.5s') // 那么程序会在此处阻塞等待500ms
  */
 export const wait = function(t) {
   if(isString(t)) {
@@ -150,7 +151,9 @@ export const wait = function(t) {
  * 深拷贝
  * @param {*} obj 传入任意类型都可以做深拷贝 
  * @returns 返回深拷贝的数据
- * @举例子 const obj = {name:'a', age:'18'};  deepCopy(obj) ----> {name:'a', age:'18'}
+ * @举例子
+ * const obj = {name:'a', age:'18'}; 
+ * deepCopy(obj) ----> {name:'a', age:'18'}
  */
 export const deepCopy = function (obj) {
   if(!isReference(obj)) { return obj }  // 数字、日期、正则、函数、字符串、undefined、null、Symbol直接返回
@@ -160,7 +163,10 @@ export const deepCopy = function (obj) {
 /**
  * 获取唯一ID。用于模板渲染的唯一key值
  * @returns 
- * @举例子 [{name:'a'}, {name:'b'}].map(v => ({...v, _id:guID()})) ---->  [{name:'a', _id: '1vc49wwugp3400'}, {name:'b', _id:'4vvfl6wivx4000'}]
+ * @举例
+ * [{name:'a'}, {name:'b'}].map(v => ({...v, _id: guID()}))
+ * ---->
+ * [{name:'a', _id: '1vc49wwugp3400'}, {name:'b', _id:'4vvfl6wivx4000'}]
  */
 export const guID = () => Number(Math.random().toString().slice(3, 9) + Date.now()).toString(36)
 /**
@@ -172,7 +178,7 @@ export const guID = () => Number(Math.random().toString().slice(3, 9) + Date.now
  * @举例 const newFn = debounce(fn, 2e3) ----> 这样的话执行newFunc()就会有防抖效果
  */
 export const debounce = function (fn, wait=3e3) {
-  if(!isFunction(fn)){throw new Error('传入的参数必须是个函数')}
+  if(!isFunction(fn)){ throw new Error('传入的参数必须是个函数') }
   let timeout = null  // 使用闭包，让每次调用时点击定时器状态不丢失
   return function () { 
     clearTimeout(timeout) // 如果用户在定时器（上一次操作）执行前再次点击，那么上一次操作将被取消
@@ -326,11 +332,11 @@ export const length = str => [...str].length
 // 字符串复制
 export const copyLink = function (e){
   // if(!e) { return this.$Message.error('链接地址为空') }
-  var input = document.createElement("input")   // js创建一个input输入框
-  input.value = e  // 将需要复制的文本赋值到创建的input输入框中
-  document.body.appendChild(input)    // 将输入框暂时创建到实例里面
-  input.select()   // 选中输入框中的内容
-  document.execCommand("Copy")   // 执行复制操作
+  var input = document.createElement("input") // js创建一个input输入框
+  input.value = e // 将需要复制的文本赋值到创建的input输入框中
+  document.body.appendChild(input) // 将输入框暂时创建到实例里面
+  input.select() // 选中输入框中的内容
+  document.execCommand("Copy") // 执行复制操作
   document.body.removeChild(input) // 最后删除实例中临时创建的input输入框，完成复制操作
   // return this.$Message.success('复制成功')
 }
@@ -380,7 +386,7 @@ export const cached = function (fn) {
  * @举例 extend({}, {name:1}) ----> {name: 1}
  */
 export const extend = function(to, _from) {
-  for (var key in _from) {
+  for(var key in _from) {
     to[key] = _from[key]
   }
   return to
@@ -696,7 +702,7 @@ export const chunk = function (arr, size = 0) {
   if(!isGt0(size)) { throw new Error('size必须为大于0的整数') }
   var targetArr = []
   for(var i = 0; i < arr.length; i += size) {
-    targetArr.push(arr.slice(i, i + size));
+    targetArr.push(arr.slice(i, i + size))
   }
   return targetArr
 }
@@ -783,7 +789,7 @@ export const checkJSON = function (obj) {
  * @returns {String} 返回拼接好的带有参数的链接地址
  * @举例子 JSON2url('../advise/index', { from: 'index', id_str:'1243' }) -----> '../advise/index?from=index&id_str=1243'
  */
- export const JSON2url = function (url = '', params = {}, type = 1){
+export const JSON2url = function (url = '', params = {}, type = 1){
   return Object.keys(formatJSON(params)).reduce((prev, item) => {
     let val = JSON.stringify(params[item])
     val = type == 1 ? encodeURIComponent(val) : val // 为了适配更多的场景，开发了自定义是否编码
@@ -839,10 +845,12 @@ export const groupBy = function (arr, callback){
  * @param {*} val 目标id更新之后的值
  * @param {*} defVal 非目标id更新之后的值
  * @returns {Array}
- * 举例 syncBgData([{id:'1'}, {id:'2'}, {id:'3'}], '2,3')
+ * @举例
+ * syncBgData([{id:'1'}, {id:'2'}, {id:'3'}], '2,3')
+ * ----->
  * [{id:'1', isChecked:false}, {id:'2', isChecked:true}, {id:'3', isChecked:true}]
  */
- export const syncBgData = (arr, ids, key = 'isChecked', val = true, defVal = false) => arr.map(v => (v[key] = ids.includes(v.id) ? val : defVal, v))
+export const syncBgData = (arr, ids, key = 'isChecked', val = true, defVal = false) => arr.map(v => (v[key] = ids.includes(v.id) ? val : defVal, v))
 //base64数据导出文件，文件下载
 /**
  * @举例 downloadFile('test.zip', 'https://yiluyouni.hlxapps.com/assets/zip/2940911562140942420.zip')
@@ -859,35 +867,29 @@ export const downloadFile = function (fileName, data){
 }
 // 打开全屏
 export const toFullScreen = function (){
-  let el = document.documentElement;
-  let rfs = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullScreen;
-  //typeof rfs != "undefined" && rfs
+  let el = document.documentElement
+  let rfs = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullScreen
   if (rfs) {
-    rfs.call(el);
+    rfs.call(el)
   }else if (typeof window.ActiveXObject !== "undefined") {
     //for IE，这里其实就是模拟了按下键盘的F11，使浏览器全屏
-    let wscript = new ActiveXObject("WScript.Shell");
-    if (wscript != null) {
-      wscript.SendKeys("{F11}");
-    }
+    let wscript = new ActiveXObject("WScript.Shell")
+    if (wscript != null) { wscript.SendKeys("{F11}") }
   }else{
-    alert("浏览器不支持全屏");
+    alert("浏览器不支持全屏")
   }
 }
 // 退出全屏
 export const exitFullscreen = function (){
-  let el = parent.document;
+  let el = parent.document
   let cfs = el.cancelFullScreen || el.webkitCancelFullScreen || el.mozCancelFullScreen || el.exitFullScreen
-  //typeof cfs != "undefined" && cfs
   if (cfs) {
     cfs.call(el)
-  }else if (typeof window.ActiveXObject !== "undefined") {
+  } else if (typeof window.ActiveXObject !== "undefined") {
     //for IE，这里和fullScreen相同，模拟按下F11键退出全屏
     let wscript = new ActiveXObject("WScript.Shell")
-    if (wscript != null) {
-      wscript.SendKeys("{F11}")
-    }
-  }else{
+    if (wscript != null) { wscript.SendKeys("{F11}") }
+  } else {
     alert("切换失败,可尝试Esc退出")
   }
 }
@@ -896,13 +898,14 @@ export const exitFullscreen = function (){
  * @param lower 下限
  * @param upper 上限
  * @param type 数据类型  float：浮点型    int：整型
+ * @范围 [lower, upper)  // 请注意：左闭右开
  * @举例 random(0, 0.5) ==> 0.3567039135734613
  * @举例 random(1, 2) ===> 1.6718418553475423
  * @举例 random(-2, -1) ==> -1.4474325452361945
  * @举例 random(1, 8) ==> 6
  * 原生参考代码:  a = new Date % 100; // 两位整数随机数
- * a = new Date % 1000; // 三位整数随机数
- * a = new Date % 10000; // 四位整数随机数...依次类推
+ * a = new Date % 1000 // 三位整数随机数
+ * a = new Date % 10000 // 四位整数随机数...依次类推
  */
 export const random = function (lower, upper, type = 'float') {
   lower = Number(lower) || 0
@@ -921,11 +924,7 @@ export const random = function (lower, upper, type = 'float') {
 }
 // 禁止复制
 export const noCopy = function () {
-  ['contextmenu', 'selectstart', 'copy'].forEach(function(ev){
-    document.addEventListener(ev, function(event){
-      return event.returnValue = false
-    })
-  })
+  ;['contextmenu', 'selectstart', 'copy'].forEach(ev => document.addEventListener(ev, event => (event.returnValue = false)))
 }
 /**
  * 获取部分字段。举例：
@@ -981,9 +980,7 @@ export const formatMoney = function (num = 0, type = 'float', prec = 2, dec = '.
   if((type === 'intFloat' && !num.includes('.')) || num === '0') { return num }
   let [intStr = '', floatStr = ''] = String(round(num, prec)).split(dec) // 分割出整数和小数部分
   let re = /(-?\d+)(\d{3})/ // 匹配整数部分每个三位数
-  while (re.test(intStr)) {
-    intStr = intStr.replace(re, "$1" + sep + "$2") // 整数部分三位数添加分隔符如','
-  }
+  while (re.test(intStr)) { intStr = intStr.replace(re, "$1" + sep + "$2") } // 整数部分三位数添加分隔符如','
   floatStr += new Array(prec + 1).join('0')
   return `${intStr}${dec}${floatStr.slice(0, prec)}`
 }
@@ -1235,7 +1232,7 @@ export const f2s = fahrenheit => (fahrenheit - 32) * 5 / 9
   }
   pObj.innerHTML = innerHTML[type] //添加内容
   document.body.appendChild(pObj)
-  setTimeout(() => document.body.removeChild(pObj), time);
+  setTimeout(() => document.body.removeChild(pObj), time)
 }
 /**
  * 删除css结点

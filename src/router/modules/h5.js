@@ -3,4 +3,5 @@ export default [
   { path: '/message', name: 'message', component: () => import(/* webpackChunkName: "h5" */ '../../views/h5/message/index.vue')},
   { path: '/form', name: 'form', component: () => import(/* webpackChunkName: "h5" */ '../../views/h5/form/index.vue')},
   { path: '/cusForm', name: 'cusForm', component: () => import(/* webpackChunkName: "h5" */ '../../views/h5/cusForm/index.vue')},
+  { path: '/getLocation', name: 'getLocation', component: () => import(/* webpackChunkName: "h5" */ '../../views/h5/getLocation/index.vue')},
 ]

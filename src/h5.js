@@ -1,5 +1,6 @@
 import axios from "axios"
 import { loadJs } from "./common.js"
+const AMapKey = 'c5d067e779ee525406906816e2b5b98f'
 // 搜狐接口，只能定位到省
 export const getProvinceBySouHu = async function () {
   return axios.get('http://pv.sohu.com/cityjson?ie=utf-8').then(res => {
@@ -13,7 +14,7 @@ export const getProvinceBySouHu = async function () {
 // Geolocation新增getCityInfo方法，使用用户IP进行城市定位，返回所在城市的名称、中心点、城市编码、矩形边界等基本信息；   
 export const getLocationByIp = async function () {
   // 高德地图
-  await loadJs('http://webapi.amap.com/maps?v=2.0&key=c5d067e779ee525406906816e2b5b98f')
+  await loadJs(`http://webapi.amap.com/maps?v=2.0&key=${AMapKey}`)
 	const map = new AMap.Map('container', { resizeEnable: true })
   return new Promise((resolve, reject) => {
     map.plugin('AMap.Geolocation', function() {
@@ -36,7 +37,7 @@ export const getLocationByIp = async function () {
 // ！！！！！由于Chrome、IOS10等已不再支持非安全域的浏览器定位请求，为保证定位成功率和精度，请尽快升级您的站点到HTTPS。
 // https://lbs.amap.com/api/javascript-api/reference/location/#m_AMap.Geolocation
 export const getLocationByBrowser = async function () {
-  await loadJs('http://webapi.amap.com/maps?v=2.0&key=c5d067e779ee525406906816e2b5b98f')
+  await loadJs(`http://webapi.amap.com/maps?v=2.0&key=${AMapKey}`)
   AMap.plugin('AMap.Geolocation', function() {
     var geolocation = new AMap.Geolocation({
       enableHighAccuracy: true, // 是否使用高精度定位，默认：true

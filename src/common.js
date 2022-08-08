@@ -924,7 +924,8 @@ export const getProps = function (obj, props) {
  */
 export const safeGet = function (run, defaultVal = '') {
   try {
-    return run() || defaultVal
+    const res = run()
+    return isUndefined(res) || isNull(res) ? defaultVal : res
   } catch(e) {
     return defaultVal 
   } 

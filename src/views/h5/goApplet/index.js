@@ -1,5 +1,4 @@
 import { loadJs } from "../../../common.js"
-import "../../../utils/px2rem.js"
 export default {
   name: '',
   components:{},

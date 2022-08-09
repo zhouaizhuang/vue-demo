@@ -12,6 +12,7 @@ export default {
   },
   async created(){
     await loadJs("//res.wx.qq.com/open/js/jweixin-1.6.0.js") //加载微信js
+    // 我调通过，但是这个项目由于域名不是对应的后端配置的域名了。因此是没效果的。
     // 调用接口获取配置-----> 
     // 注意：
     // 1、需要在微信公众号配置js安全域名，安全域名就是线上域名，只能在线上调试。比如https://health.gagctv.com/

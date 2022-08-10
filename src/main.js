@@ -26,7 +26,7 @@ Vue.prototype.$Z = Z
 // 极验验证
 import SlideVerify from 'vue-monoplasty-slide-verify'
 Vue.use(SlideVerify)
-
+Vue.config.ignoredElements = ['wx-open-launch-weapp']
 
 new Vue({
   router,

@@ -1,4 +1,6 @@
 import { loadJs } from "../../../common.js"
+// 请注意main.js中还需要加上这个代码的
+// Vue.config.ignoredElements = ['wx-open-launch-weapp']
 export default {
   name: '',
   components:{},

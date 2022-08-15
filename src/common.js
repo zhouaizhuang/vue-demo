@@ -957,13 +957,13 @@ export const formatMoney = function (num = 0, type = 'float', prec = 2, dec = '.
   return `${intStr}${dec}${floatStr.slice(0, prec)}`
 }
 /**
- * 0、1转换
+ * 0、1转换--------'0'、'1'转换
  * @param {*} val 
  * @returns 
- * @举例子 toogle01(0) ---> 1
- * @举例子 toogle01(1) ---> 0
+ * @举例子 toogle01(0) ---> 1  、  toogle01('0') ---> '1'
+ * @举例子 toogle01(1) ---> 0  、  toogle01('1') ---> '0'
  */
-export const toogle01 = val => Number(val) ^ 1
+ export const toogle01 = val => isNumber(val) ? val ^ 1 : String(Number(val) ^ 1)
 /**
  * 四舍五入返回N位有效数字（常用于金额计算）
  * @param num 需要处理的的数字、支持传入字符串

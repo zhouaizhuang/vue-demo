@@ -11,6 +11,7 @@
         <div class="dib bg1890ff rds40r pl40r pr40r pt20r pb20r gf">{{123123}}</div>
       </template>
       <!--插槽替换footer部件-->
+      <!-- <template #footer="{info}"> 等价-->
       <template v-slot:footer="{info}"> <!--传值的时候可以使用es6的解构-->
         <div class="g42b983 fs30r b pt20r pb20r">{{info.age}}</div>
       </template>

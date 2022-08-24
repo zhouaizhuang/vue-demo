@@ -41,7 +41,7 @@ export default {
   },
   watch: {
     "schoolObj": {
-      immediate: true, // 立即执行
+      immediate: true, // 立即执行-------> 如果不加的话，那么页面首次加载的时候。这里的handler处理函数就不会执行的
       deep: true, // 深度监听复杂类型内变化
       handler(newVal, oldVal){
         if(newVal.studentObj.age === 20) {

@@ -269,6 +269,39 @@ export const getIdCardInfo = function (idCard = '') {
   const gender = idCard.slice(-2,-1) % 2 == 1 ? '男' : '女'
   return { birthDay, inventedAge, realAge, gender }
 }
+/**
+ * 宽松相等判断
+ * @param {*} a 
+ * @param {*} b 
+ * @returns 
+ * @举例 looseEqual({name: "zz"}, {name: "dd"}) // false
+ * @举例 looseEqual({}, {}) // true
+ * @举例 looseEqual([{}], [{}]) // true
+ */
+export const looseEqual = function (a, b) {
+  if (a === b) { return true }
+  const [isReferenceA, isReferenceB, isArrayA, isArrayB] = [isReference(a), isReference(b), isArray(a), isArray(b)]
+  if (isReferenceA && isReferenceB) {
+    try {
+      if (isArrayA && isArrayB) {
+        return a.length === b.length && a.every((e, i) => looseEqual(e, b[i]))
+      } else if (isDate(a) && isDate(b)) {
+        return a.getTime() === b.getTime()
+      } else if (!isArrayA && !isArrayB) {
+        const [keysA, keysB] = [Object.keys(a), Object.keys(b)]
+        return keysA.length === keysB.length && keysA.every(key => looseEqual(a[key], b[key]))
+      } else {
+        return false
+      }
+    } catch (e) {
+      return false
+    }
+  } else if (!isReferenceA && !isReferenceB) {
+    return String(a) === String(b)
+  } else {
+    return false
+  }
+}
 /*
 **********************************************************************************************
 ******************************************字符串操作*********************************************

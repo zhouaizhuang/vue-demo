@@ -260,6 +260,15 @@ export const getViewPos = function (e) {
   // 元素距离视口顶部的距离、元素距离视口底部的距离、元素距离视口左边的距离、元素距离视口右边的距离
   return { top: top - htmlTop, bottom: bottom - htmlTop, left: left - htmlLeft, right: right - htmlLeft }
 }
+// 通过身份证获取出生年月、虚岁、周岁、性别
+export const getIdCardInfo = function (idCard = '') {
+  if(!isIdentity(idCard)) { return {} }
+  const birthDay = `${idCard.slice(6, 10)}-${idCard.slice(10, 12)}-${idCard.slice(12, 14)}`
+  const inventedAge = Number(dateFormater('YYYY')) - Number(idCard.slice(6, 10)) + 1
+  const realAge = Math.floor((Number(dateFormater('YYYYMMDD')) - Number(idCard.slice(6, 14))) / 10000)
+  const gender = idCard.slice(-2,-1) % 2 == 1 ? '男' : '女'
+  return { birthDay, inventedAge, realAge, gender }
+}
 /*
 **********************************************************************************************
 ******************************************字符串操作*********************************************

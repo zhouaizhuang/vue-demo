@@ -10,4 +10,5 @@ export default [
   { path: '/irregularAvatar', name: 'irregularAvatar', component: () => import(/* webpackChunkName: "special" */ '../../views/special/irregularAvatar/index.vue') },
   { path: '/transparentBorder', name: 'transparentBorder', component: () => import(/* webpackChunkName: "special" */ '../../views/special/transparentBorder/index.vue') },
   { path: '/circleText', name: 'circleText', component: () => import(/* webpackChunkName: "special" */ '../../views/special/circleText/index.vue') },
+  { path: '/hideText', name: 'hideText', component: () => import(/* webpackChunkName: "special" */ '../../views/special/hideText/index.vue')},
 ]

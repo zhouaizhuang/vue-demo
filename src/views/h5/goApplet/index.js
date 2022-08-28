@@ -1,3 +1,4 @@
+// 注意，只能在微信H5中进行跳转到小程序，如果想要在外部浏览器，或者在短信链接中跳转，请采用短连接方式。
 import { loadJs } from "../../../common.js"
 // 请注意main.js中还需要加上这个代码的
 // Vue.config.ignoredElements = ['wx-open-launch-weapp']
@@ -24,7 +25,7 @@ export default {
     const {appId, timestamp, nonceStr, signature} = res
     const url = window.location.href.split('#')[0]
     const obj = {
-      debug: true,// 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+      debug: true,          // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
       appId: appId,         // 必填，公众号的唯一标识，填自己的！
       timestamp: timestamp, // 必填，生成签名的时间戳，刚才接口拿到的数据
       nonceStr: nonceStr,   // 必填，生成签名的随机串

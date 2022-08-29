@@ -78,232 +78,6 @@ export const isIdentity = val => /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|
 export const isEmail = val => /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/.test(val)
 /*
 **********************************************************************************************
-******************************************业务函数*********************************************
-**********************************************************************************************
-*/
-/**
- * 异步加载js
- * @param {String} url 需要加载的js
- * @举例子 在async函数中调用 await loadJs("//res.wx.qq.com/open/js/jweixin-1.6.0.js") 
- */
-export const loadJs = (function() {
-  let loadedJs = []
-  return function (url){
-    return new Promise((resolve, reject) => {
-      if(loadedJs.includes(url)) { return resolve() }
-      let script = document.createElement("script")
-      script.type = "text/javascript"
-      script.src = url
-      document.body.appendChild(script)
-      script.onload = () => { loadedJs.push(url);resolve(); }
-      script.onerror = () => reject()
-    })
-  }
-})()
-/**
- * 异步加载css
- * @param {String} href 需要加载的css
- * @举例子 在async函数中调用 await loadCss("") 
- */
-export const loadCss = (function(href) {
-  let loadedCss = []
-  return function (){
-    return new Promise((resolve, reject) => {
-      if(loadedCss.includes(href)) { return resolve() }
-      let link = document.createElement('link')
-      link.setAttribute('rel', 'stylesheet')
-      link.href = href
-      document.head.appendChild(link)
-      link.onload = () => { loadedCss.push(href);resolve(); }
-      link.onerror = () => reject()
-    })
-  }
-})()
-/**
- * 执行此函数，可以做一个延时功能。在需要延时执行一段逻辑的时候可以使用
- * @param {String|Number} t
- * @returns 返回一个promise对象，等待t时间后resolve
- * 举例子: await wait(500)   // 那么程序会在此处阻塞等待500ms
- * 举例子: await wait('500ms') // 那么程序会在此处阻塞等待500ms
- * 举例子: await wait('0.5s') // 那么程序会在此处阻塞等待500ms
- */
-export const wait = function(t) {
-  if(isString(t)) { t = eval(t.replace('ms', '').replace('s', '*1000')) }
-  return new Promise(resolve => setTimeout(() => resolve(), Number(t)))
-}
-/**
- * 深拷贝
- * @param {*} obj 传入任意类型都可以做深拷贝 
- * @returns 返回深拷贝的数据
- * @举例子
- * const obj = {name:'a', age:'18'}; 
- * deepCopy(obj) ----> {name:'a', age:'18'}
- */
-export const deepCopy = function (obj) {
-  if(!isReference(obj)) { return obj }  // 数字、日期、正则、函数、字符串、undefined、null、Symbol直接返回
-  return Object.keys(obj).reduce((prev, item) => (prev[item] = isReference(obj[item]) ? deepCopy(obj[item]) : obj[item], prev), isArray(obj) ? [] : {})
-}
-/**
- * 获取唯一ID。用于模板渲染的唯一key值
- * @returns 
- * @举例
- * [{name:'a'}, {name:'b'}].map(v => ({...v, _id: guID()}))
- * ---->
- * [{name:'a', _id: '1vc49wwugp3400'}, {name:'b', _id:'4vvfl6wivx4000'}]
- */
-export const guID = () => Number(Math.random().toString().slice(3, 9) + Date.now()).toString(36)
-/**
- * 函数防抖
- * @param {*} fn 需要防抖的函数
- * @param {*} wait 防抖时间
- * @returns 
- * @举例 const fn = () => {console.log(1)}
- * @举例 const newFn = debounce(fn, 2e3) ----> 这样的话执行newFunc()就会有防抖效果
- */
-export const debounce = function (fn, wait=3e3) {
-  if(!isFunction(fn)){ throw new Error('传入的参数必须是个函数') }
-  let timeout = null  // 使用闭包，让每次调用时点击定时器状态不丢失
-  return function () { 
-    clearTimeout(timeout) // 如果用户在定时器（上一次操作）执行前再次点击，那么上一次操作将被取消
-    timeout = setTimeout(()=> fn(...arguments), wait)
-  }
-}
-/**
- * 函数节流
- * @param {*} fn  需要做节流的函数
- * @param {*} wait 节流时间
- * @returns 
- * @举例 const fn = () => {console.log(1)}
- * @举例 const newFn = throttling(fn, 2e3) ----> 生成了节流函数
- */
-export const throttling = function(fn, wait=3e3) {
-  let timeout = null // 使用闭包，让每次调用时点击定时器状态不丢失
-  let start = +new Date() // 记录第一次点击时的时间戳
-  return function () {
-    clearTimeout(timeout)
-    let end = +new Date() // 记录第一次以后的每次点击的时间戳
-    if (end - start >= wait) { // 当时间到达设置的延时时间则立即调用数据处理函数
-      fn(...arguments)
-      start = end // 执行处理函数后，将结束时间设置为开始时间，重新开始记时
-    } else {
-      timeout = setTimeout(() => fn(...arguments), wait) // 后续点击没有到达设置的延时，定时器设定延时进行调用
-    }
-  }
-}
-// 获取当前滚动距离顶部的距离
-export const getScrollTop = () => (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop
-/**
- * 滚动的盒子到某个位置
- * 注意，如果想让这个盒子能滚动到某个位置。首先这个盒子必须是可滚动的，也就是高度得固定的
- * 比如设置个动态的height:100vh;，然后垂直滚动overflow-y: auto;这样才行的
- * @param {*} id 需要获取的dom的id
- * @param {*} pos 需要滚动到的目标位置
- * @returns
- */
-export const scrollPos = (id = '', pos = 0) => document.getElementById(id).scrollTop = pos
-// 获取cookie 示例：var og_third_app_token = og_getOgCookie('third_app_token')
-export const getCookie = function (name) {
-  var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)")
-  return arr = document.cookie.match(reg) ? unescape(arr[2]) : null
-}
-//  清除cookie
-export const clearCookies = () => document.cookie.split(';').forEach(cookie => document.cookie = cookie.replace(/^ +/, '').replace(/=.*/, `=;expires=${new Date(0).toUTCString()};path=/`))
-/**
- * 选择器查询
- * @param {String} selector 
- * @returns 返回全部/单个dom
- * 举例子: queryAll('.lazyLoadClass') ---->  查出所有类名为.lazyLoadClass的dom集合并转成数组
- * 举例子: query('.lazyLoadClass') ---->  查出第一个类名为.lazyLoadClass的dom
- */
-export const queryAll = selector => Array.from(document.querySelectorAll(selector))
-export const query = selector => document.querySelector(selector)
-// 本地存储
-export const getLocalStorage = name => JSON.parse(window.localStorage.getItem(name))
-export const setLocalStorage = (name, val) => window.localStorage.setItem(name, JSON.stringify(val))
-export const removeLocalStorage = name => window.localStorage.removeItem(name)
-// 会话存储
-export const getSessionStorage = name => JSON.parse(sessionStorage.getItem(name))
-export const setSessionStorage = (name, val) => sessionStorage.setItem(name, JSON.stringify(val))
-// 获取操作系统类型
-export const getOS = function() {
-  const userAgent = 'navigator' in window && 'userAgent' in navigator && navigator.userAgent.toLowerCase() || ''
-  // const vendor = 'navigator' in window && 'vendor' in navigator && navigator.vendor.toLowerCase() || ''
-  const appVersion = 'navigator' in window && 'appVersion' in navigator && navigator.appVersion.toLowerCase() || ''
-  if (/iphone/i.test(userAgent) || /ipad/i.test(userAgent) || /ipod/i.test(userAgent)) return 'ios'
-  if (/android/i.test(userAgent)) return 'android'
-  if (/win/i.test(appVersion) && /phone/i.test(userAgent)) return 'windowsPhone'
-  if (/mac/i.test(appVersion)) return 'MacOSX'
-  if (/win/i.test(appVersion)) return 'windows'
-  if (/linux/i.test(appVersion)) return 'linux'
-}
-// 获取元素相对于浏览器的位置, 返回一个对象
-export const getPosition = function (e) {
-  const offsety = Number(e.offsetTop)
-  const offsetx = Number(e.offsetLeft)
-  if (e.offsetParent !== null) { getPosition(e.offsetParent) }
-  return { Left: offsetx, Top: offsety }
-}
-/**获取视口高度
- * @returns 
- */
-export const getViewHeight = () => document.body.clientHeight + 'px'
-/**
- * 获取距离视口的数据
- * 距离视窗的距离。一般现在通过 IntersectionObserver API实现了，请看https://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html
- * @param {*} e 
- * @returns 
- */
-export const getViewPos = function (e) {
-  var {top, bottom, left, right} = e.getBoundingClientRect()
-  var htmlTop = document.documentElement.clientTop ? document.documentElement.clientTop : 0 // html元素对象的上边框的高度
-  var htmlLeft = document.documentElement.clientLeft ? document.documentElement.clientLeft : 0
-  // 元素距离视口顶部的距离、元素距离视口底部的距离、元素距离视口左边的距离、元素距离视口右边的距离
-  return { top: top - htmlTop, bottom: bottom - htmlTop, left: left - htmlLeft, right: right - htmlLeft }
-}
-// 通过身份证获取出生年月、虚岁、周岁、性别
-export const getIdCardInfo = function (idCard = '') {
-  if(!isIdentity(idCard)) { return {} }
-  const birthDay = `${idCard.slice(6, 10)}-${idCard.slice(10, 12)}-${idCard.slice(12, 14)}`
-  const inventedAge = Number(dateFormater('YYYY')) - Number(idCard.slice(6, 10)) + 1
-  const realAge = Math.floor((Number(dateFormater('YYYYMMDD')) - Number(idCard.slice(6, 14))) / 10000)
-  const gender = idCard.slice(-2,-1) % 2 == 1 ? '男' : '女'
-  return { birthDay, inventedAge, realAge, gender }
-}
-/**
- * 宽松相等判断
- * @param {*} a 
- * @param {*} b 
- * @returns 
- * @举例 looseEqual({name: "zz"}, {name: "dd"}) // false
- * @举例 looseEqual({}, {}) // true
- * @举例 looseEqual([{}], [{}]) // true
- */
-export const looseEqual = function (a, b) {
-  if (a === b) { return true }
-  const [isReferenceA, isReferenceB, isArrayA, isArrayB] = [isReference(a), isReference(b), isArray(a), isArray(b)]
-  if (isReferenceA && isReferenceB) {
-    try {
-      if (isArrayA && isArrayB) {
-        return a.length === b.length && a.every((e, i) => looseEqual(e, b[i]))
-      } else if (isDate(a) && isDate(b)) {
-        return a.getTime() === b.getTime()
-      } else if (!isArrayA && !isArrayB) {
-        const [keysA, keysB] = [Object.keys(a), Object.keys(b)]
-        return keysA.length === keysB.length && keysA.every(key => looseEqual(a[key], b[key]))
-      } else {
-        return false
-      }
-    } catch (e) {
-      return false
-    }
-  } else if (!isReferenceA && !isReferenceB) {
-    return String(a) === String(b)
-  } else {
-    return false
-  }
-}
-/*
-**********************************************************************************************
 ******************************************字符串操作*********************************************
 **********************************************************************************************
 */
@@ -1358,6 +1132,227 @@ export const checkPwd = (str) => {
   if (/[A-Z]/.test(str)) { Lv++ }  // 大写字母+1
   if (/[\.|-|_!@#$%^&*()`]/.test(str)) { Lv++ } // 特殊字符+1
   return Lv
+}
+/**
+ * 异步加载js
+ * @param {String} url 需要加载的js
+ * @举例子 在async函数中调用 await loadJs("//res.wx.qq.com/open/js/jweixin-1.6.0.js") 
+ */
+export const loadJs = (function() {
+  let loadedJs = []
+  return function (url){
+    return new Promise((resolve, reject) => {
+      if(loadedJs.includes(url)) { return resolve() }
+      let script = document.createElement("script")
+      script.type = "text/javascript"
+      script.src = url
+      document.body.appendChild(script)
+      script.onload = () => { loadedJs.push(url);resolve(); }
+      script.onerror = () => reject()
+    })
+  }
+})()
+/**
+ * 异步加载css
+ * @param {String} href 需要加载的css
+ * @举例子 在async函数中调用 await loadCss("") 
+ */
+export const loadCss = (function(href) {
+  let loadedCss = []
+  return function (){
+    return new Promise((resolve, reject) => {
+      if(loadedCss.includes(href)) { return resolve() }
+      let link = document.createElement('link')
+      link.setAttribute('rel', 'stylesheet')
+      link.href = href
+      document.head.appendChild(link)
+      link.onload = () => { loadedCss.push(href);resolve(); }
+      link.onerror = () => reject()
+    })
+  }
+})()
+/**
+ * 执行此函数，可以做一个延时功能。在需要延时执行一段逻辑的时候可以使用
+ * @param {String|Number} t
+ * @returns 返回一个promise对象，等待t时间后resolve
+ * 举例子: await wait(500)   // 那么程序会在此处阻塞等待500ms
+ * 举例子: await wait('500ms') // 那么程序会在此处阻塞等待500ms
+ * 举例子: await wait('0.5s') // 那么程序会在此处阻塞等待500ms
+ */
+export const wait = function(t) {
+  if(isString(t)) { t = eval(t.replace('ms', '').replace('s', '*1000')) }
+  return new Promise(resolve => setTimeout(() => resolve(), Number(t)))
+}
+/**
+ * 深拷贝
+ * @param {*} obj 传入任意类型都可以做深拷贝 
+ * @returns 返回深拷贝的数据
+ * @举例子
+ * const obj = {name:'a', age:'18'}; 
+ * deepCopy(obj) ----> {name:'a', age:'18'}
+ */
+export const deepCopy = function (obj) {
+  if(!isReference(obj)) { return obj }  // 数字、日期、正则、函数、字符串、undefined、null、Symbol直接返回
+  return Object.keys(obj).reduce((prev, item) => (prev[item] = isReference(obj[item]) ? deepCopy(obj[item]) : obj[item], prev), isArray(obj) ? [] : {})
+}
+/**
+ * 获取唯一ID。用于模板渲染的唯一key值
+ * @returns 
+ * @举例
+ * [{name:'a'}, {name:'b'}].map(v => ({...v, _id: guID()}))
+ * ---->
+ * [{name:'a', _id: '1vc49wwugp3400'}, {name:'b', _id:'4vvfl6wivx4000'}]
+ */
+export const guID = () => Number(Math.random().toString().slice(3, 9) + Date.now()).toString(36)
+/**
+ * 函数防抖
+ * @param {*} fn 需要防抖的函数
+ * @param {*} wait 防抖时间
+ * @returns 
+ * @举例 const fn = () => {console.log(1)}
+ * @举例 const newFn = debounce(fn, 2e3) ----> 这样的话执行newFunc()就会有防抖效果
+ */
+export const debounce = function (fn, wait=3e3) {
+  if(!isFunction(fn)){ throw new Error('传入的参数必须是个函数') }
+  let timeout = null  // 使用闭包，让每次调用时点击定时器状态不丢失
+  return function () { 
+    clearTimeout(timeout) // 如果用户在定时器（上一次操作）执行前再次点击，那么上一次操作将被取消
+    timeout = setTimeout(()=> fn(...arguments), wait)
+  }
+}
+/**
+ * 函数节流
+ * @param {*} fn  需要做节流的函数
+ * @param {*} wait 节流时间
+ * @returns 
+ * @举例 const fn = () => {console.log(1)}
+ * @举例 const newFn = throttling(fn, 2e3) ----> 生成了节流函数
+ */
+export const throttling = function(fn, wait=3e3) {
+  let timeout = null // 使用闭包，让每次调用时点击定时器状态不丢失
+  let start = +new Date() // 记录第一次点击时的时间戳
+  return function () {
+    clearTimeout(timeout)
+    let end = +new Date() // 记录第一次以后的每次点击的时间戳
+    if (end - start >= wait) { // 当时间到达设置的延时时间则立即调用数据处理函数
+      fn(...arguments)
+      start = end // 执行处理函数后，将结束时间设置为开始时间，重新开始记时
+    } else {
+      timeout = setTimeout(() => fn(...arguments), wait) // 后续点击没有到达设置的延时，定时器设定延时进行调用
+    }
+  }
+}
+// 获取当前滚动距离顶部的距离
+export const getScrollTop = () => (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop
+/**
+ * 滚动的盒子到某个位置
+ * 注意，如果想让这个盒子能滚动到某个位置。首先这个盒子必须是可滚动的，也就是高度得固定的
+ * 比如设置个动态的height:100vh;，然后垂直滚动overflow-y: auto;这样才行的
+ * @param {*} id 需要获取的dom的id
+ * @param {*} pos 需要滚动到的目标位置
+ * @returns
+ */
+export const scrollPos = (id = '', pos = 0) => document.getElementById(id).scrollTop = pos
+// 获取cookie 示例：var og_third_app_token = og_getOgCookie('third_app_token')
+export const getCookie = function (name) {
+  var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)")
+  return arr = document.cookie.match(reg) ? unescape(arr[2]) : null
+}
+//  清除cookie
+export const clearCookies = () => document.cookie.split(';').forEach(cookie => document.cookie = cookie.replace(/^ +/, '').replace(/=.*/, `=;expires=${new Date(0).toUTCString()};path=/`))
+/**
+ * 选择器查询
+ * @param {String} selector 
+ * @returns 返回全部/单个dom
+ * 举例子: queryAll('.lazyLoadClass') ---->  查出所有类名为.lazyLoadClass的dom集合并转成数组
+ * 举例子: query('.lazyLoadClass') ---->  查出第一个类名为.lazyLoadClass的dom
+ */
+export const queryAll = selector => Array.from(document.querySelectorAll(selector))
+export const query = selector => document.querySelector(selector)
+// 本地存储
+export const getLocalStorage = name => JSON.parse(window.localStorage.getItem(name))
+export const setLocalStorage = (name, val) => window.localStorage.setItem(name, JSON.stringify(val))
+export const removeLocalStorage = name => window.localStorage.removeItem(name)
+// 会话存储
+export const getSessionStorage = name => JSON.parse(sessionStorage.getItem(name))
+export const setSessionStorage = (name, val) => sessionStorage.setItem(name, JSON.stringify(val))
+// 获取操作系统类型
+export const getOS = function() {
+  const userAgent = 'navigator' in window && 'userAgent' in navigator && navigator.userAgent.toLowerCase() || ''
+  // const vendor = 'navigator' in window && 'vendor' in navigator && navigator.vendor.toLowerCase() || ''
+  const appVersion = 'navigator' in window && 'appVersion' in navigator && navigator.appVersion.toLowerCase() || ''
+  if (/iphone/i.test(userAgent) || /ipad/i.test(userAgent) || /ipod/i.test(userAgent)) return 'ios'
+  if (/android/i.test(userAgent)) return 'android'
+  if (/win/i.test(appVersion) && /phone/i.test(userAgent)) return 'windowsPhone'
+  if (/mac/i.test(appVersion)) return 'MacOSX'
+  if (/win/i.test(appVersion)) return 'windows'
+  if (/linux/i.test(appVersion)) return 'linux'
+}
+// 获取元素相对于浏览器的位置, 返回一个对象
+export const getPosition = function (e) {
+  const offsety = Number(e.offsetTop)
+  const offsetx = Number(e.offsetLeft)
+  if (e.offsetParent !== null) { getPosition(e.offsetParent) }
+  return { Left: offsetx, Top: offsety }
+}
+/**获取视口高度
+ * @returns 
+ */
+export const getViewHeight = () => document.body.clientHeight + 'px'
+/**
+ * 获取距离视口的数据
+ * 距离视窗的距离。一般现在通过 IntersectionObserver API实现了，请看https://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html
+ * @param {*} e 
+ * @returns 
+ */
+export const getViewPos = function (e) {
+  var {top, bottom, left, right} = e.getBoundingClientRect()
+  var htmlTop = document.documentElement.clientTop ? document.documentElement.clientTop : 0 // html元素对象的上边框的高度
+  var htmlLeft = document.documentElement.clientLeft ? document.documentElement.clientLeft : 0
+  // 元素距离视口顶部的距离、元素距离视口底部的距离、元素距离视口左边的距离、元素距离视口右边的距离
+  return { top: top - htmlTop, bottom: bottom - htmlTop, left: left - htmlLeft, right: right - htmlLeft }
+}
+// 通过身份证获取出生年月、虚岁、周岁、性别
+export const getIdCardInfo = function (idCard = '') {
+  if(!isIdentity(idCard)) { return {} }
+  const birthDay = `${idCard.slice(6, 10)}-${idCard.slice(10, 12)}-${idCard.slice(12, 14)}`
+  const inventedAge = Number(dateFormater('YYYY')) - Number(idCard.slice(6, 10)) + 1
+  const realAge = Math.floor((Number(dateFormater('YYYYMMDD')) - Number(idCard.slice(6, 14))) / 10000)
+  const gender = idCard.slice(-2,-1) % 2 == 1 ? '男' : '女'
+  return { birthDay, inventedAge, realAge, gender }
+}
+/**
+ * 宽松相等判断
+ * @param {*} a 
+ * @param {*} b 
+ * @returns 
+ * @举例 looseEqual({name: "zz"}, {name: "dd"}) // false
+ * @举例 looseEqual({}, {}) // true
+ * @举例 looseEqual([{}], [{}]) // true
+ */
+export const looseEqual = function (a, b) {
+  if (a === b) { return true }
+  const [isReferenceA, isReferenceB, isArrayA, isArrayB] = [isReference(a), isReference(b), isArray(a), isArray(b)]
+  if (isReferenceA && isReferenceB) {
+    try {
+      if (isArrayA && isArrayB) {
+        return a.length === b.length && a.every((e, i) => looseEqual(e, b[i]))
+      } else if (isDate(a) && isDate(b)) {
+        return a.getTime() === b.getTime()
+      } else if (!isArrayA && !isArrayB) {
+        const [keysA, keysB] = [Object.keys(a), Object.keys(b)]
+        return keysA.length === keysB.length && keysA.every(key => looseEqual(a[key], b[key]))
+      } else {
+        return false
+      }
+    } catch (e) {
+      return false
+    }
+  } else if (!isReferenceA && !isReferenceB) {
+    return String(a) === String(b)
+  } else {
+    return false
+  }
 }
 /*
 **********************************************************************************************

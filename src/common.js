@@ -42,14 +42,14 @@ export const isEmail = val => /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za
 /** 返回是否以某个字符串开头
  * @param {String} str 目标字符串
  * @param {String} keywords 需要搜索的开头的字符串
- * @returns {Boolean}
+ * @returns {Boolean} 返回布尔值，是否验证通过
  */
 export const startWith = (str, startWords) => str.slice(0, startWords.length) === startWords
 /**
  * 去除字符串中的空格
  * @param {String} str 需要去除空格的字符串
  * @param {Number} type 去除空格的类型 ----> 1: 去除首尾空格   2：去除全部空格  3：去除头部空格  4：去除尾部空格
- * @returns {String}
+ * @returns {String} 返回处理后的字符串
  * @举例 trim(' ab c  ')  ---> 'ab c'
  * @举例 trim(' ab c  ', 2)  ---> 'abc'
  * @举例 trim(' ab c  ', 3)  ---> 'ab c  '
@@ -69,7 +69,7 @@ export const trim =  (str = '', type = 1) => {
  * 固定裁剪几个字符之后显示省略号
  * @param {String} str 需要进行裁剪的字符串
  * @param {Number} num 要裁剪几位数字
- * @returns 
+ * @returns {String} 返回处理后的字符串
  * @举例 sliceStr('张三李四王五', 2) ----> "张三..."
  */
 export const sliceStr = function (str, num) {
@@ -119,10 +119,15 @@ export const shuffle = function (arr){
   return arr
 }
 /**
- * 缓存函数计算结果
+ * 
  * @举例 const cachedComputed = cached(function(val){ return val + 'ZZZ' })
  * @测试 cachedComputed('abc') ---> 'absZZZ' 第二次调用就不需要计算了直接取值 cachedComputed('abc') ---> 'absZZZ'
  * */ 
+/**
+ * 缓存函数计算结果
+ * @param {Function} fn 需要做缓存处理的函数
+ * @returns {Function} 新的有缓存效果的函数
+ */
 export const cached = function (fn) {
   const cache = {}
   return function (str) {
@@ -156,7 +161,7 @@ export const toObject = function (arr) {
 /**
  * 数组求和
  * @param {Array} arr 需要求和的数组
- * @returns {Number}
+ * @returns {Number} 求得的和
  * @举例 sum([1,2,3,4,5]) ----> 15
  */
 export const sum = arr => arr.reduce((prev, item) => prev + item, 0)
@@ -849,7 +854,7 @@ export const dateFormater = function (formater = 'YYYY-MM-DD hh:mm:ss', t = new 
   return formater.replace(/YYYY|yyyy/g, Y).replace(/YY/g, y).replace(/MM/g, M).replace(/DD/g, D).replace(/hh/g, h).replace(/mm/g, m).replace(/ss/g, s)
 }
 /**得到当前时间之后N秒的时间
- * @param {*} after 多少秒之后的时间
+ * @param {Number} after 多少秒之后的时间
  * @举例 afterNsecond(20)  // 20s之后的时间
  */
 export const afterNsecond = function (after = 60) {

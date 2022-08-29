@@ -1,47 +1,5 @@
 /*
 **********************************************************************************************
-******************************************vue路由相关*********************************************
-**********************************************************************************************
-*/
-import router from './router'
-/**
- * 去某个页面
- * @param {*} options
- * @举例 go({name: 'lottie', query:{name:'tom'}}) // 这样就实现了跳转到/lottie页面并且页面传参为name=tom
- */
-export const go = function(options = {}) {
-  router.push({
-    path: '', // 路由路径
-    name: '', // 路由名称
-    query: {}, // 通过this.$route.query.id获取。刷新没问题。因为数据是在url上的
-    params: {}, // 通过this.$route.params.id。刷新，传入当前页面的数据会丢失
-    ...options
-  })
-}
-// 返回几层
-export const goBack = (times = -1) => router.go(times) // 返回times页面
-/**
- * 路由比对函数
- * @param {*} allRouter 全部路由
- * @param {*} userRouter 真实路由
- * @returns 
- * @举例： 
- */
-export const compareRoute = function (allRouter = [], userRouter = []) {
-  // console.log(allRouter)
-  // console.log(userRouter)
-  return allRouter.reduce((prev, item) => {
-    userRouter.forEach(v => {
-      if(item.path == v.path) {
-        if(isArray(item.children)) { item.children = compareRoute(item.children, v.authorityList) }
-        if(v.hasAuthority == 1) { prev = [...prev, item] }
-      }
-    })
-    return prev
-  }, [])
-}
-/*
-**********************************************************************************************
 ******************************************公共方法*********************************************
 **********************************************************************************************
 */
@@ -412,7 +370,7 @@ export const sortByProp = function (arr, prop, type = 1) {
  * 数组去重
  * @param {Array} arr 
  * @returns 
- * 举例： noSame([1,2,3,4,'1'])
+ * 举例：noSame([1,2,3,4,'1'])
  */
 export const noSame = function(arr) {
   const newData = arr.reduce((prev, item) => (prev.set(item, item), prev), new Map())
@@ -782,7 +740,7 @@ export const formatMoney = function (num = 0, type = 'float', prec = 2, dec = '.
  * @举例子 toogle01(0) ---> 1  、  toogle01('0') ---> '1'
  * @举例子 toogle01(1) ---> 0  、  toogle01('1') ---> '0'
  */
- export const toogle01 = val => isNumber(val) ? val ^ 1 : String(Number(val) ^ 1)
+export const toogle01 = val => isNumber(val) ? val ^ 1 : String(Number(val) ^ 1)
 /**
  * 四舍五入返回N位有效数字（常用于金额计算）
  * @param num 需要处理的的数字、支持传入字符串

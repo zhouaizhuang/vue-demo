@@ -1354,6 +1354,30 @@ export const looseEqual = function (a, b) {
     return false
   }
 }
+/**
+ * 图片预加载
+ * @param {*} arr 需要预加载的图片数组
+ * 利用浏览器的缓存策略只要加载过的图片会缓存起来，第二次加载会优先从缓存中找
+ * @举例 
+ * preLoadImg([
+ *   'https://health.gagctv.com/wechat/jjzs/static/wechat_icon.png',
+ *   'https://health.gagctv.com/wechat/jjzs/static/basic_info_top_bg.png',
+ *   'https://health.gagctv.com/wechat/jjzs/static/summary.png',
+ *   'https://health.gagctv.com/wechat/jjzs/static/man_model.png',
+ *   'https://health.gagctv.com/wechat/jjzs/static/person_icon.png'
+ * ])
+ */
+export const preLoadImg = function (arr = []) {
+  const promiseAll = arr.map(item => {
+    return new Promise((resolve, reject) => {
+      var img = new Image()
+      img.onload = () => { img.onload = null;resolve(img) }
+      img.error = () => reject('图片加载失败')
+      img.src = item
+    })
+  })
+  return Promise.all(promiseAll)
+}
 /*
 **********************************************************************************************
 ******************************************网络安全*********************************************

@@ -447,8 +447,15 @@ export const getField = function(arr, field, search, split = ',') {
     return isCurItem ? [...prev, item[field]] : prev
   }, []).join(split)
 }
-// 数组分块
-// 举例子： chunk([1,2,3,4,5], 2) ====>   [[1,2], [3, 4], [5]]
+// 
+// 举例子： 
+/**
+ * 数组分块
+ * @param {Array} arr 需要分块的数组
+ * @param {Number} size 每个数组块几个与元素
+ * @returns 分块之后的数组
+ * @举例 chunk([1,2,3,4,5], 2) ====>   [[1,2], [3, 4], [5]]
+ */
 export const chunk = function (arr, size = 0) {
   if(!isArray(arr)) { throw new Error('arr必须是数组类型') }
   size = Number(size)

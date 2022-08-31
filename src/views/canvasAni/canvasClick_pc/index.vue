@@ -1,3 +1,5 @@
+<!--考虑扇形饼图的点击和hover：https://blog.csdn.net/qq_20423863/article/details/90701917-->
+<!--运用三角函数去计算，限制距离原型的距离，然后横纵坐标不超过多少-->
 <template>
   <div class="mh100vh pt30r w80 auto">
     <canvas ref="canvas" width="700" height='450' style="" />

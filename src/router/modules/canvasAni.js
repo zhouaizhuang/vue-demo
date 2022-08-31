@@ -9,4 +9,5 @@ export default [
   { path: '/drawImg', name: 'drawImg', component: () => import(/* webpackChunkName: "canvasAni" */ '../../views/canvasAni/drawImg/index.vue') },
   { path: '/studyCanvas', name: 'studyCanvas', component: () => import(/* webpackChunkName: "canvasAni" */ '../../views/canvasAni/studyCanvas/index.vue') },
   { path: '/barChart_pc', name: 'barChart_pc', component: () => import(/* webpackChunkName: "canvasAni" */ '../../views/canvasAni/barChart_pc/index.vue') },
+  { path: '/canvasHover_pc', name: 'canvasHover_pc', component: () => import(/* webpackChunkName: "canvasAni" */ '../../views/canvasAni/canvasHover_pc/index.vue') },
 ]

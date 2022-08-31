@@ -436,7 +436,7 @@ export const flatArr = function (arr, field) {
  * @举例 getField([{id:1, age: 15}, {id: 2, age: 18}, {id:3, age: 20}], 'id', v => v.age > 16) --->  '2,3'
  * @举例 getField([{id:1, age: 15}, {id: 2, age: 18}, {id:3, age: 20}], 'id', {age:18}) --->  '2'
  */
-export const getField = function(arr, field, search, split = ',') {
+export const getField = function (arr, field, search = v => v, split = ',') {
   return arr.reduce((prev, item) => {
     let isCurItem = true
     if(isObject(search)) {

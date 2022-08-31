@@ -671,7 +671,7 @@ export const random = function (lower, upper, type = 'float') {
   lower = Number(lower) || 0
   upper = Number(upper) || 0
   let res = Math.random() * (upper - lower) + lower
-  if(type !== 'float') { res = round(res) }
+  if(type !== 'float') { res = Number(round(res)) }
   return res
 }
 /**

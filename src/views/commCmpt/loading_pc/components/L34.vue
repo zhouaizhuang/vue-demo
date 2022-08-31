@@ -1,5 +1,5 @@
 <template>
-  <div class="f xc ac rw bdc pt30 mr30 mb30" style="width:140px;height:140px;">
+  <div class="rel f xc ac rw bdc mr30 mb30" style="width:140px;height:140px;">
     <!-- loading -->
     <div class="loading">
       <div></div>
@@ -13,7 +13,7 @@
     </div>
 
     <!-- 说明：组件名 -->
-    <h4 class="w100 mt20 tc">L34.vue</h4>
+    <h4 class="abs l50 tx-50 b0">L34.vue</h4>
   </div>
 </template>
 

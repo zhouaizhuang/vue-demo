@@ -75,6 +75,7 @@
     <div class="f xs ac rw">
       <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/icon">icon</router-link></div>
       <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/zInput">自定义输入框</router-link></div>
+      <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/loading_pc">177种loading</router-link></div>
       <!-- <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/upImg">图片上传</router-link></div> -->
     </div>
     <div class="fs50r b mt30 mb20 tc">性能瓶颈突破</div>

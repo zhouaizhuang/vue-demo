@@ -68,6 +68,7 @@
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/studyCanvas">canvas学习</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/barChart_pc">柱状图（带屏幕自适应）</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/canvasHover_pc">canvas（带Hover效果）</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/canvasClick_pc">canvas（点击效果）</router-link></div>
       </div>
     </div>
     <div class="fs50r b mt30 mb20 tc">通用组件</div>

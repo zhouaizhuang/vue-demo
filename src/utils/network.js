@@ -74,10 +74,9 @@ export class AllowCancelPromise {
     if (this._pendingPromise.get(url)) { this.cancel('取消重复请求', url) }
     const promiseA = new Promise((_, reject) => this._reject.set(url, reject))
     this._pendingPromise.set(url, Promise.race([requestFn(), promiseA]))
-    return Promise.race([requestFn(), promiseA]).then(res => {
+    return Promise.race([requestFn(), promiseA]).then(res => res).finally(() => {
       this._pendingPromise.delete(url)
       this._reject.delete(url)
-      return res
     })
   }
   cancel(reason, url) {

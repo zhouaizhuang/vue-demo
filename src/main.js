@@ -11,10 +11,12 @@ Vue.use(Directives)
 // 引入iview
 import ViewUI from 'view-design'
 import 'view-design/dist/styles/iview.css'
+import Print from "./utils/print.js"
 Vue.use(ViewUI)
 // 批量注册全局组件
 import globalCommponent from "./globalComponents/index.js"
 Vue.use(globalCommponent)
+Vue.use(Print)
 // axios全局挂载vue实例
 import {request, get, post} from "./utils/network.js"
 Vue.prototype.$request = request

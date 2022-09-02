@@ -86,6 +86,10 @@ export const get = function (url, params){
     }
   }).catch(console.log)
 }
+// 封装一个前置不做处理的post请求
+export const prevPost = function (url, params) {
+  return request({ method:'POST', url, data: params }).then(res => res).catch(console.log)
+}
 // 封装一个post请求
 export const post = function (url, params) {
   return request({ method:'POST', url, data: params }).then(res => {

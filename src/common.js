@@ -108,7 +108,7 @@ export const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1)
 */
 /**
  * 洗牌算法
- * @param {Array} arr 需要乱序的数组
+ * @param {Array} arr 原始数组
  * @returns {Array} 打乱顺序后的数组
  * @举例 shuffle([1,2,3,4])  ---> 可能的结果：[2,4,1,3]
  */

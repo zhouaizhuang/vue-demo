@@ -62,6 +62,31 @@ service.interceptors.request.use(
 //   },
 //   err => Promise.reject(err)
 // )
+
+// https://juejin.cn/post/7033395086696136711#heading-12
+export class AllowCancelPromise {
+  constructor() {
+    this._pendingPromise = new Map()
+    this._reject = new Map()
+  }
+  request(requestFn, url) {
+    url = url.replace('/', '_')
+    if (this._pendingPromise.get(url)) { this.cancel('取消重复请求', url) }
+    const promiseA = new Promise((_, reject) => this._reject.set(url, reject))
+    this._pendingPromise.set(url, Promise.race([requestFn(), promiseA]))
+    return Promise.race([requestFn(), promiseA]).then(res => {
+      this._pendingPromise.delete(url)
+      this._reject.delete(url)
+      return res
+    })
+  }
+  cancel(reason, url) {
+    this._reject.get(url) && this._reject.get(url)(reason)
+    this._pendingPromise.delete(url)
+    this._reject.delete(url)
+  }
+}
+const allowCancelPms = new AllowCancelPromise()
 // 封装一个request请求
 export const request = function (options) {
   return service.request({
@@ -76,23 +101,17 @@ export const request = function (options) {
 }
 // 封装一个get请求
 export const get = function (url, params){
-  return request({ method:'GET', url:JSON2url(url, params) }).then(res => {
-    const {code, data, msg} = res || {}
-    if(code) {
-      showToast(JSON.stringify(msg) || `${url}报错，msg为空`)
-      return false
-    } else {
-      return data
-    }
-  }).catch(console.log)
+  const promiseA = seservice.get(JSON2url(url, params))
+  return allowCancelPms.request(promiseA, url).then(res => res).catch(console.log)
 }
 // 封装一个前置不做处理的post请求
 export const prevPost = function (url, params) {
-  return request({ method:'POST', url, data: params }).then(res => res).catch(console.log)
+  const promiseA = service.post(url, params)
+  return allowCancelPms.request(promiseA, url).then(res => res).catch(console.log)
 }
 // 封装一个post请求
 export const post = function (url, params) {
-  return request({ method:'POST', url, data: params }).then(res => {
+  return prevPost(url, params).then(res => {
     const {code, data, msg} = res || {}
     if(code) {
       showToast(JSON.stringify(msg) || `${url}报错，msg为空`)

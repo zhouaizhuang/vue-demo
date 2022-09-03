@@ -18,6 +18,9 @@
     <div class="f ac mt50 fs40 tc">
       <div class="vague">文字模糊</div>
     </div>
+    <div class="f ac mt50 fs40 tc">
+      <div class="zebra__shadow__text">斑马投影</div>
+    </div>
     <div class="f mt50 fs40 tc gred rel">
       <div class="two-color">不同颜色</div>
       不同颜色
@@ -62,6 +65,7 @@ export default {
 </script>
 <style scoped>
 .text{
+  /*设置方向为角度也是可以的： linear-gradient(180deg, #3ff9ff 0%, #409eff 72%, #78BEFF 100%);*/
   background: linear-gradient(to right,deepskyblue, deeppink);
   background-clip: text;
   color: transparent;
@@ -134,7 +138,16 @@ export default {
     transform: rotateX(5deg) rotateY(360deg);
   }
 }
-.path-text{
-
+.zebra__shadow__text {
+  font-size: 50px;
+  font-weight: bold;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 6px -6px #000, 4px -4px #fff;
+  background-image: linear-gradient(135deg, #fff 0%, #fff 25%, #000 25%, #000 50%, #fff 50%, #fff 75%, #000 75%, #000 100%);
+  background-size: 6px 6px;
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 </style>

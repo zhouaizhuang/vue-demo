@@ -129,8 +129,8 @@ export const processError = function (errcode, errmsg, url) {
     this._reject = new Map()
   }
   request(requestFn, url) {
-    url = url.replace('/', '_')
-    if (this._pendingPromise.get(url)) { this.cancel(`取消重复请求${url.replace('_', '/')}`, url) }
+    url = url.replace(/[/]/g, '_')
+    if (this._pendingPromise.get(url)) { this.cancel(`取消重复请求${url.replace(/_/g, '/')}`, url) }
     const promiseA = new Promise((_, reject) => this._reject.set(url, reject))
     this._pendingPromise.set(url, Promise.race([requestFn(), promiseA]))
     // console.log(this._pendingPromise)

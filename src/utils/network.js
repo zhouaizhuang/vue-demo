@@ -121,42 +121,59 @@ export const processError = function (errcode, errmsg, url) {
 /******************************************线********************************************************** */
 /**************************************************************************************************** */
 /**
- * 可以取消的promise
+ * 防止重复渲染的promise，只使用最后一次请求的结果
  */
  class AllowCancelPromise {
   constructor() {
-    this._pendingPromise = new Map()
     this._reject = new Map()
   }
-  request(requestFn, url) {
-    url = url.replace(/[/]/g, '_')
-    if (this._pendingPromise.get(url)) { this.cancel(`取消重复请求${url.replace(/_/g, '/')}`, url) }
-    const promiseA = new Promise((_, reject) => this._reject.set(url, reject))
-    this._pendingPromise.set(url, Promise.race([requestFn(), promiseA]))
-    // console.log(this._pendingPromise)
-    return Promise.race([requestFn(), promiseA]).then(res => res).finally(e => {
-      this._pendingPromise.delete(url)
+  // 保留最后一次请求的渲染
+  endRequest(requestFn, url) {
+    if (this._reject.get(url)) {
+      this._reject.get(url)(`放弃上次请求的渲染${url}`)
       this._reject.delete(url)
-    })
+    }
+    const promiseA = new Promise((_, reject) => this._reject.set(url, reject))
+    // console.log(this._reject)
+    return Promise.race([requestFn(), promiseA]).then(res => res).finally(() => this._reject.delete(url))
   }
-  cancel(res, url) {
-    this._reject.get(url) && this._reject.get(url)(res)
-    this._pendingPromise.delete(url)
-    this._reject.delete(url)
+  // 只请求第一次，后面的跳过请求
+  startRequest(requestFn, url) {
+    if(this._reject.get(url)) { return new Promise((res, rej) => {rej(`取消当前请求${url}`)}) }
+    this._reject.set(url, url)
+    return requestFn().then(res => res).finally(() => this._reject.delete(url))
   }
 }
 const allowCancelPms = new AllowCancelPromise()
-// 防止重复请求
-export const oncePrevPost = function (url, params) {
+/**
+ * 只请求第一次，接口返回之前其他请求被屏蔽
+ * @param {*} url 请求的url地址
+ * @param {*} params 请求参数
+ * @param {*} type 返回数据类型  1代表只返回data    0代表不做任何处理直接返回格式：{code:xx, data:xx, msg:xx}
+ * @returns 
+ */
+export const startPost = function (url, params, type = 1) {
   const promiseA = () => service.post(url, resolveParams(params))
-  return allowCancelPms.request(promiseA, url).then(res => {
-    return safeGet(() => res.errcode, false) ? res : JSON.parse(DES3.decrypt(res))
+  return allowCancelPms.startRequest(promiseA, url).then(res => {
+    res = safeGet(() => res.errcode, false) ? res : JSON.parse(DES3.decrypt(res))
+    if(type != 1) { return res }
+    const  {errcode, data, errmsg} = res
+    return errcode == 200 ? data : processError(errcode, errmsg, url)
   })
 }
-// 防止重复请求
-export const oncePost = function (url, params) {
-  return oncePrevPost(url, params).then(res => {
-    const {errcode, data, errmsg } = res || {}
+/**
+ * 重复请求，但是保留最后一次的结果
+ * @param {*} url 请求的url地址
+ * @param {*} params 请求参数
+ * @param {*} type 返回数据类型  1代表只返回data    0代表不做任何处理直接返回格式：{code:xx, data:xx, msg:xx}
+ * @returns 
+ */
+export const endPost = function (url, params, type = 1) {
+  const promiseA = () => service.post(url, resolveParams(params))
+  return allowCancelPms.endRequest(promiseA, url).then(res => {
+    res = safeGet(() => res.errcode, false) ? res : JSON.parse(DES3.decrypt(res))
+    if(type != 1) { return res }
+    const  {errcode, data, errmsg} = res
     return errcode == 200 ? data : processError(errcode, errmsg, url)
   })
 }

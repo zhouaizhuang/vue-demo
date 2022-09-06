@@ -123,7 +123,7 @@ export const processError = function (errcode, errmsg, url) {
 /**
  * 防止重复渲染的promise，只使用最后一次请求的结果
  */
- class AllowCancelPromise {
+class AllowCancelPromise {
   constructor() {
     this._reject = new Map()
   }
@@ -139,7 +139,8 @@ export const processError = function (errcode, errmsg, url) {
   }
   // 只请求第一次，后面的跳过请求
   startRequest(requestFn, url) {
-    if(this._reject.get(url)) { return new Promise((res, rej) => {rej(`取消当前请求${url}`)}) }
+    if(this._reject.get(url)) { return new Promise((_, reject) => {reject(`取消当前请求${url}`)}) }
+    // console.log(this._reject)
     this._reject.set(url, url)
     return requestFn().then(res => res).finally(() => this._reject.delete(url))
   }

@@ -62,61 +62,101 @@ service.interceptors.request.use(
 //   },
 //   err => Promise.reject(err)
 // )
-
+// 封装一个request请求
+export const request = function (options) {
+  return service.request({
+    method: "GET",
+    url: '',
+    data: {},
+    ...options
+  }).then(res => {
+    const {errcode, errmsg} = res
+    if(errcode == 200) {
+      return res
+    } else if(errcode == 10200 || errcode == 10210) { // 未登录和token过期
+      removeSessionStorage('token')
+      removeSessionStorage('roleId')
+      Message.info('请登录')
+      router.replace({ path: "/login" }).catch(() => {})
+      return false
+    } else { // 其他异常
+      Message.error(JSON.stringify(errmsg) || `${options.url}报错，errmsg为空`);
+      return false
+    }
+  })
+}
+// 处理入参
+const resolveParams = params => {
+  params = formatJSON(params || {})
+  let postParam = isDebug ? { ...params, ...commonParam, debug: 1 } : { data: DES3.encrypt(JSON.stringify({...params, ...commonParam})) }
+  return Qs.stringify(postParam)
+}
+// 封装一个post请求
+export const prevPost = function (url, params) {
+  return service.post(url, resolveParams(params))
+                .then(res => safeGet(() => res.errcode, false) ? res : JSON.parse(DES3.decrypt(res)))
+                .catch(console.log)
+}
+// 封装一个post请求
+export const post = function (url, params) {
+  return prevPost(url, params).then(({errcode, data, errmsg } = {}) => errcode == 200 ? data : processError(errcode, errmsg, url))
+}
+// 处理异常
+export const processError = function (errcode, errmsg, url) {
+  if(errcode == 10200 || errcode == 10210) { // 未登录和token过期
+    removeSessionStorage('token')
+    removeSessionStorage('roleId')
+    Message.info('请登录')
+    router.replace({ path: "/login" }).catch(() => {})
+    return false
+  } else { // 其他异常
+    Message.error(JSON.stringify(errmsg) || `${url}报错，errmsg为空`);
+    return false
+  }
+}
 // https://juejin.cn/post/7033395086696136711#heading-12
-export class AllowCancelPromise {
+/**************************************************************************************************** */
+/******************************************分********************************************************* */
+/******************************************割********************************************************** */
+/******************************************线********************************************************** */
+/**************************************************************************************************** */
+/**
+ * 可以取消的promise
+ */
+ class AllowCancelPromise {
   constructor() {
     this._pendingPromise = new Map()
     this._reject = new Map()
   }
   request(requestFn, url) {
     url = url.replace('/', '_')
-    if (this._pendingPromise.get(url)) { this.cancel('取消重复请求', url) }
+    if (this._pendingPromise.get(url)) { this.cancel(`取消重复请求${url.replace('_', '/')}`, url) }
     const promiseA = new Promise((_, reject) => this._reject.set(url, reject))
     this._pendingPromise.set(url, Promise.race([requestFn(), promiseA]))
-    return Promise.race([requestFn(), promiseA]).then(res => res).finally(() => {
+    // console.log(this._pendingPromise)
+    return Promise.race([requestFn(), promiseA]).then(res => res).finally(e => {
       this._pendingPromise.delete(url)
       this._reject.delete(url)
     })
   }
-  cancel(reason, url) {
-    this._reject.get(url) && this._reject.get(url)(reason)
+  cancel(res, url) {
+    this._reject.get(url) && this._reject.get(url)(res)
     this._pendingPromise.delete(url)
     this._reject.delete(url)
   }
 }
 const allowCancelPms = new AllowCancelPromise()
-// 封装一个request请求
-export const request = function (options) {
-  return service.request({
-    method: "GET",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded", // multipart/form-data
-    },
-    url: '',
-    data: {},
-    ...options
-  }).then(res => res.data)
+// 防止重复请求
+export const oncePrevPost = function (url, params) {
+  const promiseA = () => service.post(url, resolveParams(params))
+  return allowCancelPms.request(promiseA, url).then(res => {
+    return safeGet(() => res.errcode, false) ? res : JSON.parse(DES3.decrypt(res))
+  })
 }
-// 封装一个get请求
-export const get = function (url, params){
-  const promiseA = seservice.get(JSON2url(url, params))
-  return allowCancelPms.request(promiseA, url).then(res => res).catch(console.log)
-}
-// 封装一个前置不做处理的post请求
-export const prevPost = function (url, params) {
-  const promiseA = service.post(url, params)
-  return allowCancelPms.request(promiseA, url).then(res => res).catch(console.log)
-}
-// 封装一个post请求
-export const post = function (url, params) {
-  return prevPost(url, params).then(res => {
-    const {code, data, msg} = res || {}
-    if(code) {
-      showToast(JSON.stringify(msg) || `${url}报错，msg为空`)
-      return false
-    } else {
-      return data
-    }
-  }).catch(console.log)
+// 防止重复请求
+export const oncePost = function (url, params) {
+  return oncePrevPost(url, params).then(res => {
+    const {errcode, data, errmsg } = res || {}
+    return errcode == 200 ? data : processError(errcode, errmsg, url)
+  })
 }

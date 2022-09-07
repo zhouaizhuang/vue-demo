@@ -91,15 +91,20 @@ const resolveParams = params => {
   let postParam = isDebug ? { ...params, ...commonParam, debug: 1 } : { data: DES3.encrypt(JSON.stringify({...params, ...commonParam})) }
   return Qs.stringify(postParam)
 }
-// 封装一个post请求
-export const prevPost = function (url, params) {
-  return service.post(url, resolveParams(params))
-                .then(res => safeGet(() => res.errcode, false) ? res : JSON.parse(DES3.decrypt(res)))
-                .catch(console.log)
-}
-// 封装一个post请求
-export const post = function (url, params) {
-  return prevPost(url, params).then(({errcode, data, errmsg } = {}) => errcode == 200 ? data : processError(errcode, errmsg, url))
+/**
+ * 封装一个post请求
+ * @param {*} url 请求的url地址
+ * @param {*} params 请求参数
+ * @param {*} type 返回数据类型  1代表只返回data    0代表不做任何处理直接返回格式：{code:xx, data:xx, msg:xx}
+ * @returns 
+ */
+export const post = function (url, params, type = 1) {
+  return service.post(url, resolveParams(params)).then(res => {
+    res = safeGet(() => res.errcode, false) ? res : JSON.parse(DES3.decrypt(res))
+    if(type != 1) { return res }
+    const  {errcode, data, errmsg} = res
+    return errcode == 200 ? data : processError(errcode, errmsg, url)
+  })
 }
 // 处理异常
 export const processError = function (errcode, errmsg, url) {

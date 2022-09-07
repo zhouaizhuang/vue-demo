@@ -306,9 +306,7 @@ export const once = function(fn) {
 export const makeMap = function(str, expectsLowerCase = false) {
   var map = Object.create(null)
   var list = isString(str) ? str.split(',') : str
-  for(var i = 0; i < list.length; i++) {
-    map[list[i]] = true
-  }
+  for(var i = 0; i < list.length; i++) { map[list[i]] = true }
   return expectsLowerCase ? val => map[val.toLowerCase()] : val => map[val]
 }
 /**

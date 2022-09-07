@@ -438,8 +438,6 @@ export const getField = function (arr, field, search = v => v, split = ',') {
     return isCurItem ? [...prev, item[field]] : prev
   }, []).join(split)
 }
-// 
-// 举例子： 
 /**
  * 数组分块
  * @param {Array} arr 需要分块的数组

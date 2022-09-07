@@ -342,7 +342,7 @@ export const repeat = function(obj = '', times = 1) {
   if(isArray(obj)) {
     if(isObject(obj[0])) {
       for(let i =0; i < range(times, 1); i++) {
-        const tmp = deepCopy(obj).map(v => ({...v, _id: guID()}))
+        const tmp = deepCopy(obj).map(v => ({ ...v, _id: guID() }))
         res = [...res, ...tmp]
       }
     } else {
@@ -434,12 +434,7 @@ export const flatArr = function (arr, field) {
  */
 export const getField = function (arr, field, search = v => v, split = ',') {
   return arr.reduce((prev, item) => {
-    let isCurItem = true
-    if(isObject(search)) {
-      isCurItem = Object.keys(search).reduce((prev, v) => (prev = prev && search[v] == item[v], prev), true)
-    } else if(isFunction(search)) {
-      isCurItem = search(item)
-    }
+    let isCurItem = isObject(search) ? Object.keys(search).reduce((prev, v) => (prev = prev && search[v] == item[v], prev), true) : search(item)
     return isCurItem ? [...prev, item[field]] : prev
   }, []).join(split)
 }
@@ -457,9 +452,7 @@ export const chunk = function (arr, size = 0) {
   size = Number(size)
   if(!isGt0(size)) { throw new Error('size必须为大于0的整数') }
   var targetArr = []
-  for(var i = 0; i < arr.length; i += size) {
-    targetArr.push(arr.slice(i, i + size))
-  }
+  for(var i = 0; i < arr.length; i += size) { targetArr.push(arr.slice(i, i + size)) }
   return targetArr
 }
 /**
@@ -651,9 +644,10 @@ export const exitFullscreen = function (){
 }
 /**
  * 返回一个lower - upper之间的随机数
- * @param lower 下限
- * @param upper 上限
- * @param type 数据类型  float：浮点型    int：整型
+ * @param {Number} lower 下限
+ * @param {Number} upper 上限
+ * @param {String} type 数据类型  float：浮点型    int：整型
+ * @returns {Number}
  * @范围 [lower, upper)  // 请注意：左闭右开
  * @举例 random(0, 0.5) ==> 0.3567039135734613
  * @举例 random(1, 2) ===> 1.6718418553475423

@@ -793,7 +793,8 @@ export const range = function (num, min = null, max = null) {
 export const largeNumAdd = function (num1, num2){
   ;[num1, num2] = [String(num1), String(num2)]
   let maxLen = Math.max(num1.length, num2.length)
-  ;[num1, num2] = [addZero(num1, maxLen).split('').map(v => parseInt(v)), addZero(num2, maxLen).split('').map(v => parseInt(v))]
+  const toogleNum = n => addZero(n, maxLen).split('').map(v => parseInt(v))
+  ;[num1, num2] = [toogleNum(num1), toogleNum(num2)]
   const res = num1.reduceRight((prev, item, index) => {
     const figure = item + num2[index] + prev.carry
     return { sum: String(figure % 10) + prev.sum, carry: Math.floor(figure / 10) }

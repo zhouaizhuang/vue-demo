@@ -193,49 +193,44 @@ export const adjust = function (arr, num, fn) {
  * 找到数组中目标对象进行数据变更
  * @param {Array} arr 需要操作的数据
  * @param {Object|Function} search 需要查询的json对象 | 也可以传入校验函数
- * @param {Function} sucFunc 成功匹配的处理函数--->接受一个item，返回一个新的item
- * @param {Function} failFunc 失败匹配的处理函数---->接受一个item，返回一个新的item
+ * @param {Object|Function} sucFunc 成功匹配的处理函数--->接受一个item，返回一个新的item
+ * @param {Object|Function} failFunc 失败匹配的处理函数---->接受一个item，返回一个新的item
  * @举例 
- * searchCover([
+ * const arr = [
  *    {id:1, name: 'aa', age:19},
  *    {id:2, name: 'bb', age:20},
  *    {id:3, name: 'cc', age:21}
  *  ],
+ * searchCover(
+ *  arr,
  *  v => v.age < 21,
- *  v => ({ ...v, name: 'ssss' })
- *  v => ({ ...v, name: 'gggg' })
+ *  v => ({ ...v, name: 'ssss' })  // {name: 'ssss'}
+ *  v => ({ ...v, name: 'gggg' })  // {name: 'gggg'}
  * )
  * -------> 得到如下结果
  * [{id: 1, name: 'ssss', age: 19}, {id: 2, name: 'ssss', age: 20}, {id: 3, name: 'gggg', age: 21}]
  * @实战 处理单选逻辑
- * searchCover([
- *    {id:1, name: 'aa', age:19},
- *    {id:2, name: 'bb', age:20},
- *    {id:3, name: 'cc', age:21}
- *  ],
+ * searchCover(
+ *  arr,
  *  {id: 20},
- *  v => ({...v, isChecked: true}),
- *  v => ({...v, isChecked: false})
+ *  v => ({...v, isChecked: true}),  // { isChecked: true }
+ *  v => ({...v, isChecked: false})  // { isChecked: false }
  * )
  * @实战 处理多选逻辑
- * searchCover([
- *    {id:1, name: 'aa', age:19},
- *    {id:2, name: 'bb', age:20},
- *    {id:3, name: 'cc', age:21}
- *  ],
+ * searchCover(
+ *  arr,
  *  v => v.age == 20,
  *  v => ({...v, isChecked: !v.isChecked}),
  * )
  */
-export const searchCover = function (arr, search, sucFunc = v => v, failFunc = v => v) {
+export const searchCover = function (arr, search, success = v => v, fail = v => v) {
   return arr.map(item => {
-    let isCurItem = false
-    if(isObject(search)) {
-      isCurItem = Object.keys(search).reduce((prev, v) => (prev = prev && search[v] == item[v], prev), true)
-    } else if(isFunction(search)) {
-      isCurItem = search(item)
+    let isCurItem = isObject(search) ? Object.keys(search).reduce((prev, v) => (prev = prev && search[v] == item[v], prev), true) : search(item)
+    if(isCurItem) {
+      return isObject(success) ? { ...item, ...success } : success(item)
+    } else {
+      return isObject(fail) ? { ...item, ...fail } : fail(item)
     }
-    return isCurItem ? sucFunc(item) : failFunc(item)
   })
 }
 /**

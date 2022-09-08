@@ -859,7 +859,7 @@ export const dateFormater = function (formater = 'YYYY-MM-DD hh:mm:ss', t = new 
   const dt = new Date(t)
   let [Y, y, M, D, h, m, s] = [dt.getFullYear() + '', String(dt.getFullYear()).slice(2, 4), dt.getMonth() + 1, dt.getDate(), dt.getHours(), dt.getMinutes(), dt.getSeconds()]
   ;[M, D, h, m, s] = [addZero(M, 2), addZero(D, 2), addZero(h, 2), addZero(m, 2), addZero(s, 2)]
-  return formater.replace(/YYYY|yyyy/g, Y).replace(/YY/g, y).replace(/MM/g, M).replace(/DD/g, D).replace(/hh/g, h).replace(/mm/g, m).replace(/ss/g, s)
+  return formater.replace(/YYYY|yyyy/g, Y).replace(/YY|yy/g, y).replace(/MM/g, M).replace(/DD/g, D).replace(/hh/g, h).replace(/mm/g, m).replace(/ss/g, s)
 }
 /**得到当前时间之后N秒的时间
  * @param {Number} after 多少秒之后的时间

@@ -790,6 +790,18 @@ export const largeNumAdd = function (num1, num2){
 **************日期时间操作********************
 */
 /**
+ * 获取日期字符串。
+ * @param num 传0代表今天，传1代表明天
+ * @param split 日期分割符
+ * @举例 getDateStr(0) ---> 20200904    getDateStr(1) ---> 20200905
+ * @举例 分割：getDateStr(1, '-')--->2020-09-05
+ */
+export const getDateStr = function (num = 0, split = '') {
+  const dt = new Date()
+  dt.setDate(dt.getDate() + Number(num)) // 获取num天后的日期
+  return `0000${dt.getFullYear()}`.slice(-4) + split + `00${(dt.getMonth() + 1)}`.slice(-2) + split + `00${dt.getDate()}`.slice(-2)
+}
+/**
  * 获取时间段，业务
  * @returns 
  * 昨天起止时间、今天的起止时间、上周的起止时间、当前周的起止时间、当前是星期几 ---->  带有时分秒的截止时间

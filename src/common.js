@@ -791,13 +791,16 @@ export const largeNumAdd = function (num1, num2){
 */
 /**
  * 获取日期字符串。
- * @param num 传0代表今天，传1代表明天
+ * @param num 初始日期 + num天后的日期， 默认是今天 + 0天，仍然是今天
  * @param split 日期分割符
+ * @param t 初始日期，默认今天
  * @举例 getDateStr(0) ---> 20200904    getDateStr(1) ---> 20200905
  * @举例 分割：getDateStr(1, '-')--->2020-09-05
  */
-export const getDateStr = function (num = 0, split = '') {
-  const dt = new Date()
+export const getDateStr = function (num = 0, split = '', t = new Date()) {
+  if(!isDate(t) && isString(t) && !t.includes('T') && t.length > 0) { t = t.replace(/[-]/g, "/") }
+  if(!t) { t = new Date() }
+  const dt = new Date(t)
   dt.setDate(dt.getDate() + Number(num)) // 获取num天后的日期
   return `0000${dt.getFullYear()}`.slice(-4) + split + `00${(dt.getMonth() + 1)}`.slice(-2) + split + `00${dt.getDate()}`.slice(-2)
 }

@@ -92,7 +92,7 @@ body { -webkit-text-size-adjust: 100% !important;text-size-adjust: 100% !importa
 .wrap{max-width:100%;word-break:break-all;word-wrap:break-word;}
 .lba{line-break: anywhere;} /*文字因为能断开的全部断开*/
 /* 对齐方式*/
-.tl{text-align: left;} .tc{text-align: center;} .tr{text-align: right;}
+.tl{text-align: left;} .tc{text-align: center;} .tr{text-align: right;} .tj{text-align-last: justify;}
 /* 首行缩进 */
 .ti1{text-indent: 1em} .ti1-5{text-indent: 1.5em} .ti2{text-indent: 2em}
 /* 包裹性 */

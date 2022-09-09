@@ -99,38 +99,46 @@ const resolveParams = params => {
  * @returns 
  */
 export const post = function (url, params, type = 1) {
-  return service.post(url, resolveParams(params)).then(res => {
-    res = safeGet(() => res.errcode, false) ? res : JSON.parse(DES3.decrypt(res))
-    if(type != 1) { return res }
-    const  {errcode, data, errmsg} = res
-    return errcode == 200 ? data : processError(errcode, errmsg, url)
+  return new Promise((resolve, reject) => {
+    return service.post(url, resolveParams(params)).then(res => processError(res, url, type, resolve, reject))
   })
 }
 // 处理异常
-export const processError = function (errcode, errmsg, url) {
-  if(errcode == 10200 || errcode == 10210) { // 未登录和token过期
+export const processError = function (res, url, type, resolve, reject) {
+  res = safeGet(() => res.errcode, false) ? res : JSON.parse(DES3.decrypt(res))
+  const  {errcode, data, errmsg} = res
+  if(errcode == 10200 || errcode == 10210) {  // 未登录和token过期
     removeSessionStorage('token')
     removeSessionStorage('roleId')
-    Message.info('请登录')
     router.replace({ path: "/login" }).catch(() => {})
-    return false
+    Message.info('请登录')
+    reject('请登录')
+  } else if(type == 0) {
+    resolve(res)
+  } else if(errcode == 200) {
+    resolve(data)
   } else { // 其他异常
     Message.error(JSON.stringify(errmsg) || `${url}报错，errmsg为空`);
-    return false
+    reject(JSON.stringify(errmsg) || `${url}报错，errmsg为空`)
   }
-}
 // https://juejin.cn/post/7033395086696136711#heading-12
 /**************************************************************************************************** */
-/******************************************分********************************************************* */
-/******************************************割********************************************************** */
-/******************************************线********************************************************** */
+/******************************************分******************************************************** */
+/******************************************割******************************************************** */
+/******************************************线******************************************************** */
 /**************************************************************************************************** */
 /**
  * 防止重复渲染的promise，只使用最后一次请求的结果
  */
-class AllowCancelPromise {
+ class AllowCancelPromise {
   constructor() {
     this._reject = new Map()
+  }
+  // 只请求第一次，后面的跳过请求
+  startRequest(requestFn, url) {
+    if(this._reject.get(url)) { return new Promise((_, reject) => {reject(`取消当前请求${url}`)}) } // console.log(this._reject)
+    this._reject.set(url, url)
+    return requestFn().then(res => res).finally(() => this._reject.delete(url))
   }
   // 保留最后一次请求的渲染
   endRequest(requestFn, url) {
@@ -138,16 +146,8 @@ class AllowCancelPromise {
       this._reject.get(url)(`放弃上次请求的渲染${url}`)
       this._reject.delete(url)
     }
-    const promiseA = new Promise((_, reject) => this._reject.set(url, reject))
-    // console.log(this._reject)
+    const promiseA = new Promise((_, reject) => this._reject.set(url, reject)) // console.log(this._reject)
     return Promise.race([requestFn(), promiseA]).then(res => res).finally(() => this._reject.delete(url))
-  }
-  // 只请求第一次，后面的跳过请求
-  startRequest(requestFn, url) {
-    if(this._reject.get(url)) { return new Promise((_, reject) => {reject(`取消当前请求${url}`)}) }
-    // console.log(this._reject)
-    this._reject.set(url, url)
-    return requestFn().then(res => res).finally(() => this._reject.delete(url))
   }
 }
 const allowCancelPms = new AllowCancelPromise()
@@ -160,11 +160,8 @@ const allowCancelPms = new AllowCancelPromise()
  */
 export const startPost = function (url, params, type = 1) {
   const promiseA = () => service.post(url, resolveParams(params))
-  return allowCancelPms.startRequest(promiseA, url).then(res => {
-    res = safeGet(() => res.errcode, false) ? res : JSON.parse(DES3.decrypt(res))
-    if(type != 1) { return res }
-    const  {errcode, data, errmsg} = res
-    return errcode == 200 ? data : processError(errcode, errmsg, url)
+  return new Promise((resolve, reject) => {
+    allowCancelPms.startRequest(promiseA, url).then(res => processError(res, url, type, resolve, reject))
   })
 }
 /**
@@ -176,10 +173,7 @@ export const startPost = function (url, params, type = 1) {
  */
 export const endPost = function (url, params, type = 1) {
   const promiseA = () => service.post(url, resolveParams(params))
-  return allowCancelPms.endRequest(promiseA, url).then(res => {
-    res = safeGet(() => res.errcode, false) ? res : JSON.parse(DES3.decrypt(res))
-    if(type != 1) { return res }
-    const  {errcode, data, errmsg} = res
-    return errcode == 200 ? data : processError(errcode, errmsg, url)
+  return new Promise((resolve, reject) => {
+    allowCancelPms.endRequest(promiseA, url).then(res => processError(res, url, type, resolve, reject))
   })
 }

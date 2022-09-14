@@ -121,6 +121,7 @@ export const processError = function (res, url, type, resolve, reject) {
     Message.error(JSON.stringify(errmsg) || `${url}报错，errmsg为空`);
     reject(JSON.stringify(errmsg) || `${url}报错，errmsg为空`)
   }
+}
 // https://juejin.cn/post/7033395086696136711#heading-12
 /**************************************************************************************************** */
 /******************************************分******************************************************** */

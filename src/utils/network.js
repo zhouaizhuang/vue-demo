@@ -158,7 +158,7 @@ export const endPost = (function () {
     const req = () => service.post(url, resolveParams(params))
     return new Promise((resolve, reject) => {
       if (reqRecord.get(url)) {
-        reqRecord.get(url)(`放弃上次请求的渲染${url}`) // 
+        reqRecord.get(url)(`放弃上次请求的渲染${url}`) // 通过保存的reject地址，对接口进行reject
         reqRecord.delete(url)
       }
       const promiseA = new Promise((_, reject) => reqRecord.set(url, reject))

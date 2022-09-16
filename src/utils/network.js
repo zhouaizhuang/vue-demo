@@ -129,52 +129,40 @@ export const processError = function (res, url, type, resolve, reject) {
 /******************************************线******************************************************** */
 /**************************************************************************************************** */
 /**
- * 防止重复渲染的promise，只使用最后一次请求的结果
- */
- class AllowCancelPromise {
-  constructor() {
-    this._reject = new Map()
-  }
-  // 只请求第一次，后面的跳过请求
-  startRequest(requestFn, url) {
-    if(this._reject.get(url)) { return new Promise((_, reject) => {reject(`取消当前请求${url}`)}) } // console.log(this._reject)
-    this._reject.set(url, url)
-    return requestFn().then(res => res).finally(() => this._reject.delete(url))
-  }
-  // 保留最后一次请求的渲染
-  endRequest(requestFn, url) {
-    if (this._reject.get(url)) {
-      this._reject.get(url)(`放弃上次请求的渲染${url}`)
-      this._reject.delete(url)
-    }
-    const promiseA = new Promise((_, reject) => this._reject.set(url, reject)) // console.log(this._reject)
-    return Promise.race([requestFn(), promiseA]).then(res => res).finally(() => this._reject.delete(url))
-  }
-}
-const allowCancelPms = new AllowCancelPromise()
-/**
- * 只请求第一次，接口返回之前其他请求被屏蔽
+ * 防止重复请求，只请求第一次，在第一次结果返回之前。后续相同的url请求被屏蔽
  * @param {*} url 请求的url地址
  * @param {*} params 请求参数
  * @param {*} type 返回数据类型  1代表只返回data    0代表不做任何处理直接返回格式：{code:xx, data:xx, msg:xx}
  * @returns 
  */
-export const startPost = function (url, params, type = 1) {
-  const promiseA = () => service.post(url, resolveParams(params))
-  return new Promise((resolve, reject) => {
-    allowCancelPms.startRequest(promiseA, url).then(res => processError(res, url, type, resolve, reject))
-  })
-}
+ export const startPost = (function () {
+  const reqRecord = new Map() // 记录已发起但未返回的请求： url<--->reject方法
+  return function (url, params, type = 1){
+    return new Promise((resolve, reject) => {
+      if(reqRecord.get(url)) { return new Promise((_, reject) => {reject(`取消当前请求${url}`)}) }
+      reqRecord.set(url, url)
+      return service.post(url, resolveParams(params)).then(res => processError(res, url, type, resolve, reject)).finally(() => reqRecord.delete(url))
+    })
+  }
+})()
 /**
- * 重复请求，但是保留最后一次的结果
+ * 可以重复请求，统统的url请求，只会渲染最后一次请求返回的结果
  * @param {*} url 请求的url地址
  * @param {*} params 请求参数
  * @param {*} type 返回数据类型  1代表只返回data    0代表不做任何处理直接返回格式：{code:xx, data:xx, msg:xx}
  * @returns 
  */
-export const endPost = function (url, params, type = 1) {
-  const promiseA = () => service.post(url, resolveParams(params))
-  return new Promise((resolve, reject) => {
-    allowCancelPms.endRequest(promiseA, url).then(res => processError(res, url, type, resolve, reject))
-  })
-}
+export const endPost = (function () {
+  const reqRecord = new Map() // 记录已发起但未返回的请求： url<--->reject方法
+  return function(url, params, type = 1){
+    const req = () => service.post(url, resolveParams(params))
+    return new Promise((resolve, reject) => {
+      if (reqRecord.get(url)) {
+        reqRecord.get(url)(`放弃上次请求的渲染${url}`) // 
+        reqRecord.delete(url)
+      }
+      const promiseA = new Promise((_, reject) => reqRecord.set(url, reject))
+      return Promise.race([req(), promiseA]).then(res => processError(res, url, type, resolve, reject)).finally(() => reqRecord.delete(url))
+    })
+  }
+})()

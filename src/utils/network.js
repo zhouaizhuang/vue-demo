@@ -134,6 +134,7 @@ export const processError = function (res, url, type, resolve, reject) {
  * @param {*} params 请求参数
  * @param {*} type 返回数据类型  1代表只返回data    0代表不做任何处理直接返回格式：{code:xx, data:xx, msg:xx}
  * @returns 
+ * @举例 const res = this.$startPost('/apprepair/editRepair', {id:1, name:'zz'})
  */
  export const startPost = (function () {
   const reqRecord = new Map() // 记录已发起但未返回的请求： url<--->reject方法
@@ -151,6 +152,7 @@ export const processError = function (res, url, type, resolve, reject) {
  * @param {*} params 请求参数
  * @param {*} type 返回数据类型  1代表只返回data    0代表不做任何处理直接返回格式：{code:xx, data:xx, msg:xx}
  * @returns 
+ * @举例 const res = this.$endPost('/apprepair/editRepair', {id:1, name:'zz'})
  */
 export const endPost = (function () {
   const reqRecord = new Map() // 记录已发起但未返回的请求： url<--->reject方法

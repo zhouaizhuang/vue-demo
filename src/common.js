@@ -857,8 +857,8 @@ export const socketTime = function (t = new Date()) {
  * @举例 dateFormater('YYYYMMDD-hh:mm:ss', '2020-08-12 09:13:54') ==> 20200812-09:13:54
  */
 export const dateFormater = function (formater = 'YYYY-MM-DD hh:mm:ss', t = new Date()){
+  if(!t) { return t }
   if(!isDate(t) && isString(t) && !t.includes('T') && t.length > 0) { t = t.replace(/[-]/g, "/") }
-  if(!t) { t = new Date() }
   const dt = new Date(t)
   let [Y, y, M, D, h, m, s] = [dt.getFullYear() + '', String(dt.getFullYear()).slice(2, 4), dt.getMonth() + 1, dt.getDate(), dt.getHours(), dt.getMinutes(), dt.getSeconds()]
   ;[M, D, h, m, s] = [addZero(M, 2), addZero(D, 2), addZero(h, 2), addZero(m, 2), addZero(s, 2)]
@@ -1351,6 +1351,14 @@ export const looseEqual = function (a, b) {
   } else {
     return false
   }
+}
+/**
+ * 生产环境消除console.log
+ */
+ export const reWriteLog = function (){
+  console.log = (function(log){
+    return process.env.VUE_APP_ENV == 'development' ? log : function() {}  
+  }(console.log))
 }
 /*
 **********************************************************************************************

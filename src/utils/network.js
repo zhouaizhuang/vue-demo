@@ -140,7 +140,7 @@ export const processError = function (res, url, type, resolve, reject) {
   const reqRecord = new Map() // 记录已发起但未返回的请求： url<--->reject方法
   return function (url, params, type = 1){
     return new Promise((resolve, reject) => {
-      if(reqRecord.get(url)) { return new Promise((_, reject) => {reject(`取消当前请求${url}`)}) }
+      if(reqRecord.get(url)) { return new Promise((_, rej) => {rej(`取消当前请求${url}`)}) }
       reqRecord.set(url, url)
       return service.post(url, resolveParams(params)).then(res => processError(res, url, type, resolve, reject)).finally(() => reqRecord.delete(url))
     })
@@ -163,7 +163,7 @@ export const endPost = (function () {
         reqRecord.get(url)(`放弃上次请求的渲染${url}`) // 通过保存的reject地址，对接口进行reject
         reqRecord.delete(url)
       }
-      const promiseA = new Promise((_, reject) => reqRecord.set(url, reject))
+      const promiseA = new Promise((_, rej) => reqRecord.set(url, rej))
       return Promise.race([req(), promiseA]).then(res => processError(res, url, type, resolve, reject)).finally(() => reqRecord.delete(url))
     })
   }

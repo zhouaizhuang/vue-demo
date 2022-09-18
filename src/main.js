@@ -18,7 +18,7 @@ import globalCommponent from "./globalComponents/index.js"
 Vue.use(globalCommponent)
 Vue.use(Print)
 // axios全局挂载vue实例
-import { request, post, startPost, endPost} from "./utils/network.js"
+import { request, post, startPost, endPost } from "./utils/network.js"
 Vue.prototype.$request = request
 Vue.prototype.$post = post
 Vue.prototype.$startPost = startPost

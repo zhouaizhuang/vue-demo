@@ -486,7 +486,7 @@ export const intersect = function (arr1, arr2){
   return arr1.filter(x => tmp.has(x))
 }
 /**
- * 数组（a 相对于 b 的）差集
+ * 数组（a 相对于 b 的）差集:  a数组中的数据，在b数组中没找到的数据
  * @param {*} arr1 数组1
  * @param {*} arr2 数组2
  * @returns 
@@ -496,6 +496,17 @@ export const difference = function (arr1, arr2){
   if(!isArray(arr1) || !isArray(arr2)) { throw new Error('参数必须是数组类型') }
   const b = new Set(arr2)
   return arr1.filter(x => !b.has(x))
+}
+/**
+ * 数组（a 和 b 的）并集
+ * @param {*} arr1 数组1
+ * @param {*} arr2 数组2
+ * @returns 
+ * @举例子 union([1,2,3], [1,2,7]) ====> [1,2,3,7]
+ */
+export const union = function (arr1, arr2){
+  if(!isArray(arr1) || !isArray(arr2)) { throw new Error('参数必须是数组类型') }
+  return [...new Set([...arr1, ...arr2])]
 }
 /*
 **********************************************************************************************

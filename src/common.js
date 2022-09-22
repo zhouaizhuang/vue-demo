@@ -547,12 +547,13 @@ export const checkJSON = function (obj) {
  * @returns {String} 返回拼接好的带有参数的链接地址
  * @举例子 JSON2url('../advise/index', { from: 'index', id_str:'1243' }) -----> '../advise/index?from=index&id_str=1243'
  */
-export const JSON2url = function (url = '', params = {}, type = 1){
-  return Object.keys(formatJSON(params)).reduce((prev, item) => {
-    let val = JSON.stringify(params[item])
+export const JSON2url = function (url = '', params = {}, type = 1) {
+  const retUrl =  Object.keys(formatJSON(params)).reduce((prev, item) => {
+    let val = params[item]
     val = type == 1 ? encodeURIComponent(val) : val // 为了适配更多的场景，开发了自定义是否编码
     return prev + (prev.includes('?') ? '&' : '?') + `${item}=${val}`
   }, url) || ''
+  return url ? retUrl : retUrl.slice(1)
 }
 /**
  * url转JSON(函数内与解码操作，与JSON2url相对应)

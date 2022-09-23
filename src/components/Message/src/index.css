@@ -1,0 +1,40 @@
+.message {
+  box-sizing: border-box;
+  width: 380px;
+  text-indent: 20px;
+  line-height: 48px;
+  font-size: 14px;
+  border: 1px solid;
+  border-radius: 4px;
+  position: fixed;
+  z-index: 99;
+  top: 20px;
+  left: 50%;
+  transform: translate(-50%);
+  transition: all .4s;
+}
+.success {
+  color: #67c23a;
+  border-color: #e1f3d8;
+  background-color: #f0f9eb;
+}
+.info {
+  color: #909399;
+  border-color: #ebeef5;
+  background-color: #edf2fc;
+}
+.message > .icon {
+  margin-right: 10px;
+  transform: translateY(2px);
+}
+.fade-enter,.fade-leave-to {
+  opacity: 0;
+  transform: translate(-50%, -68px);
+}
+.fade-enter-to,.fade-leave {
+  opacity: 1;
+  transform: translate(-50%);
+}
+.fade-enter-active,.fade-leave-active {
+  transition: all .4s;
+}

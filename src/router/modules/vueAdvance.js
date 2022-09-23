@@ -24,4 +24,5 @@ export default [
   { path: '/query1', name: 'query1', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/query1/index.vue') },
   { path: '/myVmodel', name: 'myVmodel', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/myVmodel/index.vue') },
   { path: '/useWatch', name: 'useWatch', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/useWatch/index.vue') },
+  { path: '/asyncCom', name: 'asyncCom', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/asyncCom/index.vue') },
 ]

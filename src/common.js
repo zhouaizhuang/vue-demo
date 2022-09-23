@@ -610,16 +610,16 @@ export const groupBy = function (arr, callback){
  * [{id:'1', isChecked:false}, {id:'2', isChecked:true}, {id:'3', isChecked:true}]
  */
 export const syncBgData = (arr, ids, key = 'isChecked', val = true, defVal = false) => arr.map(v => (v[key] = ids.includes(v.id) ? val : defVal, v))
+// 二进制流文件下载
 /**
- * base64数据导出文件，文件下载
- * @举例 downloadFile('test.zip', 'https://yiluyouni.hlxapps.com/assets/zip/2940911562140942420.zip')
+ * @举例 downloadFile('test.zip', '') // 第二个参数是二进制流，后端返回的
  */
 export const downloadFile = function (fileName, data){
-  // const url = window.URL.createObjectURL(new Blob([response]))
+  const url = window.URL.createObjectURL(new Blob([data]))
   const link = window.document.createElement('a')
   link.style.display = 'none'
-  link.href = response
-  // link.setAttribute('download', fileName)
+  link.href = url
+  link.download = fileName
   document.body.appendChild(link)
   link.click()
   document.body.removeChild(link)

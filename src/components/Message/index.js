@@ -1,10 +1,9 @@
-
-
 import Vue from 'vue'
 import message from './src/index.vue'
 const Message = Vue.extend(message) // 使用基础 Vue 构造器，创建一个“子类”
 const vmArr = []
 export const $message = function (opts) {
+  // 实例化组件
   const _message = new Message({
     data() {
       return {
@@ -12,7 +11,7 @@ export const $message = function (opts) {
         type: opts.type,
         isVisible: false,
         top: `${vmArr.length * 68 + 20}px`,
-      };
+      }
     },
     methods: {
       show() {
@@ -21,10 +20,10 @@ export const $message = function (opts) {
       },
       hide() {
         this.isVisible = false
-        vmArr.shift();
+        vmArr.shift()
         vmArr.forEach((item, index) => {
           item.top = `${index * 68 + 20}px`
-        });
+        })
       },
     },
     mounted() {
@@ -33,7 +32,7 @@ export const $message = function (opts) {
         this.hide()
       }, 3000)
     },
-  });// 实例化组件
+  })
   // 模板编译到实例的$el属性
   _message.$mount()
   // 手动挂载到指定节点body

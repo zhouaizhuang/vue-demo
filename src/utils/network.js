@@ -1,5 +1,4 @@
 import axios from "axios"
-import qs from 'qs'
 import { JSON2url, formatJSON, showToast, getLocalStorage } from "../common.js"
 
 // console.log(process.env.VUE_APP_BASE_URL)
@@ -19,7 +18,6 @@ service.interceptors.request.use(
     //   // config.headers.Authorization = token
     //   config.headers['token'] = token
     // }
-    config.data = qs.stringify(formatJSON(config.data))
     return config
   },
   err => {
@@ -89,7 +87,7 @@ export const request = function (options) {
 const resolveParams = params => {
   params = formatJSON(params || {})
   let postParam = isDebug ? { ...params, ...commonParam, debug: 1 } : { data: DES3.encrypt(JSON.stringify({...params, ...commonParam})) }
-  return Qs.stringify(postParam)
+  return JSON2url('', postParam)
 }
 /**
  * 封装一个post请求
@@ -167,3 +165,13 @@ export const endPost = (function () {
     })
   }
 })()
+
+// 注册到全局vue
+export default {
+  install(Vue) {
+    Vue.prototype.$request = request
+    Vue.prototype.$post = post
+    Vue.prototype.$startPost = startPost
+    Vue.prototype.$endPost = endPost
+  },
+}

@@ -8,7 +8,7 @@ const IS_PROD = ['production', 'prod'].includes(process.env.NODE_ENV)
 module.exports = {
   publicPath: IS_PROD ? '/' : '/',  // 公共路径
   indexPath: process.env.outputDir || 'index.html' , // 相对于打包路径index.html的路径
-  outputDir: 'docs', // 'dist', 生产环境构建文件的目录
+  outputDir: 'dist', // 'dist', 生产环境构建文件的目录
   assetsDir: 'static', // 相对于outputDir的静态资源(js、css、img、fonts)目录
   lintOnSave: false, // 是否在开发环境下通过 eslint-loader 在每次保存时 lint 代码
   filenameHashing: true, // 文件名哈希值

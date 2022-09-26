@@ -1,0 +1,9 @@
+.box-bg{
+  height:100vh;
+  background: url(../../../assets/echarts_bg.jpg) no-repeat top center;
+}
+.header{
+  height:90px;
+  background: url(../../../assets/head_bg.png) no-repeat top center;
+  background-size:100% 100%
+}

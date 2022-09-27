@@ -162,3 +162,80 @@ export const initSkill = function () {
     myChart.resize() //页面大小变化后Echarts也更改大小
   });
 }
+// 折线图
+export const initPersonNum = function () {
+  var personNumRef = this.$refs.personNum
+  var myChart = echarts.init(personNumRef)
+  var option = {
+    color: ['#00f2f1', '#ed3f35'],
+    tooltip: {
+      trigger: 'axis'
+    },
+    legend: {
+      color: '#fff',
+      data: ['新增粉丝', '新增游客'],
+      right: '5%',
+      textStyle: {
+        color:'#4c9bfd'
+      }
+    },
+    grid: {
+      left: '0%',
+      right: '3%',
+      bottom: '0',
+      containLabel: true,
+      borderColor: '#012f4a'
+    },
+    xAxis: {
+      type: 'category',
+      boundaryGap: false,
+      data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+      axisTick: {
+        show: false
+      },
+      axisLabel: {
+        color: '#4c9bfb'
+      },
+      axisLine: {
+        show: false
+      }
+    },
+    yAxis: {
+      type: 'value',
+      axisTick: {
+        show: false
+      },
+      axisLabel: {
+        color: '#4c9bfb'
+      },
+      axisLine: {
+        show: false
+      },
+      splitLine: {
+        lineStyle: {
+          color: '#012f4a'
+        }
+      }
+    },
+    series: [
+      {
+        name: '新增粉丝',
+        type: 'line',
+        stack: 'Total',
+        smooth: true,
+        data: [120, 132, 101, 134, 90, 230, 210, 123, 221, 213, 169, 242]
+      },
+      {
+        name: '新增游客',
+        type: 'line',
+        stack: 'Total',
+        smooth: true,
+        data: [220, 182, 191, 234, 290, 330, 310, 257, 248, 733, 494, 223]
+      },
+    ]
+  }
+  myChart.setOption(option)
+  window.addEventListener("resize", function() {
+    myChart.resize() //页面大小变化后Echarts也更改大小
+  })
+}

@@ -14,8 +14,8 @@
         </div>
         <div class="panel rel mb10">
           <div class="bottom-bd"></div>
-          <h2 class="gf f ac xc fs18 " style="height:40px;">柱形图-技能掌握</h2>
-          <div class="abs" style="top:40px;bottom:10px;left:10px;right:10px;"></div>
+          <h2 class="gf f ac xc fs18 " style="height:40px;">人员变化</h2>
+          <div class="abs" ref="personNum" style="top:40px;bottom:10px;left:10px;right:10px;"></div>
         </div>
         <div class="panel rel">
           <div class="bottom-bd"></div>

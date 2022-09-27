@@ -17,5 +17,6 @@ export default {
   mounted(){
     this.initIndustry() // 就业行业
     this.initSkill() // 掌握技能
+    this.initPersonNum() // 人员变化
   },
 }

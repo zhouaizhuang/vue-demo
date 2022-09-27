@@ -80,9 +80,9 @@ export const initSkill = function () {
   var option = {
     grid: {
       top:'10px',
-      left: '0%',
+      left: '22%',
       bottom: '10%',
-      containLabel: true
+      containLabel: false
     },
     xAxis: {
       type: 'value',

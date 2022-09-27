@@ -6,6 +6,7 @@
     </div>
     <!--下半部分-->
     <div class="f pl10 pr10">
+      <!--左侧-->
       <div class="f3">
         <div class="panel rel mb10">
           <div class="bottom-bd"></div>
@@ -23,6 +24,7 @@
           <div class="abs bgpink" style="top:40px;bottom:10px;left:10px;right:10px;"></div>
         </div>
       </div>
+      <!--中侧-->
       <div class="f5 ml10 mr10">
         <div class="pb10 pt10 pl10 pr10" style="background:rgba(101,132,226,.1);">
           <div class="f ac fs60 gffeb7b lcdd rel lt2 no" style="height:60px;border:1px solid rgba(25, 186, 139, .17);">
@@ -44,6 +46,7 @@
           </div>
         </div>
       </div>
+      <!--右侧-->
       <div class="f3">
         <div class="panel rel mb10">
           <div class="bottom-bd"></div>

@@ -12,9 +12,9 @@ export default {
     ...func,
   },
   created(){
-    setInterval(() => this.time = dateFormater('YYYY-MM-DD hh:mm:ss'), 1e3)
+    setInterval(() => this.time = dateFormater('YYYY年MM月DD日 hh时mm分ss秒'), 500)
   },
   mounted(){
-    
+    this.initIndustry() // 就业行业
   },
 }

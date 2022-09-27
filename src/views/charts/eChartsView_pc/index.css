@@ -1,9 +1,95 @@
 .box-bg{
   height:100vh;
   background: url(../../../assets/echarts_bg.jpg) no-repeat top center;
+  background-size: cover;
 }
 .header{
-  height:90px;
+  height:80px;
   background: url(../../../assets/head_bg.png) no-repeat top center;
   background-size:100% 100%
+}
+.panel{
+  height:29vh;
+  background: url(../../../assets/line.png) no-repeat top center;
+  border: 1px solid rgba(25,186,139,.17);
+}
+.panel::before{
+  content: '';
+  position: absolute;
+  left:0; top:0;
+  width:10px;height:10px;
+  border-left:2px solid #02a6b5;border-top:2px solid #02a6b5;
+}
+.panel::after{
+  content: '';
+  position: absolute;
+  right:0; top:0;
+  width:10px;height:10px;border-right:2px solid #02a6b5;border-top:2px solid #02a6b5;
+}
+.bottom-bd::before{
+  content: '';
+  position: absolute;
+  left:0; bottom:0;
+  width:10px;height:10px;border-left:2px solid #02a6b5;border-bottom:2px solid #02a6b5;
+}
+.bottom-bd::after{
+  content: '';
+  position: absolute;
+  right:0; bottom:0;
+  width:10px;height:10px;border-right:2px solid #02a6b5;border-bottom:2px solid #02a6b5;
+}
+.no::before{
+  content: '';
+  position: absolute;
+  left:0; top:0;
+  width:30px;height:10px;
+  border-left:2px solid #02a6b5;border-top:2px solid #02a6b5;
+}
+.no::after{
+  content: '';
+  position: absolute;
+  right:0; bottom:0;
+  width:30px;height:10px;
+  border-right:2px solid #02a6b5;border-bottom:2px solid #02a6b5;
+}
+@font-face {
+  font-family: 'mFont';
+  src: url('./quartzRegular.ttf') format('truetype');
+}
+.lcdd{
+  font-family: 'mFont';
+}
+.map-box{
+  width: 30vw;
+  height: 30vw;
+  max-width: 400px;
+  max-height: 400px;
+  background: url(../../../assets/map.png) no-repeat top center;
+  background-size:100% 100%;
+}
+.map-box1{
+  width: 36vw;
+  height: 36vw;
+  max-width: 480px;
+  max-height: 480px;
+  background: url(../../../assets/lbx.png) no-repeat top center;
+  background-size:100% 100%;
+  animation: totate360 15s linear 0s infinite;
+}
+@keyframes totate360 {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to{ transform: translate(-50%, -50%) rotate(360deg); }
+}
+.map-box2 {
+  width: 33vw;
+  height: 33vw;
+  max-width: 440px;
+  max-height: 440px;
+  background: url(../../../assets/jt.png) no-repeat top center;
+  background-size:100% 100%;
+  animation: totate-360 15s linear 0s infinite;
+}
+@keyframes totate-360 {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to{ transform: translate(-50%, -50%) rotate(-360deg); }
 }

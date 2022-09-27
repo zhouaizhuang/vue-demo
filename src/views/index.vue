@@ -72,8 +72,8 @@
     </div>
     <div class="fs26 b mt30 mb20 tc">数据可视化</div>
     <div class="f xs ac rw">
-      <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/barChart">柱状图</router-link></div>
       <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/eChartsView_pc">数据可视化大屏</router-link></div>
+      <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/barChart">柱状图</router-link></div>
     </div>
     <div class="fs26 b mt30 mb20 tc">通用组件</div>
     <div class="f xs ac rw">

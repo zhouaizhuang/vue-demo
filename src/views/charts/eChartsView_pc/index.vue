@@ -1,5 +1,5 @@
 <template>
-  <div class="box-bg">
+  <div class="box-bg ovh">
     <div class="rel header f ac xc fs24 gf">
       <div class="b">数据可视化展板</div>
       <div class="abs t40 fs16" style="right:10px;">当前时间：{{time}}</div>

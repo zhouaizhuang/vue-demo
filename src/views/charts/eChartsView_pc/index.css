@@ -9,7 +9,7 @@
   background-size:100% 100%
 }
 .panel{
-  height:29vh;
+  height:calc((100vh - 120px) / 3);
   background: url(../../../assets/line.png) no-repeat top center;
   border: 1px solid rgba(25,186,139,.17);
 }

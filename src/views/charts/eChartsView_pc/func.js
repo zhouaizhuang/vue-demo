@@ -67,7 +67,96 @@ export const initIndustry = function (){
         }
       }
     ]
-  };
+  }
+  myChart.setOption(option)
+  window.addEventListener("resize", function() {
+    myChart.resize() //页面大小变化后Echarts也更改大小
+  })
+}
+// 掌握技能 
+export const initSkill = function () {
+  var skillRef = this.$refs.skill
+  var myChart = echarts.init(skillRef)
+  var option = {
+    grid: {
+      top:'10px',
+      left: '0%',
+      bottom: '10%',
+      containLabel: true
+    },
+    xAxis: {
+      type: 'value',
+      show: false
+    },
+    yAxis: [
+      {
+        type: 'category',
+        inverse: true,  // y轴数据反转，与数组的顺序一致
+        data: ['Node', 'Vue', 'Javascript', 'CSS3', 'HTML5'],
+        axisLine: {
+          show: false
+        },
+        axisLabel: {
+          color: "rgba(255,255,255,0.6)",
+          fontSize: 12
+        },
+        axisTick: {
+          show:false
+        }
+      },
+      {
+        inverse: true,  // y轴数据反转，与数组的顺序一致
+        data: [39, 43, 85, 35, 21],
+        axisLine: {
+          show: false
+        },
+        axisLabel: {
+          color: "rgba(255,255,255,0.6)",
+          fontSize: 12
+        },
+        axisTick: {
+          show:false
+        }
+      }
+    ],
+    series: [
+      {
+        name: '条',
+        type: 'bar',
+        yAxisIndex: 0,
+        barCategoryGap: 50,
+        barWidth: 9,
+        data: [39, 43, 85, 35, 21],
+        itemStyle: {
+          barBorderRadius: 20, // 修改柱子圆角
+          color: function(params){
+            const myColor = ['#1089e7', '#f57474', '#56d0e3', '#f8b448', '#8b78f6', '#1890ff']
+            return myColor[params.dataIndex % myColor.length]
+          }
+        },
+        label: {
+          show: true,
+          position: 'inside',
+          formatter: '{c}%',
+          color: '#fff'
+        }
+      },
+      {
+        name: '框',
+        type: 'bar',
+        yAxisIndex: 1,
+        barCategoryGap: 60,
+        barWidth: 14,
+        data: [100, 100, 100, 100, 100],
+        itemStyle: {
+          color: 'none',
+          borderColor: '#00c1de',
+          barBorderRadius: 20, // 修改柱子圆角
+          borderWidth:2,
+        },
+      },
+    ]
+  }
   myChart.setOption(option)
   window.addEventListener("resize", function() {
     myChart.resize() //页面大小变化后Echarts也更改大小

@@ -5,17 +5,17 @@
       <div class="abs t40 fs16" style="right:10px;">当前时间：{{time}}</div>
     </div>
     <!--下半部分-->
-    <div class="f pl10">
+    <div class="f pl10 pr10">
       <div class="f3">
         <div class="panel rel mb10">
           <div class="bottom-bd"></div>
-          <h2 class="gf f ac xc fs18 " style="height:40px;">柱形图-就业行业</h2>
+          <h2 class="gf f ac xc fs18 " style="height:40px;">就业行业</h2>
           <div class="abs" ref="industry" style="top:40px;bottom:10px;left:10px;right:10px;"></div>
         </div>
         <div class="panel rel mb10">
           <div class="bottom-bd"></div>
-          <h2 class="gf f ac xc fs18 " style="height:40px;">柱形图-就业行业</h2>
-          <div class="abs bgpink" style="top:40px;bottom:10px;left:10px;right:10px;"></div>
+          <h2 class="gf f ac xc fs18 " style="height:40px;">柱形图-技能掌握</h2>
+          <div class="abs" style="top:40px;bottom:10px;left:10px;right:10px;"></div>
         </div>
         <div class="panel rel">
           <div class="bottom-bd"></div>
@@ -47,8 +47,8 @@
       <div class="f3">
         <div class="panel rel mb10">
           <div class="bottom-bd"></div>
-          <h2 class="gf f ac xc fs18 " style="height:40px;">柱形图-就业行业</h2>
-          <div class="abs bgpink" style="top:40px;bottom:10px;left:10px;right:10px;"></div>
+          <h2 class="gf f ac xc fs18 " style="height:40px;">掌握技能</h2>
+          <div class="abs" ref="skill" style="top:40px;bottom:10px;left:10px;right:10px;"></div>
         </div>
         <div class="panel rel mb10">
           <div class="bottom-bd"></div>

@@ -70,6 +70,11 @@
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/canvasClick_pc">canvas（监听点击）</router-link></div>
       </div>
     </div>
+    <div class="fs26 b mt30 mb20 tc">数据可视化</div>
+    <div class="f xs ac rw">
+      <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/barChart">柱状图</router-link></div>
+      <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/eChartsView_pc">数据可视化大屏</router-link></div>
+    </div>
     <div class="fs26 b mt30 mb20 tc">通用组件</div>
     <div class="f xs ac rw">
       <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/icon">icon</router-link></div>
@@ -102,11 +107,6 @@
       <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/transparentBorder">半透明边框、内圆角边框</router-link></div>
       <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/circleText">环形文字</router-link></div>
       <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/hideText">隐藏末尾文字</router-link></div>
-    </div>
-    <div class="fs26 b mt30 mb20 tc">数据可视化</div>
-    <div class="f xs ac rw">
-      <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/barChart">柱状图</router-link></div>
-      <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/eChartsView_pc">数据可视化大屏</router-link></div>
     </div>
     <div class="fs26 b mt30 mb20 tc">Vue进阶</div>
     <div class="f">

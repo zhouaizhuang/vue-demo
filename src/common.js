@@ -978,8 +978,8 @@ export const f2s = fahrenheit => (fahrenheit - 32) * 5 / 9
  * 应用于当前DOM元素，将DOM滚动到指定位置
  * 整个页面之间，平滑滚动
  * --->取代锚点。将传入的DOM，滚动到指定位置
- * @param {*} e 传入的DOM元素
- * @param {*} type 滚动类型： 0：滚动到视口的顶部   1：滚到到视口中央  2：滚动到视口底部  3：不滚动
+ * @param {DOM} e 传入的DOM元素
+ * @param {Number} type 滚动类型： 0：滚动到视口的顶部   1：滚到到视口中央  2：滚动到视口底部  3：不滚动
  * @举例子 scrollTo(this.$refs.testRef, 0) // 执行完这个函数，那么会找到页面上ref为testRef的DOM，然后平滑滚动到页面顶部
  */
 export const pageScrollTo = function (dom, type = 0) {
@@ -992,8 +992,9 @@ export const getScrollTop = () => (document.documentElement && document.document
  * 滚动的盒子中的某个位置。可以是任意一个盒子
  * 只要盒子是 超出滚动的，拿到他的dom，然后，传入滚动距离必然可以滚动
  * 注意，如果想让这个盒子能滚动到某个位置。首先这个盒子必须是可滚动的，也就是高度得固定的
- * @param {*} id 需要获取的dom的id
- * @param {*} pos 需要滚动到的目标位置
+ * @param {DOM} dom 传入的DOM元素
+ * @param {Number} offsetHeight 需要滚动的距离
+ * @param {Number} type 滚动类型 0：平滑滚动   1：迅速滚动
  * @returns
  * @举例子 boxScroll(this.$refs.testRef, 300)
  */

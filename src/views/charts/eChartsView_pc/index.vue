@@ -28,7 +28,7 @@
       <div class="f5 ml10 mr10">
         <div class="pb10 pt10 pl10 pr10" style="background:rgba(101,132,226,.1);">
           <div class="f ac fs60 gffeb7b lcdd rel lt2 no" style="height:60px;border:1px solid rgba(25, 186, 139, .17);">
-            <div class="f1 f ac xc">123456</div>
+            <div class="f1 f ac xc">654321</div>
             <div class="h50" style="width:1px;background:rgb(255,255,255,.2);"></div>
             <div class="f1 f ac xc">123456</div>
           </div>
@@ -37,7 +37,7 @@
             <div class="f1 f ac xc">市场供应人数</div>
           </div>
         </div>
-        <div class="rel" style="height:75vh;">
+        <div class="rel" style="height:70vh;">
           <div class="map-box abs t50 l50 txy-50 op3"></div>
           <div class="map-box1 abs t50 l50 op6"></div>
           <div class="map-box2 abs t50 l50 op8"></div>

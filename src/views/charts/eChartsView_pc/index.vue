@@ -42,7 +42,7 @@
           <div class="map-box abs t50 l50 txy-50 op3"></div>
           <div class="map-box1 abs t50 l50 op6"></div>
           <div class="map-box2 abs t50 l50 op8"></div>
-          <div class="abs trbl0" ref="chinaMap"></div>
+          <div class="abs l0 t0" ref="chinaMap" style="height:70vh;width:100%;"></div>
         </div>
       </div>
       <!--右侧-->

@@ -1007,9 +1007,9 @@ export const boxScroll = function (dom, offsetHeight = 0, type = 0){
 }
 /**
  * 轻提示
- * @param str 提示的字符串内容
- * @param time 提示显示的时间
- * @param innerHTML 采用传入的html，不使用默认的样式
+ * @param {String} str 提示的字符串内容
+ * @param {Number} time 提示显示的时间
+ * @param {Number} type 显示的样式类型
  * @举例 showToast('请输入手机号码')  // 弹出“请输入手机号码”这个提示，并且1500ms后自动消失
  */
 export const showToast = function (str, time = 1500, type = 0) {
@@ -1197,7 +1197,7 @@ export const loadCss = (function(href) {
 })()
 /**
  * 图片预加载
- * @param {*} arr 需要预加载的图片数组
+ * @param {Array} arr 需要预加载的图片数组
  * 利用浏览器的缓存策略只要加载过的图片会缓存起来，第二次加载会优先从缓存中找
  * @举例 
  * preLoadImg([
@@ -1270,8 +1270,8 @@ export const debounce = function (fn, wait=3e3) {
 }
 /**
  * 函数节流
- * @param {*} fn  需要做节流的函数
- * @param {*} wait 节流时间
+ * @param {Function} fn  需要做节流的函数
+ * @param {Number|String} wait 节流时间
  * @returns 
  * @举例 const fn = () => {console.log(1)}
  * @举例 const newFn = throttling(fn, 2e3) ----> 生成了节流函数

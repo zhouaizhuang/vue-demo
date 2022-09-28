@@ -975,6 +975,36 @@ export const f2s = fahrenheit => (fahrenheit - 32) * 5 / 9
 **********************************************************************************************
 */
 /**
+ * 应用于当前DOM元素，将DOM滚动到指定位置
+ * 整个页面之间，平滑滚动
+ * --->取代锚点。将传入的DOM，滚动到指定位置
+ * @param {*} e 传入的DOM元素
+ * @param {*} type 滚动类型： 0：滚动到视口的顶部   1：滚到到视口中央  2：滚动到视口底部  3：不滚动
+ * @举例子 scrollTo(this.$refs.testRef, 0) // 执行完这个函数，那么会找到页面上ref为testRef的DOM，然后平滑滚动到页面顶部
+ */
+export const pageScrollTo = function (dom, type = 0) {
+  const mapType = ['start', 'center', 'end', 'auto']
+  dom.scrollIntoView({ behavior: "smooth", block: mapType[type] })
+}
+// 获取当前滚动距离顶部的距离
+export const getScrollTop = () => (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop
+/**
+ * 滚动的盒子中的某个位置。可以是任意一个盒子
+ * 只要盒子是 超出滚动的，拿到他的dom，然后，传入滚动距离必然可以滚动
+ * 注意，如果想让这个盒子能滚动到某个位置。首先这个盒子必须是可滚动的，也就是高度得固定的
+ * @param {*} id 需要获取的dom的id
+ * @param {*} pos 需要滚动到的目标位置
+ * @returns
+ * @举例子 boxScroll(this.$refs.testRef, 300)
+ */
+export const boxScroll = function (dom, offsetHeight = 0, type = 0){
+  console.log(offsetHeight)
+  dom.scrollTo({
+    top: offsetHeight,
+    behavior: type == 0 ? 'smooth' : 'instant' // 平滑滚动 | 迅速滚动 
+  })
+}
+/**
  * 轻提示
  * @param str 提示的字符串内容
  * @param time 提示显示的时间
@@ -1259,17 +1289,6 @@ export const throttling = function(fn, wait=3e3) {
     }
   }
 }
-// 获取当前滚动距离顶部的距离
-export const getScrollTop = () => (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop
-/**
- * 滚动的盒子到某个位置
- * 注意，如果想让这个盒子能滚动到某个位置。首先这个盒子必须是可滚动的，也就是高度得固定的
- * 比如设置个动态的height:100vh;，然后垂直滚动overflow-y: auto;这样才行的
- * @param {*} id 需要获取的dom的id
- * @param {*} pos 需要滚动到的目标位置
- * @returns
- */
-export const scrollPos = (id = '', pos = 0) => document.getElementById(id).scrollTop = pos
 // 获取cookie 示例：var og_third_app_token = og_getOgCookie('third_app_token')
 export const getCookie = function (name) {
   var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)")

@@ -1,3 +1,4 @@
+<!--其他参考代码https://gitee.com/xiaoqiang001/eckarts_open_class-->
 <template>
   <div class="box-bg ovh">
     <div class="rel header f ac xc fs24 gf">

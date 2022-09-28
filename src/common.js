@@ -840,6 +840,14 @@ export const socketTime = function (t = new Date()) {
   if(!isDate(t) && isString(t) && !t.includes('T') && t.length > 0) { t = t.replace(/[-]/g, "/") }
   if(!t) { t = new Date() }
   const dt = new Date(t)
+  const year = String(dt.getFullYear())
+  const _month = String(dt.getMonth() + 1)
+  const month = addZero(_month, 2)
+  const day = addZero(dt.getDate(), 2)
+  const _day = String(dt.getDate())
+  const hour = addZero(dt.getHours(), 2)
+  const minutes = addZero(dt.getMinutes(), 2)
+  const seconds = addZero(dt.getSeconds(), 2)
   const [week, daySeconds] = [dt.getDay(), 1000 * 60 * 60 * 24] 
   const minusDay = week !== 0 ? week - 1 : 6
   const [dateStr, startStr, endStr, curSecond, yesterDayStart] = ['YYYY-MM-DD', 'YYYY-MM-DD 00:00:00', 'YYYY-MM-DD 23:59:59', dt.getTime(), curSecond - daySeconds]
@@ -858,7 +866,7 @@ export const socketTime = function (t = new Date()) {
   const [curWeekStart, curWeekEnd] = [curSecond - minusDay * daySeconds, curSecond + (6 - minusDay) * daySeconds]
   const curWeek = [dateFormater(dateStr, curWeekStart), dateFormater(dateStr, curWeekEnd)]
   const _curWeek = [dateFormater(startStr, curWeekStart), dateFormater(endStr, curWeekEnd)]
-  return { yesterday, _yesterday, today, _today, lastWeek, _lastWeek, curWeek, _curWeek, week, weekDay }
+  return { year, _month, month, day, _day, hour, minutes, seconds, yesterday, _yesterday, today, _today, lastWeek, _lastWeek, curWeek, _curWeek, week, weekDay }
 }
 /**
  * 生成格式化时间字符串

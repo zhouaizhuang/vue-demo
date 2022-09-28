@@ -18,5 +18,6 @@ export default {
     this.initIndustry() // 就业行业
     this.initSkill() // 掌握技能
     this.initPersonNum() // 人员变化
+    this.initPlayNum() // 播放和转发量
   },
 }

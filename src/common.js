@@ -59,7 +59,7 @@ export const startWith = (str, startWords) => str.slice(0, startWords.length) ==
  * @举例 trim(' ab c  ', 4)  ---> ' ab c'
  */
 export const trim =  (str = '', type = 1) => {
-  str = String(str)
+  if(!isString(str)) { return str }
   const mapStr = {
     1: () => str.replace(/(^\s*)|(\s*$)/g, ""),
     2: () => str.replace(/\s+/g, ""),

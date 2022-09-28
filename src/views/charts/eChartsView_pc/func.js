@@ -173,17 +173,19 @@ export const initPersonNum = function () {
     },
     legend: {
       color: '#fff',
-      data: ['新增粉丝', '新增游客'],
+      // data: ['新增粉丝', '新增游客'], // 当serise 有name值时， legend 不需要写data
       right: '5%',
       textStyle: {
         color:'#4c9bfd'
       }
     },
     grid: {
-      left: '0%',
-      right: '3%',
-      bottom: '0',
+      top: '20%',
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
       containLabel: true,
+      show: true,
       borderColor: '#012f4a'
     },
     xAxis: {

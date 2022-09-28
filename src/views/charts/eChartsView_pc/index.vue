@@ -24,7 +24,7 @@
           <div class="abs bgpink" style="top:40px;bottom:10px;left:10px;right:10px;"></div>
         </div>
       </div>
-      <!--中侧-->
+      <!--中间-->
       <div class="f5 ml10 mr10">
         <div class="pb10 pt10 pl10 pr10" style="background:rgba(101,132,226,.1);">
           <div class="f ac fs60 gffeb7b lcdd rel lt2 no" style="height:60px;border:1px solid rgba(25, 186, 139, .17);">

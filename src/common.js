@@ -798,8 +798,21 @@ export const largeNumAdd = function (num1, num2){
   return res.sum
 }
 /*
-**************日期时间操作********************
+**********************************************************************************************
+******************************************日期时间操作*********************************************
+**********************************************************************************************
 */
+/**
+ * 提取年、月、日、时、分、秒
+ * @param {String|Date|Number} t 
+ * @returns 
+ */
+export const extract = function (t = new Date()){
+  if(!isDate(t) && isString(t) && !t.includes('T') && t.length > 0) { t = t.replace(/[-]/g, "/") }
+  const d = new Date(new Date(t).getTime() + 8*3600*1000)
+  const [year, month, day, hour, minutes, second] = new Date(d).toISOString().split(/[^0-9]/).slice(0, -1)
+  return [year, month, day, hour, minutes, second]
+}
 /**
  * 获取日期字符串。
  * @param num 初始日期 + num天后的日期， 默认是今天 + 0天，仍然是今天
@@ -838,16 +851,11 @@ export const getDateStr = function (num = 0, split = '', t = new Date()) {
 export const socketTime = function (t = new Date()) {
   if(!isDate(t) && isString(t) && !t.includes('T') && t.length > 0) { t = t.replace(/[-]/g, "/") }
   if(!t) { t = new Date() }
+  const [year, month, day, hour, minutes, seconds] = extract(t)
   const dt = new Date(t)
-  const year = String(dt.getFullYear())
   const _month = String(dt.getMonth() + 1)
-  const month = addZero(_month, 2)
-  const day = addZero(dt.getDate(), 2)
   const _day = String(dt.getDate())
-  const hour = addZero(dt.getHours(), 2)
-  const minutes = addZero(dt.getMinutes(), 2)
-  const seconds = addZero(dt.getSeconds(), 2)
-  const [week, daySeconds] = [dt.getDay(), 1000 * 60 * 60 * 24] 
+  const [week, daySeconds] = [dt.getDay(), 1000 * 60 * 60 * 24]
   const minusDay = week !== 0 ? week - 1 : 6
   const [dateStr, startStr, endStr, curSecond, yesterDayStart] = ['YYYY-MM-DD', 'YYYY-MM-DD 00:00:00', 'YYYY-MM-DD 23:59:59', dt.getTime(), curSecond - daySeconds]
   const weekDay = '星期' + "日一二三四五六"[week]
@@ -878,10 +886,8 @@ export const socketTime = function (t = new Date()) {
 export const dateFormater = function (formater = 'YYYY-MM-DD hh:mm:ss', t = new Date()){
   if(!t) { return t }
   if(!isDate(t) && isString(t) && !t.includes('T') && t.length > 0) { t = t.replace(/[-]/g, "/") }
-  const dt = new Date(t)
-  let [Y, y, M, D, h, m, s] = [dt.getFullYear() + '', String(dt.getFullYear()).slice(2, 4), dt.getMonth() + 1, dt.getDate(), dt.getHours(), dt.getMinutes(), dt.getSeconds()]
-  ;[M, D, h, m, s] = [addZero(M, 2), addZero(D, 2), addZero(h, 2), addZero(m, 2), addZero(s, 2)]
-  return formater.replace(/YYYY|yyyy/g, Y).replace(/YY|yy/g, y).replace(/MM/g, M).replace(/DD/g, D).replace(/hh/g, h).replace(/mm/g, m).replace(/ss/g, s)
+  const [Y, M, D, h, m, s] = extract(t)
+  return formater.replace(/YYYY|yyyy/g, Y).replace(/YY|yy/g, Y.slice(2, 4)).replace(/MM/g, M).replace(/DD/g, D).replace(/hh/g, h).replace(/mm/g, m).replace(/ss/g, s)
 }
 /**得到当前时间之后N秒的时间
  * @param {Number} after 多少秒之后的时间

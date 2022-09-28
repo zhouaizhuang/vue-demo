@@ -114,10 +114,9 @@ export const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1)
  */
 export const shuffle = function (arr){
   if(!isArray(arr)) { arr = [arr] }
-  let n = arr.length, random
-  while(n != 0){
-    random =  (Math.random() * n--) >>> 0 // 无符号右移位运算符向下取整
-    ;[arr[n], arr[random]] = [arr[random], arr[n]] // ES6的结构赋值实现变量互换
+  for(let i = arr.length - 1; i > 0; i--) {
+    const randomIndex = Math.floor(Math.random() * (i + 1))
+    ;[arr[i], arr[randomIndex]] = [arr[randomIndex], arr[i]]
   }
   return arr
 }

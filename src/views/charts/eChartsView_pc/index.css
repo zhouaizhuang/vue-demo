@@ -54,7 +54,7 @@
 }
 @font-face {
   font-family: 'mFont';
-  src: url('./quartzRegular.ttf') format('truetype');
+  src: url('./assets/quartzRegular.ttf') format('truetype');
 }
 .lcdd{
   font-family: 'mFont';

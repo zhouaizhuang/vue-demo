@@ -1,5 +1,5 @@
 import * as func from "./func.js"
-import { dateFormater, wait } from "../../../common.js"
+import { dateFormater, loadJs, wait } from "../../../common.js"
 export default {
   name: 'echartsView',
   components:{},
@@ -23,5 +23,6 @@ export default {
     await wait(300)
     this.initAgePie() // 年龄的饼图
     this.initAreaPie() // 地区分布饼图
+    this.initChinaMap()
   },
 }

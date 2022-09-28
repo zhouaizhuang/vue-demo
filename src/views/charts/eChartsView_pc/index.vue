@@ -37,13 +37,11 @@
             <div class="f1 f ac xc">市场供应人数</div>
           </div>
         </div>
-        <div class="rel" style="height:72vh;">
+        <div class="rel" style="height:75vh;">
           <div class="map-box abs t50 l50 txy-50 op3"></div>
           <div class="map-box1 abs t50 l50 op6"></div>
           <div class="map-box2 abs t50 l50 op8"></div>
-          <div class="abs trbl0">
-            123
-          </div>
+          <div class="abs trbl0" ref="chinaMap"></div>
         </div>
       </div>
       <!--右侧-->

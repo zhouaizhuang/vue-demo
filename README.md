@@ -1,5 +1,5 @@
 # vue-demo
-### =======持续更新中：[点我查看](https://zhouaizhuang.github.io/vue-demo/)=====
+### =======持续更新中：[点我查看：线上地址](https://zhouaizhuang.github.io/vue-demo/)=====
 #### 如何将项目跑起来： npm install ------>   npm run serve 
 #### 这里存放用Vue实现一些实用效果的参考代码，可自行加以改造，并用于正式项目中。
 #### 1、CSS3动画： 打字机、文字交错显示、无缝滚动X轴Y轴、步进轮播、倒计时、数字滚动效果、呼吸效果、箭头伸长效果、水波、引导点击、文字流汗、特殊边框

@@ -381,3 +381,52 @@ export const initPlayNum = function () {
     myChart.resize() //页面大小变化后Echarts也更改大小
   })
 }
+// 初始化年龄的饼图
+export const initAgePie = function () {
+  var agePieRef = this.$refs.agePie
+  var myChart = echarts.init(agePieRef)
+  const option = {
+    color: ["#1089E7", "#F57474", "#56D0E3", "#F8B448", "#8B78F6"],
+    tooltip: {
+      trigger: 'item',
+      formatter: '{a}<br/>{b} : {c}人({d}%)' // '{a}<br/>{b} : {c} ({d}%)'
+    },
+    legend: {
+      bottom: 0,
+      left: 'center',
+      itemWidth:10,
+      itemHeight:10,
+      textStyle: {
+        color: 'rgba(255,255,255,.5)',
+        fontSize: '10'
+      }
+    },
+    series: [
+      {
+        name: '年龄分布',
+        type: 'pie',
+        center: ["50%", "42%"], // 设置饼形图在容器中的位置
+        radius: ['40%', '60%'],
+        avoidLabelOverlap: false,
+        label: {
+          show: false,
+          position: 'center'
+        },
+        labelLine: {
+          show: false
+        },
+        data: [
+          {value: 10,name: "0岁以上"},
+          {value: 40,name: "20-29岁"},
+          {value: 20,name: "30-39岁"},
+          {value: 20,name: "40-49岁"},
+          {value: 10,name: "50岁以上"}
+        ]
+      }
+    ]
+  }
+  myChart.setOption(option)
+  window.addEventListener("resize", function() {
+    myChart.resize() //页面大小变化后Echarts也更改大小
+  })
+}

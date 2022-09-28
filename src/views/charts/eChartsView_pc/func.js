@@ -430,3 +430,58 @@ export const initAgePie = function () {
     myChart.resize() //页面大小变化后Echarts也更改大小
   })
 }
+// 初始化地区饼图
+export const initAreaPie = function () {
+  var areaPieRef = this.$refs.areaPie
+  var myChart = echarts.init(areaPieRef)
+  const option = {
+    tooltip: {
+      trigger: 'item',
+      formatter: '{a} <br/>{b} : {c} ({d}%)'
+    },
+    legend: {
+      bottom: 0,
+      itemWidth: 10,
+      itemHeight:10,
+      textStyle: {
+        color: 'rgba(255,255,255,.5)',
+        fontSize: 10
+      },
+      // data: ['rose1','rose2','rose3','rose4','rose5','rose6','rose7','rose8']
+    },
+    series: [
+      {
+        name: '所在地区',
+        type: 'pie',
+        radius: ['10%', '80%'],
+        center: ['50%', '45%'],
+        roseType: 'radius',
+        // 图形的文字标签
+        label: {
+          fontsize: 10
+        },
+        // 引导线调整
+        labelLine: {
+          length: 6, // 连接扇形图线长(斜线)
+          length2: 8 // 连接文字线长(横线)
+        },
+        itemStyle: {
+          borderRadius: 5
+        },
+        data: [
+          { value: 30, name: '北京' },
+          { value: 28, name: '山东' },
+          { value: 26, name: '河北' },
+          { value: 24, name: '江苏' },
+          { value: 22, name: '浙江' },
+          { value: 20, name: '四川' },
+          { value: 18, name: '湖北' },
+        ]
+      }
+    ]
+  };
+  myChart.setOption(option)
+  window.addEventListener("resize", function() {
+    myChart.resize() //页面大小变化后Echarts也更改大小
+  })
+}

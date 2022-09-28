@@ -68,6 +68,7 @@
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/barChart_pc">柱状图（带屏幕自适应）</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/canvasHover_pc">canvas（监听Hover）</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/canvasClick_pc">canvas（监听点击）</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/signName_pc">canvas数字签名PC</router-link></div>
       </div>
     </div>
     <div class="fs26 b mt30 mb20 tc">数据可视化</div>

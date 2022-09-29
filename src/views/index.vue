@@ -118,7 +118,7 @@
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vDebounce">v-debounce----防抖</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vThrottie">v-throttie----节流</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vWaterMarker">v-waterMarker----水印</router-link></div>
-        <!-- <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vDraggable">v-draggable</router-link></div> -->
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vDraggable">v-draggable----拖拽</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vLongpress">v-longpress----长按</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vLazyImg">v-lazyImg----图片懒加载</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vDefaultImg">v-defaultImg----默认图片</router-link></div>

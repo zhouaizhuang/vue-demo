@@ -205,46 +205,8 @@
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/printTable_pc">pc对table进行打印</router-link></div>
       </div>
     </div>
-    <div class="fs26 b mt30 mb20 tc">工具网站集合</div>
-    <div class="f">
-      <div class="b" style="width:150px;">工具</div>
-      <div class="f1 f xs ac rw">
-        <a class="db w20 pb30 min190px g42b983 poi" target="_blank" href="https://tool.lu/">在线工具网址</a>
-        <a class="db w20 pb30 min190px g42b983 poi" target="_blank" href="https://www.jiumodiary.com/">电子书查找</a>
-        <a class="db w20 pb30 min190px g42b983 poi" target="_blank" href="https://www.gaitubao.com/tupian-wenzi/">在线图片转文字</a>
-        <a class="db w20 pb30 min190px g42b983 poi" target="_blank" href="https://online.easyscreenocr.com/ZH?utm_source=hao.logosc.cn&utm_medium=referral">在线OCR识别</a>
-        <a class="db w20 pb30 min190px g42b983 poi" target="_blank" href="https://www.youyedoc.com/">PPT模板</a>
-        <a class="db w20 pb30 min190px g42b983 poi" target="_blank" href="https://recordscreen.io">在线录屏</a>
-        <a class="db w20 pb30 min190px g42b983 poi" target="_blank" href="https://zh.wikihow.com">生活技能</a>
-      </div> 
-    </div>
-    <div class="f">
-      <div class="b" style="width:150px;">前端类工具</div>
-      <div class="f1 f xs ac rw">
-        <a class="db w20 pb30 min190px g42b983 poi" target="_blank" href="https://tinypng.com/">在线图片压缩</a>
-        <a class="db w20 pb30 min190px g42b983 poi" target="_blank" href="http://www.iconfont.cn/">阿里矢量图标</a>
-        <a class="db w20 pb30 min190px g42b983 poi" target="_blank" href="https://tool.lu/color/index.html">在线颜色进制转换</a>
-        <a class="db w20 pb30 min190px g42b983 poi" target="_blank" href="https://caniuse.com/">代码兼容性查询</a>
-        <a class="db w20 pb30 min190px g42b983 poi" target="_blank" href="https://map.yanue.net/">在线经纬度和地址互转</a>
-        <a class="db w20 pb30 min190px g42b983 poi" target="_blank" href="http://www.hellofont.cn/">在线字体识别</a>
-        <a class="db w20 pb30 min190px g42b983 poi" target="_blank" href="https://www.toptal.com/developers/cssminifier">在线CSS压缩</a>
-        <a class="db w20 pb30 min190px g42b983 poi" target="_blank" href="https://web.dev/measure/">站点性能测试</a>
-        <a class="db w20 pb30 min190px g42b983 poi" target="_blank" href="https://codepen.io/">代码在线演示</a>
-        <a class="db w20 pb30 min190px g42b983 poi" target="_blank" href="https://www.shapedivider.app/">在线定制svg</a>
-        <a class="db w20 pb30 min190px g42b983 poi" target="_blank" href="https://tool.lu/">在线工具网址</a>
-        <a class="db w20 pb30 min190px g42b983 poi" target="_blank" href="https://feathericons.com/">svg图标</a>
-        <a class="db w20 pb30 min190px g42b983 poi" target="_blank" href="https://simpleicons.org/">常见品牌的svg</a>
-        <a class="db w20 pb30 min190px g42b983 poi" target="_blank" href="http://www.bitbug.net/">在线图片转icon</a>
-        <a class="db w20 pb30 min190px g42b983 poi" target="_blank" href="https://www.photopea.com/">在线PS</a>
-      </div>
-    </div>
-    <div class="f">
-      <div class="b" style="width:150px;">娱乐</div>
-      <div class="f1 f xs ac rw">
-        <a class="db w20 pb30 min190px g42b983 poi" target="_blank" href="http://mahua.jser.me/">动漫</a>
-        <a class="db w20 pb30 min190px g42b983 poi" target="_blank" href="https://www.videofk.com/">视频下载</a>
-        <a class="db w20 pb30 min190px g42b983 poi" target="_blank" href="https://www.yikm.net/">在线小霸王游戏机</a>
-      </div>
+    <div v-if="isShowPage" class="fs26 b mt30 mb20 tc">
+      <router-link class="g42b983" to="/url">工具网站集合</router-link>
     </div>
   </div>
 </template>
@@ -253,13 +215,14 @@ export default {
   name: 'index',
   data(){
     return {
-    
+      isShowPage: false
     }
   },
   methods:{
 
   },
   created(){
+    this.isShowPage = this.$Z.getLocalStorage('isShowPage') || false
   },
   mounted(){
   }

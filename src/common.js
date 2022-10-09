@@ -1319,8 +1319,9 @@ export const getLocalStorage = name => JSON.parse(window.localStorage.getItem(na
 export const setLocalStorage = (name, val) => window.localStorage.setItem(name, JSON.stringify(val))
 export const removeLocalStorage = name => window.localStorage.removeItem(name)
 // 会话存储
-export const getSessionStorage = name => JSON.parse(sessionStorage.getItem(name))
-export const setSessionStorage = (name, val) => sessionStorage.setItem(name, JSON.stringify(val))
+export const getSessionStorage = name => JSON.parse(window.sessionStorage.getItem(name))
+export const setSessionStorage = (name, val) => window.sessionStorage.setItem(name, JSON.stringify(val))
+export const removeSessionStorage = name => window.sessionStorage.removeItem(name)
 // 获取操作系统类型
 export const getOS = function() {
   const userAgent = 'navigator' in window && 'userAgent' in navigator && navigator.userAgent.toLowerCase() || ''

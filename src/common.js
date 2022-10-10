@@ -19,7 +19,6 @@ export const isSet = isType('Set')
 export const isSymbol = isType('Symbol')
 export const isDate = isType('Date')
 export const isError = isType('Error')
-export const isNormalName = val => /^[A-Za-z0-9\u4e00-\u9fa5]+$/.test(val) //常规名称 汉字数字英文
 export const isGt0 = val => /^\+?[1-9][0-9]*$/.test(val) // 是否是大于0的整数
 export const isGtEq0 = val => /^\+?[1-9][0-9]*$/.test(val) || String(val) === '0' // 是否是大于等于0的整数
 export const inBrowser = typeof window !== 'undefined' // 是否是在浏览器环境
@@ -38,6 +37,19 @@ export const isFF = UA && UA.match(/firefox\/(\d+)/) // 是否是火狐浏览器
 export const isPhone = val => /^1[3456789]\d{9}$/.test(val) // 检测是否是手机号码
 export const isIdentity = val => /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/.test(val) // 身份证 321281155121152489
 export const isEmail = val => /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/.test(val)
+/**
+ * 校验正确的字符串
+ * @param {*} val 传入的需要校验的值
+ * @param {*} type 字符串类型
+ * @param {*} length 字符串长度
+ * @returns 
+ * @举例 isValidStr('123Z1f', '012') ----> true // type 传入'012'代表，数字大小写字母组合
+ */
+ export const isValidStr = function (val, type= '012',length = 20){
+  const mapReg = v => ({ 0: '0-9', 1: 'A-Z', 2: 'a-z', 3: '\u4e00-\u9fa5' })[v] // 0: 数字   1: 大写字母  2: 小写字母 3: 中文
+  const reg = type.split('').map(mapReg).join('')
+  return eval(`/^[${reg}]{0,${length}}$/`).test(val)
+}
 /*
 **********************************************************************************************
 ******************************************字符串操作*********************************************

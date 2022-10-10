@@ -19,6 +19,7 @@ export const isSet = isType('Set')
 export const isSymbol = isType('Symbol')
 export const isDate = isType('Date')
 export const isError = isType('Error')
+export const isNormalName = val => /^[A-Za-z0-9\u4e00-\u9fa5]+$/.test(val) //常规名称 汉字数字英文
 export const isGt0 = val => /^\+?[1-9][0-9]*$/.test(val) // 是否是大于0的整数
 export const isGtEq0 = val => /^\+?[1-9][0-9]*$/.test(val) || String(val) === '0' // 是否是大于等于0的整数
 export const inBrowser = typeof window !== 'undefined' // 是否是在浏览器环境

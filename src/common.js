@@ -167,7 +167,7 @@ export const shuffle = function (arr){
  * @returns {Function} 新的有缓存效果的函数
  */
 export const cached = function (fn) {
-  const cache = {}
+  const cache = Object.create(null)
   return function (str) {
     return !cache[str] && (cache[str] = fn(str)), cache[str]
   }

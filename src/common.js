@@ -50,6 +50,20 @@ export const isValidStr = function (val, type= '012',length = 20){
   const reg = type.split('').map(mapReg).join('')
   return eval(`/^[${reg}]{0,${length}}$/`).test(val)
 }
+/**
+ * 创建一个哈希表，返回一个函数。该函数用于检查传入的值是否是哈希表中的值
+ * @param {String} str 字符串
+ * @param {Boolean} expectsLowerCase 不区分大小写
+ * @returns 一个判断函数
+ * @举例 const isTag = makeMap('div,span', true); isTag('div')
+ */
+export const makeMap = function(str, expectsLowerCase = false) {
+  if(!isString(str)) { throw new Error('您传入的参数str有误，必须是一个字符串')}
+  var map = Object.create(null)
+  var list = str.split(',')
+  for(var i = 0, len = list.length; i < len; i++) { map[list[i]] = true }
+  return expectsLowerCase ? val => map[val.toLowerCase()] : val => map[val]
+}
 /*
 **********************************************************************************************
 ******************************************字符串操作*********************************************
@@ -316,19 +330,6 @@ export const once = function(fn) {
       fn.apply(this, arguments)
     }
   }
-}
-/**
- * 校验某个字符串是否存在
- * @param {String} str 字符串
- * @param {Boolean} expectsLowerCase 期望小写
- * @returns 一个判断函数
- * @举例 const isTag = makeMap('div,span', true); isTag('div')
- */
-export const makeMap = function(str, expectsLowerCase = false) {
-  var map = Object.create(null)
-  var list = isString(str) ? str.split(',') : str
-  for(var i = 0; i < list.length; i++) { map[list[i]] = true }
-  return expectsLowerCase ? val => map[val.toLowerCase()] : val => map[val]
 }
 /**
  * 删除数组中某一个元素

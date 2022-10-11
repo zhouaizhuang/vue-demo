@@ -45,8 +45,8 @@ export const isEmail = val => /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za
  * @returns 
  * @举例 isValidStr('123Z1f', '012') ----> true // type 传入'012'代表，数字大小写字母组合
  */
- export const isValidStr = function (val, type= '012',length = 20){
-  const mapReg = v => ({ 0: '0-9', 1: 'A-Z', 2: 'a-z', 3: '\u4e00-\u9fa5' })[v] // 0: 数字   1: 大写字母  2: 小写字母 3: 中文
+export const isValidStr = function (val, type= '012',length = 20){
+  const mapReg = v => ({ 0: '0-9', 1: 'A-Z', 2: 'a-z', 3: '\u4e00-\u9fa5',4:'\.', 5:'\_' })[v] // 0: 数字   1: 大写字母  2: 小写字母 3: 中文 4:点 5:下划线
   const reg = type.split('').map(mapReg).join('')
   return eval(`/^[${reg}]{0,${length}}$/`).test(val)
 }

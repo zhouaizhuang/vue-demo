@@ -55,6 +55,15 @@ export const isValidStr = function (val, type= '012',length = 20){
 ******************************************字符串操作*********************************************
 **********************************************************************************************
 */
+/**
+ * 数据转为字符串
+ * @param {*} val 需要转成字符串的值
+ * @returns 
+ * 举例子 toString([{name:'zzz', age:18}]) ---> '[\n  {\n    "name": "asd",\n    "ae": "as"\n  }\n]'
+ */
+export const toString = function (val) {
+  return val == null ? '' : isReference ? JSON.stringify(val, null, 2) : String(val)
+}
 /** 返回是否以某个字符串开头
  * @param {String} str 目标字符串
  * @param {String} keywords 需要搜索的开头的字符串
@@ -737,6 +746,16 @@ export const safeGet = function (run, defaultVal = '') {
 ******************************************金额、数字操作*********************************************
 **********************************************************************************************
 */
+/**
+ * 将一个值转数字，如果失败就返回原始值
+ * @param {*} val 需要转数字的值
+ * @returns 
+ * @举例 toNumber('12') ----> 12
+ */
+export const toNumber = function (val) {
+  var n = parseFloat(val)
+  return isNaN(n) ? val : n
+}
 /**
  * 四舍五入返回N位有效数字（常用于金额计算）
  * @param num 要格式化的数字

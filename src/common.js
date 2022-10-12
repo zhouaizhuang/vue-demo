@@ -94,7 +94,7 @@ export const startWith = (str, startWords) => str.slice(0, startWords.length) ==
  * @举例 trim(' ab c  ', 3)  ---> 'ab c  '
  * @举例 trim(' ab c  ', 4)  ---> ' ab c'
  */
-export const trim =  (str = '', type = 1) => {
+export const trim = (str = '', type = 1) => {
   if(!isString(str)) { return str }
   const mapStr = {
     1: () => str.replace(/(^\s*)|(\s*$)/g, ""),
@@ -570,7 +570,7 @@ export const checkJSON = function (obj) {
  * @举例子 JSON2url('../advise/index', { from: 'index', id_str:'1243' }) -----> '../advise/index?from=index&id_str=1243'
  */
 export const JSON2url = function (url = '', params = {}, type = 1) {
-  const retUrl =  Object.keys(formatJSON(params)).reduce((prev, item) => {
+  const retUrl = Object.keys(formatJSON(params)).reduce((prev, item) => {
     let val = params[item]
     val = type == 1 ? encodeURIComponent(val) : val // 为了适配更多的场景，开发了自定义是否编码
     return prev + (prev.includes('?') ? '&' : '?') + `${item}=${val}`
@@ -1436,7 +1436,7 @@ export const looseEqual = function (a, b) {
 /**
  * 生产环境消除console.log
  */
- export const reWriteLog = function (){
+export const reWriteLog = function (){
   console.log = (function(log){
     return process.env.VUE_APP_ENV == 'development' ? log : function() {}  
   }(console.log))

@@ -5,7 +5,6 @@
   </div>
 </template>
 <script>
-import * as echarts from 'echarts';
 export default {
   name: 'barChart',
   data(){
@@ -16,7 +15,7 @@ export default {
   methods: {
     initDemo1(){
       var chartDom = document.querySelector('#demo1');
-      var myChart = echarts.init(chartDom);
+      var myChart = this.$echarts.init(chartDom);
       var option = {
         xAxis: {
           type: 'category',

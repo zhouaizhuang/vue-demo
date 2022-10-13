@@ -53,8 +53,11 @@ module.exports = {
         })
       );
     }
-    config.plugins = [...config.plugins, ...plugins];
-  },
+    config.plugins = [...config.plugins, ...plugins]
+    config.externals = {
+      'echarts': 'echarts',
+    }
+  }
   // 配置请求代理
   // devServer: {
   //   host: "localhost",

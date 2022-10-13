@@ -9,43 +9,39 @@ export const initDESC = function (){
 }
 // 数据转化
 export const covertVal = function (type = 0) {
-  const { encrypt, decrypt } = this.initDESC()
   this.oldVal = this.oldVal.replace(/\s/g,'')
-  if(!this.oldVal) { 
-    this.newVal = ''
-    return false
-  }
+  if(!this.oldVal) {  return this.newVal = '' }
   if(this.autoCapacity) { // 自动识别
-    try {
-      const res = decrypt(this.oldVal)
-      if(res) {
-        this.stateText = '正在解密'
-        const str = JSON.stringify(JSON.parse(res), null, 2)
-        this.newVal = syntaxHighlight(str)
-        this.stateText = '解密成功'
-      } else {
-        this.stateText = '正在加密'
-        this.newVal = encrypt(this.oldVal)
-        this.stateText = '加密成功'
-      }
-    } catch(e) {
-      this.stateText = '正在加密'
-      this.newVal = encrypt(this.oldVal)
-      this.stateText = '加密成功'
-    }
+    ;['"', ' ', '[', ']', '{', '}', ':', ','].some(v => this.oldVal.includes(v)) ? this.encode() : this.decode()
   } else if(type == 1) { // 解密
+    this.decode()
+  } else if(type == 2) { // 加密
+    this.encode()
+  }
+}
+// 解密
+export const decode = function (val){
+  const { decrypt } = this.initDESC()
+  this.stateText = '正在解密'
+  let res = decrypt(this.oldVal.replace(/\s/g,''))
+  if(res) {
+    this.stateText = '解密成功'
     try {
-      let res = decrypt(this.oldVal.replace(/\s/g,''))
       res = JSON.stringify(JSON.parse(res), null, 2)
       this.newVal = syntaxHighlight(res)
     } catch(e) {
-      console.log(e)
-      e = e || '解密失败'
-      return this.$Message.error(e)
+      this.newVal = res
     }
-  } else if(type == 2) { // 加密
-    this.newVal = encrypt(this.oldVal)
+  } else {
+    this.stateText = '解密失败'
   }
+}
+// 加密
+export const encode = function () {
+  const { encrypt } = this.initDESC()
+  this.stateText = '正在加密'
+  this.newVal = encrypt(this.oldVal)
+  this.stateText = '加密成功'
 }
 // 进行语法高亮
 export const syntaxHighlight = function (json) {

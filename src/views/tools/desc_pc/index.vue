@@ -17,9 +17,9 @@
         </div>
       </div>
     </div>
-    <div class="f ac xc b pt10 mb20">
+    <div class="f ac xc pt10 mb20">
       <div class="f ac xc mr20">
-        <div class="fs16 mr15">请选择秘钥:</div>
+        <div class="fs16 b mr15">请选择秘钥:</div>
         <div class="rel" style="width:280px;">
           <Input v-model="secret" placeholder="请输入或选择秘钥" @on-focus="() => isShowOpt = true" @on-blur="() => isShowOpt = false" @on-change="covertVal" /> 
           <Icon v-if="secret" @click="delVal" class="abs r2 t25" size="large" type="ios-close-circle" />
@@ -31,7 +31,7 @@
         </div>
       </div>
       <div class="f ac xc mr20">
-        <div class="fs16 mr15">请选择偏移量:</div>
+        <div class="fs16 b mr15">请选择偏移量:</div>
         <div class="rel" style="width:200px;">
           <Input v-model="iv" placeholder="请输入或选择偏移量" @on-focus="isShowIv = true" @on-blur="isShowIv = false" @on-change="covertVal" /> 
           <Icon v-if="iv" @click="delIv" class="abs r2 t25" size="large" type="ios-close-circle" />

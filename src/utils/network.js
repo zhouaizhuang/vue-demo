@@ -1,6 +1,5 @@
 import axios from "axios"
 import { JSON2url, formatJSON, showToast, getLocalStorage } from "../common.js"
-
 // console.log(process.env.VUE_APP_BASE_URL)
 /************配置axios****** */
 let service = axios.create({

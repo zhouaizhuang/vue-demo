@@ -17,7 +17,7 @@ export const covertVal = function (type = 0) {
     return
   }
   if(this.autoCapacity) { // 自动识别
-    if(['"', ' ', '[', ']', '{', '}', ':', ',', '.', '`', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')'].some(v => this.oldVal.includes(v))) {
+    if(['"', ' ', '[', ']', '{', '}', ':', ',', '.', '`', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '！', '￥', '~', '……'].some(v => this.oldVal.includes(v))) {
       this.type = 2
       this.encode()
     } else {

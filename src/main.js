@@ -5,7 +5,6 @@ import store from './store'
 import "./common.css"
 import "./utils/px2rem.js"
 import Directives from "./directives/index.js"
-import ViewUI from 'view-design'
 import 'view-design/dist/styles/iview.css'
 import GlobalCommponent from "./globalComponents/index.js"
 import Print from "./utils/print.js"
@@ -15,8 +14,7 @@ import SlideVerify from 'vue-monoplasty-slide-verify'
 // import * as echarts from 'echarts'
 Vue.config.productionTip = false
 Vue.use(Directives) // 引入自定义指令
-Vue.use(ViewUI) // 引入iview
-Vue.use(GlobalCommponent) // 批量注册全局组件
+Vue.use(GlobalCommponent) // 批量注册全局组件, 包括view-design的按需引入
 Vue.use(Print) // 引入打印功能
 Vue.use(Network) // axios全局挂载vue实例
 Vue.prototype.$Z = Z // 全局挂载自定义函数库

@@ -5,7 +5,7 @@
     <div class="f">
       <div class="b" style="width:150px;">工具</div>
       <div class="f1 f xs ac rw">
-        <a class="db w20 pb30 min190px g42b983 poi"><router-link class="g42b983" to="/encodeDecode_pc">在线加密解密</router-link></a>
+        <a class="db w20 pb30 min190px g42b983 poi"><router-link class="g42b983" to="/desc_pc">在线加密解密</router-link></a>
         <a class="db w20 pb30 min190px g42b983 poi" href="https://tool.lu/">在线工具网址</a>
         <a class="db w20 pb30 min190px g42b983 poi" href="https://www.jiumodiary.com/">电子书查找</a>
         <a class="db w20 pb30 min190px g42b983 poi" href="https://www.gaitubao.com/tupian-wenzi/">在线图片转文字</a>

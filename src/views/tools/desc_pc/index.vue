@@ -5,7 +5,7 @@
       <div class="f ac xc mr20">
         <div class="fs16 b mr15">请选择秘钥:</div>
         <div class="rel" style="width:280px;">
-          <Input :value="secret" placeholder="请输入或选择秘钥" @on-focus="focusInput" @on-blur="blurInput" /> 
+          <Input v-model="secret" placeholder="请输入或选择秘钥" @on-focus="() => isShowOpt = true" @on-blur="() => isShowOpt = false" @on-change="covertVal" /> 
           <Icon v-if="secret" @click="delVal" class="abs r2 t25" size="large" type="ios-close-circle" />
           <div :class="[isShowOpt ? 'op10 zx10' : 'op0 zx-1' , 'trans5 abs l0 r0 bgf rds5 pt10 pb10']" :style="{top:'110%', boxShadow: '0 1px 6px rgb(0 0 0 / 20%)', height: '150px', overflow:'auto'}">
             <div @click="selectItem(item)" v-for="item in keyOptions" :key="item.secret">
@@ -16,9 +16,15 @@
       </div>
       <div class="f ac xc mr20">
         <div class="fs16 b mr15">请选择偏移量:</div>
-        <Select v-model="iv" style="width:240px;" @on-change="covertVal">
-          <Option value="01234567">01234567</Option>
-        </Select> 
+        <div class="rel" style="width:200px;">
+          <Input v-model="iv" placeholder="请输入或选择偏移量" @on-focus="isShowIv = true" @on-blur="isShowIv = false" @on-change="covertVal" /> 
+          <Icon v-if="iv" @click="delIv" class="abs r2 t25" size="large" type="ios-close-circle" />
+          <div :class="[isShowIv ? 'op10 zx10' : 'op0 zx-1' , 'trans5 abs l0 r0 bgf rds5 pt10 pb10']" :style="{top:'110%', boxShadow: '0 1px 6px rgb(0 0 0 / 20%)', height: '150px', overflow:'auto'}">
+            <div @click="selectIv(item)" v-for="item in ivOptions" :key="item.iv">
+              <div :class="['poi hoverbg pl8 pr8 fs16 mb5']">{{item.name}}</div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="f ac xc mr20">
         <div class="fs16 b mr15">自动识别:</div>

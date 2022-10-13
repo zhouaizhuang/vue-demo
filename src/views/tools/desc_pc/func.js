@@ -17,7 +17,7 @@ export const covertVal = function (type = 0) {
     return
   }
   if(this.autoCapacity) { // 自动识别
-    if(['"', ' ', '[', ']', '{', '}', ':', ','].some(v => this.oldVal.includes(v))) {
+    if(['"', ' ', '[', ']', '{', '}', ':', ',', '.', '`', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')'].some(v => this.oldVal.includes(v))) {
       this.type = 2
       this.encode()
     } else {
@@ -46,6 +46,7 @@ export const decode = function (){
     }
   } else {
     this.stateText = '解密失败'
+    this.newVal = ''
   }
 }
 // 加密
@@ -74,20 +75,25 @@ export const syntaxHighlight = function (json) {
     return '<span class="' + cls + '">' + match + '</span>';
   })
 }
-// 失去焦点
-export const blurInput = function () {
-  this.isShowOpt = false
-}
-// 进入焦点
-export const focusInput = function () {
-  this.isShowOpt = true
+// 删除数据
+export const delVal = async function () {
+  this.secret = ''
+  this.covertVal()
 }
 // 选择当前条目
 export const selectItem = function (item) {
   this.isShowOpt = false
   this.secret = item.secret
+  this.covertVal()
 }
-// 删除数据
-export const delVal = async function (e) {
-  this.secret = ''
+// 选择偏移量
+export const selectIv = function (item) {
+  this.isShowIv = false
+  this.iv = item.iv
+  this.covertVal()
+}
+// 删除iv
+export const delIv = function () {
+  this.iv = ''
+  this.covertVal()
 }

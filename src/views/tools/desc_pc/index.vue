@@ -23,9 +23,9 @@
         <Input v-model="oldVal" type="textarea" @on-change="covertVal" style="height:500px;" :autosize="{minRows: 25,maxRows: 100}" placeholder="请输入需要转换的值"></Input>
       </div>
       <div v-if="autoCapacity" :class="['fs18 f ac xc ml40 mr40', stateText.includes('成功') ? 'g1890ff' : stateText.includes('失败') ? 'gf10000' : 'g1890ff']" style="width:0;height:500px;">{{stateText}}</div>
-      <div v-show="!autoCapacity" class="pt100  ml20 mr30" style="height:400px;">
-        <div class="mt30 f xc" @click="covertVal(1)"><Button type="success">解密</Button></div>
-        <div class="mb30 mt100" @click="covertVal(2)"><Button type="info">加密</Button></div>
+      <div v-show="!autoCapacity" class="pt100" style="height:400px;width:80px;">
+        <div class="mt30 f ac xc" @click="covertVal(1)"><Button type="success">解密</Button></div>
+        <div class="mb30 mt100 f ac xc" @click="covertVal(2)"><Button type="info">加密</Button></div>
       </div>
       <div class="f1 ovh">
         <pre class="hljs">

@@ -52,7 +52,7 @@
         <div class="mt30 f ac xc" @click="covertVal(1)"><Button type="success">解密</Button></div>
         <div class="mb30 mt100 f ac xc" @click="covertVal(2)"><Button type="info">加密</Button></div>
       </div>
-      <div v-if="autoCopy" class="f1 ovh">
+      <div v-if="autoCopy" class="f1 ovh noCopy">
         <pre v-if="type == 1" class="hljs" v-copy="_newVal">
           <div v-if="autoFormate" v-html="newVal"></div>
           <div v-if="!autoFormate">{{_newVal}}</div>

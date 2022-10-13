@@ -1,6 +1,6 @@
 import * as func from "./func.js"
 export default {
-  name: '',
+  name: 'desc_pc',
   components:{
   },
   data(){

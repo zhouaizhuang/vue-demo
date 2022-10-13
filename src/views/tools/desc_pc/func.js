@@ -2,7 +2,7 @@ import CryptoJS from 'crypto-js'
 // 加密解密封装
 export const initDESC = function (){
   const utf8Key = CryptoJS.enc.Utf8.parse(this.secret) // 秘钥
-  const options = { iv: CryptoJS.enc.Utf8.parse('01234567'), padding: CryptoJS.pad.Pkcs7, mode: CryptoJS.mode.CBC } // 生成配置项
+  const options = { iv: CryptoJS.enc.Utf8.parse(this.iv), padding: CryptoJS.pad.Pkcs7, mode: CryptoJS.mode.CBC } // 生成配置项
   const encrypt = e => CryptoJS.TripleDES.encrypt(e, utf8Key, options).toString()
   const decrypt = e => CryptoJS.enc.Utf8.stringify(CryptoJS.TripleDES.decrypt(e, utf8Key, options))
   return { encrypt, decrypt }
@@ -65,4 +65,22 @@ export const syntaxHighlight = function (json) {
     }
     return '<span class="' + cls + '">' + match + '</span>';
   })
+}
+// 失去焦点
+export const blurInput = function () {
+  this.isShowOpt = false
+}
+// 进入焦点
+export const focusInput = function () {
+  this.isShowOpt = true
+}
+// 选择当前条目
+export const selectItem = function (item) {
+  console.log(item)
+  this.isShowOpt = false
+  this.secret = item.secret
+}
+// 删除数据
+export const delVal = async function (e) {
+  this.secret = ''
 }

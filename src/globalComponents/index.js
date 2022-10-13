@@ -1,4 +1,4 @@
-import { Input, Select, Option, Button, Message, Switch } from "view-design"
+import { Input, Select, Option, Button, Message, Switch, Icon } from "view-design"
 export default {
   install(Vue){
     let allCom = require.context('./modules', false, /\.vue$/)
@@ -9,7 +9,8 @@ export default {
     Vue.component("Input", Input)  // input组件
     Vue.component("Select", Select)  // select下拉框组件
     Vue.component("Option", Option)  // select里的option选项组件
-    Vue.component("iSwitch", Switch)  // 抽屉
+    Vue.component("iSwitch", Switch)  // 切换
+    Vue.component("Icon", Icon)  // 图标
     Vue.prototype.$Message = Message  // iview中Message组件是以API的方式书写的，所有组成时不能用component，而是要用Vue.prototype.$Message来声明注册
   }
 }

@@ -4,9 +4,20 @@
     <div class="f ac xc pt10 mb20">
       <div class="f ac xc mr20">
         <div class="fs16 b mr15">请选择秘钥:</div>
-        <Select v-model="secret" style="width:240px;" @on-change="covertVal">
-          <Option value="gagc#2017ABCDgagc#2017ABCD">测试环境(gagc**)</Option>
-          <Option value="H5ZLBACzrQARj7FOtpwIpvnP">生产环境(H5Z**)</Option>
+        <div class="rel" style="width:280px;">
+          <Input :value="secret" placeholder="请输入或选择秘钥" @on-focus="focusInput" @on-blur="blurInput" /> 
+          <Icon v-if="secret" @click="delVal" class="abs r2 t25" size="large" type="ios-close-circle" />
+          <div :class="[isShowOpt ? 'op10 zx10' : 'op0 zx-1' , 'trans5 abs l0 r0 bgf rds5 pt10 pb10']" :style="{top:'110%', boxShadow: '0 1px 6px rgb(0 0 0 / 20%)', height: '150px', overflow:'auto'}">
+            <div @click="selectItem(item)" v-for="item in keyOptions" :key="item.secret">
+              <div :class="['poi hoverbg pl8 pr8 fs16 mb5']">{{item.name}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="f ac xc mr20">
+        <div class="fs16 b mr15">请选择偏移量:</div>
+        <Select v-model="iv" style="width:240px;" @on-change="covertVal">
+          <Option value="01234567">01234567</Option>
         </Select> 
       </div>
       <div class="f ac xc">
@@ -45,4 +56,7 @@
 .null {color: #C586C0;}
 .null { color: magenta; }
 .key { color: #E06C61;}
+.hoverbg:hover{
+  background: #eee;
+}
 </style>

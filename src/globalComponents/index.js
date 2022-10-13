@@ -1,4 +1,4 @@
-import { Menu, MenuItem, Submenu, Input, Select, Option, Button, Table, DatePicker, Page, Collapse, Panel, Icon, Message, Modal, Drawer, Switch } from "view-design"
+import { Input, Select, Option, Button, Message, Switch } from "view-design"
 export default {
   install(Vue){
     let allCom = require.context('./modules', false, /\.vue$/)

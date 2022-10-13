@@ -20,9 +20,17 @@
           <Option value="01234567">01234567</Option>
         </Select> 
       </div>
-      <div class="f ac xc">
+      <div class="f ac xc mr20">
         <div class="fs16 b mr15">自动识别:</div>
         <i-switch v-model="autoCapacity" />
+      </div>
+      <div class="f ac xc mr20">
+        <div class="fs16 b mr15">自动格式化:</div>
+        <i-switch v-model="autoFormate" />
+      </div>
+      <div class="f ac xc">
+        <div class="fs16 b mr15">点击复制:</div>
+        <i-switch v-model="autoCopy" />
       </div>
     </div>
     <div class="f b mb5">
@@ -38,11 +46,19 @@
         <div class="mt30 f ac xc" @click="covertVal(1)"><Button type="success">解密</Button></div>
         <div class="mb30 mt100 f ac xc" @click="covertVal(2)"><Button type="info">加密</Button></div>
       </div>
-      <div class="f1 ovh">
-        <pre class="hljs">
-          <div v-html="newVal"></div>
+      <div v-if="autoCopy" class="f1 ovh">
+        <pre v-if="type == 1" class="hljs" v-copy="_newVal">
+          <div v-if="autoFormate" v-html="newVal"></div>
+          <div v-if="!autoFormate">{{_newVal}}</div>
         </pre>
-        <!-- <Input v-model="newVal" type="textarea" style="height:500px;" :autosize="{minRows: 25,maxRows: 100}" placeholder="这里是转换之后的值" readonly></Input> -->
+        <div v-else class="pre wrap lba" v-copy="newVal">{{newVal}}</div>
+      </div>
+      <div v-else class="f1 ovh">
+        <pre v-if="type == 1" class="hljs">
+          <div v-if="autoFormate" v-html="newVal"></div>
+          <div v-if="!autoFormate">{{_newVal}}</div>
+        </pre>
+        <div v-else class="pre wrap lba">{{newVal}}</div>
       </div>
     </div>
   </div>
@@ -50,6 +66,7 @@
 <script src='./index.js'></script>
 <style>
  pre {outline: 1px solid #ccc; padding: 5px; margin: 5px;border-radius:5px;min-height:530px;}
+.pre {outline: 1px solid #ccc; padding: 5px; margin: 5px;border-radius:5px;min-height:530px;}
 .string {color: #98C379;}
  .number {color: #D19A66;}
 .boolean {color: #56B6C2;}

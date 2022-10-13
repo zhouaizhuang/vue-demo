@@ -1,3 +1,4 @@
+import { Message } from "view-design"
 /**
  * 复制文本
  * @param {string} value 需要复制的文本
@@ -26,7 +27,7 @@ export const copy = {
       textarea.select()
       const result = document.execCommand('Copy')
       if (result) {
-        alert('复制成功') // 可根据项目UI仔细设计
+        Message.success('复制成功') // 可根据项目UI仔细设计
       }
       document.body.removeChild(textarea)
     }

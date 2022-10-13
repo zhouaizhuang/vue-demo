@@ -9,10 +9,21 @@ export const initDESC = function (){
 }
 // 数据转化
 export const covertVal = function (type = 0) {
+  this.type = type
   this.oldVal = this.oldVal.replace(/\s/g,'')
-  if(!this.oldVal) {  return this.newVal = '' }
+  if(!this.oldVal) { 
+    this.newVal = '' 
+    this.stateText = ''
+    return
+  }
   if(this.autoCapacity) { // 自动识别
-    ;['"', ' ', '[', ']', '{', '}', ':', ','].some(v => this.oldVal.includes(v)) ? this.encode() : this.decode()
+    if(['"', ' ', '[', ']', '{', '}', ':', ','].some(v => this.oldVal.includes(v))) {
+      this.type = 2
+      this.encode()
+    } else {
+      this.type = 1
+      this.decode()
+    }
   } else if(type == 1) { // 解密
     this.decode()
   } else if(type == 2) { // 加密
@@ -20,11 +31,12 @@ export const covertVal = function (type = 0) {
   }
 }
 // 解密
-export const decode = function (val){
+export const decode = function (){
   const { decrypt } = this.initDESC()
   this.stateText = '正在解密'
   let res = decrypt(this.oldVal.replace(/\s/g,''))
   if(res) {
+    this._newVal = res
     this.stateText = '解密成功'
     try {
       res = JSON.stringify(JSON.parse(res), null, 2)
@@ -72,7 +84,6 @@ export const focusInput = function () {
 }
 // 选择当前条目
 export const selectItem = function (item) {
-  console.log(item)
   this.isShowOpt = false
   this.secret = item.secret
 }

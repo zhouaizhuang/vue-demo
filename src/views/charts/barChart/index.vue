@@ -15,7 +15,7 @@ export default {
   methods: {
     initDemo1(){
       var chartDom = document.querySelector('#demo1');
-      var myChart = this.$echarts.init(chartDom);
+      var myChart = echarts.init(chartDom)
       var option = {
         xAxis: {
           type: 'category',

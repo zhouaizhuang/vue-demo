@@ -2,7 +2,7 @@ import "./assets/china.js"
 // 就业行业
 export const initIndustry = function (){
   var industryRef = this.$refs.industry
-  var myChart = this.$echarts.init(industryRef)
+  var myChart = echarts.init(industryRef)
   var option = {
     color: ['#2f89cf'],
     tooltip: {

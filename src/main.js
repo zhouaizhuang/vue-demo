@@ -11,7 +11,6 @@ import Print from "./utils/print.js"
 import Network from "./utils/network.js"
 import * as Z from './common.js'
 import SlideVerify from 'vue-monoplasty-slide-verify'
-// import * as echarts from 'echarts'
 Vue.config.productionTip = false
 Vue.use(Directives) // 引入自定义指令
 Vue.use(GlobalCommponent) // 批量注册全局组件, 包括view-design的按需引入
@@ -21,7 +20,6 @@ Vue.prototype.$Z = Z // 全局挂载自定义函数库
 Z.reWriteLog() // 关闭生产环境的console.log
 Vue.use(SlideVerify) // 极验验证
 Vue.config.ignoredElements = ['wx-open-launch-weapp']
-Vue.prototype.$echarts = echarts
 
 new Vue({
   router,

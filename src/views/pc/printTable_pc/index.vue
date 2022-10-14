@@ -28,7 +28,7 @@
       <Page :total="devicePageObj.totalCount" :page-size="10" show-total @on-change="e =>{ devicePageObj.page = e; getDeviceList() }" :current="devicePageObj.page" :pageSize="10"/>
     </div>
     <!--打印格式，不显示在页面上-->
-    <div class="fixed trbl0 zx-1 dn">
+    <div class="fixed trbl0 zx-1 op10">
       <div ref="printRef" class="bgf tc ml15 mr15">
         <div class="f b fs12 bgf5 bdbe">
           <div class="f1 pt20 pb20">服务编码</div>

@@ -1397,6 +1397,20 @@ export const get100vh = function () {
   }
   return winHeight
 }
+/**获取视口总宽度
+ * @returns 
+ */
+export const get100vw = function () {
+  let winWidth = 0
+  if (window.innerWidth) {
+    winWidth = window.innerWidth
+  } else if (document.body && document.body.clientWidth) {
+    winWidth = document.body.clientWidth
+  } else if (document.documentElement && document.documentElement.clientWidth) {
+    winWidth = document.documentElement.clientWidth
+  }
+  return winWidth
+}
 /**
  * 获取距离视口的数据
  * 距离视窗的距离。一般现在通过 IntersectionObserver API实现了，请看https://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html

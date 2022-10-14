@@ -10,5 +10,6 @@ export default [
   { path: '/studyCanvas', name: 'studyCanvas', component: () => import(/* webpackChunkName: "canvasAni" */ '../../views/canvasAni/studyCanvas/index.vue') },
   { path: '/barChart_pc', name: 'barChart_pc', component: () => import(/* webpackChunkName: "canvasAni" */ '../../views/canvasAni/barChart_pc/index.vue') },
   { path: '/canvasHover_pc', name: 'canvasHover_pc', component: () => import(/* webpackChunkName: "canvasAni" */ '../../views/canvasAni/canvasHover_pc/index.vue') },
+  { path: '/canvasClick_pc', name: 'canvasClick_pc', component: () => import(/* webpackChunkName: "canvasAni" */ '../../views/canvasAni/canvasClick_pc/index.vue') },
   { path: '/signName_pc', name: 'signName_pc', component: () => import(/* webpackChunkName: "canvasAni" */ '../../views/canvasAni/signName_pc/index.vue') },
 ]

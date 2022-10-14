@@ -42,40 +42,39 @@
           </div>
         </div>
       </div>
-      
     </div>
     <div class="f mb5">
       <div class="f1 f xc">初始数据</div>
       <div class="f1 f xc">转换结果</div>
     </div>
     <div class="f pl15 pr15">
-      <div class="f1 ">
-        <Input v-model="oldVal" type="textarea" @on-change="covertVal" style="min-height:500px;" :autosize="{minRows: 25,maxRows: 100}" placeholder="请输入需要转换的值"></Input>
+      <div class="f1 ovh">
+        <div class="ovya" style="outline: 1px solid #ccc; padding: 5px; margin: 5px;border-radius:5px;height:calc(100vh - 220px);" contenteditable @input="changeVal"></div>
       </div>
       <div v-if="autoCapacity" :class="['fs18 f ac xc ml40 mr40', stateText.includes('成功') ? 'g1890ff' : stateText.includes('失败') ? 'gf10000' : 'g1890ff']" style="width:0;height:500px;">{{stateText}}</div>
       <div v-show="!autoCapacity" class="pt100" style="height:400px;width:80px;">
         <div class="mt30 f ac xc" @click="covertVal(1)"><Button type="success">解密</Button></div>
         <div class="mb30 mt100 f ac xc" @click="covertVal(2)"><Button type="info">加密</Button></div>
       </div>
-      <div v-if="autoCopy" class="f1 ovh noCopy">
-        <pre v-if="type == 1 && autoFormate" class="hljs" v-copy="_newVal">
+      <div v-if="autoCopy" class="f1 noCopy">
+        <pre v-if="type == 1 && autoFormate" class="hljs ovya" v-copy="newVal_">
           <div v-html="newVal"></div>
         </pre>
-        <div v-else class="pre wrap lba" v-copy="_newVal">{{_newVal}}</div>
+        <div v-else class="pre ovya wrap lba" v-copy="newVal_">{{newVal_}}</div>
       </div>
-      <div v-else class="f1 ovh">
-        <pre v-if="type == 1 && autoFormate" class="hljs">
+      <div v-else class="f1">
+        <pre v-if="type == 1 && autoFormate" class="hljs ovya">
           <div v-html="newVal"></div>
         </pre>
-        <div v-else class="pre wrap lba">{{_newVal}}</div>
+        <div v-else class="pre ovya wrap lba">{{newVal_}}</div>
       </div>
     </div>
   </div>
 </template>
 <script src='./index.js'></script>
 <style>
- pre {outline: 1px solid #ccc; padding: 5px; margin: 5px;border-radius:5px;min-height:530px;}
-.pre {outline: 1px solid #ccc; padding: 5px; margin: 5px;border-radius:5px;min-height:530px;}
+ pre {outline: 1px solid #ccc; padding: 5px; margin: 5px;border-radius:5px;height:calc(100vh - 220px);}
+.pre {outline: 1px solid #ccc; padding: 5px; margin: 5px;border-radius:5px;height:calc(100vh - 220px);}
 .string {color: #98C379;}
  .number {color: #D19A66;}
 .boolean {color: #56B6C2;}

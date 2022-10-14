@@ -36,7 +36,7 @@ export const decode = function (){
   this.stateText = '正在解密'
   let res = decrypt(this.oldVal.replace(/\s/g,''))
   if(res) {
-    this._newVal = res
+    this.newVal_ = res
     this.stateText = '解密成功'
     try {
       res = JSON.stringify(JSON.parse(res), null, 2)
@@ -46,7 +46,7 @@ export const decode = function (){
     }
   } else {
     this.stateText = '解密失败'
-    this._newVal = ''
+    this.newVal_ = ''
     this.newVal = ''
   }
 }
@@ -55,7 +55,7 @@ export const encode = function () {
   const { encrypt } = this.initDESC()
   this.stateText = '正在加密'
   this.newVal = encrypt(this.oldVal)
-  this._newVal = this.newVal
+  this.newVal_ = this.newVal
   this.stateText = '加密成功'
 }
 // 进行语法高亮
@@ -97,5 +97,10 @@ export const selectIv = function (item) {
 // 删除iv
 export const delIv = function () {
   this.iv = ''
+  this.covertVal()
+}
+// 改变输入值
+export const changeVal = function (e) {
+  this.oldVal = e.target.innerHTML
   this.covertVal()
 }

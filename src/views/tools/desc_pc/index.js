@@ -13,7 +13,7 @@ export default {
       iv: '01234567',
       oldVal: '',
       newVal: '',
-      _newVal: '', // 未经转换的值
+      newVal_: '', // 未经转换的值
       isShowOpt: false, // 是否显示秘钥下拉
       keyOptions: [{secret:'gagc#2017ABCDgagc#2017ABCD', name: '测试环境gagc'}, {secret: 'H5ZLBACzrQARj7FOtpwIpvnP', name: '生产环境'}],
       isShowIv: false, // 是否显示偏移量

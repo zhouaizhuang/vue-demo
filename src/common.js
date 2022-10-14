@@ -1383,10 +1383,20 @@ export const getPosition = function (e) {
   if (e.offsetParent !== null) { getPosition(e.offsetParent) }
   return { Left: offsetx, Top: offsety }
 }
-/**获取视口高度
+/**获取视口总高度
  * @returns 
  */
-export const getViewHeight = () => document.body.clientHeight + 'px'
+export const get100vh = function () {
+  let winHeight = 0
+  if (window.innerHeight) {
+    winHeight = window.innerHeight;
+  } else if (document.body && document.body.clientHeight) {
+    winHeight = document.body.clientHeight;
+  } else if (document.documentElement && document.documentElement.clientHeight) {
+    winHeight = document.documentElement.clientHeight;
+  }
+  return winHeight
+}
 /**
  * 获取距离视口的数据
  * 距离视窗的距离。一般现在通过 IntersectionObserver API实现了，请看https://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html

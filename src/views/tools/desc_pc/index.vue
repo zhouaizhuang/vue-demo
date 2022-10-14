@@ -58,18 +58,16 @@
         <div class="mb30 mt100 f ac xc" @click="covertVal(2)"><Button type="info">加密</Button></div>
       </div>
       <div v-if="autoCopy" class="f1 ovh noCopy">
-        <pre v-if="type == 1" class="hljs" v-copy="_newVal">
-          <div v-if="autoFormate" v-html="newVal"></div>
-          <div v-if="!autoFormate">{{_newVal}}</div>
+        <pre v-if="type == 1 && autoFormate" class="hljs" v-copy="_newVal">
+          <div v-html="newVal"></div>
         </pre>
-        <div v-else class="pre wrap lba" v-copy="newVal">{{newVal}}</div>
+        <div v-else class="pre wrap lba" v-copy="_newVal">{{_newVal}}</div>
       </div>
       <div v-else class="f1 ovh">
-        <pre v-if="type == 1" class="hljs">
-          <div v-if="autoFormate" v-html="newVal"></div>
-          <div v-if="!autoFormate">{{_newVal}}</div>
+        <pre v-if="type == 1 && autoFormate" class="hljs">
+          <div v-html="newVal"></div>
         </pre>
-        <div v-else class="pre wrap lba">{{newVal}}</div>
+        <div v-else class="pre wrap lba">{{_newVal}}</div>
       </div>
     </div>
   </div>

@@ -46,6 +46,7 @@ export const decode = function (){
     }
   } else {
     this.stateText = '解密失败'
+    this._newVal = ''
     this.newVal = ''
   }
 }
@@ -54,6 +55,7 @@ export const encode = function () {
   const { encrypt } = this.initDESC()
   this.stateText = '正在加密'
   this.newVal = encrypt(this.oldVal)
+  this._newVal = this.newVal
   this.stateText = '加密成功'
 }
 // 进行语法高亮

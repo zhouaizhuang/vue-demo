@@ -1389,11 +1389,11 @@ export const getPosition = function (e) {
 export const get100vh = function () {
   let winHeight = 0
   if (window.innerHeight) {
-    winHeight = window.innerHeight;
+    winHeight = window.innerHeight
   } else if (document.body && document.body.clientHeight) {
-    winHeight = document.body.clientHeight;
+    winHeight = document.body.clientHeight
   } else if (document.documentElement && document.documentElement.clientHeight) {
-    winHeight = document.documentElement.clientHeight;
+    winHeight = document.documentElement.clientHeight
   }
   return winHeight
 }

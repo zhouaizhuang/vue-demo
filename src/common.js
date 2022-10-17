@@ -1116,6 +1116,13 @@ export const addDom = function (dom = '', id = ""){
   document.body.appendChild(divObj) // 添加Dom节点到body中
 }
 /**
+ * 窗口调整
+ * @param {*} fn 
+ */
+export const resize = function (fn) {
+  window.onresize = () => { fn() }
+}
+/**
  * 显示DOM
  * @param id 需要显示的结点的id
  * @举例 show('z-loading')  // 显示id为z-loading的dom结点

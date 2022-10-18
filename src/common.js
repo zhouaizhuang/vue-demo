@@ -1023,6 +1023,13 @@ export const f2s = fahrenheit => (fahrenheit - 32) * 5 / 9
 **********************************************************************************************
 */
 /**
+ * 浏览器下一帧渲染之前执行此函数
+ * @param {*} fn 
+ */
+export const nextTick = function (fn) {
+  window.requestAnimationFrame(fn)
+}
+/**
  * 应用于当前DOM元素，将DOM滚动到指定位置
  * 整个页面之间，平滑滚动
  * --->取代锚点。将传入的DOM，滚动到指定位置

@@ -1,4 +1,4 @@
-import { Input, Select, Option, Button, Message, Switch, Icon, Table, Page, Form } from "view-design"
+import { Input, Select, Option, Button, Message, Switch, Icon, Table, Page, Form, FormItem } from "view-design"
 export default {
   install(Vue){
     let allCom = require.context('./modules', false, /\.vue$/)
@@ -13,7 +13,8 @@ export default {
     Vue.component("Icon", Icon)  // 图标Page
     Vue.component("Table", Table)  // Table
     Vue.component("Page", Page)  // Page
-    Vue.component("Form", Form)  // Page
+    Vue.component("Form", Form)  // Form
+    Vue.component("FormItem", FormItem)  // FormItem
     Vue.prototype.$Message = Message  // iview中Message组件是以API的方式书写的，所有组成时不能用component，而是要用Vue.prototype.$Message来声明注册
   }
 }

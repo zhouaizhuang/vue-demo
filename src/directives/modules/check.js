@@ -1,13 +1,14 @@
 /**
  * 限制整数
  * @param {Function} 
- * 直接使用： <Input v-gt0></Input>
+ * 直接使用： <Input v-int></Input>
+ * 传入true，允许输入负值： <Input v-int="true"></Input>
  */
 export const int = {
-  inserted(el){
+  inserted(el, {value}){
     const inputRef = el.querySelector('input')
     const fn = () => window.requestAnimationFrame(() => {
-      let tmp = inputRef.value.replace(/[^0-9-]/g, '')
+      let tmp = inputRef.value.replace(eval(`/[^0-9${value ? '-' : ''}]/g`), '')
       const symbol = tmp.at(0) == '-' ? '-' : ''
       if(symbol === '-') { tmp = tmp.slice(1) }
       tmp = tmp.replace(/-/g, '')
@@ -24,14 +25,15 @@ export const int = {
 /**
  * 限制小数
  * @param {Function} 
- * 直接使用： <Input v-gtFloat0></Input>
+ * 直接使用： <Input v-float></Input>
+ * 传入true使用，允许输入负值： <Input v-float="true"></Input>
  */
 export const float = {
-  inserted(el){
+  inserted(el, {value}){
     const inputRef = el.querySelector('input')
     const fn = () => window.requestAnimationFrame(() => {
       let tmp = inputRef.value
-      tmp = tmp.replace(/[^0-9.-]/g, '')
+      tmp = tmp.replace(eval(`/[^0-9.${value ? '-' : ''}]/g`), '')
       const symbol = tmp.at(0) == '-' ? '-' : ''
       if(symbol === '-') { tmp = tmp.slice(1) }
       tmp = tmp.replace(/-/g, '')
@@ -59,9 +61,9 @@ export const float = {
   }
 }
 /**
- * 保留小数点后几位
+ * 编码格式
  * @param {Function} 
- * 直接使用： <Input v-limit="5"></Input>
+ * 直接使用： <Input v-code></Input>
  */
 export const code = {
   inserted(el, { value }){

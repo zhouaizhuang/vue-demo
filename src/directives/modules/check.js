@@ -7,7 +7,10 @@ export const int = {
   inserted(el){
     const inputRef = el.querySelector('input')
     const fn = () => window.requestAnimationFrame(() => {
-      let tmp = inputRef.value.replace(/[^0-9-]/g, '').replace(/^0+/g, '')
+      let tmp = inputRef.value.replace(/[^0-9-]/g, '')
+      if(tmp.length > 1) {
+        tmp = tmp.replace(/^0+/g, '') || '0'
+      }
       if(tmp.at(0) == '-') {
         tmp = '-' + tmp.slice(1).replace(/-/g, '').replace(/^0+/g, '')
       }
@@ -112,7 +115,7 @@ export const min = {
     const inputRef = el.querySelector('input')
     const fn = () => window.requestAnimationFrame(() => {
       let tmp = inputRef.value
-      inputRef.value = tmp === '' ? '' : Math.max(tmp, Number(value))
+      inputRef.value = tmp === '' ? '' : Math.max(Number(tmp) || 0, Number(value))
     })
     if(inputRef) {
       inputRef.addEventListener('input', fn)
@@ -131,7 +134,7 @@ export const min = {
     const inputRef = el.querySelector('input')
     const fn = () => window.requestAnimationFrame(() => {
       let tmp = inputRef.value
-      inputRef.value = tmp == '' ? '' : Math.min(tmp, Number(value))
+      inputRef.value = tmp === '' ? '' : Math.min(Number(tmp) || 0, Number(value))
     })
     if(inputRef) {
       inputRef.addEventListener('input', fn)

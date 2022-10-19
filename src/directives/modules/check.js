@@ -8,13 +8,11 @@ export const int = {
     const inputRef = el.querySelector('input')
     const fn = () => window.requestAnimationFrame(() => {
       let tmp = inputRef.value.replace(/[^0-9-]/g, '')
-      if(tmp.length > 1) {
-        tmp = tmp.replace(/^0+/g, '') || '0'
-      }
-      if(tmp.at(0) == '-') {
-        tmp = '-' + tmp.slice(1).replace(/-/g, '').replace(/^0+/g, '')
-      }
-      inputRef.value = tmp
+      const symbol = tmp.at(0) == '-' ? '-' : ''
+      if(symbol === '-') { tmp = tmp.slice(1) }
+      tmp = tmp.replace(/-/g, '')
+      tmp = tmp == '' ? '' : (tmp.replace(/^0+/g, '') || '0')
+      inputRef.value = symbol + tmp
     })
     if(inputRef) {
       inputRef.addEventListener('input', fn)
@@ -34,11 +32,9 @@ export const float = {
     const fn = () => window.requestAnimationFrame(() => {
       let tmp = inputRef.value
       tmp = tmp.replace(/[^0-9.-]/g, '')
-      if(tmp === '' || tmp === undefined) {
-        tmp = ''
-      } else if(tmp.length > 0) {
-        tmp = tmp.at(0) + tmp.slice(1).replace(/^0+/g, '')
-      }
+      const symbol = tmp.at(0) == '-' ? '-' : ''
+      if(symbol === '-') { tmp = tmp.slice(1) }
+      tmp = tmp.replace(/-/g, '')
       tmp = tmp.split('').reduce((prev, item) => {
         if(item === '.') {
           prev.tmp +=  prev.dotNum === 0 ? item : ''
@@ -50,9 +46,9 @@ export const float = {
       }, {tmp:'', dotNum: 0})['tmp']
       if(tmp.includes('.') && /-?([0-9]*).([0-9]*)/.test(tmp)) {
         const [, left, right] = tmp.match(/-?([0-9]*).([0-9]*)/)
-        inputRef.value = left ? (tmp.at(0) == '-' ? '-' : '') + left + '.' + right : ''
+        inputRef.value = symbol + (left.replace(/^[0]+/g, '') || '0') + '.' + right
       } else {
-        inputRef.value = tmp
+        inputRef.value = symbol + (tmp == '' ? '' : (tmp.replace(/^[0]+/, '') || '0'))
       }
     })
     if(inputRef) {

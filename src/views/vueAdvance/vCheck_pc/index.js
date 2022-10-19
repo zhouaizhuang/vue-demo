@@ -7,6 +7,7 @@ export default {
       numInt:'',
       numFloat: '',
       limitNum: '',
+      codeStr:'',
       decimalNum:'',
       minNum:'',
       maxNum: '',

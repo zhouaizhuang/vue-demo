@@ -1,5 +1,5 @@
 /**
- * 大于0的整数
+ * 限制整数
  * @param {Function} 
  * 直接使用： <Input v-gt0></Input>
  */
@@ -24,11 +24,11 @@ export const int = {
   },
 }
 /**
- * 大于0的小数
+ * 限制小数
  * @param {Function} 
  * 直接使用： <Input v-gtFloat0></Input>
  */
- export const float = {
+export const float = {
   inserted(el){
     const inputRef = el.querySelector('input')
     const fn = () => window.requestAnimationFrame(() => {
@@ -67,6 +67,26 @@ export const int = {
  * @param {Function} 
  * 直接使用： <Input v-limit="5"></Input>
  */
+export const code = {
+  inserted(el, { value }){
+    const inputRef = el.querySelector('input')
+    const fn = () => window.requestAnimationFrame(() => {
+      let tmp = inputRef.value
+      tmp = tmp.replace(/[^0-9A-Za-z!@#$%^&*()_+{}?><|/.,`\uff08\uff09\u3008\u3009\u300a\u300b\u300c\u300d\u300e\u300f\ufe43\ufe44\u3014\u3015\u2026\u2014\uff5e\ufe4f\uffe5\u3001\u3010\u3011\uff0c\u3002\uff1f\uff01\uff1a\uff1b\u201c\u201d\u2018\u2019]/g, '')
+      inputRef.value = tmp
+    })
+    if(inputRef) {
+      inputRef.addEventListener('input', fn)
+    } else {
+      el.addEventListener('input', fn)
+    }
+  }
+}
+/**
+ * 限制最多输入几个字符
+ * @param {Function} 
+ * 直接使用： <Input v-limit="5"></Input>
+ */
  export const limit = {
   inserted(el, { value }){
     const inputRef = el.querySelector('input')
@@ -82,7 +102,7 @@ export const int = {
   }
 }
 /**
- * 保留小数点后几位
+ * 限制小数点后保留几位
  * @param {Function} 
  * 直接使用： <Input v-decimalLimit="2"></Input>
  */
@@ -125,7 +145,7 @@ export const min = {
   }
 }
 /**
- * 限制最小值
+ * 限制最大值
  * @param {Function} 
  * 直接使用： <Input v-max="100"></Input>
  */

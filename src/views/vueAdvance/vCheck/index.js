@@ -6,6 +6,7 @@ export default {
     return {
       numGtInt0:'',
       numGtEqInt0: '',
+      numGtFloat0: '',
     }
   },
   methods:{

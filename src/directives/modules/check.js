@@ -43,3 +43,42 @@ export const gtEqInt0 = {
     }
   },
 }
+/**
+ * 大于0的整数
+ * @param {Function} 
+ * 直接使用： <Input v-gt0="num"></Input>
+ */
+ export const gtFloat0 = {
+  inserted(el){
+    const inputRef = el.querySelector('input')
+    const fn = () => window.requestAnimationFrame(() => {
+      let tmp = inputRef.value
+      tmp = tmp.replace(/[^0-9.]/g, '')
+      if(tmp === '' || tmp === undefined) {
+        tmp = ''
+      } else if(tmp.length > 0) {
+        tmp = tmp.replace(/^0+/g, '0') 
+      }
+      tmp = tmp.split('').reduce((prev, item) => {
+        if(item === '.') {
+          prev.tmp +=  prev.dotNum === 0 ? item : ''
+          prev.dotNum++
+        } else {
+          prev.tmp += item
+        }
+        return prev
+      }, {tmp:'', dotNum: 0})['tmp']
+      if(tmp.includes('.') && /([0-9]*).([0-9]*)/.test(tmp)) {
+        const [, left, right] = tmp.match(/([0-9]*).([0-9]*)/)
+        inputRef.value = left ? Number(left) + '.' + right : ''
+      } else {
+        inputRef.value = tmp
+      }
+    })
+    if(inputRef) {
+      inputRef.oninput = fn
+    } else {
+      el.oninput = fn
+    }
+  }
+}

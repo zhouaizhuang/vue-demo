@@ -26,4 +26,5 @@ export default [
   { path: '/myVmodel', name: 'myVmodel', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/myVmodel/index.vue') },
   { path: '/useWatch', name: 'useWatch', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/useWatch/index.vue') },
   { path: '/asyncCom', name: 'asyncCom', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/asyncCom/index.vue') },
+  { path: '/renderCom', name: 'renderCom', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/renderCom/index.vue') },
 ]

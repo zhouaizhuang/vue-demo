@@ -149,6 +149,7 @@
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/myVmodel">自定义组件v-model</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/asyncCom">vue.extend动态挂载组件</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/renderCom">JSX方式render组件</router-link></div>
       </div>
     </div>
     <div class="f">

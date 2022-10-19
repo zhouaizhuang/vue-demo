@@ -4,9 +4,8 @@ export default {
   components:{},
   data(){
     return {
-      numGtInt0:'',
-      numGtEqInt0: '',
-      numGtFloat0: '',
+      numInt:'',
+      numFloat: '',
       limitNum: '',
       decimalNum:'',
     }

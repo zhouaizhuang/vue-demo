@@ -9,6 +9,7 @@ export default [
   { path: '/vLazyImg', name: 'vLazyLoad', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vLazyImg/index.vue') },
   { path: '/vDefaultImg', name: 'vDefaultImg', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vDefaultImg/index.vue') },
   { path: '/vReachBottom', name: 'vReachBottom', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vReachBottom/index.vue') },
+  { path: '/vFocus', name: 'vFocus', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vFocus/index.vue') },
   { path: '/propsEmit', name: 'propsEmit', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/propsEmit/father.vue') },
   { path: '/parentChild', name: 'parentChild', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/parentChild/father.vue') },
   { path: '/eventBus', name: 'eventBus', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/eventBus/index.vue') },

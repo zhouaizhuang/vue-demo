@@ -7,6 +7,7 @@ export default {
       numGtInt0:'',
       numGtEqInt0: '',
       numGtFloat0: '',
+      decimalNum:'',
     }
   },
   methods:{

@@ -24,8 +24,8 @@
         <Input class="auto" style="width:80%;" type="text" v-model="minNum" v-min="2" />
       </div>
       <div class="f1 tc">
-        <div>v-max="2"(最大值为10)</div>
-        <Input class="auto" style="width:80%;" type="text" v-model="maxNum" v-max="2" />
+        <div>v-max="10"(最大值为10)</div>
+        <Input class="auto" style="width:80%;" type="text" v-model="maxNum" v-max="10" />
       </div>
     </div>
   </div>

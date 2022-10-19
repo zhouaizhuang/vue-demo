@@ -112,7 +112,7 @@ export const min = {
     const inputRef = el.querySelector('input')
     const fn = () => window.requestAnimationFrame(() => {
       let tmp = inputRef.value
-      inputRef.value = Math.max(tmp, Number(value))
+      inputRef.value = tmp === '' ? '' : Math.max(tmp, Number(value))
     })
     if(inputRef) {
       inputRef.addEventListener('input', fn)
@@ -131,7 +131,7 @@ export const min = {
     const inputRef = el.querySelector('input')
     const fn = () => window.requestAnimationFrame(() => {
       let tmp = inputRef.value
-      inputRef.value = Math.min(tmp, Number(value))
+      inputRef.value = tmp == '' ? '' : Math.min(tmp, Number(value))
     })
     if(inputRef) {
       inputRef.addEventListener('input', fn)

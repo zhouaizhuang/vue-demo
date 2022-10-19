@@ -1,4 +1,5 @@
-// 组件1
+// https://blog.csdn.net/weixin_41897680/article/details/120949680
+// 测试案例
 export const testCom = {
   //组件名
   name: "testCom",

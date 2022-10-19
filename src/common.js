@@ -1486,8 +1486,8 @@ export const looseEqual = function (a, b) {
  */
 export const reWriteLog = function (){
   console.log = (function(log){
-    return process.env.VUE_APP_ENV == 'development' ? log : function() {}  
-  }(console.log))
+    return process.env.VUE_APP_ENV == 'development' ? log : function() {}
+  })(console.log)
 }
 /*
 **********************************************************************************************

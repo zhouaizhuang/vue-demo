@@ -14,7 +14,7 @@
         <Input class="auto" style="width:80%;" type="text" v-model="codeStr" v-code />
       </div>
       <div class="f1 tc">
-        <div>v-limit="5"(限制多少位)</div>
+        <div>v-limit="5"(限制最多输入5位)</div>
         <Input class="auto" style="width:80%;" type="text" v-model="limitNum" v-limit="5" />
       </div>
     </div>

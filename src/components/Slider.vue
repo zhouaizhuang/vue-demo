@@ -10,8 +10,8 @@
         @success="onSuccess"
         @fail="onFail"
         @refresh="onRefresh"
+        :imgs="[yanzheng1, yanzheng2, yanzheng3]"
       >
-      <!-- :imgs="[yanzheng1, yanzheng2, yanzheng3]" 可以传入几张固定的图片，这样图片显示会很快-->
       </slide-verify>
       <div style="padding-top:3px;">{{msg}}</div>
       <svg @click="close" t="1652860117288" class="error" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1945" width="200" height="200"><path d="M509.866667 32C245.333333 32 32 247.466667 32 512s213.333333 480 477.866667 480S987.733333 776.533333 987.733333 512 774.4 32 509.866667 32z m0 896C281.6 928 96 742.4 96 512S281.6 96 509.866667 96 923.733333 281.6 923.733333 512s-185.6 416-413.866666 416z" fill="#ffffff" p-id="1946"></path><path d="M693.333333 330.666667c-12.8-12.8-32-12.8-44.8 0L512 467.2l-136.533333-136.533333c-12.8-12.8-32-12.8-44.8 0-12.8 12.8-12.8 32 0 44.8l136.533333 136.533333-136.533333 136.533333c-12.8 12.8-12.8 32 0 44.8 6.4 6.4 14.933333 8.533333 23.466666 8.533334s17.066667-2.133333 23.466667-8.533334l136.533333-136.533333 136.533334 136.533333c6.4 6.4 14.933333 8.533333 23.466666 8.533334s17.066667-2.133333 23.466667-8.533334c12.8-12.8 12.8-32 0-44.8L556.8 512l136.533333-136.533333c12.8-12.8 12.8-32 0-44.8z" fill="#ffffff" p-id="1947"></path></svg>
@@ -19,6 +19,9 @@
   </div>
 </template>
 <script>
+import yanzheng1 from "../assets/yanzheng1.png"
+import yanzheng2 from "../assets/yanzheng2.png"
+import yanzheng3 from "../assets/yanzheng3.png"
 export default {
   name: 'slider',
   props: {
@@ -27,6 +30,9 @@ export default {
   data(){
     return {
       msg: '',
+      yanzheng1,
+      yanzheng2,
+      yanzheng3
     }
   },
   methods: {

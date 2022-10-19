@@ -50,7 +50,7 @@ export const float = {
       }, {tmp:'', dotNum: 0})['tmp']
       if(tmp.includes('.') && /-?([0-9]*).([0-9]*)/.test(tmp)) {
         const [, left, right] = tmp.match(/-?([0-9]*).([0-9]*)/)
-        inputRef.value = left ? (tmp.at(0) == '-' ? '-' : '') + Number(left) + '.' + right : ''
+        inputRef.value = left ? (tmp.at(0) == '-' ? '-' : '') + left + '.' + right : ''
       } else {
         inputRef.value = tmp
       }
@@ -111,10 +111,10 @@ export const code = {
     const inputRef = el.querySelector('input')
     const fn = () => window.requestAnimationFrame(() => {
       let tmp = inputRef.value
-      if(tmp.includes('.') && /([0-9]*).([0-9]*)/.test(tmp)) {
-        const [, left, right] = tmp.match(/([0-9]*).([0-9]*)/)
+      if(tmp.includes('.') && /-?([0-9]*).([0-9]*)/.test(tmp)) {
+        const [, left, right] = tmp.match(/-?([0-9]*).([0-9]*)/)
         if(right.length > 2) {
-          inputRef.value = left ? Number(left) + '.' + right.slice(0, Number(value)) : ''
+          inputRef.value = left ? (tmp.at(0) == '-' ? '-' : '') + left + '.' + right.slice(0, Number(value)) : ''
         }
       }
     })

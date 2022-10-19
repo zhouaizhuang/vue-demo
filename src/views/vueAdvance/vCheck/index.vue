@@ -13,7 +13,11 @@
       <Input class="auto" style="width:80%;" type="text" v-model="numGtFloat0" v-gtFloat0 />
     </div>
     <div class="mb30">
-      <div class="b tc mb10">v-decimalLimit(保留两位小数)</div>
+      <div class="b tc mb10">v-limit="5"(限制多少位)</div>
+      <Input class="auto" style="width:80%;" type="text" v-model="limitNum" v-limit="5" />
+    </div>
+    <div class="mb30">
+      <div class="b tc mb10">v-decimalLimit="2"(保留两位小数)</div>
       <Input class="auto" style="width:80%;" type="text" v-model="decimalNum" v-gtFloat0 v-decimalLimit="2" />
     </div>
   </div>

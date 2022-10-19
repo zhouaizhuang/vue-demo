@@ -85,6 +85,25 @@ export const gtEqInt0 = {
 /**
  * 保留小数点后几位
  * @param {Function} 
+ * 直接使用： <Input v-limit="5"></Input>
+ */
+ export const limit = {
+  inserted(el, { value }){
+    const inputRef = el.querySelector('input')
+    const fn = () => window.requestAnimationFrame(() => {
+      let tmp = inputRef.value
+      inputRef.value = tmp.slice(0, Number(value))
+    })
+    if(inputRef) {
+      inputRef.oninput = fn
+    } else {
+      el.oninput = fn
+    }
+  }
+}
+/**
+ * 保留小数点后几位
+ * @param {Function} 
  * 直接使用： <Input v-decimalLimit="2"></Input>
  */
  export const decimalLimit = {

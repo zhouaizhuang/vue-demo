@@ -124,7 +124,7 @@
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vDefaultImg">v-defaultImg----默认图片</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vReachBottom">v-reachBottom----触底加载</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vFocus">v-focus----自动聚焦</router-link></div>
-        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vCheck_pc">过滤输入指令</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vCheck_pc">过滤表单输入指令系列</router-link></div>
       </div>
     </div>
     <div class="f">

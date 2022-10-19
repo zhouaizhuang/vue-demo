@@ -14,9 +14,9 @@ export const int = {
       inputRef.value = tmp
     })
     if(inputRef) {
-      inputRef.oninput = fn
+      inputRef.addEventListener('input', fn)
     } else {
-      el.oninput = fn
+      el.addEventListener('input', fn)
     }
   },
 }
@@ -53,9 +53,9 @@ export const int = {
       }
     })
     if(inputRef) {
-      inputRef.oninput = fn
+      inputRef.addEventListener('input', fn)
     } else {
-      el.oninput = fn
+      el.addEventListener('input', fn)
     }
   }
 }
@@ -72,9 +72,9 @@ export const int = {
       inputRef.value = tmp.slice(0, Number(value))
     })
     if(inputRef) {
-      inputRef.oninput = fn
+      inputRef.addEventListener('input', fn)
     } else {
-      el.oninput = fn
+      el.addEventListener('input', fn)
     }
   }
 }
@@ -90,15 +90,15 @@ export const int = {
       let tmp = inputRef.value
       if(tmp.includes('.') && /([0-9]*).([0-9]*)/.test(tmp)) {
         const [, left, right] = tmp.match(/([0-9]*).([0-9]*)/)
-        inputRef.value = left ? Number(left) + '.' + right.slice(0, Number(value)) : ''
-      } else {
-        inputRef.value = tmp
+        if(right.length > 2) {
+          inputRef.value = left ? Number(left) + '.' + right.slice(0, Number(value)) : ''
+        }
       }
     })
     if(inputRef) {
-      inputRef.oninput = fn
+      inputRef.addEventListener('input', fn)
     } else {
-      el.oninput = fn
+      el.addEventListener('input', fn)
     }
   }
 }
@@ -115,9 +115,9 @@ export const min = {
       inputRef.value = Math.max(tmp, Number(value))
     })
     if(inputRef) {
-      inputRef.oninput = fn
+      inputRef.addEventListener('input', fn)
     } else {
-      el.oninput = fn
+      el.addEventListener('input', fn)
     }
   }
 }
@@ -134,9 +134,9 @@ export const min = {
       inputRef.value = Math.min(tmp, Number(value))
     })
     if(inputRef) {
-      inputRef.oninput = fn
+      inputRef.addEventListener('input', fn)
     } else {
-      el.oninput = fn
+      el.addEventListener('input', fn)
     }
   }
 }

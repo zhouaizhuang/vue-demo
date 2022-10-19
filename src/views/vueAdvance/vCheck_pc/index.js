@@ -8,6 +8,8 @@ export default {
       numFloat: '',
       limitNum: '',
       decimalNum:'',
+      minNum:'',
+      maxNum: '',
     }
   },
   methods:{

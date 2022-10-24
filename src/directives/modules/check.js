@@ -61,7 +61,7 @@ export const float = {
   }
 }
 /**
- * 编码格式
+ * 编码格式大小写字母、数字、中英文符号
  * @param {Function} 
  * 直接使用： <Input v-code></Input>
  */
@@ -161,5 +161,3 @@ export const min = {
     }
   }
 }
-
-

@@ -11,4 +11,5 @@ export default [
   { path: '/transparentBorder', name: 'transparentBorder', component: () => import(/* webpackChunkName: "special" */ '../../views/special/transparentBorder/index.vue') },
   { path: '/circleText', name: 'circleText', component: () => import(/* webpackChunkName: "special" */ '../../views/special/circleText/index.vue') },
   { path: '/hideText', name: 'hideText', component: () => import(/* webpackChunkName: "special" */ '../../views/special/hideText/index.vue')},
+  { path: '/firstLetter', name: 'firstLetter', component: () => import(/* webpackChunkName: "special" */ '../../views/special/firstLetter/index.vue')},
 ]

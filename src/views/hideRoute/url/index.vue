@@ -13,7 +13,6 @@
         <a class="db w20 pb30 min190px g42b983 poi" href="https://www.youyedoc.com/">PPT模板</a>
         <a class="db w20 pb30 min190px g42b983 poi" href="https://recordscreen.io">在线录屏</a>
         <a class="db w20 pb30 min190px g42b983 poi" href="https://zh.wikihow.com">生活技能</a>
-        <a class="db w20 pb30 min190px g42b983 poi" href="https://newhouse.fang.com/jsq/pg.htm">房产计算小工具</a>
       </div> 
     </div>
     <div class="f">
@@ -69,6 +68,13 @@
       <div class="b" style="width:150px;">医疗</div>
       <div class="f1 f xs ac rw">
         <a class="db w20 pb30 min190px g42b983 poi" href=" https://www.nmpa.gov.cn/">国家药监局</a>
+      </div>
+    </div>
+    <div class="f">
+      <div class="b" style="width:150px;">房产</div>
+      <div class="f1 f xs ac rw">
+        <a class="db w20 pb30 min190px g42b983 poi" href="https://newhouse.fang.com/jsq/pg.htm">房产计算小工具</a>
+        <a class="db w20 pb30 min190px g42b983 poi" href="http://www.czgjj.com/hfmiswechat/wx_dkjsq_new.do?t=1652879576710">公积金贷款计算</a>
       </div>
     </div>
   </div>

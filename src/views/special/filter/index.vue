@@ -36,8 +36,8 @@
         <img style="filter:drop-shadow(4px 4px 8px blue);" src="https://upload.qianfanyun.com/yjyn/ylyn_life_bg.png" />
       </div>
       <div class="f1 f ac">
-        <div style="width:120px;">灰度50%</div>
-        <img style="filter:grayscale(50%);" src="https://upload.qianfanyun.com/yjyn/ylyn_life_bg.png" />
+        <div style="width:120px;">(全站置灰)灰度100%</div>
+        <img style="filter:grayscale(100%);" src="https://upload.qianfanyun.com/yjyn/ylyn_life_bg.png" />
       </div>
     </div>
     <div class="f rw ac mt50">

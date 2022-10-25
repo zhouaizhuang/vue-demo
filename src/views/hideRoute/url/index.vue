@@ -13,6 +13,7 @@
         <a class="db w20 pb30 min190px g42b983 poi" href="https://www.youyedoc.com/">PPT模板</a>
         <a class="db w20 pb30 min190px g42b983 poi" href="https://recordscreen.io">在线录屏</a>
         <a class="db w20 pb30 min190px g42b983 poi" href="https://zh.wikihow.com">生活技能</a>
+        <a class="db w20 pb30 min190px g42b983 poi" href="https://newhouse.fang.com/jsq/pg.htm">房产计算小工具</a>
       </div> 
     </div>
     <div class="f">

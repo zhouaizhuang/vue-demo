@@ -1,7 +1,7 @@
 <template>
   <div class="mh100vh">
     <div class="f ac mb20">
-      <div class="mr15 noCopy">基础用法：</div> <!--禁止复制-->
+      <div class="mr15 none">基础用法：</div> <!--禁止复制-->
       <Button type="primary" @click="add">+1</Button>
       <div class="">--------</div>
       <Tag type="border" color="primary">{{num}}</Tag>

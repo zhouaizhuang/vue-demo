@@ -13,7 +13,6 @@
   </div>
 </template>
 <script>
-import { noCopy } from '../../../common'
 export default {
   name: 'vCopy',
   data(){

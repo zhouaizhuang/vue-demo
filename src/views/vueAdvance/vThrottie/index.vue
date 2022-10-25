@@ -8,7 +8,6 @@
   </div>
 </template>
 <script>
-import { noCopy } from '../../../common'
 export default {
   name: 'vThrottie',
   data(){
@@ -22,7 +21,6 @@ export default {
     }
   },
   created(){
-    // noCopy()
   }
 }
 </script>

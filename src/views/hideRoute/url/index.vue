@@ -19,6 +19,7 @@
       <div class="b" style="width:150px;">前端类工具</div>
       <div class="f1 f xs ac rw">
         <a class="db w20 pb30 min190px g42b983 poi" href="https://tinypng.com/">在线图片压缩</a>
+        <a class="db w20 pb30 min190px g42b983 poi" href="https://jsrun.net/MfPKp/edit">在线解析html编码code</a>
         <a class="db w20 pb30 min190px g42b983 poi" href="https://regexr-cn.com/">在线正则测试工具</a>
         <a class="db w20 pb30 min190px g42b983 poi" href="https://codejiaonang.com/">正则练习</a>
         <a class="db w20 pb30 min190px g42b983 poi" href="http://www.iconfont.cn/">阿里矢量图标</a>

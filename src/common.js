@@ -1489,6 +1489,11 @@ export const reWriteLog = function (){
     return process.env.VUE_APP_ENV == 'development' ? log : function() {}
   })(console.log)
 }
+/**
+ * 格式化打印数据
+ * @param {*} val 需要打印的值
+ */
+export const formatConsole = val => console.log(JSON.stringify(val, null, 2))
 /*
 **********************************************************************************************
 ******************************************网络安全*********************************************

@@ -56,13 +56,13 @@
         <div class="mt30 f ac xc" @click="covertVal(1)"><Button type="success">解密</Button></div>
         <div class="mb30 mt100 f ac xc" @click="covertVal(2)"><Button type="info">加密</Button></div>
       </div>
-      <div v-if="autoCopy" class="f1 none">
+      <div v-if="autoCopy" class="f1 ovh none">
         <pre v-if="type == 1 && autoFormate" class="hljs ovya" v-copy="newVal_">
           <div v-html="newVal"></div>
         </pre>
         <div v-else class="pre ovya wrap lba" v-copy="newVal_">{{newVal_}}</div>
       </div>
-      <div v-else class="f1">
+      <div v-else class="f1 ovh none">
         <pre v-if="type == 1 && autoFormate" class="hljs ovya">
           <div v-html="newVal"></div>
         </pre>

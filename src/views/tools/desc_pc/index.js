@@ -6,7 +6,7 @@ export default {
   data(){
     return {
       stateText: '',
-      autoCapacity: true, // 自动识别
+      autoCapacity: false, // 自动识别
       autoFormate: true, // 自动格式化
       autoCopy: true, // 点击结果自动复制
       secret:'gagc#2017ABCDgagc#2017ABCD',

@@ -76,6 +76,7 @@
       <div class="f1 f xs ac rw">
         <a class="db w20 pb30 min190px g42b983 poi" href="https://newhouse.fang.com/jsq/pg.htm">房产计算小工具</a>
         <a class="db w20 pb30 min190px g42b983 poi" href="http://www.czgjj.com/hfmiswechat/wx_dkjsq_new.do?t=1652879576710">公积金贷款计算</a>
+        <a class="db w20 pb30 min190px g42b983 poi" href="http://m.cz.bendibao.com/mip/41193.shtm">常州学区划分表</a>
       </div>
     </div>
   </div>

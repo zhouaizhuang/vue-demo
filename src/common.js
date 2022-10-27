@@ -486,6 +486,32 @@ export const chunk = function (arr, size = 0) {
   return targetArr
 }
 /**
+ * 按照某个字段将数组分割成二维数组
+ * @param {*} arr 需要处理的数组
+ * @param {*} field 字段名
+ * @举例 collectBy([{name: 'a', age: 17}, {name: 'a', age: 13}, {name: 'b', age: 22}], 'name')
+ * @处理 ----------->
+ * @结果 [[{name: 'a', age: 17}, {name: 'a', age: 13}], [{name: 'b', age: 22}]]
+ */
+export const collectBy = function (arr, field) {
+  const res = arr.reduce((prev, item) => {
+    const fieldName = item[field]
+    prev[fieldName] = prev[fieldName] || []
+    return prev[fieldName].push(item), prev
+  }, {})
+  return Object.values(res)
+}
+/**
+ * 删除对象中的部分字段
+ * @param {*} obj 需要操作的对象
+ * @param {*} field 字段属性
+ * @returns 
+ * @举例 dropField({name: 'z', age: 18}, 'name') -----> {age: 18}
+ */
+export const dropField = function (obj, field = '') {
+  return Object.keys(obj).reduce((prev, item) => (!field.split(',').includes(item) && (prev[item] = obj[item]), prev), {})
+}
+/**
  * 数组分割
  * @param {Array} arr 需要进行分割的数组
  * @param {Array} num 分割的位置

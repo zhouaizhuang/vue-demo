@@ -11,7 +11,6 @@
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://www.gaitubao.com/tupian-wenzi/">在线图片转文字</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://online.easyscreenocr.com/ZH?utm_source=hao.logosc.cn&utm_medium=referral">在线OCR识别</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://www.youyedoc.com/">PPT模板</a></div>
-        <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://recordscreen.io">在线录屏</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://zh.wikihow.com">生活技能</a></div>
       </div> 
     </div>
@@ -47,7 +46,6 @@
     <div class="f">
       <div class="b" style="width:150px;">娱乐</div>
       <div class="f1 f xs ac rw">
-        <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="http://mahua.jser.me/">动漫</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://www.videofk.com/">视频下载</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://www.yikm.net/">在线小霸王游戏机</a></div>
       </div>

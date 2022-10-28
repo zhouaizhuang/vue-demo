@@ -5,7 +5,7 @@
         <Input v-model="accountObj.account" placeholder="请输入登录账号"></Input>
       </FormItem>
       <FormItem label="登录密码:" prop="pwd">
-        <Input v-model="accountObj._pwd" @on-change="inputPwd" type="text" placeholder="请输入登录密码"></Input>
+        <Input v-model="accountObj._pwd" @on-change="inputPwd" type="text" v-mask placeholder="请输入登录密码"></Input>
       </FormItem>
     </Form>
     <div class="tc">

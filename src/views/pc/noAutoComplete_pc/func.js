@@ -7,6 +7,7 @@ export const submit = function () {
     } else if(this.accountObj.pwd.length > 50) {
       return this.$Message.error('密码不能超过50位')
     }
+    console.log(this.accountObj)
     this.$Message.success('注册成功')
     // 进行接口请求
     // let params =  {...this.accountObj }

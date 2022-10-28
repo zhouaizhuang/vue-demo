@@ -187,3 +187,26 @@ export const min = {
     resolveChar(inputRef, vnode, fn)
   }
 }
+/**
+ * input遮罩层，禁止选择
+ * @param {Function} 
+ * 直接使用： <Input v-model="accountObj._pwd" @on-change="inputPwd" type="text" v-mask placeholder="请输入登录密码"></Input>
+ */
+ export const mask = {
+  inserted(el, {value}, vnode) {
+    const inputRef = el.querySelector('input') || el
+    const fatherDom = inputRef.parentElement
+    fatherDom.style.position = 'relative'
+    const op10Mask = document.createElement("div")
+    op10Mask.style.backgroundColor = 'transparent'
+    op10Mask.style.position = 'absolute'
+    op10Mask.style.top = '0'
+    op10Mask.style.right = '0'
+    op10Mask.style.bottom = '0'
+    op10Mask.style.left = '0'
+    op10Mask.addEventListener('click', () => {
+      inputRef.focus && inputRef.focus()
+    })
+    fatherDom.appendChild(op10Mask)
+  },
+}

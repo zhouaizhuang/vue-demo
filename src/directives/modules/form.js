@@ -5,7 +5,7 @@
  * @param {*} vnode dom
  * @param {*} fn 处理函数
  */
- const resolveChar = function (ref, vnode, fn){
+const resolveChar = function (ref, vnode, fn){
   ref.addEventListener('compositionstart', () => {
     vnode.inputLocking = true
   })
@@ -21,7 +21,7 @@
  * 直接使用： <Input v-int></Input>
  * 传入true，允许输入负值： <Input v-int="true"></Input>
  */
- export const int = {
+export const int = {
   inserted(el, {value}, vnode) {
     const inputRef = el.querySelector('input') || el
     const fn = e => window.requestAnimationFrame(() => {
@@ -105,7 +105,7 @@ export const code = {
  * @param {Function} 
  * 直接使用： <Input v-limit="5"></Input>
  */
- export const limit = {
+export const limit = {
   inserted(el, {value}, vnode) {
     const inputRef = el.querySelector('input') || el
     const fn = e => window.requestAnimationFrame(() => {
@@ -125,7 +125,7 @@ export const code = {
  * @param {Function} 
  * 直接使用： <Input v-decimalLimit="2"></Input>
  */
- export const decimalLimit = {
+export const decimalLimit = {
   inserted(el, {value}, vnode) {
     const inputRef = el.querySelector('input') || el
     const fn = e => window.requestAnimationFrame(() => {
@@ -171,7 +171,7 @@ export const min = {
  * @param {Function} 
  * 直接使用： <Input v-max="100"></Input>
  */
- export const max = {
+export const max = {
   inserted(el, {value}, vnode) {
     const inputRef = el.querySelector('input') || el
     const fn = e => window.requestAnimationFrame(() => {
@@ -192,7 +192,7 @@ export const min = {
  * @param {Function} 
  * 直接使用： <Input v-model="accountObj._pwd" @on-change="inputPwd" type="text" v-mask placeholder="请输入登录密码"></Input>
  */
- export const mask = {
+export const mask = {
   inserted(el, {value}, vnode) {
     const inputRef = el.querySelector('input') || el
     const fatherDom = inputRef.parentElement

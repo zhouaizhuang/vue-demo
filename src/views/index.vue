@@ -190,6 +190,7 @@
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/cusForm">自定义表单</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/getLocation">获取位置</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/goApplet">H5跳转小程序</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/scanfCode">调用相机扫描一维码二维码</router-link></div>
       </div>
     </div>
     <div class="fs26 b mt30 mb20 tc">PC开发</div>

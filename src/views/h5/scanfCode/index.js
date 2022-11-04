@@ -9,11 +9,10 @@ export default {
   data() {
     return {
       codeReader: new BrowserMultiFormatReader(),
-      isShowServiceCode: false, // 是否是服务编码
+      isShowVideo: false, // 是否开启摄像
+      num: 1,
       serviceCode: '',
-      isShowDeviceCode: false, // 是否是设备编码
       deviceCode: '',
-      // tipMsg: '尝试识别中....',
     }
   },
   methods: {

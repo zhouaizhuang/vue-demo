@@ -25,7 +25,7 @@
           <!-- <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/textStreamer">文字流光效果</router-link></div> -->
           <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/textSweat">文字流汗动画</router-link></div>
           <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/aniDelay">动画播放延时</router-link></div>
-          <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/specialBorder">特殊边框</router-link></div>
+          <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/specialBorder_pc">特殊边框</router-link></div>
           <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/pieChart">简易饼图（锥形渐变）</router-link></div>
           <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/redPacket">红包动画</router-link></div>
           <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/musicPlay">音乐播放</router-link></div>

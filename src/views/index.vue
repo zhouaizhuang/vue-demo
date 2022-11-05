@@ -10,6 +10,7 @@
         <div class="f1 f xs ac rw">
           <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/typeWord">打字动画</router-link></div>
           <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/textStaggered">文字交错显示</router-link></div>
+          <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/tabs">精美的tabs</router-link></div>
           <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/carousel">可视化大屏无缝Y轴滚动</router-link></div>
           <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/carouselX">文字横幅横向X轴滚动</router-link></div>
           <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/wordsCarousel">文字步进轮播动画</router-link></div>
@@ -188,7 +189,7 @@
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/message">发短信</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/getLocation">获取位置</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/goApplet">H5跳转小程序</router-link></div>
-        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/scanfCode">调用相机扫描一维码二维码</router-link></div>
+        <!-- <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/scanfCode">调用相机扫描一维码二维码</router-link></div> -->
       </div>
     </div>
     <div class="f">
@@ -196,7 +197,6 @@
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/form">表单</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/cusForm">自定义表单</router-link></div>
-        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/tabs">精美的tabs</router-link></div>
       </div>
     </div>
     <div class="fs26 b mt30 mb20 tc">PC开发</div>

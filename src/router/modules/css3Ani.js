@@ -20,4 +20,5 @@ export default [
   { path: '/redPacket', name: 'redPacket', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/redPacket/index.vue')},
   { path: '/musicPlay', name: 'musicPlay', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/musicPlay/index.vue')},
   { path: '/musicPlay1', name: 'musicPlay1', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/musicPlay1/index.vue')},
+  { path: '/tabs', name: 'tabbar', component: () => import(/* webpackChunkName: "h5" */ '../../views/css3Ani/tabs/index.vue')},
 ]

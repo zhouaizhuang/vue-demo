@@ -1,4 +1,18 @@
-/**1、流动边框 */
+/*1、登录框边框*/
+.aniRotateBorder{
+  animation: rotateBd 6s linear 0s infinite;
+  transform-origin: bottom right;
+}
+@keyframes rotateBd {
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+/**2、流动边框 */
 .bgContent::before{
   content:'';
   position: absolute;
@@ -15,7 +29,7 @@
 @keyframes rotate {
 	100% { transform: rotate(1turn); }
 }
-/***2、角向渐变*/
+/***3、角向渐变*/
 .conic::before {
   content: '';
   position: absolute;
@@ -29,7 +43,7 @@
 @keyframes rotate {
 	100% { transform: rotate(1turn); }
 }
-/**3、clip裁剪制作边框 */
+/**4、clip裁剪制作边框 */
 .clipContent::before{
   content: "";
   position: absolute;
@@ -56,7 +70,7 @@
     clip-path: inset(0 0 0 95%);
   }
 }
-/***4、渐变边框 */
+/***5、渐变边框 */
 .border-image-clip-path {
   width: 200px;
   height: 100px;
@@ -73,6 +87,3 @@
     filter: hue-rotate(360deg);
   }
 }
-
-
-/*5*/

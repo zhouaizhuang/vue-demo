@@ -13,13 +13,13 @@
         <div @click.stop="nameState=1" class="mb30 rel" style="height:65px;">
           <div class="fs16 abs zx1 trans3" :style="{bottom:'5px', transformOrigin: 'left top', transform: nameState==1 ? 'translateY(-40px) scale(.8)' : 'translateY(0px)', color: nameState==1 ? '#45f3ff' : '#ccc'}">用户名</div>
           <div class="abs b0 l0 r0 zx10 rds5 trans3" :style="{height:nameState==1 ? '40px' : '1px',background:'#45f3ff'}">
-            <input type="text" :value="name" class="abs l50 tx-50 w98 rds5 zx1" style="bottom:1px;height:40px;border:0;outline:0;background:transparent">
+            <input type="text" v-model="name" class="abs l50 tx-50 w98 rds5 zx1" style="bottom:1px;height:40px;border:0;outline:0;background:transparent">
           </div>
         </div>   
         <div @click.stop="passwordState=1" class="mb30 rel" style="height:65px;">
           <div class="fs16 abs zx1 trans3" :style="{bottom:'5px', transformOrigin: 'left top', transform: passwordState == 1 ? 'translateY(-40px) scale(.8)' : 'translateY(0px)', color: passwordState == 1 ? '#45f3ff' : '#ccc'}">密码</div>
           <div class="abs b0 l0 r0 zx10 rds5 trans3" :style="{height:passwordState == 1 ? '40px' : '1px',background:'#45f3ff'}">
-            <input type="text" :value="password" class="abs l50 tx-50 w98 rds5 zx1" style="bottom:1px;height:40px;border:0;outline:0;background:transparent">
+            <input type="text" v-model="password" class="abs l50 tx-50 w98 rds5 zx1" style="bottom:1px;height:40px;border:0;outline:0;background:transparent">
           </div>
         </div>   
         <div class="g0 f ac xc pt10 pb10 rds2 lt5" style="background:#45f3ff;width:90px;">登录</div>

@@ -1,3 +1,4 @@
+// https://github.com/serratus/quaggaJS
 import Quagga from 'quagga'
 import { safeGet } from "../../../common.js"
 // 初始化

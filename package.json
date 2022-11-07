@@ -13,6 +13,7 @@
     "core-js": "^3.6.5",
     "crypto-js": "^4.1.1",
     "echarts": "^5.2.2",
+    "html5-qrcode": "^2.2.8",
     "qrcodejs2": "^0.0.2",
     "quagga": "^0.12.1",
     "view-design": "^4.7.0",

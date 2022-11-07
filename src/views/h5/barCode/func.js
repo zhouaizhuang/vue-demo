@@ -1,6 +1,7 @@
 // https://github.com/serratus/quaggaJS
 import Quagga from 'quagga'
-import { safeGet } from "../../../common.js"
+import { safeGet, range } from "../../../common.js"
+console.log(range(window.innerHeight, 350, 400))
 // 初始化
 export const init = function () {
   this.isShowBarCode = true
@@ -9,8 +10,8 @@ export const init = function () {
       name : "Live",
       type : "LiveStream",
       constraints: {
-        width: window.innerWidth,
-        height: window.innerHeight,
+        width: range(window.innerWidth, 350, 400),
+        height: range(window.innerHeight, 400, 750),
         facingMode: "environment",
         deviceId: ""
       },

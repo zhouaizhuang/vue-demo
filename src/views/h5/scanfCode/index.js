@@ -1,4 +1,4 @@
-// https://blog.csdn.net/weixin_42684136/article/details/118190396
+// 不依赖微信环境的摄像头扫描识别二维码（可用）： https://blog.csdn.net/muguli2008/article/details/114134547
 // https://blog.csdn.net/m0_47763320/article/details/126726681
 // https://github.com/zxing/zxing
 import { BrowserMultiFormatReader } from '@zxing/library'

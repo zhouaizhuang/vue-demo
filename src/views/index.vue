@@ -197,6 +197,7 @@
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/form">表单</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/cusForm">自定义表单</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/barCode">条形码扫描</router-link></div>
       </div>
     </div>
     <div class="fs26 b mt30 mb20 tc">PC开发</div>

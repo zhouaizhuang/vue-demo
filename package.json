@@ -14,6 +14,7 @@
     "crypto-js": "^4.1.1",
     "echarts": "^5.2.2",
     "qrcodejs2": "^0.0.2",
+    "quagga": "^0.12.1",
     "view-design": "^4.7.0",
     "vue": "^2.6.11",
     "vue-lottie": "^0.2.1",

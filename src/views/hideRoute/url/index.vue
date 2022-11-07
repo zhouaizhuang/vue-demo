@@ -18,6 +18,7 @@
       <div class="b" style="width:150px;">前端类工具</div>
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://tinypng.com/">在线图片压缩</a></div>
+        <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://www.bejson.com/ui/compress_img/">在线图片压缩2</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://jsrun.net/MfPKp/edit">在线解析html编码code</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://regexr-cn.com/">在线正则测试工具</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://codejiaonang.com/">正则练习</a></div>

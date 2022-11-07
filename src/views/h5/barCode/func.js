@@ -8,8 +8,8 @@ export const init = function () {
       name : "Live",
       type : "LiveStream",
       constraints: {
-        width: 340,
-        height: 200,
+        width: window.innerWidth,
+        height: window.innerHeight,
         facingMode: "environment",
         deviceId: ""
       },

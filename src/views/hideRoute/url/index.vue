@@ -6,6 +6,7 @@
       <div class="b" style="width:150px;">工具</div>
       <div class="f1 f xs ac rw">
         <a class="db w20 pb30 min190px g42b983 poi"><router-link class="g42b983" to="/desc_pc">在线加密解密</router-link></a>
+        <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://www.fontke.com/tool/code128/">在线生成code128编码（条形码）</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://tool.lu/">在线工具网址</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://www.jiumodiary.com/">电子书查找</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://www.gaitubao.com/tupian-wenzi/">在线图片转文字</a></div>

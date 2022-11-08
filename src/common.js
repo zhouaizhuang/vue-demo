@@ -609,7 +609,7 @@ export const JSON2url = function (url = '', params = {}, type = 1) {
   const retUrl = Object.keys(formatJSON(params)).reduce((prev, item) => {
     let val = params[item]
     val = type == 1 ? encodeURIComponent(val) : val // 为了适配更多的场景，开发了自定义是否编码
-    return prev + (prev.includes('?') ? '&' : '?') + `${item}=${val}`
+    return prev + (url ? (prev.includes('?') ? '&' : '?') : '') + `${item}=${val}`
   }, url) || ''
   return url ? retUrl : retUrl.slice(1)
 }

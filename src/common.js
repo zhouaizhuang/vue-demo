@@ -46,7 +46,7 @@ export const isEmail = val => /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za
  * @returns 
  * @举例 isValidStr('123Z1f', '0,1,2') ----> true // type 传入'0,1,2'代表，数字大小写字母组合
  */
- export const isValidStr = function (val, type = '0,1,2', length = -1){
+export const isValidStr = function (val, type = '0,1,2', length = -1){
   type = String(type).replaceAll(' ', '')
   const mapReg = v => ({
     0: '0-9', // 数字 

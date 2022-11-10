@@ -536,8 +536,13 @@ export const transformArr = arr => arr[0].map((col, i) => arr.map(row => row[i])
 export const splitWhen = (arr, fn) => {
   return splitAt(arr, arr.findIndex(item => fn(item)))
 } 
-// 数组（a 相对于 b 的）交集
-// 举例子: intersect([1,2,3], [1,2]) ====> [1, 2]
+/**
+ * 取两个数组元素的交集
+ * @param {*} arr1 数组1
+ * @param {*} arr2 数组2
+ * @returns 取交集之后的结果
+ * @举例 intersect([1,2,3], [1,2]) ----> [1, 2]
+ */
 export const intersect = function (arr1, arr2){
   if(!isArray(arr1) || !isArray(arr2)) { throw new Error('参数必须是数组类型') }
   const tmp = new Set(arr2)

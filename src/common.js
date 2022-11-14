@@ -38,6 +38,7 @@ export const isFF = UA && UA.match(/firefox\/(\d+)/) // 是否是火狐浏览器
 export const isPhone = val => /^1[3456789]\d{9}$/.test(val) // 检测是否是手机号码
 export const isIdentity = val => /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/.test(val) // 身份证 321281155121152489
 export const isEmail = val => /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/.test(val)
+export const isRequired = () => { throw new Error('参数必填') }
 /**
  * 校验正确的字符串
  * @param {*} val 传入的需要校验的值
@@ -268,27 +269,24 @@ export const adjust = function (arr, num, fn) {
  *  v => ({...v, isChecked: !v.isChecked}),
  * )
  */
-export const searchCover = function (arr, search, success = v => v, fail = v => v) {
-  return arr.map(item => {
-    let isCurItem = isObject(search) ? Object.keys(search).reduce((prev, v) => (prev = prev && search[v] == item[v], prev), true) : search(item)
-    if(isCurItem) {
-      return isObject(success) ? { ...item, ...success } : success(item)
-    } else {
-      return isObject(fail) ? { ...item, ...fail } : fail(item)
-    }
-  })
+export const searchCover = function (arr, search = v => v, success = v => v, fail = v => v) {
+  if(isArray(arr)) { throw new Error('入参必须为对象数组') }
+  const isCurItem = item => isObject(search) ? Object.keys(search).reduce((prev, v) => (prev = prev && search[v] == item[v], prev), true) : search(item)
+  const fnRes = (item, fn) => isObject(fn) ? { ...item, ...fn } : fn(item)
+  return arr.map(item => isCurItem(item) ? fnRes(item, success) : fnRes(item , fail))
 }
 /**
  * 对象数组去重(根据对象中某个字段)
  * @param {Object<Array>} arr 需要去重的对象数组
  * @param {*} field 字段名称
- * @param {*} type  1：有重复的对象则去遍历到的第一个    -1有重复的则取遍历到的最后一个
+ * @param {*} type  1：有重复的对象则取遍历到的第一个    -1有重复的则取遍历到的最后一个
  * @returns 去重后的对象数组
  * @举例 根据对象中id字段进行去重操作
  * @举例 uniqueObj([{id:1, age:1}, {id:2, age:12}, {id:1, age: 23}], 'id', 1)  ---->  [{id: 1, age: 1, _sort: 0}, {id: 2, age: 12, _sort: 1}]
  * @举例 uniqueObj([{id:1, age:1}, {id:2, age:12}, {id:1, age: 23}], 'id', -1) ---->  [{id: 1, age: 23, _sort: 0}, {id: 2, age: 12, _sort: 1}]
  */
-export const uniqueObj = function (arr, field, type) {
+export const uniqueObj = function (arr, field = isRequired(), type = 1) {
+  if(isArray(arr)) { throw new Error('入参必须为对象数组') }
   const obj = arr.reduce((prev, item, index) => {
     const existItem = prev[item[field]]
     const curItem = { ...item, _sort: index}

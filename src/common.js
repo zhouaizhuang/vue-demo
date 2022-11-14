@@ -179,9 +179,7 @@ export const shuffle = function (arr){
  */
 export const cached = function (fn) {
   const cache = Object.create(null)
-  return function (str) {
-    return !cache[str] && (cache[str] = fn(str)), cache[str]
-  }
+  return str => (!cache[str] && (cache[str] = fn(str)), cache[str])
 }
 /**
  * 扩展对象

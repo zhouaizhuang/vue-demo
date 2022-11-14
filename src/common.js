@@ -289,7 +289,7 @@ export const uniqueObj = function (arr, field = isRequired(), type = 1) {
   if(isArray(arr)) { throw new Error('入参必须为对象数组') }
   const obj = arr.reduce((prev, item, index) => {
     const existItem = prev[item[field]]
-    const curItem = { ...item, _sort: index}
+    const curItem = { ...item, _sort: index }
     prev[item[field]] = type == 1 ? (existItem || curItem) :
                         existItem ? { ...item, _sort: existItem._sort } : curItem
     return prev

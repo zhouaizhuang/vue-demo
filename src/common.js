@@ -463,10 +463,8 @@ export const flatArr = function (arr, field) {
  * @举例 getField([{id:1, age: 15}, {id: 2, age: 18}, {id:3, age: 20}], 'id', {age:18}) --->  '2'
  */
 export const getField = function (arr, field, search = v => v, split = ',') {
-  return arr.reduce((prev, item) => {
-    let isCurItem = isObject(search) ? Object.keys(search).reduce((prev, v) => (prev = prev && search[v] == item[v], prev), true) : search(item)
-    return isCurItem ? [...prev, item[field]] : prev
-  }, []).join(split)
+  const isCurItem = item => isObject(search) ? Object.keys(search).reduce((prev, v) => (prev = prev && search[v] == item[v], prev), true) : search(item)
+  return arr.reduce((prev, item) => isCurItem(item) ? [...prev, item[field]] : prev, []).join(split)
 }
 /**
  * 数组分块

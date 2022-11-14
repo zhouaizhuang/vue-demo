@@ -126,11 +126,21 @@ export const sliceStr = function (str, num) {
   str = String(str)
   return str.length > num ? str.slice(0, num) + '...' : str.slice(0, num)
 }
-// 字符串前置补0。举例: addZero('1', 2) ==> '01'
+/**
+ * 字符串前置补0
+ * @param {String} str 
+ * @param {Number} num 
+ * @returns 
+ * @举例 addZero('1', 2) ----> '01'
+ */
 export const addZero = (str = '', num = 2) => (Array(num+1).join('0') + String(str)).slice(-num)
 // 完美的统计字符串长度，能正确统计占四个字节的Unicode字符。举例：length('x\uD83D\uDE80y') ----> 3
 export const length = str => [...str].length
-// 字符串复制
+/**
+ * 字符串复制
+ * @param {String} e 需要复制的文本
+ * @举例 copyLink('10086')  ----> ctrl + v 就能粘贴出10086
+ */
 export const copyLink = function (e){
   // if(!e) { return this.$Message.error('链接地址为空') }
   var input = document.createElement("input") // js创建一个input输入框

@@ -1083,7 +1083,6 @@ export const getScrollTop = () => (document.documentElement && document.document
  * @举例子 boxScroll(this.$refs.testRef, 300)
  */
 export const boxScroll = function (dom, offsetHeight = 0, type = 0){
-  console.log(offsetHeight)
   dom.scrollTo({
     top: offsetHeight,
     behavior: type == 0 ? 'smooth' : 'instant' // 平滑滚动 | 迅速滚动 

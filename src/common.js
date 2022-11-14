@@ -1418,39 +1418,17 @@ export const getOS = function() {
 }
 // 获取元素相对于浏览器的位置, 返回一个对象
 export const getPosition = function (e) {
-  const offsety = Number(e.offsetTop)
-  const offsetx = Number(e.offsetLeft)
   if (e.offsetParent !== null) { getPosition(e.offsetParent) }
-  return { Left: offsetx, Top: offsety }
+  return { Left: Number(e.offsetLeft), Top: Number(e.offsetTop) }
 }
 /**获取视口总高度
  * @returns 
  */
-export const get100vh = function () {
-  let winHeight = 0
-  if (window.innerHeight) {
-    winHeight = window.innerHeight
-  } else if (document.body && document.body.clientHeight) {
-    winHeight = document.body.clientHeight
-  } else if (document.documentElement && document.documentElement.clientHeight) {
-    winHeight = document.documentElement.clientHeight
-  }
-  return winHeight
-}
+export const get100vh = () => window.innerHeight || safeGet(() => document.body.clientHeight, 0) || safeGet(() => document.documentElement.clientHeight, 0)
 /**获取视口总宽度
  * @returns 
  */
-export const get100vw = function () {
-  let winWidth = 0
-  if (window.innerWidth) {
-    winWidth = window.innerWidth
-  } else if (document.body && document.body.clientWidth) {
-    winWidth = document.body.clientWidth
-  } else if (document.documentElement && document.documentElement.clientWidth) {
-    winWidth = document.documentElement.clientWidth
-  }
-  return winWidth
-}
+export const get100vw = () => window.innerWidth || safeGet(() => document.body.clientWidth, 0) || safeGet(() => document.documentElement.clientWidt, 0)
 /**
  * 获取距离视口的数据
  * 距离视窗的距离。一般现在通过 IntersectionObserver API实现了，请看https://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html

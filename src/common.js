@@ -178,14 +178,11 @@ export const shuffle = function (arr){
   return arr
 }
 /**
- * 
- * @举例 const cachedComputed = cached(function(val){ return val + 'ZZZ' })
- * @测试 cachedComputed('abc') ---> 'absZZZ' 第二次调用就不需要计算了直接取值 cachedComputed('abc') ---> 'absZZZ'
- * */ 
-/**
  * 缓存函数计算结果
  * @param {Function} fn 需要做缓存处理的函数
  * @returns {Function} 新的有缓存效果的函数
+ * @举例 const cachedComputed = cached(function(val){ return val + 'ZZZ' })
+ * @测试 cachedComputed('abc') ---> 'absZZZ' 第二次调用就不需要计算了直接取值 cachedComputed('abc') ---> 'absZZZ'
  */
 export const cached = function (fn) {
   const cache = Object.create(null)

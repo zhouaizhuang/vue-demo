@@ -1600,3 +1600,25 @@ export const invertBy = obj => Object.keys(obj).reduce((prev, item) => ((prev[ob
 /**
  * 链表
  */
+
+/**
+ * 使用 PerformanceObserver 监听 fcp。计算白屏时间
+ */
+export const getFcpTime = function (){
+  if (!!PerformanceObserver){
+    try {
+      const type = 'paint';
+      if ((PerformanceObserver.supportedEntryTypes || []).includes(type)) {
+        const observer = new PerformanceObserver((entryList)=>{
+          for(const entry of entryList.getEntriesByName('first-contentful-paint')){
+            const { startTime } = entry;
+            console.log(`首屏加载时间：${startTime}ms`)
+          }
+        })
+        observer.observe({ entryTypes: [type] })
+      }
+    } catch (e) {
+      console.warn('[assets-load-monitor] PerformanceObserver error:', (e || {}).message ? e.message : e)
+    }
+  }
+}

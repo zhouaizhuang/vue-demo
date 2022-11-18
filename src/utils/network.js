@@ -1,6 +1,7 @@
 import axios from "axios"
 import { JSON2url, formatJSON, showToast, getLocalStorage } from "../common.js"
 // console.log(process.env.VUE_APP_BASE_URL)
+const isDebug = process.env.VUE_APP_ENV == 'development'
 /************配置axios****** */
 let service = axios.create({
   baseURL: process.env.VUE_APP_BASE_URL,

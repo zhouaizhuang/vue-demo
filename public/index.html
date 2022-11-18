@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/view-design/dist/styles/iview.css">
     <!-- <title><%= htmlWebpackPlugin.options.title %></title> -->
     <title><%= process.env.VUE_APP_TITLE %></title>
     <!--地图相关-->
@@ -15,6 +16,11 @@
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
+    <script type="text/javascript" src="https://unpkg.com/vue@2.6.14/dist/vue.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/view-design/4.7.0/iview.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/vue-router/3.5.2/vue-router.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/vuex/3.6.2/vuex.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/axios/0.24.0/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/echarts.min.js" async></script>
     <!-- built files will be auto injected -->
   </body>

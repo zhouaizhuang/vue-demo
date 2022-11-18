@@ -5,7 +5,6 @@ import store from './store'
 import "./common.css"
 import "./utils/px2rem.js"
 import Directives from "./directives/index.js"
-import 'view-design/dist/styles/iview.css'
 import GlobalCommponent from "./globalComponents/index.js"
 import Print from "./utils/print.js"
 import Network from "./utils/network.js"

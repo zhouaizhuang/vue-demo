@@ -764,7 +764,7 @@ export const getProps = function (obj, props) {
   const filterProps = tmpObj => Object.keys(props).reduce((prev, v) => {
     return (prev[v] = isObject(props[v]) ? getProps(tmpObj[v], props[v]) : tmpObj[v] || ''), prev
   }, {})
-  if(!isReference) { return obj }
+  if(!isReference(obj)) { return obj }
   return isArray(obj) ? obj.map(item => filterProps(item)) : filterProps(obj)
 }
 /**

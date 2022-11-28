@@ -275,7 +275,7 @@ export const adjust = function (arr, num, fn) {
  * )
  */
 export const searchCover = function (arr, search = v => v, success = v => v, fail = v => v) {
-  if(isArray(arr)) { throw new Error('入参必须为对象数组') }
+  if(!isArray(arr)) { throw new Error('入参必须为对象数组') }
   const isCurItem = item => isObject(search) ? Object.keys(search).reduce((prev, v) => (prev = prev && search[v] == item[v], prev), true) : search(item)
   const fnRes = (item, fn) => isObject(fn) ? { ...item, ...fn } : fn(item)
   return arr.map(item => isCurItem(item) ? fnRes(item, success) : fnRes(item , fail))
@@ -291,7 +291,7 @@ export const searchCover = function (arr, search = v => v, success = v => v, fai
  * @举例 uniqueObj([{id:1, age:1}, {id:2, age:12}, {id:1, age: 23}], 'id', -1) ---->  [{id: 1, age: 23, _sort: 0}, {id: 2, age: 12, _sort: 1}]
  */
 export const uniqueObj = function (arr, field = isRequired(), type = 1) {
-  if(isArray(arr)) { throw new Error('入参必须为对象数组') }
+  if(!isArray(arr)) { throw new Error('入参必须为对象数组') }
   const obj = arr.reduce((prev, item, index) => {
     const existItem = prev[item[field]]
     const curItem = { ...item, _sort: index }

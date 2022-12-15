@@ -213,6 +213,24 @@ export const toObject = function (arr) {
   return res
 }
 /**
+ * 对象数组转对象
+ * @param {Array} arr 需要转换的数组
+ * @returns {Object} 转换之后的对象
+ * @举例 toObject([{name: 1}, {age:2}]) ----> { name:1, age:2 }
+ */
+export const polyfillBind = function (fn, ctx) {
+  function boundFn(a) {
+    var l = arguments.length
+    return l
+      ? l > 1
+        ? fn.apply(ctx, arguments)
+        : fn.call(ctx, a)
+      : fn.call(ctx)
+  }
+  boundFn._length = fn.length
+  return boundFn
+}
+/**
  * 数组求和
  * @param {Array} arr 需要求和的数组
  * @returns {Number} 求得的和

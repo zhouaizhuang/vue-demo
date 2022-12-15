@@ -11,7 +11,7 @@
     width > maxWidth && (width = maxWidth);
     var rem = width * 100 / designWidth;
     // remStyle.innerHTML = 'html{font-size:' + rem + 'px;}';
-    remStyle.innerHTML = 'html{font-size:' + 50 + 'px;}';
+    remStyle.innerHTML = 'html{font-size:' + 50 + 'px;}';  // 可以让rem为1
   }
   if (docEl.firstElementChild) {
     docEl.firstElementChild.appendChild(remStyle);

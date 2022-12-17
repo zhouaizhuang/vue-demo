@@ -1443,11 +1443,6 @@ export const getOS = function() {
   if (/win/i.test(appVersion)) return 'windows'
   if (/linux/i.test(appVersion)) return 'linux'
 }
-// 获取元素相对于浏览器的位置, 返回一个对象
-export const getPosition = function (e) {
-  if (e.offsetParent !== null) { getPosition(e.offsetParent) }
-  return { Left: Number(e.offsetLeft), Top: Number(e.offsetTop) }
-}
 /**获取视口总高度
  * @returns 
  */
@@ -1457,17 +1452,19 @@ export const get100vh = () => window.innerHeight || safeGet(() => document.body.
  */
 export const get100vw = () => window.innerWidth || safeGet(() => document.body.clientWidth, 0) || safeGet(() => document.documentElement.clientWidt, 0)
 /**
- * 获取距离视口的数据
+ * 获取元素当前所在位置
  * 距离视窗的距离。一般现在通过 IntersectionObserver API实现了，请看https://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html
  * @param {*} e 
  * @returns 
+ * @举例 getViewPos(this.$refs.xxx)   ----> { "top": 60, "bottom": 60, "left": 0, "right": 1477 }
+ * @举例 getViewPos(document.querySelector('#yyy'))   ----> { "top": 60, "bottom": 60, "left": 0, "right": 1477 }
  */
 export const getViewPos = function (e) {
-  var {top, bottom, left, right} = e.getBoundingClientRect()
-  var htmlTop = document.documentElement.clientTop ? document.documentElement.clientTop : 0 // html元素对象的上边框的高度
-  var htmlLeft = document.documentElement.clientLeft ? document.documentElement.clientLeft : 0
+  let {top = Number(e.offsetTop), bottom = Number(e.offsetBottom), left = Number(e.offsetLeft), right = Number(e.offsetRight) } = e.getBoundingClientRect()
+  const { clientTop = 0, clientLeft = 0 } = window.document.documentElement // html元素对象的上边框的上边距和左边距
+  ;[top, bottom, left, right] = [top - clientTop, bottom - clientTop, left - clientLeft, right - clientLeft]
   // 元素距离视口顶部的距离、元素距离视口底部的距离、元素距离视口左边的距离、元素距离视口右边的距离
-  return { top: top - htmlTop, bottom: bottom - htmlTop, left: left - htmlLeft, right: right - htmlLeft }
+  return { top, bottom, left, right }
 }
 // 通过身份证获取出生年月、虚岁、周岁、性别
 export const getIdCardInfo = function (idCard = '') {

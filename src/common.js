@@ -693,11 +693,10 @@ export const groupBy = function (arr, callback){
  */
 export const syncBgData = (arr, ids, key = 'isChecked', val = true, defVal = false) => arr.map(v => (v[key] = ids.includes(v.id) ? val : defVal, v))
 /**
- * 二进制流文件下载
- * @举例 downloadFile('test.zip', '') // 第二个参数是二进制流，后端返回的
- * @举例 downloadFile('123123.png', 'https://xxxxxxx.png')
- * @举例 downloadFile('123123.png', 'http://192.168.10.36:18049/open/file/download?data=M80/CELarJJQA1OgRtank6oq+/1xrY/rnMLA86dc1AAGXROW5FENy3V4MWWkNfGo')
- * @举例 downloadFile('123123.png', Blob二进制对象)
+ * 二进制流文件下载：支持blob对象和url地址
+ * @举例1 downloadFile('123123.png', 'https://xxxxxxx.png') /
+ * @举例2 downloadFile('123123.png', 'http://192.168.10.36:18049/open/file/download?data=M80/CELarJJQA1OgRtank6oq+/1xrY/rnMLA86dc1AAGXROW5FENy3V4MWWkNfGo')
+ * @举例3 downloadFile('123123.png', Blob二进制对象) // 第二个参数是二进制流，后端返回的
  */
 export const downloadFile = function (fileName, pathOrBlob){
   const url = isString(pathOrBlob) ? pathOrBlob : window.URL.createObjectURL(new Blob([pathOrBlob]))

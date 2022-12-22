@@ -692,12 +692,15 @@ export const groupBy = function (arr, callback){
  * [{id:'1', isChecked:false}, {id:'2', isChecked:true}, {id:'3', isChecked:true}]
  */
 export const syncBgData = (arr, ids, key = 'isChecked', val = true, defVal = false) => arr.map(v => (v[key] = ids.includes(v.id) ? val : defVal, v))
-// 二进制流文件下载
 /**
+ * 二进制流文件下载
  * @举例 downloadFile('test.zip', '') // 第二个参数是二进制流，后端返回的
+ * @举例 downloadFile('123123.png', 'https://xxxxxxx.png')
+ * @举例 downloadFile('123123.png', 'http://192.168.10.36:18049/open/file/download?data=M80/CELarJJQA1OgRtank6oq+/1xrY/rnMLA86dc1AAGXROW5FENy3V4MWWkNfGo')
+ * @举例 downloadFile('123123.png', Blob二进制对象)
  */
-export const downloadFile = function (fileName, data){
-  const url = window.URL.createObjectURL(new Blob([data]))
+export const downloadFile = function (fileName, pathOrBlob){
+  const url = isString(pathOrBlob) ? pathOrBlob : window.URL.createObjectURL(new Blob([pathOrBlob]))
   const link = window.document.createElement('a')
   link.style.display = 'none'
   link.href = url

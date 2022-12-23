@@ -7,4 +7,5 @@ export default [
   { path: '/printTable_pc', name: 'printTable_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/printTable_pc/index.vue')},
   { path: '/noAutoComplete_pc', name: 'noAutoComplete_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/noAutoComplete_pc/index.vue')},
   { path: '/tabs_pc', name: 'tabs_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/tabs_pc/index.vue')},
+  { path: '/modal_pc', name: 'modal_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/modal_pc/index.vue')},
 ]

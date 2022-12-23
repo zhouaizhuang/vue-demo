@@ -26,6 +26,7 @@
 .bg-pc-img{
   background: url('../../../assets/pc_background.png');
 }
+/**Modal组件起始位置 */
 .animateScale{
   animation: identifier .5s ease -.1s 1 both;
 }
@@ -33,4 +34,5 @@
   0%{opacity: 0;transform: translateX(-50%) scale(.8);}
   100%{opacity: 10;transform: translateX(-50%) scale(1);}
 }
+/**Modal组件结束位置 */
 </style>

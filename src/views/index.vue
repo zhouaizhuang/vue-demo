@@ -210,6 +210,7 @@
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/pickArea">选择区域</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/tabs_pc">tabs组件</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/modal_pc">modal组件</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/drawer_pc">drawer组件</router-link></div>
       </div>
     </div>
     <div class="f">

@@ -350,9 +350,11 @@ export const array2Tree = function (arr) {
     return prev
   }, [])
 }
-// 一次性函数。只执行一次。后面再调用,没有任何函数内代码执行
-// 示例：const aa = once(function (a, b){console.log(a + b)})
-// aa(1,2) ===> 3   ------>  aa(3, 4) ===> undefined
+/**
+ * 一次性函数。只执行一次。后面再调用,没有任何函数代码执行
+ * 示例：const aa = once(function (a, b){console.log(a + b)})
+ * aa(1,2) ===> 3   ------>  aa(3, 4) ===> undefined
+ */
 export const once = function(fn) {
   var called = false
   return function () {

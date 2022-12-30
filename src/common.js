@@ -213,10 +213,10 @@ export const toObject = function (arr) {
   return res
 }
 /**
- * 对象数组转对象
- * @param {Array} arr 需要转换的数组
- * @returns {Object} 转换之后的对象
- * @举例 toObject([{name: 1}, {age:2}]) ----> { name:1, age:2 }
+ * 改变函数执行的this指向
+ * @param {function} fn 需要转换的数组
+ * @returns {context} ctx 执行环境
+ * @举例 polyfillBind(fn, this) ----> (...args) => this.fn(...args)
  */
 export const polyfillBind = function (fn, ctx) {
   function boundFn(a) {

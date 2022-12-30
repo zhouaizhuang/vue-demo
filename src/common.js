@@ -525,7 +525,7 @@ export const collectBy = function (arr, field) {
 /**
  * 将数组中的数据进行分类，分类成JSON。键名为类别名称，键值为数组，存放数据集合
  * @param {Array} arr 需要分类的数组
- * @param {Function} callback 分类函数
+ * @param {Function|String} fn_field 分类函数 | 字段名
  * @举例1 简单根据某个字段分类
  * const arr = [{name: '小明', age: 17}, {name: '小张', age: 17}, {name: '小强', age: 22}]
  * groupBy(arr, 'age')   |   groupBy(arr, item => item.age)
@@ -543,9 +543,9 @@ export const collectBy = function (arr, field) {
  * -------> 根据分类函数分类好的结果：
  * {A: [{...},{...}], B: [{...}], C: [{...}], D: [{...}]}
  */
-export const groupBy = function (arr, callback){
+export const groupBy = function (arr, fn_field){
   return arr.reduce((prev, item) => {
-    const key = isFunction(callback) ? callback(item) : item[callback]
+    const key = isFunction(fn_field) ? fn_field(item) : item[fn_field]
     ;(prev[key] || (prev[key] = [])).push(item)
     return prev
   }, {})

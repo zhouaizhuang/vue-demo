@@ -523,6 +523,34 @@ export const collectBy = function (arr, field) {
   return Object.values(res)
 }
 /**
+ * 将数组中的数据进行分类，分类成JSON。键名为类别名称，键值为数组，存放数据集合
+ * @param {Array} arr 需要分类的数组
+ * @param {Function} callback 分类函数
+ * @举例1 简单根据某个字段分类
+ * const arr = [{name: '小明', age: 17}, {name: '小张', age: 17}, {name: '小强', age: 22}]
+ * groupBy(arr, 'age')   |   groupBy(arr, item => item.age)
+ * -----> 根据年龄分类好的结果
+ * {17: [{name: '小明', age: 17},{name: '小张', age: 17}], 22: [{name: '小强', age: 22}]}
+ * @举例2 根据某个字段进行处理，用处理后的结果分类
+ * const arr = [{name: 'asd', score: 100}, {name: '3dd', score: 60}, {name: 'dfg', score: 80}, {name: 'zrr', score: 90}]
+ * groupBy(arr, item => {
+ *   const { score } = item
+ *   return score < 65 ? 'E' :
+ *          score < 70 ? 'D' :
+ *          score < 80 ? 'C' :  
+ *          score < 90 ? 'B' : 'A';
+ *   })
+ * -------> 根据分类函数分类好的结果：
+ * {A: [{...},{...}], B: [{...}], C: [{...}], D: [{...}]}
+ */
+export const groupBy = function (arr, callback){
+  return arr.reduce((prev, item) => {
+    const key = isFunction(callback) ? callback(item) : item[callback]
+    ;(prev[key] || (prev[key] = [])).push(item)
+    return prev
+  }, {})
+}
+/**
  * 删除对象中的部分字段
  * @param {*} obj 需要操作的对象
  * @param {*} field 字段属性
@@ -654,29 +682,6 @@ export const url2JSON = function (url = '', type = 1) {
     let [key, val] = item.split('=')
     val = type == 1 ? decodeURIComponent(val) : val // 为了适配更多的场景，开发了自定义是否解码（如果传入的url是编码过的，那么必须解码，否则报错）
     return { ...prev, [key]: JSON.parse(val) } // 此处需要转码，否则中文和一些特殊字符就无法支持了
-  }, {})
-}
-/**
- * 将数组中的数据进行分类，分类成JSON。键名为类别名称，键值为数组，存放数据集合
- * @param {Array} arr 需要分类的数组
- * @param {Function} callback 分类函数
- * @举例子 
- * const arr = [{name: 'asd', score: 100}, {name: '3dd', score: 60}, {name: 'dfg', score: 80}, {name: 'zrr', score: 90}]
- * groupBy(arr, item => {
- *   const { score } = item
- *   return score < 65 ? 'E' :
- *          score < 70 ? 'D' :
- *          score < 80 ? 'C' :  
- *          score < 90 ? 'B' : 'A';
- *   })
- * }
- * @result 根据分类函数分类好的结果：{A: [{...},{...}], B: [{...}], C: [{...}], D: [{...}]}
- */
-export const groupBy = function (arr, callback){
-  return arr.reduce((prev, item) => {
-    const key = callback(item)
-    ;(prev[key] || (prev[key] = [])).push(item)
-    return prev
   }, {})
 }
 /**

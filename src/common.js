@@ -507,22 +507,6 @@ export const chunk = function (arr, size = 0) {
   return targetArr
 }
 /**
- * 按照某个字段将数组分割成二维数组
- * @param {*} arr 需要处理的数组
- * @param {*} field 字段名
- * @举例 collectBy([{name: 'a', age: 17}, {name: 'a', age: 13}, {name: 'b', age: 22}], 'name')
- * @处理 ----------->
- * @结果 [[{name: 'a', age: 17}, {name: 'a', age: 13}], [{name: 'b', age: 22}]]
- */
-export const collectBy = function (arr, field) {
-  const res = arr.reduce((prev, item) => {
-    const fieldName = item[field]
-    prev[fieldName] = prev[fieldName] || []
-    return prev[fieldName].push(item), prev
-  }, {})
-  return Object.values(res)
-}
-/**
  * 将数组中的数据进行分类，分类成JSON。键名为类别名称，键值为数组，存放数据集合
  * @param {Array} arr 需要分类的数组
  * @param {Function|String} fn_field 分类函数 | 字段名
@@ -546,7 +530,7 @@ export const collectBy = function (arr, field) {
 export const groupBy = function (arr, fn_field){
   return arr.reduce((prev, item) => {
     const key = isFunction(fn_field) ? fn_field(item) : item[fn_field]
-    ;(prev[key] || (prev[key] = [])).push(item)
+    ;(prev[key] || (prev[key] = [])).push({...item, _classifyKey: key})
     return prev
   }, {})
 }

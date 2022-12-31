@@ -1070,26 +1070,18 @@ export const f2s = fahrenheit => (fahrenheit - 32) * 5 / 9
 **********************************************************************************************
 */
 /**
- * 浏览器下一帧渲染之前执行此函数
- * @param {*} fn 
- */
-export const nextTick = function (fn) {
-  window.requestAnimationFrame(fn)
-}
-/**
  * 应用于当前DOM元素，将DOM滚动到指定位置
  * 整个页面之间，平滑滚动
  * --->取代锚点。将传入的DOM，滚动到指定位置
- * @param {DOM} e 传入的DOM元素
+ * @param {DOM} dom 传入的DOM元素
+ * @param {Number} position 滚动到什么位置
  * @param {Number} type 滚动类型： 0：滚动到视口的顶部   1：滚到到视口中央  2：滚动到视口底部  3：不滚动
- * @举例子 scrollTo(this.$refs.testRef, 0) // 执行完这个函数，那么会找到页面上ref为testRef的DOM，然后平滑滚动到页面顶部
+ * @举例子 pageScroll(this.$refs.testRef, 0, 0) // 执行完这个函数，那么会找到页面上ref为testRef的DOM，然后平滑滚动到页面顶部
  */
-export const pageScrollTo = function (dom, type = 0) {
-  const mapType = ['start', 'center', 'end', 'auto']
-  dom.scrollIntoView({ behavior: "smooth", block: mapType[type] })
+export const pageScroll = function (dom, position = 0, type = 0) {
+  const mapPosition = ['start', 'center', 'end', 'auto']
+  dom.scrollIntoView({ behavior: type == 0 ? "smooth" : 'instant', block: mapPosition[position] })
 }
-// 获取当前滚动距离顶部的距离
-export const getScrollTop = () => (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop
 /**
  * 滚动的盒子中的某个位置。可以是任意一个盒子
  * 只要盒子是 超出滚动的，拿到他的dom，然后，传入滚动距离必然可以滚动
@@ -1100,11 +1092,37 @@ export const getScrollTop = () => (document.documentElement && document.document
  * @returns
  * @举例子 boxScroll(this.$refs.testRef, 300)
  */
-export const boxScroll = function (dom, offsetHeight = 0, type = 0){
-  dom.scrollTo({
-    top: offsetHeight,
-    behavior: type == 0 ? 'smooth' : 'instant' // 平滑滚动 | 迅速滚动 
-  })
+export const boxScroll = function (dom, offsetHeight = 0, type = 0) {
+  dom.scrollTo({ behavior: type == 0 ? 'smooth' : 'instant', top: offsetHeight }) // 平滑滚动 | 迅速滚动 
+}
+// 获取视口总高度
+export const get100vh = () => window.innerHeight || safeGet(() => document.body.clientHeight, 0) || safeGet(() => document.documentElement.clientHeight, 0)
+// 获取视口总宽度
+export const get100vw = () => window.innerWidth || safeGet(() => document.body.clientWidth, 0) || safeGet(() => document.documentElement.clientWidt, 0)
+// 获取当前滚动距离顶部的距离
+export const getScrollTop = () => (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop
+/**
+ * 获取元素当前所在位置
+ * 距离视窗的距离。一般现在通过 IntersectionObserver API实现了，请看https://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html
+ * @param {*} e 
+ * @returns 
+ * @举例 getViewPos(this.$refs.xxx)   ----> { "top": 60, "bottom": 60, "left": 0, "right": 1477 }
+ * @举例 getViewPos(document.querySelector('#yyy'))   ----> { "top": 60, "bottom": 60, "left": 0, "right": 1477 }
+ */
+export const getViewPos = function (e) {
+  let {top = Number(e.offsetTop), bottom = Number(e.offsetBottom), left = Number(e.offsetLeft), right = Number(e.offsetRight) } = e.getBoundingClientRect()
+  const { clientTop = 0, clientLeft = 0 } = window.document.documentElement // html元素对象的上边框的上边距和左边距
+  ;[top, bottom, left, right] = [top - clientTop, bottom - clientTop, left - clientLeft, right - clientLeft]
+  // 元素距离视口顶部的距离、元素距离视口底部的距离、元素距离视口左边的距离、元素距离视口右边的距离
+  return { top, bottom, left, right }
+}
+/**
+ * 浏览器下一帧渲染之前执行此函数
+ * @param {*} fn 需要在下一次事件循环执行的函数
+ * @举例 nextTick(() => {console.log('123')})
+ */
+export const nextTick = function (fn) {
+  window.requestAnimationFrame(fn)
 }
 /**
  * 轻提示
@@ -1435,29 +1453,6 @@ export const getOS = function() {
   if (/mac/i.test(appVersion)) return 'MacOSX'
   if (/win/i.test(appVersion)) return 'windows'
   if (/linux/i.test(appVersion)) return 'linux'
-}
-/**获取视口总高度
- * @returns 
- */
-export const get100vh = () => window.innerHeight || safeGet(() => document.body.clientHeight, 0) || safeGet(() => document.documentElement.clientHeight, 0)
-/**获取视口总宽度
- * @returns 
- */
-export const get100vw = () => window.innerWidth || safeGet(() => document.body.clientWidth, 0) || safeGet(() => document.documentElement.clientWidt, 0)
-/**
- * 获取元素当前所在位置
- * 距离视窗的距离。一般现在通过 IntersectionObserver API实现了，请看https://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html
- * @param {*} e 
- * @returns 
- * @举例 getViewPos(this.$refs.xxx)   ----> { "top": 60, "bottom": 60, "left": 0, "right": 1477 }
- * @举例 getViewPos(document.querySelector('#yyy'))   ----> { "top": 60, "bottom": 60, "left": 0, "right": 1477 }
- */
-export const getViewPos = function (e) {
-  let {top = Number(e.offsetTop), bottom = Number(e.offsetBottom), left = Number(e.offsetLeft), right = Number(e.offsetRight) } = e.getBoundingClientRect()
-  const { clientTop = 0, clientLeft = 0 } = window.document.documentElement // html元素对象的上边框的上边距和左边距
-  ;[top, bottom, left, right] = [top - clientTop, bottom - clientTop, left - clientLeft, right - clientLeft]
-  // 元素距离视口顶部的距离、元素距离视口底部的距离、元素距离视口左边的距离、元素距离视口右边的距离
-  return { top, bottom, left, right }
 }
 // 通过身份证获取出生年月、虚岁、周岁、性别
 export const getIdCardInfo = function (idCard = '') {

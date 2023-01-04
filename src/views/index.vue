@@ -226,6 +226,7 @@
       <div class="b" style="width:150px;">PC疑难问题</div>
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/noAutoComplete_pc">禁止密码自动填充</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/drag_pc">拖拽排序</router-link></div>
       </div>
     </div>
     <div v-if="isShowPage" class="fs26 b mt30 mb20 tc">

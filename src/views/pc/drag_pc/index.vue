@@ -1,10 +1,10 @@
 <!--https://juejin.cn/post/6909287804510371847-->
 <template>
-  <div>
+  <div class="pt30 bgf5 h100vh auto" style="width:300px;">
     <transition-group 
       name="drag"
       tag="ul"
-      class="list auto pt30 bgf5 rel tran5" style="width:300px;height:100vh">
+      class="rel tran5">
       <li
         @dragstart="e => dragstart(e, index)"
         @dragenter="e => dragenter(e, index)"

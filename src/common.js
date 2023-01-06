@@ -1096,9 +1096,9 @@ export const boxScroll = function (dom, offsetHeight = 0, type = 0) {
   dom.scrollTo({ behavior: type == 0 ? 'smooth' : 'instant', top: offsetHeight }) // 平滑滚动 | 迅速滚动 
 }
 // 获取视口总高度
-export const get100vh = () => window.innerHeight || safeGet(() => document.body.clientHeight, 0) || safeGet(() => document.documentElement.clientHeight, 0)
+export const get100vh = () => window.innerHeight || document.body.clientHeight || document.documentElement.clientHeight
 // 获取视口总宽度
-export const get100vw = () => window.innerWidth || safeGet(() => document.body.clientWidth, 0) || safeGet(() => document.documentElement.clientWidt, 0)
+export const get100vw = () => window.innerWidth || document.body.clientWidth || document.documentElement.clientWidth
 // 获取当前滚动距离顶部的距离
 export const getScrollTop = () => (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop
 /**

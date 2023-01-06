@@ -7,7 +7,8 @@ export default {
   },
   data(){
     return {
-      msg: ''
+      msg: '',
+      isShowModal: true
     }
   },
   methods:{

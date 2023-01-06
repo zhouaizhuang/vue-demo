@@ -220,6 +220,7 @@
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/sliderVerify_pc">极验验证</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/useQrcode_pc">Qrcode前端生成二维码</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/printTable_pc">pc对table进行打印</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/ueditor_pc">富文本ueditor</router-link></div>
       </div>
     </div>
     <div class="f">

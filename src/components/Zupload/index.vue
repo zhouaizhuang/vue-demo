@@ -102,6 +102,8 @@ export default {
         return false
       }
       this.imgList.push({ name: file.name, url, id: guID() })
+      // 这行代码可以解决删除图片后上传一样的图片无法触发change事件，导致无法上传问题
+      // this.$refs.upload.value = ''
       this.$emit('change', this.imgList)
       this.$Notice.success({ title: '文件上传成功', desc: `文件 ${file.name} 上传成功` })
     },

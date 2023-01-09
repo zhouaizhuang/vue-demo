@@ -1435,11 +1435,11 @@ export const clearCookies = () => document.cookie.split(';').forEach(cookie => d
 export const queryAll = selector => Array.from(document.querySelectorAll(selector))
 export const query = selector => document.querySelector(selector)
 // 本地存储
-export const getLocalStorage = name => JSON.parse(window.localStorage.getItem(name))
+export const getLocalStorage = name => safeGet(() => JSON.parse(window.localStorage.getItem(name)), window.localStorage.getItem(name))
 export const setLocalStorage = (name, val) => window.localStorage.setItem(name, JSON.stringify(val))
 export const removeLocalStorage = name => window.localStorage.removeItem(name)
 // 会话存储
-export const getSessionStorage = name => JSON.parse(window.sessionStorage.getItem(name))
+export const getSessionStorage = name => safeGet(() => JSON.parse(sessionStorage.getItem(name)), window.localStorage.getItem(name))
 export const setSessionStorage = (name, val) => window.sessionStorage.setItem(name, JSON.stringify(val))
 export const removeSessionStorage = name => window.sessionStorage.removeItem(name)
 // 获取操作系统类型

@@ -1,3 +1,4 @@
+import { wait } from "@/common.js"
 import * as func from "./func.js"
 /**
  * 使用方法
@@ -47,11 +48,16 @@ export default {
       }
     },
     isShow: {
-      handler(newVal, oldVal){
+      async handler(newVal, oldVal){
         if(newVal) {
           if(this.imgArr.length === 0) {
             console.error('预览数组不能为空')
           }
+        } else {
+          await wait(500)
+          this.scale = 1 // 缩放系数
+          this.screenType = 0 // 是否全屏
+          this.rotate = 0 // 旋转角度
         }
       }
     }

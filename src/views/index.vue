@@ -29,7 +29,8 @@
           <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/pieChart">简易饼图（锥形渐变）</router-link></div>
           <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/redPacket">红包动画</router-link></div>
           <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/musicPlay">音乐播放</router-link></div>
-          <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/musicPlay1">音乐播放(触屏即播)</router-link></div>
+          <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/musicPlay1">音乐播放(触屏即播)</router-link>
+        </div>
       </div>
     </div>
     <div class="f">
@@ -206,12 +207,14 @@
       <div class="b" style="width:150px;">PC组件封装</div>
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/button_pc">button组件</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/message_pc">错误提示</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/tabs_pc">tabs组件</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/modal_pc">modal组件</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/drawer_pc">drawer组件</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/uploadImg">上传图片</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/Zmap">腾讯经纬度选择</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/pickArea">选择区域</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/previewImg_pc">图片预览组件</router-link></div>
       </div>
     </div>
     <div class="f">

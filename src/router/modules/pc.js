@@ -10,6 +10,9 @@ export default [
   { path: '/modal_pc', name: 'modal_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/modal_pc/index.vue')},
   { path: '/drawer_pc', name: 'drawer_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/drawer_pc/index.vue')},
   { path: '/button_pc', name: 'button_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/button_pc/index.vue')},
+  { path: '/message_pc', name: 'message_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/message_pc/index.vue')},
   { path: '/drag_pc', name: 'drag_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/drag_pc/index.vue')},
   { path: '/ueditor_pc', name: 'ueditor_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/ueditor_pc/index.vue')},
+  { path: '/ueditor_pc', name: 'ueditor_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/ueditor_pc/index.vue')},
+  { path: '/previewImg_pc', name: 'previewImg_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/previewImg_pc/index.vue')},
 ]

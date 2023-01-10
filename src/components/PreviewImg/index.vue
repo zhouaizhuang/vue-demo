@@ -1,0 +1,38 @@
+<template>
+  <div @mousewheel="mousewheel">
+    <div :class="['fixed trbl0 trans3', isShow ? 'op10 zx10' : 'op0 zx-1']" style="background:rgba(55,55,55,.4);">
+      <div @click="$emit('setIsShow', false)" class="abs rds50 poi zx20" style="top:15px;right:15px;width:40px;height:40px;background:rgba(55,55,55,.4);transform:rotate(45deg);">
+        <div class="w60 bgf abs l50 t50 txy-50 zx20" style="height:2px;filter:brightness(2);"></div>
+        <div class="h60 bgf abs l50 t50 txy-50 zx20" style="width:2px;"></div>
+      </div>
+      <!--左侧箭头-->
+      <div class="abs rds50 t45 ty-50 zx20" style="left:15px;width:35px;height:35px;background:rgba(55,55,55,.25);">
+        <div class="abs l50 t50" style="width:10px;height:10px;border-top:2px solid#fff;border-left:2px solid #fff;transform:translate(-30%, -50%) rotate(-45deg);"></div>
+      </div>
+      <!--右侧箭头-->
+      <div @click="next" class="abs rds50 t45 ty-50 zx20" style="right:15px;width:35px;height:35px;background:rgba(55,55,55,.25);">
+        <div class="abs l50 t50" style="width:10px;height:10px;border-top:2px solid#fff;border-left:2px solid #fff;transform:translate(-70%, -50%) rotate(135deg);"></div>
+      </div>
+      <img
+        :src="currentImg"
+        :style="{maxWidth:'100vw', maxHeight: '100vh', transform:`translate(-50%) scale(${scale}) rotate(${rotate}deg)`}"
+        :class="['abs l50 zx10 none trans3', screenType == 0 ? 'img-contain h100vh' : 'img-cover w100vw']"
+      >
+      <!--下方的功能菜单-->
+      <div class="abs f ac l50 tx-50 pt10 pb10 pl10 pr10 rds10 zx20" style="bottom:50px;background:rgba(55,55,55,.4)">
+        <svg @click.stop="large" t="1673356932468" class="mr30 none" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2789" width="20" height="20"><path d="M949.9 899l-124-124.1c28.2-33.3 51.1-70.4 68.2-110.8 22.5-53.3 34-109.9 34-168.2s-11.4-114.9-34-168.2c-21.8-51.5-52.9-97.6-92.6-137.3-39.7-39.7-85.8-70.8-137.3-92.6C610.9 75.4 554.3 64 496 64S381.1 75.4 327.8 98c-51.5 21.8-97.6 52.9-137.3 92.6-39.7 39.7-70.8 85.8-92.6 137.3C75.4 381.1 64 437.7 64 496s11.4 114.9 34 168.2c21.8 51.5 52.9 97.6 92.6 137.3 39.7 39.7 85.8 70.8 137.3 92.6 53.3 22.5 109.9 34 168.2 34s114.9-11.4 168.2-34c40.4-17.1 77.5-40 110.8-68.2l123.9 124c14 14 36.9 14 50.9 0s14-36.9 0-50.9zM496 856c-198.8 0-360-161.2-360-360s161.2-360 360-360 360 161.2 360 360-161.2 360-360 360z" fill="#ffffff" p-id="2790"></path><path d="M644 460H532V348c0-19.8-16.2-36-36-36s-36 16.2-36 36v112H348c-19.8 0-36 16.2-36 36s16.2 36 36 36h112v112c0 19.8 16.2 36 36 36s36-16.2 36-36V532h112c19.8 0 36-16.2 36-36s-16.2-36-36-36z" fill="#ffffff" p-id="2791"></path></svg>
+        <svg @click="small" t="1673357121728" class="mr30 none" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3787" width="20" height="20"><path d="M919.264 905.984l-138.912-138.912C851.808 692.32 896 591.328 896 480c0-229.376-186.624-416-416-416S64 250.624 64 480s186.624 416 416 416c95.008 0 182.432-32.384 252.544-86.208l141.44 141.44a31.904 31.904 0 0 0 45.248 0 32 32 0 0 0 0.032-45.248zM128 480C128 285.92 285.92 128 480 128s352 157.92 352 352-157.92 352-352 352S128 674.08 128 480z" p-id="3788" fill="#ffffff"></path><path d="M625.792 448H336a32 32 0 0 0 0 64h289.792a32 32 0 1 0 0-64z" p-id="3789" fill="#ffffff"></path></svg>
+        <svg @click="changeFullScreen" t="1673357190410" class="mr30" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4760" width="20" height="20"><path d="M285.866667 810.666667H384v42.666666H213.333333v-170.666666h42.666667v98.133333l128-128 29.866667 29.866667-128 128z m494.933333 0l-128-128 29.866667-29.866667 128 128V682.666667h42.666666v170.666666h-170.666666v-42.666666h98.133333zM285.866667 256l128 128-29.866667 29.866667-128-128V384H213.333333V213.333333h170.666667v42.666667H285.866667z m494.933333 0H682.666667V213.333333h170.666666v170.666667h-42.666666V285.866667l-128 128-29.866667-29.866667 128-128z" fill="#ffffff" p-id="4761"></path></svg>
+        <svg @click="rotate-=90" t="1673357228152" class="mr30" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5772" width="20" height="20"><path d="M128 384h512a42.666667 42.666667 0 0 1 42.666667 42.666667v384a42.666667 42.666667 0 0 1-42.666667 42.666666H128a42.666667 42.666667 0 0 1-42.666667-42.666666v-384a42.666667 42.666667 0 0 1 42.666667-42.666667z m42.666667 85.333333v298.666667h426.666666v-298.666667H170.666667z" fill="#ffffff" p-id="5773"></path><path d="M548.992 251.008V315.733333a8.533333 8.533333 0 0 1-13.653333 6.826667L387.413333 211.626667a8.533333 8.533333 0 0 1 0-13.653334l147.925334-110.933333a8.533333 8.533333 0 0 1 13.653333 6.826667v71.808a384 384 0 0 1 383.701333 384 42.666667 42.666667 0 1 1-85.333333 0 298.666667 298.666667 0 0 0-298.368-298.666667z" fill="#ffffff" p-id="5774"></path></svg>
+        <svg @click="rotate+=90" t="1673357228152" class="mr30" style="transform: rotateY(180deg)" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5772" width="20" height="20"><path d="M128 384h512a42.666667 42.666667 0 0 1 42.666667 42.666667v384a42.666667 42.666667 0 0 1-42.666667 42.666666H128a42.666667 42.666667 0 0 1-42.666667-42.666666v-384a42.666667 42.666667 0 0 1 42.666667-42.666667z m42.666667 85.333333v298.666667h426.666666v-298.666667H170.666667z" fill="#ffffff" p-id="5773"></path><path d="M548.992 251.008V315.733333a8.533333 8.533333 0 0 1-13.653333 6.826667L387.413333 211.626667a8.533333 8.533333 0 0 1 0-13.653334l147.925334-110.933333a8.533333 8.533333 0 0 1 13.653333 6.826667v71.808a384 384 0 0 1 383.701333 384 42.666667 42.666667 0 1 1-85.333333 0 298.666667 298.666667 0 0 0-298.368-298.666667z" fill="#ffffff" p-id="5774"></path></svg>
+        <svg @click="downImg" t="1673357417340" class="" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6845" width="20" height="20"><path d="M328 576h152V128h64v448h152L512 768 328 576z m568-64h-64v320H192V512h-64v384h768V512z" p-id="6846" fill="#ffffff"></path></svg>
+      </div>
+    </div>
+  </div>
+</template>
+<script src='./index.js'></script>
+<style scoped>
+.w100vw{
+  width: 100vw;
+}
+</style>

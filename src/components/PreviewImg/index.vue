@@ -1,18 +1,20 @@
 <template>
   <div @mousewheel="mousewheel">
     <div :class="['fixed trbl0 trans3', isShow ? 'op10 zx10' : 'op0 zx-1']" style="background:rgba(55,55,55,.4);">
+      <!--关闭按钮-->
       <div @click="$emit('setIsShow', false)" class="abs rds50 poi zx20" style="top:15px;right:15px;width:40px;height:40px;background:rgba(55,55,55,.4);transform:rotate(45deg);">
         <div class="w60 bgf abs l50 t50 txy-50 zx20" style="height:2px;filter:brightness(2);"></div>
         <div class="h60 bgf abs l50 t50 txy-50 zx20" style="width:2px;"></div>
       </div>
       <!--左侧箭头-->
-      <div class="abs rds50 t45 ty-50 zx20" style="left:15px;width:35px;height:35px;background:rgba(55,55,55,.25);">
+      <div v-if="imgArr.length > 1" @click="prev" class="abs rds50 t45 ty-50 zx20 poi" style="left:15px;width:35px;height:35px;background:rgba(55,55,55,.25);">
         <div class="abs l50 t50" style="width:10px;height:10px;border-top:2px solid#fff;border-left:2px solid #fff;transform:translate(-30%, -50%) rotate(-45deg);"></div>
       </div>
       <!--右侧箭头-->
-      <div @click="next" class="abs rds50 t45 ty-50 zx20" style="right:15px;width:35px;height:35px;background:rgba(55,55,55,.25);">
+      <div v-if="imgArr.length > 1" @click="next" class="abs rds50 t45 ty-50 zx20 poi" style="right:15px;width:35px;height:35px;background:rgba(55,55,55,.25);">
         <div class="abs l50 t50" style="width:10px;height:10px;border-top:2px solid#fff;border-left:2px solid #fff;transform:translate(-70%, -50%) rotate(135deg);"></div>
       </div>
+      <!--正在预览的图片-->
       <img
         :src="currentImg"
         :style="{maxWidth:'100vw', maxHeight: '100vh', transform:`translate(-50%) scale(${scale}) rotate(${rotate}deg)`}"
@@ -33,7 +35,5 @@
 </template>
 <script src='./index.js'></script>
 <style scoped>
-.w100vw{
-  width: 100vw;
-}
+.w100vw{width: 100vw;}
 </style>

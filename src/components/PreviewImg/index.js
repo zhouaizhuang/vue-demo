@@ -2,6 +2,7 @@ import { wait } from "@/common.js"
 import * as func from "./func.js"
 /**
  * 使用方法
+ *  import PreviewImg from "@/components/PreviewImg/index.vue"
  *  <PreviewImg
  *    :isShow="isShow" // 是否显示预览组价
  *    @setIsShow="e => isShow = e" // 固定写法，用来关闭预览组件的方法

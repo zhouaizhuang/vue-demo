@@ -5,8 +5,8 @@ import * as func from "./func.js"
  *  <PreviewImg
  *    :isShow="isShow" // 是否显示预览组价
  *    @setIsShow="e => isShow = e" // 固定写法，用来关闭预览组件的方法
- *    curImg="https://file.iviewui.com/images/image-demo-1.jpg" // 当前点击预览的图片链接
- *    :imgArr="[https://file.iviewui.com/images/image-demo-1.jpg, 'https://health.gagctv.com/wechat/jjzs/static/ecg.png']" // 这里传入所有需要预览的图片链接。 如果不传就只预览一张
+ *    curImg="https://file.iviewui.com/images/image-demo-1.jpg" // 当前点击预览的图片链接，应该是一个变量，点击某一张图片的话，就赋值过去
+ *    :imgArr="['https://file.iviewui.com/images/image-demo-1.jpg', 'https://health.gagctv.com/wechat/jjzs/static/ecg.png']" // 这里传入所有需要预览的图片链接。 如果不传就只预览一张
  *  >
  *  </PreviewImg>
  */

@@ -1,9 +1,9 @@
 <template>
   <div @mousewheel="mousewheel">
-    <div :class="['fixed trbl0 trans3', isShow ? 'op10 zx10' : 'op0 zx-1']" style="background:rgba(55,55,55,.4);">
+    <div :class="['fixed trbl0 trans3', isShow ? 'op10' : 'op0']" :style="{background: 'rgba(55,55,55,.4)', zIndex: isShow ? '2000' : '-1'}">
       <!--关闭按钮-->
       <div @click="$emit('setIsShow', false)" class="abs rds50 poi zx20" style="top:15px;right:15px;width:40px;height:40px;background:rgba(55,55,55,.4);transform:rotate(45deg);">
-        <div class="w60 bgf abs l50 t50 txy-50 zx20" style="height:2px;filter:brightness(2);"></div>
+        <div class="w60 bgf abs l50 t50 txy-50 zx20" style="height:2px;"></div>
         <div class="h60 bgf abs l50 t50 txy-50 zx20" style="width:2px;"></div>
       </div>
       <!--左侧箭头-->
@@ -19,7 +19,7 @@
         :src="currentImg"
         :style="{maxWidth:'100vw', maxHeight: '100vh', transform:`translate(-50%) scale(${scale}) rotate(${rotate}deg)`}"
         :class="['abs l50 zx10 none trans3', screenType == 0 ? 'img-contain h100vh' : 'img-cover w100vw']"
-      >
+      />
       <!--下方的功能菜单-->
       <div class="abs f ac l50 tx-50 pt10 pb10 pl10 pr10 rds10 zx20" style="bottom:50px;background:rgba(55,55,55,.4)">
         <svg @click.stop="large" t="1673356932468" class="mr30 none" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2789" width="20" height="20"><path d="M949.9 899l-124-124.1c28.2-33.3 51.1-70.4 68.2-110.8 22.5-53.3 34-109.9 34-168.2s-11.4-114.9-34-168.2c-21.8-51.5-52.9-97.6-92.6-137.3-39.7-39.7-85.8-70.8-137.3-92.6C610.9 75.4 554.3 64 496 64S381.1 75.4 327.8 98c-51.5 21.8-97.6 52.9-137.3 92.6-39.7 39.7-70.8 85.8-92.6 137.3C75.4 381.1 64 437.7 64 496s11.4 114.9 34 168.2c21.8 51.5 52.9 97.6 92.6 137.3 39.7 39.7 85.8 70.8 137.3 92.6 53.3 22.5 109.9 34 168.2 34s114.9-11.4 168.2-34c40.4-17.1 77.5-40 110.8-68.2l123.9 124c14 14 36.9 14 50.9 0s14-36.9 0-50.9zM496 856c-198.8 0-360-161.2-360-360s161.2-360 360-360 360 161.2 360 360-161.2 360-360 360z" fill="#ffffff" p-id="2790"></path><path d="M644 460H532V348c0-19.8-16.2-36-36-36s-36 16.2-36 36v112H348c-19.8 0-36 16.2-36 36s16.2 36 36 36h112v112c0 19.8 16.2 36 36 36s36-16.2 36-36V532h112c19.8 0 36-16.2 36-36s-16.2-36-36-36z" fill="#ffffff" p-id="2791"></path></svg>

@@ -117,7 +117,7 @@ export const uploadImg = function (url, formDatas, type = 1) {
 //导出文件
 export const exportFile = function (url, params) {
   return service.request({ method: "POST", url, data: resolveParams(params), responseType: 'blob' }).then(res => {
-    if (!(res.headers['content-disposition'] && res.data)) { return Message.error('导出失败') }
+    if (!(res.headers['content-disposition'] && res.data)) { return iview.Message.error('导出失败') }
     let fileName = safeGet(() => decodeURI(res.headers['content-disposition'].split('=')[1]), dateFormater('YYYYMMDDhhmmss') + '.txt')
     downloadFile(fileName, res.data)
     return iview.Message.success('导出成功')
@@ -150,6 +150,7 @@ export const request = function (options) {
  * @param {*} params 请求参数
  * @param {*} type 返回数据类型  1代表只返回data    0代表不做任何处理直接返回格式：{code:xx, data:xx, msg:xx}
  * @returns 
+ * @举例 const res = await this.$post('/apprepair/editRepair', {id:1, name:'zz'})
  */
 export const post = function (url, params, type = 1) {
   return new Promise((resolve, reject) => service.post(url, resolveParams(params)).then(res => processError(res, url, type, resolve, reject)))
@@ -160,7 +161,7 @@ export const post = function (url, params, type = 1) {
  * @param {*} params 请求参数
  * @param {*} type 返回数据类型  1代表只返回data    0代表不做任何处理直接返回格式：{code:xx, data:xx, msg:xx}
  * @returns 
- * @举例 const res = this.$endPost('/apprepair/editRepair', {id:1, name:'zz'})
+ * @举例 const res = await this.$endPost('/apprepair/editRepair', {id:1, name:'zz'})
  */
 export const startPost = (function () {
   const reqRecord = new Map() // 记录已发起但未返回的请求： url<--->reject方法
@@ -178,7 +179,7 @@ export const startPost = (function () {
  * @param {*} params 请求参数
  * @param {*} type 返回数据类型  1代表只返回data    0代表不做任何处理直接返回格式：{code:xx, data:xx, msg:xx}
  * @returns 
- * @举例 const res = this.$endPost('/apprepair/editRepair', {id:1, name:'zz'})
+ * @举例 const res = await this.$endPost('/apprepair/editRepair', {id:1, name:'zz'})
  */
 export const endPost = (function () {
   const reqRecord = new Map() // 记录已发起但未返回的请求： url<--->reject方法

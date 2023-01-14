@@ -941,27 +941,19 @@ export const socketTime = function (t = new Date()) {
   if(!isDate(t) && isString(t) && !t.includes('T') && t.length > 0) { t = t.replace(/[-]/g, "/") }
   if(!t) { t = new Date() }
   const [year, month, day, hour, minutes, seconds] = extract(t)
-  const dt = new Date(t)
-  const _month = String(dt.getMonth() + 1)
-  const _day = String(dt.getDate())
+  const [dt, _month, _day] = [new Date(t), String(dt.getMonth() + 1), String(dt.getDate())]
   const [week, daySeconds] = [dt.getDay(), 1000 * 60 * 60 * 24]
   const minusDay = week !== 0 ? week - 1 : 6
   const [dateStr, startStr, endStr, curSecond, yesterDayStart] = ['YYYY-MM-DD', 'YYYY-MM-DD 00:00:00', 'YYYY-MM-DD 23:59:59', dt.getTime(), curSecond - daySeconds]
   const weekDay = '星期' + "日一二三四五六"[week]
-  // 昨天
-  const yesterday = dateFormater(dateStr, yesterDayStart)
-  const _yesterday = [dateFormater(startStr, yesterDayStart), dateFormater(endStr, yesterDayStart)]
-  // 今天
-  const today = dateFormater(dateStr, dt)
-  const _today = [dateFormater(startStr, dt), dateFormater(endStr, dt)]
+  const [yesterday, _yesterday] = [dateFormater(dateStr, yesterDayStart), [dateFormater(startStr, yesterDayStart), dateFormater(endStr, yesterDayStart)]] // 昨天
+  const [today, _today] = [dateFormater(dateStr, dt), [dateFormater(startStr, dt), dateFormater(endStr, dt)]] // 今天
   // 上周
   const [lastWeekStart, lastWeekEnd] = [curSecond - (minusDay + 7) * daySeconds, curSecond - (minusDay + 1) * daySeconds]
-  const lastWeek = [dateFormater(dateStr, lastWeekStart), dateFormater(dateStr, lastWeekEnd)]
-  const _lastWeek = [dateFormater(startStr, lastWeekStart), dateFormater(endStr, lastWeekEnd)]
+  const [lastWeek, _lastWeek] = [[dateFormater(dateStr, lastWeekStart), dateFormater(dateStr, lastWeekEnd)], [dateFormater(startStr, lastWeekStart), dateFormater(endStr, lastWeekEnd)]]
   // 本周
   const [curWeekStart, curWeekEnd] = [curSecond - minusDay * daySeconds, curSecond + (6 - minusDay) * daySeconds]
-  const curWeek = [dateFormater(dateStr, curWeekStart), dateFormater(dateStr, curWeekEnd)]
-  const _curWeek = [dateFormater(startStr, curWeekStart), dateFormater(endStr, curWeekEnd)]
+  const [curWeek, _curWeek] = [[dateFormater(dateStr, curWeekStart), dateFormater(dateStr, curWeekEnd)], [dateFormater(startStr, curWeekStart), dateFormater(endStr, curWeekEnd)]]
   return { year, _month, month, day, _day, hour, minutes, seconds, yesterday, _yesterday, today, _today, lastWeek, _lastWeek, curWeek, _curWeek, week, weekDay }
 }
 /**

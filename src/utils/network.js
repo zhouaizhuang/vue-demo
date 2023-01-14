@@ -120,7 +120,7 @@ export const uploadImg = function (url, formDatas, type = 1) {
  * @param {JSON} params 接口传参
  * @param {String} defaultName 接口传参
  * @returns
- * @举例 exportFile('/api/pcExportOrdersList', {ids: '1231263231123,487752163678,123866742163'}) // 导出三条数据
+ * @举例 exportFile('/api/pcExportOrdersList', {ids: '1231263231123,487752163678,123866742163'}) // 导出三条数据。具体传参需要跟后端去约定
  */
 export const exportFile = function (url, params, defaultName = '') {
   return service.request({ method: "POST", url, data: resolveParams(params), responseType: 'blob' }).then(res => {

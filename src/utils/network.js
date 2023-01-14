@@ -114,11 +114,18 @@ export const uploadImg = function (url, formDatas, type = 1) {
     }).then(res => processError(res, url, type, resolve, reject))
   })
 }
-//导出文件
-export const exportFile = function (url, params) {
+/**
+ * 导出excel等二进制流文件（接口传参，后端返回二进制流文件，前端再进行导出）
+ * @param {String} url 接口请求地址
+ * @param {JSON} params 接口传参
+ * @param {String} defaultName 接口传参
+ * @returns
+ * @举例 exportFile('/api/pcExportOrdersList', {ids: '1231263231123,487752163678,123866742163'}) // 导出三条数据
+ */
+export const exportFile = function (url, params, defaultName = '') {
   return service.request({ method: "POST", url, data: resolveParams(params), responseType: 'blob' }).then(res => {
-    if (!(res.headers['content-disposition'] && res.data)) { return iview.Message.error('导出失败') }
-    let fileName = safeGet(() => decodeURI(res.headers['content-disposition'].split('=')[1]), dateFormater('YYYYMMDDhhmmss') + '.txt')
+    if (!(res.headers['content-disposition'] && res.data)) { return iview.Message.error('导出失败') } // 检查是否返回了数据
+    let fileName = safeGet(() => decodeURI(res.headers['content-disposition'].split('=')[1]), defaultName) || `${dateFormater('YYYY-MM-DD hh:mm:ss')}.txt` // 获取文件名
     downloadFile(fileName, res.data)
     return iview.Message.success('导出成功')
   })

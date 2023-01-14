@@ -106,9 +106,8 @@ export const startWith = (str, startWords) => str.slice(0, startWords.length) ==
  * @举例 trim(' ab c  ', 3)  ---> ' ab c'
  */
 export const trim = (str = '', type = 0) => {
-  if(!isString(str)) { return str }
-  const reg = [new RegExp(/(^\s*)|(\s*$)/g), new RegExp(/\s+/g), new RegExp(/(^\s*)/g), new RegExp(/(\s*$)/g)]
-  return str.replace(reg[type] || '', '')
+  const reg = [new RegExp(/(^\s*)|(\s*$)/g), new RegExp(/\s+/g), new RegExp(/(^\s*)/g), new RegExp(/(\s*$)/g)][type] || ''
+  return str.replace(reg, '')
 }
 /**
  * 固定裁剪几个字符之后显示省略号
@@ -117,10 +116,7 @@ export const trim = (str = '', type = 0) => {
  * @returns {String} 返回处理后的字符串
  * @举例 sliceStr('张三李四王五', 2) ----> "张三..."
  */
-export const sliceStr = function (str, num) {
-  str = String(str)
-  return str.length > num ? str.slice(0, num) + '...' : str.slice(0, num)
-}
+export const sliceStr = (str, num) => String(str).length > num ? String(str).slice(0, num) + '...' : String(str).slice(0, num)
 /**
  * 字符串前置补0
  * @param {String} str 

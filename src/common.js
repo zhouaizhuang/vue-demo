@@ -557,9 +557,7 @@ export const transformArr = arr => arr[0].map((col, i) => arr.map(row => row[i])
  * @returns {Array} 
  * @举例  splitWhen([1,2,3,4,5], item => item === 3) ---> [[1,2], [3,4,5]]
  */
-export const splitWhen = (arr, fn) => {
-  return splitAt(arr, arr.findIndex(item => fn(item)))
-} 
+export const splitWhen = (arr, fn) => splitAt(arr, arr.findIndex(item => fn(item)))
 /**
  * 取两个数组元素的交集
  * @param {*} arr1 数组1
@@ -591,10 +589,7 @@ export const difference = function (arr1, arr2){
  * @returns 
  * @举例子 union([1,2,3], [1,2,7]) ====> [1,2,3,7]
  */
-export const union = function (arr1, arr2){
-  if(!isArray(arr1) || !isArray(arr2)) { throw new Error('参数必须是数组类型') }
-  return [...new Set([...arr1, ...arr2])]
-}
+export const union = (arr1, arr2) => [...new Set([...arr1, ...arr2])]
 /*
 **********************************************************************************************
 ******************************************JSON操作*********************************************
@@ -622,9 +617,7 @@ export const formatRes = function (obj) {
  * @returns 
  * @举例 checkParams({name:'张三', age:'', school:''}) ----> 'age'
  */
-export const checkJSON = function (obj) {
-  return Object.keys(obj).find(item => !Boolean(obj[item])) || ''
-}
+export const checkJSON = obj => Object.keys(obj).find(item => !Boolean(obj[item])) || ''
 /**
  * JSON转url（这个函数将数据进行了编码。将来再解码使用。可以规避一些特殊字符产生的bug）
  * 函数还兼容传入 {info: {name:'zz', age:18}, school: 'qinghua'} 这种复杂的数据。之后通过url2JSON可以完美解析
@@ -749,9 +742,7 @@ export const randomColor = function () {
   return `rgba(${r}, ${g}, ${b}, ${a})`
 }
 // 禁止复制
-export const noCopy = function () {
-  ;['contextmenu', 'selectstart', 'copy'].forEach(ev => document.addEventListener(ev, event => (event.returnValue = false)))
-}
+export const noCopy = () => ['contextmenu', 'selectstart', 'copy'].forEach(ev => document.addEventListener(ev, event => (event.returnValue = false)))
 /**
  * 获取部分字段。举例：
  * @param obj 需要读取的对象
@@ -797,10 +788,7 @@ export const safeGet = function (run, defaultVal = '') {
  * @returns 
  * @举例 toNumber('12') ----> 12
  */
-export const toNumber = function (val) {
-  var n = parseFloat(val)
-  return isNaN(n) ? val : n
-}
+export const toNumber = val => isNaN(parseFloat(val)) ? val : parseFloat(val)
 /**
  * 四舍五入返回N位有效数字（常用于金额计算）
  * @param num 要格式化的数字
@@ -825,8 +813,8 @@ export const formatMoney = function (num = 0, type = 'float', prec = 2, dec = '.
  * 0、1转换--------'0'、'1'转换
  * @param {*} val 
  * @returns 
- * @举例子 toogle01(0) ---> 1  、  toogle01('0') ---> '1'
- * @举例子 toogle01(1) ---> 0  、  toogle01('1') ---> '0'
+ * @举例子 toogle01(0) ---> 1  、  toogle01(1) ---> 0
+ * @举例子 toogle01('0') ---> '1'  、  toogle01('1') ---> '0'
  */
 export const toogle01 = val => isNumber(val) ? val ^ 1 : String(Number(val) ^ 1)
 /**
@@ -1104,9 +1092,7 @@ export const getViewPos = function (e) {
  * @param {*} fn 需要在下一次事件循环执行的函数
  * @举例 nextTick(() => {console.log('123')})
  */
-export const nextTick = function (fn) {
-  window.requestAnimationFrame(fn)
-}
+export const nextTick = fn => window.requestAnimationFrame(fn)
 /**
  * 轻提示
  * @param {String} str 提示的字符串内容
@@ -1173,9 +1159,7 @@ export const addDom = function (dom = '', id = ""){
  * 窗口调整
  * @param {*} fn 
  */
-export const resize = function (fn) {
-  window.onresize = () => { fn() }
-}
+export const resize = fn => window.onresize = () => { fn() }
 /**
  * 显示DOM
  * @param id 需要显示的结点的id

@@ -98,22 +98,17 @@ export const startWith = (str, startWords) => str.slice(0, startWords.length) ==
 /**
  * 去除字符串中的空格
  * @param {String} str 需要去除空格的字符串
- * @param {Number} type 去除空格的类型 ----> 1: 去除首尾空格   2：去除全部空格  3：去除头部空格  4：去除尾部空格
+ * @param {Number} type 去除空格的类型 ----> 0: 去除首尾空格   1：去除全部空格  2：去除头部空格  3：去除尾部空格
  * @returns {String} 返回处理后的字符串
  * @举例 trim(' ab c  ')  ---> 'ab c'
- * @举例 trim(' ab c  ', 2)  ---> 'abc'
- * @举例 trim(' ab c  ', 3)  ---> 'ab c  '
- * @举例 trim(' ab c  ', 4)  ---> ' ab c'
+ * @举例 trim(' ab c  ', 1)  ---> 'abc'
+ * @举例 trim(' ab c  ', 2)  ---> 'ab c  '
+ * @举例 trim(' ab c  ', 3)  ---> ' ab c'
  */
-export const trim = (str = '', type = 1) => {
+export const trim = (str = '', type = 0) => {
   if(!isString(str)) { return str }
-  const mapStr = {
-    1: () => str.replace(/(^\s*)|(\s*$)/g, ""),
-    2: () => str.replace(/\s+/g, ""),
-    3: () => str.replace(/(^\s*)/g, ""),
-    4: () => str.replace(/(\s*$)/g, "")
-  }
-  return (mapStr[type] && mapStr[type]()) || str
+  const reg = [new RegExp(/(^\s*)|(\s*$)/g), new RegExp(/\s+/g), new RegExp(/(^\s*)/g), new RegExp(/(\s*$)/g)]
+  return str.replace(reg[type] || '', '')
 }
 /**
  * 固定裁剪几个字符之后显示省略号

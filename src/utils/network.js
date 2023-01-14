@@ -79,7 +79,6 @@ const resolveParams = params => {
 // 处理异常
 export const processError = function (res, url, type, resolve, reject) {
   // res = safeGet(() => res.errcode, false) ? res : JSON.parse(decrypt(res))
-  const { errcode, data, errmsg } = res
   if (errcode == 10200 || errcode == 10210) { // 未登录和token过期
     removeSessionStorage('token')
     removeSessionStorage('roleId')
@@ -126,7 +125,7 @@ export const exportFile = function (url, params, defaultName = '') {
   return service.request({ method: "POST", url, data: resolveParams(params), responseType: 'blob' }).then(res => {
     if (!(res.headers['content-disposition'] && res.data)) { return iview.Message.error('导出失败') } // 检查是否返回了数据
     let fileName = safeGet(() => decodeURI(res.headers['content-disposition'].split('=')[1]), defaultName) || `${dateFormater('YYYY-MM-DD hh:mm:ss')}.txt` // 获取文件名
-    downloadFile(fileName, res.data)
+    downloadFile(fileName, res.data) // 文件名，二进制流数据
     return iview.Message.success('导出成功')
   })
 }

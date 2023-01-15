@@ -1476,6 +1476,34 @@ export const reWriteLog = function (){
  * @param {*} val 需要打印的值
  */
 export const formatConsole = val => console.log(JSON.stringify(val, null, 2))
+/**
+ * 监听键盘事件
+ * @param {*} ctx 上下文
+ * @param {*} obj 事件注册对象
+ * @举例 
+ * 在需要监听的页面的created生命周期中使用
+ * created(){
+ *   listenKey(this, {
+ *      ArrowLeft: () => { console.log(this.scale) }, // 左箭头的点击事件
+ *      ArrowRight：() => { console.log(this.scale) }, // 右箭头的点击事件
+ *   })
+ * }
+ */
+export const listenKey = function (ctx = window, obj = {}) {
+  const mapFn = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Enter', 'Control', 'Alt', 'Shift', 'Tab', 'Space'].reduce((prev, item) => (prev[item] = obj[item] || function(){}, prev), {})
+  document.onkeydown = e => {
+    e = e || window.event
+    // console.log(e) // 此处可以打印查看按键key值
+    const key = e.key || e.code
+    mapFn[key] && mapFn[key].call(ctx)
+  }
+}
+/**
+ * 注销键盘事件
+ * @returns 
+ * @举例 cancelListenKey() // 这样就取消了键盘的监听事件
+ */
+export const cancelListenKey = () => document.onkeydown = e => (e || window.event).preventDefault()
 /*
 **********************************************************************************************
 ******************************************网络安全*********************************************

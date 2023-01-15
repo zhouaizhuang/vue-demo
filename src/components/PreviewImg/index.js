@@ -58,9 +58,20 @@ export default {
     }
   },
   created(){
-    
+    // 监听键盘的做与偶箭头（功能以实现，暂时注释了。因为使用频率不高，开发意义不是很大）
+    // this.$Z.listenKey(this, {
+    //   ArrowLeft: () => {
+    //     this.isShow && this.prev()
+    //   },
+    //   ArrowRight: () => {
+    //     this.isShow && this.next()
+    //   },
+    // })
   },
   mounted(){
     
   },
+  beforeDestory(){
+    // this.$Z.cancelListenKey()
+  }
 }

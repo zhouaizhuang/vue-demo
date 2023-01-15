@@ -48,6 +48,7 @@
       :isShow="isShowPreview"
       @setIsShow="e => isShowPreview = e"
       :curImg="curImg"
+      @setCurImg="e => curImg = e"
       :imgArr="previewArr"
      >
      </PreviewImg>

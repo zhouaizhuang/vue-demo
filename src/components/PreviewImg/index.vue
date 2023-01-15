@@ -16,7 +16,7 @@
       </div>
       <!--正在预览的图片-->
       <img
-        :src="currentImg"
+        :src="curImg"
         :style="{maxWidth:'100vw', maxHeight: '100vh', transform:`translate(-50%, -50%) scale(${scale}) rotate(${rotate}deg)`}"
         :class="['abs l50 t50 zx10 none trans3', screenType == 0 ? 'img-contain' : 'img-cover w100vw']"
       >

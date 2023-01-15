@@ -1,14 +1,14 @@
 import { range, downloadFile } from "@/common.js"
 // 上一张
 export const prev = function () {
-  let newIndex = (this.imgArr.findIndex(v => v == this.currentImg) - 1) % this.imgArr.length
+  let newIndex = (this.imgArr.findIndex(v => v == this.curImg) - 1) % this.imgArr.length
   if(newIndex < 0) { newIndex += this.imgArr.length}
-  this.currentImg = this.imgArr[newIndex]
+  this.$emit('setCurImg', this.imgArr[newIndex])
 }
 // 下一张
 export const next = function () {
-  let newIndex = (this.imgArr.findIndex(v => v == this.currentImg) + 1) % this.imgArr.length
-  this.currentImg = this.imgArr[newIndex]
+  let newIndex = (this.imgArr.findIndex(v => v == this.curImg) + 1) % this.imgArr.length
+  this.$emit('setCurImg', this.imgArr[newIndex])
 }
 // 鼠标滚动
 export const mousewheel = function (e) {

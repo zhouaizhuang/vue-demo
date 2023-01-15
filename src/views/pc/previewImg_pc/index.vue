@@ -8,6 +8,7 @@
       :isShow="isShow"
       @setIsShow="e => isShow = e"
       :curImg="curImg"
+      @setCurImg="e => curImg = e"
       :imgArr="imgArr"
     >
     </PreviewImg>

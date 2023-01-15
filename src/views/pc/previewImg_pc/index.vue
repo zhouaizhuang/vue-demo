@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="f">
-      <img @click="prevItem(item)" v-for="(item, index) in imgArr" :key="index" :src="item" alt="" class="mr30" style="width:100px;height:100px;">
+      <img @click="prevItem(item)" v-for="(item, index) in imgArr" :key="index" :src="item" alt="" class="mr30 poi" style="width:100px;height:100px;">
     </div>
     <!--预览组件--->
     <PreviewImg

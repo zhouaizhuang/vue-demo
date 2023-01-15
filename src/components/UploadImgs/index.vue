@@ -35,7 +35,6 @@
         v-show="false"
         @change="getAndFormatFile"
       />
-      
     </div>
     <div class='gc fs12' v-if="max_size > 1024 * 1024">大小 {{Math.round(max_size/1024/1024)}}M 以下，建议尺寸 {{width}} x {{height}} px，(最多{{limit}}张),可拖动排序</div>
     <div class='gc fs12' v-else>大小 {{Math.round(max_size/1024)}}KB 以下，建议尺寸 {{width}} x {{height}} px，(最多{{limit}}张)， 可拖动排序</div>

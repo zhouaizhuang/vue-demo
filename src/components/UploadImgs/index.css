@@ -1,0 +1,53 @@
+.topBg{
+  background-repeat: no-repeat;      /*是否平铺,repeat-x横  repeat-y纵*/
+  background-position: left top;    /*left right top bottom center 像素*/
+  background-size:100% 100%;
+}
+.topMask{
+  display: none;
+}
+.topBg:hover .topMask{
+  display: block;
+}
+.picture{
+  display: inline-block;
+  width:70px;
+  height:70px;
+  border:2px dashed #ccc;
+  border-radius: 5px;
+  position: relative;
+}
+.picture::before{
+  content:'';
+  position: absolute;
+  width: 20px;
+  height:2px;
+  background-color: #ccc;
+  border-radius:5px;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+}
+.picture::after{
+  content:'';
+  position: absolute;
+  width: 2px;
+  height:20px;
+  background-color: #ccc;
+  border-radius:5px;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+}
+.picture:hover::before{
+  background-color: #1890ff;
+}
+.picture:hover::after{
+  background-color: #1890ff;
+}
+.picture:hover{
+  border-color: #1890ff;
+}
+.drag-move {
+  transition: transform 1s;
+}

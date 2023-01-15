@@ -15,4 +15,5 @@ export default [
   { path: '/ueditor_pc', name: 'ueditor_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/ueditor_pc/index.vue')},
   { path: '/ueditor_pc', name: 'ueditor_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/ueditor_pc/index.vue')},
   { path: '/previewImg_pc', name: 'previewImg_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/previewImg_pc/index.vue')},
+  { path: '/upLoadImgs_pc', name: 'upLoadImgs_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/upLoadImgs_pc/index.vue')},
 ]

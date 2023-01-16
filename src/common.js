@@ -1483,7 +1483,7 @@ export const formatConsole = val => console.log(JSON.stringify(val, null, 2))
  * @举例 
  * 在需要监听的页面的created生命周期中使用
  * created(){
- *   listenKey(this, {
+ *   this.$Z.listenKey(this, {
  *      ArrowLeft: () => { console.log(this.scale) }, // 左箭头的点击事件
  *      ArrowRight：() => { console.log(this.scale) }, // 右箭头的点击事件
  *   })
@@ -1502,6 +1502,9 @@ export const listenKey = function (ctx = window, obj = {}) {
  * 注销键盘事件
  * @returns 
  * @举例 cancelListenKey() // 这样就取消了键盘的监听事件
+ * beforeDestory(){
+ *   this.$Z.cancelListenKey()
+ * }
  */
 export const cancelListenKey = () => document.onkeydown = e => (e || window.event).preventDefault()
 /*

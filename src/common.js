@@ -408,10 +408,7 @@ export const repeat = function(obj = '', times = 1) {
  * @举例 举例：sortByProp([{name:'ss', age:30}, {name:'dd', age:14}], 'age') ----> [{name:'dd', age:14}, {name:'ss', age:30}]
  */
 export const sortByProp = function (arr, prop, type = 1) {
-  return arr.sort(({[prop]: left},  {[prop]: right}) => {
-    if(!isNumber(left) || !isNumber(right)) { throw new Error('您输入的参数有误') }
-    return type == 1 ? left - right : right - left
-  })
+  return arr.sort(({[prop]: left},  {[prop]: right}) => type == 1 ? left - right : right - left)
 }
 /**
  * 数组去重

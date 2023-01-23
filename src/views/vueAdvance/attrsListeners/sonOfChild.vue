@@ -1,10 +1,10 @@
 
 <template>
-  <div class="bdc fs20r mt30r ml30r mr30r mb30r pl30r pr30r pt30r pb30r">
-    <div class="fs28r b">孙子组件</div>
+  <div class="bdc fs14 mt15 ml15 mr15 mb15 pl15 pr15 pt15 pb15">
+    <div class="fs14 b">孙子组件</div>
     <div>{{name}}</div>
     <div>{{age}}</div>
-    <div @click="doClick" class="pl20r pb20r pt20r pl30r pr30r bg1890ff gf w40 rds20r f ac xc fs28r">执行父组件事件</div>
+    <div @click="doClick" class="pl10 pb10 pt10 pl15 pr15 bg1890ff gf w70 rds10 f ac xc fs14">执行父组件事件</div>
   </div>
 </template>
 <script>

@@ -3,7 +3,7 @@
     <div v-if="['/index', '_pc', 'url'].some(v => $route.path.includes(v))">
       <router-view/>
     </div>
-    <div v-else style="max-width:8rem;" class="bgf5 auto">
+    <div v-else style="max-width:400px;" class="bgf5 auto">
       <router-view />
     </div>
   </div>

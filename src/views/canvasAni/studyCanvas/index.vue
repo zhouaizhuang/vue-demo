@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="mh100vh pt30r bgf5 pl30r pr30r">
+    <div class="mh100vh pt15 bgf5 pl15 pr15">
       <div class="bgf rds10r auto" style="height:150px;">
         <div class="f ac mb5">
-          <div class="rds5r mr15r bg0db39e" style="width:6rpx;height:30rpx;"></div>
-          <div class="fs30r g3">身高<span style="color:#9d9d9d;">(cm)</span></div>
+          <div class="rds5r mr10 bg0db39e" style="width:3px;height:15px;"></div>
+          <div class="fs16 g3">身高<span style="color:#9d9d9d;">(cm)</span></div>
         </div>
         <canvas id="canvas" width="370" height="100" ref="canvasRef1">您的浏览器版本过低，请升级浏览器或者使用chrome打开</canvas>
       </div>
@@ -107,5 +107,8 @@ export default {
 #canvas{
   /* background-color: #fff; */
   border: 1px solid #ccc;
+}
+.bg0db39e{
+  background:#0db39e;
 }
 </style>

@@ -1,7 +1,7 @@
 <!--注意：这里如果按钮中存在文字，要加上禁止复制的样式控制。否则移动端会优先识别长按复制-->
 <template>
-  <div class="auto fs20r h100vh ovh rel">
-    <div class="fs30r gf bg1890ff rds50r f ac xc pt20r pb20r w40 auto mt30r none" v-longpress="[longpress1, 1000]">长按1s</div>
+  <div class="auto fs12 h100vh ovh rel">
+    <div class="fs15 gf bg1890ff rds40 f ac xc pt10 pb10 w40 auto mt15 none poi" v-longpress="[longpress1, 1000]">长按1s</div>
   </div>
 </template>
 <script>

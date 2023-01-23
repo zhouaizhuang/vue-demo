@@ -1,10 +1,11 @@
 <template>
   <div class="pt50 f xc">
-    <QRcodeImg content="my test data" width="200" height="200"></QRcodeImg>
+    <QRcodeImg :content="content" width="200" height="200"></QRcodeImg>
   </div>
 </template>
 <script>
-import QRcodeImg from "../../../components/QrcodeImg.vue"
+import { wait } from '../../../common'
+import QRcodeImg from "../../../components/QrcodeImg/index.vue"
 export default {
   name: 'qrcode',
   components:{
@@ -12,13 +13,14 @@ export default {
   },
   data(){
     return {
-      
+      content: ""
     }
   },
   methods:{
   },
-  created(){
-    
+  async created(){
+    await wait(1000)
+    this.content = 'my test data'
   },
   mounted(){
     

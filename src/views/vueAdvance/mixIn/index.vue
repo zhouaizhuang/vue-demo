@@ -1,11 +1,11 @@
 
 <template>
   <div class="auto fs20r h100vh fs50r">
-    <div class="fs40r pt30r pl30r">{{name}}</div>
-    <div class="fs40r pt30r pl30r">{{age}}</div>
-    <div class="f xs pl30r pr30r">
-      <div class="f ac xc w30 pt10r pb10r gf fs40r b bg1890ff rds50r mr30r" @click="sayHello">事件一</div>
-      <div class="f ac xc w30 pt10r pb10r gf fs40r b bg1890ff rds50r" @click="sayHi">事件二</div>
+    <div class="fs20 pt15 pl15">{{name}}</div>
+    <div class="fs20 pt15 pl15">{{age}}</div>
+    <div class="f xs pl15 pr15">
+      <div class="f ac xc w30 pt5 pb5 gf fs20 b bg1890ff rds40 mr15" @click="sayHello">事件一</div>
+      <div class="f ac xc w30 pt5 pb5 gf fs20 b bg1890ff rds40" @click="sayHi">事件二</div>
     </div>
   </div>
 </template>

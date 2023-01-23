@@ -1,7 +1,7 @@
 
 <template>
-  <div style="padding-bottom:500px;">
-    <div class="fs22 f xc mb20 mt50">1、平滑滚动</div>
+  <div style="padding-bottom:500px;" class="pt50">
+    <div class="fs22 f xc mb20">1、平滑滚动</div>
     <div class="smooth ovya mb30 auto" style="height:200px;width:350px;">
       <div class="fs50 auto f ac xc bg1890ff rel" style="width:100%;height:200px;"><input id="one" class="clip0 t0 h100" readonly />1</div>
       <div class="fs50 auto f ac xc bgff5650 rel" style="width:100%;height:200px;"><input id="two" class="clip0 t0 h100" readonly />2</div>

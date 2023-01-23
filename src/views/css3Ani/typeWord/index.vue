@@ -1,11 +1,11 @@
 <template>
   <div class="rel h100vh auto">
     <!--css动画实现-->
-    <div class="fs40 b mb20 pt100 g1890ff">css动画实现</div>
-    <h1 class="fs30">hello world!</h1>
+    <div class="fs24 b mt20 pt50 g1890ff">css动画实现</div>
+    <h1 class="fs15">hello world!</h1>
     <!--js动画实现-->
-    <div class="fs40 b mb20 mt100 g1890ff">js动画实现</div>
-    <div class="fs30"><span>{{msg}}</span><span class="mark"></span></div>
+    <div class="fs24 b mb20 mt100 g1890ff">js动画实现</div>
+    <div class="fs15"><span>{{msg}}</span><span class="mark"></span></div>
   </div>
 </template>
 <script>

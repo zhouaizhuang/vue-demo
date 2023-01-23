@@ -2,14 +2,14 @@
 <template>
   <div class="auto fs20r h100vh">
     <!--v-copy复制数据-->
-    <div class="fs40r tc mb20r pt30">v-copy复制数据</div>
-    <div class="fs30r tc mb30r">点击下面的按钮以复制这个链接: https://github.com/zhouaizhuang</div>
-    <div class="fs30r mb20r">1、自定义指令方式实现</div>
-    <div class="fs30r gf bg1890ff rds50r f ac xc pt20r pb20r w40 mb30r auto" v-copy="'https://github.com/zhouaizhuang'">点我复制</div>
+    <div class="fs20 tc mb10 pt15">v-copy复制数据</div>
+    <div class="fs15 tc mb15">点击下面的按钮以复制这个链接: https://github.com/zhouaizhuang</div>
+    <div class="fs15 mb20r">1、自定义指令方式实现</div>
+    <div class="fs15 gf bg1890ff rds40 f ac xc pt10 pb10 w40 mb15 auto poi" v-copy="'https://github.com/zhouaizhuang'">点我复制</div>
 
     <!--如果不采用自定义指令-->
-    <div class="fs30r mb20r">1、js函数实现</div>
-    <div class="fs30r gf bg1890ff rds50r f ac xc pt20r pb20r w40 auto mt30r" @click="() => copyLink(`https://github.com/zhouaizhuang`)">点击复制</div>
+    <div class="fs15 mb20r">1、js函数实现</div>
+    <div class="fs15 gf bg1890ff rds40 f ac xc pt10 pb10 w40 auto mt15 poi" @click="() => copyLink(`https://github.com/zhouaizhuang`)">点击复制</div>
   </div>
 </template>
 <script>

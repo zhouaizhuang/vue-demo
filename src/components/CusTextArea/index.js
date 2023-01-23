@@ -1,3 +1,4 @@
+import * as func from "./func.js"
 export default {
   name: 'cusTextArea',
   props: {
@@ -15,11 +16,7 @@ export default {
     return {}
   },
   methods:{
-    changeField(e){
-      const { value } = e.detail
-      const { _id } = this.data.formInfo
-      this.$emit('changeValue', {value, _id})
-    }
+    ...func
   },
   created(){
   }

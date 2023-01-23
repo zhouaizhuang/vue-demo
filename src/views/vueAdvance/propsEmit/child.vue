@@ -1,12 +1,12 @@
 <template>
-  <div class="ml30r mr30r pt30r pb30r pl30r pr30r bdc fs20r mt30r">
-    <div class="fs30r b mb20r">子组件</div>
-    <div class="mb20r">{{ msg }}</div>
-    <div class="mb20r">姓名: {{ info.name }}</div>
-    <div class="mb20r">学校: {{ info.school }}</div>
-    <div class="mb20r">年龄: {{ info.age }}</div>
-    <div class="mb20r">状态: {{ state }}</div>
-    <div @click="doClick" class="pl20r pb20r pt20r pl30r pr30r bg1890ff gf w40 rds20r f ac xc fs28r">
+  <div class="ml15 mr15 pt15 pb15 pl15 pr15 bdc fs14 mt15">
+    <div class="fs15 b mb10">子组件</div>
+    <div class="mb10">{{ msg }}</div>
+    <div class="mb10">姓名: {{ info.name }}</div>
+    <div class="mb10">学校: {{ info.school }}</div>
+    <div class="mb10">年龄: {{ info.age }}</div>
+    <div class="mb10">状态: {{ state }}</div>
+    <div @click="doClick" class="pl10 pb10 pt10 pl15 pr15 bg1890ff gf w40 rds10 f ac xc fs14 poi none">
       执行父组件事件
     </div>
   </div>

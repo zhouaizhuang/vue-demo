@@ -8,5 +8,5 @@
   </div>
 </template>
 <script src='./index.js'></script>
-<style scoped>
+<style src="./index.css" scoped>
 </style>

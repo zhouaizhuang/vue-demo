@@ -1,6 +1,6 @@
 
 <template>
-  <div class="auto fs20r h100vh ovh">
+  <div class="auto fs20 h100vh">
     <baseLayout>
       <!--插槽替换header部件-->
       <template v-slot:header="slopProps">

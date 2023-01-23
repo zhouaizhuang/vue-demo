@@ -1,10 +1,13 @@
 import * as func from "./func.js"
+import Tabs from "@/components/Tabs/index.vue"
 export default {
   name: '',
-  components:{},
+  components:{
+    Tabs
+  },
   data(){
     return {
-      tabIndex: 1,
+      tabIndex: 0,
     }
   },
   methods:{

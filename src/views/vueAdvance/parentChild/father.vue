@@ -1,8 +1,8 @@
 
 <template>
-  <div class="auto fs20r h100vh fs50r">
+  <div class="auto fs14 h100vh fs25">
     我是父组件:
-    <div @click="doClick" class="pl20r pb20r pt20r pl30r pr30r bg1890ff gf w40 rds20r f ac xc fs28r">执行子组件方法</div>
+    <div @click="doClick" class="pl10 pb10 pt10 pl10 pr15 bg1890ff gf w40 rds20 f ac xc fs14 none">执行子组件方法</div>
     <child />
   </div>
 </template>

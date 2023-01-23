@@ -1,7 +1,7 @@
 <template>
-  <div class="pt25r pb25r fs32r text-area-box">
-    <div :class="['mb20r', formInfo.required == 1 ? 'need' : '']">{{formInfo.name}}</div>
-    <textarea class="rds20r bde5 w93 db fs26r" style="min-height:4.5rem;padding:0.2rem;" :value="formInfo.defaultValue" :placeholder="'请输入' + formInfo.name" placeholder-style=""
+  <div class="pt12 pb12 fs16 text-area-box">
+    <div :class="['mb10', formInfo.required == 1 ? 'need' : '']">{{formInfo.name}}</div>
+    <textarea class="rds20 bde5 w93 db fs13" style="min-height:225px;padding:10px;" :value="formInfo.defaultValue" :placeholder="'请输入' + formInfo.name" placeholder-style=""
       placeholder-class="textarea-placeholder" :disabled="type == 'detail'" maxlength="300" :auto-focus="false" :focus="false"
       @input="changeField"
     >

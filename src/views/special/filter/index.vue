@@ -70,7 +70,7 @@
     </div>
     <div class="f rw ac mt50 mb50">
       <div class="f1 f ac xc">
-        <div @click="isShowBg = true" class="bg1890ff rds10 pt15 pb15 fs26 gf b pl10 pr10">点我显示毛玻璃背景</div>
+        <div @click="isShowBg = true" class="bg1890ff rds10 pt15 pb15 fs16 gf b pl10 pr10">点我显示毛玻璃背景</div>
       </div>
     </div>
     <!--背景滤镜-->

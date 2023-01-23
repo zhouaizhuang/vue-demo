@@ -1,17 +1,16 @@
 <template>
-  <div class="mh100vh pt30r">
+  <div class="mh100vh pt20">
     <!--直线-->
-    <div @click="openLine" class="auto fs30r gf w50 f ac xc bgc7a35d rds30 pt20r pb20r">开启线条动画</div>
+    <div @click="openLine" class="auto fs16 gf w50 f ac xc bgc7a35d rds30 pt10 pb10 mb20 poi">开启线条动画</div>
     <div style="width:400px;height:100px;" class="rel bgf">
       <canvas width="400px" height="100px" ref="canvasRef1">您的浏览器版本过低，请升级浏览器或者使用chrome打开</canvas>
       <div class="abs t0 l0" style="width:200px;height:80px;">配合定位</div>
     </div>
     <!--连实线-->
-    <div @click="pathLine" class="auto fs30r gf w50 f ac xc bgc7a35d rds30 pt20r pb20r">开启连实线</div>
-    <div class="auto fs32r  w50 f ac xc rds30 pt20r pb20r b"></div>
+    <div @click="pathLine" class="auto fs16 gf w50 f ac xc bgc7a35d rds30 pt10 pb10 mt20 mb20 poi">开启连实线</div>
     <canvas width="400px" height="100px" ref="canvasRef2" class="bgf">您的浏览器版本过低，请升级浏览器或者使用chrome打开</canvas>
     <!--虚线-->
-    <div @click="drawDashLine" class="auto fs30r gf w50 f ac xc bgc7a35d rds30 pt20r pb20r">开启虚线动画</div>
+    <div @click="drawDashLine" class="auto fs16 gf w50 f ac xc bgc7a35d rds30 pt10r pb10r mt20 mb20 poi">开启虚线动画</div>
     <canvas width="400px" height="100px" ref="canvasRef3" class="bgf">您的浏览器笨笨过低，请升级浏览器或者使用chrome打开</canvas>
   </div>
 </template>

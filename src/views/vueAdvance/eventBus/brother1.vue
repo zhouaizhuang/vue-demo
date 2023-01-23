@@ -1,6 +1,6 @@
 
 <template>
-  <div class="auto fs20r fs30r">
+  <div class="auto fs15">
     兄弟组件一：注册事件到事件中心
   </div>
 </template>

@@ -1,7 +1,7 @@
 
 <template>
-  <div class="auto fs20r h100vh fs50r">
-    事件总线
+  <div class="auto fs20r h100vh fs25">
+    <div class="b">事件总线</div>
     <div class="pl30r pr30r pt30r">
       <brother1 />
       <brother2 />
@@ -27,7 +27,7 @@ export default {
  
   },
   created() {
-    eventBus.$emit('busClick', '我是来自A页面的信息')
+    // eventBus.$emit('busClick', '我是来自A页面的信息')
   },
   mounted() {
   },

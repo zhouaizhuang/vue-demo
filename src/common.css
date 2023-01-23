@@ -115,8 +115,9 @@ body {text-size-adjust: 100% !important;min-height:100vh;overflow-x: hidden;marg
 /* 字体大小 */
 .fs0{font-size:0;}
 /*PC端*/
-.fs12{font-size:12px;} .fs14{font-size:14px;} .fs16{font-size:16px;} .fs18{font-size:18px;} .fs20{font-size:20px;} .fs22{font-size:22px;} .fs24{font-size:24px;}
-.fs26{font-size:26px;} .fs28{font-size:28px;} .fs30{font-size:30px;} .fs32{font-size:32px;} .fs34{font-size:34px;} .fs36{font-size:36px;} .fs38{font-size:38px;} .fs40{font-size:40px;} .fs50{font-size:50px;} .fs60{font-size:60px;}
+.fs12{font-size:12px;} .fs13{font-size:13px;} .fs14{font-size:14px;} .fs15{font-size:15px;} .fs16{font-size:16px;} .fs17{font-size:17px;} .fs18{font-size:18px;} .fs19{font-size:19px;} .fs20{font-size:20px;} .fs21{font-size:21px;} .fs22{font-size:22px;}
+.fs23{font-size:23px;} .fs24{font-size:24px;} .fs25{font-size:25px;} .fs26{font-size:26px;} .fs27{font-size:27px;} .fs28{font-size:28px;} .fs29{font-size:29px;} .fs30{font-size:30px;} .fs31{font-size:31px;} .fs32{font-size:32px;} .fs33{font-size:33px;} 
+.fs34{font-size:34px;} .fs35{font-size:35px;} .fs36{font-size:36px;} .fs37{font-size:37px;} .fs38{font-size:38px;} .fs39{font-size:39px;} .fs40{font-size:40px;} .fs50{font-size:50px;} .fs60{font-size:60px;}
 /*移动端*/
 .fs12r{font-size:12rem;} .fs13r{font-size:13rem;} .fs14r{font-size:14rem;} .fs15r{font-size:15rem;} .fs16r{font-size:16rem;} .fs17r{font-size:17rem;} .fs18r{font-size:18rem;} .fs19r{font-size:19rem;}
 .fs20r{font-size:20rem;} .fs21r{font-size:21rem;} .fs22r{font-size:22rem;} .fs23r{font-size:23rem;} .fs24r{font-size:24rem;} .fs25r{font-size:25rem;} .fs26r{font-size:26rem;} .fs27r{font-size:27rem;} .fs28r{font-size:28rem;} .fs29r{font-size:29rem;}

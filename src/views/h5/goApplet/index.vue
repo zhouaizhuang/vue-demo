@@ -1,6 +1,6 @@
 <template>
-  <div style="max-width: 420px;margin: auto;" class="bgf5 mh100vh">
-    <div class="rel" style="width:2.4rem;height:1.4rem;border-radius:80px;margin: 0 auto;">
+  <div style="max-width:420px;margin: auto;" class="bgf5 mh100vh pt50">
+    <div class="rel" style="width:220px;height:70px;border-radius:80px;margin: 0 auto;">
       <wx-open-launch-weapp
         id="launch-btn"
         username="gh_2d50fdf10999"

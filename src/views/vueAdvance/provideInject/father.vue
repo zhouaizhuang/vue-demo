@@ -1,6 +1,6 @@
 
 <template>
-  <div class="auto fs20r h100vh fs50r">
+  <div class="auto fs14 h100vh">
     我是父组件:
     <child @sayHello="sayHello" />
   </div>

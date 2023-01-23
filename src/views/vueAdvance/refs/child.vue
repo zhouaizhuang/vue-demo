@@ -1,7 +1,7 @@
 
 <template>
-  <div class="fs20r mt30r pl30r bdc ml30r mr30r pt30r">
-    <div class="fs30r b">子组件</div>
+  <div class="fs14 mt15 pl15 bdc ml15 mr15 pt15">
+    <div class="fs15 b">子组件</div>
   </div>
 </template>
 <script>

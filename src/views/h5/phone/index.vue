@@ -1,8 +1,8 @@
 
 <template>
-  <div class="auto fs20r h100vh ">
-    <div class="pt30r pb30r pl30r">
-      <a class="fs30r g42b983" href="tel:10086">拨打电话给10086小姐姐</a>
+  <div class="auto fs14 h100vh ">
+    <div class="pt15 pb15 pl15">
+      <a class="fs20 g42b983" href="tel:10086">拨打电话给10086小姐姐</a>
     </div>
   </div>
 </template>

@@ -1,24 +1,24 @@
 <template>
-  <div style="width:7.5rem;min-height:500px;" class="auto h100vh rel">
-    <div class="fs30r tc pt30r rel zx100 gf">在移动端看效果</div>
+  <div style="width:375px;min-height:500px;" class="auto h100vh rel">
+    <div class="fs16 tc pt30 rel zx100 gf">在移动端看效果</div>
     <!--红包-->
     <div :class="['abs trbl0 trans2 zx10 op10']" style="background-color: rgba(0, 0, 0, .7);">
       <div @click.stop class='abs l50 tx-50' style="top:20%;">
-        <img @click="openRed" src="./images/red_packet_bg.png" alt="" :class="[isOpenRed ? 'aniRotate' : '']" style="width:5.44rem;height:7.11rem;">
-        <img @click="isOpenRed=false" src="./images/red_packet_close.png" alt="" :class="['abs t0', isOpenRed ? 'dn' : 'db']" style="right:-0.2rem;width:0.53rem;height:0.53rem;">
+        <img @click="openRed" src="./images/red_packet_bg.png" alt="" :class="[isOpenRed ? 'aniRotate' : '']" style="width:270px;height:375px;">
+        <img @click="isOpenRed=false" src="./images/red_packet_close.png" alt="" :class="['abs t0', isOpenRed ? 'dn' : 'db']" style="right:-10px;width:27px;height:27px;">
       </div>
     </div>
     <!--奖励记录-->
     <div :class="['abs trbl0 trans2', isShowRecord? 'zx100 op10' : 'zx-1 op0']" style="background-color: rgba(0, 0, 0, .7);">
-      <img src="./images/net_myreward_top.png" alt="" :class="['abs l50 tx-50 zx10 trans3', isShowRecord ? '' : 'tx120']" style="top:3.6rem;width:5.4rem;height:0.64rem;" />
-      <div @click.stop :class="['abs bgf rds15r l50 tx-50 trans3 zx20', isShowRecord ? '' : 'tx120']" style="top:4rem;width:5rem;padding: 0.4rem 0.6rem;min-height:4.6rem;">
-        <img @click="closeRecord" src="./images/net_finish_close.png" alt="" class="abs" style="top:-1rem;right:-0.4rem;width:0.63rem;height:0.63rem;">
-        <img src="./images/net_myreward.png" alt="" class="rel zx20 db" style="margin:0 auto 0.3rem;width:1.88rem;height:0.38rem;">
-        <img src="./images/net_myreward_bg.png" alt="" class="abs zx10 l50 tx-50" style="top: 0.6rem;width:2.58rem;height:0.25rem;">
-        <div class="f ac xc fs34r b mb10r" style="color: #CC3421;">现金红包: 100.05元</div>
-        <div class="f ac xc fs24r g3" >请至“xxx”微信公众号，点击领奖通知，领取红包</div>
-        <img src="./images/net_gift.png" alt="" class="abs b30r l50 tx-50" style="width:5.41rem;height:2.64rem;">
-        <img src="./images/net_share_btn.png" alt="" class="abs l50 tx-50" style="bottom:-1.3rem;width:2.8rem;height:0.84rem;">
+      <img src="./images/net_myreward_top.png" alt="" :class="['abs l50 tx-50 zx10 trans3', isShowRecord ? '' : 'tx120']" style="top:180px;width:270px;height:32px;" />
+      <div @click.stop :class="['abs bgf rds10 l50 tx-50 trans3 zx20', isShowRecord ? '' : 'tx120']" style="top:200px;width:250px;padding: 20px 30px;min-height:230px;">
+        <img @click="closeRecord" src="./images/net_finish_close.png" alt="" class="abs" style="top:-50px;right:-20px;width:31px;height:31px;">
+        <img src="./images/net_myreward.png" alt="" class="rel zx20 db" style="margin:0 auto 5px;width:96px;height:16px;">
+        <img src="./images/net_myreward_bg.png" alt="" class="abs zx10 l50 tx-50" style="top:22px;width:129px;height:12px;">
+        <div class="f ac xc fs17 b mb5" style="color: #CC3421;">现金红包: 100.05元</div>
+        <div class="f ac xc fs12 g3" >请至“xxx”微信公众号，点击领奖通知，领取红包</div>
+        <img src="./images/net_gift.png" alt="" class="abs l50 tx-50" style="bottom:8px;width:270px;height:132px;">
+        <img src="./images/net_share_btn.png" alt="" class="abs l50 tx-50" style="bottom:-65px;width:140px;height:42px;">
       </div>
     </div>
   </div>

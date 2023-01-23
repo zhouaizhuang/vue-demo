@@ -6,7 +6,7 @@
     </div>
     <!--文字错落显示效果二-->
     <div class="mt100r f xc">
-      <div class="bdlrf rel f g6ee1f5 fs50r lt5r b uppercase di pl10r pr10r">
+      <div class="bdlrf rel f g6ee1f5 fs24 lt5r b uppercase di pl10r pr10r">
         <div v-for="(item, index) in text2Arr" :key="index" class="innText" :style="{animationDelay: `${Math.abs(middle - index) * 0.05}s`  }">
           {{item}}
         </div>

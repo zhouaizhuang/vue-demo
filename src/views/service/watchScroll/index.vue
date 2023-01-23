@@ -1,7 +1,7 @@
 <template>
   <div ref="box" style="height:100vh;overflow-y:auto;" id="box" @scroll="scrollEvent">
-    <div v-if="isShowBtn" style="width:7rem;" class="bgff5650 gf fs32r rds30r pt30r pb30r f ac xc fixed b30r l50 tx-50">滚动到一定位置，我就显示出来了</div>
-    <div v-for="(item, index) in arr" :key="index" class="pt30r tc pb30r">{{item}}</div>
+    <div v-if="isShowBtn" style="width:375px;" class="bgff5650 gf fs15 rds30 pt15 pb15 f ac xc fixed l50 tx-50 b5">滚动到一定位置，我就显示出来了</div>
+    <div v-for="(item, index) in arr" :key="index" class="pt15 tc pb15">{{item}}</div>
   </div>
 </template>
 <script>

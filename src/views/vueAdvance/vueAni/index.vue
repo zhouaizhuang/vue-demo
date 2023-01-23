@@ -1,7 +1,7 @@
 
 <template>
-  <div class="auto fs20r h100vh fs50r">
-    <div class="w30 tc pt20r pb20r pl40r pr40r gf bg1890ff rds40r fs30r auto" @click="show = !show">切换动画</div>
+  <div class="auto fs20 h100vh">
+    <div class="w30 tc pt10 pb10 pl20 pr20 gf bg1890ff rds20 fs15 auto" @click="show = !show">切换动画</div>
     <!--1、使用过度类名-->
     <transition name='fade'>
       <h3 v-if="show">这是一个h3</h3>

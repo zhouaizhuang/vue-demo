@@ -184,6 +184,12 @@
     </div>
     <div class="fs26 b mt30 mb20 tc">H5开发</div>
     <div class="f">
+      <div class="b" style="width:150px;">H5组件封装</div>
+      <div class="f1 f xs ac rw">
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/list">触底加载更多组件</router-link></div>
+      </div>
+    </div>
+    <div class="f">
       <div class="b" style="width:150px;">H5原生功能</div>
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/phone">打电话</router-link></div>
@@ -202,12 +208,7 @@
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/qrCode">相机扫描二维码</router-link></div>
       </div>
     </div>
-    <div class="f">
-      <div class="b" style="width:150px;">H5组件封装</div>
-      <div class="f1 f xs ac rw">
-        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/list">触底加载更多组件</router-link></div>
-      </div>
-    </div>
+   
     <div class="fs26 b mt30 mb20 tc">PC开发</div>
     <div class="f">
       <div class="b" style="width:150px;">PC组件封装</div>

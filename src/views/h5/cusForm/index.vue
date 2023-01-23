@@ -1,13 +1,13 @@
 
 <template>
-  <div class="pl30r pr30r" style="min-height:100vh;background:#FBF8F3;padding-bottom:1.8rem;">
+  <div class="pl15 pr15" style="min-height:100vh;background:#FBF8F3;padding-bottom:100px;">
     <div v-for="bigItem in cusForm" :key="bigItem.id">
-      <div class="pb20r pt20r fs30r b ">{{bigItem.name}}</div>
-      <div class="bgf rds20r pl20r pr20r pb20r" style="box-shadow: 0px 8px 15px rgba(143, 143, 143, 0.1);">
+      <div class="pb10 pt10 fs15 b ">{{bigItem.name}}</div>
+      <div class="bgf rds10 pl10 pr10 pb10" style="box-shadow: 0px 8px 15px rgba(143, 143, 143, 0.1);">
         <div v-for="(item, index) in bigItem.child" :key="item.id" :class="[bigItem.child.length === index + 1 ? '' : 'bdbe5']">
-          <cusInput v-if="item.type == 'text'" :formInfo="item" :type="$route.query.type" @changeValue="changeValue" />
-          <cusTextArea v-else-if="item.type == 'textarea'" :formInfo="item" :type="$route.query.type" @changeValue="changeValue" />
-          <cusRadio v-else-if="item.type == 'radio'" :formInfo="item" :type="$route.query.type" @changeValue="changeValue" />
+          <CusInput v-if="item.type == 'text'" :formInfo="item" :type="$route.query.type" @changeValue="changeValue" />
+          <CusTextArea v-else-if="item.type == 'textarea'" :formInfo="item" :type="$route.query.type" @changeValue="changeValue" />
+          <CusRadio v-else-if="item.type == 'radio'" :formInfo="item" :type="$route.query.type" @changeValue="changeValue" />
           <!-- <cusCheckBox v-else-if="item.type == 'checkbox'" :formInfo="item" :type="$route.query.type" @changeValue="changeValue" />
           <cusPickArea wx:elif="{{item.type == 'area'}}" formInfo="{{item}}" type="{{options.type}}" bind:changeValue="changeValue" />
           <cusPickDate wx:elif="{{item.type == 'date'}}" formInfo="{{item}}" type="{{options.type}}" bind:changeValue="changeValue" />
@@ -22,17 +22,17 @@
   </div>
 </template>
 <script>
-import { guID } from "../../../common"
-import cusInput from "../../../components/cusInput.vue"
-import cusTextArea from "../../../components/cusTextArea.vue"
-import cusRadio from "../../../components/cusRadio.vue"
+import { guID } from "@/common.js"
+import CusInput from "@/components/CusInput/index.vue"
+import CusTextArea from "@/components/CusTextArea/index.vue"
+import CusRadio from "@/components/CusRadio/index.vue"
 
 export default {
   name: 'cusForm',
   components: {
-    cusInput,
-    cusTextArea,
-    cusRadio,
+    CusInput,
+    CusTextArea,
+    CusRadio,
   },
   data(){
     return {

@@ -1,3 +1,4 @@
+import * as func from "./func.js"
 export default {
   name: 'cusRadio',
   props: {
@@ -15,7 +16,7 @@ export default {
     return {}
   },
   methods:{
-    
+    ...func,
   },
   created(){
   }

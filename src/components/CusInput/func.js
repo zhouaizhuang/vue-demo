@@ -3,7 +3,8 @@
  * @param {*} e 
  */
 export const changeField = function (e){
-  const { value } = e.detail
-  const { _id } = this.data.formInfo
+  console.log(e)
+  const value = e.data
+  const { _id } = this.formInfo
   this.$emit('changeValue', {value, _id})
 }

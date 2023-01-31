@@ -155,7 +155,7 @@ body {text-size-adjust: 100% !important;min-height:100vh;overflow-x: hidden;marg
 .b0{bottom:0;} .b1{bottom:1%;} .b2{bottom:2%;} .b3{bottom:3%;} .b4{bottom:4%;} .b5{bottom:5%;} .b6{bottom:6%;} .b7{bottom:7%;} .b8{bottom:8%;} .b9{bottom:9%;} .b10{bottom:10%;} .b11{bottom:11%;} .b12{bottom:12%;} .b13{bottom:13%;} .b14{bottom:14%;} .b15{bottom:15%;} .b16{bottom:16%;} .b17{bottom:17%;} .b18{bottom:18%;} .b19{bottom:19%;} .b20{bottom:20%;} .b21{bottom:21%;} .b22{bottom:22%;} .b24{bottom:24%;} .b25{bottom:25%;} .b26{bottom:26%;} .b27{bottom:27%;} .b28{bottom:28%;} .b29{bottom:29%;} .b30{bottom:30%;}  .b35{bottom:35%;} .b40{bottom:40%;} .b45{bottom:45%;} .b50{bottom:50%;}
 .l0{left:0;} .l1{left:1%;} .l2{left:2%;} .l3{left:3%;} .l4{left:4%;} .l5{left:5%;} .l6{left:6%;} .l7{left:7%;} .l8{left:8%;} .l9{left:9%;} .l10{left:10%;} .l11{left:11%;} .l12{left:12%;} .l13{left:13%;} .l14{left:14%;} .l15{left:15%;} .l16{left:16%;} .l17{left:17%;} .l18{left:18%;} .l19{left:19%;} .l20{left:20%;} .l21{left:21%;} .l22{left:22%;} .l24{left:24%;} .l25{left:25%;} .l26{left:26%;} .l27{left:27%;} .l28{left:28%;} .l29{left:29%;} .l30{left:30%;} .l35{left:35%;} .l40{left:40%;} .l45{left:45%;} .l50{left:50%;}
 /* cursor鼠标显示 */
-.poi{cursor:pointer;}    .def{cursor:default;}
+.poi{cursor:pointer;}    .def{cursor:default;} .move{cursor:move;}
 /* 左右居中 */
 .auto{margin-left: auto;margin-right:auto;} .mauto{margin: auto;}
 /* 动画 */  

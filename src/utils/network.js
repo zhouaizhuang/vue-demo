@@ -152,9 +152,9 @@ export const request = function (options) {
 }
 /**
  * 封装一个post请求
- * @param {*} url 请求的url地址
- * @param {*} params 请求参数
- * @param {*} type 返回数据类型  1代表只返回data    0代表不做任何处理直接返回格式：{code:xx, data:xx, msg:xx}
+ * @param {String} url 请求的url地址
+ * @param {JSON} params 请求参数
+ * @param {Number|String} type 返回数据类型  1代表只返回data    0代表不做任何处理直接返回格式：{code:xx, data:xx, msg:xx}
  * @returns 
  * @举例 const res = await this.$post('/apprepair/editRepair', {id:1, name:'zz'})
  */
@@ -163,9 +163,9 @@ export const post = function (url, params, type = 1) {
 }
 /**
  * 防止重复请求，只请求第一次，在第一次结果返回之前。后续相同的url请求被屏蔽
- * @param {*} url 请求的url地址
- * @param {*} params 请求参数
- * @param {*} type 返回数据类型  1代表只返回data    0代表不做任何处理直接返回格式：{code:xx, data:xx, msg:xx}
+ * @param {String} url 请求的url地址
+ * @param {JSON} params 请求参数
+ * @param {Number|String} type 返回数据类型  1代表只返回data    0代表不做任何处理直接返回格式：{code:xx, data:xx, msg:xx}
  * @returns 
  * @举例 const res = await this.$endPost('/apprepair/editRepair', {id:1, name:'zz'})
  */
@@ -181,9 +181,9 @@ export const startPost = (function () {
 })()
 /**
  * 可以重复请求，连续重复的url请求，只会渲染最后一次请求返回的结果
- * @param {*} url 请求的url地址
- * @param {*} params 请求参数
- * @param {*} type 返回数据类型  1代表只返回data    0代表不做任何处理直接返回格式：{code:xx, data:xx, msg:xx}
+ * @param {String} url 请求的url地址
+ * @param {JSON} params 请求参数
+ * @param {Number|String} type 返回数据类型  1代表只返回data    0代表不做任何处理直接返回格式：{code:xx, data:xx, msg:xx}
  * @returns 
  * @举例 const res = await this.$endPost('/apprepair/editRepair', {id:1, name:'zz'})
  */

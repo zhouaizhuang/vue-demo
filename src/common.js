@@ -1042,8 +1042,8 @@ export const f2s = fahrenheit => (fahrenheit - 32) * 5 / 9
  * 整个页面之间，平滑滚动
  * --->取代锚点。将传入的DOM，滚动到指定位置
  * @param {DOM} dom 传入的DOM元素
- * @param {Number} position 滚动到什么位置
- * @param {Number} type 滚动类型： 0：滚动到视口的顶部   1：滚到到视口中央  2：滚动到视口底部  3：不滚动
+ * @param {Number} position 滚动到什么位置  0：滚动到视口的顶部   1：滚到到视口中央  2：滚动到视口底部  3：不滚动
+ * @param {Number} type 滚动类型：0：平滑滚动   1：迅速滚动
  * @举例子 pageScroll(this.$refs.testRef, 0, 0) // 执行完这个函数，那么会找到页面上ref为testRef的DOM，然后平滑滚动到页面顶部
  */
 export const pageScroll = function (dom, position = 0, type = 0) {

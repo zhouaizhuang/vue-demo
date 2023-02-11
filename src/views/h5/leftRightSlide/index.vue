@@ -2,7 +2,7 @@
   <div class="mh100vh bgf5 fs12">
     <div class="pt10 pl10 pr10">
       <div v-for="item in list" :key="item.id" class="mb10">
-        <Slide :list="list" :item="item" @setList="v => list = v" :type="['left', 'right']" @leftFn="leftFn(item)">
+        <Slide :list="list" :item="item" @setList="v => list = v" :type="['left', 'right']" @leftFn="leftFn">
           <div class="w100 bgf rds5 ovh pb10r">
             <div class="rel pl30 pr30r f ac" style="border-bottom: 1px solid #ccc;">
               <div class="abs l0 t0 fs12" style="width:0px;height:0px;border-left:20px solid #13bd87;border-top:20px solid #13bd87;border-right:20px solid transparent;border-bottom:20px solid transparent;">

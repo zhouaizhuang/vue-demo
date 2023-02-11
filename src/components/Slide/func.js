@@ -34,5 +34,5 @@ export const touchEnd = function (e) {
 }
 // 删除
 export const del = function () {
-  this.$emit('leftFn')
+  this.$emit('leftFn', this.item)
 }

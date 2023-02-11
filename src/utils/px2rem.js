@@ -9,9 +9,9 @@
     var width = docEl.getBoundingClientRect().width;
     maxWidth = maxWidth || 540;
     width > maxWidth && (width = maxWidth);
-    var rem = width * 100 / designWidth;
+    var rem = width  / designWidth;
     // remStyle.innerHTML = 'html{font-size:' + rem + 'px;}';
-    remStyle.innerHTML = 'html{font-size:' + 1 + 'px;}';  // 可以让rem为1
+    remStyle.innerHTML = 'html{font-size:' + rem + 'px;}';  // 可以让rem为1
   }
   if (docEl.firstElementChild) {
     docEl.firstElementChild.appendChild(remStyle);

@@ -18,9 +18,9 @@ export const touchEnd = function (e) {
   const endX = e.changedTouches[0].clientX
   const list = searchCover(this.list, {id: this.item.id}, v=> {
     let slideType = v.slideType || 0
-    if(endX - v.startX > 30) {
+    if(endX - v.startX > 30) { // 向右滑动距离超过30px， 判定为右滑
       slideType++
-    } else if(endX - v.startX < -30){
+    } else if(endX - v.startX < -30){ // 向左滑动距离超过30px， 判定为左滑
       slideType--
     }
     const min = this.type.includes('left') ? -1 : 0

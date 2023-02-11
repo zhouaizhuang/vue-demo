@@ -1,7 +1,7 @@
 <template>
   <div>
     <slot></slot>  <!-- 相当于<slot name="default"></slot>-->
-    <slot name="loadMode" :loadMode="loadMode">
+    <slot name="loadMode">
       <div v-if="isShowLoadMore" v-reachBottom="getMoreData" id="" class="loadMore f ac xc tc pb25">
         <svg class="rotateSvg">
           <circle cx="20" cy="20" r="10" fill="none" class="circleDash"></circle>

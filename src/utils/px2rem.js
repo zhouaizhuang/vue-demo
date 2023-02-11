@@ -9,8 +9,10 @@
     var width = docEl.getBoundingClientRect().width;
     maxWidth = maxWidth || 540;
     width > maxWidth && (width = maxWidth);
-    var dpr = window.devicePixelRatio || 1; // 设备像素比
-    var rem = width * dpr / designWidth;
+    // var dpr = window.devicePixelRatio || 1; // 设备像素比
+    var rem = width / designWidth;
+    // console.log(width)
+    // console.log(designWidth)
     // console.log(dpr)
     remStyle.innerHTML = 'html{font-size:' + rem + 'px;}';  // 可以让rem为1
   }

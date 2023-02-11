@@ -30,3 +30,7 @@ export const touchEnd = function (e) {
   })
   this.$emit('setList', list)
 }
+// 删除
+export const del = function () {
+  this.$emit('leftFn')
+}

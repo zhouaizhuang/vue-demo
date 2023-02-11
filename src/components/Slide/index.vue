@@ -8,7 +8,7 @@
         </div>
       </slot>
       <slot name="rightSlot">
-        <div style="width:60px;background:red;right:-60px;" class="abs t0 b0 gf f ac xc fs14">删除</div>
+        <div style="width:60px;background:red;right:-60px;" class="abs t0 b0 gf f ac xc fs14" @click="del">删除</div>
       </slot>
     </div>
   </div>

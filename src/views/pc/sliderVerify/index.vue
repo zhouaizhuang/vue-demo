@@ -21,7 +21,7 @@
   </div>
 </template>
 <script>
-import Slider from "../../../components/Slider.vue"
+import Slider from "../../../components/Slider/index.vue"
 export default {
   name: '',
   components:{

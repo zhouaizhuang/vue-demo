@@ -15,8 +15,7 @@ export const encrypt = e => CryptoJS.TripleDES.encrypt(e, utf8Key, options).toSt
 export const decrypt = e => CryptoJS.enc.Utf8.stringify(CryptoJS.TripleDES.decrypt(e.replace(/\s/g,''), utf8Key, options)) // 解密
 /**
  * 页面调试debug开关
- * isDebug： true ----> 代表当前是开发环境不需要加密
- * isDebug： false ----> 代表当前是生产环境需要加密
+ * isDebug： true ----> 代表当前是开发环境不需要加密    |   false ----> 代表当前是生产环境需要加密
  */
 export const isDebug = process.env.VUE_APP_ENV == 'development' // 是否开启debug
 export const requestUrl = isDebug ? process.env.VUE_APP_BASE_URL : `${window.location.protocol}//${window.location.host}`

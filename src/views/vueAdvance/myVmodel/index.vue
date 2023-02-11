@@ -1,15 +1,15 @@
 <!--自定义组件的v-model使用方式-->
 <template>
   <div class="auto fs14 h100vh fs18">
-    <advVmodel v-model="text" />
+    <AdvVmodel v-model="text" />
   </div>
 </template>
 <script>
-import advVmodel from "../../../components/advVmodel/index.vue"
+import AdvVmodel from "../../../components/AdvVmodel/index.vue"
 export default {
   name: 'vmodel',
   components: {
-    advVmodel
+    AdvVmodel
   },
   data(){
     return {

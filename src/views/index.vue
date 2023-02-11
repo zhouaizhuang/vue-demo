@@ -187,6 +187,7 @@
       <div class="b" style="width:150px;">H5组件封装</div>
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/list">触底加载更多组件</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/leftSlideDel">列表左滑删除</router-link></div>
       </div>
     </div>
     <div class="f">

@@ -62,7 +62,7 @@ body {text-size-adjust: 100% !important;min-height:100vh;overflow-x: hidden;marg
 .bdc-r{border: 1rem solid #ccc;} .bdbe-r{border-bottom: 1rem solid #eee;}
 /* 背景色 */
 .bgf{background-color: #fff;} .bg2{background-color: #222;} .bgf5{background-color: #f5f5f5;} .bgecf2ff{background-color: #ecf2ff;} .bgff5650{background-color: #ff5650;}
-.bg1890ff{background-color: #1890ff;} .bgc7a35d{background-color: #c7a35d;} .bg1a1e23{background-color:#1a1e23;} .bgpink{background:pink;}
+.bg1890ff{background-color: #1890ff;} .bgc7a35d{background-color: #c7a35d;} .bg1a1e23{background-color:#1a1e23;} .bgpink{background:pink;} .bg13bd87{background:#13bd87;}
 /* 字体颜色 */
 .ga0aac0{color: #a0aac0;}
 .g0{color: #000;} .g6{color: #666;} .g9{color:#999;} .gc{color:#ccc;} .g3e{color:#3e3e3e;} .gd9{color: #d9d9d9;} .gf{color: #fff;} .gred{color:red;}

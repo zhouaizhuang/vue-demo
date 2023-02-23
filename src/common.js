@@ -646,7 +646,7 @@ export const url2JSON = function (url = '', type = 1) {
   return paramsStr.split('&').reduce((prev, item) => {
     let [key, val] = item.split('=')
     val = type == 1 ? decodeURIComponent(val) : val // 为了适配更多的场景，开发了自定义是否解码（如果传入的url是编码过的，那么必须解码，否则报错）
-    return { ...prev, [key]: JSON.parse(val) } // 此处需要转码，否则中文和一些特殊字符就无法支持了
+    return { ...prev, [key]: safeGet(()=>JSON.parse(val), val) } // 此处需要转码，否则中文和一些特殊字符就无法支持了
   }, {})
 }
 /**

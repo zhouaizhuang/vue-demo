@@ -639,14 +639,14 @@ export const JSON2url = function (url = '', params = {}, type = 1){
  * @returns {Object} 返回参数拼接的json对象
  * @举例 url2JSON('http://www.baidu.com?name=asd&age=12') ----> {name: "asd", age: "12"}
  */
-export const url2JSON = function (url = '', type = 1) {
+export const url2JSON = function (url = '', type = 0) {
   // url = url || window.location.href // 如果没传参，就使用浏览器当前url。暂时注释，因为这个不兼容小程序
   let paramsStr = url.includes('?') ? (url.split('?')[1] || '') : url
   paramsStr = paramsStr.split('#')[0] || '' // 防止一些url中混入#号放在?号之后，此处做一个适配
   return paramsStr.split('&').reduce((prev, item) => {
     let [key, val] = item.split('=')
     val = type == 1 ? decodeURIComponent(val) : val // 为了适配更多的场景，开发了自定义是否解码（如果传入的url是编码过的，那么必须解码，否则报错）
-    return { ...prev, [key]: safeGet(()=>JSON.parse(val), val) } // 此处需要转码，否则中文和一些特殊字符就无法支持了
+    return { ...prev, [key]: val } // 此处需要转码，否则中文和一些特殊字符就无法支持了
   }, {})
 }
 /**

@@ -19,6 +19,7 @@
     <div class="f">
       <div class="b" style="width:150px;">前端类工具</div>
       <div class="f1 f xs ac rw">
+        <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://www.wangeditor.com/demo/get-html.html">在线word格式转html（相当于富文本）</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://www.cnblogs.com/yundeblog/p/14793577.html">uniapp富文本解析插件</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://tinypng.com/">在线图片压缩</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://www.bejson.com/ui/compress_img/">在线图片压缩2</a></div>

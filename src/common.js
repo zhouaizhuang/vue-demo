@@ -1312,7 +1312,7 @@ export const preLoadImg = function (arr = []) {
 /**
  * 执行此函数，可以做一个延时功能。在需要延时执行一段逻辑的时候可以使用
  * @param {String|Number} t
- * @returns 返回一个promise对象，等待t时间后resolve
+ * @returns 返回一个promise对象，等待t时间后，最终返回定时器id
  * 举例子: await wait(500)   // 那么程序会在此处阻塞等待500ms
  * 举例子: await wait('500ms') // 那么程序会在此处阻塞等待500ms
  * 举例子: await wait('0.5s') // 那么程序会在此处阻塞等待500ms
@@ -1321,7 +1321,7 @@ export const preLoadImg = function (arr = []) {
  */
 export const wait = function(t) {
   if(isString(t)) { t = eval(t.replace('ms', '').replace('毫秒', '').replace('s', '*1000').replace('秒', '*1000')) }
-  return new Promise(resolve => setTimeout(() => resolve(), Number(t)))
+  return new Promise(resolve => {const timeId = setTimeout(() => resolve(timeId), Number(t))})
 }
 /**
  * 深拷贝

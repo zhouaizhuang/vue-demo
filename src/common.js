@@ -603,10 +603,16 @@ export const formatJSON = function (obj) {
   if(!isReference) { return obj }
   return isObject(obj) ? Object.keys(obj).reduce((prev, item) => ((prev[item] = isNull(obj[item]) || isUndefined(obj[item])  ? '' : obj[item]), prev), {}) : {}
 }
-// 格式化后端返回数据，将null转为undefined，后续写代码需要解构赋值的时候，赋默认值{}或者[]
+// 
+/**
+ * 格式化后端返回数据，将null转为undefined，后续写代码需要解构赋值的时候，赋默认值{}或者[]
+ * @param {*} obj 
+ * @returns 
+ * @举例 formatRes({name:'zzz', age:null}) ---->  {name:'zzz', age: undefined}
+ */
 export const formatRes = function (obj) {
   if(!isReference) { return obj }
-  const filterNull = tmpObj =>  Object.keys(tmpObj).reduce((prev, item) => ((prev[item] = isNull(tmpObj[item]) ? undefined : tmpObj[item]), prev), {})
+  const filterNull = tmpObj =>  Object.keys(tmpObj).reduce((prev, item) => ((prev[item] = isNull(tmpObj[item]) ? '' : tmpObj[item]), prev), {})
   return isArray(obj) ? obj.map(item => filterNull(item)) : filterNull(obj)
 }
 /**

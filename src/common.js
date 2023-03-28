@@ -84,7 +84,7 @@ export const makeMap = function(str, expectsLowerCase = false) {
  * 数据转为字符串
  * @param {*} val 需要转成字符串的值
  * @returns 
- * 举例子 toString([{name:'zzz', age:18}]) ---> '[\n  {\n    "name": "asd",\n    "ae": "as"\n  }\n]'
+ * @举例 toString([{name:'zzz', age:18}]) ---> '[\n  {\n    "name": "asd",\n    "ae": "as"\n  }\n]'
  */
 export const toString = function (val) {
   return val == null ? '' : isReference ? JSON.stringify(val, null, 2) : String(val)
@@ -93,6 +93,7 @@ export const toString = function (val) {
  * @param {String} str 目标字符串
  * @param {String} keywords 需要搜索的开头的字符串
  * @returns {Boolean} 返回布尔值，是否验证通过
+ * @举例 startWith('asdasd', 'as') ---> true
  */
 export const startWith = (str, startWords) => str.slice(0, startWords.length) === startWords
 /**
@@ -145,8 +146,8 @@ export const copyLink = function (e){
 /**
  * 字符串首字母大写
  * @param {String} str 
- * @举例 capitalize('abcd')  ---->  'Abcd'
  * @returns 经过转换后的首字母为大写的字符串
+ * @举例 capitalize('abcd')  ---->  'Abcd'
  */
 export const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1)
 /*

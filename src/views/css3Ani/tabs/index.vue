@@ -20,7 +20,7 @@
           </div>
           <div :class="[currentTab == 2 ? 'op10' : 'op0']">message</div>        
         </div>
-        <div class="abs bgf rds50 dot zx1 trans3" :style="{left:`${33 * currentTab + 10}%`,top:'-30px',height:'50px',width:'50px', transform: `translateX(${0}%)`}"></div>
+        <div class="abs bgf rds50 dot zx1 trans3" :style="{left:`${33 * currentTab + 11}%`,top:'-30px',height:'50px',width:'50px', transform: `translateX(${0}%)`}"></div>
       </div>
     </div>
   </div>

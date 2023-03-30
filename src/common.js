@@ -570,13 +570,18 @@ export const intersect = function (arr1, arr2){
 }
 /**
  * 数组（a 相对于 b 的）差集:  a数组中的数据，在b数组中没找到的数据
- * @param {*} arr1 数组1
- * @param {*} arr2 数组2
+ * @param {Array} arr1 数组1
+ * @param {Array} arr2 数组2
+ * @param {Number} type 类型  type为1则表示不区分数字和字符串   其他则区分
  * @returns 
  * @举例子 difference([1,2,3], [1,2,7]) ====> [3]
  */
-export const difference = function (arr1, arr2){
+export const difference = function (arr1, arr2, type = 1){
   if(!isArray(arr1) || !isArray(arr2)) { throw new Error('参数必须是数组类型') }
+  if(type == 1) {
+    arr1 = arr1.map(v => String(v))
+    arr2 = arr2.map(v => String(v))
+  }
   const b = new Set(arr2)
   return arr1.filter(x => !b.has(x))
 }

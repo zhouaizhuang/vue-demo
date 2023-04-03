@@ -570,20 +570,50 @@ export const intersect = function (arr1, arr2){
 }
 /**
  * 数组（a 相对于 b 的）差集:  a数组中的数据，在b数组中没找到的数据
- * @param {Array} arr1 数组1
- * @param {Array} arr2 数组2
- * @param {Number} type 类型  type为1则表示不区分数字和字符串   其他则区分
+ * @param {Array|String} v1 数据1
+ * @param {Array|String} v2 数据2
+ * @param {Boolean} strictEqual 类型  strictEqual为true则为严格匹配   默认是不区分数字和字符串这样的
+ * @param {String} split 分隔符  默认如果传入的是字符串，默认按照字符串分割
  * @returns 
  * @举例子 difference([1,2,3], [1,2,7]) ====> [3]
+ * @举例子 difference('1,2,3', '2') ====> '1,3'
+ * @举例子 difference('1,2,3', '2,8') ====> '1,3'
  */
-export const difference = function (arr1, arr2, type = 1){
-  if(!isArray(arr1) || !isArray(arr2)) { throw new Error('参数必须是数组类型') }
-  if(type == 1) {
-    arr1 = arr1.map(v => String(v))
-    arr2 = arr2.map(v => String(v))
+export const difference = function (v1, v2, strictEqual = false, split = ','){
+  const isStrArr1 = isString(v1)
+  if(isStrArr1) { v1 = v1.split(split) }
+  if(isString(v2)) { v2 = v2.split(split) }
+  if(!strictEqual) {
+    v1 = v1.map(v => String(v))
+    v2 = v2.map(v => String(v))
   }
-  const b = new Set(arr2)
-  return arr1.filter(x => !b.has(x))
+  const b = new Set(v2)
+  const newArr = v1.filter(x => !b.has(x))
+  return isStrArr1 ? newArr.join(split) : newArr
+}
+/**
+ * 数据1---是否包含---数据2--的数据。type：1部分包含，type：2全部包含
+ * @param {Array|String} v1 
+ * @param {Array|String} v2 
+ * @param {Number} type type:1则为部分包含    type:2全部包含
+ * @param {Boolean} strictEqual 是否严格校验
+ * @param {String} split 分隔符 默认为逗号
+ * @return {Boolean} 返回校验结果
+ * @举例子 isContain('1,2,3', '2,3') ====> true
+ * @举例子 isContain('1,2,3', '2,3,4') ====> true
+ * @举例子 isContain('1,2,3', '2,3,4', false) ====> false
+ */
+export const isContain = function (v1, v2, type = 1, strictEqual = false, split = ',') {
+  const isStrArr1 = isString(v1)
+  if(isStrArr1) { v1 = v1.split(split) }
+  if(isString(v2)) { v2 = v2.split(split) }
+  if(!strictEqual) {
+    v1 = v1.map(v => String(v))
+    v2 = v2.map(v => String(v))
+  }
+  const fn1 = () => v2.some(v => v1.some(k => strictEqual ? k == v : k === v))
+  const fn2 = () => v2.every(v => v1.some(k => strictEqual ? k == v : k === v))
+  return type == 1 ? fn1() : fn2()
 }
 /**
  * 数组（a 和 b 的）并集

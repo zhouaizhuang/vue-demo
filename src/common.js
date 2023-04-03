@@ -596,7 +596,7 @@ export const difference = function (v1, v2, strictEqual = false, split = ','){
  * @param {Array|String} v1 
  * @param {Array|String} v2 
  * @param {Number} type type:1则为部分包含    type:2全部包含
- * @param {Boolean} strictEqual 是否严格校验
+ * @param {Boolean} strictEqual 是否严格校验 true: 严格校验    false：非严格校验
  * @param {String} split 分隔符 默认为逗号
  * @return {Boolean} 返回校验结果
  * @举例子 isContain('1,2,3', '2,3') ====> true
@@ -608,8 +608,8 @@ export const isContain = function (v1, v2, type = 1, strictEqual = false, split 
   if(isStrArr1) { v1 = v1.split(split) }
   if(isString(v2)) { v2 = v2.split(split) }
   if(!strictEqual) {
-    v1 = v1.map(v => String(v))
-    v2 = v2.map(v => String(v))
+    v1 = v1.map(v => String(v).toLowerCase())
+    v2 = v2.map(v => String(v).toLowerCase())
   }
   const fn1 = () => v2.some(v => v1.some(k => strictEqual ? k == v : k === v))
   const fn2 = () => v2.every(v => v1.some(k => strictEqual ? k == v : k === v))

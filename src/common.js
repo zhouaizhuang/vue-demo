@@ -291,6 +291,22 @@ export const searchCover = function (arr, search = v => v, success = v => v, fai
   return arr.map(item => isCurItem(item) ? fnRes(item, success) : fnRes(item , fail))
 }
 /**
+ * 单选
+ * @param {*} arr 
+ * @param {*} search 
+ * @returns 
+ * @举例 radioChecked([{name:'zz', id:1, isChecked:false}, {name:'zs', id:2, isChecked:false}], {id: 1})  ----> [{name:'zz', id:1, isChecked:true}, {name:'zs', id:2, isChecked:false}]
+ */
+export const radioChecked = (arr, search = v => v) => searchCover(arr, search, v => {v.isChecked=true;return v}, v => {v.isChecked=false;return v})
+/**
+ * 多选
+ * @param {*} arr 
+ * @param {*} search 
+ * @returns 
+ * @举例 multipleChecked([{name:'zz', id:1, isChecked:false}, {name:'zs', id:2, isChecked:false}], {id: 1})
+ */
+export const multipleChecked = (arr, search = v => v) => searchCover(arr, search, v => {v.isChecked=!v.isChecked;return v})
+/**
  * 对象数组去重(根据对象中某个字段)
  * @param {Object<Array>} arr 需要去重的对象数组
  * @param {*} field 字段名称

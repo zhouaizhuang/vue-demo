@@ -1,15 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import index from '../views/index.vue'
-import { getLocalStorage } from "../common.js"
+import { isArray } from "@/common.js"
 Vue.use(VueRouter)
 // 批量读取路由
 const r = require.context('./modules', true, /\.js/)
-const routerList = r.keys().reduce((prev, item) => {
-  const routeItem = r(item).default
-  return Array.isArray(routeItem) ? [...prev, ...routeItem] : [...prev, routeItem]
-}, [])
-// 将读取到的路由写入
+const routerList = r.keys().reduce((prev, item) => [...prev, ...isArray(r(item).default) ? r(item).default : [r(item).default]], [])
 const routes = [
   { path: '/', redirect: { name: 'index' } },
   { path: '/index', name: 'index', component: index },
@@ -47,7 +43,7 @@ router.afterEach((to,from,next) => {
 
 /*
 **********************************************************************************************
-******************************************vue路由相关方法*********************************************
+******************************************vue路由相关方法**************************************
 **********************************************************************************************
 */
 /**
@@ -55,16 +51,13 @@ router.afterEach((to,from,next) => {
  * @param {*} options
  * @举例 go({name: 'lottie', query:{name:'tom'}}) // 这样就实现了跳转到/lottie页面并且页面传参为name=tom
  */
-export const go = function(options = {}) {
-  router.push({
-    path: '', // 路由路径
-    name: '', // 路由名称
-    query: {}, // 通过this.$route.query.id获取。刷新没问题。因为数据是在url上的
-    params: {}, // 通过this.$route.params.id。刷新，传入当前页面的数据会丢失
-    ...options
-  })
-}
-// 返回几层
+export const go = (options = {}) => router.push({ path: '', name: '', query: {}, params: {}, ...options }).catch(() => {})
+/**
+ * 返回前几页
+ * @param {*} times -1则为返回前一页   -2则为返回前2页
+ * @returns 
+ * @举例 goBack(-1)
+ */
 export const goBack = (times = -1) => router.go(times) // 返回times页面
 /**
  * 路由比对函数
@@ -74,16 +67,10 @@ export const goBack = (times = -1) => router.go(times) // 返回times页面
  * @举例： 
  */
 export const compareRoute = function (allRouter = [], userRouter = []) {
-  // console.log(allRouter)
-  // console.log(userRouter)
   return allRouter.reduce((prev, item) => {
-    userRouter.forEach(v => {
-      if(item.path == v.path) {
-        if(isArray(item.children)) { item.children = compareRoute(item.children, v.authorityList) }
-        if(v.hasAuthority == 1) { prev = [...prev, item] }
-      }
-    })
-    return prev
+    const curItem = userRouter.find(v => item.path == v.path) || {}
+    if(isArray(curItem.children)) { item.children = compareRoute(item.children, curItem.children || []) }
+    return [...prev, ...Object.keys(curItem).length ? [item] : []]
   }, [])
 }
 export default router

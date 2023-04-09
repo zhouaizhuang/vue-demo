@@ -1136,11 +1136,11 @@ export const getScrollTop = () => (document.documentElement && document.document
  * @举例 getViewPos(document.querySelector('#yyy'))   ----> { "top": 60, "bottom": 60, "left": 0, "right": 1477 }
  */
 export const getViewPos = function (e) {
-  let {top = Number(e.offsetTop), bottom = Number(e.offsetBottom), left = Number(e.offsetLeft), right = Number(e.offsetRight) } = e.getBoundingClientRect()
+  let {top, bottom, left, right, width, height } = e.getBoundingClientRect()
   const { clientTop = 0, clientLeft = 0 } = window.document.documentElement // html元素对象的上边框的上边距和左边距
   ;[top, bottom, left, right] = [top - clientTop, bottom - clientTop, left - clientLeft, right - clientLeft]
   // 元素距离视口顶部的距离、元素距离视口底部的距离、元素距离视口左边的距离、元素距离视口右边的距离
-  return { top, bottom, left, right }
+  return { top, bottom, left, right, width, height }
 }
 /**
  * 浏览器下一帧渲染之前执行此函数

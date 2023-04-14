@@ -285,7 +285,6 @@ export const adjust = function (arr, num, fn) {
  * )
  */
 export const searchCover = function (arr, search = v => v, success = v => v, fail = v => v) {
-  if(!isArray(arr)) { throw new Error('入参必须为对象数组') }
   const isCurItem = item => isObject(search) ? Object.keys(search).reduce((prev, v) => (prev = prev && search[v] == item[v], prev), true) : search(item)
   const fnRes = (item, fn) => isObject(fn) ? { ...item, ...fn } : fn(item)
   return arr.map(item => isCurItem(item) ? fnRes(item, success) : fnRes(item , fail))
@@ -657,7 +656,7 @@ export const formatJSON = function (obj) {
 // 
 /**
  * 格式化后端返回数据，将null转为undefined，后续写代码需要解构赋值的时候，赋默认值{}或者[]
- * @param {*} obj 
+ * @param {Object} obj
  * @returns 
  * @举例 formatRes({name:'zzz', age:null}) ---->  {name:'zzz', age: undefined}
  */
@@ -923,6 +922,18 @@ export const largeNumAdd = function (num1, num2){
 **********************************************************************************************
 */
 /**
+ * 处理时间
+ * @param {*} t 时间 
+ * @returns 
+ * @举例 processDate() ---->  默认返回当前时间
+ * @举例 processDate('2022-10-01') ----> '2022/10/01'
+ */
+export const processDate = function (t) {
+  if(!isDate(t) && isString(t) && !t.includes('T') && t.length > 0) { t = t.replace(/[-]/g, "/") }
+  if(!t) { t = new Date() }
+  return t
+}
+/**
  * 提取传入日期年、月、日、时、分、秒
  * @param {String|Date|Number} t 
  * @returns 
@@ -931,7 +942,7 @@ export const largeNumAdd = function (num1, num2){
  * @举例 extract('2022-10-01 12:12:14') ---->  ['2022', '10', '01', '12', '12', '14']
  */
 export const extract = function (t = new Date()){
-  if(!isDate(t) && isString(t) && !t.includes('T') && t.length > 0) { t = t.replace(/[-]/g, "/") }
+  t = processDate(t)
   const d = new Date(new Date(t).getTime() + 8*3600*1000)
   const [year, month, day, hour, minutes, second] = new Date(d).toISOString().split(/[^0-9]/).slice(0, -1)
   return [year, month, day, hour, minutes, second]
@@ -945,8 +956,7 @@ export const extract = function (t = new Date()){
  * @举例 分割：getDateStr(1, '-')--->2020-09-05
  */
 export const getDateStr = function (num = 0, split = '', t = new Date()) {
-  if(!isDate(t) && isString(t) && !t.includes('T') && t.length > 0) { t = t.replace(/[-]/g, "/") }
-  if(!t) { t = new Date() }
+  t = processDate(t)
   const dt = new Date(t)
   dt.setDate(dt.getDate() + Number(num)) // 获取num天后的日期
   return `0000${dt.getFullYear()}`.slice(-4) + split + `00${(dt.getMonth() + 1)}`.slice(-2) + split + `00${dt.getDate()}`.slice(-2)
@@ -972,8 +982,7 @@ export const getDateStr = function (num = 0, split = '', t = new Date()) {
  * }
  */
 export const socketTime = function (t = new Date()) {
-  if(!isDate(t) && isString(t) && !t.includes('T') && t.length > 0) { t = t.replace(/[-]/g, "/") }
-  if(!t) { t = new Date() }
+  t = processDate(t)
   const [year, month, day, hour, minutes, seconds] = extract(t)
   const [dt, _month, _day] = [new Date(t), String(dt.getMonth() + 1), String(dt.getDate())]
   const [week, daySeconds] = [dt.getDay(), 1000 * 60 * 60 * 24]
@@ -999,8 +1008,7 @@ export const socketTime = function (t = new Date()) {
  * @举例 dateFormater('YYYYMMDD-hh:mm:ss', '2020-08-12 09:13:54') ==> 20200812-09:13:54
  */
 export const dateFormater = function (formater = 'YYYY-MM-DD hh:mm:ss', t = new Date()){
-  if(!t) { return t }
-  if(!isDate(t) && isString(t) && !t.includes('T') && t.length > 0) { t = t.replace(/[-]/g, "/") }
+  t = processDate(t)
   const [Y, M, D, h, m, s] = extract(t)
   return formater.replace(/YYYY|yyyy/g, Y).replace(/YY|yy/g, Y.slice(2, 4)).replace(/MM/g, M).replace(/DD/g, D).replace(/hh/g, h).replace(/mm/g, m).replace(/ss/g, s)
 }

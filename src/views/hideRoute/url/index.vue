@@ -44,6 +44,7 @@
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://simpleicons.org/">常见品牌的svg</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="http://www.bitbug.net/">在线图片转icon</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://www.photopea.com/">在线PS</a></div>
+        <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="http://120.92.142.115/">在线生成elementUI模板</a></div>
       </div>
     </div>
     <div class="f">

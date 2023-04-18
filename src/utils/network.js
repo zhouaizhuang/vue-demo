@@ -150,7 +150,7 @@ export const request = function (options) {
  * 封装一个post请求
  * @param {String} url 请求的url地址
  * @param {Object} params 请求参数
- * @param {*} defaultVal 请求参数
+ * @param {*} defaultVal 接口请求的mock数据
  * @param {*} type 返回数据类型  1代表只返回data    0代表不做任何处理直接返回格式：{code:xx, data:xx, msg:xx}
  * @returns 
  * @举例 const res = await this.$post('/apprepair/editRepair', {id:1, name:'zz'})
@@ -159,25 +159,33 @@ export const post = function (url, params, defaultVal, type = 1) {
   return new Promise((resolve, reject) => service.post(url, resolveParams(params)).then(res => processError(res, url, defaultVal, type, resolve, reject)))
 }
 /**
- * 防止重复请求，只请求第一次，在第一次结果返回之前。后续相同的url请求被屏蔽
+ * 防止重复请求，N秒内连续请求，只会请求一次。并且，第一次接口尚未返回则第二次请求被拒绝。主要用于新增操作
  * @param {*} url 请求的url地址
  * @param {*} params 请求参数
  * @param {*} type 返回数据类型  1代表只返回data    0代表不做任何处理直接返回格式：{code:xx, data:xx, msg:xx}
  * @returns 
- * @举例 const res = await this.$endPost('/apprepair/editRepair', {id:1, name:'zz'})
+ * @举例 const res = await this.$startPost('/apprepair/editRepair', {id:1, name:'zz'})
  */
-export const startPost = (function () {
+export const startPost = (function (wait) {
+  let start = +new Date() // 记录第一次点击时的时间戳
   const reqRecord = new Map() // 记录已发起但未返回的请求： url<--->reject方法
-  return function (url, params, defaultVal, type = 1) {
+  const fn = function (url, params, defaultVal = {}, type = 1) {
     return new Promise((resolve, reject) => {
       if (reqRecord.get(url)) { return Promise.reject(`取消当前请求${url}`) }
       reqRecord.set(url, url)
       return service.post(url, resolveParams(params)).then(res => processError(res, url, defaultVal, type, resolve, reject)).finally(() => reqRecord.delete(url))
     })
   }
-})()
+  return function () {
+    let end = +new Date() // 记录第一次以后的每次点击的时间戳
+    if (end - start >= wait) { // 2秒内连续点击，只请求一次（节流时间）
+      fn(...arguments)
+      start = end // 执行处理函数后，将结束时间设置为开始时间，重新开始记时
+    }
+  }
+})(2000)
 /**
- * 可以重复请求，连续重复的url请求，只会渲染最后一次请求返回的结果
+ * 可以重复请求，连续重复的url请求，只会渲染最后一次请求返回的结果。主要用于查询操作
  * @param {String} url 请求的url地址
  * @param {Object} params 请求参数
  * @param {*} type 返回数据类型  1代表只返回data    0代表不做任何处理直接返回格式：{code:xx, data:xx, msg:xx}
@@ -199,7 +207,7 @@ export const endPost = (function () {
  * mock数据
  * @param {String} url 请求的url地址
  * @param {Object} params 请求参数
- * @param {*} defaultVal 
+ * @param {*} defaultVal 接口请求的mock数据
  * @returns 
  * @举例 const res = await this.$mock('/api/userInfo', {id: '1'}, {name: '张三', age: 18})  ---->  {name: '张三', age: 18}
  */

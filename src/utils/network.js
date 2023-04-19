@@ -159,7 +159,7 @@ export const post = function (url, params, defaultVal, type = 1) {
   return new Promise((resolve, reject) => service.post(url, resolveParams(params)).then(res => processError(res, url, defaultVal, type, resolve, reject)))
 }
 /**
- * 防止重复请求，N秒内连续请求，只会请求一次。并且，第一次接口尚未返回则第二次请求被拒绝。主要用于新增操作
+ * 防止重复请求，N毫秒内连续请求，只会请求一次。并且，第一次接口尚未返回则第二次请求被拒绝。主要用于新增操作
  * @param {*} url 请求的url地址
  * @param {*} params 请求参数
  * @param {*} type 返回数据类型  1代表只返回data    0代表不做任何处理直接返回格式：{code:xx, data:xx, msg:xx}
@@ -183,7 +183,7 @@ export const startPost = (function (wait) {
       start = end // 执行处理函数后，将结束时间设置为开始时间，重新开始记时
     }
   }
-})(2000)
+})(1500)
 /**
  * 可以重复请求，连续重复的url请求，只会渲染最后一次请求返回的结果。主要用于查询操作
  * @param {String} url 请求的url地址

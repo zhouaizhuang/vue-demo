@@ -5,9 +5,10 @@
     <div class="f">
       <div class="b" style="width:150px;">工具</div>
       <div class="f1 f xs ac rw">
-        <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://ai.usesless.com/scene/home">ChatpGPT</a></div>
-        <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://open.u-tools.cn/341582.html">window工具exe</a></div>
         <a class="db w20 pb30 min190px g42b983 poi"><router-link class="g42b983" to="/desc_pc">在线加密解密</router-link></a>
+        <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://ai.usesless.com/scene/home">ChatpGPT</a></div>
+        <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://gpt.ipcl.cc">ChatpGPT1</a></div>
+        <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://open.u-tools.cn/341582.html">window工具exe</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://www.fontke.com/tool/code128/">在线生成code128编码（条形码）</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://tool.lu/">在线工具网址</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://www.jiumodiary.com/">电子书查找</a></div>
@@ -15,7 +16,10 @@
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://online.easyscreenocr.com/ZH?utm_source=hao.logosc.cn&utm_medium=referral">在线OCR识别</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://www.youyedoc.com/">PPT模板</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://zh.wikihow.com">生活技能</a></div>
-      </div> 
+        <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://open.u-tools.cn/341582.html">utools</a></div>
+        <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://res.u-tools.cn/videos/utools3.mp4">utools使用方法</a></div>
+        
+      </div>
     </div>
     <div class="f">
       <div class="b" style="width:150px;">前端类工具</div>

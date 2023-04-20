@@ -18,7 +18,6 @@
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://zh.wikihow.com">生活技能</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://open.u-tools.cn/341582.html">utools</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://res.u-tools.cn/videos/utools3.mp4">utools使用方法</a></div>
-        
       </div>
     </div>
     <div class="f">

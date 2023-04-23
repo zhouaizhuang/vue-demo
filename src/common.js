@@ -294,7 +294,8 @@ export const searchCover = function (arr, search = v => v, success = v => v, fai
  * @param {*} arr 
  * @param {*} search 
  * @returns 
- * @举例 radioChecked([{name:'zz', id:1, isChecked:false}, {name:'zs', id:2, isChecked:false}], {id: 1})  ----> [{name:'zz', id:1, isChecked:true}, {name:'zs', id:2, isChecked:false}]
+ * @举例 radioChecked([{name:'zz', id:1, isChecked:false}, {name:'zs', id:2, isChecked:true}], {id: 1})
+ * ----> [{name:'zz', id:1, isChecked:true}, {name:'zs', id:2, isChecked:false}]
  */
 export const radioChecked = (arr, search = v => v) => searchCover(arr, search, v => {v.isChecked=true;return v}, v => {v.isChecked=false;return v})
 /**
@@ -302,7 +303,8 @@ export const radioChecked = (arr, search = v => v) => searchCover(arr, search, v
  * @param {*} arr 
  * @param {*} search 
  * @returns 
- * @举例 multipleChecked([{name:'zz', id:1, isChecked:false}, {name:'zs', id:2, isChecked:false}], {id: 1})
+ * @举例 multipleChecked([{name:'zz', id:1, isChecked:false}, {name:'zs', id:2, isChecked:true}], {id: 1})
+ * ----> [{name:'zz', id:1, isChecked:true}, {name:'zs', id:2, isChecked:true}]
  */
 export const multipleChecked = (arr, search = v => v) => searchCover(arr, search, v => {v.isChecked=!v.isChecked;return v})
 /**
@@ -312,8 +314,10 @@ export const multipleChecked = (arr, search = v => v) => searchCover(arr, search
  * @param {*} type  1：有重复的对象则取遍历到的第一个    -1有重复的则取遍历到的最后一个
  * @returns 去重后的对象数组
  * @举例 根据对象中id字段进行去重操作
- * @举例 uniqueObj([{id:1, age:1}, {id:2, age:12}, {id:1, age: 23}], 'id', 1)  ---->  [{id: 1, age: 1, _sort: 0}, {id: 2, age: 12, _sort: 1}]
- * @举例 uniqueObj([{id:1, age:1}, {id:2, age:12}, {id:1, age: 23}], 'id', -1) ---->  [{id: 1, age: 23, _sort: 0}, {id: 2, age: 12, _sort: 1}]
+ * @举例 uniqueObj([{id:1, age:1}, {id:2, age:12}, {id:1, age: 23}], 'id', 1)
+ * ---->  [{id: 1, age: 1, _sort: 0}, {id: 2, age: 12, _sort: 1}]
+ * @举例 uniqueObj([{id:1, age:1}, {id:2, age:12}, {id:1, age: 23}], 'id', -1)
+ * ---->  [{id: 1, age: 23, _sort: 0}, {id: 2, age: 12, _sort: 1}]
  */
 export const uniqueObj = function (arr, field = isRequired(), type = 1) {
   if(!isArray(arr)) { throw new Error('入参必须为对象数组') }

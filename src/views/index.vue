@@ -181,6 +181,7 @@
     <div class="f xs ac rw">
       <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/watchScroll">监听滚动</router-link></div>
       <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/refreshTop">刷新到顶部</router-link></div>
+      <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/progress">永远到不了100%的进度条</router-link></div>
     </div>
     <div class="fs26 b mt30 mb20 tc">H5开发</div>
     <div class="f">

@@ -13,6 +13,7 @@
     "core-js": "^3.6.5",
     "crypto-js": "^4.1.1",
     "echarts": "^5.2.2",
+    "fake-progress": "^1.0.4",
     "html5-qrcode": "^2.2.8",
     "qrcodejs2": "^0.0.2",
     "qs": "^6.11.0",

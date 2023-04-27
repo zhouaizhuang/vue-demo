@@ -22,10 +22,5 @@ export default {
     
   },
   mounted(){
-    this.fake.start()
-    // 假设做了耗时操作
-    setTimeout(() => {
-      this.fake.end()
-    }, 20e3)
   },
 }

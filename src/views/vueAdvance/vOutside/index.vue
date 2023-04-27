@@ -4,6 +4,7 @@
     <div class="mt50 f ac xc">
       <Button @click="clickBtn" v-outside="outside" type="primary">点我验证</Button>
     </div>
+    <div class="fs16 gf b tc mt20">{{msg}}</div>
   </div>
 </template>
 <script>
@@ -12,15 +13,16 @@ export default {
   name: 'vReachBottom',
   data(){
     return {
-      isShowModal: false
+      isShowModal: false,
+      msg:''
     }
   },
   methods: {
     clickBtn(){
-      alert('点击按钮')
+      this.msg = '点击了当前按钮'
     },
     outside(){
-      alert('点击按钮之外')
+      this.msg = '点击了按钮之外的元素'
     }
   },
   created(){

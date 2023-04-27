@@ -11,6 +11,7 @@ export default [
   { path: '/vReachBottom', name: 'vReachBottom', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vReachBottom/index.vue') },
   { path: '/vFocus', name: 'vFocus', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vFocus/index.vue') },
   { path: '/vCheck_pc', name: 'vCheck_pc', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vCheck_pc/index.vue') },
+  { path: '/vOutside', name: 'vOutside', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vOutside/index.vue') },
   { path: '/propsEmit', name: 'propsEmit', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/propsEmit/father.vue') },
   { path: '/parentChild', name: 'parentChild', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/parentChild/father.vue') },
   { path: '/eventBus', name: 'eventBus', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/eventBus/index.vue') },

@@ -12,4 +12,5 @@ export default [
   { path: '/circleText', name: 'circleText', component: () => import(/* webpackChunkName: "special" */ '../../views/special/circleText/index.vue') },
   { path: '/hideText', name: 'hideText', component: () => import(/* webpackChunkName: "special" */ '../../views/special/hideText/index.vue')},
   { path: '/firstLetter', name: 'firstLetter', component: () => import(/* webpackChunkName: "special" */ '../../views/special/firstLetter/index.vue')},
+  { path: '/specialTab', name: 'firstLetter', component: () => import(/* webpackChunkName: "special" */ '../../views/special/specialTab/index.vue')},
 ]

@@ -111,6 +111,7 @@
       <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/circleText">环形文字</router-link></div>
       <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/hideText">隐藏末尾文字</router-link></div>
       <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/firstLetter">首字样式</router-link></div>
+      <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/specialTab">特殊选项卡tabs</router-link></div>
     </div>
     <div class="fs26 b mt30 mb20 tc">Vue进阶</div>
     <div class="f">

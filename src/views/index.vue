@@ -7,30 +7,31 @@
     <!--https://chokcoco.github.io/CSS-Inspiration/#/./background/bg-clip-text-shine-->
     <div class="f">
       <div class="b" style="width:150px;">CSS3动画</div>
-        <div class="f1 f xs ac rw">
-          <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/typeWord">打字动画</router-link></div>
-          <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/textStaggered">文字交错显示</router-link></div>
-          <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/tabs">精美的tabs</router-link></div>
-          <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/carousel">可视化大屏无缝Y轴滚动</router-link></div>
-          <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/carouselX">文字横幅横向X轴滚动</router-link></div>
-          <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/wordsCarousel">文字步进轮播动画</router-link></div>
-          <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/numGrow">数字滚动效果</router-link></div>
-          <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/specialBotton">特殊按钮</router-link></div>
-          <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/specialBorder_pc">特殊边框</router-link></div>
-          <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/arrow">箭头指向动画</router-link></div>
-          <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/buttery">水波</router-link></div>
-          <!-- <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/slide">滑动名片</router-link></div> -->
-          <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/countDown">倒计时</router-link></div>
-          <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/guidePoint">引导用户点击</router-link></div>
-          <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/useAnimate">animate动画库</router-link></div>
-          <!-- <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/textStreamer">文字流光效果</router-link></div> -->
-          <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/textSweat">文字流汗动画</router-link></div>
-          <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/aniDelay">动画播放延时</router-link></div>
-          <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/pieChart">简易饼图（锥形渐变）</router-link></div>
-          <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/redPacket">红包动画</router-link></div>
-          <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/musicPlay">音乐播放</router-link></div>
-          <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/musicPlay1">音乐播放(触屏即播)</router-link>
-        </div>
+      <div class="f1 f xs ac rw">
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/typeWord">打字动画</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/textStaggered">文字交错显示</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/tabs">精美的tabs</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/carousel">可视化大屏无缝Y轴滚动</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/carouselX">文字横幅横向X轴滚动</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/wordsCarousel">文字步进轮播动画</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/numGrow">数字滚动效果</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/specialBotton">特殊按钮</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/specialBorder_pc">特殊边框</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/arrow">箭头指向动画</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/buttery">水波</router-link></div>
+        <!-- <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/slide">滑动名片</router-link></div> -->
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/countDown">倒计时</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/guidePoint">引导用户点击</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/useAnimate">animate动画库</router-link></div>
+        <!-- <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/textStreamer">文字流光效果</router-link></div> -->
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/textSweat">文字流汗动画</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/aniDelay">动画播放延时</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/pieChart">简易饼图（锥形渐变）</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/redPacket">红包动画</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/musicPlay">音乐播放</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/musicPlay1">音乐播放(触屏即播)</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/qwe">音乐播放(触屏即播)</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/underline">下划线动画</router-link></div>
       </div>
     </div>
     <div class="f">

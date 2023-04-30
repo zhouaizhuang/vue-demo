@@ -24,7 +24,7 @@ export const delItem = function (item) {
         getViewPos(this.$refs[`card${v.id}`][0])
         return { ...v, translateX: 0, translateY: 0 }
       })
-      await wait(300)
+      await wait(500)
       this.isShowAni = false
     })
   })
@@ -43,7 +43,7 @@ export const addItem = function () {
         getViewPos(this.$refs[`card${v.id}`][0])
         return { ...v, translateX: 0, translateY: 0 }
       })
-      await wait(300)
+      await wait(500)
       this.isShowAni = false
     })
   })
@@ -63,7 +63,7 @@ export const randomItem = function () {
         getViewPos(this.$refs[`card${v.id}`][0])
         return { ...v, translateX: 0, translateY: 0 }
       })
-      await wait(300)
+      await wait(500)
       this.isShowAni = false
     })
   })
@@ -82,8 +82,39 @@ export const reset = function () {
         getViewPos(this.$refs[`card${v.id}`][0])
         return { ...v, translateX: 0, translateY: 0 }
       })
-      await wait(300)
+      await wait(500)
       this.isShowAni = false
     })
   })
+}
+// 开始拖拽
+export const dragstart = function (e, index) {
+  this.curIndex = index
+}
+// 进入目标区域
+export const dragenter = async function (e, index) {
+  e.preventDefault()
+  clearTimeout(this.timeId)
+  this.timeId = await wait(50) 
+  if(this.curIndex != index) {
+    const source = this.arrList[this.curIndex]
+    this.arrList.splice(this.curIndex, 1)
+    this.arrList.splice(index, 0, source)
+    this.curIndex = index
+    this.$nextTick(() => {
+      this.arrList = this.arrList.map(v => {
+        const { left: nowLeft, top: nowTop } = getViewPos(this.$refs[`card${v.id}`][0])
+        return { ...v, translateX: v.left - nowLeft, translateY: v.top - nowTop, left: nowLeft, top: nowTop }
+      })
+      this.$nextTick(async () => {
+        this.isShowAni = true
+        this.arrList = this.arrList.map(v => {
+          getViewPos(this.$refs[`card${v.id}`][0])
+          return { ...v, translateX: 0, translateY: 0 }
+        })
+        await wait(500)
+        this.isShowAni = false
+      })
+    })
+  }
 }

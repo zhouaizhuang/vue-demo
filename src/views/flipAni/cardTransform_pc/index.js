@@ -16,6 +16,8 @@ export default {
         // {id: 9,top:0,left: 0,bgColor: '#f90'},
       ],
       isShowAni: false,
+      curIndex: 0,
+      timeId: null,
     }
   },
   methods:{

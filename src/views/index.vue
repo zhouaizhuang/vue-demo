@@ -32,6 +32,7 @@
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/musicPlay1">音乐播放(触屏即播)</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/qwe">音乐播放(触屏即播)</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/underline">下划线动画</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/letterSpace">字间距动画</router-link></div>
       </div>
     </div>
     <div class="f">

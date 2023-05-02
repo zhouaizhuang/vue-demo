@@ -2,7 +2,7 @@
   <div class="mh100vh ovh bg-pc-img" @click="isShowModal=true">
     <!--Modal组件起始位置-->
     <div :class="['fixed trbl0 trans3', isShowModal ? 'op10 zx10' : 'op0 zx-1']" style="background:rgba(55,55,55,.6)">
-      <div :class="['fixed bgf tx-50 l50 t15 rds5 trans5', isShowModal ? 'op10 zx20 ani-large' : 'op0 zx-1 ani-small']" style="width:600px;">
+      <div :class="['fixed bgf tx-50 l50 rds5 trans5', isShowModal ? 'op10 zx20 ani-large' : 'op0 zx-1 ani-small']" style="top:15%;width:600px;">
         <div class="f ac pl10" style="border-bottom:1px solid #eee;">
           <div class="fs14 b f1 none">弹框标题</div>
           <div @click.stop="isShowModal=false" class="f ac xc poi" style="height:50px;width:50px;">

@@ -394,6 +394,27 @@ export const remove = function(arr, item, type = 1) {
   return (mapType[type] && mapType[type]()) || arr
 }
 /**
+ * 在指定index序号后添加, 从0开始计算第一项
+ * 在满足条件条目后添加
+ * @param {*} arr 
+ * @param {*} index 
+ * @举例 arrAdd([1,2,3], 99, 0) ------>  [1, 99, 2, 3]
+ * @举例 arrAdd([1,2,3], 99, 1) ------>  [1, 2, 99, 3]
+ * @举例 arrAdd([1,2,3], 99, v => v == 2) ------>  [1, 2, 99, 3]
+ * @举例 arrAdd([{name:'a'}, {name:'b'}, {name:'c'}], {name:'d'}, {name:'b'}) ------> [{name:'a'}, {name:'b'}, {name:'d'}, {name:'c'}]
+ */
+export const arrAdd = function (arr, item, match) {
+  let findIndex = -1
+  if(isFunction(match)) {
+    findIndex = arr.findIndex(match)
+  } else if(isObject(match)) {
+    findIndex = arr.findIndex(v => Object.keys(match).every(k => match[k] == v[k]))
+  } else if(isString(match) || isNumber(match)){
+    findIndex = Number(match)
+  }
+  return findIndex == -1 ? arr : [...arr.slice(0, findIndex+1), item, ...arr.slice(findIndex+1)]
+}
+/**
  * 数组、字符串元素复制N次 
  * @param {Object|Array} obj 
  * @param {Number} times 

@@ -466,10 +466,9 @@ export const noSame = function(arr) {
 export const getDeepItem = function (arr, field) {
   if(arr.some(item => isArray(item[field]) && item[field].length)) {
     arr = arr.reduce((prev, item) => isArray(item[field]) && item[field].length ? [...prev, ...item[field]] : [...prev, item], [])
-    return getAreaFlat(arr, field)
-  } else {
-    return arr
+    return getDeepItem(arr, field)
   }
+  return arr
 }
 /**
  * 对象数组，按照某个字段，进行递归平铺

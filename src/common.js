@@ -495,9 +495,8 @@ export const flatArr = function (arr, field) {
       return isArray(item[field]) && item[field].length ? [...prev, curItem, ...item[field]] : [...prev, item]
     }, [])
     return flatArr(arr, field)
-  } else {
-    return arr
   }
+  return arr
 }
 /**
  * 获取特定条件的对象数组中，满足条件的对象的字段值，并拼接好

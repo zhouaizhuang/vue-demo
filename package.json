@@ -15,6 +15,7 @@
     "echarts": "^5.2.2",
     "fake-progress": "^1.0.4",
     "html5-qrcode": "^2.2.8",
+    "pdfjs-dist": "^2.0.943",
     "qrcodejs2": "^0.0.2",
     "qs": "^6.11.0",
     "quagga": "^0.12.1",

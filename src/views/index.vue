@@ -236,6 +236,7 @@
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/uploadImg">上传图片组件</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/upLoadImgs_pc">上传图片组件（支持多张）</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/preview_pdf_pc">pdf预览</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/mouseRightClick_pc">鼠标右键</router-link></div>
       </div>
     </div>
     <div class="f">

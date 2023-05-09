@@ -4,10 +4,10 @@
     <div class="rel"> <!--2、这里必须要有定位，否则右击后的菜单的位置不好定位-->
       <!---3、写好右击的菜单-->
       <RightMenu :rightObj="rightObj">
-        <template v-slot:default="{rightObj}">
-          <div @click.stop="startTask(rightObj)" class="f ac xc poi hoverBg-e0eeff" style="height:38px;border-bottom: 1px dashed #f0f0f0;">开启任务</div>
-          <div @click.stop="stopTask(rightObj)" class="f ac xc poi hoverBg-e0eeff" style="height:38px;border-bottom: 1px dashed #f0f0f0;">中止任务</div>
-          <div @click.stop="endTask(rightObj)" class="f ac xc poi hoverBg-e0eeff" style="height:38px;border-bottom: 1px dashed #f0f0f0;">继续任务</div>
+        <template>
+          <div @click.stop="startTask" class="f ac xc poi hoverBg-e0eeff" style="height:38px;border-bottom: 1px dashed #f0f0f0;">开启任务</div>
+          <div @click.stop="stopTask" class="f ac xc poi hoverBg-e0eeff" style="height:38px;border-bottom: 1px dashed #f0f0f0;">中止任务</div>
+          <div @click.stop="endTask" class="f ac xc poi hoverBg-e0eeff" style="height:38px;border-bottom: 1px dashed #f0f0f0;">继续任务</div>
         </template>
       </RightMenu>
       <!--数据列表-->

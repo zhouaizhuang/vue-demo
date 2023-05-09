@@ -1665,7 +1665,7 @@ export const obj2Map = function (obj){
   return map
 }
 /**
- * 逆转对象。
+ * 逆转对象。（键值互换）
  * @举例子 invert({ 'a': 1, 'b': 2, 'c': 1 }) -----> {1: 'c', 2: 'b'}
  * @param {*} obj 需要逆转的对象
  * @returns 

@@ -235,7 +235,6 @@
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/previewImg_pc">图片预览组件</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/uploadImg">上传图片组件</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/upLoadImgs_pc">上传图片组件（支持多张）</router-link></div>
-        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/preview_pdf_pc">pdf预览</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/mouseRightClick_pc">鼠标右键</router-link></div>
       </div>
     </div>
@@ -246,6 +245,8 @@
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/useQrcode_pc">Qrcode前端生成二维码</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/printTable_pc">pc对table进行打印</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/ueditor_pc">富文本ueditor</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/preview_pdf_pc">pdf预览</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/readExcel_pc">excel数据读取</router-link></div>
       </div>
     </div>
     <div class="f">

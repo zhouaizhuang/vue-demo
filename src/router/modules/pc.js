@@ -18,4 +18,5 @@ export default [
   { path: '/upLoadImgs_pc', name: 'upLoadImgs_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/upLoadImgs_pc/index.vue')},
   { path: '/preview_pdf_pc', name: 'preview_pdf_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/preview_pdf_pc/index.vue')},
   { path: '/mouseRightClick_pc', name: 'mouseRightClick_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/mouseRightClick_pc/index.vue')},
+  { path: '/readExcel_pc', name: 'readExcel_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/readExcel_pc/index.vue')},
 ]

@@ -1501,7 +1501,11 @@ export const getOS = function() {
   if (/win/i.test(appVersion)) return 'windows'
   if (/linux/i.test(appVersion)) return 'linux'
 }
-// 通过身份证获取出生年月、虚岁、周岁、性别
+/**
+ * 根据身份证获取生日、虚岁、实岁、性别
+ * @param {*} idCard 身份证
+ * @returns 
+ */
 export const getIdCardInfo = function (idCard = '') {
   if(!isIdentity(idCard)) { return {} }
   const birthDay = `${idCard.slice(6, 10)}-${idCard.slice(10, 12)}-${idCard.slice(12, 14)}`

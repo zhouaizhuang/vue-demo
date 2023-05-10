@@ -1,3 +1,4 @@
+<!--https://juejin.cn/post/7143088940953075743-->
 <!--注意：与当前vue版本兼容的pdfjs-dist插件版本是：2.0.943-->
 <!--在package.json中直接编写版本号，之后cnpm i安装-->
 <template>

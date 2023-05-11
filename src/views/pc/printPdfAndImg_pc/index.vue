@@ -50,7 +50,7 @@
           'https://health.gagctv.com/wechat/jjzs/static/report_detail_top_bg.png',
         ])"
       >
-      打印图片
+        打印图片
       </Button>
     </div>
   </div>

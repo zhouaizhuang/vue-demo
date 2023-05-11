@@ -10,6 +10,10 @@ import Print from "./utils/print.js"
 import Network from "./utils/network.js"
 import * as Z from './common.js'
 import SlideVerify from 'vue-monoplasty-slide-verify'
+import ViewUI from 'view-design'
+import 'view-design/dist/styles/iview.css'
+Vue.use(ViewUI)
+
 Vue.config.productionTip = false
 Vue.use(Directives) // 引入自定义指令
 Vue.use(GlobalCommponent) // 批量注册全局组件, 包括view-design的按需引入

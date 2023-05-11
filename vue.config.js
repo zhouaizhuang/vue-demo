@@ -54,13 +54,13 @@ module.exports = {
       );
     }
     config.plugins = [...config.plugins, ...plugins]
-    config.externals = {
-      'echarts': 'echarts',
-      'vue': 'Vue',
-      'vue-router': 'VueRouter',
-      'vuex': 'Vuex',
-      'axios': 'axios'
-    }
+    // config.externals = {
+    //   'echarts': 'echarts',
+    //   'vue': 'Vue',
+    //   'vue-router': 'VueRouter',
+    //   'vuex': 'Vuex',
+    //   'axios': 'axios'
+    // }
   }
   // 配置请求代理
   // devServer: {

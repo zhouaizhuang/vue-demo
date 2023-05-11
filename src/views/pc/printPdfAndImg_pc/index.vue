@@ -1,0 +1,60 @@
+<!--请注意，这个功能依赖插件："pdfjs-dist": "^2.0.943"--->
+<template>
+  <div>
+    <div class="f ac xc pt100 pb100">
+      <Button
+        type="primary"
+        @click="printPdf('http://218.93.39.18:48079/admin-api/infra/file/4/get/19c5f539aefef6d3a23416186b68edad6f649a56c0e84155f3e2a904e9ecefbd.pdf')"
+      >
+        打印PDF
+      </Button>
+    </div>
+    <div class="f ac xc pt100 pb100">
+      <Button
+        type="info"
+        @click="printImages([
+          'https://health.gagctv.com/wechat/jjzs/static/wechat_icon.png',
+          'https://health.gagctv.com/wechat/jjzs/static/basic_info_top_bg.png',
+          'https://health.gagctv.com/wechat/jjzs/static/summary.png',
+          'https://health.gagctv.com/wechat/jjzs/static/man_model.png',
+          'https://health.gagctv.com/wechat/jjzs/static/person_icon.png',
+          'https://health.gagctv.com/wechat/jjys/static/revoke.png',
+          'https://health.gagctv.com/wechat/jjys/static/delete.png',
+          'https://health.gagctv.com/wechat/jjys/static/keyboard.png',
+          'https://health.gagctv.com/wechat/jjys/static/camera1.png',
+          'https://health.gagctv.com/wechat/jjys/static/head.png',
+          'https://health.gagctv.com/wechat/jjzs/static/person_icon.png',
+          'https://health.gagctv.com/wechat/jjzs/static/common_cjeck.png',
+          'https://health.gagctv.com/wechat/jjzs/static/biochemistry.png',
+          'https://health.gagctv.com/wechat/jjzs/static/b_sound.png',
+          'https://health.gagctv.com/wechat/jjzs/static/ecg.png',
+          'https://health.gagctv.com/wechat/jjzs/static/urinalysis.png',
+          'https://health.gagctv.com/wechat/jjzs/static/blood_test.png',
+          'https://health.gagctv.com/wechat/jjzs/static/report_detail_top_bg.png',
+          'https://health.gagctv.com/wechat/jjzs/static/share.png',
+          'https://health.gagctv.com/wechat/jjzs/static/feamale_white_border.png',
+          'https://health.gagctv.com/wechat/jjzs/static/disable_percent.png',
+          'https://health.gagctv.com/wechat/jjzs/static/light_2_1.png',
+          'https://health.gagctv.com/wechat/jjzs/static/light_3_1.png',
+          'https://health.gagctv.com/wechat/jjzs/static/rice.png',
+          'https://health.gagctv.com/wechat/jjzs/static/vegitable.png',
+          'https://health.gagctv.com/wechat/jjzs/static/meat.png',
+          'https://health.gagctv.com/wechat/jjzs/static/fruits.png',
+          'https://health.gagctv.com/wechat/jjzs/static/heal_check.png',
+          'https://health.gagctv.com/wechat/jjzs/static/my_contract.png',
+          'https://health.gagctv.com/wechat/jjzs/static/empty_default.png',
+          'https://health.gagctv.com/wechat/jjzs/static/empty_list.png',          
+          'https://health.gagctv.com/wechat/jjzs/static/man_white_border.png',
+          'https://upload.qianfanyun.com/yjyn/ylyn_bg.png',
+          'https://health.gagctv.com/wechat/jjzs/static/check_box_icon.png',
+          'https://health.gagctv.com/wechat/jjzs/static/report_detail_top_bg.png',
+        ])"
+      >
+      打印图片
+      </Button>
+    </div>
+  </div>
+</template>
+<script src='./index.js'></script>
+<style scoped>
+</style>

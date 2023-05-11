@@ -20,5 +20,6 @@ export default [
   { path: '/preview_pdf_pc', name: 'preview_pdf_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/preview_pdf_pc/index.vue')},
   { path: '/preview_pdf_pc2', name: 'preview_pdf_pc2', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/preview_pdf_pc2/index.vue')},
   { path: '/preview_pdf_pc3', name: 'preview_pdf_pc3', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/preview_pdf_pc3/index.vue')},
+  { path: '/downLoadPdf_pc', name: 'downLoadPdf_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/downLoadPdf_pc/index.vue')},
   { path: '/readExcel_pc', name: 'readExcel_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/readExcel_pc/index.vue')},
 ]

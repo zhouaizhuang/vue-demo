@@ -248,6 +248,7 @@
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/preview_pdf_pc">pdf预览</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/preview_pdf_pc2">pdf预览2</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/preview_pdf_pc3">pdf预览3</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/downLoadPdf_pc">pdf下载</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/readExcel_pc">excel数据读取</router-link></div>
       </div>
     </div>

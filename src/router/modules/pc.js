@@ -16,8 +16,9 @@ export default [
   { path: '/ueditor_pc', name: 'ueditor_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/ueditor_pc/index.vue')},
   { path: '/previewImg_pc', name: 'previewImg_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/previewImg_pc/index.vue')},
   { path: '/upLoadImgs_pc', name: 'upLoadImgs_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/upLoadImgs_pc/index.vue')},
-  { path: '/preview_pdf_pc', name: 'preview_pdf_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/preview_pdf_pc/index.vue')},
   { path: '/mouseRightClick_pc', name: 'mouseRightClick_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/mouseRightClick_pc/index.vue')},
+  { path: '/preview_pdf_pc', name: 'preview_pdf_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/preview_pdf_pc/index.vue')},
   { path: '/preview_pdf_pc2', name: 'preview_pdf_pc2', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/preview_pdf_pc2/index.vue')},
+  { path: '/preview_pdf_pc3', name: 'preview_pdf_pc3', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/preview_pdf_pc3/index.vue')},
   { path: '/readExcel_pc', name: 'readExcel_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/readExcel_pc/index.vue')},
 ]

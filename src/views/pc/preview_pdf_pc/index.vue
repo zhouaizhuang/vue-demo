@@ -1,6 +1,7 @@
 <!--https://juejin.cn/post/7143088940953075743-->
 <!--注意：与当前vue版本兼容的pdfjs-dist插件版本是：2.0.943-->
 <!--在package.json中直接编写版本号，之后cnpm i安装-->
+<!--分页和不分页两种方式:https://www.jianshu.com/p/a616374c7a60/-->
 <template>
   <div class="bgf5 mh100vh">
     <div class="f xc mb10">

@@ -10,7 +10,7 @@
     maxWidth = maxWidth || 540;
     width > maxWidth && (width = maxWidth);
     // var dpr = window.devicePixelRatio || 1; // 设备像素比
-    var rem = width / designWidth;
+    var rem = width / designWidth * 100;
     // console.log(width)
     // console.log(designWidth)
     // console.log(dpr)

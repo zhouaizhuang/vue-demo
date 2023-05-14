@@ -239,6 +239,12 @@
       </div>
     </div>
     <div class="f">
+      <div class="b" style="width:150px;">PC代码片段</div>
+      <div class="f1 f xs ac rw">
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/buttonSnip_pc">按钮代码片段（复制即用）</router-link></div>
+      </div>
+    </div>
+    <div class="f">
       <div class="b" style="width:150px;">PC插件使用</div>
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/sliderVerify_pc">极验验证</router-link></div>

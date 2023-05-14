@@ -23,4 +23,5 @@ export default [
   { path: '/printPdfAndImg_pc', name: 'printPdfAndImg_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/printPdfAndImg_pc/index.vue')},
   { path: '/downLoadPdf_pc', name: 'downLoadPdf_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/downLoadPdf_pc/index.vue')},
   { path: '/readExcel_pc', name: 'readExcel_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/readExcel_pc/index.vue')},
+  { path: '/buttonSnip_pc', name: 'buttonSnip_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/buttonSnip_pc/index.vue')},
 ]

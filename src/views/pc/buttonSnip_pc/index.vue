@@ -3,7 +3,7 @@
     <!---第一排-->
     <div class="b fs16 g0 pb5">第一排：</div>
     <div class="f ac mb30">
-      <div class="rds2 pt4 pb4 f ac xc fs12 none poi b poi" style="width:70px;background: rgba(19, 206, 146,0.1);border: 1px solid #13ce92;color:#13ce92;">领用</div>
+      <div class="rds2 pt4 pb4 f ac xc fs12 none poi b" style="width:70px;background: rgba(19, 206, 146,0.1);border: 1px solid #13ce92;color:#13ce92;">领用</div>
     </div>
     <div class="b fs16 g0 pb5">第二排：</div>
     <div class="f ac mb30">

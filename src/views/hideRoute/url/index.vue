@@ -52,6 +52,12 @@
       </div>
     </div>
     <div class="f">
+      <div class="b" style="width:150px;">工具</div>
+      <div class="f1 f xs ac rw">
+        <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://www.xshell.com/zh/free-for-home-school/">ChatpGPT</a></div>
+      </div>
+    </div>
+    <div class="f">
       <div class="b" style="width:150px;">前端收藏网站</div>
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://vue-admin-beautiful.com/admin-pro/#/vab/table/comprehensiveTable">前端PC后台示例</a></div>

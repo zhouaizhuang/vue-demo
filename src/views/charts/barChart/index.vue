@@ -5,6 +5,7 @@
   </div>
 </template>
 <script>
+import * as echarts from "echarts"
 export default {
   name: 'barChart',
   data(){

@@ -1,4 +1,5 @@
 import "./assets/china.js"
+import * as echarts from "echarts"
 // 就业行业
 export const initIndustry = function (){
   var industryRef = this.$refs.industry

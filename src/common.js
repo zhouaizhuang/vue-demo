@@ -20,6 +20,7 @@ export const isSet = isType('Set')
 export const isSymbol = isType('Symbol')
 export const isDate = isType('Date')
 export const isError = isType('Error')
+export const isBlob = isType('Blob')
 export const isGt0 = val => /^\+?[1-9][0-9]*$/.test(val) // 是否是大于0的整数
 export const isGtEq0 = val => /^\+?[1-9][0-9]*$/.test(val) || String(val) === '0' // 是否是大于等于0的整数
 export const inBrowser = typeof window !== 'undefined' // 是否是在浏览器环境
@@ -742,10 +743,10 @@ export const syncBgData = (arr, ids, key = 'isChecked', val = true, defVal = fal
  * 二进制流文件下载：支持blob对象和url地址
  * @举例1 downloadFile('123123.png', 'https://xxxxxxx.png') /
  * @举例2 downloadFile('123123.png', 'http://192.168.10.36:18049/open/file/download?data=M80/CELarJJQA1OgRtank6oq+/1xrY/rnMLA86dc1AAGXROW5FENy3V4MWWkNfGo')
- * @举例3 downloadFile('123123.png', Blob二进制对象) // 第二个参数是二进制流，后端返回的
+ * @举例3 downloadFile('xxx数据.xls', Blob二进制对象) // 第二个参数是二进制流，后端返回的
  */
-export const downloadFile = function (fileName, pathOrBlob){
-  const url = isString(pathOrBlob) ? pathOrBlob : window.URL.createObjectURL(new Blob([pathOrBlob]))
+export const downloadFile = function (fileName, pathOrBlob) {
+  const url = isBlob(pathOrBlob) ? window.URL.createObjectURL(new Blob([pathOrBlob])) : pathOrBlob
   const link = window.document.createElement('a')
   link.style.display = 'none'
   link.href = url

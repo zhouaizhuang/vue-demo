@@ -959,7 +959,8 @@ export const processDate = function (t) {
  * @举例 extract('2022-10-01') ---->  ['2022', '10', '01', '00', '00', '00']
  * @举例 extract('2022-10-01 12:12:14') ---->  ['2022', '10', '01', '12', '12', '14']
  */
-export const extract = function (t = new Date()){
+export const extract = function (t) {
+  if(!t) {return t}
   t = processDate(t)
   const d = new Date(new Date(t).getTime() + 8*3600*1000)
   const [year, month, day, hour, minutes, second] = new Date(d).toISOString().split(/[^0-9]/).slice(0, -1)
@@ -973,7 +974,8 @@ export const extract = function (t = new Date()){
  * @举例 getDateStr(0) ---> 20200904    getDateStr(1) ---> 20200905
  * @举例 分割：getDateStr(1, '-')--->2020-09-05
  */
-export const getDateStr = function (num = 0, split = '', t = new Date()) {
+export const getDateStr = function (num = 0, split = '', t) {
+  if(!t) {return t}
   t = processDate(t)
   const dt = new Date(t)
   dt.setDate(dt.getDate() + Number(num)) // 获取num天后的日期
@@ -999,7 +1001,8 @@ export const getDateStr = function (num = 0, split = '', t = new Date()) {
  *   _yesterday: (2) ['2022-07-30 00:00:00', '2022-07-30 23:59:59'], // 昨天
  * }
  */
-export const socketTime = function (t = new Date()) {
+export const socketTime = function (t) {
+  if(!t) {return t}
   t = processDate(t)
   const [year, month, day, hour, minutes, seconds] = extract(t)
   const [dt, _month, _day] = [new Date(t), String(dt.getMonth() + 1), String(dt.getDate())]
@@ -1025,7 +1028,8 @@ export const socketTime = function (t = new Date()) {
  * @举例 dateFormater('YYYY-MM-DD hh:mm') ==> 2019-06-26 18:30
  * @举例 dateFormater('YYYYMMDD-hh:mm:ss', '2020-08-12 09:13:54') ==> 20200812-09:13:54
  */
-export const dateFormater = function (formater = 'YYYY-MM-DD hh:mm:ss', t = new Date()){
+export const dateFormater = function (formater = 'YYYY-MM-DD hh:mm:ss', t){
+  if(!t) {return t}
   t = processDate(t)
   const [Y, M, D, h, m, s] = extract(t)
   return formater.replace(/YYYY|yyyy/g, Y).replace(/YY|yy/g, Y.slice(2, 4)).replace(/MM/g, M).replace(/DD/g, D).replace(/hh/g, h).replace(/mm/g, m).replace(/ss/g, s)

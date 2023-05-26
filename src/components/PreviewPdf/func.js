@@ -52,7 +52,7 @@ export const bindObserve = function (){
       if(intersectionRatio > 0) {
         if(this.reportPdf.page < this.reportPdf.totalPage) {
           this.reportPdf.page += 1
-         console.log('加载下一页',this.reportPdf.page )
+        //  console.log('加载下一页',this.reportPdf.page )
         } else {
           this.reportPdf.isShowLoadMore = false
         }

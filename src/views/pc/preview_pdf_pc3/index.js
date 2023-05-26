@@ -1,7 +1,10 @@
 import * as func from "./func.js"
+import PreviewPdf from "@/components/PreviewPdf/index.vue"
 export default {
   name: '',
-  components:{},
+  components:{
+    PreviewPdf
+  },
   data(){
     return {
        // 视网膜报告的对象

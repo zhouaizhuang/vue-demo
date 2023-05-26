@@ -1,24 +1,9 @@
+<!--https://juejin.cn/post/7143088940953075743-->
+<!--注意：与当前vue版本兼容的pdfjs-dist插件版本是：2.0.943-->
+<!--在package.json中直接编写版本号，之后cnpm i安装-->
+<!--分页和不分页两种方式:https://www.jianshu.com/p/a616374c7a60/-->
 <template>
-  <!-- 不带分页，触底加载。切片渲染< -->
-  <div class="bgf5 mh100vh">
-    <div class="auto" style="width:70%;"  ref="outerCanvasBox">
-      <canvas
-        v-for="(item, index) in new Array(eyeReportPdf.totalPage).fill(1)" :key="index"
-        :ref="`eyeReport${index + 1}`"
-        :class="[index < eyeReportPdf.page ? '' : 'clipHidden']"
-        style="display:block;border:1px solid #ccc;"
-      >
-      </canvas>
-      <!--监听触底从而控制渲染-->
-      <div v-show="eyeReportPdf.isShowLoadMore" id="" class="loadMore f ac xc tc">
-        <svg class="rotateSvg">
-          <circle cx="20" cy="20" r="10" fill="none" class="circleDash"></circle>
-        </svg>
-        <div class="fs16 g3">加载中...</div>
-      </div>
-      <div v-show="!eyeReportPdf.isShowLoadMore" class="fs14 g9 tc pt0 pb10">沒有更多了</div>
-    </div>
-  </div>
+    <PreviewPdf pdfUrl="http://218.93.39.18:48079/admin-api/infra/file/4/get/19c5f539aefef6d3a23416186b68edad6f649a56c0e84155f3e2a904e9ecefbd.pdf"></PreviewPdf>
 </template>
 <script src='./index.js'></script>
 <style src="./index.css" scoped>

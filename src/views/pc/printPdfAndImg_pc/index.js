@@ -1,15 +1,12 @@
 import * as func from "./func.js"
+import PrintPdf from "@/components/PrintPdf/index.vue"
 export default {
   name: '',
-  components:{},
+  components:{
+    PrintPdf
+  },
   data(){
     return {
-      pdfDoc: {},
-      pdfObj: {
-        canvas: null,
-        page: 1,
-        total: 100,
-      }
     }
   },
   methods:{

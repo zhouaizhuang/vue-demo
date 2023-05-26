@@ -2,56 +2,24 @@
 <template>
   <div>
     <div class="f ac xc pt100 pb100">
-      <Button
-        type="primary"
-        @click="printPdf('http://218.93.39.18:48079/admin-api/infra/file/4/get/19c5f539aefef6d3a23416186b68edad6f649a56c0e84155f3e2a904e9ecefbd.pdf')"
+      <PrintPdf
+        :urls="[
+          'http://218.93.39.18:48079/admin-api/infra/file/4/get/71f2d36147d755d79dc5de44bfd058a52f04df7aac8aa02c96c262818a9521c0.pdf',
+          'http://218.93.39.18:48079/admin-api/infra/file/4/get/3471e7c0d76e511844f0d44cb50ff29a170a97021af648fc0d3b3c762e16496c.png',
+          'http://218.93.39.18:48079/admin-api/infra/file/4/get/71f2d36147d755d79dc5de44bfd058a52f04df7aac8aa02c96c262818a9521c0.pdf'
+        ]"
       >
-        打印PDF
-      </Button>
-    </div>
-    <div class="f ac xc pt100 pb100">
-      <Button
-        type="info"
-        @click="printImages([
-          'https://health.gagctv.com/wechat/jjzs/static/wechat_icon.png',
-          'https://health.gagctv.com/wechat/jjzs/static/basic_info_top_bg.png',
-          'https://health.gagctv.com/wechat/jjzs/static/summary.png',
-          'https://health.gagctv.com/wechat/jjzs/static/man_model.png',
-          'https://health.gagctv.com/wechat/jjzs/static/person_icon.png',
-          'https://health.gagctv.com/wechat/jjys/static/revoke.png',
-          'https://health.gagctv.com/wechat/jjys/static/delete.png',
-          'https://health.gagctv.com/wechat/jjys/static/keyboard.png',
-          'https://health.gagctv.com/wechat/jjys/static/camera1.png',
-          'https://health.gagctv.com/wechat/jjys/static/head.png',
-          'https://health.gagctv.com/wechat/jjzs/static/person_icon.png',
-          'https://health.gagctv.com/wechat/jjzs/static/common_cjeck.png',
-          'https://health.gagctv.com/wechat/jjzs/static/biochemistry.png',
-          'https://health.gagctv.com/wechat/jjzs/static/b_sound.png',
-          'https://health.gagctv.com/wechat/jjzs/static/ecg.png',
-          'https://health.gagctv.com/wechat/jjzs/static/urinalysis.png',
-          'https://health.gagctv.com/wechat/jjzs/static/blood_test.png',
-          'https://health.gagctv.com/wechat/jjzs/static/report_detail_top_bg.png',
-          'https://health.gagctv.com/wechat/jjzs/static/share.png',
-          'https://health.gagctv.com/wechat/jjzs/static/feamale_white_border.png',
-          'https://health.gagctv.com/wechat/jjzs/static/disable_percent.png',
-          'https://health.gagctv.com/wechat/jjzs/static/light_2_1.png',
-          'https://health.gagctv.com/wechat/jjzs/static/light_3_1.png',
-          'https://health.gagctv.com/wechat/jjzs/static/rice.png',
-          'https://health.gagctv.com/wechat/jjzs/static/vegitable.png',
-          'https://health.gagctv.com/wechat/jjzs/static/meat.png',
-          'https://health.gagctv.com/wechat/jjzs/static/fruits.png',
-          'https://health.gagctv.com/wechat/jjzs/static/heal_check.png',
-          'https://health.gagctv.com/wechat/jjzs/static/my_contract.png',
-          'https://health.gagctv.com/wechat/jjzs/static/empty_default.png',
-          'https://health.gagctv.com/wechat/jjzs/static/empty_list.png',          
-          'https://health.gagctv.com/wechat/jjzs/static/man_white_border.png',
-          'https://upload.qianfanyun.com/yjyn/ylyn_bg.png',
-          'https://health.gagctv.com/wechat/jjzs/static/check_box_icon.png',
-          'https://health.gagctv.com/wechat/jjzs/static/report_detail_top_bg.png',
-        ])"
-      >
-        打印图片
-      </Button>
+        <!-- <div class="pt6 pb6 pl12 pr12 f ac xc g1aada7 rds4 mr10 poi none" style="background:#E8F7F6;">
+          <svg t="1682416885245" class="mr5" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            p-id="1669" width="16" height="16">
+            <path
+              d="M768.352 32a32 32 0 0 1 32 32v160.096h103.744a56 56 0 0 1 55.808 51.392l0.192 4.608V680a56 56 0 0 1-51.392 55.808l-4.608 0.192L800 735.968v192.128a32 32 0 0 1-32 32H352a32 32 0 0 1-32-32v-31.744H248.32a56 56 0 0 1-55.84-51.392l-0.192-4.576v-104.416H88a56 56 0 0 1-55.808-51.392L32 680V280.096a56 56 0 0 1 51.392-55.808l4.608-0.192h103.808V64a32 32 0 0 1 32-32h544.544z m-16.32 592.096h-384v288h384v-288z m-72.416-127.776H248.32a8 8 0 0 0-7.776 6.176l-0.224 1.824v336.064a8 8 0 0 0 6.176 7.776l1.824 0.224L320 848.32v-240.256a32 32 0 0 1 32-32l335.616-0.032V504.32a8 8 0 0 0-6.144-7.776l-1.856-0.224z m-23.616 295.776a24 24 0 1 1 0 48h-192a24 24 0 0 1 0-48h192z m0-96a24 24 0 1 1 0 48h-192a24 24 0 0 1 0-48h192z m248.096-424H88a8 8 0 0 0-7.776 6.176l-0.224 1.824V680a8 8 0 0 0 6.176 7.776l1.824 0.224 104.288-0.032V504.32a56 56 0 0 1 51.424-55.808l4.576-0.192h431.36a56 56 0 0 1 55.776 51.424l0.192 4.576v71.744H768a32 32 0 0 1 32 32V688h104.096a8 8 0 0 0 7.808-6.144l0.192-1.824V280.096a8 8 0 0 0-6.176-7.808l-1.824-0.192z m-368.288 48.448a24 24 0 0 1 0 48h-320a24 24 0 1 1 0-48h320zM752.352 80H239.808v144.096h512.544V80z"
+              fill="#1aada7" p-id="1670"></path>
+          </svg>
+          打印报告
+        </div> -->
+        <Button type="primary">打印报告</Button>
+      </PrintPdf>
     </div>
   </div>
 </template>

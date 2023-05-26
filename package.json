@@ -14,6 +14,7 @@
     "crypto-js": "^4.1.1",
     "echarts": "^5.2.2",
     "fake-progress": "^1.0.4",
+    "html2canvas": "^1.4.1",
     "html5-qrcode": "^2.2.8",
     "pdfjs-dist": "^2.0.943",
     "qrcodejs2": "^0.0.2",

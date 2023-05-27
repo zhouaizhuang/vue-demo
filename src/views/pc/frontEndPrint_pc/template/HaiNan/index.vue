@@ -67,6 +67,10 @@
     <!--第三页-->
     <div ref="hainan3" class="w100 ovh bdc" :style="{height: pageHeight + 'px'}">
       第三页
+      <img :src="renderData.icon4" style="width:50px;heihjt:50px;" alt="" />
+      <img :src="renderData.icon5" style="width:50px;heihjt:50px;" alt="" />
+      <img :src="renderData.icon6" style="width:150px;heihjt:150px;" alt="" />
+      <img :src="renderData.icon7" style="width:50px;heihjt:50px;" alt="" />
     </div>
   </div>
 </template>

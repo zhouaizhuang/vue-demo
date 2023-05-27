@@ -1157,7 +1157,8 @@ export const getImgs = function (obj) {
 }
 /**
  * 图片url地址转base64格式，从而解决跨域问题
- * @param {*} url 
+ * @param {*} url 需要进行转换的url地址
+ * @param {*} type 0：代表需要返回文件后缀  1代表只返回base图片字符串
  * @returns 
  */
 export function convertUrlToBase64(url, type = 1) {

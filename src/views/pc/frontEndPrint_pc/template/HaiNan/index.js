@@ -2,7 +2,7 @@ import * as func from "./func.js"
 export default {
   name: '',
   props: {
-    isShow: {
+    isDebug: {
       type: Boolean,
       default: false
     },

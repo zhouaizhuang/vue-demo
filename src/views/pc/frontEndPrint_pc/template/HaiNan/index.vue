@@ -1,5 +1,5 @@
 <template>
-  <div :class="['fixed l0 t0 bgf bdc ovya h100vh borderBox p0', isShow ? 'zx1000' : 'zx-1 clip0']" :style="{width: pageWidth + 'px', transform: isShow ? '' : 'translate(-10000px)'}">
+  <div :class="['fixed l0 t0 bgf bdc ovya h100vh borderBox p0', isDebug ? 'zx1000' : 'zx-1 clip0']" :style="{width: pageWidth + 'px', transform: isDebug ? '' : 'translate(-10000px)'}">
     <!--第一页-->
     <div ref="hainan1" class="w100 ovh bdc" :style="{height: pageHeight + 'px'}">
       <div class="pl20 pr20 pt20 pb20">

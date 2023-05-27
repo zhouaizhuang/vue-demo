@@ -30,7 +30,7 @@ export function createImg(src, width = 80, height = 80){
  * @param {*} hidth 打印纸高度 默认为A4纸高度
  */
 export async function printDom (dom, renderData, isDebug = false, width = 794, hidth = 1120) {
-  // 0、获取全部数据中的图片，从而保证在截图之前，dom已经全部渲染完毕
+  // 0、获取全部数据中的图片，并等待他们全部加载完毕。从而保证在截图之前，dom已经全部渲染完毕
   await Promise.all(getImgs(renderData).map(loadImage)) 
   // 1、html转canvas。(注意是一页一页的截图，那么也就意味着，在HaiNan模板中，必须按照ref="hainan1"、ref="hainan2"的格式实现划分好)
   const canvasArr = await Promise.all(Object.keys(dom['$refs']).map(item => html2canvas(dom['$refs'][item]), {useCORS: true}))

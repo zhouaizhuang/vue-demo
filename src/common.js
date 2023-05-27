@@ -1126,6 +1126,59 @@ export const f2s = fahrenheit => (fahrenheit - 32) * 5 / 9
 **********************************************************************************************
 */
 /**
+ * 全部字段平铺
+ * @param {*} obj 
+ */
+export const flatAllField = function (obj) {
+  if(isArray(obj)) {obj = { arr: obj }}
+  const res = Object.keys(obj).reduce((prev, field) => {
+    const curItem = obj[field]
+    if(isObject(curItem)) {
+      Object.keys(curItem).forEach(v => prev[`${field}_${v}`] = curItem[v])
+    } else if(isArray(curItem)) {
+      curItem.forEach((v, i) => prev[`${field}_${i}`] = v)
+    } else {
+      prev[field] = curItem
+    }
+    return prev
+  }, {})
+  return Object.keys(res).some(v => isReference(res[v])) ? flatAllField(res) : res
+}
+// 获取数据中的全部url地址
+/**
+ * 获取平铺后的全部图片地址
+ * @param {*} obj 
+ * @returns 
+ */
+export const getImgs = function (obj) {
+  const allField = flatAllField(obj)
+  const allImgUrls = Object.keys(allField).map(v => allField[v]).filter(v => isString(v) && (v.includes('.png') || v.includes('.jpg') || v.includes('.jepg') || v.includes('.bmp') || v.includes('.tiff') || v.includes('data:image/')))
+  return [...new Set(allImgUrls)]
+}
+/**
+ * 图片url地址转base64格式，从而解决跨域问题
+ * @param {*} url 
+ * @returns 
+ */
+export function convertUrlToBase64(url, type = 1) {
+  return new Promise((resolve) => {
+    let img = new Image()
+    img.crossOrigin = 'Anonymous'
+    img.src = url
+    img.onload = function () {
+      let canvas = document.createElement('canvas')
+      canvas.width = img.width
+      canvas.height = img.height
+      let ctx = canvas.getContext('2d')
+      ctx.drawImage(img, 0, 0, img.width, img.height)
+      let ext = img.src.substring(img.src.lastIndexOf('.') + 1).toLowerCase()
+      let dataURL = canvas.toDataURL('image/' + ext)
+      let base64 = { dataURL, type: 'image/' + ext, ext }
+      resolve(type == 0 ? base64 : base64.dataURL)
+    }
+  })
+}
+/**
  * 应用于当前DOM元素，将DOM滚动到指定位置
  * 整个页面之间，平滑滚动
  * --->取代锚点。将传入的DOM，滚动到指定位置

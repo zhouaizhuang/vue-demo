@@ -6,6 +6,14 @@ export default {
       type: Boolean,
       default: false
     },
+    pageWidth: {
+      type: [Number, String],
+      default: 794
+    },
+    pageHeight: {
+      type: [Number, String],
+      default: 1120
+    },
     renderData: {
       type: [Object, Array],
       default: function(){
@@ -16,8 +24,6 @@ export default {
   components:{},
   data(){
     return {
-      A4Width: 794, // A4纸宽度
-      A4Height: 1120,// A4纸高度
     }
   },
   methods:{

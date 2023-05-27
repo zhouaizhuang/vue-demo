@@ -19,6 +19,18 @@
         </div>
       </div>
       <img :src="renderData.icon1" style="width:50px;heihjt:50px;" alt="" />
+      <img :src="renderData.icon2" style="width:50px;heihjt:50px;" alt="" />
+      <img :src="renderData.icon3" style="width:50px;heihjt:50px;" alt="" />
+      <img :src="renderData.icon4" style="width:50px;heihjt:50px;" alt="" />
+      <img :src="renderData.icon5" style="width:50px;heihjt:50px;" alt="" />
+      <img :src="renderData.icon6" style="width:50px;heihjt:50px;" alt="" />
+      <img :src="renderData.icon7" style="width:50px;heihjt:50px;" alt="" />
+      <img :src="renderData.icon8" style="width:50px;heihjt:50px;" alt="" />
+      <img :src="renderData.icon9" style="width:50px;heihjt:50px;" alt="" />
+      <img :src="renderData.icon10" style="width:50px;heihjt:50px;" alt="" />
+      <img :src="renderData.icon11" style="width:50px;heihjt:50px;" alt="" />
+      <img :src="renderData.icon12" style="width:50px;heihjt:50px;" alt="" />
+      <img :src="renderData.icon13" style="width:50px;heihjt:50px;" alt="" />
     </div>
     <!--第二页-->
     <div ref="hainan2" class="w100 ovh bdc" :style="{height: pageHeight + 'px'}">

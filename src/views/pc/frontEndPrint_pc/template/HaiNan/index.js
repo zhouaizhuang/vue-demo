@@ -2,24 +2,24 @@ import * as func from "./func.js"
 export default {
   name: '',
   props: {
-    isDebug: {
+    isDebug: { // 开启debug，可以方便模板调试
       type: Boolean,
       default: false
     },
-    pageWidth: {
-      type: [Number, String],
-      default: 794
-    },
-    pageHeight: {
-      type: [Number, String],
-      default: 1120
-    },
-    renderData: {
+    renderData: { // 打印模板需要的数据
       type: [Object, Array],
       default: function(){
         return {}
       }
-    }
+    },
+    pageWidth: { // 打印纸宽带
+      type: [Number, String],
+      default: 794
+    },
+    pageHeight: { // 打印纸高度
+      type: [Number, String],
+      default: 1120
+    },
   },
   components:{},
   data(){

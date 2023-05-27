@@ -3,7 +3,7 @@
     <div class="f ac xe">
       <Button @click="printTemplate" type="primary">打印</Button>
     </div>
-    <HaiNan ref="hainan" :renderData="renderData" :isDebug="true"></HaiNan>
+    <HaiNan ref="hainan" :isDebug="true" :renderData="renderData"></HaiNan>
   </div>
 </template>
 <script src='./index.js'></script>

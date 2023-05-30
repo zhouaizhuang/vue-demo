@@ -14,5 +14,16 @@
   </div>
 </template>
 <script src='./index.js'></script>
-<style scoped>
+<style>
+@media print {
+  @page {
+    margin: 0;
+  }
+}
+@media print {
+  .no-footer { /**包含这个样式的话，就没有页眉页脚 */
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+}
 </style>

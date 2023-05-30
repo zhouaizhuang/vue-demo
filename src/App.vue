@@ -22,7 +22,7 @@ export default {
       const r = require.context('./router/modules', true, /\.js/)
       const pathStr = r.keys().reduce((prev, item) => {
         const routeItem = r(item).default
-        prev += getField(routeItem, 'path') + ','
+        prev += getField(routeItem, 'path').join(',') + ','
         return prev
       }, [])
       // console.log(pathStr)

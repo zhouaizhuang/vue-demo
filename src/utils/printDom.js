@@ -31,7 +31,7 @@ export function createImg(src, width = 80, height = 80){
  */
 export async function printDom (dom, renderData, isDebug = false, width = 794, hidth = 1120) {
   // 0、获取全部数据中的图片，并等待他们全部加载完毕。从而保证在截图之前，dom已经全部渲染完毕
-  await Promise.all(getImgs(renderData).map(loadImage)) 
+  await Promise.all(getImgs(renderData).map(loadImage))
   // 1、html转canvas。(注意是一页一页的截图，那么也就意味着，在HaiNan模板中，必须按照ref="hainan1"、ref="hainan2"的格式实现划分好)
   const canvasArr = await Promise.all(Object.keys(dom['$refs']).map(item => html2canvas(dom['$refs'][item]), {useCORS: true}))
   // 1、canvas转base64图片
@@ -46,7 +46,7 @@ export async function printDom (dom, renderData, isDebug = false, width = 794, h
   document.body.appendChild(iframe)
   iframe.contentDocument.write('<html><head></head><body style="margin:0;padding:0;"></body></html>')
   iframe.contentDocument.close()
-  let iframeBody = iframe.contentDocument.getElementsByTagName('body')[0];
+  let iframeBody = iframe.contentDocument.getElementsByTagName('body')[0]
   imgArr.map(v => createImg(v, width, hidth)).forEach(v => { iframeBody.appendChild(v) }) // 往body中加入dom
   // 4、等待图片加载完成
   await Promise.all(imgArr.map(loadImage))

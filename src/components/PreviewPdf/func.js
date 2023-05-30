@@ -63,5 +63,5 @@ export const bindObserve = function (){
     rootMargin: '0px 0px 0px 0px', // 触发交叉回调时被观察元素相对于视口的偏移量
     threshold: [0.0001, 0.001, 0.01, 0] // 一个具体数值或数值数组， 触发交叉回调时被观察元素的可见比例
   })
-  observer.observe(query('.loadMore')) // 监听加载更多的位置
+  observer.observe(query(`.${this.loadMoreClassName}`)) // 监听加载更多的位置
 }

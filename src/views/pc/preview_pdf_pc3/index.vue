@@ -2,8 +2,13 @@
 <!--注意：与当前vue版本兼容的pdfjs-dist插件版本是：2.0.943-->
 <!--在package.json中直接编写版本号，之后cnpm i安装-->
 <!--分页和不分页两种方式:https://www.jianshu.com/p/a616374c7a60/-->
+<!--loadMoreClassName是每个组件内的加载更多按钮触底加载的类名。不可重复，否则触底加载失败-->
 <template>
-    <PreviewPdf pdfUrl="http://218.93.39.18:48079/admin-api/infra/file/4/get/19c5f539aefef6d3a23416186b68edad6f649a56c0e84155f3e2a904e9ecefbd.pdf"></PreviewPdf>
+    <PreviewPdf
+      pdfUrl="http://218.93.39.18:48079/admin-api/infra/file/4/get/19c5f539aefef6d3a23416186b68edad6f649a56c0e84155f3e2a904e9ecefbd.pdf"
+      loadMoreClassName="loadmore"
+    >
+    </PreviewPdf>
 </template>
 <script src='./index.js'></script>
 <style src="./index.css" scoped>

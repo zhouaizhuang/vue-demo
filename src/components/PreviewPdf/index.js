@@ -6,6 +6,10 @@ export default {
       type: String,
       default: '',
     },
+    loadMoreClassName: { // 一个页面中多次调用此组件的话，就会导致无法监听底部的loadmore进入视口
+      type: String,
+      default: 'loadMore',
+    }
   },
   components:{},
   data(){
@@ -24,7 +28,9 @@ export default {
   watch:{
     pdfUrl: {
       handler: function(newVal, oldVal) {
-        this.showpdf(newVal)
+        if(newVal.includes('.pdf')) {
+          this.showpdf(newVal)
+        }
       },
       deep: true, // 监听深层对象
       immediate: true, // 会在页面渲染之前， 先执行一遍这个监听

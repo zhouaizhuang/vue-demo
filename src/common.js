@@ -298,7 +298,18 @@ export const searchCover = function (arr, search = v => v, success = v => v, fai
  * @举例 radioChecked([{name:'zz', id:1, isChecked:false}, {name:'zs', id:2, isChecked:true}], {id: 1})
  * ----> [{name:'zz', id:1, isChecked:true}, {name:'zs', id:2, isChecked:false}]
  */
-export const radioChecked = (arr, search = v => v) => searchCover(arr, search, v => {v.isChecked=true;return v}, v => {v.isChecked=false;return v})
+export const radioChecked = (arr, search = v => v) => searchCover(arr, search, v => ({...v, isChecked:true}), v => ({...v, isChecked:false}))
+/**
+ * 
+ * @param {*} arr 
+ * @param {*} search 
+ * @returns 
+ * @举例 radioToogle([{name:'zz', id:1, isChecked:false}, {name:'zs', id:2, isChecked:true}], {id: 1})
+ * ----> [{name:'zz', id:1, isChecked:true}, {name:'zs', id:2, isChecked:false}]
+ * @举例 radioToogle([{name:'zz', id:1, isChecked:true}, {name:'zs', id:2, isChecked:false}], {id: 1})
+ * ----> [{name:'zz', id:1, isChecked:false}, {name:'zs', id:2, isChecked:false}]
+ */
+export const radioToogle = (arr, search = v => v) => searchCover(arr, search, v => ({...v, isChecked:!v.isChecked}), v => ({...v, isChecked:false}))
 /**
  * 多选
  * @param {*} arr 
@@ -307,7 +318,7 @@ export const radioChecked = (arr, search = v => v) => searchCover(arr, search, v
  * @举例 multipleChecked([{name:'zz', id:1, isChecked:false}, {name:'zs', id:2, isChecked:true}], {id: 1})
  * ----> [{name:'zz', id:1, isChecked:true}, {name:'zs', id:2, isChecked:true}]
  */
-export const multipleChecked = (arr, search = v => v) => searchCover(arr, search, v => {v.isChecked=!v.isChecked;return v})
+export const multipleChecked = (arr, search = v => v) => searchCover(arr, search, v => ({...v, isChecked:!v.isChecked}))
 /**
  * 对象数组去重(根据对象中某个字段)
  * @param {Object<Array>} arr 需要去重的对象数组

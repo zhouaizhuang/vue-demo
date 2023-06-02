@@ -999,26 +999,29 @@ export const getDateStr = function (num = 0, split = '', t) {
  * socketTime()
  * ----->
  * {
- *   curWeek: (2) ['2022-07-25', '2022-07-31'], // 本周
- *   lastWeek: (2) ['2022-07-18', '2022-07-24'], // 上周
+ *   curWeek: ['2022-07-25', '2022-07-31'], // 本周
+ *   lastWeek: ['2022-07-18', '2022-07-24'], // 上周
+ *   nextWeek：['2022-08-01', '2022-08-07'], // 下一周
  *   today: "2022-07-30", // 今天
  *   week: 6, // 周几
  *   weekDay: "星期六", // 周几中文
  *   yesterday: "2022-07-30", // 昨天
- *   _curWeek: (2) ['2022-07-25 00:00:00', '2022-07-31 23:59:59'], // 本周
- *   _lastWeek: (2) ['2022-07-18 00:00:00', '2022-07-24 23:59:59'], // 上周
- *   _today: (2) ['2022-07-30 00:00:00', '2022-07-30 23:59:59'], // 今天
- *   _yesterday: (2) ['2022-07-30 00:00:00', '2022-07-30 23:59:59'], // 昨天
+ *   _curWeek: ['2022-07-25 00:00:00', '2022-07-31 23:59:59'], // 本周
+ *   _lastWeek:  ['2022-07-18 00:00:00', '2022-07-24 23:59:59'], // 上周
+ *   _nextWeek：['', '']
+ *   _today: ['2022-07-30 00:00:00', '2022-07-30 23:59:59'], // 今天
+ *   _yesterday: ['2022-07-30 00:00:00', '2022-07-30 23:59:59'], // 昨天
  * }
  */
-export const socketTime = function (t) {
-  if(!t) {return t}
+export const socketTime = function (t = new Date()) {
   t = processDate(t)
   const [year, month, day, hour, minutes, seconds] = extract(t)
-  const [dt, _month, _day] = [new Date(t), String(dt.getMonth() + 1), String(dt.getDate())]
+  const dt = new Date(t)
+  const curSecond = dt.getTime()
+  const [_month, _day] = [String(dt.getMonth() + 1), String(dt.getDate())]
   const [week, daySeconds] = [dt.getDay(), 1000 * 60 * 60 * 24]
   const minusDay = week !== 0 ? week - 1 : 6
-  const [dateStr, startStr, endStr, curSecond, yesterDayStart] = ['YYYY-MM-DD', 'YYYY-MM-DD 00:00:00', 'YYYY-MM-DD 23:59:59', dt.getTime(), curSecond - daySeconds]
+  const [dateStr, startStr, endStr, yesterDayStart] = ['YYYY-MM-DD', 'YYYY-MM-DD 00:00:00', 'YYYY-MM-DD 23:59:59', , curSecond - daySeconds]
   const weekDay = '星期' + "日一二三四五六"[week]
   const [yesterday, _yesterday] = [dateFormater(dateStr, yesterDayStart), [dateFormater(startStr, yesterDayStart), dateFormater(endStr, yesterDayStart)]] // 昨天
   const [today, _today] = [dateFormater(dateStr, dt), [dateFormater(startStr, dt), dateFormater(endStr, dt)]] // 今天
@@ -1028,7 +1031,10 @@ export const socketTime = function (t) {
   // 本周
   const [curWeekStart, curWeekEnd] = [curSecond - minusDay * daySeconds, curSecond + (6 - minusDay) * daySeconds]
   const [curWeek, _curWeek] = [[dateFormater(dateStr, curWeekStart), dateFormater(dateStr, curWeekEnd)], [dateFormater(startStr, curWeekStart), dateFormater(endStr, curWeekEnd)]]
-  return { year, _month, month, day, _day, hour, minutes, seconds, yesterday, _yesterday, today, _today, lastWeek, _lastWeek, curWeek, _curWeek, week, weekDay }
+  // 下周
+  const [nextWeekStart, nextWeekEnd] = [curSecond - (1 - minusDay) * daySeconds, curSecond + (5 + minusDay) * daySeconds]
+  const [nextWeek, _nextWeek] = [[dateFormater(dateStr, nextWeekStart), dateFormater(dateStr, nextWeekEnd)], [dateFormater(startStr, nextWeekStart), dateFormater(endStr, nextWeekEnd)]]
+  return { year, _month, month, day, _day, hour, minutes, seconds, yesterday, _yesterday, today, _today, lastWeek, _lastWeek, curWeek, _curWeek, week, weekDay, nextWeek, _nextWeek }
 }
 /**
  * 生成格式化时间字符串

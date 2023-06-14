@@ -397,7 +397,7 @@ export const tree2Flat = function (arr, field) {
       curItem[field] = []
       return isArray(item[field]) && item[field].length ? [...prev, curItem, ...item[field]] : [...prev, item]
     }, [])
-    return flatArr(arr, field)
+    return tree2Flat(arr, field)
   }
   return arr
 }

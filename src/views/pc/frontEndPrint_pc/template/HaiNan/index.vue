@@ -75,5 +75,5 @@
   </div>
 </template>
 <script src='./index.js'></script>
-<style src="../../../../../common.css">
+<style scoped>
 </style>

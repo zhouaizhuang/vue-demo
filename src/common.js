@@ -363,7 +363,7 @@ export const uniqueObj = function (arr, field = isRequired(), type = 1) {
  *   }
  * ]
  */
-export const array2Tree = function (arr) {
+export const flat2Tree = function (arr) {
   const itemMap = arr.reduce((prev, item) => (prev[item.id] = { ...item, children: [] }, prev), {})
   return arr.reduce((prev, item) => {
     const { id, pid } = item
@@ -372,6 +372,34 @@ export const array2Tree = function (arr) {
     pid === 0 ? prev.push(curItem) : itemMap[pid].children.push(curItem)
     return prev
   }, [])
+}
+/**
+ * 对象数组，按照某个字段，进行递归平铺、扁平化
+ * @param {*} arr 需要平铺的数组
+ * @param {*} props 
+ * @returns
+ * @举例
+ * const arr = [
+ *  { name: 'a', children: [ { name: 'b', children: [{ name: 'c', children: [] }]}] },
+ *  { name: 'd', children: [ { name: 'e', children: [{ name: 'f', children: [] }]}] }
+ * ]
+ * flatArr(arr, 'children')
+ * ---->
+ * [
+ *  {name: 'a', children: []}, {name: 'b', children: []}, {name: 'c', children: []},
+ *  {name: 'd', children: []}, {name: 'e', children: []}, {name: 'f', children: []}
+ * ]
+ */
+export const tree2Flat = function (arr, field) {
+  if(arr.some(item => isArray(item[field]) && item[field].length)) {
+    arr = arr.reduce((prev, item) => {
+      const curItem = deepCopy(item)
+      curItem[field] = []
+      return isArray(item[field]) && item[field].length ? [...prev, curItem, ...item[field]] : [...prev, item]
+    }, [])
+    return flatArr(arr, field)
+  }
+  return arr
 }
 /**
  * 一次性函数。只执行一次。后面再调用,没有任何函数代码执行
@@ -479,34 +507,6 @@ export const getDeepItem = function (arr, field) {
   if(arr.some(item => isArray(item[field]) && item[field].length)) {
     arr = arr.reduce((prev, item) => isArray(item[field]) && item[field].length ? [...prev, ...item[field]] : [...prev, item], [])
     return getDeepItem(arr, field)
-  }
-  return arr
-}
-/**
- * 对象数组，按照某个字段，进行递归平铺
- * @param {*} arr 需要平铺的数组
- * @param {*} props 
- * @returns
- * @举例
- * const arr = [
- *  { name: 'a', children: [ { name: 'b', children: [{ name: 'c', children: [] }]}] },
- *  { name: 'd', children: [ { name: 'e', children: [{ name: 'f', children: [] }]}] }
- * ]
- * flatArr(arr, 'children')
- * ---->
- * [
- *  {name: 'a', children: []}, {name: 'b', children: []}, {name: 'c', children: []},
- *  {name: 'd', children: []}, {name: 'e', children: []}, {name: 'f', children: []}
- * ]
- */
-export const flatArr = function (arr, field) {
-  if(arr.some(item => isArray(item[field]) && item[field].length)) {
-    arr = arr.reduce((prev, item) => {
-      const curItem = deepCopy(item)
-      curItem[field] = []
-      return isArray(item[field]) && item[field].length ? [...prev, curItem, ...item[field]] : [...prev, item]
-    }, [])
-    return flatArr(arr, field)
   }
   return arr
 }

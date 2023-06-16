@@ -393,12 +393,9 @@ export const flat2tree = function (arr, field = 'children') {
  * ]
  */
 export const tree2Flat = function (arr, field = 'children') {
-  if(arr.some(item => isArray(item[field]) && item[field].length)) {
-    arr = arr.reduce((prev, item) => {
-      const curItem = deepCopy(item)
-      curItem[field] = []
-      return isArray(item[field]) && item[field].length ? [...prev, curItem, ...item[field]] : [...prev, item]
-    }, [])
+  const fn = item => isArray(item[field]) && item[field].length
+  if(arr.some(fn)) {
+    arr = arr.reduce((prev, item) => fn(item) ? [...prev, {...deepCopy(item), [field]:[]}, ...item[field]] : [...prev, item], [])
     return tree2Flat(arr, field)
   }
   return arr

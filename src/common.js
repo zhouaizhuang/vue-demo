@@ -347,7 +347,7 @@ export const uniqueObj = function (arr, field = isRequired(), type = 1) {
  * https://juejin.cn/post/6983904373508145189#heading-8
  * @param {Array} arr 需要转换的数组
  * @param {String} field 子元素数组的字段值
- * @returns {Array} 转换之后的数组
+ * @returns
  * @注意 pid为0为一级目录
  * @举例 
  * let arr = [
@@ -377,8 +377,9 @@ export const flat2tree = function (arr, field = 'children') {
 }
 /**
  * 对象数组，按照某个字段，进行递归平铺、扁平化
- * @param {*} arr 需要平铺的数组
- * @param {*} props 
+ * @param {Array} arr 需要平铺的数组
+ * @param {String} field 
+ * @param {Number|String} pid 
  * @returns
  * @举例
  * const arr = [
@@ -388,17 +389,13 @@ export const flat2tree = function (arr, field = 'children') {
  * flatArr(arr, 'children')
  * ---->
  * [
- *  {name: 'a', children: []}, {name: 'b', children: []}, {name: 'c', children: []},
- *  {name: 'd', children: []}, {name: 'e', children: []}, {name: 'f', children: []}
+ *  {"id": 1,"name": "a","children": [],"pid": 0},{"id": 10,"name": "b","children": [],"pid": 1},
+ *  {"id": 100,"name": "c","children": [],"pid": 10},{"id": 2,"name": "d","children": [],"pid": 0},
+ *  {"id": 20,"name": "e","children": [],"pid": 2},{"id": 200,"name": "f","children": [],"pid": 20}
  * ]
  */
-export const tree2Flat = function (arr, field = 'children') {
-  const fn = item => isArray(item[field]) && item[field].length
-  if(arr.some(fn)) {
-    arr = arr.reduce((prev, item) => fn(item) ? [...prev, {...deepCopy(item), [field]:[]}, ...item[field]] : [...prev, item], [])
-    return tree2Flat(arr, field)
-  }
-  return arr
+export function tree2Flat(arr, field = 'children', pid = 0) {
+  return arr.reduce((prev, item) => item[field].length ? [...prev, {...item, pid, [field]:[]}, ...tree2Flat(item[field], field, item.id)] : [...prev, { ...item, pid, [field]:[]}], [])
 }
 /**
  * 一次性函数。只执行一次。后面再调用,没有任何函数代码执行

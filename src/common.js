@@ -677,7 +677,6 @@ export const formatJSON = function (obj) {
   if(!isReference(obj)) { return obj }
   return isObject(obj) ? Object.keys(obj).reduce((prev, item) => ((prev[item] = isNull(obj[item]) || isUndefined(obj[item])  ? '' : obj[item]), prev), {}) : {}
 }
-// 
 /**
  * 格式化后端返回数据，将null转为undefined，后续写代码需要解构赋值的时候，赋默认值{}或者[]
  * @param {Object} obj

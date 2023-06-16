@@ -88,7 +88,7 @@ export const makeMap = function(str, expectsLowerCase = false) {
  * @举例 toString([{name:'zzz', age:18}]) ---> '[\n  {\n    "name": "asd",\n    "ae": "as"\n  }\n]'
  */
 export const toString = function (val) {
-  return val == null ? '' : isReference ? JSON.stringify(val, null, 2) : String(val)
+  return val == null ? '' : isReference(val) ? JSON.stringify(val, null, 2) : String(val)
 }
 /** 返回是否以某个字符串开头
  * @param {String} str 目标字符串
@@ -674,7 +674,7 @@ export const union = (arr1, arr2) => [...new Set([...arr1, ...arr2])]
  * @举例子 formatJSON({name:null, age:undefined, school: '清华大学'}) ---> {name:'', age:'', school: '清华大学'}
  */
 export const formatJSON = function (obj) {
-  if(!isReference) { return obj }
+  if(!isReference(obj)) { return obj }
   return isObject(obj) ? Object.keys(obj).reduce((prev, item) => ((prev[item] = isNull(obj[item]) || isUndefined(obj[item])  ? '' : obj[item]), prev), {}) : {}
 }
 // 
@@ -685,7 +685,7 @@ export const formatJSON = function (obj) {
  * @举例 formatRes({name:'zzz', age:null}) ---->  {name:'zzz', age: undefined}
  */
 export const formatRes = function (obj) {
-  if(!isReference) { return obj }
+  if(!isReference(obj)) { return obj }
   const filterNull = tmpObj =>  Object.keys(tmpObj).reduce((prev, item) => ((prev[item] = isNull(tmpObj[item]) ? '' : tmpObj[item]), prev), {})
   return isArray(obj) ? obj.map(item => filterNull(item)) : filterNull(obj)
 }

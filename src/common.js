@@ -346,7 +346,9 @@ export const uniqueObj = function (arr, field = isRequired(), type = 1) {
  * 扁平数组转对象tree树形结构
  * https://juejin.cn/post/6983904373508145189#heading-8
  * @param {Array} arr 需要转换的数组
+ * @param {String} field 子元素数组的字段值
  * @returns {Array} 转换之后的数组
+ * @注意 pid为0为一级目录
  * @举例 
  * let arr = [
  *    {id: 1, name: '部门1', pid: 0},{id: 2, name: '部门2', pid: 1},{id: 3, name: '部门3', pid: 1},
@@ -363,12 +365,12 @@ export const uniqueObj = function (arr, field = isRequired(), type = 1) {
  *   }
  * ]
  */
-export const flat2Tree = function (arr) {
-  const itemMap = arr.reduce((prev, item) => (prev[item.id] = { ...item, children: [] }, prev), {})
+export const flat2tree = function (arr, field = 'children') {
+  const itemMap = arr.reduce((prev, item) => (prev[item.id] = { ...item, [field]: [] }, prev), {})
   return arr.reduce((prev, item) => {
     const { id, pid } = item
     const curItem = itemMap[id]
-    itemMap[pid] = itemMap[pid] || { children: [] } // 防止有的pid不存在
+    itemMap[pid] = itemMap[pid] || { [field]: [] } // 防止有的pid不存在
     pid === 0 ? prev.push(curItem) : itemMap[pid].children.push(curItem)
     return prev
   }, [])
@@ -390,7 +392,7 @@ export const flat2Tree = function (arr) {
  *  {name: 'd', children: []}, {name: 'e', children: []}, {name: 'f', children: []}
  * ]
  */
-export const tree2Flat = function (arr, field) {
+export const tree2Flat = function (arr, field = 'children') {
   if(arr.some(item => isArray(item[field]) && item[field].length)) {
     arr = arr.reduce((prev, item) => {
       const curItem = deepCopy(item)

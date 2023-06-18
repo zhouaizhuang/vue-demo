@@ -395,7 +395,10 @@ export const flat2tree = function (arr, field = 'children') {
  * ]
  */
 export function tree2Flat(arr, field = 'children', pid = 0) {
-  return arr.reduce((prev, item) => item[field].length ? [...prev, {...item, pid, [field]:[]}, ...tree2Flat(item[field], field, item.id)] : [...prev, { ...item, pid, [field]:[]}], [])
+  return arr.reduce((prev, item) => {
+    const children = item[field] || []
+    return children.length ? [...prev, {...item, pid, [field]:[]}, ...tree2Flat(children, field, item.id)] : [...prev, { ...item, pid, [field]:[]}]
+  }, [])
 }
 /**
  * 一次性函数。只执行一次。后面再调用,没有任何函数代码执行

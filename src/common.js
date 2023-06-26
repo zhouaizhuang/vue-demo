@@ -1141,7 +1141,8 @@ export const f2s = fahrenheit => (fahrenheit - 32) * 5 / 9
 */
 /**
  * 全部字段平铺
- * @param {*} obj 
+ * @param {Object|Array} obj 需要进行转换的url地址
+ * @举例子 flatAllField({name:'zz', age:12, school:{name:'清华大学'}})
  */
 export const flatAllField = function (obj) {
   if(isArray(obj)) {obj = { arr: obj }}

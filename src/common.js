@@ -88,7 +88,7 @@ export const makeMap = function(str, expectsLowerCase = false) {
  * @举例 toString([{name:'zzz', age:18}]) ---> '[\n  {\n    "name": "asd",\n    "ae": "as"\n  }\n]'
  */
 export const toString = function (val) {
-  return val == null ? '' : isReference ? JSON.stringify(val, null, 2) : String(val)
+  return val == null ? '' : isReference(val) ? JSON.stringify(val, null, 2) : String(val)
 }
 /** 返回是否以某个字符串开头
  * @param {String} str 目标字符串
@@ -347,7 +347,7 @@ export const uniqueObj = function (arr, field = isRequired(), type = 1) {
  * https://juejin.cn/post/6983904373508145189#heading-8
  * @param {Array} arr 需要转换的数组
  * @param {String} field 子元素数组的字段值
- * @returns {Array} 转换之后的数组
+ * @returns
  * @注意 pid为0为一级目录
  * @举例 
  * let arr = [
@@ -377,8 +377,9 @@ export const flat2tree = function (arr, field = 'children') {
 }
 /**
  * 对象数组，按照某个字段，进行递归平铺、扁平化
- * @param {*} arr 需要平铺的数组
- * @param {*} props 
+ * @param {Array} arr 需要平铺的数组
+ * @param {String} field 
+ * @param {Number|String} pid 
  * @returns
  * @举例
  * const arr = [
@@ -388,20 +389,16 @@ export const flat2tree = function (arr, field = 'children') {
  * flatArr(arr, 'children')
  * ---->
  * [
- *  {name: 'a', children: []}, {name: 'b', children: []}, {name: 'c', children: []},
- *  {name: 'd', children: []}, {name: 'e', children: []}, {name: 'f', children: []}
+ *  {"id": 1,"name": "a","children": [],"pid": 0},{"id": 10,"name": "b","children": [],"pid": 1},
+ *  {"id": 100,"name": "c","children": [],"pid": 10},{"id": 2,"name": "d","children": [],"pid": 0},
+ *  {"id": 20,"name": "e","children": [],"pid": 2},{"id": 200,"name": "f","children": [],"pid": 20}
  * ]
  */
-export const tree2Flat = function (arr, field = 'children') {
-  if(arr.some(item => isArray(item[field]) && item[field].length)) {
-    arr = arr.reduce((prev, item) => {
-      const curItem = deepCopy(item)
-      curItem[field] = []
-      return isArray(item[field]) && item[field].length ? [...prev, curItem, ...item[field]] : [...prev, item]
-    }, [])
-    return tree2Flat(arr, field)
-  }
-  return arr
+export function tree2Flat(arr, field = 'children', pid = 0) {
+  return arr.reduce((prev, item) => {
+    const children = item[field] || []
+    return children.length ? [...prev, {...item, pid, [field]:[]}, ...tree2Flat(children, field, item.id)] : [...prev, { ...item, pid, [field]:[]}]
+  }, [])
 }
 /**
  * 一次性函数。只执行一次。后面再调用,没有任何函数代码执行
@@ -680,10 +677,9 @@ export const union = (arr1, arr2) => [...new Set([...arr1, ...arr2])]
  * @举例子 formatJSON({name:null, age:undefined, school: '清华大学'}) ---> {name:'', age:'', school: '清华大学'}
  */
 export const formatJSON = function (obj) {
-  if(!isReference) { return obj }
+  if(!isReference(obj)) { return obj }
   return isObject(obj) ? Object.keys(obj).reduce((prev, item) => ((prev[item] = isNull(obj[item]) || isUndefined(obj[item])  ? '' : obj[item]), prev), {}) : {}
 }
-// 
 /**
  * 格式化后端返回数据，将null转为undefined，后续写代码需要解构赋值的时候，赋默认值{}或者[]
  * @param {Object} obj
@@ -691,7 +687,7 @@ export const formatJSON = function (obj) {
  * @举例 formatRes({name:'zzz', age:null}) ---->  {name:'zzz', age: undefined}
  */
 export const formatRes = function (obj) {
-  if(!isReference) { return obj }
+  if(!isReference(obj)) { return obj }
   const filterNull = tmpObj =>  Object.keys(tmpObj).reduce((prev, item) => ((prev[item] = isNull(tmpObj[item]) ? '' : tmpObj[item]), prev), {})
   return isArray(obj) ? obj.map(item => filterNull(item)) : filterNull(obj)
 }
@@ -1145,7 +1141,8 @@ export const f2s = fahrenheit => (fahrenheit - 32) * 5 / 9
 */
 /**
  * 全部字段平铺
- * @param {*} obj 
+ * @param {Object|Array} obj 需要进行转换的url地址
+ * @举例子 flatAllField({name:'zz', age:12, school:{name:'清华大学'}})
  */
 export const flatAllField = function (obj) {
   if(isArray(obj)) {obj = { arr: obj }}

@@ -1,0 +1,14 @@
+.ball{
+  animation: falling 0.7s ease-in 0s infinite alternate;
+}
+@keyframes falling {
+  0%{
+    transform: translateY(-300px) scale(1,1);
+  }
+  90%{
+    transform: scale(0.8, 1.2);
+  }
+  100%{
+    transform: translateY(3px) scale(1.2, .8);
+  }
+}

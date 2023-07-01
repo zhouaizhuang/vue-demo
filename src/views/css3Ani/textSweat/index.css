@@ -1,0 +1,79 @@
+.circle-1{
+  height: 90px;
+  width: 90px;
+  background: #fff;
+  animation: 2s moving linear infinite alternate-reverse;
+}
+.circle-2{
+  height: 60px;
+  width: 60px;
+  background: #fff;
+  animation: 2s moving linear infinite alternate;
+}
+@keyframes moving {    
+  0%{
+    transform: translate(50px)
+  }
+  100%{
+    transform: translate(-50px)
+  }
+}
+
+/******文字流汗**** */
+@keyframes move{
+  0% {transform: translate(0px, 0);}
+  93% {transform: translate(200px, 4px);opacity: 1;}
+  100% {transform: translate(200px, 100px);opacity: 0;}
+}
+.water1{
+  width:10px;
+  height:12px;
+  top:-1px;
+  background-color: #fff;
+  animation: move 7.5s ease-in-out 0s infinite;
+}
+.water2{
+  width:10px;
+  height:12px;
+  top:-1px;
+  background-color: #fff;
+  animation: move 7.5s ease-in-out 2s infinite;
+}
+
+
+/*小溪*/
+.rotateBox{
+  filter: blur(12px);
+  animation: ro 3s linear 0s infinite both;
+}
+@keyframes ro {
+  from{
+    transform: rotate(0);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+.rain{
+  animation: dr 1.6s ease-in-out 0s infinite both;
+}
+@keyframes dr {
+  from{
+    top: 20px;
+  }
+  to{
+    top: 200px;
+  }
+}
+.rain2{
+  animation: dr 1.6s ease-in-out 0.3s infinite ;
+}
+.rain3{
+  animation: dr 1.6s ease-in-out 0.6s infinite ;
+}
+.rain4{
+  animation: dr 1.6s ease-in-out 0.9s infinite ;
+}
+.rain5{
+  animation: dr 1.6s ease-in-out 1.2s infinite ;
+}

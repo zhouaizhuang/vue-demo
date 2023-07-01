@@ -287,8 +287,8 @@ export const adjust = function (arr, num, fn) {
  */
 export const searchCover = function (arr, search = v => v, success = v => v, fail = v => v) {
   const isCurItem = item => isObject(search) ? Object.keys(search).reduce((prev, v) => (prev = prev && search[v] == item[v], prev), true) : search(item)
-  const fnRes = (item, fn) => isObject(fn) ? { ...item, ...fn } : fn(item)
-  return arr.map(item => isCurItem(item) ? fnRes(item, success) : fnRes(item , fail))
+  const fnRes = (v, i, fn) => isObject(fn) ? { ...v, ...fn } : fn(v, i)
+  return arr.map((v, i) => isCurItem(v) ? fnRes(v, i, success) : fnRes(v, i, fail))
 }
 /**
  * 单选

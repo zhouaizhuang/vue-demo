@@ -66,14 +66,14 @@
   }
 }
 .rain2{
-  animation: dr 1.6s ease-in-out 0.3s infinite ;
+  animation: dr 1.6s ease-in-out -0.3s infinite ;
 }
 .rain3{
-  animation: dr 1.6s ease-in-out 0.6s infinite ;
+  animation: dr 1.6s ease-in-out -0.6s infinite ;
 }
 .rain4{
-  animation: dr 1.6s ease-in-out 0.9s infinite ;
+  animation: dr 1.6s ease-in-out -0.9s infinite ;
 }
 .rain5{
-  animation: dr 1.6s ease-in-out 1.2s infinite ;
+  animation: dr 1.6s ease-in-out -1.2s infinite ;
 }

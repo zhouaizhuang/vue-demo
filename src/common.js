@@ -990,6 +990,18 @@ export const getDateStr = function (num = 0, split = '', t) {
   return `0000${dt.getFullYear()}`.slice(-4) + split + `00${(dt.getMonth() + 1)}`.slice(-2) + split + `00${dt.getDate()}`.slice(-2)
 }
 /**
+ * 获取N个月之后的日期
+ * @param {*} startTime  开始日期
+ * @param {*} num   N个月之后的日期
+ * @returns 
+ */
+export const getMonthByNum = function (startTime, num){
+  startTime = processDate(startTime)
+  var dt = new Date(startTime)
+  dt.setMonth(dt.getMonth() + Number(num))
+  return dateFormater('YYYY-MM-DD', dt)
+}
+/**
  * 获取时间段，业务
  * @returns 
  * 昨天起止时间、今天的起止时间、上周的起止时间、当前周的起止时间、当前是星期几 ---->  带有时分秒的截止时间

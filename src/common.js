@@ -87,9 +87,7 @@ export const makeMap = function(str, expectsLowerCase = false) {
  * @returns 
  * @举例 toString([{name:'zzz', age:18}]) ---> '[\n  {\n    "name": "asd",\n    "ae": "as"\n  }\n]'
  */
-export const toString = function (val) {
-  return val == null ? '' : isReference(val) ? JSON.stringify(val, null, 2) : String(val)
-}
+export const toString = (val) => val == null ? '' : isReference(val) ? JSON.stringify(val, null, 2) : String(val)
 /** 返回是否以某个字符串开头
  * @param {String} str 目标字符串
  * @param {String} keywords 需要搜索的开头的字符串
@@ -107,10 +105,7 @@ export const startWith = (str, startWords) => str.slice(0, startWords.length) ==
  * @举例 trim(' ab c  ', 2)  ---> 'ab c  '
  * @举例 trim(' ab c  ', 3)  ---> ' ab c'
  */
-export const trim = (str = '', type = 0) => {
-  const reg = [new RegExp(/(^\s*)|(\s*$)/g), new RegExp(/\s+/g), new RegExp(/(^\s*)/g), new RegExp(/(\s*$)/g)][type] || ''
-  return str.replace(reg, '')
-}
+export const trim = (str = '', type = 0) => str.replace([new RegExp(/(^\s*)|(\s*$)/g), new RegExp(/\s+/g), new RegExp(/(^\s*)/g), new RegExp(/(\s*$)/g)][type] || '', '')
 /**
  * 固定裁剪几个字符之后显示省略号
  * @param {String} str 需要进行裁剪的字符串
@@ -300,7 +295,7 @@ export const searchCover = function (arr, search = v => v, success = v => v, fai
  */
 export const radioChecked = (arr, search = v => v) => searchCover(arr, search, v => ({...v, isChecked:true}), v => ({...v, isChecked:false}))
 /**
- * 
+ * 单条转换
  * @param {*} arr 
  * @param {*} search 
  * @returns 
@@ -334,10 +329,8 @@ export const multipleChecked = (arr, search = v => v) => searchCover(arr, search
 export const uniqueObj = function (arr, field = isRequired(), type = 1) {
   if(!isArray(arr)) { throw new Error('入参必须为对象数组') }
   const obj = arr.reduce((prev, item, index) => {
-    const existItem = prev[item[field]]
-    const curItem = { ...item, _sort: index }
-    prev[item[field]] = type == 1 ? (existItem || curItem) :
-                        existItem ? { ...item, _sort: existItem._sort } : curItem
+    const [existItem, curItem] = [prev[item[field]], { ...item, _sort: index }]
+    prev[item[field]] = type == 1 ? (existItem || curItem) : existItem ? { ...item, _sort: existItem._sort } : curItem
     return prev
   }, {})
   return Object.values(obj).sort((a, b) => a._sort - b._sort)
@@ -369,9 +362,8 @@ export const flat2tree = function (arr, field = 'children') {
   const itemMap = arr.reduce((prev, item) => (prev[item.id] = { ...item, [field]: [] }, prev), {})
   return arr.reduce((prev, item) => {
     const { id, pid } = item
-    const curItem = itemMap[id]
     itemMap[pid] = itemMap[pid] || { [field]: [] } // 防止有的pid不存在
-    pid === 0 ? prev.push(curItem) : itemMap[pid].children.push(curItem)
+    pid === 0 ? prev.push(itemMap[id]) : itemMap[pid].children.push(itemMap[id])
     return prev
   }, [])
 }
@@ -481,19 +473,14 @@ export const repeat = function(obj = '', times = 1) {
  * @returns {Array} 排序后的数组
  * @举例 举例：sortByProp([{name:'ss', age:30}, {name:'dd', age:14}], 'age') ----> [{name:'dd', age:14}, {name:'ss', age:30}]
  */
-export const sortByProp = function (arr, prop, type = 1) {
-  return arr.sort(({[prop]: left},  {[prop]: right}) => type == 1 ? left - right : right - left)
-}
+export const sortByProp = (arr, prop, type = 1) => arr.sort(({[prop]: left},  {[prop]: right}) => type == 1 ? left - right : right - left)
 /**
  * 数组去重
  * @param {Array} arr 
  * @returns 
  * 举例：noSame([1,2,3,4,'1'])
  */
-export const noSame = function(arr) {
-  const newData = arr.reduce((prev, item) => (prev.set(item, item), prev), new Map())
-  return [...newData.keys()]
-}
+export const noSame = arr => [...arr.reduce((prev, item) => (prev.set(item, item), prev), new Map()).keys()]
 /**
  * 递归解析数组中某个字段最深层该字段数组平铺。举例子：获取数组中每个对象的最深层的child属性
  * @param {*} arr 
@@ -561,8 +548,7 @@ export const chunk = function (arr, size = 0) {
 export const groupBy = function (arr, fn_field){
   return arr.reduce((prev, item) => {
     const key = isFunction(fn_field) ? fn_field(item) : item[fn_field]
-    ;(prev[key] || (prev[key] = [])).push({...item, _classifyKey: key})
-    return prev
+    return (prev[key] || (prev[key] = [])).push({...item, _classifyKey: key}), prev
   }, {})
 }
 /**
@@ -572,9 +558,7 @@ export const groupBy = function (arr, fn_field){
  * @returns 
  * @举例 dropField({name: 'z', age: 18}, 'name') -----> {age: 18}
  */
-export const dropField = function (obj, field = '') {
-  return Object.keys(obj).reduce((prev, item) => (!field.split(',').includes(item) && (prev[item] = obj[item]), prev), {})
-}
+export const dropField = (obj, field = '') => Object.keys(obj).reduce((prev, item) => (!field.split(',').includes(item) && (prev[item] = obj[item]), prev), {})
 /**
  * 数组分割
  * @param {Array} arr 需要进行分割的数组
@@ -605,11 +589,7 @@ export const splitWhen = (arr, fn) => splitAt(arr, arr.findIndex(item => fn(item
  * @returns 取交集之后的结果
  * @举例 intersect([1,2,3], [1,2]) ----> [1, 2]
  */
-export const intersect = function (arr1, arr2){
-  if(!isArray(arr1) || !isArray(arr2)) { throw new Error('参数必须是数组类型') }
-  const tmp = new Set(arr2)
-  return arr1.filter(x => tmp.has(x))
-}
+export const intersect = (arr1, arr2) => arr1.filter(x => (new Set(arr2)).has(x))
 /**
  * 数组（a 相对于 b 的）差集:  a数组中的数据，在b数组中没找到的数据
  * @param {Array|String} v1 数据1
@@ -622,16 +602,14 @@ export const intersect = function (arr1, arr2){
  * @举例子 difference('1,2,3', '2,8') ====> '1,3'
  */
 export const difference = function (v1, v2, strictEqual = false, split = ','){
-  const isStrArr1 = isString(v1)
-  if(isStrArr1) { v1 = v1.split(split) }
+  if(isString(v1)) { v1 = v1.split(split) }
   if(isString(v2)) { v2 = v2.split(split) }
   if(!strictEqual) {
     v1 = v1.map(v => String(v))
     v2 = v2.map(v => String(v))
   }
-  const b = new Set(v2)
-  const newArr = v1.filter(x => !b.has(x))
-  return isStrArr1 ? newArr.join(split) : newArr
+  const newArr = v1.filter(x => !(new Set(v2)).has(x))
+  return isString(v1) ? newArr.join(split) : newArr
 }
 /**
  * 数据1---是否包含---数据2--的数据。type：1部分包含，type：2全部包含
@@ -817,10 +795,7 @@ export const random = function (lower, upper, type = 'float') {
  * 获取随机颜色
  * @returns 
  */
-export const randomColor = function () {
-  const [r, g, b, a] = [random(0, 255,'int'), random(0, 255,'int'), random(0, 255,'int'), 1]
-  return `rgba(${r}, ${g}, ${b}, ${a})`
-}
+export const randomColor = () => `rgba(${random(0, 255,'int')}, ${random(0, 255,'int')}, ${random(0, 255,'int')}, ${1})`
 // 禁止复制
 export const noCopy = () => ['contextmenu', 'selectstart', 'copy'].forEach(ev => document.addEventListener(ev, event => (event.returnValue = false)))
 /**
@@ -833,11 +808,8 @@ export const noCopy = () => ['contextmenu', 'selectstart', 'copy'].forEach(ev =>
  * 主要运用于优化移动端大量数据下拉加载更多导致setData的数据很庞大
  */
 export const getProps = function (obj, props) {
-  if(!isObject(props)) { throw new Error('参数有误，参数必须为object') }
-  const filterProps = tmpObj => Object.keys(props).reduce((prev, v) => {
-    return (prev[v] = isObject(props[v]) ? getProps(tmpObj[v], props[v]) : tmpObj[v] || ''), prev
-  }, {})
   if(!isReference(obj)) { return obj }
+  const filterProps = tmpObj => Object.keys(props).reduce((prev, v) => ((prev[v] = isObject(props[v]) ? getProps(tmpObj[v], props[v]) : tmpObj[v] || ''), prev), {})
   return isArray(obj) ? obj.map(item => filterProps(item)) : filterProps(obj)
 }
 /**
@@ -1002,6 +974,18 @@ export const getMonthByNum = function (startTime, num){
   return dateFormater('YYYY-MM-DD', dt)
 }
 /**
+ * 获取N个月之后的日期
+ * @param {*} startTime  开始日期
+ * @param {*} num   N个月之后的日期
+ * @returns 
+ */
+export const diffMonth = function (startTime, num){
+  startTime = processDate(startTime)
+  var dt = new Date(startTime)
+  dt.setMonth(dt.getMonth() + Number(num))
+  return dateFormater('YYYY-MM-DD', dt)
+}
+/**
  * 获取时间段，业务
  * @returns 
  * 昨天起止时间、今天的起止时间、上周的起止时间、当前周的起止时间、当前是星期几 ---->  带有时分秒的截止时间
@@ -1042,7 +1026,8 @@ export const socketTime = function (t = new Date()) {
   const [curWeekStart, curWeekEnd] = [curSecond - minusDay * daySeconds, curSecond + (6 - minusDay) * daySeconds]
   const [curWeek, _curWeek] = [[dateFormater(dateStr, curWeekStart), dateFormater(dateStr, curWeekEnd)], [dateFormater(startStr, curWeekStart), dateFormater(endStr, curWeekEnd)]]
   // 下周
-  const [nextWeekStart, nextWeekEnd] = [curSecond - (1 - minusDay) * daySeconds, curSecond + (5 + minusDay) * daySeconds]
+  const nextWeekStart = curSecond + (8 - week) * daySeconds
+  const nextWeekEnd = nextWeekStart + 6 * daySeconds
   const [nextWeek, _nextWeek] = [[dateFormater(dateStr, nextWeekStart), dateFormater(dateStr, nextWeekEnd)], [dateFormater(startStr, nextWeekStart), dateFormater(endStr, nextWeekEnd)]]
   return { year, _month, month, day, _day, hour, minutes, seconds, yesterday, _yesterday, today, _today, lastWeek, _lastWeek, curWeek, _curWeek, week, weekDay, nextWeek, _nextWeek }
 }
@@ -1055,7 +1040,7 @@ export const socketTime = function (t = new Date()) {
  * @举例 dateFormater('YYYYMMDD-hh:mm:ss', '2020-08-12 09:13:54') ==> 20200812-09:13:54
  */
 export const dateFormater = function (formater = 'YYYY-MM-DD hh:mm:ss', t){
-  if(!t) {return t}
+  if(!t) { return t }
   t = processDate(t)
   const [Y, M, D, h, m, s] = extract(t)
   return formater.replace(/YYYY|yyyy/g, Y).replace(/YY|yy/g, Y.slice(2, 4)).replace(/MM/g, M).replace(/DD/g, D).replace(/hh/g, h).replace(/mm/g, m).replace(/ss/g, s)
@@ -1064,10 +1049,7 @@ export const dateFormater = function (formater = 'YYYY-MM-DD hh:mm:ss', t){
  * @param {Number} after 多少秒之后的时间
  * @举例 afterNsecond(20)  // 20s之后的时间
  */
-export const afterNsecond = function (after = 60) {
-  const dt = new Date().getTime() + after * 1000
-  return new Date(dt)
-}
+export const afterNsecond = (after = 60) => new Date(new Date().getTime() + after * 1000)
 /**
  * 将毫秒数转换成天、时、分、秒、毫秒
  * @param {String} formater 时间格式

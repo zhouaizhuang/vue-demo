@@ -321,10 +321,8 @@ export const multipleChecked = (arr, search = v => v) => searchCover(arr, search
  * @param {*} type  1：有重复的对象则取遍历到的第一个    -1有重复的则取遍历到的最后一个
  * @returns 去重后的对象数组
  * @举例 根据对象中id字段进行去重操作
- * @举例 uniqueObj([{id:1, age:1}, {id:2, age:12}, {id:1, age: 23}], 'id', 1)
- * ---->  [{id: 1, age: 1, _sort: 0}, {id: 2, age: 12, _sort: 1}]
- * @举例 uniqueObj([{id:1, age:1}, {id:2, age:12}, {id:1, age: 23}], 'id', -1)
- * ---->  [{id: 1, age: 23, _sort: 0}, {id: 2, age: 12, _sort: 1}]
+ * @举例 uniqueObj([{id:1, age:1}, {id:2, age:12}, {id:1, age: 23}], 'id', 1)  ---->  [{id: 1, age: 1, _sort: 0}, {id: 2, age: 12, _sort: 1}]
+ * @举例 uniqueObj([{id:1, age:1}, {id:2, age:12}, {id:1, age: 23}], 'id', -1) ---->  [{id: 1, age: 23, _sort: 0}, {id: 2, age: 12, _sort: 1}]
  */
 export const uniqueObj = function (arr, field = isRequired(), type = 1) {
   if(!isArray(arr)) { throw new Error('入参必须为对象数组') }
@@ -340,7 +338,7 @@ export const uniqueObj = function (arr, field = isRequired(), type = 1) {
  * https://juejin.cn/post/6983904373508145189#heading-8
  * @param {Array} arr 需要转换的数组
  * @param {String} field 子元素数组的字段值
- * @returns
+ * @returns {Array} 转换之后的数组
  * @注意 pid为0为一级目录
  * @举例 
  * let arr = [
@@ -1533,7 +1531,7 @@ export const throttling = function(fn, wait=3e3) {
     }
   }
 }
-// 获取cookie 示例：var og_third_app_token = og_getOgCookie('third_app_token')
+// 获取cookie 示例：var third_app_token = getCookie('third_app_token')
 export const getCookie = function (name) {
   var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)")
   return arr = document.cookie.match(reg) ? unescape(arr[2]) : null

@@ -1,3 +1,5 @@
+import { Message } from 'view-design'
+import { round } from "@/common.js"
 /**
  * 处理中文输入的情况
  * @param {*} ref 处理后的dom句柄
@@ -34,6 +36,7 @@ export const int = {
       tmp = tmp.replace(/-/g, '')
       tmp = tmp == '' ? '' : (tmp.replace(/^0+/g, '') || '0')
       tmp = symbol + tmp
+      if(tmp != originVal) { Message.info('存在不合规范的字符，已经被过滤') }
       inputRef.value = tmp
       if(originVal != tmp) { inputRef.dispatchEvent(new Event('input')) }
     })
@@ -48,13 +51,15 @@ export const int = {
  */
 export const float = {
   inserted(el, {value}, vnode) {
+    const isAllowNegative = true
     const inputRef = el.querySelector('input') || el
     const fn = e => window.requestAnimationFrame(() => {
       e.preventDefault()
       if (vnode.inputLocking) { return }
       let originVal = inputRef.value
       let tmp = inputRef.value
-      tmp = tmp.replace(eval(`/[^0-9.${value ? '-' : ''}]/g`), '')
+      tmp = tmp.replace(eval(`/[^0-9.${isAllowNegative ? '-' : ''}]/g`), '') // 非数字、点、负号，替换为空
+      if(tmp != originVal) { Message.info('存在不合规范的字符，已经被过滤') }
       const symbol = tmp.at(0) == '-' ? '-' : ''
       if(symbol === '-') { tmp = tmp.slice(1) }
       tmp = tmp.replace(/-/g, '')
@@ -73,8 +78,14 @@ export const float = {
       } else {
         tmp = symbol + (tmp == '' ? '' : (tmp.replace(/^[0]+/, '') || '0'))
       }
+      if(tmp.at(-1) != '.') {
+        if(round(tmp, value || 0) != tmp) { Message.info(`四舍五入，保留${value}位小数，多余的数据被过滤`) }
+        tmp = round(tmp, value || 0)
+      }
       inputRef.value = tmp
-      if(originVal != tmp) { inputRef.dispatchEvent(new Event('input')) }
+      if(originVal != tmp) { 
+        inputRef.dispatchEvent(new Event('input'))
+      }
     })
     if(!inputRef) { inputRef = el }
     resolveChar(inputRef, vnode, fn)

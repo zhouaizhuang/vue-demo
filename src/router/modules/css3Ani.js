@@ -22,5 +22,6 @@ export default [
   { path: '/musicPlay1', name: 'musicPlay1', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/musicPlay1/index.vue')},
   { path: '/tabs', name: 'tabs', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/tabs/index.vue')},
   { path: '/underline', name: 'underline', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/underline/index.vue')},
-  { path: '/letterSpace', name: 'underline', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/letterSpace/index.vue')},
+  { path: '/letterSpace', name: 'letterSpace', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/letterSpace/index.vue')},
+  { path: '/ball', name: 'ball', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/ball/index.vue')},
 ]

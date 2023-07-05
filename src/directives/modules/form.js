@@ -44,21 +44,22 @@ export const int = {
   },
 }
 /**
- * 限制小数
+ * 限制只能输入小数
  * @param {Function} 
  * 直接使用： <Input v-float></Input>
  * 传入true使用，允许输入负值： <Input v-float="true"></Input>
  */
 export const float = {
   inserted(el, {value}, vnode) {
-    const isAllowNegative = true
+    // console.log(value)
     const inputRef = el.querySelector('input') || el
     const fn = e => window.requestAnimationFrame(() => {
       e.preventDefault()
       if (vnode.inputLocking) { return }
       let originVal = inputRef.value
       let tmp = inputRef.value
-      tmp = tmp.replace(eval(`/[^0-9.${isAllowNegative ? '-' : ''}]/g`), '') // 非数字、点、负号，替换为空
+      // console.log(tmp)
+      tmp = tmp.replace(eval(`/[^0-9.${value ? '-' : ''}]/g`), '') // 非数字、点、负号，替换为空
       if(tmp != originVal) { Message.info('存在不合规范的字符，已经被过滤') }
       const symbol = tmp.at(0) == '-' ? '-' : ''
       if(symbol === '-') { tmp = tmp.slice(1) }
@@ -78,10 +79,10 @@ export const float = {
       } else {
         tmp = symbol + (tmp == '' ? '' : (tmp.replace(/^[0]+/, '') || '0'))
       }
-      if(tmp.at(-1) != '.') {
-        if(round(tmp, value || 0) != tmp) { Message.info(`四舍五入，保留${value}位小数，多余的数据被过滤`) }
-        tmp = round(tmp, value || 0)
-      }
+      // if(tmp && !['-', '.', '0', ''].includes(tmp.at(-1))) {
+      //   if(round(tmp, value || 0) != tmp) { Message.info(`四舍五入，保留${value}位小数，多余的数据被过滤`) }
+      //   tmp = round(tmp, value || 0)
+      // }
       inputRef.value = tmp
       if(originVal != tmp) { 
         inputRef.dispatchEvent(new Event('input'))
@@ -151,6 +152,7 @@ export const decimalLimit = {
         }
         inputRef.value = tmp
       }
+      if(originVal != tmp) { Message.info(`小数自动保留${value}位`) }
       if(originVal != tmp) { inputRef.dispatchEvent(new Event('input')) }
     })
     resolveChar(inputRef, vnode, fn)

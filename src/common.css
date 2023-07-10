@@ -88,11 +88,13 @@ body {text-size-adjust: 100% !important;min-height:100vh;overflow-x: hidden;marg
 /*子元素使用：滚动停止后定位基准《CSS新世界P513》*/
 .ssas{scroll-snap-align:start;} .ssac{scroll-snap-align:center;} .ssae{scroll-snap-align:end;}
 /* 溢出隐藏 */
-.nowrap{min-width: 0;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.nowrap1{min-width: 0;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
 .nowrap2{min-width:0;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+/* 不允许换行 */
+.nowrap{white-space: nowrap;}
 /* 文字过多自动换行 */
 .wrap{max-width:100%;word-break:break-all;word-wrap:break-word;}
-.lba{line-break: anywhere;} /*文字因为能断开的全部断开*/
+.lba{line-break: anywhere;} /*文字能断开的全部断开*/
 /* 对齐方式*/
 .tl{text-align: left;} .tc{text-align: center;} .tr{text-align: right;} .tj{text-align-last: justify;}
 /* 首行缩进 */
@@ -159,13 +161,15 @@ body {text-size-adjust: 100% !important;min-height:100vh;overflow-x: hidden;marg
 /* 左右居中 */
 .auto{margin-left: auto;margin-right:auto;} .mauto{margin: auto;}
 /* 动画 */  
-.trans2{transition:all 0.2s;} .trans3{transition:all 0.3s;} .trans5{transition:all .5s;} .trans6{transition:all .6s;}
+.trans2{transition:all 0.2s;} .trans3{transition:all 0.3s;} .trans5{transition:all .5s;}
 .ts0-5{transform:scale(0.5);} .ts0-6{transform:scale(0.6);} .ts0-7{transform:scale(0.7);} .ts0-8{transform:scale(0.8);} .ts0-9{transform:scale(0.9);} .ts1-1{transform:scale(1.1);} .ts1-2{transform:scale(1.2);} .ts1-3{transform:scale(1.3);} .ts1-4{transform:scale(1.4);} .ts1-5{transform:scale(1.5);} .ts1-6{transform:scale(1.6);} .ts1-7{transform:scale(1.7);} .ts1-8{transform:scale(1.8);} .ts1-9{transform:scale(1.9);} .ts2-0{transform:scale(2);}
 .tx-50{transform:translateX(-50%);} .tx100{transform:translateX(100%);} .tx-100{transform:translateX(-100%);}
-.ty-50{transform: translateY(-50%);} .txy-50{transform: translate(-50%, -50%);} .ty0{transform: translateY(0);}  .ty100{transform: translateY(100%);}
-.tr-45{transform: rotate(-45deg);} .tr-90{transform: rotate(-90deg);} 
+.ty-100{transform: translateY(-100%);} .ty-50{transform: translateY(-50%);} .txy-50{transform: translate(-50%, -50%);} .ty0{transform: translateY(0);}  .ty100{transform: translateY(100%);}
+.tr-45{transform: rotate(-45deg);} .tr-90{transform: rotate(-90deg);} .tr90{transform: rotate(90deg);} .tr180{transform: rotate(180deg);} 
 /* 动画性能增强《CSS新世界P534》 */
 .willl-change-parent:hover .will-change{ will-change: transform; } .will-change{transition: transform 0.3s;} .will-change:hover{transform:scale(1.5);}
+/* 启用硬件加速 */
+.t3d0{ transform: translate3d(0, 0, 0);}
 /*CSS渲染增强《CSS新世界P539》 */
 .contain-strict{contain:strict;} .contain-content{contain:content;}
 /*文本显示方向*/
@@ -178,7 +182,7 @@ body {text-size-adjust: 100% !important;min-height:100vh;overflow-x: hidden;marg
 /*移动端*/
 .rds1r{border-radius:0.01rem;}   .rds2r{border-radius:0.02rem;}  .rds5r{border-radius:0.05rem;}    .rds10r{border-radius:0.1rem;}  .rds15r{border-radius:0.15rem;}  .rds20r{border-radius:0.2rem;}  .rds30r{border-radius:0.3rem;}  .rds40r{border-radius:0.4rem;} .rds50r{border-radius:0.5rem;} .rds50{border-radius:50%;}
 /* 表单必填*号 */
-.need::before{ content: '*';display: inline-block;margin-right: 4rem;line-height: 1;font-family: SimSun;font-size: 35rem;transform:translateY(10rem);color: #ed4014}
+.need::before{ content: '*';display: inline-block;margin-right: 4px;line-height: 1;font-family: SimSun;font-size: 14px;transform:translateY(0px);color: #ed4014}
 /* 1px单条线 */
 .setOnePx{ position: relative; }
 .setOnePx::after{ position: absolute;content: '';background-color: #e5e5e5;display: block;width: 100%;height: 1px;transform: scale(1, 0.5);top: 0;left: 0;}

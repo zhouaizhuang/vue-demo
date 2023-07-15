@@ -59,7 +59,7 @@ export const isValidStr = function (val, type = '0,1,2', length = -1){
     // 中文符号code: https://blog.csdn.net/cysear/article/details/80435756?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-80435756-blog-125930354.pc_relevant_multi_platform_whitelistv4&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-80435756-blog-125930354.pc_relevant_multi_platform_whitelistv4&utm_relevant_index=1
     5: '\uff08\uff09\u3008\u3009\u300a\u300b\u300c\u300d\u300e\u300f\ufe43\ufe44\u3014\u3015\u2026\u2014\uff5e\ufe4f\uffe5\u3001\u3010\u3011\uff0c\u3002\uff1f\uff01\uff1a\uff1b\u201c\u201d\u2018\u2019'
   })[v]
-  const reg = type.split('').map(mapReg).join('')
+  const reg = type.split(',').map(mapReg).join('')
   return eval(`/^[${reg}${type == 4? '\[\]' : ''}]{0,${length == -1 ? '' : length}}$/`).test(val)
 }
 /**

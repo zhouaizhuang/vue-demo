@@ -626,9 +626,7 @@ export const isContain = function (v1, v2, type = 1, strictEqual = false, split 
   if(isString(v1)) { v1 = v1.split(split) }
   if(isString(v2)) { v2 = v2.split(split) }
   if(!strictEqual) { [v1, v2] = [lowerCase(v1), lowerCase(v2)] }
-  const fn1 = () => v2.some(v => v1.some(k => strictEqual ? k == v : k === v))
-  const fn2 = () => v2.every(v => v1.some(k => strictEqual ? k == v : k === v))
-  return type == 1 ? fn1() : fn2()
+  return type == 1 ? v2.some(v => v1.some(k => strictEqual ? k == v : k === v)) : v2.every(v => v1.some(k => strictEqual ? k == v : k === v))
 }
 /**
  * 数组（a 和 b 的）并集

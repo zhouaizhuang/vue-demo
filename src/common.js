@@ -884,9 +884,8 @@ export const round = function (num, prec = 0) {
  * @举例 range(12.23, 14, 20)  ===> 14 // 下限为14 因此返回14
  */
 export const range = function (num, min = null, max = null) {
-  num = Number(num)
-  if(min !== null) { num = Math.max(num, Number(min)) }
-  if(max !== null) { num = Math.min(num, Number(max)) }
+  if(min !== null) { num = Math.max(Number(num), Number(min)) }
+  if(max !== null) { num = Math.min(Number(num), Number(max)) }
   return num
 }
 /**

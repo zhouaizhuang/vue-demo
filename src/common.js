@@ -622,13 +622,10 @@ export const difference = function (v1, v2, strictEqual = false, split = ','){
  * @举例子 isContain('1,2,3', '2,3,4', false) ====> false
  */
 export const isContain = function (v1, v2, type = 1, strictEqual = false, split = ',') {
-  const isStrArr1 = isString(v1)
-  if(isStrArr1) { v1 = v1.split(split) }
+  const lowerCase = v => v.map(k => String(k).toLowerCase())
+  if(isString(v1)) { v1 = v1.split(split) }
   if(isString(v2)) { v2 = v2.split(split) }
-  if(!strictEqual) {
-    v1 = v1.map(v => String(v).toLowerCase())
-    v2 = v2.map(v => String(v).toLowerCase())
-  }
+  if(!strictEqual) { [v1, v2] = [lowerCase(v1), lowerCase(v2)] }
   const fn1 = () => v2.some(v => v1.some(k => strictEqual ? k == v : k === v))
   const fn2 = () => v2.every(v => v1.some(k => strictEqual ? k == v : k === v))
   return type == 1 ? fn1() : fn2()

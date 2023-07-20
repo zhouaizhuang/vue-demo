@@ -113,6 +113,28 @@ export const code = {
   }
 }
 /**
+ * 姓名，不可以输入空格和数字
+ * @param {Function} 
+ * 直接使用： <Input v-name></Input>
+ */
+export const name = {
+  inserted(el, {value}, vnode) {
+    const inputRef = el.querySelector('input') || el
+    const fn = e => window.requestAnimationFrame(() => {
+      e.preventDefault()
+      if (vnode.inputLocking) { return }
+      let originVal = inputRef.value
+      let tmp = inputRef.value
+      console.log(tmp)
+      tmp = tmp.replace(/[0-9\s]+/g, '')
+      inputRef.value = tmp
+      if(originVal != tmp) { Message.info(`存在不合规范的字符，已经被过滤`) }
+      if(originVal != tmp) { inputRef.dispatchEvent(new Event('input')) }
+    })
+    resolveChar(inputRef, vnode, fn)
+  }
+}
+/**
  * 限制最多输入几个字符
  * @param {Function} 
  * 直接使用： <Input v-limit="5"></Input>

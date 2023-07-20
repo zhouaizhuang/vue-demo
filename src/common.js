@@ -59,7 +59,7 @@ export const isValidStr = function (val, type = '0,1,2', length = -1){
     // 中文符号code: https://blog.csdn.net/cysear/article/details/80435756?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-80435756-blog-125930354.pc_relevant_multi_platform_whitelistv4&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-80435756-blog-125930354.pc_relevant_multi_platform_whitelistv4&utm_relevant_index=1
     5: '\uff08\uff09\u3008\u3009\u300a\u300b\u300c\u300d\u300e\u300f\ufe43\ufe44\u3014\u3015\u2026\u2014\uff5e\ufe4f\uffe5\u3001\u3010\u3011\uff0c\u3002\uff1f\uff01\uff1a\uff1b\u201c\u201d\u2018\u2019'
   })[v]
-  const reg = type.split('').map(mapReg).join('')
+  const reg = type.split(',').map(mapReg).join('')
   return eval(`/^[${reg}${type == 4? '\[\]' : ''}]{0,${length == -1 ? '' : length}}$/`).test(val)
 }
 /**
@@ -622,16 +622,11 @@ export const difference = function (v1, v2, strictEqual = false, split = ','){
  * @举例子 isContain('1,2,3', '2,3,4', false) ====> false
  */
 export const isContain = function (v1, v2, type = 1, strictEqual = false, split = ',') {
-  const isStrArr1 = isString(v1)
-  if(isStrArr1) { v1 = v1.split(split) }
+  const lowerCase = v => v.map(k => String(k).toLowerCase())
+  if(isString(v1)) { v1 = v1.split(split) }
   if(isString(v2)) { v2 = v2.split(split) }
-  if(!strictEqual) {
-    v1 = v1.map(v => String(v).toLowerCase())
-    v2 = v2.map(v => String(v).toLowerCase())
-  }
-  const fn1 = () => v2.some(v => v1.some(k => strictEqual ? k == v : k === v))
-  const fn2 = () => v2.every(v => v1.some(k => strictEqual ? k == v : k === v))
-  return type == 1 ? fn1() : fn2()
+  if(!strictEqual) { [v1, v2] = [lowerCase(v1), lowerCase(v2)] }
+  return type == 1 ? v2.some(v => v1.some(k => strictEqual ? k == v : k === v)) : v2.every(v => v1.some(k => strictEqual ? k == v : k === v))
 }
 /**
  * 数组（a 和 b 的）并集
@@ -889,9 +884,8 @@ export const round = function (num, prec = 0) {
  * @举例 range(12.23, 14, 20)  ===> 14 // 下限为14 因此返回14
  */
 export const range = function (num, min = null, max = null) {
-  num = Number(num)
-  if(min !== null) { num = Math.max(num, Number(min)) }
-  if(max !== null) { num = Math.min(num, Number(max)) }
+  if(min !== null) { num = Math.max(Number(num), Number(min)) }
+  if(max !== null) { num = Math.min(Number(num), Number(max)) }
   return num
 }
 /**

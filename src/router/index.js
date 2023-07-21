@@ -58,7 +58,20 @@ export const go = (options = {}) => router.push({ path: '', name: '', query: {},
  * @returns 
  * @举例 goBack(-1)
  */
-export const goBack = (times = -1) => router.go(times) // 返回times页面
+export const goBack = (function() {
+  let prevHref = '' // 上一次的路由
+  return function (times = -1){
+    prevHref = safeGet(() => window.location.href.split('#')[1].split('?')[0], '')
+    router.go(times)
+    setTimeout(() => {
+      // console.log(prevHref) // 上一页
+      // console.log(router.history.current.name) // 当前页面
+      if(router.history.current.name == prevHref) {
+        goBack(times)
+      }
+    }, 50)
+  }
+})()
 /**
  * 路由比对函数
  * @param {*} allRouter 全部路由

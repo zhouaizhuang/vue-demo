@@ -87,11 +87,11 @@ body {text-size-adjust: 100% !important;min-height:100vh;overflow-x: hidden;marg
 .sstxm{scroll-snap-type:x mandatory;} .sstym{scroll-snap-type:y mandatory;}
 /*子元素使用：滚动停止后定位基准《CSS新世界P513》*/
 .ssas{scroll-snap-align:start;} .ssac{scroll-snap-align:center;} .ssae{scroll-snap-align:end;}
+/* 不允许换行 */
+.nowrap{white-space: nowrap;}
 /* 溢出隐藏 */
 .nowrap1{min-width: 0;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
 .nowrap2{min-width:0;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
-/* 不允许换行 */
-.nowrap{white-space: nowrap;}
 /* 文字过多自动换行 */
 .wrap{max-width:100%;word-break:break-all;word-wrap:break-word;}
 .lba{line-break: anywhere;} /*文字能断开的全部断开*/

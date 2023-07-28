@@ -174,8 +174,8 @@ body {text-size-adjust: 100% !important;min-height:100vh;overflow-x: hidden;marg
 .contain-strict{contain:strict;} .contain-content{contain:content;}
 /*文本显示方向*/
 .yl2r {writing-mode: vertical-lr;} .yr2l{writing-mode: vertical-rl;}
-/* 按钮禁用 */
-.disable{opacity:0.5; pointer-events:none;} .disable:hover{cursor:no-drop;}
+/* 禁用 */
+.disabled{opacity:0.5;} .disabled:hover{cursor:not-allowed !important;}
 /* 边框圆角 */
 /*PC端*/
 .rds1{border-radius:1px;}   .rds2{border-radius:2px;}  .rds5{border-radius:5px;}    .rds10{border-radius:10px;}  .rds15{border-radius:15px;}  .rds20{border-radius:20px;}  .rds30{border-radius:30px;} .rds40{border-radius:40px;}  .rds50{border-radius:50%;}

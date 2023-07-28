@@ -169,7 +169,7 @@ export const decimalLimit = {
       let tmp = inputRef.value
       if(tmp.includes('.') && /-?([0-9]*).([0-9]*)/.test(tmp)) {
         const [, left, right] = tmp.match(/-?([0-9]*).([0-9]*)/)
-        if(right.length > 2) {
+        if(right.length > value) {
           tmp = left ? (tmp.at(0) == '-' ? '-' : '') + left + '.' + right.slice(0, Number(value)) : ''
         }
         inputRef.value = tmp

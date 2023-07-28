@@ -137,7 +137,7 @@ export const name = {
 /**
  * 限制最多输入几个字符
  * @param {Function} 
- * 直接使用： <Input v-limit="5"></Input>
+ * 直接使用： <Input v-limit="[0,5]"></Input>
  */
 export const limit = {
   inserted(el, {value}, vnode) {
@@ -147,8 +147,11 @@ export const limit = {
       if (vnode.inputLocking) { return }
       let originVal = inputRef.value
       let tmp = inputRef.value
-      tmp = tmp.slice(0, Number(value))
+      const [min, max] = value
+      tmp = tmp.slice(0, Number(max))
       inputRef.value = tmp
+      if(originVal != tmp) { Message.info(`最多输入${max}位字符`) }
+      if(originVal.length < Number(min)) { Message.info(`最少输入${min}位字符`) }
       if(originVal != tmp) { inputRef.dispatchEvent(new Event('input')) }
     })
     resolveChar(inputRef, vnode, fn)
@@ -193,8 +196,9 @@ export const min = {
       if (vnode.inputLocking) { return }
       let originVal = inputRef.value
       let tmp = inputRef.value
-      tmp = tmp === '' ? '' : Math.max(Number(tmp) || 0, Number(value))
-      tmp = String(tmp)
+      if(tmp < value) { Message.info(`最小值为${value}`)}
+      // tmp = tmp === '' ? '' : Math.max(Number(tmp) || 0, Number(value))
+      // tmp = String(tmp)
       inputRef.value = tmp
       if(originVal != tmp) { inputRef.dispatchEvent(new Event('input')) }
     })
@@ -214,8 +218,8 @@ export const max = {
       if (vnode.inputLocking) { return }
       let originVal = inputRef.value
       let tmp = inputRef.value
-      tmp = tmp === '' ? '' : Math.min(Number(tmp) || 0, Number(value))
-      tmp = String(tmp)
+      if(tmp > value) { Message.info(`最大值为${value}`)}
+      if(Number(tmp) > value) { tmp = value }
       inputRef.value = tmp
       if(originVal != tmp) { inputRef.dispatchEvent(new Event('input')) }
     })

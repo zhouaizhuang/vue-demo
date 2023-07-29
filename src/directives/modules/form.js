@@ -1,5 +1,23 @@
 import { Message } from 'view-design'
-import { round } from "@/common.js"
+import { query, difference, guID } from "@/common.js"
+// 处理提示信息--------> 原先的提示函数：Message.info(`小数自动保留${value}位`)
+const processTip = (function (){
+  let lastId = 'zz'
+  return function (el, msg){
+    if(query(`#${lastId}`)) { el.removeChild(query(`#${lastId}`)) }
+    // el.parentNode.parentNode.classList.remove('ivu-form-item-error') // 移除组件的rule规则校验错误信息
+    // if(query(`.ivu-form-item-error-tip`)) { el.parentNode.removeChild(query(`.ivu-form-item-error-tip`)) } // 删除爷爷的错误校验样式
+    if(msg) {
+      const id = 'z' + guID()
+      let divObj = document.createElement("div") // 创建，写内容
+      divObj.id = id
+      divObj.innerHTML = `<div class="abs nowrap bgf zx1" style="left:0px;bottom:-20px;color:#ed4014;">${msg}</div>`
+      el.appendChild(divObj)
+      lastId = id
+      setTimeout(() => {if(query(`#${id}`)) { el.removeChild(query(`#${id}`)) }}, 2000)
+    }
+  }
+})()
 /**
  * 处理中文输入的情况
  * @param {*} ref 处理后的dom句柄
@@ -36,7 +54,7 @@ export const int = {
       tmp = tmp.replace(/-/g, '')
       tmp = tmp == '' ? '' : (tmp.replace(/^0+/g, '') || '0')
       tmp = symbol + tmp
-      if(tmp != originVal) { Message.info('存在不合规范的字符，已经被过滤') }
+      if(tmp != originVal) { processTip(el, `不符合规范的字符【${difference(originVal.split(''), tmp.split('')).join(' ')}】，已经被过滤`) }
       inputRef.value = tmp
       if(originVal != tmp) { inputRef.dispatchEvent(new Event('input')) }
     })
@@ -60,7 +78,7 @@ export const float = {
       let tmp = inputRef.value
       // console.log(tmp)
       tmp = tmp.replace(eval(`/[^0-9.${value ? '-' : ''}]/g`), '') // 非数字、点、负号，替换为空
-      if(tmp != originVal) { Message.info('存在不合规范的字符，已经被过滤') }
+      if(tmp != originVal) { processTip(el, `不符合规范的字符【${difference(originVal.split(''), tmp.split('')).join(' ')}】，已经被过滤`) }
       const symbol = tmp.at(0) == '-' ? '-' : ''
       if(symbol === '-') { tmp = tmp.slice(1) }
       tmp = tmp.replace(/-/g, '')
@@ -113,9 +131,30 @@ export const code = {
   }
 }
 /**
+ * 姓名，不可以输入空格和数字
+ * @param {Function} 
+ * 直接使用： <Input v-name></Input>
+ */
+export const name = {
+  inserted(el, {value}, vnode) {
+    const inputRef = el.querySelector('input') || el
+    const fn = e => window.requestAnimationFrame(() => {
+      e.preventDefault()
+      if (vnode.inputLocking) { return }
+      let originVal = inputRef.value
+      let tmp = inputRef.value
+      tmp = tmp.replace(/[0-9\s]+/g, '')
+      inputRef.value = tmp
+      if(originVal != tmp) { processTip(el, `不符合规范的字符【${difference(originVal.split(''), tmp.split('')).join(' ')}】，已经被过滤`) }
+      if(originVal != tmp) { inputRef.dispatchEvent(new Event('input')) }
+    })
+    resolveChar(inputRef, vnode, fn)
+  }
+}
+/**
  * 限制最多输入几个字符
  * @param {Function} 
- * 直接使用： <Input v-limit="5"></Input>
+ * 直接使用： <Input v-limit="[0,5]"></Input>
  */
 export const limit = {
   inserted(el, {value}, vnode) {
@@ -125,8 +164,11 @@ export const limit = {
       if (vnode.inputLocking) { return }
       let originVal = inputRef.value
       let tmp = inputRef.value
-      tmp = tmp.slice(0, Number(value))
+      const [min, max] = value
+      tmp = tmp.slice(0, Number(max))
       inputRef.value = tmp
+      if(originVal != tmp) { processTip(el, `最多输入${max}位字符`) }
+      if(originVal.length < Number(min)) { processTip(el, `最少输入${min}位字符`) }
       if(originVal != tmp) { inputRef.dispatchEvent(new Event('input')) }
     })
     resolveChar(inputRef, vnode, fn)
@@ -147,12 +189,12 @@ export const decimalLimit = {
       let tmp = inputRef.value
       if(tmp.includes('.') && /-?([0-9]*).([0-9]*)/.test(tmp)) {
         const [, left, right] = tmp.match(/-?([0-9]*).([0-9]*)/)
-        if(right.length > 2) {
+        if(right.length > value) {
           tmp = left ? (tmp.at(0) == '-' ? '-' : '') + left + '.' + right.slice(0, Number(value)) : ''
         }
         inputRef.value = tmp
       }
-      if(originVal != tmp) { Message.info(`小数自动保留${value}位`) }
+      if(originVal != tmp) { processTip(el, `小数自动保留${value}位`) }
       if(originVal != tmp) { inputRef.dispatchEvent(new Event('input')) }
     })
     resolveChar(inputRef, vnode, fn)
@@ -171,8 +213,9 @@ export const min = {
       if (vnode.inputLocking) { return }
       let originVal = inputRef.value
       let tmp = inputRef.value
-      tmp = tmp === '' ? '' : Math.max(Number(tmp) || 0, Number(value))
-      tmp = String(tmp)
+      if(tmp < value) { processTip(el, `最小值为${value}`)}
+      // tmp = tmp === '' ? '' : Math.max(Number(tmp) || 0, Number(value))
+      // tmp = String(tmp)
       inputRef.value = tmp
       if(originVal != tmp) { inputRef.dispatchEvent(new Event('input')) }
     })
@@ -192,8 +235,8 @@ export const max = {
       if (vnode.inputLocking) { return }
       let originVal = inputRef.value
       let tmp = inputRef.value
-      tmp = tmp === '' ? '' : Math.min(Number(tmp) || 0, Number(value))
-      tmp = String(tmp)
+      if(tmp > value) { processTip(el, `最大值为${value}`) }
+      if(Number(tmp) > value) { tmp = value }
       inputRef.value = tmp
       if(originVal != tmp) { inputRef.dispatchEvent(new Event('input')) }
     })

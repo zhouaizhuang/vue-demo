@@ -1,0 +1,7 @@
+/*产品使用体验提升*/
+/*上移放大*/
+.hoverText:hover{transform: scale(1.1);}
+/*上移按钮颜色变淡*/
+.hoverBtn:hover{background: rgb(26, 173, 167, .8) !important;}
+/*下划线*/
+.textUnderline:before{content: '';position: absolute;width:100%;border-top:1px solid currentColor;bottom:2px;}

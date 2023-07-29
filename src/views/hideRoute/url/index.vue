@@ -61,6 +61,7 @@
     <div class="f">
       <div class="b" style="width:150px;">前端收藏网站</div>
       <div class="f1 f xs ac rw">
+        <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://6tail.cn/calendar/api.html#start.html">日历相关插件</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://vue-admin-beautiful.com/admin-pro/#/vab/table/comprehensiveTable">前端PC后台示例</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://blog.csdn.net/MOY37RQW1JarN33BgZk/article/details/124185709">为什么vue和react都选择了Hooks?</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="http://v4.iviewui.com/docs/introduce">基于vue2版本配套的view-design</a></div>

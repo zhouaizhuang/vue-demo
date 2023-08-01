@@ -191,12 +191,12 @@ export const startPost = (function (wait) {
  */
 export const endPost = (function () {
   const reqRecord = new Map() // 记录已发起但未返回的请求： url<---->reject方法
-  return function (url, params, defaultVal, type = 1) {
+  return function (url, params, type = 1) {
     const req = () => service.post(url, resolveParams(params))
     return new Promise((resolve, reject) => {
       if (reqRecord.get(url)) { reqRecord.get(url)(`放弃上次请求的渲染${url}`) } // 放弃请求
       const promiseA = new Promise((_, rej) => reqRecord.set(url, rej))
-      return Promise.race([req(), promiseA]).then(res => processError(res, url, defaultVal, type, resolve, reject)).finally(() => reqRecord.delete(url))
+      return Promise.race([req(), promiseA]).then(res => processError(res, url, type, resolve, reject)).finally(() => reqRecord.delete(url))
     })
   }
 })()

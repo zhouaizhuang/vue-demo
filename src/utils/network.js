@@ -171,7 +171,7 @@ export const startPost = (function (wait) {
   const reqRecord = new Map() // 记录已发起但未返回的请求： url<--->reject方法
   return function (url, params, defaultVal = {}, type = 1) {
     let end = +new Date() // 记录第一次以后的每次点击的时间戳
-    if (end - start >= wait) { // 1.5s内连续点击，只请求一次（节流时间）
+    if (end - start >= wait || reqRecord.size == 0) { // 1.5s内连续点击，只请求一次（节流时间）
       start = end // 执行处理函数后，将结束时间设置为开始时间，重新开始记时
       return new Promise((resolve, reject) => {
         if (reqRecord.get(url)) { return Promise.reject(`取消当前请求${url}`) }

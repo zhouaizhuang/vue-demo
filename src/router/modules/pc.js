@@ -26,4 +26,5 @@ export default [
   { path: '/buttonSnip_pc', name: 'buttonSnip_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/buttonSnip_pc/index.vue')},
   { path: '/frontEndPrint_pc', name: 'frontEndPrint_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/frontEndPrint_pc/index.vue')},
   { path: '/confirm_pc', name: 'confirm_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/confirm_pc/index.vue')},
+  { path: '/calendar_pc', name: 'calendar_pc', component: () => import(/* webpackChunkName: "pc" */ '../../views/pc/calendar_pc/index.vue')},
 ]

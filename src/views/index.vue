@@ -259,6 +259,7 @@
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/downLoadPdf_pc">pdf下载(a链接下载)</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/printPdfAndImg_pc">图片形式打印pdf打印多图片(pdf.js)</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/readExcel_pc">excel数据读取</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/calendar_pc">日历插件获取节日、节气、阴历阳历</router-link></div>
       </div>
     </div>
     <div class="f">

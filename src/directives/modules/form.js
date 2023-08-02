@@ -4,7 +4,7 @@ import { query, difference, guID } from "@/common.js"
 const processTip = (function (){
   let lastId = 'zz'
   return function (el, msg){
-    if(query(`#${lastId}`)) { el.removeChild(query(`#${lastId}`)) }
+    if(query(`#${lastId}`)) { try{el.removeChild(query(`#${lastId}`))}catch(e){console.log('鼠标移开')} }
     // el.parentNode.parentNode.classList.remove('ivu-form-item-error') // 移除组件的rule规则校验错误信息
     // if(query(`.ivu-form-item-error-tip`)) { el.parentNode.removeChild(query(`.ivu-form-item-error-tip`)) } // 删除爷爷的错误校验样式
     if(msg) {
@@ -123,7 +123,7 @@ export const code = {
       if (vnode.inputLocking) { return }
       let originVal = inputRef.value
       let tmp = inputRef.value
-      tmp = tmp.replace(/[^0-9A-Za-z!@#$%^&*()_+{}?><|/.,`\uff08\uff09\u3008\u3009\u300a\u300b\u300c\u300d\u300e\u300f\ufe43\ufe44\u3014\u3015\u2026\u2014\uff5e\ufe4f\uffe5\u3001\u3010\u3011\uff0c\u3002\uff1f\uff01\uff1a\uff1b\u201c\u201d\u2018\u2019]/g, '')
+      tmp = tmp.replace(/[^0-9A-Za-z!@#$%^&*()_+-{}?><|/.,`\uff08\uff09\u3008\u3009\u300a\u300b\u300c\u300d\u300e\u300f\ufe43\ufe44\u3014\u3015\u2026\u2014\uff5e\ufe4f\uffe5\u3001\u3010\u3011\uff0c\u3002\uff1f\uff01\uff1a\uff1b\u201c\u201d\u2018\u2019]/g, '')
       inputRef.value = tmp
       if(originVal != tmp) { inputRef.dispatchEvent(new Event('input')) }
     })
@@ -143,7 +143,7 @@ export const name = {
       if (vnode.inputLocking) { return }
       let originVal = inputRef.value
       let tmp = inputRef.value
-      tmp = tmp.replace(/[0-9\s]+/g, '')
+      tmp = tmp.replace(/[0-9!@#$%^&*()_+-?><|/,`！，、？~\s]+/g, '')
       inputRef.value = tmp
       if(originVal != tmp) { processTip(el, `不符合规范的字符【${difference(originVal.split(''), tmp.split('')).join(' ')}】，已经被过滤`) }
       if(originVal != tmp) { inputRef.dispatchEvent(new Event('input')) }

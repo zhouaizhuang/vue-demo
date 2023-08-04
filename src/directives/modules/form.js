@@ -11,7 +11,7 @@ const processTip = (function (){
       const id = 'z' + guID()
       let divObj = document.createElement("div") // 创建，写内容
       divObj.id = id
-      divObj.innerHTML = `<div class="abs nowrap bgf zx1" style="left:0px;bottom:-20px;color:#ed4014;">${msg}</div>`
+      divObj.innerHTML = `<div class="abs nowrap bgf zx1 r0" style="left:0px;bottom:-20px;color:#ed4014;">${msg}</div>`
       el.appendChild(divObj)
       lastId = id
       setTimeout(() => {if(query(`#${id}`)) { el.removeChild(query(`#${id}`)) }}, 2000)
@@ -143,9 +143,37 @@ export const name = {
       if (vnode.inputLocking) { return }
       let originVal = inputRef.value
       let tmp = inputRef.value
+      console.log(tmp)
       tmp = tmp.replace(/[0-9!@#$%^&*()_+-?><|/,`！，、？~\s]+/g, '')
       inputRef.value = tmp
       if(originVal != tmp) { processTip(el, `不符合规范的字符【${difference(originVal.split(''), tmp.split('')).join(' ')}】，已经被过滤`) }
+      if(originVal != tmp) { inputRef.dispatchEvent(new Event('input')) }
+    })
+    resolveChar(inputRef, vnode, fn)
+  }
+}
+/**
+ * 姓名，不可以输入空格和数字
+ * @param {Function} 
+ * 直接使用，去除首尾空格： <Input v-trim></Input>
+ * 传入0，去除首尾空格： <Input v-trim="0"></Input>
+ * 传入1，去除全部空格： <Input v-trim="1"></Input>
+ * 传入2，去除头部空格： <Input v-trim="2"></Input>
+ * 传入3，去除尾部空格： <Input v-trim="3"></Input>
+ */
+export const trim = {
+  inserted(el, {value}, vnode) {
+    const inputRef = el.querySelector('input') || el
+    const fn = e => window.requestAnimationFrame(() => {
+      e.preventDefault()
+      if (vnode.inputLocking) { return }
+      let originVal = inputRef.value
+      let tmp = inputRef.value
+      console.log(tmp)
+      const reg = [new RegExp(/(^\s*)|(\s*$)/g), new RegExp(/\s+/g), new RegExp(/(^\s*)/g), new RegExp(/(\s*$)/g)][value || 0] || ''
+      tmp = tmp.replace(reg, '')
+      inputRef.value = tmp
+      if(originVal != tmp) { processTip(el, `空格已被过滤`) }
       if(originVal != tmp) { inputRef.dispatchEvent(new Event('input')) }
     })
     resolveChar(inputRef, vnode, fn)

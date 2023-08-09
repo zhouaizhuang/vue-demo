@@ -1693,6 +1693,29 @@ export const curry = function (fn, args = []) {
     return newArgs.length < fn.length ? curry.call(this, fn, newArgs) : fn.apply(this, newArgs)
   }
 }
+/**
+ * 函数重载生成器
+ * 描述：适用重载能有效地把本来在函数内部的内省判断，分割开来。单独去实现。同时函数名能保持一致性。
+ * @returns 
+ * @举例子 
+ * const getUser = createOverLoad()
+ * getUser.addFunc('Number,Number', (page, pageSize) => {console.log('根据页码和分页参数去查找')})
+ * getUser.addFunc('Number', (page) => {console.log('根据页码和分页参数去查找')})
+ * getUser.addFunc('String', (name, gender) => {console.log('根据姓名和性别去查找')})
+ * getUser.addFunc('String,String', (name, gender) => {console.log('根据姓名和性别去查找')})
+ * getUser(1,2)-------> '根据页码和分页参数去查找'
+ * getUser('张三', '1')-----> '根据姓名和性别去查找'
+ */
+export const createOverLoad = function () {
+  const callMap = new Map()
+  function overLoad(...args){
+    const fn = callMap.get(args.map(v => Object.prototype.toString.call(v).slice(8, -1)).join(','))
+    if(!isFunction(fn)) { throw new Error('未找到对应的方法')}
+    return fn.apply(this, args)
+  }
+  overLoad.addFunc = (type, fn) => isFunction(fn) ? callMap.set(type, fn) : ''
+  return overLoad
+}
 /*
 **********************************************************************************************
 ******************************************数据结构*********************************************

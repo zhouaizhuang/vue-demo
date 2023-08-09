@@ -602,10 +602,7 @@ export const intersect = (arr1, arr2) => arr1.filter(x => (new Set(arr2)).has(x)
 export const difference = function (v1, v2, strictEqual = false, split = ','){
   if(isString(v1)) { v1 = v1.split(split) }
   if(isString(v2)) { v2 = v2.split(split) }
-  if(!strictEqual) {
-    v1 = v1.map(v => String(v))
-    v2 = v2.map(v => String(v))
-  }
+  if(!strictEqual) { v1 = v1.map(v => String(v));v2 = v2.map(v => String(v)) }
   const newArr = v1.filter(x => !(new Set(v2)).has(x))
   return isString(v1) ? newArr.join(split) : newArr
 }

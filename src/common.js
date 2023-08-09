@@ -1713,7 +1713,10 @@ export const createOverLoad = function () {
     if(!isFunction(fn)) { throw new Error('未找到对应的方法')}
     return fn.apply(this, args)
   }
-  overLoad.addFunc = (type, fn) => isFunction(fn) ? callMap.set(type, fn) : ''
+  overLoad.addFunc = (...args) => {
+    const fn = args.pop()
+    isFunction(fn) ? callMap.set(args.join(','), fn) : ''
+  }
   return overLoad
 }
 /*

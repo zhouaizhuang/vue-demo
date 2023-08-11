@@ -602,10 +602,7 @@ export const intersect = (arr1, arr2) => arr1.filter(x => (new Set(arr2)).has(x)
 export const difference = function (v1, v2, strictEqual = false, split = ','){
   if(isString(v1)) { v1 = v1.split(split) }
   if(isString(v2)) { v2 = v2.split(split) }
-  if(!strictEqual) {
-    v1 = v1.map(v => String(v))
-    v2 = v2.map(v => String(v))
-  }
+  if(!strictEqual) { v1 = v1.map(v => String(v));v2 = v2.map(v => String(v)) }
   const newArr = v1.filter(x => !(new Set(v2)).has(x))
   return isString(v1) ? newArr.join(split) : newArr
 }
@@ -1692,6 +1689,32 @@ export const curry = function (fn, args = []) {
     var newArgs = [...args, ...arguments]
     return newArgs.length < fn.length ? curry.call(this, fn, newArgs) : fn.apply(this, newArgs)
   }
+}
+/**
+ * 函数重载生成器
+ * 描述：适用重载能有效地把本来在函数内部的内省判断，分割开来。单独去实现。同时函数名能保持一致性。
+ * @returns 
+ * @举例子 
+ * const getUser = createOverLoad()
+ * getUser.addFunc('Number,Number', (page, pageSize) => {console.log('根据页码和分页参数去查找')})
+ * getUser.addFunc('Number', (page) => {console.log('根据页码和分页参数去查找')})
+ * getUser.addFunc('String', (name, gender) => {console.log('根据姓名和性别去查找')})
+ * getUser.addFunc('String,String', (name, gender) => {console.log('根据姓名和性别去查找')})
+ * getUser(1,2)-------> '根据页码和分页参数去查找'
+ * getUser('张三', '1')-----> '根据姓名和性别去查找'
+ */
+export const createOverLoad = function () {
+  const callMap = new Map()
+  function overLoad(...args){
+    const fn = callMap.get(args.map(v => Object.prototype.toString.call(v).slice(8, -1)).join(','))
+    if(!isFunction(fn)) { throw new Error('未找到对应的方法')}
+    return fn.apply(this, args)
+  }
+  overLoad.addFunc = (...args) => {
+    const fn = args.pop()
+    isFunction(fn) ? callMap.set(args.join(','), fn) : ''
+  }
+  return overLoad
 }
 /*
 **********************************************************************************************

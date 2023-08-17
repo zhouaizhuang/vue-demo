@@ -1,7 +1,10 @@
 <template>
   <div class="mh100vh">
+    <!--CSS传参方式1-->
     <div style="--color: #1890ff;" class="cssParams1">CSS传参方式1</div>
+    <!--CSS传参方式2-->
     <div :style="{'--color': randomColor}" class="cssParams2">CSS传参方式2</div>
+    <!--CSS传参方式3-->
     <div :style="{color: randomColor}">CSS传参方式3</div>
     <!--CSS传参方式4-->
     <div class="box4">

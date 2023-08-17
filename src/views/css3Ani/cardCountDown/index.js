@@ -9,12 +9,12 @@ export default {
   data(){
     return {
       num: 1,
-      year: '2023',
-      month: '08',
-      day: '17',
-      hour: '20',
-      minutes: '08',
-      seconds: '37',
+      year: '',
+      month: '',
+      day: '',
+      hour: '',
+      minutes: '',
+      seconds: '',
     }
   },
   methods:{

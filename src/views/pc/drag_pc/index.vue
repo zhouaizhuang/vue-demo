@@ -22,6 +22,6 @@
 <script src='./index.js'></script>
 <style scoped>
 .drag-move {
-  transition: transform 1s;
+  transition: transform .3s;
 }
 </style>

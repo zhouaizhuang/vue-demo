@@ -24,4 +24,5 @@ export default [
   { path: '/underline', name: 'underline', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/underline/index.vue')},
   { path: '/letterSpace', name: 'letterSpace', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/letterSpace/index.vue')},
   { path: '/ball', name: 'ball', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/ball/index.vue')},
+  { path: '/cardCountDown', name: 'cardCountDown', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/cardCountDown/index.vue')},
 ]

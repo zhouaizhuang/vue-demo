@@ -1,0 +1,44 @@
+.hoverBox::before{
+  content: '';
+  position: absolute;
+  height:1px;
+  background-color: #222;
+  left: 0;
+  right: 0;
+  top:50%;
+  transform: translateY(-50%);
+  z-index: 30;
+}
+.card1{
+  transform: rotateX(0deg);
+  transform-origin: center bottom;
+  backface-visibility: hidden; /*元素背面不可见*/
+}
+.card3{
+  transform: rotateX(180deg);
+  transform-origin: center top;
+  backface-visibility: hidden; /*元素背面不可见*/
+}
+.card2{
+  transform-origin: center bottom;
+  backface-visibility: hidden;
+}
+.card4{
+  transform-origin: center top;
+  backface-visibility: hidden;
+}
+.rotate0{
+  animation: rotate0deg 0.6s ease 0s 1 both ;
+}
+@keyframes rotate0deg {
+  0%{ transform: rotateX(180deg);}
+  100%{transform: rotateX(0deg); }
+}
+
+.rotate180{
+  animation: rotate180deg 0.6s ease 0s 1 both ;
+}
+@keyframes rotate180deg {
+  0%{ transform: rotateX(0deg);}
+  100%{transform: rotateX(-180deg); }
+}

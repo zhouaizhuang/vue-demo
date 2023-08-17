@@ -21,6 +21,7 @@
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/buttery">水波</router-link></div>
         <!-- <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/slide">滑动名片</router-link></div> -->
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/countDown">倒计时</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/cardCountDown">卡片倒计时</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/guidePoint">引导用户点击</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/useAnimate">animate动画库</router-link></div>
         <!-- <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/textStreamer">文字流光效果</router-link></div> -->

@@ -1,0 +1,22 @@
+.cssParams1{
+  color: var(--color);
+}
+.cssParams2{
+  color: var(--color);
+}
+
+/*巧用css变量获取父元素的宽度*/
+.cssParams{
+  animation: move 2s ease 0s infinite both;
+}
+@keyframes move {
+  0%{
+    transform: translateX(0%); 
+  }
+  50%{
+    transform: translateX(calc(var(--w) - 100%)); 
+  }
+  100%{
+    transform: translateX(0%); 
+  }
+}

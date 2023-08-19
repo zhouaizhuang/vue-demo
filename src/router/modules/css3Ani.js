@@ -25,4 +25,5 @@ export default [
   { path: '/letterSpace', name: 'letterSpace', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/letterSpace/index.vue')},
   { path: '/ball', name: 'ball', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/ball/index.vue')},
   { path: '/cardCountDown', name: 'cardCountDown', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/cardCountDown/index.vue')},
+  { path: '/developHistory', name: 'developHistory', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/developHistory/index.vue')},
 ]

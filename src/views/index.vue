@@ -34,6 +34,7 @@
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/underline">下划线动画</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/letterSpace">字间距动画</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/ball">小球弹起动画</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/developHistory">公司首页发展历程</router-link></div>
       </div>
     </div>
     <div class="f">

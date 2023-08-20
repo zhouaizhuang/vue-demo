@@ -26,4 +26,5 @@ export default [
   { path: '/ball', name: 'ball', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/ball/index.vue')},
   { path: '/cardCountDown', name: 'cardCountDown', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/cardCountDown/index.vue')},
   { path: '/developHistory', name: 'developHistory', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/developHistory/index.vue')},
+  { path: '/addGoods', name: 'addGoods', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/addGoods/index.vue')},
 ]

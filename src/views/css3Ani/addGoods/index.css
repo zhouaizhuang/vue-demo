@@ -1,0 +1,16 @@
+.father{
+  animation: moveX 1s linear 0s 1 both;
+}
+.son{
+  animation: moveY 1s cubic-bezier(0.5, -1, 1, 1) 0s 1 both;
+}
+@keyframes moveX {
+  to{
+    transform: translateX(100px);
+  }
+}
+@keyframes moveY {
+  to{
+    transform: translateY(200px);
+  }
+}

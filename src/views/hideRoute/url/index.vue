@@ -25,6 +25,7 @@
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://lingdaima.com/">前端工具箱</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="http://sfz.fatcarter.cn/?p=220000&ct=220500&d=220581&g=0&co=5&by=1996&bm=7&bd=28">在线生成身份证</a></div>
+        <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://easings.co/">在线贝赛尔曲线调试</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://www.npmjs.com/package/minirefresh">下拉刷新的npm仓库</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://www.wangeditor.com/demo/get-html.html">在线word格式转html（相当于富文本）</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://www.cnblogs.com/yundeblog/p/14793577.html">uniapp富文本解析插件</a></div>
@@ -43,7 +44,7 @@
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://www.toptal.com/developers/cssminifier">在线CSS压缩</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://web.dev/measure/">站点性能测试</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://codepen.io/">代码在线演示</a></div>
-        <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://www.shapedivider.app/">在线定制svg</a></div>
+        <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://www.shapedivider.app/">在线定制svg，用于svg裁剪</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://tool.lu/">在线工具网址</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://feathericons.com/">svg图标</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://simpleicons.org/">常见品牌的svg</a></div>

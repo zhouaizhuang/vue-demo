@@ -21,12 +21,13 @@ export default {
       ctx.lineWidth = 2
       ctx.strokeStyle = 'red'
       this.timeId = setInterval(() => {
+        ctx.clearRect(0, 0, 400, 250); // 清空画布
         if(start >= end) {
           clearInterval(this.timeId)
         }
         const temp = Math.PI * 5 /360
-        console.log(temp)
-        ctx.arc(180, 120, 100, start, start + temp, false)
+        ctx.beginPath();
+        ctx.arc(180, 120, 100, 0, start + temp, false)
         ctx.stroke()
         start += temp
       }, 15)

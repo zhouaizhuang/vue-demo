@@ -9,12 +9,12 @@
       <div class="b" style="width:150px;">CSS3动画</div>
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/typeWord">打字动画</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/numGrow">数字滚动效果</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/textStaggered">文字交错显示</router-link></div>
-        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/tabs">精美的tabs</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/carousel">可视化大屏无缝Y轴滚动</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/carouselX">文字横幅横向X轴滚动</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/wordsCarousel">文字步进轮播动画</router-link></div>
-        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/numGrow">数字滚动效果</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/tabs">tabs切换</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/specialBotton">特殊按钮</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/specialBorder_pc">特殊边框</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/arrow">箭头指向动画</router-link></div>

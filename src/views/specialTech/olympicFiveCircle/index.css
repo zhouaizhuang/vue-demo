@@ -1,0 +1,16 @@
+.cicle2{
+  transform-origin: center 10%;
+  transform: translateZ(-1px) rotateX(2deg) rotateY(-2deg);
+}
+.cicle3{
+  transform-origin: center 10%; 
+  transform: rotateY(-2deg);
+}
+.cicle4{
+  transform-origin: center 10%;
+  transform: translateY(-40px) rotateX(1deg);
+}
+.cicle5{
+  transform-origin: center 10%;
+  transform: translateY(-40px) rotateX(1deg) rotateY(3deg);
+}

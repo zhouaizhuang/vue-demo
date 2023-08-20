@@ -785,7 +785,10 @@ export const random = function (lower, upper, type = 'float') {
  * 获取随机颜色
  * @returns 
  */
-export const randomColor = () => `rgba(${random(0, 255,'int')}, ${random(0, 255,'int')}, ${random(0, 255,'int')}, ${1})`
+export const randomColor = function (){
+  const [r, g, b] = [addZero(random(0, 255,'int').toString(16), 2), addZero(random(0, 255,'int').toString(16), 2), addZero(random(0, 255,'int').toString(16), 2)]
+  return `#${r}${g}${b}`
+}
 // 禁止复制
 export const noCopy = () => ['contextmenu', 'selectstart', 'copy'].forEach(ev => document.addEventListener(ev, event => (event.returnValue = false)))
 /**

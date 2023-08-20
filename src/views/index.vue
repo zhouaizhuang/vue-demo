@@ -75,6 +75,7 @@
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/canvasHover_pc">canvas（监听Hover）</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/canvasClick_pc">canvas（监听点击）</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/signName_pc">canvas数字签名PC</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/codeRain">代码雨（黑客帝国）</router-link></div>
       </div>
     </div>
     <div class="f">

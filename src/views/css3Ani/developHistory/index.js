@@ -45,6 +45,6 @@ export default {
       const res = getViewPos(this.$refs.outBox)
       this.maxTranslateX = 220 * this.developList.length + 80 - res.width
       this.translateX = -1 * this.maxTranslateX
-    }, 600)
+    }, 200)
   }
 }

@@ -288,6 +288,13 @@
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/localcCompare">拼音字典顺序排序</router-link></div>
       </div>
     </div>
+    <div class="f">
+      <div class="b" style="width:150px;">正则表达式</div>
+      <div class="f1 f xs ac rw">
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/regSimple">正则入门</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/regAdvance">正则进阶</router-link></div>
+      </div>
+    </div>
     <div v-if="isShowPage" class="fs26 b mt30 mb20 tc">
       <router-link class="g42b983" to="/url">工具网站集合</router-link>
     </div>

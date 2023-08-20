@@ -274,7 +274,7 @@
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/frontEndPrint_pc">前端打印</router-link></div>
       </div>
     </div>
-    <div class="fs26 b mt30 mb20 tc">特殊技巧</div>
+    <div class="fs26 b mt30 mb20 tc">进阶技巧</div>
     <div class="f">
       <div class="b" style="width:150px;">CSS</div>
       <div class="f1 f xs ac rw">

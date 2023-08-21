@@ -1,5 +1,7 @@
 <template>
   <div class="abs trbl0 pb100 ovya">
+    <div class="pl100"><span class="b g1890ff">判断方式：</span>const res = '12qqweqwe’.test(/[0-9]+/)</div>
+    <div class="pl100"><span class="b g1890ff">匹配方式：</span>const res = '张三 0731-8283333'.match(/(\d{4})-(\d{7})/) ---- 获取到匹配的数据</div>
     <div class="pl30 mb30 f rw pt30">
       <div class="fs16 b pt10 pb10 mr30 w100"><span class="g1890ff">分组提取。</span>提取区号和号码：张三 0731-8283333</div>
       <div class="rds5 gf pt10 pb10 pl50 pr50" style="background:#222;">

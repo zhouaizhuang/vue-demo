@@ -17,9 +17,10 @@ export const mousewheel = function (e) {
   // } else if (wheelDelta <= -120){
   //   this.add()
   // }
-  this.translateX = range(this.translateX + wheelDelta, -1 * this.maxTranslateX, 0)
-  e.stopPropagation()
-  e.preventDefault()
+  this.translateX = this.translateX + wheelDelta
+  setTimeout(() => {
+    this.translateX = range(this.translateX + wheelDelta, -1 * this.maxTranslateX, 0)
+  }, 150)
   e.stopPropagation() // 阻止滚动的默认行为
   e.preventDefault() // 阻止滚动传递
 }

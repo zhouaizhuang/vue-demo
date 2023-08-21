@@ -12,11 +12,14 @@ export const add = function (){
 // 鼠标滚动
 export const mousewheel = function (e) {
   const { wheelDelta } = e
-  if(wheelDelta >= 120) {
-    this.sub()
-  } else if (wheelDelta <= -120){
-    this.add()
-  }
+  // if(wheelDelta >= 120) {
+  //   this.sub()
+  // } else if (wheelDelta <= -120){
+  //   this.add()
+  // }
+  this.translateX = range(this.translateX + wheelDelta, -1 * this.maxTranslateX, 0)
+  e.stopPropagation()
+  e.preventDefault()
   e.stopPropagation() // 阻止滚动的默认行为
   e.preventDefault() // 阻止滚动传递
 }

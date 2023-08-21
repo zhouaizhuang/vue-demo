@@ -12,7 +12,7 @@
               <div v-if="item[0]" class="h100 f rel" style="width:220px;">
                 <div class="bgf abs l0 rds5 g3 trans3 hoverContent" style="top:5px;width:265px;height:180px;box-shadow:0 0 5px #ddd;">
                   <div class="pt10 tc fs16 pl10 pr10">{{item[0].content}}</div>
-                  <div class="abs zx10 b0 l0 r0 pt10 pb10 f ac xc b fs18 g3" style="background:rgba(236,236,236,1);border-radius:0 0 5px 5px;color:#333;">{{item[0].time}}</div>
+                  <div class="abs zx20 b0 l0 r0 pt10 pb10 f ac xc b fs20 g3" style="background:rgba(236,236,236,1);border-radius:0 0 5px 5px;color:#333;">{{item[0].time}}</div>
                   <div class="abs zx10 bgf l50 tx-50" style="bottom:-130px;width:1px;height:140px;background:rgb(119,52,217);">
                     <div class="abs b0 l50 tx-50 rds50" style="width:10px;height:10px;background:rgb(119,52,217);"></div>
                     <div class="abs l50 rds50 wave-scale" style="left:-9px;bottom:-4px;width:18px;height:18px;background:rgb(119,52,217, .4);"></div>
@@ -21,8 +21,8 @@
               </div>
               <div v-if="item[1]" class="h100 f rel" style="width:220px;">
                 <div class="bgf abs l0 rds5 g9 trans3 hoverContent" style="bottom:5px;width:265px;height:180px;box-shadow:0 0 5px #ddd;">
-                  <div class="abs zx10 t0 l0 r0 pt10 pb10 f ac xc b fs18 g3" style="background:rgba(236,236,236,1);border-radius:5px 5px 0 0;color:#333;">{{item[1].time}}</div>
-                  <div class="pt10 tc fs16 abs l0 r0 b0 pl10 pr10" style="top:35px;">{{item[1].content}}</div>
+                  <div class="abs zx10 t0 l0 r0 pt10 pb10 f ac xc b fs20 g3" style="background:rgba(236,236,236,1);border-radius:5px 5px 0 0;color:#333;">{{item[1].time}}</div>
+                  <div class="pt10 tc fs16 abs l0 r0 b0 pl10 pr10" style="top:45px;">{{item[1].content}}</div>
                   <div class="abs l50 tx-50" style="top:-130px;width:1px;height:140px;background:rgb(119,52,217);">
                     <div class="abs t0 l50 tx-50 rds50" style="width:10px;height:10px;background:rgb(119,52,217);"></div>
                     <div class="abs rds50 wave-scale" style="left:-9px;top:-4px;width:18px;height:18px;background:rgb(119,52,217, .4);"></div>

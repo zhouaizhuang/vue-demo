@@ -20,33 +20,15 @@
           </div>
           <div :class="[currentTab == 2 ? 'op10' : 'op0']">message</div>        
         </div>
-        <div class="abs bgf rds50 dot zx1 trans3" :style="{left:`${33 * currentTab + 11}%`,top:'-30px',height:'50px',width:'50px', transform: `translateX(${0}%)`}"></div>
+        <!--移动的小圆点-->
+        <div class="abs bgf rds50 zx1 trans3" :style="{left:`${33 * currentTab + 11}%`,top:'-30px',height:'50px',width:'50px', transform: `translateX(${0}%)`}">
+          <div class="abs bgf ovh" style="bottom:20px;left:-18px;width:20px;height:20px;clip-path: path('M20,5L20,20L0,20A20,20,0,0,0,20,5')"></div>
+          <div class="abs bgf ovh" style="bottom:20px;right:-18px;width:20px;height:20px;clip-path: path('M0,5L0,20L20,20A20,20,0,0,1,0,5')"></div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script src='./index.js'></script>
 <style scoped>
-.dot::before{
-  content: '';
-  position: absolute;
-  top: 8px;
-  left:-24px;
-  width: 24px;
-  height:24px;
-  background: transparent;
-  border-radius: 50%;
-  box-shadow: 12px 12px #fff;
-}
-.dot::after{
-  content: '';
-  position: absolute;
-  top: 8px;
-  right:-24px;
-  width: 24px;
-  height:24px;
-  background: transparent;
-  border-radius: 50%;
-  box-shadow: -12px 12px #fff;
-}
 </style>

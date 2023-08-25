@@ -890,7 +890,7 @@ export const round = function (num, prec = 0, type = 1) {
   const k = Math.pow(10, prec)
   const [left = '', right = ''] = String(Math.round(Number(num) * k) / k).split('.')
   const decimal = type == 1 ? right + new Array(prec).fill('0').join('') : right
-  return `${left}.${decimal.slice(0, prec)}`
+  return `${left}${prec > 0 ? '.' + decimal.slice(0, prec) : ''}`
 }
 /**
  * 大数相加

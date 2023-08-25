@@ -8,6 +8,10 @@
       <div class="f1 f ac"></div>
     </div>
     <div class="f rw ac mt50">
+      <div class="f1 f ac mb30">
+        <div style="width:120px;">阴影效果</div>
+        <img style="filter:drop-shadow(0 0 10px #000);" src="https://upload.qianfanyun.com/yjyn/ylyn_life_bg.png" />
+      </div>
       <div class="f1 f ac mb10">
         <div style="width:120px;">模糊2px</div>
         <img style="filter:blur(2px);" src="https://upload.qianfanyun.com/yjyn/ylyn_life_bg.png" />

@@ -17,7 +17,7 @@ export default {
   methods: {
     async onSuccess(){
       this.msg = '操作成功'
-      await this.$Z.wait(600)
+      await _.wait(600)
       this.$emit('success')
     },
     onFail(){

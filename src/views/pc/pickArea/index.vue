@@ -109,7 +109,7 @@ export default {
   },
   async mounted(){
     // 切换激活图层
-    await this.$Z.loadJs('https://map.qq.com/api/gljs?libraries=tools&v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77')
+    await _.loadJs('https://map.qq.com/api/gljs?libraries=tools&v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77')
     this.initMap()
   },
 }

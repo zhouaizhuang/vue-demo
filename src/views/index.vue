@@ -312,7 +312,7 @@ export default {
 
   },
   created(){
-    this.isShowPage = this.$Z.getLocalStorage('isShowPage') || false
+    this.isShowPage = _.getLocalStorage('isShowPage') || false
   },
   mounted(){
   }

@@ -25,8 +25,8 @@ export default {
     ...func,
   },
   async created(){
-    await this.$Z.loadCss("//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css")
-    await this.$Z.loadJs("//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js")
+    await _.loadCss("//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css")
+    await _.loadJs("//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js")
     hljs.initHighlightingOnLoad()
   },
   mounted(){

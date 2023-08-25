@@ -44,7 +44,7 @@ export default {
     },
     success(){
       console.log('操作成功，准备跳转')
-      // this.$Z.go({path: '/work/index'})
+      // _.go({path: '/work/index'})
     }
   },
   created(){

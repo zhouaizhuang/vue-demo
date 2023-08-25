@@ -863,19 +863,6 @@ export const formatMoney = function (num = 0, type = 'float', prec = 2, dec = '.
  */
 export const toogle01 = val => isNumber(val) ? val ^ 1 : String(Number(val) ^ 1)
 /**
- * 四舍五入返回N位有效数字（常用于金额计算）
- * @param num 需要处理的的数字、支持传入字符串
- * @param prec 保留的小数位数
- * @举例 round(12.35) ==> 12  // 12.35 保留0位小数四舍五入得到 12
- * @举例 round(12.35, 1) ==> 12.4 // 12.35 保留1位小数四舍五入得到 12.4
- */
-export const round = function (num, prec = 0) {
-  prec = Number(prec)
-  prec < 0 && (prec = 0)
-  const k = Math.pow(10, prec)
-  return String(Math.round(Number(num) * k) / k)
-}
-/**
  * 数据范围
  * @param num 需要限制的数字
  * @param min 限制最小值
@@ -887,6 +874,23 @@ export const range = function (num, min = null, max = null) {
   if(min !== null) { num = Math.max(Number(num), Number(min)) }
   if(max !== null) { num = Math.min(Number(num), Number(max)) }
   return num
+}
+/**
+ * 四舍五入返回N位有效数字（常用于金额计算）
+ * @param num 需要处理的的数字、支持传入字符串
+ * @param prec 保留的小数位数
+ * @param type  1: 小数末尾0要保留   2：小数末尾0不需要保留
+ * @举例 round(12.35) ==> 12  // 12.35 保留0位小数四舍五入得到 12
+ * @举例 round(12.35, 1) ==> 12.4 // 12.35 保留1位小数四舍五入得到 12.4
+ * @举例 round(12.5, 2) ==> 12.50 // 12.5 保留2位小数四舍五入得到 12.50
+ * @举例 round(12.5, 2, 2) ==> 12.5 // 12.5 保留2位小数四舍五入得到 12.50---->末尾0要省去
+ */
+export const round = function (num, prec = 0, type = 1) {
+  prec = range(prec, 0)
+  const k = Math.pow(10, prec)
+  const [left = '', right = ''] = String(Math.round(Number(num) * k) / k).split('.')
+  const decimal = type == 1 ? right + new Array(prec).fill('0').join('') : right
+  return `${left}.${decimal.slice(0, prec)}`
 }
 /**
  * 大数相加

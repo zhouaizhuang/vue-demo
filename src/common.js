@@ -889,7 +889,7 @@ export const round = function (num, prec = 0, type = 1) {
   prec = range(prec, 0)
   const k = Math.pow(10, prec)
   const [left = '', right = ''] = String(Math.round(Number(num) * k) / k).split('.')
-  const decimal = type == 1 ? right + new Array(prec).fill('0').join('') : right
+  const decimal = type == 1 ? right + new Array(prec + 1).join('0') : right
   return `${left}${prec > 0 ? '.' + decimal.slice(0, prec) : ''}`
 }
 /**

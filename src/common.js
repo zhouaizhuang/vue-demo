@@ -998,7 +998,7 @@ export const socketTime = function (t = new Date()) {
  * @举例 dateFormater('YYYY-MM-DD hh:mm') ==> 2019-06-26 18:30
  * @举例 dateFormater('YYYYMMDD-hh:mm:ss', '2020-08-12 09:13:54') ==> 20200812-09:13:54
  */
-export const dateFormater = function (formater = 'YYYY-MM-DD hh:mm:ss', t){
+export function dateFormater(formater = 'YYYY-MM-DD hh:mm:ss', t){
   if(!t) { return t }
   t = processDate(t)
   const [Y, M, D, h, m, s] = extract(t)
@@ -1580,8 +1580,8 @@ export const getOS = function() {
 export const getIdCardInfo = function (idCard = '') {
   if(!isIdentity(idCard)) { return {} }
   const birthDay = `${idCard.slice(6, 10)}-${idCard.slice(10, 12)}-${idCard.slice(12, 14)}`
-  const inventedAge = Number(dateFormater('YYYY')) - Number(idCard.slice(6, 10)) + 1
-  const realAge = Math.floor((Number(dateFormater('YYYYMMDD')) - Number(idCard.slice(6, 14))) / 10000)
+  const inventedAge = Number(dateFormater('YYYY', new Date())) - Number(idCard.slice(6, 10)) + 1
+  const realAge = Math.floor((Number(dateFormater('YYYYMMDD', new Date())) - Number(idCard.slice(6, 14))) / 10000)
   const gender = idCard.slice(-2,-1) % 2 == 1 ? '男' : '女'
   return { birthDay, inventedAge, realAge, gender }
 }

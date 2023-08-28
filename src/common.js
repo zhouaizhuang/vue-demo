@@ -4,27 +4,27 @@
 **********************************************************************************************
 */
 export const isType = type => val => type === Object.prototype.toString.call(val).slice(8, -1)
-export const isArray = isType('Array')
-export const isObject = isType('Object')
+export const isArray = isType('Array') // 判断是否为数组类型
+export const isObject = isType('Object') // 判断是否是对象类型
 export const isEmptyObj = val => isObject(val) && Object.keys(val).length // 是否是空对象
-export const isReference = val => isArray(val) || isObject(val)
-export const isNull = isType('Null')
-export const isUndefined = isType('Undefined')
-export const isFunction = isType('Function')
-export const isRegExp = isType('RegExp')
-export const isString = isType('String')
-export const isNumber = isType('Number')
-export const isBoolean = isType('Boolean')
-export const isMap = isType('Map')
-export const isSet = isType('Set')
-export const isSymbol = isType('Symbol')
-export const isDate = isType('Date')
-export const isError = isType('Error')
-export const isBlob = isType('Blob')
+export const isReference = val => isArray(val) || isObject(val) // 判断是否是引用类型
+export const isNull = isType('Null') // 判断是否是null
+export const isUndefined = isType('Undefined') // 判断是否是undefined
+export const isFunction = isType('Function') // 判断是否是一个函数类型
+export const isRegExp = isType('RegExp') // 判断是否是正则表达式类型
+export const isString = isType('String') // 判断是否是字符串类型
+export const isNumber = isType('Number') // 判断是否是数字类型
+export const isBoolean = isType('Boolean') // 判断是否是布尔类型
+export const isMap = isType('Map') // 判断是否是Map类型
+export const isSet = isType('Set') // 判断是否是Set类型
+export const isSymbol = isType('Symbol') // 判断是否是Symbol类型
+export const isDate = isType('Date') // 判断是否是Date类型
+export const isError = isType('Error') // 判断是否是Error类型
+export const isBlob = isType('Blob') // 判断是否是Blob类型
 export const isGt0 = val => /^\+?[1-9][0-9]*$/.test(val) // 是否是大于0的整数
 export const isGtEq0 = val => /^\+?[1-9][0-9]*$/.test(val) || String(val) === '0' // 是否是大于等于0的整数
 export const inBrowser = typeof window !== 'undefined' // 是否是在浏览器环境
-export const inWeex = typeof WXEnvironment !== 'undefined' && !!WXEnvironment.platform
+export const inWeex = typeof WXEnvironment !== 'undefined' && !!WXEnvironment.platform // 是否在微信环境中
 export const weexPlatform = inWeex && WXEnvironment.platform.toLowerCase()
 export const UA = inBrowser && window.navigator.userAgent.toLowerCase()
 export const isIE = UA && /msie|trident/.test(UA) // 是否在IE环境
@@ -38,16 +38,17 @@ export const isPhantomJS = UA && /phantomjs/.test(UA)
 export const isFF = UA && UA.match(/firefox\/(\d+)/) // 是否是火狐浏览器
 export const isPhone = val => /^1[3456789]\d{9}$/.test(val) // 检测是否是手机号码
 export const isIdentity = val => /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/.test(val) // 身份证 321281155121152489
-export const isEmail = val => /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/.test(val)
-export const isRequired = () => { throw new Error('参数必填') }
+export const isEmail = val => /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/.test(val) // 判断是否是正确的邮箱
+export const isRequired = () => { throw new Error('参数必填') } // 判断参数必填
 /**
  * 校验正确的字符串
  * @param {*} val 传入的需要校验的值
  * @param {*} type 字符串类型 '0,1,2' 代表可以输入数字、大写字母、小写字母
  * @param {*} length 字符串长度 -1代表长度不限制
  * @returns 
- * @举例 isValidStr('123Z1f', '0,1,2') ----> true // type 传入'0,1,2'代表，数字、大写字母、小写字母组合
- * @举例 isValidStr('123Z1f', '0,1') ----> true // type 传入'0,1代表，数字、大写字母组合
+ * @举例 isValidStr('123Z1f', '0') ----> true // type 传入'0代表，只能输入数字
+ * @举例 isValidStr('123Z1f', '0,1') ----> true // type 传入'0,1代表，能输入数字、大写字母组合
+ * @举例 isValidStr('123Z1f', '0,1,2') ----> true // type 传入'0,1,2'代表，能输入数字、大写字母、小写字母组合
  */
 export const isValidStr = function (val, type = '0,1,2', length = -1){
   type = String(type).replace(/[ ]/g, '')
@@ -64,7 +65,7 @@ export const isValidStr = function (val, type = '0,1,2', length = -1){
   return eval(`/^[${reg}${type == 4? '\[\]' : ''}]{0,${length == -1 ? '' : length}}$/`).test(val)
 }
 /**
- * 创建一个哈希表，返回一个函数。该函数用于检查传入的值是否是哈希表中的值
+ * 创建一个哈希表，返回一个函数。（用于检查传入的值是否是哈希表中的值）
  * @param {String} str 字符串
  * @param {Boolean} expectsLowerCase 不区分大小写
  * @returns 一个判断函数
@@ -88,7 +89,7 @@ export const makeMap = function(str, expectsLowerCase = false) {
  * @returns 
  * @举例 toString([{name:'zzz', age:18}]) ---> '[\n  {\n    "name": "asd",\n    "ae": "as"\n  }\n]'
  */
-export const toString = (val) => val == null ? '' : isReference(val) ? JSON.stringify(val, null, 2) : String(val)
+export const toString = val => val == null ? '' : isReference(val) ? JSON.stringify(val, null, 2) : String(val)
 /** 返回是否以某个字符串开头
  * @param {String} str 目标字符串
  * @param {String} keywords 需要搜索的开头的字符串
@@ -101,10 +102,10 @@ export const startWith = (str, startWords) => str.slice(0, startWords.length) ==
  * @param {String} str 需要去除空格的字符串
  * @param {Number} type 去除空格的类型 ----> 0: 去除首尾空格   1：去除全部空格  2：去除头部空格  3：去除尾部空格
  * @returns {String} 返回处理后的字符串
- * @举例 trim(' ab c  ')  ---> 'ab c'
- * @举例 trim(' ab c  ', 1)  ---> 'abc'
- * @举例 trim(' ab c  ', 2)  ---> 'ab c  '
- * @举例 trim(' ab c  ', 3)  ---> ' ab c'
+ * @举例 trim(' ab c  ')  ---> 'ab c' // 0:去除首尾空格
+ * @举例 trim(' ab c  ', 1)  ---> 'abc' // 1:去除全部空格
+ * @举例 trim(' ab c  ', 2)  ---> 'ab c  ' // 2：去除头部空格
+ * @举例 trim(' ab c  ', 3)  ---> ' ab c' // 3：去除尾部空格
  */
 export const trim = (str = '', type = 0) => str.replace([new RegExp(/(^\s*)|(\s*$)/g), new RegExp(/\s+/g), new RegExp(/(^\s*)/g), new RegExp(/(\s*$)/g)][type] || '', '')
 /**
@@ -944,45 +945,6 @@ export const extract = function (t) {
   return [year, month, day, hour, minutes, second]
 }
 /**
- * 获取日期字符串。
- * @param num 初始日期 + num天后的日期， 默认是今天 + 0天，仍然是今天
- * @param split 日期分割符
- * @param t 初始日期，默认今天
- * @举例 getDateStr(0) ---> 20200904    getDateStr(1) ---> 20200905
- * @举例 分割：getDateStr(1, '-')--->2020-09-05
- */
-export const getDateStr = function (num = 0, split = '', t) {
-  if(!t) {return t}
-  t = processDate(t)
-  const dt = new Date(t)
-  dt.setDate(dt.getDate() + Number(num)) // 获取num天后的日期
-  return `0000${dt.getFullYear()}`.slice(-4) + split + `00${(dt.getMonth() + 1)}`.slice(-2) + split + `00${dt.getDate()}`.slice(-2)
-}
-/**
- * 获取N个月之后的日期
- * @param {*} startTime  开始日期
- * @param {*} num   N个月之后的日期
- * @returns 
- */
-export const getMonthByNum = function (startTime, num){
-  startTime = processDate(startTime)
-  var dt = new Date(startTime)
-  dt.setMonth(dt.getMonth() + Number(num))
-  return dateFormater('YYYY-MM-DD', dt)
-}
-/**
- * 获取N个月之后的日期
- * @param {*} startTime  开始日期
- * @param {*} num   N个月之后的日期
- * @returns 
- */
-export const diffMonth = function (startTime, num){
-  startTime = processDate(startTime)
-  var dt = new Date(startTime)
-  dt.setMonth(dt.getMonth() + Number(num))
-  return dateFormater('YYYY-MM-DD', dt)
-}
-/**
  * 获取时间段，业务
  * @returns 
  * 昨天起止时间、今天的起止时间、上周的起止时间、当前周的起止时间、当前是星期几 ---->  带有时分秒的截止时间
@@ -1041,6 +1003,34 @@ export const dateFormater = function (formater = 'YYYY-MM-DD hh:mm:ss', t){
   t = processDate(t)
   const [Y, M, D, h, m, s] = extract(t)
   return formater.replace(/YYYY|yyyy/g, Y).replace(/YY|yy/g, Y.slice(2, 4)).replace(/MM/g, M).replace(/DD/g, D).replace(/hh/g, h).replace(/mm/g, m).replace(/ss/g, s)
+}
+/**
+ * 获取日期字符串。
+ * @param num 初始日期 + num天后的日期， 默认是今天 + 0天，仍然是今天
+ * @param split 日期分割符
+ * @param t 初始日期，默认今天
+ * @举例 getDateStr(0) ---> 20200904    getDateStr(1) ---> 20200905
+ * @举例 分割：getDateStr(1, '-')--->2020-09-05
+ */
+export const getDateStr = function (num = 0, split = '', t) {
+  if(!t) {return t}
+  t = processDate(t)
+  const dt = new Date(t)
+  dt.setDate(dt.getDate() + Number(num)) // 获取num天后的日期
+  return `0000${dt.getFullYear()}`.slice(-4) + split + `00${(dt.getMonth() + 1)}`.slice(-2) + split + `00${dt.getDate()}`.slice(-2)
+}
+/**
+ * 获取N个月之后的日期
+ * @param {*} startTime  开始日期
+ * @param {*} num   N个月之后的日期
+ * @举例 diffMonth('2023-08-28', 3) ---->  '2023-11-28'
+ * @returns 
+ */
+export const diffMonth = function (startTime, num){
+  startTime = processDate(startTime)
+  var dt = new Date(startTime)
+  dt.setMonth(dt.getMonth() + Number(num))
+  return dateFormater('YYYY-MM-DD', dt)
 }
 /**得到当前时间之后N秒的时间
  * @param {Number} after 多少秒之后的时间

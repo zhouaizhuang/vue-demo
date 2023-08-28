@@ -1334,16 +1334,8 @@ export const showLoading = function({str='加载中...', type = 0, dom ='', css 
     </div>`
   }
   const cssObj = {
-    0: `
-    @keyframes rotate360 {
-      0% {transform: rotate(0);}
-      100% {transform: rotate(360deg);}
-    }
-    @keyframes loading-dash {
-      0% { stroke-dasharray: 1 200; stroke-dashoffset: 0; }
-      50% { stroke-dasharray: 90 150; stroke-dashoffset: -40px; }
-      100% { stroke-dasharray: 90 150; stroke-dashoffset: -120px; }
-    }`
+    0: `@keyframes rotate360 {0% {transform: rotate(0);}100% {transform: rotate(360deg);}}
+        @keyframes loading-dash {0% { stroke-dasharray: 1 200; stroke-dashoffset: 0; }50% { stroke-dasharray: 90 150; stroke-dashoffset: -40px; }100% { stroke-dasharray: 90 150; stroke-dashoffset: -120px; }}`
   }
   const domStr = dom || domObj[type]
   const cssStr = css || cssObj[type]
@@ -1520,7 +1512,12 @@ export const throttling = function(fn, wait=3e3) {
     }
   }
 }
-// 获取cookie 示例：var third_app_token = getCookie('third_app_token')
+/**
+ * 获取cookie
+ * @param {*} name cookie的字段名
+ * @returns 
+ * @举例 var third_app_token = getCookie('third_app_token')
+ */
 export const getCookie = function (name) {
   var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)")
   return arr = document.cookie.match(reg) ? unescape(arr[2]) : null
@@ -1536,15 +1533,33 @@ export const clearCookies = () => document.cookie.split(';').forEach(cookie => d
  */
 export const queryAll = selector => Array.from(document.querySelectorAll(selector))
 export const query = selector => document.querySelector(selector)
-// 本地存储
+/**
+ * 本地存储
+ * @param {*} name 
+ * @returns 
+ * getLocalStorage('token') ----> 获取token的值比如说为："be59044c178640c6be6d7fbcff2148af"
+ * setLocalStorage('token', "asdasdaasd") ----> 设置token的值为asdasdaasd
+ * removeLocalStorage('token') // 移除token
+ */
 export const getLocalStorage = name => safeGet(() => JSON.parse(window.localStorage.getItem(name)), window.localStorage.getItem(name))
 export const setLocalStorage = (name, val) => window.localStorage.setItem(name, JSON.stringify(val))
 export const removeLocalStorage = name => window.localStorage.removeItem(name)
-// 会话存储
+/**
+ * 会话存储
+ * @param {*} name 
+ * @returns 
+ * getSessionStorage('token') ----> 获取token的值比如说为："be59044c178640c6be6d7fbcff2148af"
+ * setSessionStorage('token', "asdasdaasd") ----> 设置token的值为asdasdaasd
+ * removeSessionStorage('token') // 移除token
+ */
 export const getSessionStorage = name => safeGet(() => JSON.parse(sessionStorage.getItem(name)), window.localStorage.getItem(name))
 export const setSessionStorage = (name, val) => window.sessionStorage.setItem(name, JSON.stringify(val))
 export const removeSessionStorage = name => window.sessionStorage.removeItem(name)
-// 获取操作系统类型
+/**
+ * 获取操作系统类型
+ * @returns 
+ * @举例 getOS()   获取操作系统类型
+ */
 export const getOS = function() {
   const userAgent = 'navigator' in window && 'userAgent' in navigator && navigator.userAgent.toLowerCase() || ''
   // const vendor = 'navigator' in window && 'vendor' in navigator && navigator.vendor.toLowerCase() || ''
@@ -1560,6 +1575,7 @@ export const getOS = function() {
  * 根据身份证获取生日、虚岁、实岁、性别
  * @param {*} idCard 身份证
  * @returns 
+ * @举例 getIdCardInfo('321281198210185179')   获取操作系统类型
  */
 export const getIdCardInfo = function (idCard = '') {
   if(!isIdentity(idCard)) { return {} }
@@ -1603,7 +1619,8 @@ export const looseEqual = function (a, b) {
   }
 }
 /**
- * 生产环境消除console.log
+ * 生产环境消除console
+ * @举例 reWriteLog()   在main.js中执行此函数
  */
 export const reWriteLog = function (){
   console.log = (function(log){
@@ -1613,14 +1630,14 @@ export const reWriteLog = function (){
 /**
  * 格式化打印数据
  * @param {*} val 需要打印的值
+ * @举例 formatConsole({name:'张三', age:18}) // 控制台输出格式化打印后的数据
  */
 export const formatConsole = val => console.log(JSON.stringify(val, null, 2))
 /**
- * 监听键盘事件
+ * 监听键盘事件（在需要监听的页面的created生命周期中使用）
  * @param {*} ctx 上下文
  * @param {*} obj 事件注册对象
  * @举例 
- * 在需要监听的页面的created生命周期中使用
  * created(){
  *   _.listenKey(this, {
  *      ArrowLeft: () => { console.log(this.scale) }, // 左箭头的点击事件

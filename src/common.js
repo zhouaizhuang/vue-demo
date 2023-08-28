@@ -46,7 +46,8 @@ export const isRequired = () => { throw new Error('参数必填') }
  * @param {*} type 字符串类型 '0,1,2' 代表可以输入数字、大写字母、小写字母
  * @param {*} length 字符串长度 -1代表长度不限制
  * @returns 
- * @举例 isValidStr('123Z1f', '0,1,2') ----> true // type 传入'0,1,2'代表，数字大小写字母组合
+ * @举例 isValidStr('123Z1f', '0,1,2') ----> true // type 传入'0,1,2'代表，数字、大写字母、小写字母组合
+ * @举例 isValidStr('123Z1f', '0,1') ----> true // type 传入'0,1代表，数字、大写字母组合
  */
 export const isValidStr = function (val, type = '0,1,2', length = -1){
   type = String(type).replace(/[ ]/g, '')

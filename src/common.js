@@ -1334,8 +1334,7 @@ export const showLoading = function({str='加载中...', type = 0, dom ='', css 
     </div>`
   }
   const cssObj = {
-    0: `@keyframes rotate360 {0% {transform: rotate(0);}100% {transform: rotate(360deg);}}
-        @keyframes loading-dash {0% { stroke-dasharray: 1 200; stroke-dashoffset: 0; }50% { stroke-dasharray: 90 150; stroke-dashoffset: -40px; }100% { stroke-dasharray: 90 150; stroke-dashoffset: -120px; }}`
+    0: `@keyframes rotate360 {0% {transform: rotate(0);}100% {transform: rotate(360deg);}}@keyframes loading-dash {0% { stroke-dasharray: 1 200; stroke-dashoffset: 0; }50% { stroke-dasharray: 90 150; stroke-dashoffset: -40px; }100% { stroke-dasharray: 90 150; stroke-dashoffset: -120px; }}`
   }
   const domStr = dom || domObj[type]
   const cssStr = css || cssObj[type]

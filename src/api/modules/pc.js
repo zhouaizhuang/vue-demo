@@ -26,7 +26,6 @@ export const getPrintDetails = async function () {
     icon13: await convertUrlToBase64('https://health.gagctv.com/wechat/jjzs/static/empty_list.png'),
     icon14: await convertUrlToBase64('https://health.gagctv.com/wechat/jjzs/static/disable.png'),
     icon15: await convertUrlToBase64('https://health.gagctv.com/wechat/jjzs/static/cyan_bg.png'),
-    
   }
   return mock('/getPrintDetails', {}, mockData)
 }

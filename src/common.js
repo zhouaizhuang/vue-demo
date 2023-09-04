@@ -1581,8 +1581,9 @@ export const getIdCardInfo = function (idCard = '') {
   const birthDay = `${idCard.slice(6, 10)}-${idCard.slice(10, 12)}-${idCard.slice(12, 14)}`
   const inventedAge = Number(dateFormater('YYYY', new Date())) - Number(idCard.slice(6, 10)) + 1
   const realAge = Math.floor((Number(dateFormater('YYYYMMDD', new Date())) - Number(idCard.slice(6, 14))) / 10000)
-  const gender = idCard.slice(-2,-1) % 2 == 1 ? '男' : '女'
-  return { birthDay, inventedAge, realAge, gender }
+  const gender = idCard.slice(-2,-1) % 2
+  const _gender = gender == 1 ? '男' : '女'
+  return { birthDay, inventedAge, realAge, gender, _gender }
 }
 /**
  * 宽松相等判断

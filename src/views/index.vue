@@ -255,15 +255,15 @@
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/sliderVerify_pc">极验验证</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/useQrcode_pc">Qrcode前端生成二维码</router-link></div>
-        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/printTable_pc">pc对table进行打印</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/ueditor_pc">富文本ueditor</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/readExcel_pc">excel数据读取</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/calendar_pc">日历插件获取节日、节气、阴历阳历</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/printTable_pc">pc对table进行打印</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/preview_pdf_pc">pdf预览(pdf.js)</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/preview_pdf_pc2">pdf预览2(iframe)</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/preview_pdf_pc3">pdf预览3(pdf.js)</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/downLoadPdf_pc">pdf下载(a链接下载)</router-link></div>
-        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/printPdfAndImg_pc">图片形式打印pdf打印多图片(pdf.js)</router-link></div>
-        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/readExcel_pc">excel数据读取</router-link></div>
-        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/calendar_pc">日历插件获取节日、节气、阴历阳历</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/printPdfAndImg_pc">打印pdf、打印多图片(pdf.js)</router-link></div>
       </div>
     </div>
     <div class="f">

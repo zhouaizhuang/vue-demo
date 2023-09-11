@@ -1632,7 +1632,7 @@ export const reWriteLog = function (){
  * @param {*} val 需要打印的值
  * @举例 formatConsole({name:'张三', age:18}) // 控制台输出格式化打印后的数据
  */
-export const formatConsole = val => console.log(JSON.stringify(val, null, 2))
+export const formatConsole = val => {console.log(JSON.stringify(val, null, 2))}
 /**
  * 监听键盘事件（在需要监听的页面的created生命周期中使用）
  * @param {*} ctx 上下文

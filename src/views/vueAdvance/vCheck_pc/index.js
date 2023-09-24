@@ -11,6 +11,9 @@ export default {
       decimalNum:'',
       minNum:'',
       maxNum: '',
+      name: '',
+      code:'',
+      blank:'',
     }
   },
   methods:{

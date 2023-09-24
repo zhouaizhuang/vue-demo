@@ -11,7 +11,7 @@ const processTip = (function (){
       const id = 'z' + guID()
       let divObj = document.createElement("div") // 创建，写内容
       divObj.id = id
-      divObj.innerHTML = `<div class="abs nowrap bgf zx1 r0" style="left:0px;bottom:-20px;color:#ed4014;">${msg}</div>`
+      divObj.innerHTML = `<div class="abs nowrap bgf zx1 r0 fs14 tl l0 r0" style="bottom:-22px;color:#ed4014;">${msg}</div>`
       el.appendChild(divObj)
       lastId = id
       setTimeout(() => {if(query(`#${id}`)) { el.removeChild(query(`#${id}`)) }}, 2000)

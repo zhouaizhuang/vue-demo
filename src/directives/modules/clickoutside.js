@@ -1,3 +1,7 @@
+/**
+ * 点击盒子之外的区域触发
+ * 例：<div v-clickoutside="clickoutside">
+ */
 const clickoutsideContext = '@@clickoutsideContext'
 export const clickoutside = {
   bind(el, binding, vnode) {

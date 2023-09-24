@@ -127,7 +127,7 @@ export const addZero = (str = '', num = 2) => (Array(num+1).join('0') + String(s
 // 完美的统计字符串长度，能正确统计占四个字节的Unicode字符。举例：length('x\uD83D\uDE80y') ----> 3
 export const length = str => [...str].length
 // 字符串字节数
-export const charLen = () => [...this.value].reduce((prev, item) => prev + (item.charCodeAt() > 255 ? 2 : 1), 0)
+export const charLen = value => [...value].reduce((prev, item) => prev + (item.charCodeAt() > 255 ? 2 : 1), 0)
 /**
  * 字符串复制
  * @param {String} e 需要复制的文本

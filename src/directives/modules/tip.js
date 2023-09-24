@@ -2,7 +2,7 @@ import { guID } from "@/common.js"
 /**
  * 鼠标移入给提示信息
  * @param {Function} 
- * 直接使用： <Input v-tip="value">{{value}}</Input>
+ * 直接使用： <div class="nowrap1" v-tip="value">{{value}}</div>
  */
 let lastId = 'z' + guID()
 const addTip = function (el, {value}, vnode){

@@ -142,7 +142,8 @@
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vReachBottom">v-reachBottom----触底加载</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vFocus">v-focus----自动聚焦</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vCheck_pc">过滤表单输入指令系列</router-link></div>
-        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vOutside">v-outside----点击当前元素外触发</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vOutside">v-clickoutside----点击当前元素外触发</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/vTip">v-tip----鼠标上移提示</router-link></div>
       </div>
     </div>
     <div class="f">

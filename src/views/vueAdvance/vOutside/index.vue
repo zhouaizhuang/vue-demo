@@ -2,7 +2,7 @@
 <template>
   <div class="abs trbl0" style="background: rgb(34, 35, 39);">
     <div class="mt50 f ac xc">
-      <Button @click="clickBtn" v-outside="outside" type="primary">点我验证</Button>
+      <Button @click="clickBtn" v-clickoutside="clickoutside" type="primary">点我验证</Button>
     </div>
     <div class="fs16 gf b tc mt20">{{msg}}</div>
   </div>
@@ -21,7 +21,7 @@ export default {
     clickBtn(){
       this.msg = '点击了当前按钮'
     },
-    outside(){
+    clickoutside(){
       this.msg = '点击了按钮之外的元素'
     }
   },

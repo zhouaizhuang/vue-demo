@@ -2,6 +2,8 @@ import { guID } from "@/common.js"
 /**
  * 鼠标移入给提示信息
  * @param {Function} 
+ * 方式一直接使用：v-tip="value"  // 传入的值
+ * 方式二传参使用：v-tip="[value, false]"  // [传入的值, 是否自动计算超出一行上移显示tip]
  * 直接使用： <div class="nowrap1" v-tip="value">{{value}}</div>
  */
 let lastId = 'z' + guID()
@@ -20,11 +22,17 @@ const addTip = function (el, {value}, vnode){
 }
 // 绑定事件
 const bindEvent = function (el, { value }, vnode){
+  let [val, isAutoCalc] = ['', true]
+  if(_.isArray(value)) {
+    [val, isAutoCalc] = value
+  } else {
+    val = value
+  }
   el.addEventListener("mouseover", () => {
     _.query(`#${lastId}`) && el.removeChild(_.query(`#${lastId}`))
     const {offsetWidth, scrollWidth} = el
-    if(scrollWidth <= offsetWidth) { return false }
-    addTip(el, {value}, vnode)
+    if(scrollWidth <= offsetWidth && isAutoCalc) { return false }
+    addTip(el, {value: val}, vnode)
   })
   el.addEventListener("mouseout", () => _.query(`#${lastId}`) && el.removeChild(_.query(`#${lastId}`)))
 }

@@ -43,6 +43,6 @@ export const printManifest = async function () {
     this.printDeviceTableData = checkedList
   }
   this.$nextTick(()=>{
-    this.$print(this.$refs.printRef)
+    this.$print(this.$refs.deviceRef)
   })
 }

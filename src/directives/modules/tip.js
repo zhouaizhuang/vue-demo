@@ -13,7 +13,7 @@ const addTip = function (el, {value}, vnode){
   let divObj = document.createElement("div") // 创建，写内容
   divObj.id = lastId
   divObj.innerHTML = `
-    <div class="fixed zx100 lba wrap pt10 pb10 gf rds5 pl10 pr10 op10 toolTip trans3 triangle fs12" style="${isReachBottom ? `transform-origin:top center;transform:translateY(-${height}px) rotateX(180deg);` : ''}left:${left}px;top:${top + height}px;max-width:${width}px;min-width:100px;background:#464c5b;white-space:normal;">
+    <div class="fixed zx100 lba wrap pt10 pb10 gf rds5 pl10 pr10 op10 toolTip trans3 triangle fs12" style="${isReachBottom ? `transform-origin:top center;transform:translateY(-${height}px) rotateX(180deg);` : ''}left:${left}px;top:${top + height}px;max-width:${Math.max(500, value.length)}px;min-width:100px;background:#464c5b;white-space:normal;">
       <div class="abs h0 w0" style="border-top: 8px solid transparent;border-right: 8px solid transparent;border-left: 8px solid transparent;border-bottom: 8px solid #464c5b;left: 10%;top:-13px;"></div>
       <div style="${isReachBottom ? 'transform-origin:center center;transform: rotateX(180deg);' : ''}">${value}</div>
     </div>

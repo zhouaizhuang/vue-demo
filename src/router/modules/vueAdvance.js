@@ -30,4 +30,5 @@ export default [
   { path: '/asyncCom', name: 'asyncCom', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/asyncCom/index.vue') },
   { path: '/renderCom', name: 'renderCom', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/renderCom/index.vue') },
   { path: '/vTip', name: 'vTip', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vTip/index.vue') },
+  { path: '/vPopTip', name: 'vPopTip', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vPopTip/index.vue') },
 ]

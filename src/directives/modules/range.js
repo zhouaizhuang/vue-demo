@@ -14,7 +14,7 @@ const processVal = (el, {value}, vnode) => {
   const [leftLimit, left] = [leftStr.slice(0, 1), leftStr.slice(1)]
   const [right, rightLimit] = [rightStr.slice(0, -1), rightStr.slice(-1)]
   window.requestAnimationFrame(() => {
-    const val = el.innerText
+    const val = el.innerText.replace(/[^0-9.-]/g, '')
     if(!['', null, undefined].includes(val)) {
       const lessThenLeft = (leftLimit == '[' && Number(val) < Number(left)) || (leftLimit == '(' && Number(val) <= Number(left))
       const greateThenRight = (rightLimit == ']' && Number(val) > Number(right)) || (rightLimit == ')' && Number(val) >= Number(right))

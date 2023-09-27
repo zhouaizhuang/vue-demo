@@ -31,4 +31,5 @@ export default [
   { path: '/renderCom', name: 'renderCom', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/renderCom/index.vue') },
   { path: '/vTip', name: 'vTip', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vTip/index.vue') },
   { path: '/vPopTip', name: 'vPopTip', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vPopTip/index.vue') },
+  { path: '/vDownload', name: 'vDownload', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vDownload/index.vue') },
 ]

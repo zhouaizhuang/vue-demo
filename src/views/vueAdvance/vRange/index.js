@@ -4,7 +4,9 @@ export default {
   components:{},
   data(){
     return {
-      num: 1
+      num: 5,
+      min:4.2,
+      max:8.4
     }
   },
   methods:{
@@ -14,11 +16,5 @@ export default {
     
   },
   mounted(){
-    // setInterval(() => {
-    //   this.num++
-    // }, 3000)
-    setTimeout(() => {
-      this.num = 3
-    }, 3000)
   },
 }

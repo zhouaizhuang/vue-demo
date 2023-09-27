@@ -33,4 +33,5 @@ export default [
   { path: '/vPopTip', name: 'vPopTip', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vPopTip/index.vue') },
   { path: '/vDownload', name: 'vDownload', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vDownload/index.vue') },
   { path: '/vSecret', name: 'vSecret', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vSecret/index.vue') },
+  { path: '/vRange', name: 'vRange', component: () => import(/* webpackChunkName: "vueAdvance" */ '../../views/vueAdvance/vRange/index.vue') },
 ]

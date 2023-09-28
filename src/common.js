@@ -1215,7 +1215,7 @@ export const getScrollTop = () => (document.documentElement && document.document
  * @param {*} e 
  * @returns 
  * @举例 getViewPos(this.$refs.xxx)   ----> { "top": 60, "bottom": 60, "left": 0, "right": 1477, "width": 1920, "height":1080 }
- * @举例 getViewPos(document.querySelector('#yyy'))   ----> { "top": 60, "bottom": 60, "left": 0, "right": 1477 }
+ * @举例 getViewPos(document.querySelector('#yyy'))   ----> { "top": 60, "bottom": 60, "left": 0, "right": 1477, "width": 1920, "height":1080  }
  */
 export const getViewPos = function (e) {
   let {top, bottom, left, right, width, height } = e.getBoundingClientRect()

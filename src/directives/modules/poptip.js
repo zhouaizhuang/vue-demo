@@ -19,8 +19,12 @@
 */
 import { guID, throttling } from "@/common.js"
 let lastId = 'z' + guID()
-const createPopTip = function (el, { value }, vnode){
+// 销毁创建的dom节点 
+const removePoptip = function () {
   _.query(`#${lastId}`) && _.query(`#${lastId}`).remove()
+}
+const createPopTip = function (el, { value }, vnode){
+  removePoptip()
   const {bottom, height, left, right, top, width } = _.getViewPos(el)
   const isReachBottom =  _.get100vh() - bottom < 40 * value.list.length // 40为list中每个条目所占高度，这样就能算出，是不是底部显示不下了
   const { list = [], minWidth, maxWidth, background = '#1aada7', color = '#fff', arrowPos = '50%' } = value
@@ -39,6 +43,7 @@ const createPopTip = function (el, { value }, vnode){
       e.stopPropagation()
       e.preventDefault()
       v.click() // 其实此处还可以继续接收参数
+      removePoptip()
     }
     const mouseover = () => {
       divItem.style.background = background
@@ -65,8 +70,8 @@ const fn = (e) => {
   if(_.query(`#el${lastId}`) || !popDom) {return false} // 如果鼠标在hover的dom范围内，或者尚未商检tip，则直接返回
   const { clientX, clientY } = e
   const {bottom, height, left, right, top, width} = _.getViewPos(popDom)
-  if(clientX < left|| clientX > right || clientY < top || clientY > bottom ) {
-    _.query(`#${lastId}`) && _.query(`#${lastId}`).remove()
+  if(clientX < left|| clientX > right || clientY < top - 10 || clientY > bottom + 10 ) {
+    removePoptip()
   }
 }
 const throttlingFn = throttling(fn, 50)
@@ -102,6 +107,7 @@ export const poptip = {
   },
   unbind: function (){
     document.removeEventListener("mousemove",throttlingFn) // 取消事件的注册
+    removePoptip()
   }
   // componentUpdated: bindEvent, // 当传进来的值更新的时候触发
 }

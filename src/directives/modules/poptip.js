@@ -61,12 +61,11 @@ const createPopTip = function (el, { value }, vnode){
   document.body.appendChild(divObj)
 }
 const fn = (e) => {
-  // console.log(1)
   const popDom = _.query(`#${lastId}`)
-  if(!popDom) { return }
+  if(_.query(`#el${lastId}`) || !popDom) {return false} // 如果鼠标在hover的dom范围内，或者尚未商检tip，则直接返回
   const { clientX, clientY } = e
   const {bottom, height, left, right, top, width} = _.getViewPos(popDom)
-  if(clientX < left - 5 || clientX > right + 5 || clientY < top - 50 || clientY > bottom + 50) {
+  if(clientX < left|| clientX > right || clientY < top || clientY > bottom ) {
     _.query(`#${lastId}`) && _.query(`#${lastId}`).remove()
   }
 }
@@ -83,6 +82,7 @@ export const poptip = {
     })
     lastId = 'z' + guID()
     el.addEventListener("mouseover", async () =>{
+      el.id = `el${lastId}`
       createPopTip(el, { value }, vnode)
       const {bottom, height, left, right, top, width } = _.getViewPos(el)
       const popDom = _.query(`#${lastId}`)
@@ -95,6 +95,7 @@ export const poptip = {
     document.removeEventListener("mousemove",throttlingFn)
     document.addEventListener("mousemove",throttlingFn)
     el.addEventListener("mouseout", (e) => {
+      el.id = ''
       // _.query(`#out${lastId}`) && _.query(`#out${lastId}`).remove()
       // el.style.color = '#333'
     })

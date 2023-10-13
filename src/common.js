@@ -319,6 +319,19 @@ export const radioToogle = (arr, search = v => v) => searchCover(arr, search, v 
  */
 export const multipleChecked = (arr, search = v => v) => searchCover(arr, search, v => ({...v, isChecked:!v.isChecked}))
 /**
+ * 重置选择
+ * 将传入的数据中全部isChecked字段重置为false
+ * @param {Array|Object} arr 需要重置的数据
+ * @returns 
+ * @举例 
+ * resetChecked([{id:1, isChecked: true, children: [{id:1, isChecked: true}]}])
+ * -----> 
+ * [{"id": 1,"isChecked": false,"children": [{"id": 1,"isChecked": false}]}]
+ */
+export const resetChecked = function (arr) {
+  return isArray(arr) ? arr.map(item => resetChecked(item)) : Object.keys(arr).reduce((prev, k) =>({...prev, [k]: isObject(arr[k]) || isArray(arr[k]) ? resetChecked(arr[k]) : (k == 'isChecked' ? false : arr[k])}), {})
+}
+/**
  * 对象数组去重(根据对象中某个字段)
  * @param {Object<Array>} arr 需要去重的对象数组
  * @param {*} field 字段名称

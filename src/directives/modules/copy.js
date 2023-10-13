@@ -1,4 +1,4 @@
-// import { Message } from "view-design" // 注意：采用cdn的时候view-ui的cdn对应的全局变量是iview
+import { Message } from "view-design" // 注意：采用cdn的时候view-ui的cdn对应的全局变量是iview
 /**
  * 复制文本
  * @param {string} value 需要复制的文本
@@ -27,7 +27,7 @@ export const copy = {
       textarea.select()
       const result = document.execCommand('Copy')
       if (result) {
-        iview.Message.success('复制成功') // 可根据项目UI仔细设计
+        Message.success('复制成功') // 可根据项目UI仔细设计
       }
       document.body.removeChild(textarea)
     }

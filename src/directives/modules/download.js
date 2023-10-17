@@ -24,7 +24,7 @@ import { request } from "@/utils/network.js"
 export const download = {
   bind(el, {value}, vnode) {
     const { type = 'png', url, name } = value
-    const click = async () => {
+    el.handler = async () => {
       if(type=='blob' && !url) { return Message.error('接口请求路径必传') }
       if(!url) { return Message.error('下载地址必传') }
       if(!name) { return Message.error('文件名必传') }
@@ -36,10 +36,11 @@ export const download = {
       } else {
         return Message.error('格式不对')
       }
-      console.log(name, res)
       _.downloadFile(name, res)
     }
-    el.removeEventListener('click', click)
-    el.addEventListener("click", click)
-  }
+    el.addEventListener("click", el.handler)
+  },
+  unbind(el) {
+    el.removeEventListener('click', el.handler)
+  },
 }

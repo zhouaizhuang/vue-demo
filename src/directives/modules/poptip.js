@@ -1,18 +1,11 @@
 /* 
 <div 
   class="f1 pt2 pb2 g3 poi rel hover1AADA7 trans3 tc pb10"
-  v-poptip="{
-    list: [ // 必填
-      {label:'设置标签', click: () => openSetTags(item), width: 300 }, // 只有label和click字段是必须的。width：盒子宽度
-      {label:'快速签约', click: () => speedSign(item), width: 300 },
-      {label:'新增随访', click: () => addVisit(item), width: 300 }
-    ],
-    minWidth: 0, // 非必填
-    maxWidth: 300, // 非必填
-    background: '#1aada7', // 非必填
-    color: '#fff', // 非必填
-    arrowPos: '50%', // 箭头所在位置
-  }"
+  v-poptip="[
+    {label:'设置标签', click: () => openSetTags(item), width: 300 }, // 只有label和click字段是必须的。width：盒子宽度
+    {label:'快速签约', click: () => speedSign(item), width: 300 },
+    {label:'新增随访', click: () => addVisit(item), width: 300 }
+  ]"
 >
   更多操作
 </div> 
@@ -86,7 +79,7 @@ export const poptip = {
       e.preventDefault()
     })
     lastId = 'z' + guID()
-    el.addEventListener("mouseover", async () =>{
+    el.handleMouseover = async () =>{
       el.id = `el${lastId}`
       createPopTip(el, { value }, vnode)
       const {bottom, height, left, right, top, width } = _.getViewPos(el)
@@ -96,16 +89,20 @@ export const poptip = {
       popDom.style.top = `${top + height - window.getComputedStyle(el).paddingBottom.replace('px', '') + 5}px`
       popDom.style.width = `${width}px`
       // el.style.color = value.background || '#1aada7'
-    })
-    document.removeEventListener("mousemove",throttlingFn)
-    document.addEventListener("mousemove",throttlingFn)
-    el.addEventListener("mouseout", (e) => {
+    }
+    el.handleMouseout = (e) => {
       el.id = ''
       // _.query(`#out${lastId}`) && _.query(`#out${lastId}`).remove()
       // el.style.color = '#333'
-    })
+    }
+    el.addEventListener("mouseover", el.handleMouseover)
+    document.removeEventListener("mousemove",throttlingFn)
+    document.addEventListener("mousemove",throttlingFn)
+    el.addEventListener("mouseout", el.handleMouseout)
   },
-  unbind: function (){
+  unbind: function (el){
+    el.removeEventListener("mouseover", el.handleMouseover) // 取消事件的注册
+    el.removeEventListener("mouseout", el.handleMouseout) // 取消事件的注册
     document.removeEventListener("mousemove",throttlingFn) // 取消事件的注册
     removePoptip()
   }

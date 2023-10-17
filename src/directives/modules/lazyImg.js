@@ -1,4 +1,4 @@
-import { debounce, remove} from "../../common.js"
+import { debounce, remove } from "../../common.js"
 let [listenList, imageCatcheList] = [[], []]
 const debounceScroll = debounce(() => {
   for(let i = 0, len = listenList.length; i < len; i++ ) {
@@ -40,7 +40,8 @@ const addListener = (ele,binding) =>{
   // 如果不能现在显示，那么就需要加入监听列表
   if(!isCanShow(item)){
     listenList.push(item) //否则将图片地址和元素均放入监听的lisenList里
-    window.addEventListener('scroll', debounceScroll) //然后开始监听页面scroll事件
+    ele.handler = debounceScroll
+    window.addEventListener('scroll', ele.handler) //然后开始监听页面scroll事件
   }
 }
 /**
@@ -53,5 +54,8 @@ const addListener = (ele,binding) =>{
  */
 export const lazyImg = {
   inserted: addListener,
-  updated: addListener
+  updated: addListener,
+  unbind(el) {
+    el.removeEventListener('scroll', el.handler)
+  },
 }

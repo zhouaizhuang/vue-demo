@@ -11,7 +11,7 @@ const processTip = (function (){
       const id = 'z' + guID()
       let divObj = document.createElement("div") // 创建，写内容
       divObj.id = id
-      divObj.innerHTML = `<div class="abs nowrap bgf zx1 r0 fs14 tl l0 r0" style="bottom:-22px;color:#ed4014;">${msg}</div>`
+      divObj.innerHTML = `<div class="abs nowrap bgf zx1 r0 l0 tl" style="bottom:-20px;color:#ed4014;">${msg}</div>`
       el.appendChild(divObj)
       lastId = id
       setTimeout(() => {if(query(`#${id}`)) { el.removeChild(query(`#${id}`)) }}, 2000)
@@ -25,15 +25,21 @@ const processTip = (function (){
  * @param {*} vnode dom
  * @param {*} fn 处理函数
  */
-const resolveChar = function (ref, vnode, fn){
-  ref.addEventListener('compositionstart', () => {
-    vnode.inputLocking = true
-  })
-  ref.addEventListener('compositionend', () => {
-    vnode.inputLocking = false
-    ref.dispatchEvent(new Event('input'))
-  })
-  ref.addEventListener('input', fn, true)
+const resolveChar = function (el, vnode){
+  el.handleCompositionstart = () => vnode.inputLocking = true
+  el.handlecompositionend = () => {vnode.inputLocking = false;el.inputRef.dispatchEvent(new Event('input'))}
+  el.inputRef.addEventListener('compositionstart', el.handleCompositionstart)
+  el.inputRef.addEventListener('compositionend', el.handlecompositionend)
+  el.inputRef.addEventListener('input', el.handleInput, true)
+}
+/**
+ * 移除事件
+ * @param {*} el 
+ */
+const removeEvents = function (el){
+  el.inputRef.removeEventListener('compositionstart', el.handleCompositionstart)
+  el.inputRef.removeEventListener('compositionend', el.handlecompositionend)
+  el.inputRef.removeEventListener('input', el.handleInput)
 }
 /**
  * 限制整数
@@ -44,7 +50,8 @@ const resolveChar = function (ref, vnode, fn){
 export const int = {
   inserted(el, {value}, vnode) {
     const inputRef = el.querySelector('input') || el
-    const fn = e => window.requestAnimationFrame(() => {
+    el.inputRef = inputRef
+    el.handleInput = e => window.requestAnimationFrame(() => {
       e.preventDefault()
       if (vnode.inputLocking) { return }
       let originVal = inputRef.value
@@ -58,7 +65,10 @@ export const int = {
       inputRef.value = tmp
       if(originVal != tmp) { inputRef.dispatchEvent(new Event('input')) }
     })
-    resolveChar(inputRef, vnode, fn)
+    resolveChar(el, vnode)
+  },
+  unbind(el) {
+    removeEvents(el)
   },
 }
 /**
@@ -71,7 +81,8 @@ export const float = {
   inserted(el, {value}, vnode) {
     // console.log(value)
     const inputRef = el.querySelector('input') || el
-    const fn = e => window.requestAnimationFrame(() => {
+    el.inputRef = inputRef
+    el.handleInput = e => window.requestAnimationFrame(() => {
       e.preventDefault()
       if (vnode.inputLocking) { return }
       let originVal = inputRef.value
@@ -103,12 +114,15 @@ export const float = {
       // }
       inputRef.value = tmp
       if(originVal != tmp) { 
-        inputRef.dispatchEvent(new Event('input'))
+       inputRef.dispatchEvent(new Event('input'))
       }
     })
     if(!inputRef) { inputRef = el }
-    resolveChar(inputRef, vnode, fn)
-  }
+    resolveChar(el, vnode)
+  },
+  unbind(el) {
+    removeEvents(el)
+  },
 }
 /**
  * 编码格式大小写字母、数字、中英文符号
@@ -118,7 +132,8 @@ export const float = {
 export const code = {
   inserted(el, {value}, vnode) {
     const inputRef = el.querySelector('input') || el
-    const fn = e => window.requestAnimationFrame(() => {
+    el.inputRef = inputRef
+    el.handleInput = e => window.requestAnimationFrame(() => {
       e.preventDefault()
       if (vnode.inputLocking) { return }
       let originVal = inputRef.value
@@ -127,8 +142,11 @@ export const code = {
       inputRef.value = tmp
       if(originVal != tmp) { inputRef.dispatchEvent(new Event('input')) }
     })
-    resolveChar(inputRef, vnode, fn)
-  }
+    resolveChar(el, vnode)
+  },
+  unbind(el) {
+    removeEvents(el)
+  },
 }
 /**
  * 姓名，不可以输入空格和数字
@@ -138,19 +156,22 @@ export const code = {
 export const name = {
   inserted(el, {value}, vnode) {
     const inputRef = el.querySelector('input') || el
-    const fn = e => window.requestAnimationFrame(() => {
+    el.inputRef = inputRef
+    el.handleInput = e => window.requestAnimationFrame(() => {
       e.preventDefault()
       if (vnode.inputLocking) { return }
       let originVal = inputRef.value
       let tmp = inputRef.value
-      console.log(tmp)
       tmp = tmp.replace(/[0-9!@#$%^&*()_+-?><|/,`！，、？~\s]+/g, '')
       inputRef.value = tmp
       if(originVal != tmp) { processTip(el, `不符合规范的字符【${difference(originVal.split(''), tmp.split('')).join(' ')}】，已经被过滤`) }
       if(originVal != tmp) { inputRef.dispatchEvent(new Event('input')) }
     })
-    resolveChar(inputRef, vnode, fn)
-  }
+    resolveChar(el, vnode)
+  },
+  unbind(el) {
+    removeEvents(el)
+  },
 }
 /**
  * 姓名，不可以输入空格和数字
@@ -164,20 +185,23 @@ export const name = {
 export const trim = {
   inserted(el, {value}, vnode) {
     const inputRef = el.querySelector('input') || el
-    const fn = e => window.requestAnimationFrame(() => {
+    el.inputRef = inputRef
+    el.handleInput = e => window.requestAnimationFrame(() => {
       e.preventDefault()
       if (vnode.inputLocking) { return }
       let originVal = inputRef.value
       let tmp = inputRef.value
-      console.log(tmp)
       const reg = [new RegExp(/(^\s*)|(\s*$)/g), new RegExp(/\s+/g), new RegExp(/(^\s*)/g), new RegExp(/(\s*$)/g)][value || 0] || ''
       tmp = tmp.replace(reg, '')
       inputRef.value = tmp
       if(originVal != tmp) { processTip(el, `空格已被过滤`) }
       if(originVal != tmp) { inputRef.dispatchEvent(new Event('input')) }
     })
-    resolveChar(inputRef, vnode, fn)
-  }
+    resolveChar(el, vnode)
+  },
+  unbind(el) {
+    removeEvents(el)
+  },
 }
 /**
  * 限制最多输入几个字符
@@ -187,7 +211,8 @@ export const trim = {
 export const limit = {
   inserted(el, {value}, vnode) {
     const inputRef = el.querySelector('input') || el
-    const fn = e => window.requestAnimationFrame(() => {
+    el.inputRef = inputRef
+    el.handleInput = e => window.requestAnimationFrame(() => {
       e.preventDefault()
       if (vnode.inputLocking) { return }
       let originVal = inputRef.value
@@ -199,8 +224,11 @@ export const limit = {
       if(originVal.length < Number(min)) { processTip(el, `最少输入${min}位字符`) }
       if(originVal != tmp) { inputRef.dispatchEvent(new Event('input')) }
     })
-    resolveChar(inputRef, vnode, fn)
-  }
+    resolveChar(el, vnode)
+  },
+  unbind(el) {
+    removeEvents(el)
+  },
 }
 /**
  * 限制小数点后保留几位
@@ -210,7 +238,8 @@ export const limit = {
 export const decimalLimit = {
   inserted(el, {value}, vnode) {
     const inputRef = el.querySelector('input') || el
-    const fn = e => window.requestAnimationFrame(() => {
+    el.inputRef = inputRef
+    el.handleInput = e => window.requestAnimationFrame(() => {
       e.preventDefault()
       if (vnode.inputLocking) { return }
       let originVal = inputRef.value
@@ -225,8 +254,11 @@ export const decimalLimit = {
       if(originVal != tmp) { processTip(el, `小数自动保留${value}位`) }
       if(originVal != tmp) { inputRef.dispatchEvent(new Event('input')) }
     })
-    resolveChar(inputRef, vnode, fn)
-  }
+    resolveChar(el, vnode)
+  },
+  unbind(el) {
+    removeEvents(el)
+  },
 }
 /**
  * 限制最小值
@@ -236,7 +268,8 @@ export const decimalLimit = {
 export const min = {
   inserted(el, {value}, vnode) {
     const inputRef = el.querySelector('input') || el
-    const fn = e => window.requestAnimationFrame(() => {
+    el.inputRef = inputRef
+    el.handleInput = e => window.requestAnimationFrame(() => {
       e.preventDefault()
       if (vnode.inputLocking) { return }
       let originVal = inputRef.value
@@ -247,8 +280,11 @@ export const min = {
       inputRef.value = tmp
       if(originVal != tmp) { inputRef.dispatchEvent(new Event('input')) }
     })
-    resolveChar(inputRef, vnode, fn)
-  }
+    resolveChar(el, vnode)
+  },
+  unbind(el) {
+    removeEvents(el)
+  },
 }
 /**
  * 限制最大值
@@ -258,7 +294,8 @@ export const min = {
 export const max = {
   inserted(el, {value}, vnode) {
     const inputRef = el.querySelector('input') || el
-    const fn = e => window.requestAnimationFrame(() => {
+    el.inputRef = inputRef
+    el.handleInput = e => window.requestAnimationFrame(() => {
       e.preventDefault()
       if (vnode.inputLocking) { return }
       let originVal = inputRef.value
@@ -268,8 +305,11 @@ export const max = {
       inputRef.value = tmp
       if(originVal != tmp) { inputRef.dispatchEvent(new Event('input')) }
     })
-    resolveChar(inputRef, vnode, fn)
-  }
+    resolveChar(el, vnode)
+  },
+  unbind(el) {
+    removeEvents(el)
+  },
 }
 /**
  * input遮罩层，禁止选择
@@ -288,10 +328,14 @@ export const mask = {
     op10Mask.style.right = '0'
     op10Mask.style.bottom = '0'
     op10Mask.style.left = '0'
-    op10Mask.addEventListener('click', () => {
+    el.handler = () => {
       inputRef.focus && inputRef.focus()
-    })
+    }
+    op10Mask.addEventListener('click', el.handler)
     fatherDom.appendChild(op10Mask)
+  },
+  unbind(el) {
+    el.inputRef.removeEventListener('click', el.handler)
   },
 }
 /**

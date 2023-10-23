@@ -401,10 +401,10 @@ export const flat2tree = function (arr, field = 'children') {
  *  {"id": 20,"name": "e","children": [],"pid": 2},{"id": 200,"name": "f","children": [],"pid": 20}
  * ]
  */
-export function tree2Flat(arr, field = 'children', pid = 0) {
+export function tree2flat(arr, field = 'children', pid = 0) {
   return arr.reduce((prev, item) => {
     const children = item[field] || []
-    return children.length ? [...prev, {...item, pid, [field]:[]}, ...tree2Flat(children, field, item.id)] : [...prev, { ...item, pid, [field]:[]}]
+    return children.length ? [...prev, {...item, pid, [field]:[]}, ...tree2flat(children, field, item.id)] : [...prev, { ...item, pid, [field]:[]}]
   }, [])
 }
 /**

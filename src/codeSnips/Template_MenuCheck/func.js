@@ -1,4 +1,4 @@
-import { tree2Flat, searchCover, getField } from "@/common.js"
+import { tree2flat, searchCover, getField } from "@/common.js"
 // 获取全部菜单
 export const getAllMenu = function (isChecked, isSpread) {
   // 获取全部菜单权限（平铺格式）
@@ -70,7 +70,7 @@ export const flat2tree = function (arr) {
 }
 // 点击展开、收起箭头
 export const clickItem = function (item) {
-  let newMenu = tree2Flat(this.allMenu, 'children')
+  let newMenu = tree2flat(this.allMenu, 'children')
   newMenu = searchCover(newMenu, {id: item.id}, v => ({...v, isSpread: !v.isSpread}))
   this.allMenu = flat2tree(newMenu)
 }
@@ -115,7 +115,7 @@ export const updateMenuState = function (allMenu) {
 // 编辑
 export const edit = function () {
   const menuIds = [304,1,3,100,2021,300,301,302,303] // 当前角色拥有的菜单
-  let allMenu = tree2Flat(this.allMenu)
+  let allMenu = tree2flat(this.allMenu)
   allMenu = allMenu.map(v => {
     v.isSpread = true
     v.isChecked = menuIds.includes(v.id)
@@ -126,7 +126,7 @@ export const edit = function () {
 }
 // 模拟保存
 export const save = function () {
-  let checkedMenu = tree2Flat(this.allMenu, 'children').filter(v => v.isChecked || v.isIndeterminate)
+  let checkedMenu = tree2flat(this.allMenu, 'children').filter(v => v.isChecked || v.isIndeterminate)
   const checkedIds = getField(checkedMenu, 'id')
   this.$Message.success(`拿到权限ids值为:${checkedIds.join(',')}`)
 }

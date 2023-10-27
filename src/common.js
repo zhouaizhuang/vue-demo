@@ -734,18 +734,37 @@ export const url2JSON = function (url = '', type = 0) {
 export const syncBgData = (arr, ids, key = 'isChecked', val = true, defVal = false) => arr.map(v => (v[key] = ids.includes(v.id) ? val : defVal, v))
 /**
  * 二进制流文件下载：支持blob对象和url地址
- * @举例1 downloadFile('123123.png', 'https://xxxxxxx.png') /
+ * @举例1 downloadFile('123123.png', 'https://xxxxxxx.png')
  * @举例2 downloadFile('123123.png', 'http://192.168.10.36:18049/open/file/download?data=M80/CELarJJQA1OgRtank6oq+/1xrY/rnMLA86dc1AAGXROW5FENy3V4MWWkNfGo')
- * @举例3 downloadFile('xxx数据.xls', Blob二进制对象) // 第二个参数是二进制流，后端返回的
+ * @举例3 downloadFile('123123.png', Blob二进制对象) // 第二个参数是二进制流，后端返回的
  */
-export const downloadFile = function (fileName, pathOrBlob) {
-  const url = isBlob(pathOrBlob) ? window.URL.createObjectURL(new Blob([pathOrBlob])) : pathOrBlob
+export const downloadFile = async function (fileName, pathOrBlob){
+  const url = isString(pathOrBlob) ? pathOrBlob : window.URL.createObjectURL(new Blob([pathOrBlob]))
+  if(isString(pathOrBlob)) { return this.crossOriginDownload(fileName, pathOrBlob) }
   const link = window.document.createElement('a')
   link.style.display = 'none'
   link.href = url
   link.download = fileName
   document.body.appendChild(link)
   link.click()
+  document.body.removeChild(link)
+}
+/**
+ * 非同源文件下载，如果要保证设置的文件名起效果的话
+ * @param {*} fileName 文件名
+ * @param {*} url 请求地址
+ * @举例子 crossOriginDownload('文件.xlsx', "http://192.168.10.11:48079/admin-api/infra/file/4/get/4c71bd392f26b860420330100f6f2471d3f281c6acae74d16e0b5ec60297d92f.xlsx")
+ */
+export const crossOriginDownload = async function (fileName, url) {
+  const res = await request({ method: "GET", url: url, responseType: 'blob' }, 0)
+  const link = window.document.createElement('a')
+  link.style.display = 'none'
+  link.href = window.URL.createObjectURL(res)
+  link.setAttribute('download', fileName)
+  // link.download = fileName
+  document.body.appendChild(link)
+  link.click()
+  window.URL.revokeObjectURL(link.href)
   document.body.removeChild(link)
 }
 // 打开全屏

@@ -750,7 +750,9 @@ export const downloadFile = async function (fileName, pathOrBlob){
   document.body.removeChild(link)
 }
 /**
- * 非同源文件下载，如果要保证设置的文件名起效果的话
+ * 跨域文件下载
+ * 跨域文件设置download会不生效。如果要保证设置的文件名起效果的话，请调用这个函数
+ * 详情请看：https://blog.csdn.net/qq_41801059/article/details/125679903
  * @param {*} fileName 文件名
  * @param {*} url 请求地址
  * @举例子 crossOriginDownload('文件.xlsx', "http://192.168.10.11:48079/admin-api/infra/file/4/get/4c71bd392f26b860420330100f6f2471d3f281c6acae74d16e0b5ec60297d92f.xlsx")

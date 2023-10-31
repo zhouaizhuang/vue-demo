@@ -1,16 +1,15 @@
 /**
  * 新增和编辑模板
- * <TemplateAddEdit
+ * <TmpAddEdit
  *   :modalType="modalType"
  *   :id="id"
  *   @setModalType="e=>{modalType=e;getList()}"
  * >
- * </TemplateAddEdit>
+ * </TmpAddEdit>
  */
 import { guID } from "@/common.js"
 import UploadImgs from "@/components/UploadImgs/index.vue"
 import SelectAddress from "@/components/SelectAddress/index.vue"
-import SelectAddressPlus from "@/components/SelectAddressPlus/index.vue"
 import * as func from "./func.js"
 export default {
   name: '',
@@ -27,7 +26,6 @@ export default {
   components: {
     UploadImgs,
     SelectAddress,
-    SelectAddressPlus
   },
   data(){
     return {
@@ -45,7 +43,7 @@ export default {
         address:'',
       },
       formRule: {
-        account: [{required: true, message: '请填写登陆账号', trigger: 'blur'}, {max:10, message:'账号长度不得超过10个'}],
+        account: [{required: true, message: '请填写登陆账号', trigger: 'blur'}, {max:16, message:'账号长度不得超过16位'}, {min:4, message:'账号长度不得小于4位'}],
         password: [{required: true, message: '请填写登录密码', trigger: 'blur'}],
         age:[{ required: true, message:'请输入年龄', trigger: "blur" }],
         inSchoolTime: [{ required: true, validator: (rule, value, callback) => { if(!value[0] || !value[1]) { callback('请选择在校时间') };callback()}, message: '请选择在校时间', trigger: 'blur' }],

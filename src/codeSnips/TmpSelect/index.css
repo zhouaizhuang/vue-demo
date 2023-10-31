@@ -1,0 +1,24 @@
+.hoverBorder:hover{
+  border-color:#57a3f3 !important;
+}
+.hoverBorder:focus{
+  border-color:#57a3f3 !important;
+  box-shadow: 0 0 0 2px rgba(45,140,240,.2);
+}
+.cardHover{
+  border-color:#eee;
+}
+.cardShadow{
+  border:1px solid #dcdee2;
+  box-shadow: 0 1px 6px rgba(0,0,0,.2);
+}
+.hoverCurItemBg:hover{
+  background-color: #f3f3f3;
+}
+.bgf3{
+  background-color: #f3f3f3;
+}
+.bdAndNone{
+  border:1px solid #dcdee2;
+  outline:none;
+}

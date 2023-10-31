@@ -1,0 +1,8 @@
+.checked::before{
+  content: '';
+  border-radius: 50%;
+  transform:translateX(0.2px);
+  width:10px;
+  height:10px;
+  background:#1aada7;
+}

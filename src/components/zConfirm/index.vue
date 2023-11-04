@@ -1,6 +1,6 @@
 <template>
   <div :class="['fixed trbl0 trans5 zx10', isShow ? 'op10' : 'op0']" style="background:rgba(55,55,55,.6);z-index: 2999;">
-    <div :class="['fixed bgf tx-50 l50 t15 rds5 trans5', isShow ? 'op10 zx20 ani-large' : 'op0 zx-1 ani-small']" style="width:380px;">
+    <div :class="['fixed bgf tx-50 l50 rds5 trans5', isShow ? 'op10 zx20 ani-large' : 'op0 zx-1 ani-small']" style="width:380px;top:15%;">
       <!--标题-->
       <div class="f ac pl10 bg1aada7" style="border-radius: 5px 5px 0 0;">
         <div class="fs16 b f1 none pl20 gf">{{title}}</div>

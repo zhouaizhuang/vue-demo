@@ -377,10 +377,10 @@ export const flat2tree = function (arr, field = 'children') {
  * @returns
  * @举例
  * const arr = [
- *  { name: 'a', children: [ { name: 'b', children: [{ name: 'c', children: [] }]}] },
- *  { name: 'd', children: [ { name: 'e', children: [{ name: 'f', children: [] }]}] }
+ *  { id:1, name: 'a', children: [ { id:11,name: 'b', children: [{ id:111,name: 'c', children: [] }]}] },
+ *  { id:2, name: 'd', children: [ { id:22,name: 'e', children: [{ id:222,name: 'f', children: [] }]}] }
  * ]
- * flatArr(arr, 'children')
+ * tree2flat(arr, 'children')
  * ---->
  * [
  *  {"id": 1,"name": "a","children": [],"pid": 0},{"id": 10,"name": "b","children": [],"pid": 1},
@@ -388,11 +388,8 @@ export const flat2tree = function (arr, field = 'children') {
  *  {"id": 20,"name": "e","children": [],"pid": 2},{"id": 200,"name": "f","children": [],"pid": 20}
  * ]
  */
-export function tree2Flat(arr, field = 'children', pid = 0) {
-  return arr.reduce((prev, item) => {
-    const children = item[field] || []
-    return children.length ? [...prev, {...item, pid, [field]:[]}, ...tree2Flat(children, field, item.id)] : [...prev, { ...item, pid, [field]:[]}]
-  }, [])
+export function tree2flat(arr, field = 'children', pid = 0) {
+  return arr.reduce((prev, item) => [...prev, {...item, pid, [field]: []}, ...tree2flat(item[field] || [], field, item.id)], [])
 }
 /**
  * 一次性函数。只执行一次。后面再调用,没有任何函数代码执行

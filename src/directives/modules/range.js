@@ -6,6 +6,7 @@ import { Message } from 'view-design'
  * 举例： 
  */
 const processVal = (el, {value}, vnode) => {
+  if(!value) { return false }
   if(!_.isString(value)) {
     return Message.error('您传入的范围格式不正确')
   }

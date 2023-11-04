@@ -17,13 +17,17 @@ export const debounce = {
       } else {
         [fn, event = "click", time = 500] = binding.value
       }
-      let timer;
-      el.addEventListener(event, () => {
+      let timer
+      el.handler = () => {
         timer && clearTimeout(timer)
         timer = setTimeout(() => fn(), time)
-      })
+      }
+      el.addEventListener(event, el.handler)
     } catch (e) {
       console.log(e)
     }
-  }
+  },
+  unbind(el) {
+    el.removeEventListener('click', el.handler)
+  },
 }

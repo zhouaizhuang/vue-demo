@@ -29,14 +29,16 @@ export const longpress = {
         pressTimer = null
       }
     }
+    el.handleStart = start
+    el.handleCancel = cancel
     // 添加事件监听器
-    el.addEventListener('mousedown', start)
-    el.addEventListener('touchstart', start)
+    el.addEventListener('mousedown', el.handleStart)
+    el.addEventListener('touchstart', stel.handleStartart)
     // 取消计时器
-    el.addEventListener('click', cancel)
-    el.addEventListener('mouseout', cancel)
-    el.addEventListener('touchend', cancel)
-    el.addEventListener('touchcancel', cancel)
+    el.addEventListener('click', el.handleCancel)
+    el.addEventListener('mouseout', el.handleCancel)
+    el.addEventListener('touchend', el.handleCancel)
+    el.addEventListener('touchcancel', el.handleCancel)
   },
   // 当传进来的值更新的时候触发
   componentUpdated(el, { value }) {
@@ -44,6 +46,13 @@ export const longpress = {
   },
   // 指令与元素解绑的时候，移除事件绑定
   unbind(el) {
-    el.removeEventListener('click', el.handler)
+    // 添加事件监听器
+    el.removeEventListener('mousedown', el.handleStart)
+    el.removeEventListener('touchstart', stel.handleStartart)
+    // 取消计时器
+    el.removeEventListener('click', el.handleCancel)
+    el.removeEventListener('mouseout', el.handleCancel)
+    el.removeEventListener('touchend', el.handleCancel)
+    el.removeEventListener('touchcancel', el.handleCancel)
   },
 }

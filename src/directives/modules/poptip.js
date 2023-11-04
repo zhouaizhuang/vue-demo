@@ -1,26 +1,23 @@
 /* 
 <div 
   class="f1 pt2 pb2 g3 poi rel hover1AADA7 trans3 tc pb10"
-  v-poptip="{
-    list: [ // 必填
-      {label:'设置标签', click: () => openSetTags(item), width: 300 }, // 只有label和click字段是必须的。width：盒子宽度
-      {label:'快速签约', click: () => speedSign(item), width: 300 },
-      {label:'新增随访', click: () => addVisit(item), width: 300 }
-    ],
-    minWidth: 0, // 非必填
-    maxWidth: 300, // 非必填
-    background: '#1aada7', // 非必填
-    color: '#fff', // 非必填
-    arrowPos: '50%', // 箭头所在位置
-  }"
+  v-poptip="[
+    {label:'设置标签', click: () => openSetTags(item), width: 300 }, // 只有label和click字段是必须的。width：盒子宽度
+    {label:'快速签约', click: () => speedSign(item), width: 300 },
+    {label:'新增随访', click: () => addVisit(item), width: 300 }
+  ]"
 >
   更多操作
 </div> 
 */
 import { guID, throttling } from "@/common.js"
 let lastId = 'z' + guID()
-const createPopTip = function (el, { value }, vnode){
+// 销毁创建的dom节点 
+const removePoptip = function () {
   _.query(`#${lastId}`) && _.query(`#${lastId}`).remove()
+}
+const createPopTip = function (el, { value }, vnode){
+  removePoptip()
   const {bottom, height, left, right, top, width } = _.getViewPos(el)
   const isReachBottom =  _.get100vh() - bottom < 40 * value.list.length // 40为list中每个条目所占高度，这样就能算出，是不是底部显示不下了
   const { list = [], minWidth, maxWidth, background = '#1aada7', color = '#fff', arrowPos = '50%' } = value
@@ -39,6 +36,7 @@ const createPopTip = function (el, { value }, vnode){
       e.stopPropagation()
       e.preventDefault()
       v.click() // 其实此处还可以继续接收参数
+      removePoptip()
     }
     const mouseover = () => {
       divItem.style.background = background
@@ -61,13 +59,12 @@ const createPopTip = function (el, { value }, vnode){
   document.body.appendChild(divObj)
 }
 const fn = (e) => {
-  // console.log(1)
   const popDom = _.query(`#${lastId}`)
-  if(!popDom) { return }
+  if(_.query(`#el${lastId}`) || !popDom) {return false} // 如果鼠标在hover的dom范围内，或者尚未商检tip，则直接返回
   const { clientX, clientY } = e
   const {bottom, height, left, right, top, width} = _.getViewPos(popDom)
-  if(clientX < left - 5 || clientX > right + 5 || clientY < top - 50 || clientY > bottom + 50) {
-    _.query(`#${lastId}`) && _.query(`#${lastId}`).remove()
+  if(clientX < left|| clientX > right || clientY < top - 10 || clientY > bottom + 10 ) {
+    removePoptip()
   }
 }
 const throttlingFn = throttling(fn, 50)
@@ -82,7 +79,8 @@ export const poptip = {
       e.preventDefault()
     })
     lastId = 'z' + guID()
-    el.addEventListener("mouseover", async () =>{
+    el.handleMouseover = async () =>{
+      el.id = `el${lastId}`
       createPopTip(el, { value }, vnode)
       const {bottom, height, left, right, top, width } = _.getViewPos(el)
       const popDom = _.query(`#${lastId}`)
@@ -91,16 +89,22 @@ export const poptip = {
       popDom.style.top = `${top + height - window.getComputedStyle(el).paddingBottom.replace('px', '') + 5}px`
       popDom.style.width = `${width}px`
       // el.style.color = value.background || '#1aada7'
-    })
-    document.removeEventListener("mousemove",throttlingFn)
-    document.addEventListener("mousemove",throttlingFn)
-    el.addEventListener("mouseout", (e) => {
+    }
+    el.handleMouseout = (e) => {
+      el.id = ''
       // _.query(`#out${lastId}`) && _.query(`#out${lastId}`).remove()
       // el.style.color = '#333'
-    })
+    }
+    el.addEventListener("mouseover", el.handleMouseover)
+    document.removeEventListener("mousemove",throttlingFn)
+    document.addEventListener("mousemove",throttlingFn)
+    el.addEventListener("mouseout", el.handleMouseout)
   },
-  unbind: function (){
+  unbind: function (el){
+    el.removeEventListener("mouseover", el.handleMouseover) // 取消事件的注册
+    el.removeEventListener("mouseout", el.handleMouseout) // 取消事件的注册
     document.removeEventListener("mousemove",throttlingFn) // 取消事件的注册
+    removePoptip()
   }
   // componentUpdated: bindEvent, // 当传进来的值更新的时候触发
 }

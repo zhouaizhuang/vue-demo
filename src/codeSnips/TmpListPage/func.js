@@ -11,8 +11,7 @@ export const search = function () {
 // 重置
 export const resetSearch = function () {
   this.searchObj = deepCopy(this.$options.data().searchObj)
-  this.pageObj.page = 1
-  this.getList()
+  this.search()
 }
 // 获取列表
 export const getList = async function () {
@@ -26,9 +25,10 @@ export const getList = async function () {
 }
 // 重置密码
 export const resetPassword = function (row) {
-  this.$Modal.confirm({
+  this.$zConfirm({
     title: '温馨提示',
-    content: `<p>确定要重置<span class="fs22 b pl5 pr5 ">${row.name}</span>的密码吗？</p>`,
+    name: row.name,
+    content: `确定要重置吗？`,
     onOk: async () => {
       await this.$post('/xxxreset', {id: row.id}) // 调用重置密码接口
       this.getList()
@@ -38,9 +38,10 @@ export const resetPassword = function (row) {
 }
 // 停用启用
 export const changeStatus = function (row) {
-  this.$Modal.confirm({
+  this.$zConfirm({
     title: '温馨提示',
-    content: `<p>确定要${row.state == 0 ? '启用' : '停用'}<span class="fs22 b pl5 pr5 ">${row.name}</span>这个帐号吗？</p>`,
+    name: row.name,
+    content: `<p>确定要${row.state == 0 ? '启用' : '停用'}这个帐号吗？</p>`,
     onOk: async () => {
       // this.$api.changeStaffStatus({id: row.id, status: toogle01(row.state)})
       await this.$post('/xxxChangeStatus', {id: row.id, status: toogle01(row.state)})

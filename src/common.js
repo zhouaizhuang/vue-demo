@@ -319,6 +319,19 @@ export const radioToogle = (arr, search = v => v) => searchCover(arr, search, v 
  */
 export const multipleChecked = (arr, search = v => v) => searchCover(arr, search, v => ({...v, isChecked:!v.isChecked}))
 /**
+ * 重置选择
+ * 将传入的数据中全部isChecked字段重置为false
+ * @param {Array|Object} arr 需要重置的数据
+ * @returns 
+ * @举例 
+ * resetChecked([{id:1, isChecked: true, children: [{id:1, isChecked: true}]}])
+ * -----> 
+ * [{"id": 1,"isChecked": false,"children": [{"id": 1,"isChecked": false}]}]
+ */
+export const resetChecked = function (arr) {
+  return isArray(arr) ? arr.map(item => resetChecked(item)) : Object.keys(arr).reduce((prev, k) =>({...prev, [k]: isObject(arr[k]) || isArray(arr[k]) ? resetChecked(arr[k]) : (k == 'isChecked' ? false : arr[k])}), {})
+}
+/**
  * 对象数组去重(根据对象中某个字段)
  * @param {Object<Array>} arr 需要去重的对象数组
  * @param {*} field 字段名称
@@ -717,13 +730,43 @@ export const url2JSON = function (url = '', type = 0) {
  */
 export const syncBgData = (arr, ids, key = 'isChecked', val = true, defVal = false) => arr.map(v => (v[key] = ids.includes(v.id) ? val : defVal, v))
 /**
- * 二进制流文件下载：支持blob对象和url地址
- * @举例1 downloadFile('123123.png', 'https://xxxxxxx.png') /
- * @举例2 downloadFile('123123.png', 'http://192.168.10.36:18049/open/file/download?data=M80/CELarJJQA1OgRtank6oq+/1xrY/rnMLA86dc1AAGXROW5FENy3V4MWWkNfGo')
- * @举例3 downloadFile('xxx数据.xls', Blob二进制对象) // 第二个参数是二进制流，后端返回的
+ * 跨域文件下载
+ * 跨域文件设置download会不生效。如果要保证设置的文件名起效果的话，请调用这个函数
+ * 详情请看：https://blog.csdn.net/qq_41801059/article/details/125679903
+ * @param {*} fileName 文件名
+ * @param {*} url 请求地址
+ * @举例子 crossOriginDownload('文件.xlsx', "http://192.168.10.11:48079/admin-api/infra/file/4/get/4c71bd392f26b860420330100f6f2471d3f281c6acae74d16e0b5ec60297d92f.xlsx")
  */
-export const downloadFile = function (fileName, pathOrBlob) {
-  const url = isBlob(pathOrBlob) ? window.URL.createObjectURL(new Blob([pathOrBlob])) : pathOrBlob
+export const crossOriginDownload = async function (fileName, url) {
+  // const res = await request({ method: "GET", url: url, responseType: 'blob' }, 0) // 如果采用axios请求的话
+  const xhr = new XMLHttpRequest()
+  xhr.open('GET', url, true)  // url 文件的完整地址 http:XXX
+  xhr.responseType = 'blob'
+  xhr.onload = function () {
+    if (xhr.status === 200) {
+      const res = xhr.response;
+      const link = document.createElement('a')
+      link.style.display = 'none'
+      const url = window.URL.createObjectURL(res)
+      link.href = url
+      link.setAttribute('download', fileName)
+      document.body.appendChild(link)
+      link.click()
+      window.URL.revokeObjectURL(link.href)
+      document.body.removeChild(link)
+    }
+  }
+  xhr.send()
+}
+/**
+ * 二进制流文件下载：支持blob对象和url地址
+ * @举例1 downloadFile('123123.png', 'https://xxxxxxx.png')
+ * @举例2 downloadFile('123123.png', 'http://192.168.10.36:18049/open/file/download?data=M80/CELarJJQA1OgRtank6oq+/1xrY/rnMLA86dc1AAGXROW5FENy3V4MWWkNfGo')
+ * @举例3 downloadFile('123123.png', Blob二进制对象) // 第二个参数是二进制流，后端返回的
+ */
+export const downloadFile = async function (fileName, pathOrBlob){
+  const url = isString(pathOrBlob) ? pathOrBlob : window.URL.createObjectURL(new Blob([pathOrBlob]))
+  if(isString(pathOrBlob)) { return crossOriginDownload(fileName, pathOrBlob) }
   const link = window.document.createElement('a')
   link.style.display = 'none'
   link.href = url
@@ -1212,7 +1255,7 @@ export const getScrollTop = () => (document.documentElement && document.document
  * @param {*} e 
  * @returns 
  * @举例 getViewPos(this.$refs.xxx)   ----> { "top": 60, "bottom": 60, "left": 0, "right": 1477, "width": 1920, "height":1080 }
- * @举例 getViewPos(document.querySelector('#yyy'))   ----> { "top": 60, "bottom": 60, "left": 0, "right": 1477 }
+ * @举例 getViewPos(document.querySelector('#yyy'))   ----> { "top": 60, "bottom": 60, "left": 0, "right": 1477, "width": 1920, "height":1080  }
  */
 export const getViewPos = function (e) {
   let {top, bottom, left, right, width, height } = e.getBoundingClientRect()

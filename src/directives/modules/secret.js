@@ -5,11 +5,12 @@
  *     <div v-secret>{{patientObj.idNumber}}</div>   // 会将这个身份证增加星号处理
  */
 const processVal = (el, {value}, vnode) => {
+  // const [left = 3, right = -4] = value
   let text = el.innerText
   if(!text) { return }
   if(text.length > 11) {
     text = text.slice(0, 6) + '********' + text.slice(-4)
-  } else {
+  } else if(text.length > 7){
     text = text.slice(0, 3) + '****' + text.slice(-4)
   }
   el.innerText = text

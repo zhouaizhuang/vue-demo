@@ -17,9 +17,9 @@
             <Option value="1">停用</Option>
           </Select>
           <div>医生：</div>
-          <Input v-model="searchObj.doctor" style="width: 150px;" placeholder="姓名/手机号" class="mr30"></Input>
+          <Input v-model.trim="searchObj.doctor" style="width: 150px;" placeholder="姓名/手机号" class="mr30"></Input>
           <Button @click="search" icon="ios-search" class="mr15" style="background:#1AADA7;color:#fff;">查询</Button>
-          <Button @click="resetSearch" icon="md-refresh" style="margin-right: 5px;background:#fff;color:#1AADA7;border-color: #1AADA7;">重置</Button>
+          <Button @click="resetSearch" icon="md-refresh" style="background:#fff;color:#1AADA7;border-color: #1AADA7;">重置</Button>
         </div>
         <HighTable
           :columns="tableColumns"

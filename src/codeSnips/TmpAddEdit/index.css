@@ -1,3 +1,4 @@
+/**Modal组件起始位置 */
 .btn-hover:hover{
   color: #57a3f3;
   background-color: #fff;
@@ -6,7 +7,6 @@
 .primary:hover{
   background:#57a3f3 !important;
 }
-/**Modal组件起始位置 */
 .ani-large{
   animation: large .5s ease -.1s 1 both;
 }

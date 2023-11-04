@@ -1,0 +1,18 @@
+.hoverBorder1adda7:hover{
+  border: 1px dashed #1AADA7 !important;
+}
+.hoverBordered4014:hover{
+  border: 1px dashed #ed4014 !important;
+}
+.icon1{
+  display: inline-block;
+}
+.icon2{
+  display: none;
+}
+.hoverBorder1adda7:hover .icon1{
+  display: none;
+}
+.hoverBorder1adda7:hover .icon2{
+  display: inline-block;
+}

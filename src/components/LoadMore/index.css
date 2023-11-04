@@ -1,0 +1,12 @@
+.loading {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgb(26, 173, 167);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: circle infinite 0.75s linear;
+}
+@keyframes circle {
+  0% { transform: rotate(0); }
+  100% { transform: rotate(360deg); }
+}

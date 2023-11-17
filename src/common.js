@@ -930,14 +930,14 @@ export const range = function (num, min = null, max = null) {
  * @举例 round(12.35) ==> 12  // 12.35 保留0位小数四舍五入得到 12
  * @举例 round(12.35, 1) ==> 12.4 // 12.35 保留1位小数四舍五入得到 12.4
  * @举例 round(12.5, 2) ==> 12.50 // 12.5 保留2位小数四舍五入得到 12.50
- * @举例 round(12.5, 2, 2) ==> 12.5 // 12.5 保留2位小数四舍五入得到 12.50---->末尾0要省去-->12.5
+ * @举例 round(12.5, 2, 2) ==> 12.5 // 12.5 保留2位小数四舍五入得到 12.50---->末尾0要省去--->12.5
  */
 export const round = function (num, prec = 0, type = 1) {
   prec = range(prec, 0)
   const k = Math.pow(10, prec)
   const [left = '', right = ''] = String(Math.round(Number(num) * k) / k).split('.')
   const decimal = type == 1 ? right + new Array(prec + 1).join('0') : right
-  return `${left}${prec > 0 ? '.' + decimal.slice(0, prec) : ''}`
+  return `${left}${prec > 0 && Number(right) ? '.' + decimal.slice(0, prec) : ''}`
 }
 /**
  * 大数相加
@@ -1068,14 +1068,28 @@ export const getDateStr = function (num = 0, split = '', t) {
  * 获取N个月之后的日期
  * @param {*} startTime  开始日期
  * @param {*} num   N个月之后的日期
- * @举例 diffMonth('2023-08-28', 3) ---->  '2023-11-28'
  * @returns 
  */
-export const diffMonth = function (startTime, num){
+export const afterNMonthDate = function (startTime, num){
   startTime = processDate(startTime)
   var dt = new Date(startTime)
   dt.setMonth(dt.getMonth() + Number(num))
   return dateFormater('YYYY-MM-DD', dt)
+}
+/**
+ * 计算两个日期之间间隔多少年,多少天,多少月
+ * @param {*} start 
+ * @param {*} end 
+ */
+export const diffTimes = function (start = new Date(), end = new Date()){
+  start = processDate(start)
+  end = processDate(end)
+  const diffDay = round((new Date(end) - new Date(start)) / 1000 / 60 /60 / 24, 2)
+  const dt1 = Number(dateFormater('YYYYMM', start))
+  const dt2 = Number(dateFormater('YYYYMM', end))
+  const diffYear = round((dt2 - dt1) % 100 / 12 + Math.floor((dt2 - dt1) / 100), 2, 2)
+  const diffMonth = Math.floor((dt2 - dt1) / 100) * 12 + (dt2 - dt1) % 100
+  return { diffDay, diffYear, diffMonth }
 }
 /**得到当前时间之后N秒的时间
  * @param {Number} after 多少秒之后的时间

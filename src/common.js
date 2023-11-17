@@ -629,7 +629,7 @@ export const difference = function (v1, v2, strictEqual = false, split = ','){
  * @return {Boolean} 返回校验结果
  * @举例子 isContain('1,2,3', '2,3') ====> true
  * @举例子 isContain('1,2,3', '2,3,4') ====> true
- * @举例子 isContain('1,2,3', '2,3,4', false) ====> false
+ * @举例子 isContain('1,2,3', '2,3,4', 2) ====> false
  */
 export const isContain = function (v1, v2, type = 1, strictEqual = false, split = ',') {
   const lowerCase = v => v.map(k => String(k).toLowerCase())

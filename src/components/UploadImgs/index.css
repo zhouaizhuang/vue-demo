@@ -13,7 +13,7 @@
   display: inline-block;
   width:70px;
   height:70px;
-  border:2px dashed #ccc;
+  border:1px dashed #ccc;
   border-radius: 5px;
   position: relative;
 }
@@ -40,14 +40,32 @@
   transform: translate(-50%, -50%);
 }
 .picture:hover::before{
-  background-color: #1890ff;
+  background-color: #1AADA7;
 }
 .picture:hover::after{
-  background-color: #1890ff;
+  background-color: #1AADA7;
 }
 .picture:hover{
-  border-color: #1890ff;
+  border-color: #1AADA7;
 }
 .drag-move {
   transition: transform 1s;
+}
+.errBd{
+  border-color: #ed4014 !important;
+}
+.errBd:hover{
+  border-color: #ed4014 !important;
+}
+.errBd::before{
+  background-color: #ed4014;
+}
+.errBd::after{
+  background-color: #ed4014;
+}
+.errBd:hover::before{
+  background-color: #ed4014;
+}
+.errBd:hover::after{
+  background-color: #ed4014;
 }

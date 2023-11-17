@@ -1,0 +1,27 @@
+/**Modal组件起始位置 */
+.btn-hover:hover{
+  color: #57a3f3;
+  background-color: #fff;
+  border-color: #57a3f3 !important;
+}
+.primary:hover{
+  background:#57a3f3 !important;
+}
+.ani-large{
+  animation: large .5s ease -.1s 1 both;
+}
+@keyframes large {
+  0%{transform: translateX(-50%) scale(.8);}
+  100%{transform: translateX(-50%) scale(1);}
+}
+.ani-small{
+  animation: small .5s ease .1s 1 both;
+}
+@keyframes small {
+  0%{transform: translateX(-50%) scale(1);}
+  100%{transform: translateX(-50%) scale(.8);}
+}
+/**Modal组件结束位置 */
+.bg1aada7{
+  background-color: #1aada7;
+}

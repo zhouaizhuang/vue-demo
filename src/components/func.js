@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Confirm from '@/components/Confirm/index.vue'
+import Confirm from '@/components/zConfirm/index.vue'
 const ConfirmConstructor = Vue.extend(Confirm)
 export const zConfirm = function ({title = '温馨提示', name = '',  content = '', onOk = () => {}, onCancel = () => {}} = {}) {
   const confirm = new ConfirmConstructor()

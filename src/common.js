@@ -323,9 +323,9 @@ export const multipleChecked = (arr, search = v => v) => searchCover(arr, search
  * 将传入的数据中全部isChecked字段重置为false
  * @param {Array|Object} arr 需要重置的数据
  * @returns 
- * @举例 
+ * @举例
  * resetChecked([{id:1, isChecked: true, children: [{id:1, isChecked: true}]}])
- * -----> 
+ * ----->
  * [{"id": 1,"isChecked": false,"children": [{"id": 1,"isChecked": false}]}]
  */
 export const resetChecked = function (arr) {
@@ -390,22 +390,18 @@ export const flat2tree = function (arr, field = 'children') {
  * @returns
  * @举例
  * const arr = [
- *  { name: 'a', children: [ { name: 'b', children: [{ name: 'c', children: [] }]}] },
- *  { name: 'd', children: [ { name: 'e', children: [{ name: 'f', children: [] }]}] }
+ *  { id:1, name: 'a', children: [ { id:11,name: 'b', children: [{ id:111,name: 'c', children: [] }]}] },
+ *  { id:2, name: 'd', children: [ { id:22,name: 'e', children: [{ id:222,name: 'f', children: [] }]}] }
  * ]
- * flatArr(arr, 'children')
+ * tree2flat(arr, 'children')
  * ---->
- * [
- *  {"id": 1,"name": "a","children": [],"pid": 0},{"id": 10,"name": "b","children": [],"pid": 1},
- *  {"id": 100,"name": "c","children": [],"pid": 10},{"id": 2,"name": "d","children": [],"pid": 0},
- *  {"id": 20,"name": "e","children": [],"pid": 2},{"id": 200,"name": "f","children": [],"pid": 20}
- * ]
+  [
+    {"id": 1,"name": "a","children": [],"pid": 0},{"id": 11,"name": "b","children": [],"pid": 1},{"id": 111,"name": "c","children": [],"pid": 11},
+    {"id": 2,"name": "d","children": [],"pid": 0},{"id": 22,"name": "e","children": [],"pid": 2},{"id": 222,"name": "f","children": [],"pid": 22}
+  ]
  */
 export function tree2flat(arr, field = 'children', pid = 0) {
-  return arr.reduce((prev, item) => {
-    const children = item[field] || []
-    return children.length ? [...prev, {...item, pid, [field]:[]}, ...tree2flat(children, field, item.id)] : [...prev, { ...item, pid, [field]:[]}]
-  }, [])
+  return arr.reduce((prev, item) => [...prev, {...item, pid, [field]: []}, ...tree2flat(item[field] || [], field, item.id)], [])
 }
 /**
  * 一次性函数。只执行一次。后面再调用,没有任何函数代码执行
@@ -516,7 +512,7 @@ export const getDeepItem = function (arr, field) {
  * @param {Array} arr 需要处理的数组
  * @param {String} field 需要获得的字段
  * @param {Function|Object} search 过滤函数|过滤对象，如果不传则返回全部数组中的字段值     如果传了函数，则先按照函数过滤一遍 
- * @returns 得到符合要求的字段值，放在数组中
+ * @returns 得到的字段值拼接的字符串
  * @举例 getField([{id:1, age: 15}, {id: 2, age: 18}, {id:3, age: 20}], 'id', v => v.age > 16) --->  [2, 3]
  * @举例 getField([{id:1, age: 15}, {id: 2, age: 18}, {id:3, age: 20}], 'id', {age:18}) --->  [2]
  */
@@ -663,11 +659,11 @@ export const union = (arr1, arr2) => [...new Set([...arr1, ...arr2])]
  */
 export const formatJSON = function (obj) {
   if(!isReference(obj)) { return obj }
-  return isObject(obj) ? Object.keys(obj).reduce((prev, item) => ((prev[item] = isNull(obj[item]) || isUndefined(obj[item])  ? '' : obj[item]), prev), {}) : {}
+  return isObject(obj) ? Object.keys(obj).reduce((prev, item) => ((prev[item] = isNull(obj[item]) || isUndefined(obj[item]) || obj[item] == 'undefined' || obj[item] == 'null'  ? '' : obj[item]), prev), {}) : {}
 }
 /**
  * 格式化后端返回数据，将null转为undefined，后续写代码需要解构赋值的时候，赋默认值{}或者[]
- * @param {Object} obj
+ * @param {Object} obj 
  * @returns 
  * @举例 formatRes({name:'zzz', age:null}) ---->  {name:'zzz', age: undefined}
  */
@@ -972,6 +968,9 @@ export const largeNumAdd = function (num1, num2){
 export const processDate = function (t) {
   if(!isDate(t) && isString(t) && !t.includes('T') && t.length > 0) { t = t.replace(/[-]/g, "/") }
   if(!t) { t = new Date() }
+  if(isString(t) && t.replace(/[-/.]/g, '') == t && t.length == 8) {
+    t = `${t.slice(0, 4)}-${t.slice(4, 6)}-${t.slice(-2)}`
+  }
   return t
 }
 /**
@@ -982,12 +981,67 @@ export const processDate = function (t) {
  * @举例 extract('2022-10-01') ---->  ['2022', '10', '01', '00', '00', '00']
  * @举例 extract('2022-10-01 12:12:14') ---->  ['2022', '10', '01', '12', '12', '14']
  */
-export const extract = function (t) {
-  if(!t) {return t}
+export function extract(t = new Date()){
   t = processDate(t)
   const d = new Date(new Date(t).getTime() + 8*3600*1000)
   const [year, month, day, hour, minutes, second] = new Date(d).toISOString().split(/[^0-9]/).slice(0, -1)
   return [year, month, day, hour, minutes, second]
+}
+/**
+ * 生成格式化时间字符串
+ * @param {*} formater 时间格式
+ * @param {*} t 传入的时间
+ * @returns 处理之后的时间数据
+ * @举例 dateFormater('YYYY-MM-DD hh:mm') ==> 2019-06-26 18:30
+ * @举例 dateFormater('YYYYMMDD-hh:mm:ss', '2020-08-12 09:13:54') ==> 20200812-09:13:54
+ */
+export const dateFormater = function (formater = 'YYYY-MM-DD hh:mm:ss', t = new Date()){
+  if(!t) {return t}
+  t = processDate(t)
+  const [Y, M, D, h, m, s] = extract(t)
+  return formater.replace(/YYYY|yyyy/g, Y).replace(/YY|yy/g, Y.slice(2, 4)).replace(/MM/g, M).replace(/DD/g, D).replace(/hh/g, h).replace(/mm/g, m).replace(/ss/g, s)
+}
+/**
+ * 获取日期字符串。
+ * @param num 初始日期 + num天后的日期， 默认是今天 + 0天，仍然是今天
+ * @param split 日期分割符
+ * @param t 初始日期，默认今天
+ * @举例 getDateStr(0) ---> 20200904    getDateStr(1) ---> 20200905
+ * @举例 分割：getDateStr(1, '-')--->2020-09-05
+ */
+export const getDateStr = function (num = 0, split = '', t = new Date()) {
+  if(!t) {return t}
+  t = processDate(t)
+  const dt = new Date(t)
+  dt.setDate(dt.getDate() + Number(num)) // 获取num天后的日期
+  return `0000${dt.getFullYear()}`.slice(-4) + split + `00${(dt.getMonth() + 1)}`.slice(-2) + split + `00${dt.getDate()}`.slice(-2)
+}
+/**
+ * 获取N个月之后的日期
+ * @param {*} startTime  开始日期
+ * @param {*} num   N个月之后的日期
+ * @returns 
+ */
+export const afterNMonthDate = function (startTime, num){
+  startTime = processDate(startTime)
+  var dt = new Date(startTime)
+  dt.setMonth(dt.getMonth() + Number(num))
+  return dateFormater('YYYY-MM-DD', dt)
+}
+/**
+ * 计算两个日期之间间隔多少年,多少天,多少月
+ * @param {*} start 
+ * @param {*} end 
+ */
+export const diffTimes = function (start = new Date(), end = new Date()){
+  start = processDate(start)
+  end = processDate(end)
+  const diffDay = round((new Date(end) - new Date(start)) / 1000 / 60 /60 / 24, 2)
+  const dt1 = Number(dateFormater('YYYYMM', start))
+  const dt2 = Number(dateFormater('YYYYMM', end))
+  const diffYear = round((dt2 - dt1) % 100 / 12 + Math.floor((dt2 - dt1) / 100), 2, 2)
+  const diffMonth = Math.floor((dt2 - dt1) / 100) * 12 + (dt2 - dt1) % 100
+  return { diffDay, diffYear, diffMonth }
 }
 /**
  * 获取时间段，业务
@@ -1035,67 +1089,14 @@ export const socketTime = function (t = new Date()) {
   const [nextWeek, _nextWeek] = [[dateFormater(dateStr, nextWeekStart), dateFormater(dateStr, nextWeekEnd)], [dateFormater(startStr, nextWeekStart), dateFormater(endStr, nextWeekEnd)]]
   return { year, _month, month, day, _day, hour, minutes, seconds, yesterday, _yesterday, today, _today, lastWeek, _lastWeek, curWeek, _curWeek, week, weekDay, nextWeek, _nextWeek }
 }
-/**
- * 生成格式化时间字符串
- * @param {*} formater 时间格式
- * @param {*} t 传入的时间
- * @returns 处理之后的时间数据
- * @举例 dateFormater('YYYY-MM-DD hh:mm') ==> 2019-06-26 18:30
- * @举例 dateFormater('YYYYMMDD-hh:mm:ss', '2020-08-12 09:13:54') ==> 20200812-09:13:54
- */
-export function dateFormater(formater = 'YYYY-MM-DD hh:mm:ss', t){
-  if(!t) { return t }
-  t = processDate(t)
-  const [Y, M, D, h, m, s] = extract(t)
-  return formater.replace(/YYYY|yyyy/g, Y).replace(/YY|yy/g, Y.slice(2, 4)).replace(/MM/g, M).replace(/DD/g, D).replace(/hh/g, h).replace(/mm/g, m).replace(/ss/g, s)
-}
-/**
- * 获取日期字符串。
- * @param num 初始日期 + num天后的日期， 默认是今天 + 0天，仍然是今天
- * @param split 日期分割符
- * @param t 初始日期，默认今天
- * @举例 getDateStr(0) ---> 20200904    getDateStr(1) ---> 20200905
- * @举例 分割：getDateStr(1, '-')--->2020-09-05
- */
-export const getDateStr = function (num = 0, split = '', t) {
-  if(!t) {return t}
-  t = processDate(t)
-  const dt = new Date(t)
-  dt.setDate(dt.getDate() + Number(num)) // 获取num天后的日期
-  return `0000${dt.getFullYear()}`.slice(-4) + split + `00${(dt.getMonth() + 1)}`.slice(-2) + split + `00${dt.getDate()}`.slice(-2)
-}
-/**
- * 获取N个月之后的日期
- * @param {*} startTime  开始日期
- * @param {*} num   N个月之后的日期
- * @returns 
- */
-export const afterNMonthDate = function (startTime, num){
-  startTime = processDate(startTime)
-  var dt = new Date(startTime)
-  dt.setMonth(dt.getMonth() + Number(num))
-  return dateFormater('YYYY-MM-DD', dt)
-}
-/**
- * 计算两个日期之间间隔多少年,多少天,多少月
- * @param {*} start 
- * @param {*} end 
- */
-export const diffTimes = function (start = new Date(), end = new Date()){
-  start = processDate(start)
-  end = processDate(end)
-  const diffDay = round((new Date(end) - new Date(start)) / 1000 / 60 /60 / 24, 2)
-  const dt1 = Number(dateFormater('YYYYMM', start))
-  const dt2 = Number(dateFormater('YYYYMM', end))
-  const diffYear = round((dt2 - dt1) % 100 / 12 + Math.floor((dt2 - dt1) / 100), 2, 2)
-  const diffMonth = Math.floor((dt2 - dt1) / 100) * 12 + (dt2 - dt1) % 100
-  return { diffDay, diffYear, diffMonth }
-}
 /**得到当前时间之后N秒的时间
  * @param {Number} after 多少秒之后的时间
  * @举例 afterNsecond(20)  // 20s之后的时间
  */
-export const afterNsecond = (after = 60) => new Date(new Date().getTime() + after * 1000)
+export const afterNsecond = function (after = 60) {
+  const dt = new Date().getTime() + after * 1000
+  return new Date(dt)
+}
 /**
  * 将毫秒数转换成天、时、分、秒、毫秒
  * @param {String} formater 时间格式
@@ -1180,9 +1181,22 @@ export const f2s = fahrenheit => (fahrenheit - 32) * 5 / 9
 **********************************************************************************************
 */
 /**
+ * 重置表单字段
+ * @param {Object} form 
+ * @returns
+ * @举例 resetField({name:'tom', age: 18, hobby: ['篮球','吉他'], isGraduate: true}) ----> {"name": "","age": 0,"hobby": [],"isGraduate": false}
+ */
+export const resetField = function (form) {
+  return Object.keys(form).reduce((prev, item) => {
+    const mapDefault = {'String': '','Object': {},'Array': [],'Boolean': false,'Undefined': '','Number': 0,'Null': null}
+    const curType = Object.prototype.toString.call(form[item]).slice(8, -1)
+    prev[item] = mapDefault[curType]
+    return prev
+  }, {})
+}
+/**
  * 全部字段平铺
- * @param {Object|Array} obj 需要进行转换的url地址
- * @举例子 flatAllField({name:'zz', age:12, school:{name:'清华大学'}})
+ * @param {Object|Array} obj 
  */
 export const flatAllField = function (obj) {
   if(isArray(obj)) {obj = { arr: obj }}
@@ -1271,10 +1285,11 @@ export const getScrollTop = () => (document.documentElement && document.document
  * 距离视窗的距离。一般现在通过 IntersectionObserver API实现了，请看https://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html
  * @param {*} e 
  * @returns 
- * @举例 getViewPos(this.$refs.xxx)   ----> { "top": 60, "bottom": 60, "left": 0, "right": 1477, "width": 1920, "height":1080 }
- * @举例 getViewPos(document.querySelector('#yyy'))   ----> { "top": 60, "bottom": 60, "left": 0, "right": 1477, "width": 1920, "height":1080  }
+ * @举例 getViewPos(this.$refs.xxx)   ----> { "top": 60, "bottom": 60, "left": 0, "right": 1477, "width": 200, "height": 50 }
+ * @举例 getViewPos(document.querySelector('#yyy'))   ----> { "top": 60, "bottom": 60, "left": 0, "right": 1477, "width": 200, "height": 50 }
  */
 export const getViewPos = function (e) {
+  if(!e) { throw new Error('传入的数据并非dom节点')}
   let {top, bottom, left, right, width, height } = e.getBoundingClientRect()
   const { clientTop = 0, clientLeft = 0 } = window.document.documentElement // html元素对象的上边框的上边距和左边距
   ;[top, bottom, left, right] = [top - clientTop, bottom - clientTop, left - clientLeft, right - clientLeft]
@@ -1393,7 +1408,16 @@ export const showLoading = function({str='加载中...', type = 0, dom ='', css 
     </div>`
   }
   const cssObj = {
-    0: `@keyframes rotate360 {0% {transform: rotate(0);}100% {transform: rotate(360deg);}}@keyframes loading-dash {0% { stroke-dasharray: 1 200; stroke-dashoffset: 0; }50% { stroke-dasharray: 90 150; stroke-dashoffset: -40px; }100% { stroke-dasharray: 90 150; stroke-dashoffset: -120px; }}`
+    0: `
+    @keyframes rotate360 {
+      0% {transform: rotate(0);}
+      100% {transform: rotate(360deg);}
+    }
+    @keyframes loading-dash {
+      0% { stroke-dasharray: 1 200; stroke-dashoffset: 0; }
+      50% { stroke-dasharray: 90 150; stroke-dashoffset: -40px; }
+      100% { stroke-dasharray: 90 150; stroke-dashoffset: -120px; }
+    }`
   }
   const domStr = dom || domObj[type]
   const cssStr = css || cssObj[type]
@@ -1537,8 +1561,9 @@ export const guID = () => Number(Math.random().toString().slice(3, 9) + Date.now
  * @param {*} fn 需要防抖的函数
  * @param {*} wait 防抖时间
  * @returns 
- * @举例 const fn = () => {console.log(1)}
+ * @举例 const fn = (e) => {console.log(e)}
  * @举例 const newFn = debounce(fn, 2e3) ----> 这样的话执行newFunc()就会有防抖效果
+ * newFn(1);newFn(1);newFn(1);newFn(1);newFn(1);newFn(1);
  */
 export const debounce = function (fn, wait=3e3) {
   if(!isFunction(fn)){ throw new Error('传入的参数必须是个函数') }
@@ -1691,7 +1716,7 @@ export const reWriteLog = function (){
  * @param {*} val 需要打印的值
  * @举例 formatConsole({name:'张三', age:18}) // 控制台输出格式化打印后的数据
  */
-export const formatConsole = val => {console.log(JSON.stringify(val, null, 2))}
+export const formatConsole = val => console.log(JSON.stringify(val, null, 2))
 /**
  * 监听键盘事件（在需要监听的页面的created生命周期中使用）
  * @param {*} ctx 上下文
@@ -1705,7 +1730,7 @@ export const formatConsole = val => {console.log(JSON.stringify(val, null, 2))}
  * }
  */
 export const listenKey = function (ctx = window, obj = {}) {
-  const mapFn = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Enter', 'Control', 'Alt', 'Shift', 'Tab', 'Space'].reduce((prev, item) => (prev[item] = obj[item] || function(){}, prev), {})
+  const mapFn = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Enter', 'Control', 'Alt', 'Shift', 'Tab', 'Space', 'Delete'].reduce((prev, item) => (prev[item] = obj[item] || function(){}, prev), {})
   document.onkeydown = e => {
     e = e || window.event
     // console.log(e) // 此处可以打印查看按键key值

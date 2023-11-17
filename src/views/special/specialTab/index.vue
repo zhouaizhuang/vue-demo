@@ -95,8 +95,8 @@
       <!--此处结束代码-->
       <!--注意手动调节被裁减的矩形的宽高 + 裁剪的svg形状(重点是弧度)-->
       <div class="rel bgf zx2 mr30" style="width:100px;height:30px;border-radius: 5px 5px 0 0;">
-        <div class="abs b0 bgf ovh" style="left:-19.5px;width:20px;height:20px;clip-path: path('M20,0L20,20L0,20A20,20,0,0,0,20,0')"></div>
-        <div class="abs b0 bgf ovh" style="right:-19.5px;width:20px;height:20px;clip-path: path('M0,0L0,20L20,20A20,20,0,0,1,0,0')"></div>
+        <div class="abs b0 bgf ovh" style="left:-19.5px;width:20px;height:20px;clip-path: path('M20,0L20,20L8,20A20,20,0,0,0,20,0')"></div>
+        <div class="abs b0 bgf ovh" style="right:-19.5px;width:20px;height:20px;clip-path: path('M0,0L0,20L10,20A20,20,0,0,1,0,0')"></div>
         <div class="abs trbl0 f ac xc g0 fs13 b lt2 g1890ff">工作台</div>
       </div>
     </div>

@@ -1036,7 +1036,7 @@ export const afterNMonthDate = function (startTime, num){
 export const diffTimes = function (start = new Date(), end = new Date()){
   start = processDate(start)
   end = processDate(end)
-  const diffDay = round((new Date(end) - new Date(start)) / 1000 / 60 /60 / 24, 2)
+  const diffDay = round((new Date(end) - new Date(start)) / 1000 / 60 / 60 / 24, 2)
   const dt1 = Number(dateFormater('YYYYMM', start))
   const dt2 = Number(dateFormater('YYYYMM', end))
   const diffYear = round((dt2 - dt1) % 100 / 12 + Math.floor((dt2 - dt1) / 100), 2, 2)

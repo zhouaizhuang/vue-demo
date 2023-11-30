@@ -149,6 +149,39 @@ export const code = {
   },
 }
 /**
+ * 字段名格式，只能由数字、字母、下划线构成，并且不能以数字开头
+ * @param {Function} 
+ * 直接使用： <Input v-field></Input>
+ */
+export const field = {
+  inserted(el, {value}, vnode) {
+    const inputRef = el.querySelector('input') || el
+    el.inputRef = inputRef
+    el.handleInput = e => window.requestAnimationFrame(() => {
+      e.preventDefault()
+      if (vnode.inputLocking) { return }
+      let originVal = inputRef.value
+      let tmp = inputRef.value
+      tmp = tmp.replace(/[^0-9A-Za-z_]/g, '')
+      let testTmp0 = tmp[0]
+      while(/[0-9]/.test(tmp[0])){ tmp = tmp.slice(1) }
+      inputRef.value = tmp
+      if(originVal != tmp) { 
+        if(/[0-9]/.test(testTmp0)) {
+          processTip(el, `不能以数字开头，不合规范的字符【${difference(originVal.split(''), tmp.split('')).join(' ')}】，已经被过滤`)
+        } else {
+          processTip(el, `只能由数字、字母、下划线构成，不合规范的字符【${difference(originVal.split(''), tmp.split('')).join(' ')}】，已经被过滤`)
+        }
+        inputRef.dispatchEvent(new Event('input'))
+      }
+    })
+    resolveChar(el, vnode)
+  },
+  unbind(el) {
+    removeEvents(el)
+  },
+}
+/**
  * 姓名，不可以输入空格和数字
  * @param {Function} 
  * 直接使用： <Input v-name></Input>
@@ -174,7 +207,7 @@ export const name = {
   },
 }
 /**
- * 姓名，不可以输入空格和数字
+ * 去除空格
  * @param {Function} 
  * 直接使用，去除首尾空格： <Input v-trim></Input>
  * 传入0，去除首尾空格： <Input v-trim="0"></Input>

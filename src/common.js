@@ -67,7 +67,7 @@ export const isValidStr = function (val, type = '0,1,2', length = -1){
 /**
  * 创建一个哈希表，返回一个函数。（用于检查传入的值是否是哈希表中的值）
  * @param {String} str 字符串
- * @param {Boolean} expectsLowerCase 不区分大小写
+ * @param {Boolean} expectsLowerCase 是否区分大小写   默认为false即不区分    传true为区分
  * @returns 一个判断函数
  * @举例 const isTag = makeMap('div,span', true); isTag('div')
  */

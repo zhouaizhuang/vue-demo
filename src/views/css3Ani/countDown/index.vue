@@ -31,7 +31,7 @@ export default {
   },
   created(){
     this.timeId = setInterval(() => {
-      const dates = this.countTime("2023-10-29 15:58:20");
+      const dates = this.countTime("2030-10-29 15:58:20");
       if(dates <= 0) {
         clearInterval(this.timeId)
       }

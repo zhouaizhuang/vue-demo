@@ -67,14 +67,13 @@ export const isValidStr = function (val, type = '0,1,2', length = -1){
 /**
  * 创建一个哈希表，返回一个函数。（用于检查传入的值是否是哈希表中的值）
  * @param {String} str 字符串
- * @param {Boolean} expectsLowerCase 不区分大小写
+ * @param {Boolean} expectsLowerCase 是否区分大小写   默认为false即不区分    传true为区分
  * @returns 一个判断函数
  * @举例 const isTag = makeMap('div,span', true); isTag('div')
  */
 export const makeMap = function(str, expectsLowerCase = false) {
   if(!isString(str)) { throw new Error('您传入的参数str有误，必须是一个字符串')}
-  var map = Object.create(null)
-  var list = str.split(',')
+  let [map, list] = [Object.create(null), str.split(',')]
   for(var i = 0, len = list.length; i < len; i++) { map[list[i]] = true }
   return expectsLowerCase ? val => map[val.toLowerCase()] : val => map[val]
 }
@@ -1364,6 +1363,60 @@ export const addDom = function (dom = '', id = ""){
   divObj.innerHTML = dom
   document.body.appendChild(divObj) // 添加Dom节点到body中
 }
+/**
+ * 添加类名
+ * @param {*} el dom对象
+ * @param {*} cls 样式类名样式类名
+ * @returns 
+ * @举例 _.addClass(_.query('#test'), 'fs26 b') ----> 为id为test的盒子，添加fs26 b这两个样式
+ */
+export const addClass = function (el, cls) {
+  if (!cls || !(cls = cls.trim())) { return }
+  if (el.classList) { return cls.indexOf(' ') > -1 ? cls.split(/\s+/).forEach(c => el.classList.add(c)) : el.classList.add(cls) }
+  var cur = " ".concat(el.getAttribute('class') || '', " ")
+  cur.indexOf(' ' + cls + ' ') < 0 && el.setAttribute('class', (cur + cls).trim())
+}
+/**
+ * 删除类名
+ * @param {*} el dom节点
+ * @param {*} cls 样式类名
+ * @returns 
+ * @举例  _.removeClass(_.query('#test'), 'b') ---->  为id为test的盒子，移除b这个样式
+ */
+export const removeClass = function (el, cls) {
+  if (!cls || !(cls = cls.trim())) { return }
+  if (el.classList) {
+    cls.indexOf(' ') > -1 ? cls.split(/\s+/).forEach(c => el.classList.remove(c)) : el.classList.remove(cls)
+    !el.classList.length && el.removeAttribute('class')
+  } else {
+    var cur = " ".concat(el.getAttribute('class') || '', " ")
+    var tar = ' ' + cls + ' '
+    while (cur.indexOf(tar) >= 0) { cur = cur.replace(tar, ' ')}
+    cur = cur.trim();
+    cur ? el.setAttribute('class', cur) : el.removeAttribute('class')
+  }
+}
+/**
+ * 创建节点
+ * @param {*} tagName 标签名称
+ * @returns
+ * @举例  createElement('div')
+ */
+export const createElement = tagName => document.createElement(tagName)
+/**
+ * 给指定dom添加子节点
+ * @param {*} parent 父dom
+ * @param {*} child 子dom
+ * @举例  appendChild(_.query('#test'), createElement('div'))
+ */
+export const appendChild = (parent, child) => parent.appendChild(child)
+/**
+ * 从父节点移除子节点
+ * @param {*} parent 父dom
+ * @param {*} child 子dom
+ * @举例  removeChild(_.query('#test'), _.query('#child'))
+ */
+export const removeChild = (parent, child) => parent.removeChild(child)
 /**
  * 窗口调整
  * @param {*} fn 

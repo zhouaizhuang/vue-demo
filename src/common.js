@@ -198,9 +198,7 @@ export const extend = function(to, _from) {
  */
 export const toObject = function (arr) {
   var res = {}
-  for(var i = 0; i < arr.length; i++) {
-    if (arr[i]) { extend(res, arr[i]) }
-  }
+  for(var i = 0; i < arr.length; i++) { arr[i] && extend(res, arr[i]) }
   return res
 }
 /**
@@ -994,8 +992,8 @@ export function extract(t = new Date()){
  * @举例 dateFormater('YYYY-MM-DD hh:mm') ==> 2019-06-26 18:30
  * @举例 dateFormater('YYYYMMDD-hh:mm:ss', '2020-08-12 09:13:54') ==> 20200812-09:13:54
  */
-export const dateFormater = function (formater = 'YYYY-MM-DD hh:mm:ss', t = new Date()){
-  if(!t) {return t}
+export const dateFormater = function (formater = 'YYYY-MM-DD hh:mm:ss', t){
+  if(!t) {return ''}
   t = processDate(t)
   const [Y, M, D, h, m, s] = extract(t)
   return formater.replace(/YYYY|yyyy/g, Y).replace(/YY|yy/g, Y.slice(2, 4)).replace(/MM/g, M).replace(/DD/g, D).replace(/hh/g, h).replace(/mm/g, m).replace(/ss/g, s)

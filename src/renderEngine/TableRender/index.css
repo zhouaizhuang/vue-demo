@@ -1,0 +1,7 @@
+.cusTable .ivu-table-tip td{
+  text-align: left !important;
+}
+.cusTable .ivu-table-tip td span{
+  display: inline-block;
+  transform: translateX(calc((100vw - 500px) / 2)) !important;
+}

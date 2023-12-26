@@ -1,0 +1,18 @@
+.rdsl2{
+  border-radius: 3px 0 0 3px;
+}
+.rdsr2{
+  border-radius: 0 3px 3px 0px;
+}
+.bdtc{
+  border-top: 1px solid #ccc;
+}
+.bdbc{
+  border-bottom: 1px solid #ccc;
+}
+.bdrc{
+  border-right: 1px solid #ccc;
+}
+.bdlc{
+  border-left:1px solid #ccc;
+}

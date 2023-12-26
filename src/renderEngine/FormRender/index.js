@@ -20,7 +20,6 @@
 //    {type:'dash', label:'虚线', key:'', value:'', _value:'', require: true, class:'', style:"width:100%;", labelClass:'',labelStyle: '', valueClass:'', valueStyle:'',placeholder: '', disabled: false, errmsg:'',isShow: true, _isShow: true, position:'top',  id: _.guID()},
 //    {type:'text', label:'纯文本', key:'', value:'', _value:'', require: true, class:'', style:"width:100%;", labelClass:'',labelStyle: '', valueClass:'', valueStyle:'',placeholder: '', disabled: false, errmsg:'',isShow: true, _isShow: true, position:'top',  id: _.guID()},
 //    // 自定义组件
-//    {type:'patientSearch', label: '患者姓名',key:'patientName', placeholder: '患者姓名/手机号后4位/证件号/病案号', value:'', _value:'', require: true, class:'w100', style:"", labelClass:'', labelStyle: '', valueClass:'',valueStyle:'',disabled: false, errmsg:'', isShow: true, _isShow: true, position:'top', id: _.guID()},
 //    {type:'idCard', label:'证件类型',key:'idType', placeholder: '患者姓名/手机号后4位/证件号/病案号', value: {idType: '1', idCard:''}, _value: {idType: '', idCard:''}, require: true, class:'w100', style:"", labelClass:'', labelStyle: '', valueClass:'',valueStyle:'', disabled: false, errmsg:'', isShow: true, _isShow: true, position:'top',id: _.guID()},
 //    {type:'date', label:'出生日期(自动填充)',key:'birthDay', placeholder: '请选择出生日期',  value:'', _value:'', require: false, class:'w100', style:"", labelClass:'', labelStyle: '', valueClass:'',valueStyle:'',disabled: true, errmsg:'', isShow: true, _isShow: true, position:'top', id: _.guID()},
 //    {type:'address', label:'住址',key:'address', placeholder: '请选择省', isShowStreet: true, value: {provinceCode:'', cityCode:'', areaCode:'', streetCode: '', address:'' }, _value: {provinceCode:'', cityCode:'', areaCode:'', streetCode: '', address:'' }, require: false, class:'w100', style:"", labelClass:'', labelStyle: '', valueClass:'',valueStyle:'', disabled: false, errmsg:'', isShow: true, _isShow: true, position:'top',id: _.guID()},
@@ -35,10 +34,8 @@ import CusSelect from "./components/CusSelect/index.vue"
 import TextArea from "./components/TextArea/index.vue"
 import CusDash from "./components/CusDash/index.vue"
 import CusRadio from "./components/CusRadio/index.vue"
-import CusPatientSearch from "./components/CusPatientSearch/index.vue"
 import CusIdCard from "./components/CusIdCard/index.vue"
 import CusAddress from "./components/CusAddress/index.vue"
-import CusTag from "./components/CusTag/index.vue"
 
 export default {
   name: '',
@@ -57,10 +54,8 @@ export default {
     TextArea,
     CusDash,
     CusRadio,
-    CusPatientSearch,
     CusIdCard,
     CusAddress,
-    CusTag
   },
   data(){
     return {

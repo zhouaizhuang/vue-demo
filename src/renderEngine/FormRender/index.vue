@@ -16,7 +16,6 @@
           <TextArea v-if="item.type == 'textArea'" :item="item" :formList="formList" @setFormList="e => $emit('setFormList', e)"></TextArea>
           <CusDash v-if="item.type == 'dash'" :item="item" :formList="formList" @setFormList="e => $emit('setFormList', e)"></CusDash>
           <CusRadio v-if="item.type == 'radio'" :item="item" :formList="formList" @setFormList="e => $emit('setFormList', e)"></CusRadio>
-          <CusPatientSearch v-if="item.type == 'patientSearch'" :item="item" :formList="formList" @setFormList="e => $emit('setFormList', e)"></CusPatientSearch>
           <CusIdCard v-if="item.type == 'idCard'" :item="item" :formList="formList" @setFormList="e => $emit('setFormList', e)"></CusIdCard>
           <CusAddress v-if="item.type == 'address'" :item="item" :formList="formList" @setFormList="e => $emit('setFormList', e)"></CusAddress>
           <CusTag v-if="item.type == 'tag'" :item="item" :formList="formList" @setFormList="e => $emit('setFormList', e)"></CusTag>

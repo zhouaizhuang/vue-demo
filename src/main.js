@@ -15,6 +15,7 @@ import 'view-design/dist/styles/iview.css'
 import command from "@/components/func.js"
 Vue.use(ViewUI)
 import * as api from "@/api/index.js"
+// import renderEngine from './renderEngine/index.js'
 
 Vue.config.productionTip = false
 Vue.use(Directives) // 引入自定义指令
@@ -26,6 +27,8 @@ window._ = Z // 全局挂载自定义函数库
 Vue.prototype.$api = api // 全局注册公共api请求
 Z.reWriteLog() // 关闭生产环境的console.log
 Vue.use(SlideVerify) // 极验验证
+// Vue.use(renderEngine)
+
 Vue.config.ignoredElements = ['wx-open-launch-weapp']
 
 new Vue({

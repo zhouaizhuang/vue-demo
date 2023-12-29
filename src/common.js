@@ -461,10 +461,7 @@ export const repeat = function(obj = '', times = 1) {
   let res = isArray(obj) ? [] : ''
   if(isArray(obj)) {
     if(isObject(obj[0])) {
-      for(let i =0; i < range(times, 1); i++) {
-        const tmp = deepCopy(obj).map(v => ({ ...v, _id: guID() }))
-        res = [...res, ...tmp]
-      }
+      for(let i =0; i < range(times, 1); i++) { res = [...res, ...deepCopy(obj).map(v => ({ ...v, _id: guID() }))]}
     } else {
       for(let i = 0; i < range(times, 1); i++) { res = [...res, ...obj] }
     }

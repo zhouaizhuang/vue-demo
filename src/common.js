@@ -872,7 +872,7 @@ export const safeGet = function (run, defaultVal = '') {
  */
 export const toNumber = val => isNaN(parseFloat(val)) ? val : parseFloat(val)
 /**
- * 四舍五入返回N位有效数字（常用于金额计算）
+ * 金额处理（常用于金额计算）
  * @param num 要格式化的数字
  * @param type float->小数形式。  intFloat->当整数的时候不需要带两个小数0，带小数时，保留几位小数
  * @param prec 保留几位小数

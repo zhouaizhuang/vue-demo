@@ -1576,8 +1576,6 @@ export const preLoadImg = function (arr = []) {
  * 举例子: await wait(500)   // 那么程序会在此处阻塞等待500ms
  * 举例子: await wait('500ms') // 那么程序会在此处阻塞等待500ms
  * 举例子: await wait('0.5s') // 那么程序会在此处阻塞等待500ms
- * 举例子: await wait('500毫秒') // 那么程序会在此处阻塞等待500ms
- * 举例子: await wait('0.5秒') // 那么程序会在此处阻塞等待500ms
  */
 export const wait = function(t) {
   if(isString(t)) { t = eval(t.replace('ms', '').replace('s', '*1000')) }

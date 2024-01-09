@@ -3,8 +3,8 @@ import { guID, throttling } from "@/common.js"
  * 鼠标移入给提示信息
  * @param {Function} 
  * 方式一直接使用：v-tip="value"  // 传入的值
- * 方式二传参使用：v-tip="[value, false]"  // [传入的值, 是否自动计算超出一行上移显示tip]
- * 直接使用： <div class="nowrap1" v-tip="value">{{value}}</div>
+ * 方式二传参使用：v-tip="[value, false]"  // [传入的值, 是否自动计算超出一行上移显示tip]------>传入false就不自动计算了，每一个都要显示
+ * 直接使用： <div class="nowrap1" v-tip="['123', false]">123</div>
  */
 let lastId = 'z' + guID()
 const removeTip = function (){
@@ -61,7 +61,7 @@ export const tip = {
   bind: bindEvent,
   componentUpdated: bindEvent, // 当传进来的值更新的时候触发
   unbind: function (){
-    document.removeEventListener("mousemove",throttlingFn) // 取消事件的注册
-    removeTip()
+    // document.removeEventListener("mousemove",throttlingFn) // 取消事件的注册
+    // removeTip()
   }
 }

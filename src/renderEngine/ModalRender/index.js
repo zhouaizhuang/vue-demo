@@ -19,10 +19,13 @@
     footer: { // 底部模块
       isShow: true, // 是否显示底部
       isShowClose: true, // 显示关闭按钮
+      closeText: '关闭',
       close: () => {console.log('点击了关闭')}, // 点击关闭触发
       isShowCancel: true, // 显示取消按钮
+      cancelText: '取消',
       cancel: () => {console.log('点击了取消')}, // 点击取消触发
       isShowConfirm: true, // 显示确定按钮
+      confirmText: '确定',
       confirm: () => {console.log('点击了确定')}, // 点击确定触发
     },
     import: { // 导入模块
@@ -59,7 +62,7 @@ export default {
   watch: {
     "modalObj.isShow": {
       handler: function(newVal, oldVal) {
-        this.zIndex = newVal ? String(new Date().getTime()).slice(-4, -1) : -1
+        this.zIndex = newVal ? String(new Date().getTime()).slice(-8, -4) : -1
         this.$emit('changeModalObj', this.modalObj)
       },
       deep: true, // 监听深层对象

@@ -15,10 +15,10 @@
       </div>
       <!--底部按钮-->
       <!-- <slot v-if="modalObj.isShowFooter" name="footer" :row="modalObj"></slot> -->
-      <div v-if="modalObj.footer && modalObj.footer.isShow" class="abs b0 l0 r0 f ac xe pt10 pl20 pr20 pb10 rds5 borderBox" style="height:52px;background:#f5f7fa;border-radius:0 0 5px 5px;">
-        <div v-if="modalObj.footer && modalObj.footer.isShowClose" @click.stop="handleClose" class="g1aada7 poi ml20 rds4 f ac xc fs14" style="border:1px solid #1aada7;width:80px;height:32px;">关闭</div>
-        <div v-if="modalObj.footer && modalObj.footer.isShowCancel" @click.stop="handleCancel" class="g1aada7 poi ml20 rds4 f ac xc fs14" style="border:1px solid #1aada7;width:80px;height:32px;">取消</div>
-        <div v-if="modalObj.footer && modalObj.footer.isShowConfirm" @click.stop="handleConfirm" class="gf poi ml20 rds4 f ac xc fs14" style="background:#1AADA7;border:1px solid #1aada7;width:80px;height:32px;">确定</div>
+      <div v-if="modalObj.footer && modalObj.footer.isShow" :class="['abs b0 l0 r0 f ac pt10 pl20 pr20 pb10 rds5 borderBox', modalObj.footer.textAlign == 'left' ? 'xs' : modalObj.footer.textAlign == 'center' ? 'xc' :'xe' ]" style="height:52px;background:#f5f7fa;border-radius:0 0 5px 5px;">
+        <div v-if="modalObj.footer && modalObj.footer.isShowClose" @click.stop="handleClose" class="gf poi rds4 mr20 f ac xc fs14" style="background:#1AADA7;border:1px solid #1aada7;width:80px;height:32px;">{{modalObj.footer.closeText || '关闭'}}</div>
+        <div v-if="modalObj.footer && modalObj.footer.isShowCancel" @click.stop="handleCancel" class="g1aada7 poi mr20 rds4 f ac xc fs14" style="border:1px solid #1aada7;width:80px;height:32px;">{{modalObj.footer.cancelText || '取消'}}</div>
+        <div v-if="modalObj.footer && modalObj.footer.isShowConfirm" @click.stop="handleConfirm" class="gf poi rds4 f ac xc fs14" style="background:#1AADA7;border:1px solid #1aada7;width:80px;height:32px;">{{modalObj.footer.confirmText || '确定'}}</div>
       </div>
     </div>
   </div>

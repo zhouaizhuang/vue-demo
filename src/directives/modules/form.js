@@ -1,4 +1,4 @@
-import { Message } from 'view-design'
+// import { Message } from 'view-design'
 import { query, difference, guID } from "@/common.js"
 // 处理提示信息--------> 原先的提示函数：Message.info(`小数自动保留${value}位`)
 const processTip = (function (){
@@ -11,7 +11,7 @@ const processTip = (function (){
       const id = 'z' + guID()
       let divObj = document.createElement("div") // 创建，写内容
       divObj.id = id
-      divObj.innerHTML = `<div class="abs nowrap bgf zx1 r0 l0 tl fs14" style="bottom:-20px;color:#ed4014;">${msg}</div>`
+      divObj.innerHTML = `<div class="abs nowrap bgf zx1 r0 l0 tl fs14" style="bottom:-22px;color:#ed4014;">${msg}</div>`
       el.appendChild(divObj)
       lastId = id
       setTimeout(() => {if(query(`#${id}`)) { el.removeChild(query(`#${id}`)) }}, 2000)

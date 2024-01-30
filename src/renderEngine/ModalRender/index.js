@@ -18,7 +18,7 @@
     },
     footer: { // 底部模块
       isShow: true, // 是否显示底部
-      textAlign: 'right', // right:靠右显示  left: 靠左显示    center: 居中显示
+      align: 'right', // right:按钮靠右显示  left: 按钮靠左显示    center: 按钮居中显示
       isShowClose: true, // 显示关闭按钮
       closeText: '关闭',
       close: () => {console.log('点击了关闭')}, // 点击关闭触发

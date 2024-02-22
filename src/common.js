@@ -1033,11 +1033,11 @@ export const afterNMonthDate = function (startTime, num){
 export const diffTimes = function (start = new Date(), end = new Date()){
   start = processDate(start)
   end = processDate(end)
-  const diffDay = round((new Date(end) - new Date(start)) / 1000 / 60 / 60 / 24, 2)
-  const dt1 = Number(dateFormater('YYYYMM', start))
-  const dt2 = Number(dateFormater('YYYYMM', end))
-  const diffYear = round((dt2 - dt1) % 100 / 12 + Math.floor((dt2 - dt1) / 100), 2, 2)
-  const diffMonth = Math.floor((dt2 - dt1) / 100) * 12 + (dt2 - dt1) % 100
+  const diffDay = round((new Date(end) - new Date(start)) / 1000 / 60 /60 / 24, 2)
+  const [year1, mon1] = [Number(dateFormater('YYYYMM', start).slice(0, 4)), Number(dateFormater('YYYYMM', start).slice(-2))]
+  const [year2, mon2] = [Number(dateFormater('YYYYMM', end).slice(0, 4)), Number(dateFormater('YYYYMM', end).slice(-2))]
+  const diffYear = round(((year2 - year1) * 12 + mon2 - mon1) / 12, 2)
+  const diffMonth = (year2 - year1) * 12 + mon2 - mon1
   return { diffDay, diffYear, diffMonth }
 }
 /**

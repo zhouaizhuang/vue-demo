@@ -1024,9 +1024,12 @@ export const afterNMonthDate = function (startTime, num){
 }
 /**
  * 计算两个日期之间间隔多少年,多少天,多少月
- * @param {*} start 
- * @param {*} end 
- */
+ * @param {*} start 开始时间
+ * @param {*} end 结束时间
+ * @returns 返回两个日期间隔多少年,多少天,多少月
+ * @举例 diffTimes('2024-01-22', '2024-05-17') ----->  { "diffDay": "116", "diffYear": "0.33", "diffMonth": 4 }
+ * @举例 diffTimes('2024-01', '2024-05') ----->  {"diffDay": "121","diffYear": "0.33","diffMonth": 4}
+*/
 export const diffTimes = function (start = new Date(), end = new Date()){
   start = processDate(start)
   end = processDate(end)

@@ -42,6 +42,7 @@ export const handleView = function (url){
 export const handleRemove = function (id){
   this.imgList = this.imgList.filter(item => item.id !== id)
   this.$emit('setImgArr', this.imgList)
+  this.curItem = {}
 }
 // 检查文件
 export const checkFile = function (curFiles) {
@@ -54,4 +55,21 @@ export const checkFile = function (curFiles) {
     return '文件大小超过了限制'
   }
   return ''
+}
+// 编辑
+export const handleEdit = function (item) {
+  this.curItem = item
+  this.isShowClip = true
+}
+// 设置是否显示
+export const setIsShow = function (e) {
+  this.isShowClip = e
+  let inputDOM = this.$refs[this.refId]
+  inputDOM.value = ''
+}
+// 设置当前条目
+export const setItem = function (item) {
+  this.imgList = _.searchCover(this.imgList, {id: item.id}, v => ({...v, url: item.url}))
+  this.$emit('setImgArr', this.imgList)
+  this.curItem = item
 }

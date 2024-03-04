@@ -19,6 +19,7 @@ import { startWith, guID } from "@/common.js"
 import PreviewImgs from "@/components/PreviewImgs/index.vue"
 import * as func from "./func.js"
 import * as tools from "./tools.js"
+import ClipImg from "../ClipImg/index.vue"
 export default {
   name: 'UploadImgs',
   props: {
@@ -29,10 +30,12 @@ export default {
     limit: { type: Number, default: 1 },
     format: { type: Array, default: function () { return ['jpg', 'jpeg', 'png'] } },
     fileType: { type: [Number, String], default: function(){ return 0 } }, // 0图片 1视频
-    errmsg: { type: String, default: ''}
+    errmsg: { type: String, default: ''},
+    isShowEdit: {type: Boolean, default: false },
   },
   components:{
-    PreviewImgs
+    PreviewImgs,
+    ClipImg
   },
   data(){
     return {
@@ -41,7 +44,9 @@ export default {
       isShowPreview: false, // 是否显示预览图片
       curImg: '', // 需要预览的图片地址
       previewArr: [],
-      refId: guID()
+      refId: guID(),
+      curItem: {},
+      isShowClip: false,
     }
   },
   methods:{

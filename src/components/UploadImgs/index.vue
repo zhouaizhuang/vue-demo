@@ -17,9 +17,11 @@
         >
           <div class="h100 topBg" :style="{backgroundImage: 'url(' + item.url + ')' }">
             <div class="trbl0 abs topMask zx100" style="background: rgba(0, 0, 0, 0.6);">
-              <div class="h100 f ac xc">
+              <div class="h100 f ac xb rw">
                 <Icon type="ios-eye-outline" class="gf poi" size="28"  @click.stop="handleView(item.url)" />
                 <Icon type="ios-trash-outline" class="gf poi" size="28" @click.stop="handleRemove(item.id)"></Icon>
+                <Icon v-if="isShowEdit" type="ios-create-outline" class="gf poi" size="28" @click.stop="handleEdit(item)"></Icon>
+                <!-- <Icon type="ios-trash-outline" class="gf poi" size="28" @click.stop="handleRemove(item.id)"></Icon> -->
               </div>
             </div>
           </div>
@@ -47,6 +49,16 @@
     </div>
     <div class='gc fs12' v-if="maxSize > 1024 * 1024">大小 {{Math.round(maxSize/1024/1024)}}M 以下，建议尺寸 {{width}} x {{height}} px，(最多{{limit}}张)<span v-if="limit > 1">,可拖动排序</span></div>
     <div class='gc fs12' v-else>大小 {{Math.round(maxSize/1024)}}KB 以下，建议尺寸 {{width}} x {{height}} px，(最多{{limit}}张)<span v-if="limit > 1">,可拖动排序</span></div>
+    <!--图片裁剪-->
+    <ClipImg
+      :isShow="isShowClip"
+      @setIsShow="setIsShow"
+      :item="curItem"
+      @setItem="setItem"
+      :width="width"
+      :height="height"
+    >
+    </ClipImg>
     <!-- 初始效果
        <Modal title="预览图" v-model="isShowPreview">
         <img :src="curImg" v-if="isShowPreview" style="width: 100%">
@@ -63,4 +75,4 @@
   </div>
 </template>
 <script src="./index.js"></script>
-<style src="./index.css" scoped></style>
+<style src="./index.css"></style>

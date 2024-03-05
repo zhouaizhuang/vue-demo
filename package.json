@@ -23,6 +23,7 @@
     "quagga": "^0.12.1",
     "view-design": "^4.7.0",
     "vue": "^2.6.11",
+    "vue-cropper": "^0.6.4",
     "vue-lottie": "^0.2.1",
     "vue-monoplasty-slide-verify": "^1.1.4",
     "vue-router": "^3.2.0",

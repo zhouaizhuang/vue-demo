@@ -1,0 +1,25 @@
+.btn {
+  font-weight: 400;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  line-height: 1.5;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  height: 32px;
+  padding: 0 15px;
+  font-size: 14px;
+  border-radius: 4px;
+  transition: color .2s linear,background-color .2s linear,border .2s linear,box-shadow .2s linear;
+  color: #fff;
+  background-color: #2d8cf0;
+  border-color: #2d8cf0;
+}
+.customcss .ivu-btn,
+.customcss .ivu-btn:hover{
+  border: none;
+}

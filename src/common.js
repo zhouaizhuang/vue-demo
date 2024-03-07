@@ -1848,7 +1848,7 @@ export const curry = function (fn, args = []) {
  * const getUser = createOverLoad()
  * getUser.addFunc('Number,Number', (page, pageSize) => {console.log('根据页码和分页参数去查找')})
  * getUser.addFunc('Number', (page) => {console.log('根据页码和分页参数去查找')})
- * getUser.addFunc('String', (name, gender) => {console.log('根据姓名和性别去查找')})
+ * getUser.addFunc('String', (name) => {console.log('根据姓名去查找')})
  * getUser.addFunc('String,String', (name, gender) => {console.log('根据姓名和性别去查找')})
  * getUser(1,2)-------> '根据页码和分页参数去查找'
  * getUser('张三', '1')-----> '根据姓名和性别去查找'

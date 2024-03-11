@@ -986,7 +986,7 @@ export function extract(t = new Date()){
  * @param {*} formater 时间格式
  * @param {*} t 传入的时间
  * @returns 处理之后的时间数据
- * @举例 dateFormater('YYYY-MM-DD hh:mm') ==> 2019-06-26 18:30
+ * @举例 dateFormater('YYYY-MM-DD hh:mm', new Date()) ==> 2019-06-26 18:30
  * @举例 dateFormater('YYYYMMDD-hh:mm:ss', '2020-08-12 09:13:54') ==> 20200812-09:13:54
  */
 export const dateFormater = function (formater = 'YYYY-MM-DD hh:mm:ss', t){

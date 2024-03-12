@@ -45,7 +45,7 @@ export default {
           isShow: true, // 是否显示顶部
           title: '裁剪图片',  // 标题
           isShowClose: true, // 是否显示顶部右侧叉号
-          close: () => {console.log('点击了叉号')} // 点击顶部右侧叉号触发 
+          close: () => {this.$emit('setIsShow', false)} // 点击顶部右侧叉号触发 
         },
         footer: { // 底部模块
           isShow: true, // 是否显示底部

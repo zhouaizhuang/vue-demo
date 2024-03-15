@@ -696,6 +696,7 @@ export const JSON2url = function (url = '', params = {}, type = 1){
  * @param {String || Number} type 0: 不需要解码  1需要解码(默认值)
  * @returns {Object} 返回参数拼接的json对象
  * @举例 url2JSON('http://www.baidu.com?name=asd&age=12') ----> {name: "asd", age: "12"}
+ * @举例 url2JSON('name=asd&age=12') ----> {name: "asd", age: "12"}
  */
 export const url2JSON = function (url = '', type = 0) {
   // url = url || window.location.href // 如果没传参，就使用浏览器当前url。暂时注释，因为这个不兼容小程序

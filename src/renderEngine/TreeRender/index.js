@@ -22,27 +22,29 @@
       {
         id: '2', name: '北京市', value: '2', isSpread: true, isChecked: false,isIndeterminate: false, disabled: false, style:'', checkedStyle:'', isShowCheckbox: true,
         children: [{
-          id: '21', name: '东城区', value: '21', isSpread: true, isChecked: false,isIndeterminate: false, disabled: false, style:'', checkedStyle:'', isShowCheckbox: true,
-          children: [{
-            id: '111', name: '新北区', value: '111', isSpread: true, isChecked: false,isIndeterminate: false, disabled: false, style:'', checkedStyle:'', isShowCheckbox: true,
-            children: []
-          }]
+          id: '21', name: '北京市', value: '21', isSpread: true, isChecked: false,isIndeterminate: false, disabled: false, style:'', checkedStyle:'', isShowCheckbox: true,
+          children: [
+            {
+              id: '211', name: '海淀区', value: '211', isSpread: true, isChecked: false,isIndeterminate: false, disabled: false, style:'', checkedStyle:'', isShowCheckbox: true,
+              children: []
+            }
+          ]
         }]
       }
     ],
-    rbacTree: { // 类型1：rbac菜单权限UI
-      isShow: true, // 是否显示rbac菜单
+    basicTree: { // 基础的tree控件
+      isShow: true, // 是否显示tree结构
+    }
+    rbacTree: { // rbac菜单权限UI
+      isShow: false, // 是否显示rbac菜单
       menuDisableList: [ // 哪一些列表的id是被禁用的，且有了新增，就必须启用列表
         40000, 40200, 30000, 60000, 60100, 60200, 50000, 50010, 50020, 50030, 50110, 50120, 50130, 50310, 50320, 50330, 50340, 50400, 50600, 50500, 40700,
         60205, 60211, 60215,
       ],
     },
-    areaTree: { // 类型2：区划显示UI
-      isShow: true, // 是否显示rbac菜单
+    areaTree: { // 区划显示UI
+      isShow: false, // 是否显示rbac菜单
     },
-    basicTree: { // 类型3：基础的tree控件
-      isShow: true, // 是否显示tree结构
-    }
   },
 ========================使用实际举例===========================================
   const result = await this.$request({ url: "/admin-api/system/area/tree" })

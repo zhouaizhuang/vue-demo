@@ -33,13 +33,25 @@
               </div>
               <div v-if="thirdItem.isSpread" class="pl20">
                 <!--四级菜单-->
-                <div v-for="fifthItem in forthItem.children"  :key="fifthItem.id" >
+                <div v-for="forthItem in thirdItem.children" :key="forthItem.id">
                   <div :class="['poi f ac w100 pt2 pb2 rel']">
-                    <span v-if="fifthItem.children.length!=0" style="left:-20px;" class="abs poi pt2 pb2 pr5 pl5">
-                      <svg t="1689242110316" :class="['trans3', fifthItem.isSpread ? '' : 'tr-90']" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2812" width="8" height="8"><path d="M65.582671 288.791335l446.417329 446.41733 446.417329-446.41733z" p-id="2813" :fill="fifthItem.isChecked ? '#666' : '#666'"></path></svg>
+                    <span v-if="forthItem.children.length!=0" @click="clickforthItem(forthItem)" style="left:-20px;" class="abs poi pt2 pb2 pr5 pl5">
+                      <svg t="1689242110316" :class="['trans3', forthItem.isSpread ? '' : 'tr-90']" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2812" width="8" height="8"><path d="M65.582671 288.791335l446.417329 446.41733 446.417329-446.41733z" p-id="2813" :fill="forthItem.isChecked ? '#666' : '#666'"></path></svg>
                     </span>
-                    <Checkbox v-if="fifthItem.isShowCheckbox" :value="fifthItem.isChecked" :indeterminate="fifthItem.isIndeterminate" @on-change="e => selectCurItem(e, fifthItem)" :disabled="fifthItem.disabled">{{fifthItem.name}}</Checkbox>
-                    <div v-else @click="clickCurItem(fifthItem)">{{fifthItem.name}}</div>
+                    <Checkbox v-if="forthItem.isShowCheckbox" :value="forthItem.isChecked" :indeterminate="forthItem.isIndeterminate" @on-change="e => selectCurItem(e, forthItem)" :disabled="forthItem.disabled">{{forthItem.name}}</Checkbox>
+                    <div v-else @click="clickCurItem(forthItem)">{{forthItem.name}}</div>
+                  </div>
+                  <div v-if="thirdItem.isSpread" class="pl20">
+                    <!--五级菜单-->
+                    <div v-for="fifthItem in forthItem.children"  :key="fifthItem.id" >
+                      <div :class="['poi f ac w100 pt2 pb2 rel']">
+                        <span v-if="fifthItem.children.length!=0" style="left:-20px;" class="abs poi pt2 pb2 pr5 pl5">
+                          <svg t="1689242110316" :class="['trans3', fifthItem.isSpread ? '' : 'tr-90']" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2812" width="8" height="8"><path d="M65.582671 288.791335l446.417329 446.41733 446.417329-446.41733z" p-id="2813" :fill="fifthItem.isChecked ? '#666' : '#666'"></path></svg>
+                        </span>
+                        <Checkbox v-if="fifthItem.isShowCheckbox" :value="fifthItem.isChecked" :indeterminate="fifthItem.isIndeterminate" @on-change="e => selectCurItem(e, fifthItem)" :disabled="fifthItem.disabled">{{fifthItem.name}}</Checkbox>
+                        <div v-else @click="clickCurItem(fifthItem)">{{fifthItem.name}}</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

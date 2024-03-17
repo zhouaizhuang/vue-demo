@@ -16,6 +16,7 @@
     "fake-progress": "^1.0.4",
     "html2canvas": "^1.4.1",
     "html5-qrcode": "^2.2.8",
+    "json-bigint": "^1.0.0",
     "lunar-javascript": "^1.6.2",
     "pdfjs-dist": "^2.0.943",
     "qrcodejs2": "^0.0.2",

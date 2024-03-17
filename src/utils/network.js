@@ -4,6 +4,7 @@ import { formatJSON, getSessionStorage, removeSessionStorage, downloadFile, safe
 import router from "../router/index.js"
 import Qs from 'qs'
 import { Message } from 'view-design'
+import jsonBigint from "json-bigint"
 /**
  * 加密解密函数
  * encrypt： 加密函数
@@ -20,6 +21,32 @@ export const decrypt = e => CryptoJS.enc.Utf8.stringify(CryptoJS.TripleDES.decry
  */
 export const isDebug = process.env.VUE_APP_ENV == 'development' // 是否开启debug
 export const baseURL = isDebug ? process.env.VUE_APP_BASE_URL : `${window.location.protocol}//${window.location.host}`
+// 大整数解析库
+const json = jsonBigint({storeAsString: true}) // 测试：json.parse('{"name": 99123123123123123123, "age": 18}')
+// export const post = function (url, params = {}, type = 1){
+//   return new Promise((resolve, reject) => {
+//     fetch(baseURL + url, {
+//       method: 'POST', // 设置请求方法为POST  
+//       headers: {  
+//         'Content-Type': 'application/json', // 'application/x-www-form-urlencoded', // application/json
+//         'tenant-id': getLocalStorage('tenantId'),
+//         'Authorization': 'Bearer ' + getLocalStorage('token'),
+//       },
+//       body: _.JSON2url('', params) // 将数据转换为JSON格式并作为请求体发送  
+//     }).then(async response => {
+//       if (!response.ok) { throw new Error('Network response was not ok')} // 请求成功，处理返回的Response对象 
+//       let res = await response.text() // 解析返回的JSON数据  
+//       res = json.parse(res)
+//       if(!res.errcode) { res = res.data } // 防误处理
+//       let { errcode, data, errmsg } = res
+//       if(errcode == 0 || errcode == 200) {
+//         return data
+//       } else {
+//         // 对异常逻辑进行处理
+//       }
+//     })
+//   })
+// }
 /************配置axios****** */
 let service = axios.create({
   baseURL,

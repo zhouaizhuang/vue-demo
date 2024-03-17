@@ -1,7 +1,7 @@
 import { Message } from 'view-design'
 /**
  * 数据范围指令
- * v-range=""  手机号、身份证号、银行卡号增加星号
+ * v-range="`[0,9]`"  数据范围
  * <div v-range="`[${min},${max})`">{{num}}</div>
  * 举例： 
  */

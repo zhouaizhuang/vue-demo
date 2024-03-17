@@ -8,6 +8,9 @@
     <div v-if="treeObj.areaTree && treeObj.areaTree.isShow">
       <AreaTree :treeObj="treeObj" @setTreeObj="e => $emit('setTreeObj', e)" @changeTree="e => $emit('changeTree', e)"></AreaTree>
     </div>
+    <div v-if="treeObj.basicTree && treeObj.basicTree.isShow">
+      <BasicTree :treeObj="treeObj" @setTreeObj="e => $emit('setTreeObj', e)" @changeTree="e => $emit('changeTree', e)"></BasicTree>
+    </div>
   </div>
 </template>
 <script src='./index.js'></script>

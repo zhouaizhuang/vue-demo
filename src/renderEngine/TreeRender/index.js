@@ -8,7 +8,28 @@
 =========================数据分割线=================================================
   treeObj:{
     // list的基础数据格式，注意children中的数据格式跟外层一样的
-    list:[{id: '1', name: '江苏省', value: '1', isSpread: false, isChecked: false, isIndeterminate: false, disabled: false, class:'', checkedClass:'', style:'', checkedStyle:'', children: []}]
+    list: [
+      {
+        id: '1', name: '江苏省', value: '1', isSpread: true, isChecked: true,isIndeterminate: false, disabled: false, style:'', checkedStyle:'', isShowCheckbox: true,
+        children: [{
+          id: '11', name: '常州市', value: '11', isSpread: true, isChecked: false,isIndeterminate: false, disabled: false, style:'', checkedStyle:'', isShowCheckbox: true,
+          children: [{
+            id: '111', name: '新北区', value: '111', isSpread: true, isChecked: false,isIndeterminate: false, disabled: false, style:'', checkedStyle:'', isShowCheckbox: true,
+            children: []
+          }]
+        }]
+      },
+      {
+        id: '2', name: '北京市', value: '2', isSpread: true, isChecked: false,isIndeterminate: false, disabled: false, style:'', checkedStyle:'', isShowCheckbox: true,
+        children: [{
+          id: '21', name: '东城区', value: '21', isSpread: true, isChecked: false,isIndeterminate: false, disabled: false, style:'', checkedStyle:'', isShowCheckbox: true,
+          children: [{
+            id: '111', name: '新北区', value: '111', isSpread: true, isChecked: false,isIndeterminate: false, disabled: false, style:'', checkedStyle:'', isShowCheckbox: true,
+            children: []
+          }]
+        }]
+      }
+    ],
     rbacTree: { // 类型1：rbac菜单权限UI
       isShow: true, // 是否显示rbac菜单
       menuDisableList: [ // 哪一些列表的id是被禁用的，且有了新增，就必须启用列表
@@ -18,6 +39,9 @@
     },
     areaTree: { // 类型2：区划显示UI
       isShow: true, // 是否显示rbac菜单
+    },
+    basicTree: { // 类型3：基础的tree控件
+      isShow: true, // 是否显示tree结构
     }
   },
 ========================使用实际举例===========================================
@@ -37,6 +61,7 @@ export default {
   components:{
     MenuTree: () =>  import('./components/MenuTree/index.vue'),
     AreaTree: () =>  import('./components/AreaTree/index.vue'),
+    BasicTree: () =>  import('./components/BasicTree/index.vue'),
   },
   data(){
     return {

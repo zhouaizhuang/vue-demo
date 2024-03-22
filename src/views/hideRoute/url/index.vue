@@ -10,6 +10,7 @@
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://gpt.ipcl.cc">ChatpGPT1</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://open.u-tools.cn/341582.html">window工具exe</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://www.fontke.com/tool/code128/">在线生成code128编码（条形码）</a></div>
+        <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://postimg.cc/gallery/pHY33qs/0ae87120">在线上传图片生成https链接地址</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://tool.lu/">在线工具网址</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://www.jiumodiary.com/">电子书查找</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://www.gaitubao.com/tupian-wenzi/">在线图片转文字</a></div>

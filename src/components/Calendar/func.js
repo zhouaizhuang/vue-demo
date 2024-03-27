@@ -24,7 +24,7 @@ export const getDateArr = function (year, month) {
 }
 // 上一个月
 export const prevMonth = function () {
-  const prevMonth = Number(this.month) - 1
+  const prevMonth = _.addZero(Number(this.month) - 1, 2)
   if(prevMonth == 0) {
     this.year -= 1
   } else {
@@ -35,7 +35,7 @@ export const prevMonth = function () {
 }
 // 下一个月
 export const nextMonth = function () {
-  const nextMonth = Number(this.month) + 1
+  const nextMonth = _.addZero(Number(this.month) + 1, 2)
   if(nextMonth == 13) {
     this.year += 1
   } else {

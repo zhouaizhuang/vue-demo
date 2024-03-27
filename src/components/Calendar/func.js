@@ -19,14 +19,13 @@ export const getDateArr = function (year, month) {
     return { date, day: date.split('-').pop(), week: _.socketTime(date).week, isDisabled: true,isChecked: false}
   })
   const dateList = [...prevDays, ...curMonthDays, ...nextDays]
-  console.log(dateList)
   return dateList
 }
 // 上一个月
 export const prevMonth = function () {
   const prevMonth = _.addZero(Number(this.month) - 1, 2)
   if(prevMonth == 0) {
-    this.year -= 1
+    this.year = Number(this.year) - 1
   } else {
     this.month = prevMonth
   }
@@ -37,7 +36,7 @@ export const prevMonth = function () {
 export const nextMonth = function () {
   const nextMonth = _.addZero(Number(this.month) + 1, 2)
   if(nextMonth == 13) {
-    this.year += 1
+    this.year = Number(this.year) + 1
   } else {
     this.month = nextMonth
   }

@@ -13,8 +13,6 @@ export default {
       dateList: [], // 当前传入日期所在月的日期数组
       year: 0,
       month: 0,
-      startX: '',
-      startY:'',
     }
   },
   methods:{

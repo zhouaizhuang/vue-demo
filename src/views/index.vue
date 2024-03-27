@@ -209,6 +209,7 @@
       <div class="f1 f xs ac rw">
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/list">触底加载更多组件</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/leftRightSlide">列表左右滑动（左滑删除）</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/useCalendar">使用日历组件</router-link></div>
       </div>
     </div>
     <div class="f">

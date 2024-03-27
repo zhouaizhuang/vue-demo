@@ -26,6 +26,7 @@ export const prevMonth = function () {
   const prevMonth = _.addZero(Number(this.month) - 1, 2)
   if(prevMonth == 0) {
     this.year = Number(this.year) - 1
+    this.month = 12
   } else {
     this.month = prevMonth
   }
@@ -37,6 +38,7 @@ export const nextMonth = function () {
   const nextMonth = _.addZero(Number(this.month) + 1, 2)
   if(nextMonth == 13) {
     this.year = Number(this.year) + 1
+    this.month = 1
   } else {
     this.month = nextMonth
   }

@@ -22,10 +22,10 @@
         <div class="w14 f ac xc">五</div>
         <div class="w14 f ac xc">六</div>
       </div>
-      <div :class="['f ac rw fs14 none']">
-        <div v-for="item in dateList" :key="item.date" @click="selectCurDate(item)" :class="['w14 f ac xc poi mb5', item.isDisabled ? 'disabled' : '']">
-          <div :class="['rds50 f ac xc', item.isChecked ? 'g42b983' : '']" :style="{width:'25px',height:'25px', background: item.isChecked ? 'rgba(19,189,135,.3)' : ''}">
-            {{ item.day}}
+      <div class="f ac rw fs14">
+        <div v-for="item in dateList" :key="item.id" @click="selectCurDate(item)" :class="['w14 f ac xc poi mb5', item.disabled ? 'op5' : '']">
+          <div :class="['rds50 f ac xc none ovh', item.isChecked ? 'g42b983' : '']" :style="{width:'25px',height:'25px', background: item.isChecked ? 'rgba(19,189,135,.3)' : ''}">
+            {{ item.day }}
           </div>
         </div>
       </div>

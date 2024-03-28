@@ -7,7 +7,7 @@ export default {
   },
   data(){
     return {
-      date: '2024-3-26'
+      date: ''
     }
   },
   methods:{

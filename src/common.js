@@ -682,7 +682,7 @@ export const checkJSON = obj => Object.keys(obj).find(item => !Boolean(obj[item]
  * @returns {String} 返回拼接好的带有参数的链接地址
  * @举例子 JSON2url('../advise/index', { from: 'index', id_str:'1243' }) -----> '../advise/index?from=index&id_str=1243'
  */
-export const JSON2url = function (url = '', params = {}, type = 1){
+export const JSON2url = function (url = '', params = {}, type = 0){
   return Object.keys(formatJSON(params)).reduce((prev, item) => {
     let val = params[item]
     val = type == 1 ? encodeURIComponent(val) : val // 为了适配更多的场景，开发了自定义是否编码

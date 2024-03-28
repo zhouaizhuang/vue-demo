@@ -1,12 +1,17 @@
 <template>
   <div>
-    <div class="bgf">
-      <div class="f ac xc pl10 pr10 pt10 pb10" style="border-bottom:1px solid #ccc;">
-        <div @click="prevYear" class="mr25">{{'<<'}}</div>
-        <div @click="prevMonth">{{'<'}}</div>
-        <div class="f1 f ac xc fs16">{{year}}年{{ month}}月</div>
-        <div @click="nextMonth">{{'>'}}</div>
-        <div @click="nextYear" class="ml25">{{'>>'}}</div>
+    <div class="bgf rds5">
+      <div class="f ac xc pt10 pb10 mb10" style="border-bottom:1px solid #ccc;">
+        <!--上一年-->
+        <div @click="prevYear" class="pl18 pr20"><div class="rel innerLeftArrow" style="width:8px;height:8px;border-top:1px solid #666;border-left:1px solid #666;transform:rotate(-45deg)"></div></div>
+        <!--上一月-->
+        <div @click="prevMonth" class="ml10 pl20 pr20"><div style="width:7px;height:7px;border-top:1px solid #666;border-left:1px solid #666;transform:rotate(-45deg)"></div></div>
+        <!--当前日期-->
+        <div class="f1 f ac xc fs16 b">{{year}}年{{ month}}月</div>
+        <!--下一月-->
+        <div @click="nextMonth" class="mr10 pl20 pr20"><div class="rel" style="width:7px;height:7px;border-top:1px solid #666;border-right:1px solid #666;transform:rotate(45deg)"></div></div>
+        <!--下一年-->
+        <div @click="nextYear" class="pl20 pr18"><div class="rel innerRightArrow" style="width:8px;height:8px;border-top:1px solid #666;border-right:1px solid #666;transform:rotate(45deg)"></div></div>
       </div>
       <div class="f ac fs14 mb5">
         <div class="w14 f ac xc">日</div>
@@ -17,10 +22,10 @@
         <div class="w14 f ac xc">五</div>
         <div class="w14 f ac xc">六</div>
       </div>
-      <div :class="['f ac rw fs14 none']">
-        <div v-for="item in dateList" :key="item.date" @click="selectCurDate(item)" :class="['w14 f ac xc poi mb5', item.isDisabled ? 'disabled' : '']">
-          <div :class="['rds50 f ac xc', item.isChecked ? 'g42b983' : '']" :style="{width:'25px',height:'25px', background: item.isChecked ? 'rgba(19,189,135,.3)' : ''}">
-            {{ item.day}}
+      <div class="f ac rw fs14">
+        <div v-for="item in dateList" :key="item.id" @click="selectCurDate(item)" :class="['w14 f ac xc poi mb5', item.disabled ? 'op5' : '']">
+          <div :class="['rds50 f ac xc none ovh', item.isChecked ? 'g42b983' : '']" :style="{width:'25px',height:'25px', background: item.isChecked ? 'rgba(19,189,135,.3)' : ''}">
+            {{ item.day }}
           </div>
         </div>
       </div>

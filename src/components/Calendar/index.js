@@ -1,4 +1,10 @@
+/**
+ * 使用方法
+ * 日期组件
+ * <Calendar :date="date" @setDate="e => date = e"></Calendar> 
+ */
 import * as func from "./func.js"
+import { dateFormater, socketTime } from "@/common.js"
 export default {
   name: '',
   props:{
@@ -13,6 +19,7 @@ export default {
       dateList: [], // 当前传入日期所在月的日期数组
       year: 0,
       month: 0,
+      day: 0,
     }
   },
   methods:{
@@ -22,12 +29,12 @@ export default {
     date: {
       async handler(newVal, oldVal) {
         // 没有传入值则默认选择今天
-        newVal = newVal ? newVal : _.dateFormater('YYYY-MM-DD', new Date())
-        const {year, month} = _.socketTime(newVal)
+        newVal = newVal ? newVal : dateFormater('YYYY-MM-DD', new Date())
+        const {year, month, day} = socketTime(newVal)
         this.year = year
         this.month = month
-        const dateList = this.getDateArr(year, month)
-        this.dateList = dateList.map(v => ({...v, isChecked: _.dateFormater('YYYY-MM-DD', v.date) == _.dateFormater('YYYY-MM-DD', newVal)}))
+        this.day = day
+        this.getDateArr(year, month)
       },
       deep: true,
       immediate: true,

@@ -17,9 +17,11 @@ export default {
   data(){
     return {
       dateList: [], // 当前传入日期所在月的日期数组
-      year: 0,
-      month: 0,
-      day: 0,
+      _year:0,
+      _month:0,
+      _day:0,
+      year: 0, // 当前切换到哪一个年
+      month: 0, // 当前切换到哪一个月
     }
   },
   methods:{
@@ -31,9 +33,11 @@ export default {
         // 没有传入值则默认选择今天
         newVal = newVal ? newVal : dateFormater('YYYY-MM-DD', new Date())
         const {year, month, day} = socketTime(newVal)
+        this._year = year
+        this._month = month
+        this._day = day
         this.year = year
         this.month = month
-        this.day = day
         this.getDateArr(year, month)
       },
       deep: true,

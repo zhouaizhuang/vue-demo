@@ -8,7 +8,7 @@ export const getDateArr = function (year, month) {
   const curMonthDays = new Array(totalDays).fill('').map((v, i) => String(i + 1)).map(v=>{
     const day = addZero(v,2)
     const date = `${year}-${month}-${day}`
-    return { id:guID(), date, year, month, day, _day: Number(v), disabled: false, isChecked: date == `${this.year}-${this.month}-${this.day}` }
+    return { id:guID(), date, year, month, day, _day: Number(v), disabled: false, isChecked: date == `${this._year}-${this._month}-${this._day}` }
   })
   // 前面一段日期
   const prevDays = new Array(firstDayOfMon.week).fill('').map((v, i) => {

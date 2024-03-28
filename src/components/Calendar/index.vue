@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="bgf rds5">
-      <div class="f ac xc mb10" style="border-bottom:1px solid #ccc;">
+      <div class="f ac xc mb10 none" style="border-bottom:1px solid #ccc;">
         <!--上一年-->
         <div @click="prevYear" class="pl18 pr20 pt10 pb10 poi"><div class="rel innerLeftArrow" style="width:8px;height:8px;border-top:1px solid #666;border-left:1px solid #666;transform:rotate(-45deg)"></div></div>
         <!--上一月-->
@@ -13,7 +13,7 @@
         <!--下一年-->
         <div @click="nextYear" class="pl20 pr18 pt10 pb10 poi"><div class="rel innerRightArrow" style="width:8px;height:8px;border-top:1px solid #666;border-right:1px solid #666;transform:rotate(45deg)"></div></div>
       </div>
-      <div class="f ac fs14 mb5">
+      <div class="f ac fs14 mb5 none">
         <div class="w14 f ac xc">日</div>
         <div class="w14 f ac xc">一</div>
         <div class="w14 f ac xc">二</div>

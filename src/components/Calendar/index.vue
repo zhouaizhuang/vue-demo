@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div class="bgf">
-      <div class="f ac xc pl10 pr10 pt10 pb10" style="border-bottom:1px solid #ccc;">
-        <div @click="prevYear" class="mr25">{{'<<'}}</div>
-        <div @click="prevMonth">{{'<'}}</div>
+    <div class="bgf rds5">
+      <div class="f ac xc pt10 pb10" style="border-bottom:1px solid #ccc;">
+        <div @click="prevYear" class="pl10 pr25">{{'<<'}}</div>
+        <div @click="prevMonth" class="pl12 pr12">{{'<'}}</div>
         <div class="f1 f ac xc fs16">{{year}}年{{ month}}月</div>
-        <div @click="nextMonth">{{'>'}}</div>
-        <div @click="nextYear" class="ml25">{{'>>'}}</div>
+        <div @click="nextMonth" class="pl12 pr12">{{'>'}}</div>
+        <div @click="nextYear" class="pl12 pr10">{{'>>'}}</div>
       </div>
       <div class="f ac fs14 mb5">
         <div class="w14 f ac xc">日</div>

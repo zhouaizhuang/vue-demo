@@ -304,6 +304,7 @@
     <div v-if="isShowPage" class="fs26 b mt30 mb20 tc">
       <router-link class="g42b983" to="/url">工具网站集合</router-link>
     </div>
+    <img v-draggable ref="popWechat" src="@/assets/chat.png" class="rds50 fixed none" style="z-index:30;right:30px;bottom:30px;width:60px;height:60px;" />
   </div>
 </template>
 <script>

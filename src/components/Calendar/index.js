@@ -16,12 +16,18 @@ export default {
   components:{},
   data(){
     return {
+      dateListPrev:[], // 前一个月的日期数组
       dateList: [], // 当前传入日期所在月的日期数组
-      _year:0,
-      _month:0,
-      _day:0,
+      dateListNext:[], // 后一个月的日期数组
+      _year:0, // 传入的初始年
+      _month:0, // 传入的初始月
+      _day:0, // 传入的初始日
       year: 0, // 当前切换到哪一个年
       month: 0, // 当前切换到哪一个月
+      startX:0, // 开始X位置
+      startY:0, // 开始Y位置
+      slideType: '', // ''不操作  'left'左滑   'right'右滑  'move' 移动中 
+      translateX: 0, // 指尖平移距离
     }
   },
   methods:{
@@ -38,7 +44,7 @@ export default {
         this._day = day
         this.year = year
         this.month = month
-        this.getDateArr(year, month)
+        this.updateDateList()
       },
       deep: true,
       immediate: true,

@@ -22,7 +22,7 @@ export const getDateArr = function (year, month) {
     const [year, month, day] = date.split('-')
     return { id:guID(), date, year, month, day, _day: Number(day), disabled: true, isChecked: false }
   })
-  this.dateList = [...prevDays, ...curMonthDays, ...nextDays]
+  return [...prevDays, ...curMonthDays, ...nextDays]
 }
 // 上一个月
 export const prevMonth = function () {
@@ -33,7 +33,7 @@ export const prevMonth = function () {
   } else {
     this.month = prevMonth
   }
-  this.getDateArr(this.year, this.month)
+  this.dateList = this.getDateArr(this.year, this.month)
 }
 // 下一个月
 export const nextMonth = function () {
@@ -44,19 +44,59 @@ export const nextMonth = function () {
   } else {
     this.month = nextMonth
   }
-  this.getDateArr(this.year, this.month)
+  this.dateList = this.getDateArr(this.year, this.month)
 }
 // 下一年
 export const prevYear = function () {
   this.year = Number(this.year) - 1
-  this.getDateArr(this.year, this.month)
+  this.dateList = this.getDateArr(this.year, this.month)
 }
 // 下一年
 export const nextYear = function () {
   this.year = Number(this.year) + 1
-  this.getDateArr(this.year, this.month)
+  this.dateList = this.getDateArr(this.year, this.month)
 }
 // 选中当前天
 export const selectCurDate = function (item) {
   this.$emit('setDate', item.date)
+}
+// 更新日期
+export const updateDateList = function () {
+  this.dateListPrev = this.getDateArr(..._.afterNMonthDate(`${this.year}-${this.month}-01`, -1).split('-'))
+  this.dateList = this.getDateArr(this.year, this.month)
+  this.dateListNext = this.getDateArr(..._.afterNMonthDate(`${this.year}-${this.month}-01`, 1).split('-'))
+}
+//滑动开始
+export const touchStart = function(e) {
+  // 记录初始位置
+  this.startX = e.touches[0].clientX
+  this.startY = e.touches[0].clientX
+}
+// 移动
+export const touchMove = function (e) {
+  const { clientX: endX, clientY: endY } = e.changedTouches[0]
+  this.slideType = 'move'
+  this.translateX = endX - this.startX
+}
+//滑动结束
+export const touchEnd = function (e) {
+  const { clientX: endX, clientY: endY } = e.changedTouches[0]
+  if(Math.abs(endY - this.startY) < 100) {
+    if(endX - this.startX > 20) {
+      this.slideType = 'right'
+      const [year, month] = _.afterNMonthDate(`${this.year}-${this.month}-01`, -1).split('-')
+      this.year = year
+      this.month = month
+    } else if(endX - this.startX < -20) {
+      this.slideType = 'left'
+      const [year, month] = _.afterNMonthDate(`${this.year}-${this.month}-01`, 1).split('-')
+      this.year = year
+      this.month = month
+    }
+    setTimeout(() => {
+      this.updateDateList()
+      this.slideType = ''
+      this.translateX = 0
+    },150)
+  }
 }

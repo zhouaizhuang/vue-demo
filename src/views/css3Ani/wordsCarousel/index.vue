@@ -9,7 +9,7 @@
   </div>
 </template>
 <script>
-import { round } from '../../../common';
+import { round } from '../../../common'
 export default {
   name: 'wordsCarousel',
   components: {

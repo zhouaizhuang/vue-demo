@@ -93,10 +93,10 @@ export const touchEnd = function (e) {
       this.year = year
       this.month = month
     }
-    setTimeout(() => {
-      this.updateDateList()
-      this.slideType = ''
-      this.translateX = 0
-    },150)
-  }
+  } 
+  setTimeout(() => {
+    this.updateDateList()
+    this.slideType = ''
+    this.translateX = 0
+  },150)
 }

@@ -6,6 +6,7 @@
       <div class="b" style="width:150px;">工具</div>
       <div class="f1 f xs ac rw">
         <a class="db w20 pb30 min190px g42b983 poi"><router-link class="g42b983" to="/desc_pc">在线加密解密</router-link></a>
+        <a class="db w20 pb30 min190px g42b983 poi"><router-link class="g42b983" to="/calcHours_pc">工时计算器</router-link></a>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://ai.usesless.com/scene/home">ChatpGPT</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://gpt.ipcl.cc">ChatpGPT1</a></div>
         <div class="db w20 pb30 min190px"><a class="g42b983 poi" href="https://open.u-tools.cn/341582.html">window工具exe</a></div>

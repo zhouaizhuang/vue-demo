@@ -1,0 +1,12 @@
+.bdlc{
+  border-left:1px solid #ccc;
+}
+.bdrc{
+  border-right:1px solid #ccc;
+}
+.bdtc{
+  border-top:1px solid #ccc;
+}
+.bdbc{
+  border-bottom:1px solid #ccc;
+}

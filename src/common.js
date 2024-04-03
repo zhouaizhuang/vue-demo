@@ -1719,7 +1719,7 @@ export const getIdCardInfo = function (idCard = '') {
   const realAge = Math.floor((Number(dateFormater('YYYYMMDD', new Date())) - Number(idCard.slice(6, 14))) / 10000)
   const gender = idCard.slice(-2,-1) % 2
   const genderText = gender == 1 ? '男' : '女'
-  return { birthDay, inventedAge, realAge, gender: idCard.slice(-2,-1) % 2, genderText, secretIdCard: idCard.slice(0, 6) + '********' + idCard.slice(-4) }
+  return { birthDay, inventedAge, realAge, gender, genderText, secretIdCard: idCard.slice(0, 6) + '********' + idCard.slice(-4) }
 }
 /**
  * 宽松相等判断

@@ -1709,8 +1709,8 @@ export const getOS = function() {
 /**
  * 根据身份证获取生日、虚岁、实岁、性别
  * @param {*} idCard 身份证
- * @returns 
- * @举例 getIdCardInfo('321281198210185179')   获取操作系统类型
+ * @returns 生日、虚岁、周岁、性别、身份证脱敏
+ * @举例 getIdCardInfo('321281198210185179')  对身份证进行解析
  */
 export const getIdCardInfo = function (idCard = '') {
   if(!isIdentity(idCard)) { return {} }
@@ -1718,8 +1718,8 @@ export const getIdCardInfo = function (idCard = '') {
   const inventedAge = Number(dateFormater('YYYY', new Date())) - Number(idCard.slice(6, 10)) + 1
   const realAge = Math.floor((Number(dateFormater('YYYYMMDD', new Date())) - Number(idCard.slice(6, 14))) / 10000)
   const gender = idCard.slice(-2,-1) % 2
-  const _gender = gender == 1 ? '男' : '女'
-  return { birthDay, inventedAge, realAge, gender, _gender }
+  const genderText = gender == 1 ? '男' : '女'
+  return { birthDay, inventedAge, realAge, gender: idCard.slice(-2,-1) % 2, genderText, secretIdCard: idCard.slice(0, 6) + '********' + idCard.slice(-4) }
 }
 /**
  * 宽松相等判断

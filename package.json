@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test": "vue-cli-service build --mode test",
-    "deploy": "bash deploy.sh"
+    "deploy": "bash deploy.sh",
+    "postinstall": "node postinstall.js"
   },
   "dependencies": {
     "@zxing/library": "^0.19.1",

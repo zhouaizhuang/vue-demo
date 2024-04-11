@@ -1,3 +1,12 @@
+/**
+ * 使用方法
+    patientTagList: [
+     {id:'1', name:'慢病1', children: [{id:'11', name: '糖尿病'}]},
+     {id:'2', name:'慢病2', children: [{id:'21', name: '糖尿病'}]},
+     {id:'3', name:'慢病3', children: [{id:'31', name: '糖尿病'}]},
+    ]
+    <HighSelect :options="patientTagList" @setOptions="e=>patientTagList=e" placeholder="请选择"></HighSelect>
+ */
 import * as func from "./func.js"
 import { tree2flat } from "@/common.js"
 export default {

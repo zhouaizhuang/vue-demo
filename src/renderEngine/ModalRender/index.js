@@ -53,7 +53,7 @@ export default {
   },
   data(){
     return {
-      zIndex: 10,
+      zIndex: 100,
       importModalType: 1,
     }
   },
@@ -63,7 +63,7 @@ export default {
   watch: {
     "modalObj.isShow": {
       handler: function(newVal, oldVal) {
-        this.zIndex = newVal ? String(new Date().getTime()).slice(-8, -4) : -1
+        this.zIndex = newVal ? Number(String(new Date().getTime()).slice(-8, -4)) + 50 : -1
         this.$emit('changeModalObj', this.modalObj)
       },
       deep: true, // 监听深层对象

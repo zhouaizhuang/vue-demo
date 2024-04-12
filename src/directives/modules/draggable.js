@@ -1,7 +1,13 @@
-/* <img v-draggable stc="https://xxxx.png" /> */
+/* <img v-draggable stc="https://xxxx.png" class="fixed t0 l0 zx30" /> */
 export const draggable = {
   inserted: function (el) {
     el.style.cursor = 'move'
+    el.style.position = 'fixed'
+    const { top, left } = _.getViewPos(el)
+    el.style.left = left
+    el.style.left = top
+    el.style.userSelect = 'none'
+    el.style.zIndex = '30'
     el.onmousedown = function (e) {
       let disx = e.pageX - el.offsetLeft
       let disy = e.pageY - el.offsetTop

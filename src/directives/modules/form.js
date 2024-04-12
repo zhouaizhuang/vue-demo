@@ -1,4 +1,3 @@
-// import { Message } from 'view-design'
 import { query, difference, guID } from "@/common.js"
 // 处理提示信息--------> 原先的提示函数：Message.info(`小数自动保留${value}位`)
 const processTip = (function (){

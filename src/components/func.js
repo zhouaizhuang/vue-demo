@@ -40,15 +40,16 @@ export const zConfirm = (function (){
 })()
 /**
  * 提示消息弹框
- * this.$zMessage('请输入XXX', 'error') // 异常提示
- * this.$zMessage('请输入XXX', 'warning') // 警告提示
- * this.$zMessage('请输入XXX', 'info') // 消息提示
- * this.$zMessage('请输入XXX', 'success') // 成功提示
+ * this.$zMessage.error('请输入XXX') // 异常提示
+ * this.$zMessage.warning('请输入XXX') // 警告提示
+ * this.$zMessage.info('请输入XXX') // 消息提示
+ * this.$zMessage.success('请输入XXX') // 成功提示、
+ * zMessage.success('请输入XXX') // 导入调用
  */
 export const zMessage = (function () {
   const MessageConstructor = Vue.extend(Message)
   let messageIndex = 0
-  return function (msg = '', type = 'error'){
+  const typeFn = (msg = '', type) => {
     const message = new MessageConstructor()
     message.$mount(document.createElement('div'))
     message.top = messageIndex * 50 + 30
@@ -59,7 +60,16 @@ export const zMessage = (function () {
     setTimeout(() => {
       message.isShow = false
       messageIndex--
+      setTimeout(() => {
+        document.body.removeChild(message.$el)
+      }, 1000)
     }, 2000)
+  }
+  return {
+    error: msg => typeFn(msg, 'error'),
+    warning: msg => typeFn(msg, 'warning'),
+    success: msg => typeFn(msg, 'success'),
+    info: msg => typeFn(msg, 'info'),
   }
 })()
 // 注册到全局vue

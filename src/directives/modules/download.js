@@ -1,4 +1,4 @@
-import { Message } from 'view-design'
+import { zMessage } from "@/components/func.js" // 注意：采用cdn的时候view-ui的cdn对应的全局变量是iview
 import { request } from "@/utils/network.js"
 /**
  * 下载
@@ -25,16 +25,16 @@ export const download = {
   bind(el, {value}, vnode) {
     const { type = 'png', url, name } = value
     el.handler = async () => {
-      if(type=='blob' && !url) { return Message.error('接口请求路径必传') }
-      if(!url) { return Message.error('下载地址必传') }
-      if(!name) { return Message.error('文件名必传') }
+      if(type=='blob' && !url) { return zMessage.error('接口请求路径必传') }
+      if(!url) { return zMessage.error('下载地址必传') }
+      if(!name) { return zMessage.error('文件名必传') }
       let res = ''
       if(type == 'blob') {
         res = await request({ method: "POST", url: url, responseType: 'blob' }, 0)
       } else if(['pdf', 'png', 'jpg', 'jepg', 'img'].includes(type)){
         res = url
       } else {
-        return Message.error('格式不对')
+        return zMessage.error('格式不对')
       }
       _.downloadFile(name, res)
     }

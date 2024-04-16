@@ -6,7 +6,7 @@
 export const isType = type => val => type === Object.prototype.toString.call(val).slice(8, -1)
 export const isArray = isType('Array') // 判断是否为数组类型
 export const isObject = isType('Object') // 判断是否是对象类型
-export const isEmptyObj = val => isObject(val) && Object.keys(val).length // 是否是空对象
+export const isEmptyObj = val => isObject(val) && !!Object.keys(val).length // 是否是空对象
 export const isReference = val => isArray(val) || isObject(val) // 判断是否是引用类型
 export const isNull = isType('Null') // 判断是否是null
 export const isUndefined = isType('Undefined') // 判断是否是undefined
@@ -873,26 +873,6 @@ export const safeGet = function (run, defaultVal = '') {
  */
 export const toNumber = val => isNaN(parseFloat(val)) ? val : parseFloat(val)
 /**
- * 金额处理（常用于金额计算）
- * @param num 要格式化的数字
- * @param type float->小数形式。  intFloat->当整数的时候不需要带两个小数0，带小数时，保留几位小数
- * @param prec 保留几位小数
- * @param sep 千分位符号
- * @举例 formatMoney(12322.1223, 'float') ====> "12,322.12" // 保留0位小数四舍五入得到 12
- * @举例 formatMoney(12322.1223, 'float', 1) ------> "12,322.1"  固定显示1位小数
- * @举例 formatMoney(12322, 'intFloat') ------> "12322"  当没有小数点就显示整数，否则显示整数
- */
-export const formatMoney = function (num = 0, type = 'float', prec = 2, dec = '.', sep = ',') {
-  num = String(num).replace(/[^0-9+-Ee.]/g, '') || '0'
-  prec = Number(prec)
-  if((type === 'intFloat' && !num.includes('.')) || num === '0') { return num }
-  let [intStr = '', floatStr = ''] = String(round(num, prec)).split(dec) // 分割出整数和小数部分
-  let re = /(-?\d+)(\d{3})/ // 匹配整数部分每个三位数
-  while (re.test(intStr)) { intStr = intStr.replace(re, "$1" + sep + "$2") } // 整数部分三位数添加分隔符如','
-  floatStr += new Array(prec + 1).join('0')
-  return `${intStr}${dec}${floatStr.slice(0, prec)}`
-}
-/**
  * 0、1转换--------'0'、'1'转换
  * @param {*} val 
  * @returns 
@@ -947,6 +927,26 @@ export const largeNumAdd = function (num1, num2){
     return { sum: String(figure % 10) + prev.sum, carry: Math.floor(figure / 10) }
   }, {sum:'', carry: 0})
   return res.sum
+}
+/**
+ * 金额处理（常用于金额计算）
+ * @param num 要格式化的数字
+ * @param type float->小数形式。  intFloat->当整数的时候不需要带两个小数0，带小数时，保留几位小数
+ * @param prec 保留几位小数
+ * @param sep 千分位符号
+ * @举例 formatMoney(12322.1223, 'float') ====> "12,322.12" // 保留0位小数四舍五入得到 12
+ * @举例 formatMoney(12322.1223, 'float', 1) ------> "12,322.1"  固定显示1位小数
+ * @举例 formatMoney(12322, 'intFloat') ------> "12322"  当没有小数点就显示整数，否则显示整数
+ */
+export const formatMoney = function (num = 0, type = 'float', prec = 2, dec = '.', sep = ',') {
+  num = String(num).replace(/[^0-9+-Ee.]/g, '') || '0'
+  prec = Number(prec)
+  let [intStr = '', floatStr = ''] = String(round(num, prec)).split(dec) // 分割出整数和小数部分
+  let re = /(-?\d+)(\d{3})/ // 匹配整数部分每个三位数
+  while (re.test(intStr)) { intStr = intStr.replace(re, "$1" + sep + "$2") } // 整数部分三位数添加分隔符如','
+  if((type === 'intFloat' && !num.includes('.')) || num === '0') { return intStr }
+  floatStr += new Array(prec + 1).join('0')
+  return `${intStr}${dec}${floatStr.slice(0, prec)}`
 }
 /*
 **********************************************************************************************

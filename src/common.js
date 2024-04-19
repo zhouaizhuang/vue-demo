@@ -1919,11 +1919,11 @@ export const invertBy = obj => Object.keys(obj).reduce((prev, item) => ((prev[ob
 /**
  * 链表
   var cities = new NodeList()
-  cities.insert("head","Conway")
-  cities.insert("Conway", "Russellville", )
-  cities.insert("Russellville", "Carlisle")
-  cities.insert("Carlisle", "Alma")
-  cities.remove("Russellville")
+  cities.insert("head","Conway") // 往head之后插入'Conway'
+  cities.insert("Conway", "Russellville", ) // 往Conway之后插入'Russellville'
+  cities.insert("Russellville", "Carlisle") // 往Russellville之后插入'Carlisle'
+  cities.insert("Carlisle", "Alma") // 往Carlisle之后插入'Alma'
+  cities.remove("Russellville") // 删除元素'Russellville'
   cities.display()
 */
 export const NodeList = function () {

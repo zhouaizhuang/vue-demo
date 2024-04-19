@@ -1918,8 +1918,53 @@ export const invert = obj => Object.keys(obj).reduce((prev, item) => ((prev[obj[
 export const invertBy = obj => Object.keys(obj).reduce((prev, item) => ((prev[obj[item]] || (prev[obj[item]] = [])).push(item), prev), {})
 /**
  * 链表
- */
-
+  var cities = new NodeList()
+  cities.insert("head","Conway")
+  cities.insert("Conway", "Russellville", )
+  cities.insert("Russellville", "Carlisle")
+  cities.insert("Carlisle", "Alma")
+  cities.remove("Russellville")
+  cities.display()
+*/
+export const NodeList = function () {
+  const Node = function (element) {
+    this.prev = null
+    this.element = element
+    this.next = null
+  }
+  this.head = new Node('head')
+  // 找到当前元素
+  this.find = (item) => {
+    var curNode = this.head
+    while(!looseEqual(curNode.element, item)) { curNode = curNode.next } 
+    return curNode
+  }
+  // 往当前元素之后插入元素
+  this.insert = (item, newElement) => {
+    var newNode = new Node(newElement)
+    var current = this.find(item)
+    newNode = { ...newNode, next: current.next, prev: current }
+    current.next = newNode
+  }
+  // 寻找前面一个元素
+  this.findPrevious = item => {
+    var curNode = this.head
+    while (curNode.next != null && curNode.next.element != item) { curNode = curNode.next } 
+    return curNode
+  }
+  // 移除当前元素
+  this.remove = item => {
+    var curNode = this.find(item)
+    if(curNode.next == null) { return curNode.prev.next = null } 
+    let [prevNode, nextNode] = [curNode.prev, curNode.next]
+    ;[prevNode.next, nextNode.prev, nextNode, prevNode] = [nextNode, prevNode, null, null]
+  }
+  // 显示链表
+  this.display = () => {
+    var curNode = this.head
+    while (curNode.next != null) { console.log(curNode.next.element);curNode = curNode.next }
+  }
+}
 /**
  * 使用 PerformanceObserver 监听 fcp。计算白屏时间
  */

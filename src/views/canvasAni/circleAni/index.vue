@@ -4,6 +4,17 @@
   </div>
 </template>
 <script>
+/*保证canvas清晰的条件： 原始尺寸  ===  样式尺寸 * 缩放倍率 
+   const ctx = ref.getContext('2d')
+   ctx.width  这是原始尺寸
+   canvas{ 
+    width:200px; // 样式尺寸
+    height:200px; // 样式尺寸
+   }
+   所以，咱们不改样式尺寸，就需要调整原始尺寸。
+   假设，宽度 原始尺寸200px   样式尺寸200px  缩放倍率 window.devicePixelRatio为2
+   那么就应该设置原始尺寸为 200 * window.devicePixelRatio
+*/
 export default {
   name: 'circleAni',
   components:{},
@@ -15,6 +26,8 @@ export default {
   methods:{
     startCircle(){
       const ref = this.$refs.canvasRef1
+      
+      console.log(window.devicePixelRatio)
       const ctx = ref.getContext('2d')
       let start = Math.PI * 2 * 1 / 360
       let end = Math.PI * 2

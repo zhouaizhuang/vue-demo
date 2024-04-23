@@ -36,6 +36,7 @@
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/ball">小球弹起动画</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/developHistory">公司首页发展历程</router-link></div>
         <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/addGoods">添加到购物车动画</router-link></div>
+        <div class="db w20 pb30 min190px"><router-link class="g42b983" to="/animateDelay_pc">动画延迟</router-link></div>
       </div>
     </div>
     <div class="f">

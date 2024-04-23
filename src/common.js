@@ -6,7 +6,7 @@
 export const isType = type => val => type === Object.prototype.toString.call(val).slice(8, -1)
 export const isArray = isType('Array') // 判断是否为数组类型
 export const isObject = isType('Object') // 判断是否是对象类型
-export const isEmptyObj = val => isObject(val) && Object.keys(val).length // 是否是空对象
+export const isEmptyObj = val => isObject(val) && !!Object.keys(val).length // 是否是空对象
 export const isReference = val => isArray(val) || isObject(val) // 判断是否是引用类型
 export const isNull = isType('Null') // 判断是否是null
 export const isUndefined = isType('Undefined') // 判断是否是undefined
@@ -873,26 +873,6 @@ export const safeGet = function (run, defaultVal = '') {
  */
 export const toNumber = val => isNaN(parseFloat(val)) ? val : parseFloat(val)
 /**
- * 金额处理（常用于金额计算）
- * @param num 要格式化的数字
- * @param type float->小数形式。  intFloat->当整数的时候不需要带两个小数0，带小数时，保留几位小数
- * @param prec 保留几位小数
- * @param sep 千分位符号
- * @举例 formatMoney(12322.1223, 'float') ====> "12,322.12" // 保留0位小数四舍五入得到 12
- * @举例 formatMoney(12322.1223, 'float', 1) ------> "12,322.1"  固定显示1位小数
- * @举例 formatMoney(12322, 'intFloat') ------> "12322"  当没有小数点就显示整数，否则显示整数
- */
-export const formatMoney = function (num = 0, type = 'float', prec = 2, dec = '.', sep = ',') {
-  num = String(num).replace(/[^0-9+-Ee.]/g, '') || '0'
-  prec = Number(prec)
-  if((type === 'intFloat' && !num.includes('.')) || num === '0') { return num }
-  let [intStr = '', floatStr = ''] = String(round(num, prec)).split(dec) // 分割出整数和小数部分
-  let re = /(-?\d+)(\d{3})/ // 匹配整数部分每个三位数
-  while (re.test(intStr)) { intStr = intStr.replace(re, "$1" + sep + "$2") } // 整数部分三位数添加分隔符如','
-  floatStr += new Array(prec + 1).join('0')
-  return `${intStr}${dec}${floatStr.slice(0, prec)}`
-}
-/**
  * 0、1转换--------'0'、'1'转换
  * @param {*} val 
  * @returns 
@@ -947,6 +927,26 @@ export const largeNumAdd = function (num1, num2){
     return { sum: String(figure % 10) + prev.sum, carry: Math.floor(figure / 10) }
   }, {sum:'', carry: 0})
   return res.sum
+}
+/**
+ * 金额处理（常用于金额计算）
+ * @param num 要格式化的数字
+ * @param type float->小数形式。  intFloat->当整数的时候不需要带两个小数0，带小数时，保留几位小数
+ * @param prec 保留几位小数
+ * @param sep 千分位符号
+ * @举例 formatMoney(12322.1223, 'float') ====> "12,322.12" // 保留0位小数四舍五入得到 12
+ * @举例 formatMoney(12322.1223, 'float', 1) ------> "12,322.1"  固定显示1位小数
+ * @举例 formatMoney(12322, 'intFloat') ------> "12322"  当没有小数点就显示整数，否则显示整数
+ */
+export const formatMoney = function (num = 0, type = 'float', prec = 2, dec = '.', sep = ',') {
+  num = String(num).replace(/[^0-9+-Ee.]/g, '') || '0'
+  prec = Number(prec)
+  let [intStr = '', floatStr = ''] = String(round(num, prec)).split(dec) // 分割出整数和小数部分
+  let re = /(-?\d+)(\d{3})/ // 匹配整数部分每个三位数
+  while (re.test(intStr)) { intStr = intStr.replace(re, "$1" + sep + "$2") } // 整数部分三位数添加分隔符如','
+  if((type === 'intFloat' && !num.includes('.')) || num === '0') { return intStr }
+  floatStr += new Array(prec + 1).join('0')
+  return `${intStr}${dec}${floatStr.slice(0, prec)}`
 }
 /*
 **********************************************************************************************
@@ -1918,8 +1918,53 @@ export const invert = obj => Object.keys(obj).reduce((prev, item) => ((prev[obj[
 export const invertBy = obj => Object.keys(obj).reduce((prev, item) => ((prev[obj[item]] || (prev[obj[item]] = [])).push(item), prev), {})
 /**
  * 链表
- */
-
+  var cities = new NodeList()
+  cities.insert("head","Conway") // 往head之后插入'Conway'
+  cities.insert("Conway", "Russellville", ) // 往Conway之后插入'Russellville'
+  cities.insert("Russellville", "Carlisle") // 往Russellville之后插入'Carlisle'
+  cities.insert("Carlisle", "Alma") // 往Carlisle之后插入'Alma'
+  cities.remove("Russellville") // 删除元素'Russellville'
+  cities.display()
+*/
+export const NodeList = function () {
+  const Node = function (element) {
+    this.prev = null
+    this.element = element
+    this.next = null
+  }
+  this.head = new Node('head')
+  // 找到当前元素
+  this.find = (item) => {
+    var curNode = this.head
+    while(!looseEqual(curNode.element, item)) { curNode = curNode.next } 
+    return curNode
+  }
+  // 往当前元素之后插入元素
+  this.insert = (item, newElement) => {
+    var newNode = new Node(newElement)
+    var current = this.find(item)
+    newNode = { ...newNode, next: current.next, prev: current }
+    current.next = newNode
+  }
+  // 寻找前面一个元素
+  this.findPrevious = item => {
+    var curNode = this.head
+    while (curNode.next != null && curNode.next.element != item) { curNode = curNode.next } 
+    return curNode
+  }
+  // 移除当前元素
+  this.remove = item => {
+    var curNode = this.find(item)
+    if(curNode.next == null) { return curNode.prev.next = null } 
+    let [prevNode, nextNode] = [curNode.prev, curNode.next]
+    ;[prevNode.next, nextNode.prev, nextNode, prevNode] = [nextNode, prevNode, null, null]
+  }
+  // 显示链表
+  this.display = () => {
+    var curNode = this.head
+    while (curNode.next != null) { console.log(curNode.next.element);curNode = curNode.next }
+  }
+}
 /**
  * 使用 PerformanceObserver 监听 fcp。计算白屏时间
  */

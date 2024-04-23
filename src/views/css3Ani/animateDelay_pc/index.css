@@ -1,0 +1,9 @@
+.aniTx100{
+  animation: move 1s linear var(--delay) forwards paused;
+}
+/*这里的动画，可以写的很复杂。完全依赖的是delay的负值*/
+@keyframes move {
+  to{
+    transform: translateX(1000px);
+  }
+}

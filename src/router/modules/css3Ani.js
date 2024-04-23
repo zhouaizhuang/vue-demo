@@ -27,4 +27,5 @@ export default [
   { path: '/cardCountDown', name: 'cardCountDown', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/cardCountDown/index.vue')},
   { path: '/developHistory', name: 'developHistory', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/developHistory/index.vue')},
   { path: '/addGoods', name: 'addGoods', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/addGoods/index.vue')},
+  { path: '/animateDelay_pc', name: 'animateDelay_pc', component: () => import(/* webpackChunkName: "css3Ani" */ '../../views/css3Ani/animateDelay_pc/index.vue')},
 ]

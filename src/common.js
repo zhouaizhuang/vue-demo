@@ -1924,7 +1924,14 @@ export const invertBy = obj => Object.keys(obj).reduce((prev, item) => ((prev[ob
   cities.insert("Russellville", "Carlisle") // 往Russellville之后插入'Carlisle'
   cities.insert("Carlisle", "Alma") // 往Carlisle之后插入'Alma'
   cities.remove("Russellville") // 删除元素'Russellville'
+  console.log(cities)
   cities.display()
+  ----------进行遍历，做一些代码处理-------------------
+  let curNode = cities.head
+  while(curNode.next) {
+    console.log(curNode)
+    curNode = curNode.next
+  }
 */
 export const NodeList = function () {
   const Node = function (element) {
@@ -1962,9 +1969,13 @@ export const NodeList = function () {
   // 显示链表
   this.display = () => {
     var curNode = this.head
-    while (curNode.next != null) { console.log(curNode.next.element);curNode = curNode.next }
+    while (curNode.next) {
+      console.log(curNode.element);
+      curNode = curNode.next
+    }
   }
 }
+
 /**
  * 使用 PerformanceObserver 监听 fcp。计算白屏时间
  */

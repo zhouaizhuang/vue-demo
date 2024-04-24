@@ -1428,7 +1428,7 @@ export const resize = fn => window.onresize = () => { fn() }
  */
 export const show = function (id =''){
   const selectDom = document.getElementById(id)
-  if(selectDom){ document.getElementById(id).style.display = 'block' }
+  if(selectDom){ selectDom.style.display = 'block' }
 }
 /**
  * 删除DOM结点
@@ -1437,7 +1437,7 @@ export const show = function (id =''){
  */
 export const hide = function (id =''){
   const selectDom = document.getElementById(id)
-  if(selectDom){ document.getElementById(id).style.display = 'none' }
+  if(selectDom){ selectDom.style.display = 'none' }
 }
 /**
  * 开启loading
